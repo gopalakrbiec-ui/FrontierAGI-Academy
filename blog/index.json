@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "two-threads-architecture-vs-learning-technique",
+      "title": "Two Threads, One Chain: Architecture vs. Learning Technique",
+      "excerpt": "The fifth in the Evolution / After Transformers arc — pulls the merged history apart into two lineages (the network's structure vs. how it improves) plus a connecting scaffolding thread (normalization, initialization), traces each separately from 1943 to today, builds a direct sync-vs-lag comparison table, and shows precisely how the visible gap since 2017 — three learning-technique leaps on an unchanged architecture — produced today's scaling-vs-new-architecture fork.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-13",
+      "readTime": "85 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧵",
+      "featured": true
+    },
+    {
       "slug": "agi-debate-scaling-vs-new-architectures",
       "title": "The AGI Debate: Scaling vs. New Architectures",
       "excerpt": "The fourth in the Evolution / After Transformers arc — a full steelman of both sides of AI's most consequential live disagreement: the scaling camp's unbroken empirical track record and Sutton's 'Bitter Lesson,' the new-architecture camp's case (LeCun's world-model argument, Sutskever's own reassessment per the SSI investigation), where both camps actually agree, and what it would take to prove either one right, without declaring a premature winner.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "⚖️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-to-read-a-paper-like-a-researcher",
