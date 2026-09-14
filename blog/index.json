@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-generalization-learning-theory",
+      "title": "AGI Researcher Foundations: Generalization & Learning Theory",
+      "excerpt": "The fifth article in the AGI Researcher Foundations series — the classical story (PAC learning, VC dimension, the bias-variance tradeoff) and the specific, well-documented ways modern deep learning breaks it: Zhang et al.'s random-label memorization result, the Neural Tangent Kernel, and a formal return to Article 4's deep-double-descent puzzle, with honest acknowledgment of what remains genuinely unsolved in generalization theory as of 2026.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "70 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "📊",
+      "featured": true
+    },
+    {
       "slug": "how-each-architecture-actually-learned",
       "title": "How Each Network Architecture Actually Learned",
       "excerpt": "The sixth in the Evolution / After Transformers arc — the deepest mechanics dive yet: nine architecture eras (Perceptron through reasoning models), each broken into Training Mechanics (what was literally happening step by step), The Limitation (the specific mechanical wall), and The Fix (which lane — architecture, learning technique, or scaffolding — solved it), ending with clearly-caveated speculation on what training itself might need to look like for the next real breakthrough.",
@@ -13,7 +29,7 @@
         "AI Research"
       ],
       "emoji": "⚙️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "two-threads-architecture-vs-learning-technique",
