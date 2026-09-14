@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-interpretability",
+      "title": "AGI Researcher Foundations: Interpretability",
+      "excerpt": "The seventh article in the AGI Researcher Foundations series — the technical toolkit for looking inside a trained model: early correlational methods (saliency maps, feature visualization, probing), mechanistic interpretability and circuits (induction heads), why superposition means one neuron can hold many concepts, sparse autoencoders, and causal tracing/model editing via the ROME paper, with reward hacking from Article 6 revisited as a debuggable, not just describable, problem.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🔬",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-rl-foundations",
       "title": "AGI Researcher Foundations: Reinforcement Learning Foundations",
       "excerpt": "The sixth article in the AGI Researcher Foundations series — the RL theory underneath RLHF: the state/action/reward/policy framework, Bellman's value-function equation, the exploration-exploitation tradeoff, and policy gradients up through PPO (the literal algorithm inside InstructGPT), with a direct mapping showing RLHF as decades-old RL machinery applied to a new problem, plus reward hacking explained as a precise, named RL failure mode rather than a vague AI quirk.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🎮",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-generalization-learning-theory",
