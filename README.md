@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🌍 [AGI Researcher Foundations: World Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-world-models.html) ⭐ | The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from… | 2026-09-14 |
+| 🖧 [AGI Researcher Foundations: Systems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-systems.html) ⭐ | The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series:… | 2026-09-14 |
+| 🌍 [AGI Researcher Foundations: World Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-world-models.html) | The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from… | 2026-09-14 |
 | 🎯 [AGI Researcher Foundations: Alignment](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-alignment.html) | The eighth article in the AGI Researcher Foundations series — the outer vs. | 2026-09-14 |
 | 🔬 [AGI Researcher Foundations: Interpretability](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-interpretability.html) | The seventh article in the AGI Researcher Foundations series — the technical toolkit for looking inside a trained model: early… | 2026-09-14 |
 | 🎮 [AGI Researcher Foundations: Reinforcement Learning Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-rl-foundations.html) | The sixth article in the AGI Researcher Foundations series — the RL theory underneath RLHF: the state/action/reward/policy framework,… | 2026-09-14 |

@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-systems",
+      "title": "AGI Researcher Foundations: Systems",
+      "excerpt": "The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series: ring-allreduce for data parallelism, ZeRO's three stages for the real memory bottleneck, Megatron-LM's tensor parallelism, GPipe's pipeline parallelism and the bubble problem, how real frontier runs combine all three (PTD-P), vLLM's PagedAttention for serving, and a mechanical re-read of the OPT-175B logbook's ~35 manual restarts.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🖧",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-world-models",
       "title": "AGI Researcher Foundations: World Models",
       "excerpt": "The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from 'The AGI Debate': Ha & Schmidhuber's original World Models paper, MuZero mastering games without being told the rules, DreamerV3 training entirely inside imagined rollouts, and LeCun's JEPA proposal for predicting in latent space instead of pixels, with a direct look at how a genuine world model would change Article 8's alignment challenges.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🌍",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-alignment",
