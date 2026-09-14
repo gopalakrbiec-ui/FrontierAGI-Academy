@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-world-models",
+      "title": "AGI Researcher Foundations: World Models",
+      "excerpt": "The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from 'The AGI Debate': Ha & Schmidhuber's original World Models paper, MuZero mastering games without being told the rules, DreamerV3 training entirely inside imagined rollouts, and LeCun's JEPA proposal for predicting in latent space instead of pixels, with a direct look at how a genuine world model would change Article 8's alignment challenges.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🌍",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-alignment",
       "title": "AGI Researcher Foundations: Alignment",
       "excerpt": "The eighth article in the AGI Researcher Foundations series — the outer vs. inner alignment split, real documented specification-gaming failures (DeepMind's catalogue), mesa-optimization and deceptive alignment (Hubinger et al., Anthropic's Sleeper Agents), and scalable oversight approaches (AI Safety via Debate, weak-to-strong generalization), with reward hacking from Article 6 and interpretability tools from Article 7 tied together as two halves of the same underlying problem.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🎯",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-interpretability",
