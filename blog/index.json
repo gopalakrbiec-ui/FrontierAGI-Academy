@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-rl-foundations",
+      "title": "AGI Researcher Foundations: Reinforcement Learning Foundations",
+      "excerpt": "The sixth article in the AGI Researcher Foundations series — the RL theory underneath RLHF: the state/action/reward/policy framework, Bellman's value-function equation, the exploration-exploitation tradeoff, and policy gradients up through PPO (the literal algorithm inside InstructGPT), with a direct mapping showing RLHF as decades-old RL machinery applied to a new problem, plus reward hacking explained as a precise, named RL failure mode rather than a vague AI quirk.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🎮",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-generalization-learning-theory",
       "title": "AGI Researcher Foundations: Generalization & Learning Theory",
       "excerpt": "The fifth article in the AGI Researcher Foundations series — the classical story (PAC learning, VC dimension, the bias-variance tradeoff) and the specific, well-documented ways modern deep learning breaks it: Zhang et al.'s random-label memorization result, the Neural Tangent Kernel, and a formal return to Article 4's deep-double-descent puzzle, with honest acknowledgment of what remains genuinely unsolved in generalization theory as of 2026.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "📊",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-each-architecture-actually-learned",
