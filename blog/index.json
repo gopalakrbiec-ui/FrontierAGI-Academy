@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-alignment",
+      "title": "AGI Researcher Foundations: Alignment",
+      "excerpt": "The eighth article in the AGI Researcher Foundations series — the outer vs. inner alignment split, real documented specification-gaming failures (DeepMind's catalogue), mesa-optimization and deceptive alignment (Hubinger et al., Anthropic's Sleeper Agents), and scalable oversight approaches (AI Safety via Debate, weak-to-strong generalization), with reward hacking from Article 6 and interpretability tools from Article 7 tied together as two halves of the same underlying problem.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🎯",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-interpretability",
       "title": "AGI Researcher Foundations: Interpretability",
       "excerpt": "The seventh article in the AGI Researcher Foundations series — the technical toolkit for looking inside a trained model: early correlational methods (saliency maps, feature visualization, probing), mechanistic interpretability and circuits (induction heads), why superposition means one neuron can hold many concepts, sparse autoencoders, and causal tracing/model editing via the ROME paper, with reward hacking from Article 6 revisited as a debuggable, not just describable, problem.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🔬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-rl-foundations",
