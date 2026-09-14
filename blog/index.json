@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-capstone",
+      "title": "AGI Researcher Foundations: The Capstone",
+      "excerpt": "The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map (stack → math → architecture → generalization theory → RL & interpretability → alignment → world models, all running on systems), surfaces the cross-cutting patterns that ran through the whole series, distills research-methodology habits already taught piece by piece, and gives a concrete next step for wherever you are in the journey.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "65 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🗺️",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-systems",
       "title": "AGI Researcher Foundations: Systems",
       "excerpt": "The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series: ring-allreduce for data parallelism, ZeRO's three stages for the real memory bottleneck, Megatron-LM's tensor parallelism, GPipe's pipeline parallelism and the bubble problem, how real frontier runs combine all three (PTD-P), vLLM's PagedAttention for serving, and a mechanical re-read of the OPT-175B logbook's ~35 manual restarts.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🖧",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-world-models",
