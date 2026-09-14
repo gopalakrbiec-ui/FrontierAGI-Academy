@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-engineering-day-one-onboarding",
+      "title": "Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down",
+      "excerpt": "The first article in a new companion series, Frontier Lab Engineering Practicum — a practitioner's guide to what the job actually feels like: monorepo vs. multi-repo culture, why code review scrutiny tracks blast radius rather than line count, why your first real ticket is probably a data-pipeline bug rather than a new model, the daily tool stack (schedulers, experiment tracking, monitoring), and a realistic day-by-day first week, illustrated throughout with original diagrams.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-14",
+      "readTime": "55 min",
+      "tags": [
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🧑‍💻",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-capstone",
       "title": "AGI Researcher Foundations: The Capstone",
       "excerpt": "The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map (stack → math → architecture → generalization theory → RL & interpretability → alignment → world models, all running on systems), surfaces the cross-cutting patterns that ran through the whole series, distills research-methodology habits already taught piece by piece, and gives a concrete next step for wherever you are in the journey.",
@@ -14,7 +29,7 @@
         "AI Research"
       ],
       "emoji": "🗺️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-systems",

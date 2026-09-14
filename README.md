@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🗺️ [AGI Researcher Foundations: The Capstone](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-capstone.html) ⭐ | The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map… | 2026-09-14 |
+| 🧑‍💻 [Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-day-one-onboarding.html) ⭐ | The first article in a new companion series, Frontier Lab Engineering Practicum — a practitioner's guide to what the job actually feels… | 2026-09-14 |
+| 🗺️ [AGI Researcher Foundations: The Capstone](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-capstone.html) | The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map… | 2026-09-14 |
 | 🖧 [AGI Researcher Foundations: Systems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-systems.html) | The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series:… | 2026-09-14 |
 | 🌍 [AGI Researcher Foundations: World Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-world-models.html) | The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from… | 2026-09-14 |
 | 🎯 [AGI Researcher Foundations: Alignment](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-alignment.html) | The eighth article in the AGI Researcher Foundations series — the outer vs. | 2026-09-14 |
