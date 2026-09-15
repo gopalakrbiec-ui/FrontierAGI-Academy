@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "gpt-2-how-it-was-built",
+      "title": "GPT-2: How the Second GPT Was Actually Built",
+      "excerpt": "Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team, the WebText dataset scraped via Reddit karma as a quality proxy, four model sizes up to 1.5 billion parameters, honestly mixed zero-shot evaluation results, and the field's first major staged-release debate — a nine-month rollout that made capability release itself a real research question.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "70 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🌐",
+      "featured": true
+    },
+    {
       "slug": "gpt-1-how-it-was-built",
       "title": "GPT-1: How the First GPT Was Actually Built",
       "excerpt": "A Model Case Study — the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person credited team, the choice of a decoder-only Transformer, the BooksCorpus data collection, the 117M-parameter architecture, a month on 8 GPUs, the 12-task fine-tuning recipe, honest evaluation, and the paper-plus-code release — read through both this site's researcher lens (Foundations series) and practitioner lens (Engineering Practicum).",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "📄",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-week-in-the-life",
