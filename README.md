@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🧠 [GPT-3: How the Third GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-3-how-it-was-built.html) ⭐ | Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person… | 2026-09-15 |
+| 🔒 [GPT-4: How the Fourth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-4-how-it-was-built.html) ⭐ | Model Case Study, Article 4 — the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or… | 2026-09-15 |
+| 🧠 [GPT-3: How the Third GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-3-how-it-was-built.html) | Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person… | 2026-09-15 |
 | 🌐 [GPT-2: How the Second GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-2-how-it-was-built.html) | Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team,… | 2026-09-15 |
 | 📄 [GPT-1: How the First GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-1-how-it-was-built.html) | A Model Case Study — the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person… | 2026-09-15 |
 | 🗓️ [Capstone: A Week in the Life of a Research Engineer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-week-in-the-life.html) | The ninth and final article in Frontier Lab Engineering Practicum — a realistic Monday-through-Friday tying together all eight prior… | 2026-09-15 |
