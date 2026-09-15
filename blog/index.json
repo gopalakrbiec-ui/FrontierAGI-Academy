@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-engineering-week-in-the-life",
+      "title": "Capstone: A Week in the Life of a Research Engineer",
+      "excerpt": "The ninth and final article in Frontier Lab Engineering Practicum — a realistic Monday-through-Friday tying together all eight prior articles: an on-call handover, a cross-team PR review, a won't-start debugging detour, a compute budget conversation, a page mitigated first, a profiled decision not to write a custom kernel, a blameless postmortem, and one experiment shipped from idea to merged PR.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "50 min",
+      "tags": [
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🗓️",
+      "featured": true
+    },
+    {
       "slug": "frontier-lab-engineering-idea-to-merged-pr",
       "title": "Shipping an Experiment From Idea to Merged PR",
       "excerpt": "The eighth article in Frontier Lab Engineering Practicum — a single realistic experiment walked end to end, showing exactly where every prior article's concept shows up: a falsifiable hypothesis validated cheaply, a config-only diff on the shared training loop, a right-sized spot compute request, a won't-start debugging detour, a low-MFU discovery, calibrated monitoring during the full run, and a cross-team-aware review before it merges.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🔀",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-other-teams-code",

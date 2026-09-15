@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shipping an Experiment From Idea to Merged PR — FrontierAGI Academy Blog</title>
+  <title>Capstone: A Week in the Life of a Research Engineer — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -110,9 +110,16 @@
     .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
     .verdict-body strong { color: #fbbf24; }
 
+    .day-row { display: flex; gap: 16px; margin: 18px 0; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; background: #fff; }
+    .day-tag { flex-shrink: 0; width: 92px; font-weight: 800; font-size: 0.82rem; color: #92400e; }
+    .day-body { font-size: 0.85rem; color: #374151; line-height: 1.7; }
+    .day-body a { color: #92400e; }
+
     @media (max-width: 768px) {
       .agi-hero h1 { font-size: 1.35rem; }
       .agi-section-nav { top: 94px; }
+      .day-row { flex-direction: column; gap: 6px; }
+      .day-tag { width: auto; }
     }
   </style>
 </head>
@@ -214,14 +221,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Frontier Lab Engineering — Idea to Merged PR</span>
+      <span>Frontier Lab Engineering — A Week in the Life</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Frontier Lab Engineering Practicum · Article 8 of 9</span>
-      <span class="agi-hero-icon">🔀</span>
-      <h1>Shipping an Experiment From Idea to Merged PR</h1>
-      <p>Every article in this series so far has taken one slice of frontier-lab engineering in isolation: writing the code, requesting the compute, debugging a failure, optimizing a kernel, surviving on-call, working across teams. Nothing in the job actually happens in isolation. This article walks one realistic experiment end to end — from a research idea to a merged pull request — showing exactly where each of those seven pieces shows up along the way, and how they compound into a single lived experience.</p>
+      <span class="series-badge">Frontier Lab Engineering Practicum · Capstone · Article 9 of 9</span>
+      <span class="agi-hero-icon">🗓️</span>
+      <h1>Capstone: A Week in the Life of a Research Engineer</h1>
+      <p>Eight articles have each isolated one piece of the job: onboarding, production code, distributed debugging, compute economics, custom kernels, on-call, cross-team code, and a single experiment's full lifecycle. Real weeks don't arrive in that clean order — they interleave all of it with meetings, someone else's incident, and the ordinary unpredictability of a real job. This capstone closes the series with a realistic Monday-through-Friday, naming exactly which prior article each moment draws on.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -229,186 +236,197 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 15, 2026 · 55 min read</div>
+          <div class="blog-post-date">September 15, 2026 · 50 min read</div>
         </div>
       </div>
     </div>
 
     <div class="agi-section-nav">
       <a href="#opening"    class="agi-nav-btn">Opening</a>
-      <a href="#idea"       class="agi-nav-btn">The Idea</a>
-      <a href="#code"       class="agi-nav-btn">Writing the Code</a>
-      <a href="#compute"    class="agi-nav-btn">Requesting Compute</a>
-      <a href="#launch"     class="agi-nav-btn">Launch and Debug</a>
-      <a href="#monitor"    class="agi-nav-btn">Monitoring the Run</a>
-      <a href="#review"     class="agi-nav-btn">Review and Merge</a>
-      <a href="#timeline"   class="agi-nav-btn">Full Timeline</a>
+      <a href="#monday"     class="agi-nav-btn">Monday</a>
+      <a href="#tuesday"    class="agi-nav-btn">Tuesday</a>
+      <a href="#wednesday"  class="agi-nav-btn">Wednesday</a>
+      <a href="#thursday"   class="agi-nav-btn">Thursday</a>
+      <a href="#friday"     class="agi-nav-btn">Friday</a>
+      <a href="#map"        class="agi-nav-btn">Full Series Map</a>
       <a href="#selfcheck"  class="agi-nav-btn">Readiness Checklist</a>
       <a href="#gaps"       class="agi-nav-btn">What's Missing</a>
-      <a href="#next"       class="agi-nav-btn">Where This Series Goes</a>
+      <a href="#next"       class="agi-nav-btn">Where This Series Ends</a>
       <a href="#references" class="agi-nav-btn">References</a>
       <a href="#videos"     class="agi-nav-btn">Videos</a>
       <a href="#verdict"    class="agi-nav-btn">Verdict</a>
     </div>
 
-    <h2 id="opening" class="agi-section">The Whole Job, in One Pass</h2>
-    <p>Seven articles in this series each answered a narrow question well: how do you read production training code, what happens when a distributed job won't converge, how does compute get allocated, when do you write a custom kernel, what does on-call feel like, how do you work with other teams' code. In reality, a single meaningfully-sized experiment touches almost all of these in sequence, usually within the span of one to three weeks. This article is deliberately structured as a single realistic timeline rather than another set of independent parts, because the compounding — not any one piece — is the actual skill this whole series has been building toward.</p>
+    <h2 id="opening" class="agi-section">A Realistic Week, Not a Highlight Reel</h2>
+    <p>This week is composed from realistic, individually plausible events, each one directly traceable to a concept this series has already built. It is deliberately unglamorous: no single day is a crisis, no day is purely routine, and the actual skill on display is moving between registers — deep debugging focus, cross-team communication, on-call vigilance, careful review — multiple times before Friday, without any one of them crowding out the others for long.</p>
 
     <div class="market-stats">
       <div class="mstat-card" style="--ms-a:#334155;--ms-b:#1e293b;">
-        <span class="mstat-num">7</span>
-        <span class="mstat-label">Prior articles' concepts that show up in a single realistic experiment lifecycle</span>
+        <span class="mstat-num">9</span>
+        <span class="mstat-label">Articles in this series, all touched at least once across this single week</span>
       </div>
       <div class="mstat-card" style="--ms-a:#78350f;--ms-b:#292013;">
-        <span class="mstat-num">1–3</span>
-        <span class="mstat-label">Weeks a typical meaningfully-sized experiment takes from idea to merged PR</span>
+        <span class="mstat-num">1</span>
+        <span class="mstat-label">On-call rotation shift, one merged PR, one postmortem — a normal week's real output</span>
       </div>
       <div class="mstat-card" style="--ms-a:#1e293b;--ms-b:#292013;">
-        <span class="mstat-num">1</span>
-        <span class="mstat-label">Merged PR — the only artifact that actually counts as "shipped"</span>
+        <span class="mstat-num">0</span>
+        <span class="mstat-label">Days that are purely "coding" or purely "meetings" — most days are both</span>
       </div>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 1 — The Idea</span>
+      <span class="part-divider-badge">Monday</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="idea" class="agi-section">A Hypothesis, Not Just a Notion</h2>
-    <p>The experiment: a research engineer suspects a specific change to the data-mixing ratio between two training corpora will improve downstream evaluation performance without hurting training stability. Before any code changes, the idea is written up as a falsifiable hypothesis with a specific, cheap first test — following Article 3 of this series' instinct to isolate before scaling: run the change on a small model and short training run first, and only commit larger compute (Article 4) once the small-scale signal looks real.</p>
+    <h2 id="monday" class="agi-section">Inheriting the Pager, Reviewing a Diff</h2>
+    <div class="day-row">
+      <div class="day-tag">Morning</div>
+      <div class="day-body">On-call rotation hands over at the weekly team sync. The outgoing engineer walks through the past week's alert history — two pages, both legitimate, no alert-fatigue false positives — following <a href="frontier-lab-engineering-oncall-reality.html">Article 6</a>'s discipline of treating a clean handover as a real, trackable signal, not just a formality.</div>
+    </div>
+    <div class="day-row">
+      <div class="day-tag">Afternoon</div>
+      <div class="day-body">A teammate's pull request touches a shared data-loading utility owned by another team. Per <a href="frontier-lab-engineering-other-teams-code.html">Article 7</a>, review focus goes straight to whether the owning team was looped in, not just whether the diff itself looks correct — the review comment is a question about ownership process, not a line-level nitpick.</div>
+    </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 2 — Writing the Code</span>
+      <span class="part-divider-badge">Tuesday</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="code" class="agi-section">A New Config, Not a New Training Loop</h2>
-    <p>Following Article 2 of this series directly, the change is implemented as a new configuration override on top of the shared base config — a new data-mixing ratio parameter — rather than a fork of the training loop itself. This is what makes the experiment mergeable at all: a config-only change is trivially reviewable and diffable, while a training-loop fork would immediately trigger the exact code-divergence problem Sculley et al.'s paper warns about, and would need to be reconciled with the shared loop before it could ever be merged.</p>
+    <h2 id="tuesday" class="agi-section">A Job That Won't Start</h2>
+    <div class="day-row">
+      <div class="day-tag">Morning</div>
+      <div class="day-body">Your own experiment's larger-scale run fails to start. Applying <a href="frontier-lab-engineering-debugging-distributed-jobs.html">Article 3</a>'s triage framework immediately narrows it to environment/scheduling rather than a model bug — the fix turns out to be a stale container image, found in minutes rather than hours because the triage category was right from the start.</div>
+    </div>
+    <div class="day-row">
+      <div class="day-tag">Afternoon</div>
+      <div class="day-body">With the job running, config composition work continues on a second experiment variant, following <a href="frontier-lab-engineering-production-training-code.html">Article 2</a>'s discipline of new overrides on the shared base config rather than a duplicated training script.</div>
+    </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 3 — Requesting Compute</span>
+      <span class="part-divider-badge">Wednesday</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="compute" class="agi-section">Right-Sizing the Ask</h2>
-    <p>Per Article 4, the small-scale validation run is requested on a modest quota, quick-turnaround queue rather than the team's premium reserved capacity — the hypothesis hasn't earned that budget yet. Only after the small run shows a real, reproducible signal does the engineer request a larger allocation, and even then on spot/preemptible capacity with proactive checkpointing (Article 4, Part 4's etiquette), since a mid-scale validation run can tolerate an occasional restart in a way a final release candidate could not.</p>
+    <h2 id="wednesday" class="agi-section">The Compute Conversation</h2>
+    <div class="day-row">
+      <div class="day-tag">Morning</div>
+      <div class="day-body">A larger compute request for next week's validation run needs manager sign-off. Per <a href="frontier-lab-engineering-compute-economics.html">Article 4</a>, the request is framed around expected Model FLOPs Utilization and a spot-vs-reserved recommendation matched to the run's actual tolerance for interruption — not just a GPU-count ask, which is what makes the conversation quick rather than a negotiation.</div>
+    </div>
+    <div class="day-row">
+      <div class="day-tag">Afternoon</div>
+      <div class="day-body">A page fires: a different team's job shows a sustained utilization drop. As the second on-call responder, the mitigate-first instinct from <a href="frontier-lab-engineering-oncall-reality.html">Article 6</a> applies — restart from the last checkpoint immediately, investigate the root cause after service is restored, not before.</div>
+    </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 4 — Launch and Debug</span>
+      <span class="part-divider-badge">Thursday</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="launch" class="agi-section">When the First Launch Doesn't Just Work</h2>
-    <p>The larger run fails to start on the first attempt — a environment mismatch between the small-scale and larger-scale launch configs. Article 3's "won't start" triage category applies directly: the fix is in environment and scheduling, not in the model or the data-mixing logic itself, and confirming that distinction in the first few minutes avoids a wasted afternoon debugging the wrong layer. Once running, loss curves are sane but a second issue surfaces: aggregate GPU utilization looks fine, but Article 4's Model FLOPs Utilization metric is unexpectedly low — tracing it to a data-loading bottleneck introduced by the new mixing logic, not a compute problem at all.</p>
+    <h2 id="thursday" class="agi-section">The Kernel That Wasn't Written</h2>
+    <div class="day-row">
+      <div class="day-tag">Morning</div>
+      <div class="day-body">Tuesday's second experiment variant looks slower than expected. Before reaching for anything at the kernel level, <a href="frontier-lab-engineering-custom-kernels.html">Article 5</a>'s profiling discipline applies: a five-minute profiler run shows the bottleneck is a data-loading stall, not a compute-bound operation — no custom kernel gets written this week, and that's the correct, profiled outcome, not a missed opportunity.</div>
+    </div>
+    <div class="day-row">
+      <div class="day-tag">Afternoon</div>
+      <div class="day-body">Wednesday's incident postmortem is drafted, following <a href="frontier-lab-engineering-oncall-reality.html">Article 6</a>'s blameless framing — the writeup centers on a missing automated restart trigger, not on why the job's owning team didn't notice sooner.</div>
+    </div>
+
+    <div class="part-divider">
+      <span class="part-divider-badge">Friday</span>
+      <span class="part-divider-line"></span>
+    </div>
+
+    <h2 id="friday" class="agi-section">A Merged PR, and a Quiet Weekend Ahead</h2>
+    <div class="day-row">
+      <div class="day-tag">Morning</div>
+      <div class="day-body">Tuesday's original experiment finishes cleanly overnight with a real, positive result. The PR — config diff plus a small documented fix to the shared utility, the owning team already looped in per Monday's review lesson — is opened with the full <a href="frontier-lab-engineering-idea-to-merged-pr.html">Article 8</a> writeup discipline: hypothesis, result, and honest compute cost stated up front.</div>
+    </div>
+    <div class="day-row">
+      <div class="day-tag">Afternoon</div>
+      <div class="day-body">The PR merges before end of day. On-call rotation hands off to the next engineer with the same clean-handover standard from Monday. The pager stays quiet through the weekend — the unremarkable, desired outcome this entire series has been building toward, not a stroke of luck.</div>
+    </div>
 
     <div class="diagram-frame">
-      <svg width="660" height="120" viewBox="0 0 660 120" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="35" width="90" height="50" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
-        <text x="55" y="65" text-anchor="middle" font-size="10" fill="#78350f">Idea</text>
-        <line x1="100" y1="60" x2="125" y2="60" stroke="#6b7280" stroke-width="2" marker-end="url(#arrP)"/>
-        <rect x="125" y="35" width="90" height="50" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
-        <text x="170" y="65" text-anchor="middle" font-size="10" fill="#1e3a8a">Config diff</text>
-        <line x1="215" y1="60" x2="240" y2="60" stroke="#6b7280" stroke-width="2" marker-end="url(#arrP)"/>
-        <rect x="240" y="35" width="90" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
-        <text x="285" y="65" text-anchor="middle" font-size="10" fill="#14532d">Small run</text>
-        <line x1="330" y1="60" x2="355" y2="60" stroke="#6b7280" stroke-width="2" marker-end="url(#arrP)"/>
-        <rect x="355" y="35" width="90" height="50" rx="8" fill="#fce7f3" stroke="#db2777"/>
-        <text x="400" y="65" text-anchor="middle" font-size="10" fill="#831843">Debug + fix</text>
-        <line x1="445" y1="60" x2="470" y2="60" stroke="#6b7280" stroke-width="2" marker-end="url(#arrP)"/>
-        <rect x="470" y="35" width="90" height="50" rx="8" fill="#e0e7ff" stroke="#6366f1"/>
-        <text x="515" y="65" text-anchor="middle" font-size="10" fill="#312e81">Full run</text>
-        <line x1="560" y1="60" x2="585" y2="60" stroke="#6b7280" stroke-width="2" marker-end="url(#arrP)"/>
-        <rect x="585" y="35" width="65" height="50" rx="8" fill="#334155"/>
-        <text x="617" y="65" text-anchor="middle" font-size="10" fill="#fff">PR</text>
-        <defs><marker id="arrP" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker></defs>
+      <svg width="680" height="120" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="35" width="120" height="50" rx="8" fill="#fef3c7" stroke="#f59e0b"/><text x="70" y="65" text-anchor="middle" font-size="11" fill="#78350f">Mon: Handover + Review</text>
+        <rect x="145" y="35" width="120" height="50" rx="8" fill="#dbeafe" stroke="#3b82f6"/><text x="205" y="65" text-anchor="middle" font-size="11" fill="#1e3a8a">Tue: Debug + Config</text>
+        <rect x="280" y="35" width="120" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="340" y="65" text-anchor="middle" font-size="11" fill="#14532d">Wed: Compute + Page</text>
+        <rect x="415" y="35" width="120" height="50" rx="8" fill="#fce7f3" stroke="#db2777"/><text x="475" y="65" text-anchor="middle" font-size="11" fill="#831843">Thu: Profile + Postmortem</text>
+        <rect x="550" y="35" width="120" height="50" rx="8" fill="#e0e7ff" stroke="#6366f1"/><text x="610" y="65" text-anchor="middle" font-size="11" fill="#312e81">Fri: Merge + Handoff</text>
       </svg>
     </div>
-    <div class="diagram-caption">The realistic path — rarely a straight line, always circling back to debug and validate before the final run.</div>
+    <div class="diagram-caption">Every day touches at least two prior articles — the actual shape of the job, not a highlight reel.</div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 5 — Monitoring the Run</span>
+      <span class="part-divider-badge">The Full Series Map</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="monitor" class="agi-section">Watching Without Staring</h2>
-    <p>With the fix deployed, the full-scale run is launched with alerting configured per Article 6's discipline — a page only for genuinely actionable conditions (loss divergence, node failure), a dashboard for everything else, avoiding the alert-fatigue trap while still catching a real failure quickly if one occurs overnight. The engineer is not paged during this run; the multi-day training completes cleanly, which is itself worth noting as the unremarkable, desired outcome of Article 6's entire framework.</p>
-
-    <div class="part-divider">
-      <span class="part-divider-badge">Part 6 — Review and Merge</span>
-      <span class="part-divider-line"></span>
-    </div>
-
-    <h2 id="review" class="agi-section">Turning Results Into a Mergeable Change</h2>
-    <p>With results in hand, the actual code change (still just the config diff from Part 2, plus a small data-loading fix from Part 4) is opened as a pull request. Article 1's blast-radius principle applies directly to review depth: the config diff itself is narrow and low-risk, but the data-loading fix touches a shared utility another team also depends on — triggering exactly the cross-team etiquette from Article 7, where the owning team is looped in before the fix merges, not after, and the PR description explains the motivating experiment so the reviewer has real context rather than just a diff.</p>
-
-    <div class="checklist">
-      <div class="check-row"><span class="check-num">1</span><div class="check-text"><strong>The PR description carries the hypothesis and the result</strong>, not just the code — a reviewer approving blind to the "why" is reviewing less carefully.</div></div>
-      <div class="check-row"><span class="check-num">2</span><div class="check-text"><strong>Shared-code changes get the owning team's eyes before merge</strong>, regardless of how small the diff looks.</div></div>
-      <div class="check-row"><span class="check-num">3</span><div class="check-text"><strong>The experiment's compute cost is stated honestly</strong> in the writeup — Article 4's "not wasting a GPU-hour" ethic extends to reporting the cost, not just the result.</div></div>
-    </div>
-
-    <div class="part-divider">
-      <span class="part-divider-badge">Part 7 — The Full Timeline</span>
-      <span class="part-divider-line"></span>
-    </div>
-
-    <h2 id="timeline" class="agi-section">Every Article, in One Experiment</h2>
+    <h2 id="map" class="agi-section">Nine Articles, One Job</h2>
     <div class="tradeoff-wrap">
       <table class="tradeoff-table">
-        <thead><tr><th>Stage</th><th>Series Concept Applied</th></tr></thead>
+        <thead><tr><th>Article</th><th>Where It Showed Up This Week</th></tr></thead>
         <tbody>
-          <tr><td>Forming the hypothesis</td><td>Cheap validation before scaling (Article 3's triage instinct)</td></tr>
-          <tr><td>Writing the change</td><td>Config-only diff on the shared loop (Article 2)</td></tr>
-          <tr><td>Requesting compute</td><td>Right-sized, spot-first, checkpointed (Article 4)</td></tr>
-          <tr><td>First launch fails</td><td>Won't-start vs. won't-converge triage (Article 3)</td></tr>
-          <tr><td>Low MFU discovered</td><td>Utilization ≠ activity (Article 4, echoing a kernel-level bottleneck question from Article 5)</td></tr>
-          <tr><td>Full run monitored</td><td>Calibrated alerting, no unnecessary pages (Article 6)</td></tr>
-          <tr><td>PR opened and merged</td><td>Blast-radius review depth and cross-team etiquette (Articles 1 and 7)</td></tr>
+          <tr><td><a href="frontier-lab-engineering-day-one-onboarding.html">1. Day One Onboarding</a></td><td>Blast-radius review depth applied all week, without needing to relearn it</td></tr>
+          <tr><td><a href="frontier-lab-engineering-production-training-code.html">2. Production Training Code</a></td><td>Tuesday's config-only experiment variant</td></tr>
+          <tr><td><a href="frontier-lab-engineering-debugging-distributed-jobs.html">3. Debugging Distributed Jobs</a></td><td>Tuesday morning's won't-start triage</td></tr>
+          <tr><td><a href="frontier-lab-engineering-compute-economics.html">4. Compute Economics</a></td><td>Wednesday's compute request conversation</td></tr>
+          <tr><td><a href="frontier-lab-engineering-custom-kernels.html">5. Custom Kernels</a></td><td>Thursday's profiled decision not to write one</td></tr>
+          <tr><td><a href="frontier-lab-engineering-oncall-reality.html">6. The On-Call Reality</a></td><td>Monday's handover, Wednesday's page, Thursday's postmortem</td></tr>
+          <tr><td><a href="frontier-lab-engineering-other-teams-code.html">7. Other Teams' Code</a></td><td>Monday's review, Friday's cross-team PR</td></tr>
+          <tr><td><a href="frontier-lab-engineering-idea-to-merged-pr.html">8. Idea to Merged PR</a></td><td>The full Tuesday-through-Friday arc of the merged experiment</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="selfcheck" class="agi-section">Readiness Checklist</h2>
     <div class="checklist">
-      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you trace a hypothetical experiment idea through all seven prior articles' concepts, the way this article just did?</div></div>
-      <div class="check-row"><span class="check-num">2</span><div class="check-text">Have you ever validated a change cheaply before committing full-scale compute to it?</div></div>
-      <div class="check-row"><span class="check-num">3</span><div class="check-text">Does your own PR writeup habit include the "why" and the result, or just the diff?</div></div>
-      <div class="check-row"><span class="check-num">4</span><div class="check-text">Can you name the single most common place your own experiments actually get stuck between idea and merge?</div></div>
+      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you picture your own week and identify which of these nine articles' concepts it actually drew on?</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text">Have you ever context-switched between deep debugging focus and cross-team communication within a single day, without one crowding out the other?</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text">Do you treat a quiet on-call week as a real, positive signal — not just an absence of news?</div></div>
+      <div class="check-row"><span class="check-num">4</span><div class="check-text">Across all nine articles, can you name the one habit you personally need to build most?</div></div>
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ What's Missing or Uncertain</h2>
     <div class="caveat-box">
-      <strong>This is one illustrative experiment, not a universal template.</strong> Real experiments vary enormously in scope — some never need custom compute negotiation, some never touch another team's code at all. The value here is the compounding pattern, not a checklist to follow verbatim; a two-day experiment and a two-month one both draw on the same underlying skills in different proportions.
+      <strong>This week is a composite, not a transcript of any single real week.</strong> Real weeks are messier — some have no incidents at all for months, others have two in the same day; some engineers spend entire weeks heads-down on one hard debugging problem with no cross-team interaction whatsoever. The value here is showing how the pieces from this series can interleave, not asserting that every week looks exactly like this one.
     </div>
 
-    <h2 id="next" class="agi-section">Where This Series Goes Next</h2>
-    <p><a href="frontier-lab-engineering-week-in-the-life.html">Article 9</a>, the capstone of this series, steps back from any single experiment to describe a full week in the life of a research engineer — showing how these pieces interleave with meetings, other people's incidents, and the ordinary unpredictability of a real job, not just one clean linear story.</p>
+    <h2 id="next" class="agi-section">Where This Series Ends</h2>
+    <p>This capstone closes the nine-article Frontier Lab Engineering Practicum. Alongside this site's earlier <a href="agi-researcher-foundations-capstone.html">AGI Researcher Foundations</a> series — which covers the mathematical and conceptual side of this same work — the two series together are meant as a genuinely complete map: what to understand, and what to actually do with it once you're the one holding the pager.</p>
 
     <div class="ref-box">
       <div class="ref-box-title">🔗 Reference Links</div>
       <ul class="ref-list">
-        <li><a href="frontier-lab-engineering-production-training-code.html">This site — Frontier Lab Engineering: Reading and Writing Production Training Code</a></li>
-        <li><a href="frontier-lab-engineering-debugging-distributed-jobs.html">This site — Frontier Lab Engineering: Debugging a Distributed Job</a></li>
-        <li><a href="frontier-lab-engineering-compute-economics.html">This site — Frontier Lab Engineering: Compute Economics</a></li>
-        <li><a href="frontier-lab-engineering-oncall-reality.html">This site — Frontier Lab Engineering: The On-Call Reality</a></li>
-        <li><a href="frontier-lab-engineering-other-teams-code.html">This site — Frontier Lab Engineering: Working With Other Teams' Code</a></li>
-        <li><a href="https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html" target="_blank" rel="noopener">Sculley et al. — "Hidden Technical Debt in Machine Learning Systems" (NeurIPS 2015)</a></li>
+        <li><a href="frontier-lab-engineering-day-one-onboarding.html">This site — Frontier Lab Engineering: Day One at a Frontier Lab (Article 1)</a></li>
+        <li><a href="frontier-lab-engineering-production-training-code.html">This site — Frontier Lab Engineering: Production Training Code (Article 2)</a></li>
+        <li><a href="frontier-lab-engineering-debugging-distributed-jobs.html">This site — Frontier Lab Engineering: Debugging Distributed Jobs (Article 3)</a></li>
+        <li><a href="frontier-lab-engineering-compute-economics.html">This site — Frontier Lab Engineering: Compute Economics (Article 4)</a></li>
+        <li><a href="frontier-lab-engineering-custom-kernels.html">This site — Frontier Lab Engineering: Custom Kernels (Article 5)</a></li>
+        <li><a href="frontier-lab-engineering-oncall-reality.html">This site — Frontier Lab Engineering: The On-Call Reality (Article 6)</a></li>
+        <li><a href="frontier-lab-engineering-other-teams-code.html">This site — Frontier Lab Engineering: Other Teams' Code (Article 7)</a></li>
+        <li><a href="frontier-lab-engineering-idea-to-merged-pr.html">This site — Frontier Lab Engineering: Idea to Merged PR (Article 8)</a></li>
+        <li><a href="agi-researcher-foundations-capstone.html">This site — AGI Researcher Foundations: Capstone</a></li>
       </ul>
     </div>
 
     <!-- VIDEOS -->
     <h2 id="videos" class="agi-section">🎥 Recommended Videos</h2>
     <div class="video-grid">
-      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context for the model behind every experiment</div></a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context for everything this week's work protects</div></a>
       <a class="video-card" href="https://www.youtube.com/watch?v=qwmmWzPnhog" target="_blank" rel="noopener"><div class="video-title">We're All Addicted to Claude Code</div><div class="video-meta">Previously cited — daily engineering tooling context</div></a>
     </div>
 
     <!-- VERDICT -->
-    <h2 id="verdict" class="agi-section">🧭 Closing — The Job Is the Sequence, Not Any One Step</h2>
+    <h2 id="verdict" class="agi-section">🧭 Closing — The Job Is Nine Skills Held at Once</h2>
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        No single article in this series describes "the job" — this one comes closest, precisely because it shows how a falsifiable hypothesis, a config-only diff, a right-sized compute request, a debugging detour, calibrated monitoring, and a cross-team-aware review all have to work together, in sequence, for one experiment to become one merged PR. <strong>The engineers who ship reliably aren't the ones who are best at any single piece — they're the ones who move through all seven smoothly enough that the whole sequence feels routine</strong> rather than like seven separate fires to fight.
+        No single day this week required expertise in all nine articles at their deepest level — Monday needed on-call and review judgment, Thursday needed profiling discipline and blameless-postmortem writing, and none of it required all nine at once. <strong>What it did require was recognizing, quickly and correctly, which article's mental model applied to each moment</strong> — and that recognition, built one article at a time across this series, is the actual, durable skill a frontier lab is really hiring for when it hires a research engineer.
       </div>
     </div>
 
