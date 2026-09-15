@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-engineering-compute-economics",
+      "title": "Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour",
+      "excerpt": "The fourth article in Frontier Lab Engineering Practicum — how compute is actually requested and scheduled at a frontier lab (priority, quota, and preemption via Google's Borg paper), spot vs. reserved capacity tradeoffs, what \"utilization\" really means once you understand Model FLOPs Utilization (MFU), queue etiquette that keeps you in good standing with your team, and the real financial and carbon cost of a wasted GPU-hour.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "55 min",
+      "tags": [
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "💳",
+      "featured": true
+    },
+    {
       "slug": "frontier-lab-engineering-debugging-distributed-jobs",
       "title": "Debugging a Distributed Job That Won't Converge (Or Won't Start)",
       "excerpt": "The third article in Frontier Lab Engineering Practicum — a practical triage framework splitting distributed training failures into two categories with almost entirely different causes: won't start (environment, scheduling, NCCL hangs, checkpoint mismatches) and won't converge (exploding gradients, data bugs, and silent distributed-specific failures like every GPU seeing duplicated data), with the OPT-175B logbook's ~35 restarts recategorized through this exact lens.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧯",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-production-training-code",
