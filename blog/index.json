@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "gpt-5-how-it-was-built",
+      "title": "GPT-5: How the Fifth GPT Was Actually Built",
+      "excerpt": "Model Case Study, Article 5 — the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and a deep-reasoning model behind one product, a \"safe completions\" safety-training approach replacing binary refuse-or-comply behavior, continued architectural opacity in the GPT-4 mold, and the honest caveat that this is the most recency-limited entry in the entire series.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "65 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🚦",
+      "featured": true
+    },
+    {
       "slug": "gpt-4-how-it-was-built",
       "title": "GPT-4: How the Fourth GPT Was Actually Built",
       "excerpt": "Model Case Study, Article 4 — the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or training compute, replaced by a contributor list too large to credit as clean authorship, a genuine predictable-scaling methodology, professional-exam and adversarial red-teaming evaluation, and a dedicated System Card that became the template every major frontier release has followed since.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🔒",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gpt-3-how-it-was-built",

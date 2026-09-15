@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GPT-4: How the Fourth GPT Was Actually Built — FrontierAGI Academy Blog</title>
+  <title>GPT-5: How the Fifth GPT Was Actually Built — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -127,6 +127,10 @@
     }
     .opacity-box strong { color: #fff; }
 
+    .router-diagram { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 18px 0; }
+    .router-node { border: 1.5px solid #c4b5fd; border-radius: 12px; padding: 14px 18px; text-align: center; background: #faf9ff; font-size: 0.78rem; color: #3b0764; font-weight: 700; min-width: 120px; }
+    .router-arrow { font-size: 1.3rem; color: #7c3aed; }
+
     @media (max-width: 768px) {
       .agi-hero h1 { font-size: 1.35rem; }
       .agi-section-nav { top: 94px; }
@@ -231,14 +235,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>GPT-4: How the Fourth GPT Was Actually Built</span>
+      <span>GPT-5: How the Fifth GPT Was Actually Built</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Model Case Study · Article 4</span>
-      <span class="agi-hero-icon">🔒</span>
-      <h1>GPT-4: How the Fourth GPT Was Actually Built</h1>
-      <p><a href="gpt-3-how-it-was-built.html" style="color:#c4b5fd;">GPT-3</a> closed off public weights but still disclosed its architecture, data mixture, and training compute in detail. GPT-4 closed almost everything else too. This case study covers what OpenAI's own technical report actually says — and, just as importantly, what it explicitly refuses to say — about the model's architecture, training, evaluation, and the unprecedented safety-testing process that preceded its March 2023 release.</p>
+      <span class="series-badge">Model Case Study · Article 5</span>
+      <span class="agi-hero-icon">🚦</span>
+      <h1>GPT-5: How the Fifth GPT Was Actually Built</h1>
+      <p><a href="gpt-4-how-it-was-built.html" style="color:#c4b5fd;">GPT-4</a> was still, at heart, one model. GPT-5, released by OpenAI on August 7, 2025, changed the unit of "a model" itself — replacing a single model users pick manually with a unified system that automatically routes each request between a fast, efficient model and a slower, deeper-reasoning one. This case study covers what's publicly confirmed about that shift, the safety-training approach that came with it, and why — two years after GPT-4 — this remains the least architecturally transparent entry in the entire series.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -246,7 +250,7 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 15, 2026 · 70 min read</div>
+          <div class="blog-post-date">September 15, 2026 · 65 min read</div>
         </div>
       </div>
     </div>
@@ -256,12 +260,12 @@
       <a href="#problem"     class="agi-nav-btn">The Problem</a>
       <a href="#idea"        class="agi-nav-btn">The Idea</a>
       <a href="#team"        class="agi-nav-btn">The Team</a>
-      <a href="#architecture" class="agi-nav-btn">The Undisclosed Architecture</a>
-      <a href="#scaling"     class="agi-nav-btn">Predictable Scaling</a>
+      <a href="#architecture" class="agi-nav-btn">The Routed System</a>
+      <a href="#safety"      class="agi-nav-btn">Safe Completions</a>
       <a href="#evaluation"  class="agi-nav-btn">Evaluation</a>
-      <a href="#release"     class="agi-nav-btn">The System Card &amp; Staged Release</a>
-      <a href="#legacy"      class="agi-nav-btn">Legacy</a>
-      <a href="#next"        class="agi-nav-btn">Where This Goes Next</a>
+      <a href="#release"     class="agi-nav-btn">The Release</a>
+      <a href="#legacy"      class="agi-nav-btn">Legacy So Far</a>
+      <a href="#next"        class="agi-nav-btn">Where This Case Study Goes Next</a>
       <a href="#selfcheck"   class="agi-nav-btn">Readiness Checklist</a>
       <a href="#gaps"        class="agi-nav-btn">What's Missing</a>
       <a href="#references"  class="agi-nav-btn">References</a>
@@ -269,21 +273,21 @@
       <a href="#verdict"     class="agi-nav-btn">Verdict</a>
     </div>
 
-    <h2 id="opening" class="agi-section">The Report That Explains Why It Won't Explain</h2>
-    <p>GPT-4 was documented in OpenAI's 2023 <a href="https://arxiv.org/abs/2303.08774" target="_blank" rel="noopener">"GPT-4 Technical Report"</a>, released alongside a much larger reference document, the <a href="https://cdn.openai.com/papers/gpt-4-system-card.pdf" target="_blank" rel="noopener">GPT-4 System Card</a>. The technical report contains a sentence that makes this case study fundamentally different from the previous three: it states directly that the report contains no further details about the architecture (including model size), hardware, training compute, dataset construction, or training method, citing "the competitive landscape and the safety implications of large-scale models." This article treats that non-disclosure as the central fact of GPT-4's story, not a gap to paper over.</p>
+    <h2 id="opening" class="agi-section">One Product, Several Models Underneath</h2>
+    <p>By 2025, OpenAI's ChatGPT interface had accumulated a confusing lineup of separate model choices — fast general-purpose models alongside slower, more deliberate "reasoning" models users had to pick between manually. GPT-5's headline change was structural rather than purely architectural: it replaced that manual picker with a single named system that decides, per request, whether to answer quickly or to think longer, without the user needing to know which internal model actually handled it. This is a genuinely different kind of "how was it built" question than any prior entry in this series — the interesting engineering isn't only inside one model, it's in the system that decides which model to use at all.</p>
 
     <div class="market-stats">
       <div class="mstat-card" style="--ms-a:#7c3aed;--ms-b:#4338ca;">
-        <span class="mstat-num">0</span>
-        <span class="mstat-label">Architecture, parameter count, or training-compute figures disclosed in the technical report</span>
+        <span class="mstat-num">Aug 7</span>
+        <span class="mstat-label">2025 — GPT-5's public release date</span>
       </div>
       <div class="mstat-card" style="--ms-a:#1e293b;--ms-b:#0d1b2e;">
         <span class="mstat-num">2</span>
-        <span class="mstat-label">Companion documents released — the technical report and a separate, extensive System Card</span>
+        <span class="mstat-label">Broad model regimes unified into one routed system: fast and deep-reasoning</span>
       </div>
       <div class="mstat-card" style="--ms-a:#0891b2;--ms-b:#0e7490;">
-        <span class="mstat-num">6</span>
-        <span class="mstat-label">Months between ChatGPT's November 2022 launch and GPT-4's March 2023 release</span>
+        <span class="mstat-num">0</span>
+        <span class="mstat-label">Parameter count, architecture, or training-compute figures disclosed — same opacity as GPT-4</span>
       </div>
     </div>
 
@@ -292,11 +296,11 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="problem" class="agi-section">A Base Model Wasn't the Product Anymore</h2>
-    <p><a href="gpt-3-how-it-was-built.html">GPT-3</a> was a raw base model later turned into a usable assistant via InstructGPT's RLHF fine-tuning. ChatGPT, launched on that lineage in November 2022, became a mass-market product almost overnight — which changed the problem GPT-4 needed to solve. It was no longer "can we build a more capable base model," but "can we build a materially more capable, more reliable, more steerable model, safely enough to put in front of hundreds of millions of people." That shift in problem statement — from a research artifact to a product millions depend on — is the direct throughline into this series' <a href="frontier-lab-engineering-oncall-reality.html">On-Call Reality</a> and <a href="agi-researcher-foundations-alignment.html">Alignment</a> articles: the scrutiny a release needs to survive scales with who's actually using it.</p>
+    <h2 id="problem" class="agi-section">Too Many Models, Too Much User Judgment Required</h2>
+    <p>By the GPT-4 era, OpenAI's product lineup had split into fast conversational models and separate, slower "reasoning" models better suited to hard multi-step problems — leaving users to guess, before every conversation, which one they actually needed. This is the same problem this series' <a href="frontier-lab-engineering-compute-economics.html">Compute Economics</a> article frames from the infrastructure side: routing a request to more compute than it needs wastes resources, while routing a hard problem to a fast, shallow model wastes the user's time on a wrong or shallow answer. GPT-5's problem statement was explicitly to remove that manual decision from the user entirely.</p>
 
     <div class="lens-row">
-      <a href="agi-researcher-foundations-alignment.html" class="lens-chip researcher">🔬 Researcher lens: Alignment</a>
+      <a href="frontier-lab-engineering-compute-economics.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: Compute Economics</a>
     </div>
 
     <div class="part-divider">
@@ -304,60 +308,67 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="idea" class="agi-section">Scale, Multimodality, and Verifiable Safety Testing — Together</h2>
-    <p>GPT-4's stated advances, per the technical report: substantially improved performance on a wide range of professional and academic benchmarks, the ability to accept image inputs alongside text (multimodal input, though the initial public release was text-only), and a training and evaluation process that explicitly incorporated adversarial safety testing before release, rather than after. This is a different kind of "idea" than <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s or <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s architectural or training bets — it's as much a bet about process (test extensively before shipping) as about the model itself.</p>
+    <h2 id="idea" class="agi-section">A Real-Time Router, Not Just a Bigger Model</h2>
+    <p>GPT-5's core idea, as OpenAI publicly described it: a unified system with an internal router that decides, per message, whether a fast model can answer well or whether the request should be handed to a deeper, more deliberate reasoning process — all presented to the user as a single, consistent "GPT-5" experience. This is a different kind of scaling bet than any prior entry in this series: rather than making one model bigger (<a href="gpt-3-how-it-was-built.html">GPT-3</a>'s approach) or keeping one model's size undisclosed (<a href="gpt-4-how-it-was-built.html">GPT-4</a>'s approach), GPT-5 scales by composing multiple specialized models behind one interface and an automated decision layer.</p>
 
     <div class="idea-box">
       <span class="box-label">The Idea</span>
-      A more capable, multimodal-input model, developed alongside a formal, documented, pre-release adversarial safety-testing process — not just a bigger model shipped faster.
+      Don't make the user choose between a fast model and a deep-reasoning model — build a router that makes that choice automatically, per request, inside one unified product.
     </div>
+
+    <div class="router-diagram">
+      <div class="router-node">User message</div>
+      <span class="router-arrow">→</span>
+      <div class="router-node" style="background:#ede9fe;">Router decides complexity</div>
+      <span class="router-arrow">→</span>
+      <div class="router-node">Fast model</div>
+    </div>
+    <div class="router-diagram" style="margin-top:-6px;">
+      <div class="router-node" style="visibility:hidden;">User message</div>
+      <span class="router-arrow" style="visibility:hidden;">→</span>
+      <div class="router-node" style="background:#ede9fe;visibility:hidden;">Router decides complexity</div>
+      <span class="router-arrow">↘</span>
+      <div class="router-node">Deep reasoning model</div>
+    </div>
+    <div class="diagram-caption">One request, one visible product, a routing decision made underneath — the structural idea GPT-5 is built around.</div>
 
     <div class="part-divider">
       <span class="part-divider-badge">Part 3 — The Team</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="team" class="agi-section">From an Author List to a Contributor List</h2>
-    <p>GPT-4's technical report breaks the pattern of every prior case study in this series. <a href="gpt-1-how-it-was-built.html">GPT-1</a> had 4 authors, <a href="gpt-2-how-it-was-built.html">GPT-2</a> had 6, <a href="gpt-3-how-it-was-built.html">GPT-3</a> had 31 — each a clean, citable number. GPT-4's report does not list a comparable numbered author roster at all; instead, it credits contributions across many roles (pretraining, long-context, vision, reinforcement learning, evaluation, safety, and more) and closes with an extensive acknowledgments section naming a very large number of contributors, including external red-teamers. This is itself a real, verifiable data point about how far team scale and organizational complexity had grown — exactly the territory this series' <a href="frontier-lab-engineering-other-teams-code.html">Other Teams' Code</a> article describes as the point where Conway's Law stops being an interesting observation and becomes an unavoidable organizational reality.</p>
-
-    <div class="team-stat-card">
-      <strong style="font-size:1.6rem;color:#4338ca;">4 → 6 → 31 → ?</strong>
-      <div>
-        <div style="font-weight:800;font-size:0.9rem;">The team-size trajectory across this case-study series</div>
-        <div style="font-size:0.78rem;color:#6b7280;">GPT-4 is the first entry where a single clean "author count" doesn't exist — the report's structure itself is evidence of how large and specialized the effort had become.</div>
-      </div>
-    </div>
+    <h2 id="team" class="agi-section">Continuing the Uncountable-Team Pattern</h2>
+    <p>Consistent with <a href="gpt-4-how-it-was-built.html">GPT-4</a>, OpenAI's public GPT-5 materials do not provide a clean, citable author or team-size count. This isn't a gap specific to this case study — it's the continuation of the pattern this series' GPT-4 article first documented: past a certain organizational scale, a simple headcount stops being how a frontier lab describes who built something, and this series' <a href="frontier-lab-engineering-other-teams-code.html">Other Teams' Code</a> article's Conway's Law framing applies more forcefully with each release, not less. A system with a router deciding between multiple internal models plausibly implies at least separate specialized teams for the fast model, the reasoning model, and the routing layer itself — a reasonable inference from the architecture, not a confirmed organizational fact.</p>
 
     <div class="lens-row">
       <a href="frontier-lab-engineering-other-teams-code.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: Other Teams' Code (Conway's Law)</a>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 4 — The Undisclosed Architecture</span>
+      <span class="part-divider-badge">Part 4 — The Routed System</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="architecture" class="agi-section">What the Report Actually Confirms — and What It Doesn't</h2>
-    <p>The technical report confirms GPT-4 is a Transformer-based model pretrained to predict the next token, fine-tuned using reinforcement learning from human feedback, and capable of accepting both text and image inputs. It does not confirm parameter count, layer count, attention pattern, or any other architectural specific — a sharp reversal from <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s 117M, <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s four disclosed sizes, and <a href="gpt-3-how-it-was-built.html">GPT-3</a>'s 175B and full model family table. Various parameter-count figures have circulated publicly since 2023, but none originate from an official OpenAI disclosure — this article treats all of them as unverified rumor, not fact, and reports only what the primary source actually states.</p>
+    <h2 id="architecture" class="agi-section">What's Confirmed, What Isn't</h2>
+    <p>OpenAI's public GPT-5 announcement describes the system's routing behavior and its improved coding and instruction-following performance relative to prior models, alongside multiple product-facing variants (including smaller, faster variants for cost- and latency-sensitive use, and an extended-reasoning tier for the hardest problems). As with <a href="gpt-4-how-it-was-built.html">GPT-4</a>, no parameter count, layer architecture, or training-compute figure has been publicly disclosed for any component of the system. This continues, rather than reverses, the opacity trend this series' GPT-4 article identified as a dividing line in the field.</p>
 
     <div class="opacity-box">
-      <strong>What's confirmed:</strong> Transformer-based, next-token pretraining objective, RLHF fine-tuning, multimodal (text + image) input capability.<br><br>
-      <strong>What's not confirmed by OpenAI:</strong> parameter count, layer/attention architecture details, training dataset composition, training compute, and training hardware.
+      <strong>What's confirmed:</strong> a unified product routing requests between a fast model and a deeper-reasoning model, multiple named product variants at different cost/latency tiers, a public release on August 7, 2025.<br><br>
+      <strong>What's not confirmed by OpenAI:</strong> parameter counts for any component model, the router's own architecture or training method, total training compute, and dataset composition.
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 5 — Predictable Scaling</span>
+      <span class="part-divider-badge">Part 5 — Safe Completions</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="scaling" class="agi-section">A Real, Verifiable Methodological Contribution</h2>
-    <p>Despite withholding most training specifics, the report does disclose one genuinely notable methodological result: OpenAI built infrastructure that let them accurately predict aspects of GPT-4's final performance — including its final training loss — by extrapolating from much smaller models trained with a small fraction (the report states as little as 1/1,000th to 1/10,000th) of GPT-4's compute. This "predictable scaling" approach is a direct engineering answer to a real problem this series' <a href="agi-researcher-foundations-systems.html">Systems</a> article raises: at this scale, you cannot afford to discover a training run was misconfigured only after spending the full compute budget, so predicting outcomes from cheap, small-scale proxies becomes essential risk management, not just research curiosity.</p>
+    <h2 id="safety" class="agi-section">Beyond a Binary Refuse-or-Comply</h2>
+    <p>Alongside GPT-5, OpenAI described a safety-training shift it calls "safe completions": rather than a model either fully answering a request or flatly refusing it, the model is trained to give the most helpful response possible within safety constraints — for example, explaining general safety information about a sensitive topic while withholding specific operational detail that would make the response genuinely dangerous. This is a direct evolution of the refusal-behavior mitigations this series' <a href="gpt-4-how-it-was-built.html">GPT-4</a> article describes as part of its System Card, and connects to this series' <a href="agi-researcher-foundations-alignment.html">Alignment</a> article's broader point that alignment techniques keep having to get more nuanced as models get more capable and more widely used — a flat refuse/comply binary becomes less adequate, not more, as capability grows.</p>
 
-    <div class="pull-quote">Predicting a model's final performance from experiments costing a tiny fraction of the full run — a risk-management technique as much as a research result.</div>
+    <div class="pull-quote">Moving from "will the model answer or refuse" to "how much of a genuinely helpful answer can the model safely give" — a more nuanced, and more difficult, design target.</div>
 
     <div class="lens-row">
-      <a href="agi-researcher-foundations-systems.html" class="lens-chip researcher">🔬 Researcher lens: Systems</a>
-      <a href="frontier-lab-engineering-compute-economics.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: Compute Economics</a>
+      <a href="agi-researcher-foundations-alignment.html" class="lens-chip researcher">🔬 Researcher lens: Alignment</a>
     </div>
 
     <div class="part-divider">
@@ -365,66 +376,61 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="evaluation" class="agi-section">Professional Exams, Academic Benchmarks, and Adversarial Red-Teaming</h2>
-    <p>The technical report evaluates GPT-4 on a wide range of professional and academic exams — including a simulated bar exam, on which the report states GPT-4 scored around the 90th percentile of human test-takers — alongside standard academic NLP benchmarks. Separately, the System Card documents a distinct kind of evaluation: adversarial red-teaming for dangerous emergent capabilities, including work with external evaluators such as the Alignment Research Center (ARC), which tested whether the model could autonomously acquire resources or replicate itself — the kind of test this series' <a href="agi-researcher-foundations-self-assessment-deep-dive.html">Self-Assessment Deep Dive</a> article treats as essential precisely because it's evaluating for a failure mode the developers hope doesn't exist, not just measuring a capability they want to showcase.</p>
+    <h2 id="evaluation" class="agi-section">Coding, Reasoning, and Reduced Hallucination — Reported, Not Independently Re-Verified Here</h2>
+    <p>OpenAI's public materials report improvements in coding benchmarks, agentic task completion, and reduced hallucination rates relative to prior GPT models, alongside a companion system card describing safety evaluation work. This article does not restate specific benchmark scores as settled fact, in keeping with this series' <a href="agi-researcher-foundations-self-assessment-deep-dive.html">Self-Assessment Deep Dive</a> article's discipline: a lab's own reported benchmark numbers are a real data point worth citing, but they are not the same as independent, reproduced verification, and readers should treat any specific figure as something to check against the primary system card rather than take from a secondary summary like this one.</p>
 
     <div class="lens-row">
       <a href="agi-researcher-foundations-self-assessment-deep-dive.html" class="lens-chip researcher">🔬 Researcher lens: Self-Assessment Deep Dive</a>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 7 — The System Card &amp; Staged Release</span>
+      <span class="part-divider-badge">Part 7 — The Release</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="release" class="agi-section">A Release Process, Not Just a Release Date</h2>
-    <p>GPT-4 launched on March 14, 2023, initially available through ChatGPT Plus and a waitlisted API — itself another step past <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s staged rollout and <a href="gpt-3-how-it-was-built.html">GPT-3</a>'s API-only model, this time with the staging applied to access tiers and capabilities (text-only at launch, with image input rolled out later) rather than model size. The System Card documents specific mitigations applied before release — including refusal behaviors for certain categories of harmful requests — developed in response to red-teaming findings, a direct real-world instance of this series' <a href="frontier-lab-engineering-oncall-reality.html">On-Call Reality</a> article's discipline of treating a known risk as something to mitigate proactively, not react to after an incident.</p>
-
-    <div class="break-box">
-      <span class="box-label">The Release Trajectory, Four Papers In</span>
-      GPT-1: full open release. GPT-2: staged, eventually fully open. GPT-3: API-only, no weights. GPT-4: API/product-tiered access, no weights, no architecture, accompanied by a dedicated safety evaluation document.
-    </div>
+    <h2 id="release" class="agi-section">A Product Launch, With a System Card Attached</h2>
+    <p>GPT-5 launched simultaneously across ChatGPT (replacing the prior manual model picker for most users) and the API, continuing the tiered product-access pattern this series' <a href="gpt-4-how-it-was-built.html">GPT-4</a> article identifies as the post-2023 norm, alongside a system card following the template GPT-4 established. The router itself — deciding fast-vs-deep per request — is also a release-time safety lever in its own right: routing genuinely hard or sensitive queries toward the more deliberate model is, functionally, another layer of the same proactive-mitigation discipline this series' <a href="frontier-lab-engineering-oncall-reality.html">On-Call Reality</a> article describes as better than reacting after the fact.</p>
 
     <div class="lens-row">
       <a href="frontier-lab-engineering-oncall-reality.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: The On-Call Reality</a>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 8 — Legacy</span>
+      <span class="part-divider-badge">Part 8 — Legacy So Far</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="legacy" class="agi-section">The Template for Every Frontier Release Since</h2>
-    <p>GPT-4's pairing of a technical report with a separate, dedicated safety-evaluation document became the template other frontier labs would go on to adopt for their own major model releases — a genuine, lasting process contribution distinct from any specific number in the paper. Its withheld architectural details also set a norm that later OpenAI releases (and, to varying degrees, competitors) have largely continued, making GPT-4 the clearest dividing line in this entire case-study series between the "open research paper" era and the "product release with an accompanying safety document" era.</p>
+    <h2 id="legacy" class="agi-section">Still Being Written</h2>
+    <p>Unlike <a href="gpt-1-how-it-was-built.html">GPT-1</a> through <a href="gpt-4-how-it-was-built.html">GPT-4</a>, GPT-5's legacy is not yet settled history — it is the newest entry in this series, released just over a year before this article. What can be said with confidence is that the routed, multi-model-behind-one-product pattern it introduced is a structurally different kind of scaling bet than any prior GPT, and it previews a plausible future where "which specific model answered your question" becomes a genuinely uninteresting detail compared to whether the routing and safety layers around it work well.</p>
 
     <div class="unlock-box">
-      <span class="box-label">What Carried Forward</span>
-      Multimodal input as a standard expectation · predictable-scaling infrastructure as risk management · a dedicated System Card as the new standard companion document · staged, tiered product access replacing staged model-size release
+      <span class="box-label">What This Case Study Can and Can't Claim</span>
+      Confirmed: the routing concept, the safe-completions safety approach, the release date and product structure. Not yet knowable: how this generation's engineering choices will be judged once more time and independent scrutiny have passed — the same honest limitation every case study of a very recent model has to carry.
     </div>
 
     <h2 id="selfcheck" class="agi-section">Readiness Checklist</h2>
     <div class="checklist">
-      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you list exactly what GPT-4's technical report does and does not confirm about its own architecture?</div></div>
-      <div class="check-row"><span class="check-num">2</span><div class="check-text">Can you explain what "predictable scaling" is and why it matters as risk management, not just research?</div></div>
-      <div class="check-row"><span class="check-num">3</span><div class="check-text">Can you name the difference between the GPT-4 technical report and the GPT-4 System Card as distinct documents?</div></div>
-      <div class="check-row"><span class="check-num">4</span><div class="check-text">Could you trace the full four-paper release-norms trajectory from GPT-1 through GPT-4 without looking it up?</div></div>
+      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you explain what GPT-5's router actually does, in one sentence, without conflating it with "GPT-5 is just a bigger model"?</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text">Can you explain the difference between a flat refuse/comply safety approach and "safe completions"?</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text">Can you name what is and isn't publicly confirmed about GPT-5's architecture, without repeating unverified rumor?</div></div>
+      <div class="check-row"><span class="check-num">4</span><div class="check-text">Could you explain why this case study is more cautious about its own claims than the GPT-1 through GPT-3 entries?</div></div>
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ What's Missing or Uncertain</h2>
     <div class="caveat-box">
-      <strong>This is the most gap-heavy article in the series, by design.</strong> GPT-4's parameter count, exact architecture, training dataset composition, and training compute are not publicly confirmed by OpenAI as of this writing. Numbers circulating publicly since 2023 are unverified third-party claims, not primary-source disclosures, and this article deliberately does not repeat them as fact. The team size is similarly unquantifiable from the primary source — the report's contributor and acknowledgments structure confirms scale without providing a citable number.
+      <strong>This is the most recency-limited article in the entire series.</strong> GPT-5 was released in August 2025, closer to this article's writing than any other entry, and independent, long-term analysis of its real-world performance, the router's actual accuracy, and its safety track record is necessarily thinner than for a five-year-old model like GPT-1. Specific benchmark numbers reported by OpenAI are noted as OpenAI's own reported figures, not independently re-verified by this article, and readers should check the primary system card for exact current figures rather than treat any number here as final.
     </div>
 
     <h2 id="next" class="agi-section">Where This Case Study Goes Next</h2>
-    <p>This series has now traced the GPT lineage from a 4-person, fully open, 117M-parameter research paper to a closed, multimodal, safety-documented product built by an organization too large to credit with a simple author list — the same underlying recipe (a Transformer, pretrained on next-token prediction) carried across five years of compounding scale, team growth, and tightening release norms. <a href="gpt-5-how-it-was-built.html">GPT-5</a> continues that trajectory two years later, replacing "one model, one size" with a routed system spanning multiple internal models chosen automatically per query.</p>
+    <p>This closes the current run of this Model Case Study series at five entries, tracing one continuous recipe — a Transformer, pretrained on next-token prediction — from a 4-person, fully open 117M-parameter paper through a routed, multi-model product system whose full internals remain undisclosed. Future entries will follow as new models are released and enough is publicly known to write about them with the same honesty discipline as the rest of this series.</p>
 
     <h2 id="references" class="agi-section">🔗 Reference Links</h2>
     <div class="ref-box">
       <div class="ref-box-title">🔗 Reference Links</div>
       <ul class="ref-list">
-        <li><a href="https://arxiv.org/abs/2303.08774" target="_blank" rel="noopener">OpenAI — "GPT-4 Technical Report" (arXiv:2303.08774, 2023)</a></li>
-        <li><a href="https://cdn.openai.com/papers/gpt-4-system-card.pdf" target="_blank" rel="noopener">OpenAI — GPT-4 System Card (2023)</a></li>
-        <li><a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener">OpenAI — ChatGPT launch announcement (November 2022)</a></li>
+        <li><a href="https://openai.com/index/introducing-gpt-5/" target="_blank" rel="noopener">OpenAI — "Introducing GPT-5" (August 2025 announcement)</a></li>
+        <li><a href="https://openai.com/index/gpt-5-safe-completions/" target="_blank" rel="noopener">OpenAI — "GPT-5 Safe Completions" (safety-training approach)</a></li>
+        <li><a href="gpt-4-how-it-was-built.html">This site — Model Case Study: GPT-4</a></li>
         <li><a href="gpt-3-how-it-was-built.html">This site — Model Case Study: GPT-3</a></li>
         <li><a href="gpt-2-how-it-was-built.html">This site — Model Case Study: GPT-2</a></li>
         <li><a href="gpt-1-how-it-was-built.html">This site — Model Case Study: GPT-1</a></li>
@@ -435,16 +441,16 @@
     <!-- VIDEOS -->
     <h2 id="videos" class="agi-section">🎥 Recommended Videos</h2>
     <div class="video-grid">
-      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context that remains true even when architecture details are withheld</div></a>
-      <a class="video-card" href="https://www.youtube.com/watch?v=TQQlZhbC5ps" target="_blank" rel="noopener"><div class="video-title">Attention Is All You Need — Paper Explained</div><div class="video-meta">Yannic Kilcher — the confirmed architectural family GPT-4 still belongs to</div></a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context that still underlies every component of a routed system</div></a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=TQQlZhbC5ps" target="_blank" rel="noopener"><div class="video-title">Attention Is All You Need — Paper Explained</div><div class="video-meta">Yannic Kilcher — the architectural family every GPT generation, including GPT-5's components, still belongs to</div></a>
     </div>
 
     <!-- VERDICT -->
-    <h2 id="verdict" class="agi-section">🧭 Closing — The Story Became About What Isn't Said</h2>
+    <h2 id="verdict" class="agi-section">🧭 Closing — The Unit of Scaling Changed Again</h2>
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        Every prior case study in this series could be told mostly through what its paper disclosed. GPT-4's story has to be told partly through what its report explicitly refuses to disclose, and why. <strong>The predictable-scaling infrastructure and the dedicated System Card are real, lasting contributions</strong> — but the more durable lesson of this case study is that as models became products used by hundreds of millions of people, the primary source itself changed shape: from a paper you could read end to end and know almost everything, to a report whose most important claim is what it deliberately leaves out.
+        Every prior entry in this series scaled by making one model bigger. GPT-5 scaled by composing multiple models behind one routing decision — <strong>a structural bet about product and systems design as much as about any single model's raw capability.</strong> Combined with a more nuanced safety-training approach and the same undisclosed-architecture pattern GPT-4 established, GPT-5 confirms that the story of "how a frontier model is built" now spans engineering disciplines this series has covered separately — model architecture, systems design, and alignment — in a single release, with the honest caveat that enough time hasn't yet passed to know how today's choices will be judged.
       </div>
     </div>
 
