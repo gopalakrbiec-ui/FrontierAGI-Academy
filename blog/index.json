@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-engineering-other-teams-code",
+      "title": "Working With (and Around) Other Teams' Code",
+      "excerpt": "The seventh article in Frontier Lab Engineering Practicum — why organizational structure mirrors code structure per Conway's Law, how ownership is actually enforced in a monorepo via owners files (Potvin & Levenberg), the etiquette of changing code you don't own, Sculley et al.'s glue-code and dependency-debt patterns, and Team Topologies' three interaction modes for naming how two teams actually work together.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "50 min",
+      "tags": [
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🧩",
+      "featured": true
+    },
+    {
       "slug": "frontier-lab-engineering-oncall-reality",
       "title": "The On-Call Reality: Monitoring, Alerts, and 2am Incidents",
       "excerpt": "The sixth article in Frontier Lab Engineering Practicum — what happens when a system fails unattended: the four golden signals and why monitoring must go beyond \"is it running,\" Google SRE's alert-design discipline and the alert-fatigue trap, the mitigate-first shape of real incident response, John Allspaw's blameless-postmortem culture, and why on-call load itself is a reliability metric worth escalating.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "📟",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-custom-kernels",
