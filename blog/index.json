@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "gpt-1-how-it-was-built",
+      "title": "GPT-1: How the First GPT Was Actually Built",
+      "excerpt": "A Model Case Study — the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person credited team, the choice of a decoder-only Transformer, the BooksCorpus data collection, the 117M-parameter architecture, a month on 8 GPUs, the 12-task fine-tuning recipe, honest evaluation, and the paper-plus-code release — read through both this site's researcher lens (Foundations series) and practitioner lens (Engineering Practicum).",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "70 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "📄",
+      "featured": true
+    },
+    {
       "slug": "frontier-lab-engineering-week-in-the-life",
       "title": "Capstone: A Week in the Life of a Research Engineer",
       "excerpt": "The ninth and final article in Frontier Lab Engineering Practicum — a realistic Monday-through-Friday tying together all eight prior articles: an on-call handover, a cross-team PR review, a won't-start debugging detour, a compute budget conversation, a page mitigated first, a profiled decision not to write a custom kernel, a blameless postmortem, and one experiment shipped from idea to merged PR.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🗓️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-idea-to-merged-pr",
