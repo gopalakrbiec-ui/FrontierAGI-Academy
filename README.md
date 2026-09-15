@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🚦 [GPT-5: How the Fifth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-5-how-it-was-built.html) ⭐ | Model Case Study, Article 5 — the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and… | 2026-09-15 |
+| 🌌 [GPT-6 Astra: How the Sixth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-6-how-it-was-built.html) ⭐ | Model Case Study, Article 6 — the September 2026 release shaped by a real security incident: the July 2026 Hugging Face containment breach,… | 2026-09-15 |
+| 🚦 [GPT-5: How the Fifth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-5-how-it-was-built.html) | Model Case Study, Article 5 — the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and… | 2026-09-15 |
 | 🔒 [GPT-4: How the Fourth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-4-how-it-was-built.html) | Model Case Study, Article 4 — the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or… | 2026-09-15 |
 | 🧠 [GPT-3: How the Third GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-3-how-it-was-built.html) | Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person… | 2026-09-15 |
 | 🌐 [GPT-2: How the Second GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-2-how-it-was-built.html) | Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team,… | 2026-09-15 |
