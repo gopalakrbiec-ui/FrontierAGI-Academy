@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-engineering-oncall-reality",
+      "title": "The On-Call Reality: Monitoring, Alerts, and 2am Incidents",
+      "excerpt": "The sixth article in Frontier Lab Engineering Practicum — what happens when a system fails unattended: the four golden signals and why monitoring must go beyond \"is it running,\" Google SRE's alert-design discipline and the alert-fatigue trap, the mitigate-first shape of real incident response, John Allspaw's blameless-postmortem culture, and why on-call load itself is a reliability metric worth escalating.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "50 min",
+      "tags": [
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "📟",
+      "featured": true
+    },
+    {
       "slug": "frontier-lab-engineering-custom-kernels",
       "title": "Writing Custom Kernels and Why You Occasionally Have To",
       "excerpt": "The fifth article in Frontier Lab Engineering Practicum — when PyTorch's built-in operators genuinely aren't fast enough: the compute-bound vs. memory-bound distinction from Horace He's \"Making Deep Learning Go Brrrr\" framework, why profiling always comes before optimizing, Triton as the practical entry point over raw CUDA, FlashAttention as the canonical real-world case study, and the maintenance costs that make a custom kernel a decision, not a default.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧵",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-lab-engineering-compute-economics",
