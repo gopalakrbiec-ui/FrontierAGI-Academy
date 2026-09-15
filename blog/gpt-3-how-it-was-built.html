@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GPT-2: How the Second GPT Was Actually Built — FrontierAGI Academy Blog</title>
+  <title>GPT-3: How the Third GPT Was Actually Built — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -75,10 +75,7 @@
     .lens-chip.researcher { background: #ecfeff; color: #155e75; border-color: #67e8f9; }
     .lens-chip.practitioner { background: #fffbeb; color: #92400e; border-color: #fcd34d; }
 
-    .team-card { display: flex; gap: 16px; align-items: center; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 12px 0; background: #fff; }
-    .team-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#7c3aed,#4338ca); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1rem; }
-    .team-name { font-weight: 800; font-size: 0.92rem; color: #111; }
-    .team-role { font-size: 0.78rem; color: #6b7280; }
+    .team-stat-card { display: flex; gap: 16px; align-items: center; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 12px 0; background: #fff; }
 
     .pull-quote {
       background: linear-gradient(135deg, #f5f3ff, #eff6ff); border-left: 4px solid #7c3aed;
@@ -123,13 +120,6 @@
     .verdict-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
     .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
     .verdict-body strong { color: #c4b5fd; }
-
-    .release-timeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
-    .release-step { display: flex; gap: 16px; padding: 14px 0; border-left: 2px solid #ddd6fe; margin-left: 10px; padding-left: 22px; position: relative; }
-    .release-step::before { content: ''; position: absolute; left: -7px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: #7c3aed; }
-    .release-step:last-child { border-left: 2px solid transparent; }
-    .release-date { font-weight: 800; font-size: 0.78rem; color: #4c1d95; min-width: 110px; flex-shrink: 0; }
-    .release-body { font-size: 0.84rem; color: #374151; line-height: 1.6; }
 
     @media (max-width: 768px) {
       .agi-hero h1 { font-size: 1.35rem; }
@@ -235,14 +225,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>GPT-2: How the Second GPT Was Actually Built</span>
+      <span>GPT-3: How the Third GPT Was Actually Built</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Model Case Study · Article 2</span>
-      <span class="agi-hero-icon">🌐</span>
-      <h1>GPT-2: How the Second GPT Was Actually Built</h1>
-      <p><a href="gpt-1-how-it-was-built.html" style="color:#c4b5fd;">GPT-1</a> proved that one pretrained Transformer could be fine-tuned across many tasks. GPT-2 asked a harder question: what if you didn't fine-tune at all? This is the end-to-end story of GPT-2 — a 6-person team, a much bigger and messier web-scraped dataset, four model sizes up to 1.5 billion parameters, genuine zero-shot task transfer, and a staged public release that became one of AI's first real fights over how much capability to hand out at once.</p>
+      <span class="series-badge">Model Case Study · Article 3</span>
+      <span class="agi-hero-icon">🧠</span>
+      <h1>GPT-3: How the Third GPT Was Actually Built</h1>
+      <p><a href="gpt-2-how-it-was-built.html" style="color:#c4b5fd;">GPT-2</a> showed zero-shot task transfer was possible but inconsistent. GPT-3 asked what happens if you show the model a few examples in the prompt itself — no gradient updates at all — and then made that idea work at 175 billion parameters, a 31-person credited team, and a closed, API-only release that reshaped how the entire industry thinks about distributing frontier models.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -250,7 +240,7 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 15, 2026 · 70 min read</div>
+          <div class="blog-post-date">September 15, 2026 · 75 min read</div>
         </div>
       </div>
     </div>
@@ -263,8 +253,8 @@
       <a href="#architecture" class="agi-nav-btn">Architecture &amp; Scale</a>
       <a href="#data"        class="agi-nav-btn">Data Collection</a>
       <a href="#training"    class="agi-nav-btn">Training the Model</a>
-      <a href="#evaluation"  class="agi-nav-btn">Zero-Shot Evaluation</a>
-      <a href="#release"     class="agi-nav-btn">The Staged Release</a>
+      <a href="#evaluation"  class="agi-nav-btn">Few-Shot Evaluation</a>
+      <a href="#release"     class="agi-nav-btn">The Closed API Release</a>
       <a href="#legacy"      class="agi-nav-btn">Legacy</a>
       <a href="#next"        class="agi-nav-btn">Where This Goes Next</a>
       <a href="#selfcheck"   class="agi-nav-btn">Readiness Checklist</a>
@@ -274,21 +264,21 @@
       <a href="#verdict"     class="agi-nav-btn">Verdict</a>
     </div>
 
-    <h2 id="opening" class="agi-section">The Same Recipe, One Level More Ambitious</h2>
-    <p>GPT-2 was documented in OpenAI's 2019 paper, <a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">"Language Models are Unsupervised Multitask Learners"</a>, by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever. Where <a href="gpt-1-how-it-was-built.html">GPT-1</a> pretrained once and then fine-tuned separately per task, GPT-2's central claim was more ambitious: a large enough language model, trained on a large enough and diverse enough dataset, could perform many tasks in a zero-shot setting — no fine-tuning, no task-specific parameters, just the right natural-language prompt. That single idea is the direct ancestor of how every modern chat-based LLM is actually used today.</p>
+    <h2 id="opening" class="agi-section">The Paper That Made "Prompting" a Real Word</h2>
+    <p>GPT-3 was documented in the 2020 paper <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">"Language Models are Few-Shot Learners"</a> (Brown et al., NeurIPS 2020) — a single paper credited to 31 authors at OpenAI. Where <a href="gpt-2-how-it-was-built.html">GPT-2</a> tested zero-shot task transfer with mixed results, GPT-3's central experiment was in-context few-shot learning: show the model a small number of input-output examples directly inside the prompt, with no weight updates whatsoever, and let it infer the task from those examples alone. At 175 billion parameters, this was also, by a wide margin, the largest language model trained up to that point.</p>
 
     <div class="market-stats">
       <div class="mstat-card" style="--ms-a:#7c3aed;--ms-b:#4338ca;">
-        <span class="mstat-num">6</span>
-        <span class="mstat-label">Named authors on the GPT-2 paper — up from GPT-1's 4</span>
+        <span class="mstat-num">31</span>
+        <span class="mstat-label">Named authors on the GPT-3 paper — up from GPT-2's 6</span>
       </div>
       <div class="mstat-card" style="--ms-a:#1e293b;--ms-b:#0d1b2e;">
-        <span class="mstat-num">1.5B</span>
-        <span class="mstat-label">Parameters in the largest of four released model sizes</span>
+        <span class="mstat-num">175B</span>
+        <span class="mstat-label">Parameters — roughly 117x larger than GPT-2's largest model</span>
       </div>
       <div class="mstat-card" style="--ms-a:#0891b2;--ms-b:#0e7490;">
-        <span class="mstat-num">9 mo.</span>
-        <span class="mstat-label">Time between GPT-2's announcement and the full model's public release</span>
+        <span class="mstat-num">3.14×10²³</span>
+        <span class="mstat-label">Training FLOPs the paper reports for the full 175B model</span>
       </div>
     </div>
 
@@ -297,8 +287,8 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="problem" class="agi-section">Fine-Tuning Was Working — And Also a Ceiling</h2>
-    <p><a href="gpt-1-how-it-was-built.html">GPT-1</a>'s pretrain-then-fine-tune recipe worked, but it still required labeled examples and a separate fine-tuning pass for every new task — a real, ongoing cost each time the model needed to do something new. GPT-2's authors framed this as evidence that language models were still being under-used: if a model's pretraining data already contains implicit demonstrations of many tasks (a Wikipedia article that includes a summary, a forum post that includes a translation), a big enough model trained on broad enough data might learn those tasks as a side effect of pure language modeling, without ever needing task-specific labels. This directly extends this series' <a href="agi-researcher-foundations-generalization-learning-theory.html">Generalization &amp; Learning Theory</a> article's theme: what a model can do zero-shot is bounded by what its training distribution actually contains, which is exactly why the next section's data choice mattered so much.</p>
+    <h2 id="problem" class="agi-section">Zero-Shot Was Promising but Unreliable</h2>
+    <p><a href="gpt-2-how-it-was-built.html">GPT-2</a>'s zero-shot results were genuinely mixed — strong on some benchmarks, clearly behind dedicated systems on others, with no reliable way to steer the model toward a specific task beyond hoping the prompt phrasing happened to work. GPT-3's authors framed this directly: humans don't need thousands of labeled examples to learn a new task from a few demonstrations, so why should a language model require full fine-tuning to adapt? This reframes this series' <a href="agi-researcher-foundations-generalization-learning-theory.html">Generalization &amp; Learning Theory</a> article's core question — how much a model can generalize from limited examples — as something to test directly inside a single forward pass, not through additional training at all.</p>
 
     <div class="lens-row">
       <a href="agi-researcher-foundations-generalization-learning-theory.html" class="lens-chip researcher">🔬 Researcher lens: Generalization &amp; Learning Theory</a>
@@ -309,12 +299,12 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="idea" class="agi-section">Multitask Learning Without Multitask Training</h2>
-    <p>The paper's central bet: don't train on multiple tasks explicitly at all — train one enormous language model on one enormous, diverse text corpus, and let task-solving ability emerge as a byproduct of that single objective. A task is then "specified" purely through the prompt text itself, such as appending "TL;DR:" after an article to elicit a summary. This is a genuine escalation of <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s idea, not a different one — the same underlying bet (a good enough language model implicitly learns useful structure) pushed one full step further, from "minimal fine-tuning" to "no fine-tuning at all."</p>
+    <h2 id="idea" class="agi-section">In-Context Learning: No Gradient Updates, Just Examples</h2>
+    <p>GPT-3's core idea: at sufficient scale, a language model can perform "in-context learning" — inferring a new task purely from examples placed in its input context, with the model's weights completely frozen. The paper systematically compares three conditions on the same model: zero-shot (task description only), one-shot (one example), and few-shot (a handful of examples) — and shows performance improving substantially from zero-shot to few-shot, with the gap widening as model size increases. This is the direct escalation of <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s fine-tuning and <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s zero-shot bets: each generation removed one more requirement (task-specific training, then any gradient updates at all) while adding scale to compensate.</p>
 
     <div class="idea-box">
       <span class="box-label">The Idea</span>
-      One very large language model, trained purely on next-token prediction over diverse web text, can perform many tasks zero-shot when the task is phrased as a natural-language prompt — no labeled fine-tuning data required.
+      A large enough language model can learn a new task from a handful of examples shown in its prompt alone — no fine-tuning, no gradient updates, just in-context demonstration.
     </div>
 
     <div class="part-divider">
@@ -322,32 +312,15 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="team" class="agi-section">Six Credited Authors — Still a Small Team</h2>
-    <p>GPT-2's paper credits six authors: Alec Radford and Ilya Sutskever return from the <a href="gpt-1-how-it-was-built.html">GPT-1</a> team, joined by Jeffrey Wu, Rewon Child, David Luan, and Dario Amodei. Growing from four to six credited authors in roughly a year is a real but modest scale-up — nowhere near the scale of today's frontier training credit lists, but already a step past the size where this series' <a href="frontier-lab-engineering-other-teams-code.html">Other Teams' Code</a> article's Conway's Law dynamics become negligible. A six-person team building a much larger dataset pipeline and four separate model sizes almost certainly required more internal coordination than GPT-1's four-person, single-model effort, even if that coordination overhead isn't visible in the paper itself.</p>
+    <h2 id="team" class="agi-section">From Six Authors to Thirty-One</h2>
+    <p>GPT-3's paper credits 31 authors — a genuine step-change from <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s 6, and a scale of collaboration where this series' <a href="frontier-lab-engineering-other-teams-code.html">Other Teams' Code</a> article's Conway's Law dynamics become unavoidable rather than negligible. A team this size training a single 175B-parameter model almost certainly involved distinct sub-groups for data pipeline construction, distributed training infrastructure, and evaluation — the kind of internal specialization this series' Engineering Practicum describes as standard practice once a project outgrows what a handful of generalists can hold in their heads at once. Ilya Sutskever, credited on both GPT-1 and GPT-2, appears again here, alongside a much larger group of newly-credited collaborators.</p>
 
-    <div class="team-card">
-      <div class="team-avatar">AR</div>
-      <div><div class="team-name">Alec Radford</div><div class="team-role">Returning from GPT-1 — lead author</div></div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">JW</div>
-      <div><div class="team-name">Jeffrey Wu</div><div class="team-role">Co-author</div></div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">RC</div>
-      <div><div class="team-name">Rewon Child</div><div class="team-role">Co-author</div></div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">DL</div>
-      <div><div class="team-name">David Luan</div><div class="team-role">Co-author</div></div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">DA</div>
-      <div><div class="team-name">Dario Amodei</div><div class="team-role">Co-author</div></div>
-    </div>
-    <div class="team-card">
-      <div class="team-avatar">IS</div>
-      <div><div class="team-name">Ilya Sutskever</div><div class="team-role">Returning from GPT-1 — research direction</div></div>
+    <div class="team-stat-card">
+      <strong style="font-size:1.6rem;color:#4338ca;">31</strong>
+      <div>
+        <div style="font-weight:800;font-size:0.9rem;">Credited authors on the GPT-3 paper</div>
+        <div style="font-size:0.78rem;color:#6b7280;">Up from 4 (GPT-1) → 6 (GPT-2) → 31 (GPT-3) — a real, verifiable trajectory of team growth across three papers in roughly two years.</div>
+      </div>
     </div>
 
     <div class="lens-row">
@@ -359,23 +332,26 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="architecture" class="agi-section">Four Sizes, One Bigger Context Window</h2>
-    <p>GPT-2 kept <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s decoder-only Transformer foundation but made real architectural adjustments: layer normalization was moved to the input of each sub-block (a "pre-activation" arrangement) with an additional layer norm added after the final block, the context window doubled to 1,024 tokens, and the byte-pair-encoding vocabulary grew to 50,257 tokens. Rather than releasing a single model, OpenAI trained and released four sizes — 117M (matching GPT-1's parameter count), 345M, 762M, and 1.5B parameters — letting the paper directly study how zero-shot performance scaled with model size, a precursor to the scaling-law thinking this series' <a href="agi-researcher-foundations-systems.html">Systems</a> article covers.</p>
+    <h2 id="architecture" class="agi-section">Eight Sizes, Alternating Attention Patterns</h2>
+    <p>GPT-3 kept the same decoder-only Transformer lineage from <a href="gpt-1-how-it-was-built.html">GPT-1</a> and <a href="gpt-2-how-it-was-built.html">GPT-2</a>, but scaled it across eight sizes from 125M up to 175B parameters, with the context window doubled again to 2,048 tokens. A notable architectural detail: GPT-3 alternates dense and locally-banded sparse self-attention patterns across its layers, drawing on the Sparse Transformer work (Child et al., 2019) to make attention more tractable at this scale — a direct real-world instance of this series' <a href="frontier-lab-engineering-custom-kernels.html">Custom Kernels</a> article's compute-bound-vs-memory-bound tradeoff, since full dense attention at 2,048 tokens across 96 layers would have been considerably more expensive without this pattern.</p>
 
     <div class="tradeoff-wrap">
       <table class="tradeoff-table">
-        <thead><tr><th>Model Size</th><th>Parameters</th><th>Role in the Paper</th></tr></thead>
+        <thead><tr><th>Model</th><th>Parameters</th><th>Layers</th></tr></thead>
         <tbody>
-          <tr><td>Small</td><td>117M</td><td>Matches GPT-1's size — a direct scale-controlled comparison point</td></tr>
-          <tr><td>Medium</td><td>345M</td><td>Intermediate scaling data point</td></tr>
-          <tr><td>Large</td><td>762M</td><td>Intermediate scaling data point</td></tr>
-          <tr><td>XL (GPT-2)</td><td>1.5B</td><td>The flagship result — and the model initially withheld from public release</td></tr>
+          <tr><td>GPT-3 Small</td><td>125M</td><td>12</td></tr>
+          <tr><td>GPT-3 Large</td><td>760M</td><td>24</td></tr>
+          <tr><td>GPT-3 XL</td><td>1.3B</td><td>24</td></tr>
+          <tr><td>GPT-3 2.7B</td><td>2.7B</td><td>32</td></tr>
+          <tr><td>GPT-3 6.7B</td><td>6.7B</td><td>32</td></tr>
+          <tr><td>GPT-3 13B</td><td>13B</td><td>40</td></tr>
+          <tr><td>GPT-3 175B ("GPT-3")</td><td>175B</td><td>96</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="lens-row">
-      <a href="agi-researcher-foundations-systems.html" class="lens-chip researcher">🔬 Researcher lens: Systems</a>
+      <a href="frontier-lab-engineering-custom-kernels.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: Custom Kernels</a>
     </div>
 
     <div class="part-divider">
@@ -383,12 +359,12 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="data" class="agi-section">WebText: Trading Curation for Scale</h2>
-    <p>GPT-1 trained on a carefully bounded set of roughly 7,000 books. GPT-2 trained on WebText, a new dataset the authors built specifically for this paper: roughly 8 million documents (about 40GB of text) scraped from outbound links found in Reddit posts that had received at least 3 karma — used as a crude, scalable proxy for "a human thought this link was worth sharing," rather than a fully manual quality review. This is a direct, real-world instance of this series' <a href="frontier-lab-engineering-production-training-code.html">Production Training Code</a> article's data-pipeline theme: a dataset's collection heuristic (karma as a quality signal) shapes exactly what the model learns, including its biases, just as much as the dataset's raw size does.</p>
+    <h2 id="data" class="agi-section">A Filtered, Weighted Mixture — Not Just "More Web Text"</h2>
+    <p>GPT-3's training data mixed a filtered and deduplicated version of Common Crawl with an expanded WebText2, two internet-based books corpora (Books1 and Books2), and Wikipedia. The Common Crawl portion was filtered using a classifier trained to distinguish high-quality, WebText-like documents from the raw crawl, then fuzzily deduplicated — and critically, the mixture was not sampled in proportion to raw dataset size: cleaner datasets like Wikipedia were sampled more frequently relative to their size than the much larger but noisier Common Crawl. This is a direct, larger-scale extension of this series' <a href="frontier-lab-engineering-production-training-code.html">Production Training Code</a> article's data-pipeline lesson — how a dataset is weighted and filtered shapes the model as much as how much raw text goes in.</p>
 
     <div class="why-box">
-      <span class="box-label">Why Reddit Karma</span>
-      Manually reviewing millions of web pages for quality wasn't feasible for a team this size. Karma-filtered outbound links gave a cheap, scalable, if imperfect, quality signal — a real engineering tradeoff, not a research ideal.
+      <span class="box-label">Why Weighted Sampling</span>
+      Common Crawl is enormous but noisy; Wikipedia and books are smaller but cleaner. Sampling higher-quality sources more often than their raw size would suggest was a deliberate quality-over-raw-volume tradeoff.
     </div>
 
     <div class="lens-row">
@@ -400,43 +376,40 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="training" class="agi-section">A Notably Quieter Compute Number</h2>
-    <p>Unlike <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s paper, which states plainly that training took about a month on 8 GPUs, the GPT-2 paper does not give an equivalently specific, citable compute figure for the full training run. This is a real, notable gap rather than an oversight this article can responsibly fill in — and it's worth naming directly, because it previews a pattern this series' <a href="frontier-lab-engineering-compute-economics.html">Compute Economics</a> article discusses from the opposite direction: as models became more capable and commercially significant, exact training compute details became less consistently disclosed, not more.</p>
+    <h2 id="training" class="agi-section">A Real, Disclosed Compute Figure — Unlike GPT-2</h2>
+    <p>In a return to <a href="gpt-1-how-it-was-built.html">GPT-1</a>-style transparency (and a departure from <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s undisclosed figure), the GPT-3 paper explicitly reports training compute for every model size in the family, with the full 175B model requiring approximately 3.14×10²³ floating-point operations — a number the paper itself uses to study how performance scales with compute, directly connecting to the scaling-law thinking this series' <a href="agi-researcher-foundations-systems.html">Systems</a> article covers. This scale of training run is exactly the regime this series' <a href="frontier-lab-engineering-compute-economics.html">Compute Economics</a> article describes as requiring dedicated scheduling infrastructure, quota systems, and multi-week-to-multi-month training windows — a different world entirely from GPT-1's "one month, 8 GPUs."</p>
+
+    <div class="pull-quote">From "one month on 8 GPUs" to a training run whose compute is measured against the field's emerging scaling laws — the same lineage of ideas, three very different orders of magnitude apart.</div>
 
     <div class="lens-row">
+      <a href="agi-researcher-foundations-systems.html" class="lens-chip researcher">🔬 Researcher lens: Systems</a>
       <a href="frontier-lab-engineering-compute-economics.html" class="lens-chip practitioner">🧑‍💻 Practitioner lens: Compute Economics</a>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 7 — Zero-Shot Evaluation</span>
+      <span class="part-divider-badge">Part 7 — Few-Shot Evaluation</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="evaluation" class="agi-section">Testing Without Ever Fine-Tuning</h2>
-    <p>The paper evaluates GPT-2 zero-shot across a wide range of tasks — language modeling benchmarks (achieving new state-of-the-art results on several, including LAMBADA and WikiText-2, purely by scale), reading comprehension, summarization, translation, and question answering — without a single gradient update specific to any of them. Results were genuinely mixed: strong and sometimes state-of-the-art on some language-modeling benchmarks, clearly behind dedicated supervised systems on others like summarization and translation. The paper reports this honestly rather than overselling it, the same self-assessment discipline this series' <a href="agi-researcher-foundations-self-assessment-deep-dive.html">Self-Assessment Deep Dive</a> article covers.</p>
-
-    <div class="pull-quote">Zero-shot performance that beats dedicated systems on some tasks and clearly trails them on others — reported as both, honestly, in the same paper.</div>
+    <h2 id="evaluation" class="agi-section">Emergent Arithmetic, Honest Weaknesses</h2>
+    <p>GPT-3's few-shot results were, in aggregate, a genuine step forward: strong performance across translation, question answering, and cloze-style completion tasks, and a widely-noted result on simple arithmetic — few-shot GPT-3 could perform 2- and 3-digit addition and subtraction with meaningfully higher accuracy than smaller models in the same family, a capability the paper describes as emerging with scale rather than being explicitly trained for. The paper is also candid about weaknesses: performance on tasks requiring comparing two pieces of text (like the Winograd-style WIC benchmark) remained comparatively weak, and the paper includes a dedicated "Broader Impacts" section discussing misuse potential and bias — the same self-assessment discipline this series' <a href="agi-researcher-foundations-self-assessment-deep-dive.html">Self-Assessment Deep Dive</a> article covers, now applied at a scale where the stakes of getting it wrong were considerably higher than for GPT-1 or GPT-2.</p>
 
     <div class="lens-row">
       <a href="agi-researcher-foundations-self-assessment-deep-dive.html" class="lens-chip researcher">🔬 Researcher lens: Self-Assessment Deep Dive</a>
     </div>
 
     <div class="part-divider">
-      <span class="part-divider-badge">Part 8 — The Staged Release</span>
+      <span class="part-divider-badge">Part 8 — The Closed API Release</span>
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="release" class="agi-section">AI's First Major Staged-Release Debate</h2>
-    <p>This is where GPT-2's story diverges sharply from <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s immediate full release. In February 2019, OpenAI announced GPT-2 but explicitly withheld the full 1.5B-parameter model, citing concerns about malicious uses like generating convincing fake news or spam at scale — one of the field's first prominent public debates about staged capability release. Rather than release everything at once, OpenAI rolled the model out incrementally over roughly nine months, publishing progressively larger versions as the company studied real-world usage and misuse risk.</p>
+    <h2 id="release" class="agi-section">No Open Weights This Time</h2>
+    <p>GPT-3's release marks the sharpest break yet from <a href="gpt-1-how-it-was-built.html">GPT-1</a>'s full open release and <a href="gpt-2-how-it-was-built.html">GPT-2</a>'s eventually-full staged release: OpenAI never publicly released GPT-3's weights at all. Instead, access was provided exclusively through a commercial API, first opened as a private beta in June 2020. This was as much a business-model decision as a safety one — GPT-3 became the foundation of OpenAI's first real commercial product line — and it permanently changed the default expectation for how a frontier lab distributes its most capable model, extending the release-norms trajectory this series' <a href="gpt-2-how-it-was-built.html">GPT-2</a> article traces from "staged but eventually open" to "API-only, indefinitely."</p>
 
-    <div class="release-timeline">
-      <div class="release-step"><div class="release-date">Feb 2019</div><div class="release-body">GPT-2 announced; 117M-parameter model released; 1.5B model explicitly withheld</div></div>
-      <div class="release-step"><div class="release-date">May 2019</div><div class="release-body">345M-parameter model released</div></div>
-      <div class="release-step"><div class="release-date">Aug 2019</div><div class="release-body">762M-parameter model released</div></div>
-      <div class="release-step"><div class="release-date">Nov 2019</div><div class="release-body">Full 1.5B-parameter model released</div></div>
+    <div class="break-box">
+      <span class="box-label">The Release Trajectory Across Three Papers</span>
+      GPT-1: full code + weights, immediately. GPT-2: staged rollout, full weights after 9 months. GPT-3: API access only, no public weights, ever.
     </div>
-
-    <p>This staged approach is the direct historical ancestor of the release-norms tightening this series' <a href="gpt-1-how-it-was-built.html">GPT-1</a> article's "What Changed Since" box gestures toward, and it connects concretely to this series' <a href="agi-researcher-foundations-alignment.html">Alignment</a> article — GPT-2 is arguably the moment a frontier lab first treated "how much capability to hand out, and how fast" as a real research and policy question in its own right, rather than an afterthought to a paper's publication.</p>
 
     <div class="lens-row">
       <a href="agi-researcher-foundations-alignment.html" class="lens-chip researcher">🔬 Researcher lens: Alignment</a>
@@ -447,56 +420,57 @@
       <span class="part-divider-line"></span>
     </div>
 
-    <h2 id="legacy" class="agi-section">From Zero-Shot to Few-Shot</h2>
-    <p>GPT-2's zero-shot results were promising but clearly inconsistent across tasks. GPT-3 (2020) would take the next logical step: instead of relying purely on zero-shot prompting, show the model a handful of examples directly in the prompt itself — few-shot, in-context learning — without any weight updates at all. That idea, and the scale required to make it work reliably, is exactly where this series' next Model Case Study picks up.</p>
+    <h2 id="legacy" class="agi-section">The Base Model That Became ChatGPT's Ancestor</h2>
+    <p>GPT-3 itself was a raw, pretrained base model — capable but not yet tuned to reliably follow instructions or converse naturally. That gap was closed by InstructGPT (2022), which applied reinforcement learning from human feedback (RLHF) on top of a GPT-3-family model to make it dramatically better at following instructions and less prone to unwanted outputs — a direct real-world application of this series' <a href="agi-researcher-foundations-rl-foundations.html">Reinforcement Learning Foundations</a> article. That RLHF-tuned lineage is the direct ancestor of ChatGPT, making GPT-3 the pivotal base model on which the entire modern conversational-AI product category was eventually built.</p>
 
     <div class="unlock-box">
       <span class="box-label">What Carried Forward</span>
-      Prompt-based task specification · scaling model size as a lever for zero-shot capability · staged, risk-aware release as a real practice, not an afterthought
+      In-context, few-shot learning as a first-class capability · scaling laws as a predictive research tool · API-only access as the new default for frontier models · RLHF as the bridge from raw capability to a usable product
     </div>
 
     <h2 id="selfcheck" class="agi-section">Readiness Checklist</h2>
     <div class="checklist">
-      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you explain the difference between GPT-1's fine-tuning approach and GPT-2's zero-shot approach in one sentence?</div></div>
-      <div class="check-row"><span class="check-num">2</span><div class="check-text">Can you explain why Reddit karma was used as a data-quality proxy, and what tradeoff that represents?</div></div>
-      <div class="check-row"><span class="check-num">3</span><div class="check-text">Could you summarize both sides of the GPT-2 staged-release debate fairly, without picking a winner?</div></div>
-      <div class="check-row"><span class="check-num">4</span><div class="check-text">Can you name one thing GPT-2's paper is honest about not being good at?</div></div>
+      <div class="check-row"><span class="check-num">1</span><div class="check-text">Can you explain the difference between zero-shot, one-shot, and few-shot in your own words?</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text">Can you explain why weighted data sampling matters more than raw dataset size?</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text">Could you explain the three-paper release trajectory (GPT-1 → GPT-2 → GPT-3) and why it mattered?</div></div>
+      <div class="check-row"><span class="check-num">4</span><div class="check-text">Can you name what specifically closed the gap between GPT-3 and a model like ChatGPT?</div></div>
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ What's Missing or Uncertain</h2>
     <div class="caveat-box">
-      <strong>The GPT-2 paper does not disclose a specific training-compute figure the way the GPT-1 paper does.</strong> This article does not invent one. Similarly, internal deliberation behind the staged-release decision — who argued for what, how the timeline was actually set — is not publicly documented beyond OpenAI's public blog posts at the time; this article describes the public timeline and stated rationale, not the internal process behind it.
+      <strong>Internal decisions behind the API-only release strategy — who argued for what, how commercial and safety considerations were actually weighed against each other — are not publicly documented beyond OpenAI's own public statements.</strong> This article describes the verifiable outcome (no public weights, API-only access from June 2020) and the stated rationale, not an internal decision-making process this article cannot access.
     </div>
 
     <h2 id="next" class="agi-section">Where This Case Study Goes Next</h2>
-    <p><a href="gpt-3-how-it-was-built.html">GPT-3</a> takes GPT-2's zero-shot bet and adds one more lever: few-shot, in-context learning at a scale roughly 100x larger than GPT-2's largest model — the point where "prompting" as most people understand it today actually became reliable enough to matter.</p>
+    <p>GPT-4 moves from a raw base model to a genuinely productized, multimodal system with a far more involved safety and evaluation process before release — the point where this case-study series' running theme of tightening release norms and growing team size becomes most visible.</p>
 
     <h2 id="references" class="agi-section">🔗 Reference Links</h2>
     <div class="ref-box">
       <div class="ref-box-title">🔗 Reference Links</div>
       <ul class="ref-list">
-        <li><a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">Radford, Wu, Child, Luan, Amodei, Sutskever — "Language Models are Unsupervised Multitask Learners" (OpenAI, 2019)</a></li>
-        <li><a href="https://openai.com/index/better-language-models/" target="_blank" rel="noopener">OpenAI — "Better Language Models and Their Implications" (Feb 2019 announcement and staged-release rationale)</a></li>
+        <li><a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">Brown et al. — "Language Models are Few-Shot Learners" (NeurIPS 2020, arXiv:2005.14165)</a></li>
+        <li><a href="https://arxiv.org/abs/1904.10509" target="_blank" rel="noopener">Child et al. — "Generating Long Sequences with Sparse Transformers" (2019)</a></li>
+        <li><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener">Ouyang et al. — "Training Language Models to Follow Instructions with Human Feedback" (InstructGPT, 2022)</a></li>
+        <li><a href="gpt-2-how-it-was-built.html">This site — Model Case Study: GPT-2</a></li>
         <li><a href="gpt-1-how-it-was-built.html">This site — Model Case Study: GPT-1</a></li>
-        <li><a href="agi-researcher-foundations-alignment.html">This site — AGI Researcher Foundations: Alignment</a></li>
+        <li><a href="agi-researcher-foundations-rl-foundations.html">This site — AGI Researcher Foundations: Reinforcement Learning Foundations</a></li>
         <li><a href="frontier-lab-engineering-compute-economics.html">This site — Frontier Lab Engineering: Compute Economics</a></li>
-        <li><a href="frontier-lab-engineering-production-training-code.html">This site — Frontier Lab Engineering: Production Training Code</a></li>
       </ul>
     </div>
 
     <!-- VIDEOS -->
     <h2 id="videos" class="agi-section">🎥 Recommended Videos</h2>
     <div class="video-grid">
-      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context for the architecture behind GPT-2</div></a>
-      <a class="video-card" href="https://www.youtube.com/watch?v=TQQlZhbC5ps" target="_blank" rel="noopener"><div class="video-title">Attention Is All You Need — Paper Explained</div><div class="video-meta">Yannic Kilcher — the Transformer architecture both GPT-1 and GPT-2 build on</div></a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><div class="video-title">But What Is a Neural Network?</div><div class="video-meta">3Blue1Brown — foundational context for the architecture behind GPT-3</div></a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=TQQlZhbC5ps" target="_blank" rel="noopener"><div class="video-title">Attention Is All You Need — Paper Explained</div><div class="video-meta">Yannic Kilcher — the Transformer architecture underlying every GPT model</div></a>
     </div>
 
     <!-- VERDICT -->
-    <h2 id="verdict" class="agi-section">🧭 Closing — Scale Changed the Question, Not Just the Answer</h2>
+    <h2 id="verdict" class="agi-section">🧭 Closing — Scale Made a New Capability Appear</h2>
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        GPT-2 didn't just make GPT-1 bigger — it changed what the team was even trying to prove, from "can one model be fine-tuned across many tasks" to "can one model perform many tasks with no fine-tuning at all." <strong>The staged release that followed was just as significant as the technical result</strong>: it marked the moment a frontier lab first treated capability release itself as a genuine research and policy decision, not a formality after the paper was done — a norm every major model release since has had to reckon with in some form.
+        GPT-3 didn't introduce a new architecture or a new training objective — it took the same decoder-only, next-token-prediction recipe from <a href="gpt-1-how-it-was-built.html" style="color:#c4b5fd;">GPT-1</a> and <a href="gpt-2-how-it-was-built.html" style="color:#c4b5fd;">GPT-2</a> and scaled it until a genuinely new capability, in-context few-shot learning, became reliable enough to build products on. <strong>The 31-person team and the API-only release were just as much a part of "how GPT-3 was built" as the 175 billion parameters</strong> — a reminder that a frontier model's story is never only a technical one, even when the technical result is the part everyone remembers.
       </div>
     </div>
 

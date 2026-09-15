@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "gpt-3-how-it-was-built",
+      "title": "GPT-3: How the Third GPT Was Actually Built",
+      "excerpt": "Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person credited team, alternating dense/sparse attention, a filtered and weighted Common Crawl + WebText2 + Books + Wikipedia data mixture, a disclosed 3.14×10²³ FLOP training run, emergent few-shot arithmetic, and the field's first fully closed, API-only frontier model release.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-15",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧠",
+      "featured": true
+    },
+    {
       "slug": "gpt-2-how-it-was-built",
       "title": "GPT-2: How the Second GPT Was Actually Built",
       "excerpt": "Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team, the WebText dataset scraped via Reddit karma as a quality proxy, four model sizes up to 1.5 billion parameters, honestly mixed zero-shot evaluation results, and the field's first major staged-release debate — a nine-month rollout that made capability release itself a real research question.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🌐",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gpt-1-how-it-was-built",
