@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "gemini-lineage-consolidated-comparison",
+      "title": "The Gemini Lineage: A Consolidated Comparison",
+      "excerpt": "A consolidated synthesis of the entire Gemini lineage since the DeepMind–Google Brain merger — Gemini 1.0's native multimodality, 1.5's confirmed Mixture-of-Experts architecture and million-token context, 2.0's \"agentic era\" pivot, 2.5's built-in reasoning, and the 3.x frontier — alongside the Frontier Safety Framework's Critical Capability Levels (none reached yet, per Google's own report), closing with a first-ever direct three-way comparison across OpenAI, Anthropic, and Google DeepMind's disclosure philosophies and safety-framework activation histories.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🗂️",
+      "featured": true
+    },
+    {
       "slug": "deepmind-founding-merger-how-it-was-built",
       "title": "Google DeepMind: How the Lab Behind Gemini Was Actually Formed",
       "excerpt": "Google DeepMind Case Study, Article 1 — the April 20, 2023 merger of DeepMind and Google Brain into a single unit, triggered directly by Google's internal \"code red\" response to ChatGPT: Demis Hassabis and Jeff Dean's combined leadership structure, the two labs' separate pre-merger lineages (AlphaGo and AlphaFold vs. LaMDA and PaLM), pooled compute as the concrete structural change, and the \"bold and responsible development of general AI\" framing that preceded the later Frontier Safety Framework by over a year.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🤝",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "claude-lineage-consolidated-comparison",
