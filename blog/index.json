@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "claude-lineage-consolidated-comparison",
+      "title": "The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1",
+      "excerpt": "A side-by-side synthesis of the entire Anthropic model lineage — Claude 1 and 2's full case studies plus bridge-depth coverage of Claude 2.1, the Claude 3 family, Claude 3.5, Claude 3.7's hybrid reasoning, the Claude 4 family's first-ever ASL-3 activation, the 4.x point releases, and the new Mythos-class Fable/Mythos tier with its twin-model safety-redirect architecture — closing with a direct comparison to the GPT lineage: two labs, two opposite disclosure philosophies, arriving at strikingly similar safety milestones from opposite directions.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🗂️",
+      "featured": true
+    },
+    {
       "slug": "claude-2-how-it-was-built",
       "title": "Claude 2: How Anthropic's First Public Product Was Actually Built",
       "excerpt": "Anthropic Model Case Study, Article 2 — the July 11, 2023 release that gave Anthropic its first direct consumer product: the claude.ai public beta (US and UK only at launch), real measured gains (76.5% on the Bar exam, 90th+ percentile GRE reading/writing, 71.2% on Codex HumanEval), a 100K-token shipped context window trained up to 200K, and an honest model card documenting remaining flaws — all shipped two releases before Anthropic's Responsible Scaling Policy even existed.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "💬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "claude-1-how-it-was-built",
