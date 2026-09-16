@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "meta-llama-lineage-consolidated-comparison",
+      "title": "The Meta AI (Llama) Lineage: A Consolidated Comparison",
+      "excerpt": "A sixth lab, and the first defined by a distribution strategy rather than a single model: Meta's four-generation open-weight bet from Llama 1's leak through Llama 3.1's 405B model, followed by 2025's reckoning — the LMArena benchmark-gaming scandal, Behemoth's stalled release, the Kadrey v. Meta copyright case over LibGen training data, Meta's refusal to sign the EU AI Act's Code of Practice, and the August 2025 reorganization into Meta Superintelligence Labs that pushed Yann LeCun out the door — closing with the first six-way comparison across every lab this site has documented.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🦙",
+      "featured": true
+    },
+    {
       "slug": "deepseek-lineage-consolidated-comparison",
       "title": "The DeepSeek Lineage: A Consolidated Comparison",
       "excerpt": "A fifth lab, and the one whose release moved markets: Liang Wenfeng's High-Flyer-funded lab, DeepSeek-V3's genuinely disclosed Mixture-of-Experts and Multi-head Latent Attention architecture, R1's pure-RL reasoning breakthrough via GRPO and its distillation into open Qwen/Llama-based models, three disputed training-cost figures ($5.6M, ~$1.6B, $294K) presented side by side rather than resolved, the $600B single-day Nvidia shock dubbed \"AI's Sputnik Moment,\" China's state-mandated content-restriction framework treated as categorically distinct from voluntary safety frameworks, and the resulting Italy and Australia government bans — closing with the first five-way comparison across OpenAI, Anthropic, Google DeepMind, xAI, and DeepSeek.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🐋",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "grok-lineage-consolidated-comparison",
