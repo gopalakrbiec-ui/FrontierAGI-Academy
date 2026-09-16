@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "claude-1-how-it-was-built",
+      "title": "Claude 1: How Anthropic's First Model Was Actually Built",
+      "excerpt": "Anthropic Model Case Study, Article 1 — the founding bet behind Claude: eight ex-OpenAI researchers (including GPT-3 lead author Tom Brown) leaving over a safety-pace disagreement, the Constitutional AI technique for reducing human exposure to harmful training content, closed architecture from the very first release (never opened, unlike GPT's early transparency), and an API-first, partner-distributed launch on March 14, 2023 — the same week as GPT-4.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "65 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🏛️",
+      "featured": true
+    },
+    {
       "slug": "gpt-lineage-consolidated-comparison",
       "title": "The GPT Lineage: A Consolidated Comparison, GPT-1 to GPT-6 Astra",
       "excerpt": "A side-by-side synthesis of all six Model Case Studies plus the eight interim releases between them (GPT-3.5, GPT-4 Turbo, GPT-4o, o1, GPT-4.5, and the GPT-5.1 through 5.6 point releases) — one master table across seven dimensions (research trigger, data, architecture, learning technique & scaffolding, training technique, compute, influence on next generation), revealing three trend lines no single case study could show alone: shrinking data transparency, scaffolding doing more of the real work, and compute disclosure moving inversely to compute scale.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🗂️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gpt-6-how-it-was-built",
