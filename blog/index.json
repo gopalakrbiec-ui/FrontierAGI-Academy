@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "deepmind-founding-merger-how-it-was-built",
+      "title": "Google DeepMind: How the Lab Behind Gemini Was Actually Formed",
+      "excerpt": "Google DeepMind Case Study, Article 1 — the April 20, 2023 merger of DeepMind and Google Brain into a single unit, triggered directly by Google's internal \"code red\" response to ChatGPT: Demis Hassabis and Jeff Dean's combined leadership structure, the two labs' separate pre-merger lineages (AlphaGo and AlphaFold vs. LaMDA and PaLM), pooled compute as the concrete structural change, and the \"bold and responsible development of general AI\" framing that preceded the later Frontier Safety Framework by over a year.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "60 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🤝",
+      "featured": true
+    },
+    {
       "slug": "claude-lineage-consolidated-comparison",
       "title": "The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1",
       "excerpt": "A side-by-side synthesis of the entire Anthropic model lineage — Claude 1 and 2's full case studies plus bridge-depth coverage of Claude 2.1, the Claude 3 family, Claude 3.5, Claude 3.7's hybrid reasoning, the Claude 4 family's first-ever ASL-3 activation, the 4.x point releases, and the new Mythos-class Fable/Mythos tier with its twin-model safety-redirect architecture — closing with a direct comparison to the GPT lineage: two labs, two opposite disclosure philosophies, arriving at strikingly similar safety milestones from opposite directions.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🗂️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "claude-2-how-it-was-built",
