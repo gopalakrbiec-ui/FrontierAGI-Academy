@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "deepseek-lineage-consolidated-comparison",
+      "title": "The DeepSeek Lineage: A Consolidated Comparison",
+      "excerpt": "A fifth lab, and the one whose release moved markets: Liang Wenfeng's High-Flyer-funded lab, DeepSeek-V3's genuinely disclosed Mixture-of-Experts and Multi-head Latent Attention architecture, R1's pure-RL reasoning breakthrough via GRPO and its distillation into open Qwen/Llama-based models, three disputed training-cost figures ($5.6M, ~$1.6B, $294K) presented side by side rather than resolved, the $600B single-day Nvidia shock dubbed \"AI's Sputnik Moment,\" China's state-mandated content-restriction framework treated as categorically distinct from voluntary safety frameworks, and the resulting Italy and Australia government bans — closing with the first five-way comparison across OpenAI, Anthropic, Google DeepMind, xAI, and DeepSeek.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-16",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🐋",
+      "featured": true
+    },
+    {
       "slug": "grok-lineage-consolidated-comparison",
       "title": "The Grok Lineage: A Consolidated Comparison",
       "excerpt": "A fourth lab, a genuinely different story: xAI's founding-to-launch speed (8 months), the Colossus supercomputer built in 122 days, Grok-1's rare return to GPT-1-style open weights, Grok-3/4's real benchmark wins and a public OpenAI benchmark dispute, the July 2025 \"MechaHitler\" incident — a real, live 16-hour public safety failure unlike any other lab's disclosed findings — a Risk Management Framework outside researchers called inadequate, and the February 2026 absorption into SpaceX, closing with the first four-way comparison across OpenAI, Anthropic, Google DeepMind, and xAI.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🚀",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gemini-lineage-consolidated-comparison",
