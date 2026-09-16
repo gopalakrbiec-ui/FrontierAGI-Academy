@@ -172,6 +172,35 @@
     .home-practicum-links a.primary:hover { background: #b45309; }
     @media (max-width: 600px) { .home-practicum-spotlight { padding: 24px; } }
 
+    .home-lineage-spotlight {
+      background: linear-gradient(120deg, #1a1035 0%, #2a1810 35%, #0d2b4e 65%, #1a1a1a 100%);
+      border-radius: 18px; padding: 32px; color: #fff; margin-bottom: 32px; position: relative; overflow: hidden;
+    }
+    .home-lineage-spotlight::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 10% 20%, rgba(124,58,237,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 40% 80%, rgba(234,88,12,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 70% 20%, rgba(66,133,244,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 95% 80%, rgba(220,38,38,0.2) 0%, transparent 60%);
+    }
+    .home-lineage-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      background: rgba(255,255,255,0.14); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; position: relative;
+    }
+    .home-lineage-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; position: relative; }
+    .home-lineage-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 20px; max-width: 720px; position: relative; }
+    .home-lineage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; position: relative; }
+    .home-lineage-card {
+      display: block; text-decoration: none; color: #fff; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 12px; padding: 14px 16px; transition: all 0.2s;
+    }
+    .home-lineage-card:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+    .home-lineage-card-emoji { font-size: 1.3rem; margin-bottom: 6px; display: block; }
+    .home-lineage-card-title { font-size: 0.82rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .home-lineage-card-meta { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
+    @media (max-width: 600px) { .home-lineage-spotlight { padding: 24px; } }
+
     .home-explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
     .home-explore-card {
       border-radius: 16px; padding: 30px; color: #fff; text-decoration: none; display: block;
@@ -399,6 +428,35 @@
       <h2>The Research That Took Weeks, Not Minutes</h2>
       <p>Long-form, fully sourced investigations into the labs and ideas shaping the race to AGI.</p>
     </div>
+
+    <div class="home-lineage-spotlight">
+      <span class="home-lineage-tag">✅ Complete · 4 Labs, Fully Cross-Referenced</span>
+      <div class="home-lineage-title">The Model Lineage Series</div>
+      <div class="home-lineage-desc">Four consolidated comparisons tracing every major model from OpenAI, Anthropic, Google DeepMind, and xAI — architecture, data, safety frameworks, and disclosure philosophy, each lineage cross-linked to the other three for direct side-by-side reading.</div>
+      <div class="home-lineage-grid">
+        <a href="blog/gpt-lineage-consolidated-comparison.html" class="home-lineage-card">
+          <span class="home-lineage-card-emoji">🗂️</span>
+          <div class="home-lineage-card-title">The GPT Lineage</div>
+          <div class="home-lineage-card-meta">OpenAI · GPT-1 → GPT-6 Astra</div>
+        </a>
+        <a href="blog/claude-lineage-consolidated-comparison.html" class="home-lineage-card">
+          <span class="home-lineage-card-emoji">🗂️</span>
+          <div class="home-lineage-card-title">The Claude Lineage</div>
+          <div class="home-lineage-card-meta">Anthropic · Claude 1 → Fable 5.1</div>
+        </a>
+        <a href="blog/gemini-lineage-consolidated-comparison.html" class="home-lineage-card">
+          <span class="home-lineage-card-emoji">🗂️</span>
+          <div class="home-lineage-card-title">The Gemini Lineage</div>
+          <div class="home-lineage-card-meta">Google DeepMind · Merger → Gemini 3.x</div>
+        </a>
+        <a href="blog/grok-lineage-consolidated-comparison.html" class="home-lineage-card">
+          <span class="home-lineage-card-emoji">🚀</span>
+          <div class="home-lineage-card-title">The Grok Lineage</div>
+          <div class="home-lineage-card-meta">xAI · Founding → Grok 4.1</div>
+        </a>
+      </div>
+    </div>
+
     <div class="home-card-grid">
       <a href="blog/ssi-complete-investigation.html" class="home-mini-card">
         <span class="home-mini-emoji">🕵️</span>
