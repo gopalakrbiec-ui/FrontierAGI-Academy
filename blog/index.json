@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-ai-benchmark-landscape",
+      "title": "The Frontier AI Benchmark Landscape: How Every Capability Gets Measured",
+      "excerpt": "A reference article mapping the fragmented world of AI benchmarking: how MMLU became saturated and what replaced it, the FrontierMath–OpenAI access controversy, the SWE-bench Verified contamination concern, the Arena (formerly LMArena) vote-rigging vulnerability, METR's long-horizon autonomy research and its widely-cited task-doubling trend, and why safety evaluation still has no shared cross-lab leaderboard the way capability benchmarks do — covering reasoning, math, coding, agentic tool-use, computer use, long context, multimodal, preference, safety, and multilingual categories in one place.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-17",
+      "readTime": "55 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "📊",
+      "featured": true
+    },
+    {
       "slug": "mistral-lineage-consolidated-comparison",
       "title": "The Mistral AI Lineage: A Consolidated Comparison",
       "excerpt": "A seventh lab, and the first case study centered on a country as much as a company: Mistral's rise from a reputation-only $113M seed round in Paris to a ~$24B valuation after its September 2026 Samsung-led round — Mistral 7B's genuinely open Apache 2.0 debut, Mixtral's first prominent open-weight Mixture-of-Experts model, the controversial pivot to closed flagships alongside a Microsoft investment, a licensing philosophy that reverses direction more than once, the ASML strategic stake, and the EU AI Act contrast with Meta's refusal to sign — closing with the first seven-way comparison across every lab this site has documented.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🌬️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "meta-llama-lineage-consolidated-comparison",
