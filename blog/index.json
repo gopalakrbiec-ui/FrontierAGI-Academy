@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "stanford-ai-index-2026-research-directions",
+      "title": "What Stanford's 2026 AI Index Says About Where AI Research Is Heading",
+      "excerpt": "A companion piece pulling research-direction findings from Stanford HAI's 2026 AI Index Report: the new standalone Science and Medicine chapters, a reported transparency regression at OpenAI, Anthropic, and Google, the US-China split between frontier model count and publication/patent volume, a reported 89% drop in AI-talent migration to the US since 2017, the academia-industry divide where industry builds 90%+ of frontier models but academia still produces 68%+ of AI publications, and named AI-accelerated science results in protein modeling, genomics, weather forecasting, and astronomy. Sourced primarily through secondary reporting due to a direct network access limitation, flagged explicitly throughout.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-18",
+      "readTime": "40 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "📈",
+      "featured": true
+    },
+    {
       "slug": "agi-benchmarks-measuring-the-undefined",
       "title": "AGI Benchmarks: How the Field Tries to Measure the Thing It Can't Yet Define",
       "excerpt": "A sequel to the Benchmark Landscape article, focused specifically on AGI-measurement attempts: the four competing lab definitions of AGI itself (OpenAI's economic-value framing, DeepMind's Levels of AGI, Anthropic's deliberate avoidance of the term, and a 33-author 2025 cognitive-science definition), Humanity's Last Exam, the ARC-AGI family through its March 2026 shift to interactive game environments where frontier models scored under 1%, METR's time-horizon research reframed as a duration-based AGI proxy, RE-Bench and MLE-bench's AI-doing-AI-research results, and the academic Goodhart's-Law literature critiquing the entire benchmarking ecosystem.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧭",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-ai-benchmark-landscape",
