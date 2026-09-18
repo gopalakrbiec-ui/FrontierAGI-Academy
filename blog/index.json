@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agi-benchmarks-measuring-the-undefined",
+      "title": "AGI Benchmarks: How the Field Tries to Measure the Thing It Can't Yet Define",
+      "excerpt": "A sequel to the Benchmark Landscape article, focused specifically on AGI-measurement attempts: the four competing lab definitions of AGI itself (OpenAI's economic-value framing, DeepMind's Levels of AGI, Anthropic's deliberate avoidance of the term, and a 33-author 2025 cognitive-science definition), Humanity's Last Exam, the ARC-AGI family through its March 2026 shift to interactive game environments where frontier models scored under 1%, METR's time-horizon research reframed as a duration-based AGI proxy, RE-Bench and MLE-bench's AI-doing-AI-research results, and the academic Goodhart's-Law literature critiquing the entire benchmarking ecosystem.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-18",
+      "readTime": "55 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧭",
+      "featured": true
+    },
+    {
       "slug": "frontier-ai-benchmark-landscape",
       "title": "The Frontier AI Benchmark Landscape: How Every Capability Gets Measured",
       "excerpt": "A reference article mapping the fragmented world of AI benchmarking: how MMLU became saturated and what replaced it, the FrontierMath–OpenAI access controversy, the SWE-bench Verified contamination concern, the Arena (formerly LMArena) vote-rigging vulnerability, METR's long-horizon autonomy research and its widely-cited task-doubling trend, and why safety evaluation still has no shared cross-lab leaderboard the way capability benchmarks do — covering reasoning, math, coding, agentic tool-use, computer use, long context, multimodal, preference, safety, and multilingual categories in one place.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "📊",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "mistral-lineage-consolidated-comparison",
