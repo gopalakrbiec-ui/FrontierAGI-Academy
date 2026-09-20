@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "qwen-lineage-consolidated-comparison",
+      "title": "The Qwen Lineage: A Consolidated Comparison",
+      "excerpt": "An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model in August 2023 to an eight-size family spanning 0.5B to 480B parameters, backed by a $50B+ cloud infrastructure pledge. Covers Qwen3's abandoned hybrid-reasoning toggle (split apart within three months of launch), a Meta-style MAU-gated license for flagship models despite Apache 2.0 openness at smaller sizes, documented political-content refusal behavior consistent with China's regulatory environment, contested Hugging Face download-count claims, and the UAE's Qwen-derived K2 Think as a genuine sovereign-AI deployment — closing with the first eight-way comparison across every lab this site has documented.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-20",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🐉",
+      "featured": true
+    },
+    {
       "slug": "ai-researcher-atlas",
       "title": "The AI Researcher Atlas: 50 People Who Built the Field",
       "excerpt": "A tiered survey of roughly fifty ML/DL/AI/AGI researchers behind the labs this site covers — foundational figures (Hinton, Bengio, LeCun, Sutskever, Hassabis, Legg, the Amodeis, Mensch, Fei-Fei Li, Andrew Ng), the Transformer paper's eight authors and where each ended up, the architects of scaling laws, RLHF, and GANs, safety and alignment researchers, and a wave of interpretability, robotics, and international specialists. Documents an unusually volatile 2025-2026 for AI talent, with every recent employer claim confidence-flagged as Confirmed or Unverified rather than stated as settled fact.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧑‍🔬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "stanford-ai-index-2026-research-directions",
