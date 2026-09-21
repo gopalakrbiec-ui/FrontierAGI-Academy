@@ -201,6 +201,35 @@
     .home-lineage-card-meta { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
     @media (max-width: 600px) { .home-lineage-spotlight { padding: 24px; } }
 
+    .home-rsi-spotlight {
+      background: linear-gradient(120deg, #051512 0%, #0a2e24 40%, #1a1033 75%, #030a08 100%);
+      border-radius: 18px; padding: 32px; color: #fff; margin-bottom: 32px; position: relative; overflow: hidden;
+    }
+    .home-rsi-spotlight::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(16,185,129,0.26) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 25%, rgba(139,92,246,0.24) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(236,72,153,0.14) 0%, transparent 60%);
+    }
+    .home-rsi-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      background: rgba(16,185,129,0.28); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; position: relative;
+    }
+    .home-rsi-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; position: relative; }
+    .home-rsi-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 20px; max-width: 720px; position: relative; }
+    .home-rsi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; position: relative; }
+    .home-rsi-card {
+      display: block; text-decoration: none; color: #fff; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 12px; padding: 14px 16px; transition: all 0.2s;
+    }
+    .home-rsi-card:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+    .home-rsi-card.is-upcoming { opacity: 0.55; }
+    .home-rsi-card-emoji { font-size: 1.3rem; margin-bottom: 6px; display: block; }
+    .home-rsi-card-title { font-size: 0.82rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .home-rsi-card-meta { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
+    @media (max-width: 600px) { .home-rsi-spotlight { padding: 24px; } }
+
     .home-explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
     .home-explore-card {
       border-radius: 16px; padding: 30px; color: #fff; text-decoration: none; display: block;
@@ -368,6 +397,54 @@
   <div class="home-stat"><div class="home-stat-num">8</div><div class="home-stat-lbl">Frontier labs tracked</div></div>
   <div class="home-stat"><div class="home-stat-num">3</div><div class="home-stat-lbl">AGI startup lanes mapped</div></div>
   <div class="home-stat"><div class="home-stat-num">2026</div><div class="home-stat-lbl">Continuously updated</div></div>
+</div>
+
+<!-- ═══════════════════════ RSI SERIES SPOTLIGHT ═══════════════════════ -->
+<div class="home-section">
+  <div class="container">
+    <div class="home-rsi-spotlight">
+      <span class="home-rsi-tag">🔁 In Progress · 2 of 7 Parts Published</span>
+      <div class="home-rsi-title">The Recursive Self-Improvement Series</div>
+      <div class="home-rsi-desc">A seven-part deep dive into whether AI can meaningfully accelerate the process that builds better AI — from the 1965 origin of the "intelligence explosion" concept through the real, independently verified systems (Dream-RSI, ModularRSI, ScienceBuddy, AlphaEvolve) attacking pieces of the problem today, with every claim checked against primary sources before publication.</div>
+      <div class="home-rsi-grid">
+        <a href="blog/recursive-self-improvement-primer.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🔁</span>
+          <div class="home-rsi-card-title">Part 1 — The Primer</div>
+          <div class="home-rsi-card-meta">Origin, definitions, safety-framework convergence</div>
+        </a>
+        <a href="blog/rsi-ai-automating-ai-research.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🧪</span>
+          <div class="home-rsi-card-title">Part 4 — AI Automating AI Research</div>
+          <div class="home-rsi-card-meta">Dream-RSI, ModularRSI, ScienceBuddy &amp; more</div>
+        </a>
+        <div class="home-rsi-card is-upcoming">
+          <span class="home-rsi-card-emoji">🎯</span>
+          <div class="home-rsi-card-title">Part 2 — Objective Specification</div>
+          <div class="home-rsi-card-meta">Coming soon</div>
+        </div>
+        <div class="home-rsi-card is-upcoming">
+          <span class="home-rsi-card-emoji">🏛️</span>
+          <div class="home-rsi-card-title">Part 3 — Distillation &amp; Centralization</div>
+          <div class="home-rsi-card-meta">Coming soon</div>
+        </div>
+        <div class="home-rsi-card is-upcoming">
+          <span class="home-rsi-card-emoji">📊</span>
+          <div class="home-rsi-card-title">Part 5 — Data vs. Reinforcement Learning</div>
+          <div class="home-rsi-card-meta">Coming soon</div>
+        </div>
+        <div class="home-rsi-card is-upcoming">
+          <span class="home-rsi-card-emoji">🤖</span>
+          <div class="home-rsi-card-title">Part 6 — The Sim-to-Real Gap</div>
+          <div class="home-rsi-card-meta">Coming soon</div>
+        </div>
+        <div class="home-rsi-card is-upcoming">
+          <span class="home-rsi-card-emoji">⏳</span>
+          <div class="home-rsi-card-title">Part 7 — Autonomy Timelines</div>
+          <div class="home-rsi-card-meta">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════ LATEST SIGNAL ═══════════════════════ -->
