@@ -120,6 +120,27 @@
       font-style: normal; font-size: 0.62rem; font-weight: 800; color: #4338ca;
       background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 999px; white-space: nowrap;
     }
+    .brain-formulas { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+    .brain-formula {
+      position: absolute; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.72rem;
+      color: #67e8f9; opacity: 0; white-space: nowrap; text-shadow: 0 0 8px rgba(103,232,249,0.6);
+      animation: brainFormulaDrift 9s ease-in-out infinite;
+    }
+    @keyframes brainFormulaDrift {
+      0%   { opacity: 0; transform: translateY(14px); }
+      12%  { opacity: 0.4; }
+      50%  { opacity: 0.28; transform: translateY(-6px); }
+      88%  { opacity: 0.35; }
+      100% { opacity: 0; transform: translateY(-22px); }
+    }
+    .brain-cluster-labels { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+    .brain-cluster-label {
+      position: absolute; transform: translate(-50%, -50%); text-align: center;
+      font-size: 0.62rem; font-weight: 800; white-space: nowrap; letter-spacing: 0.02em;
+      text-shadow: 0 0 8px currentColor; opacity: 0; transition: opacity 1.2s ease;
+    }
+    .brain-cluster-label.is-visible { opacity: 0.9; }
+    .brain-cluster-label .pct { display: block; font-size: 0.58rem; font-weight: 700; opacity: 0.75; }
     @keyframes brainIconFly {
       0%   { transform: translate(calc(-50% + var(--ix)), calc(-50% + var(--iy))); opacity: 0; }
       12%  { opacity: 1; }
@@ -522,6 +543,8 @@
           <span class="brain-input-icon" style="--ix:260px;--iy:40px;" data-emoji="🎬">🎬<i>Video</i></span>
           <span class="brain-input-icon" style="--ix:0px;--iy:180px;" data-emoji="🌐">🌐<i>Real-World Sim</i></span>
         </div>
+        <div class="brain-formulas" id="brainFormulas"></div>
+        <div class="brain-cluster-labels" id="brainClusterLabels"></div>
       </div>
       <div class="brain-legend" id="brainLegend">
         <div class="brain-legend-list">
@@ -1614,9 +1637,10 @@
 <script src="assets/vendor/three.min.js"></script>
 <script src="app.js"></script>
 <script>
-  /* ── Artificial Brain Showcase: procedural point-cloud brain that forms
-     from a scattered "signal" cloud, then auto-rotates (or drags) through
-     360°, highlighting one of 6 capability sectors as it faces the camera. ── */
+  /* ── Artificial Brain Showcase: a glowing "flowing strand" brain built
+     from curved light-trail lines (not a dot/wireframe mesh), auto-rotating
+     or drag-rotatable through 360°, with 6 capability-labeled neuron
+     clusters orbiting it and floating ML formulas drifting in the canvas. ── */
   (function () {
     const wrap = document.getElementById('brainCanvasWrap');
     const canvas = document.getElementById('brainCanvas');
@@ -1638,16 +1662,14 @@
     ];
     const N_SECTORS = SECTORS.length;
     const TAU = Math.PI * 2;
-
     function norm(a) { a = a % TAU; if (a < 0) a += TAU; return a; }
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isSmall = window.innerWidth < 700;
-    const PARTICLE_COUNT = isSmall ? 1400 : 2600;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 0, 7.2);
+    camera.position.set(0, 0, 7.6);
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -1658,28 +1680,22 @@
     const spinGroup = new THREE.Group();
     tiltGroup.add(spinGroup);
 
-    // Shared parametric surfaces — used both to scatter particles and to
-    // build the solid boundary shells below, so the shells exactly hug the
-    // point cloud's shape instead of approximating it separately.
-    function cerebrumSurface(theta, v, withFissure) {
+    // Same brain silhouette (cerebrum + cerebellum) as before — now used only
+    // to sample anchor points that flowing strands travel across, not to
+    // place discrete particles.
+    function cerebrumSurface(theta, v) {
       const gyri = 0.14 * Math.sin(9 * theta) * Math.sin(7 * v)
                  + 0.08 * Math.sin(17 * theta + 5 * v)
                  + 0.045 * Math.sin(23 * theta - 6 * v);
-      // Temporal-lobe bulge: concentrated low on the left/right sides,
-      // so the silhouette steps outward there instead of staying a smooth ellipsoid.
       const vBulge = Math.exp(-Math.pow((v - 0.62 * Math.PI) / (0.22 * Math.PI), 2));
       const sideBulge = Math.pow(Math.abs(Math.cos(theta)), 1.4);
       const temporal = 0.26 * vBulge * sideBulge;
       const rB = 1.55 * (1 + gyri + temporal);
       const frontBack = Math.sin(v);
-      // Occipital (back, +z — where the cerebellum attaches) is rounder;
-      // frontal (−z) is narrower — real brains aren't front/back symmetric.
       const zAsymmetry = 1.62 + 0.18 * Math.sin(theta);
-      let x = rB * frontBack * Math.cos(theta) * 0.98;
+      const x = rB * frontBack * Math.cos(theta) * 0.98;
       const y = rB * Math.cos(v) * 0.72 + 0.16 * frontBack * frontBack - temporal * 0.5;
-      let z = rB * frontBack * Math.sin(theta) * zAsymmetry;
-      z -= 0.05;
-      if (withFissure) x += (x >= 0 ? 1 : -1) * 0.26 * frontBack;
+      const z = rB * frontBack * Math.sin(theta) * zAsymmetry - 0.05;
       return { x, y, z };
     }
     function cerebellumSurface(theta, v) {
@@ -1691,167 +1707,102 @@
       return { x, y, z };
     }
 
-    // Procedurally build a brain-like point cloud (cerebrum + cerebellum +
-    // brainstem) plus a scattered starting cloud (raw incoming multimodal
-    // signal) of the same length, so the same particles can morph A → B.
-    const scattered = new Float32Array(PARTICLE_COUNT * 3);
-    const brain = new Float32Array(PARTICLE_COUNT * 3);
-    const baseColor = new Float32Array(PARTICLE_COUNT * 3);
-    const sectorOf = new Int8Array(PARTICLE_COUNT);
-    const tmpColor = new THREE.Color();
+    // ── Flowing strands: each is a smooth curve random-walking across the
+    // brain surface, rendered as a THREE.Line with per-vertex colors that
+    // animate a traveling bright band along its length every frame. ──
+    const STRAND_COUNT = isSmall ? 55 : 95;
+    const CEREBELLUM_STRANDS = isSmall ? 12 : 20;
+    const SEG_COUNT = 22;
+    const strands = [];
 
-    const CEREBELLUM_START = Math.floor(PARTICLE_COUNT * 0.83);
-    const STEM_START = Math.floor(PARTICLE_COUNT * 0.94);
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      // scattered sphere (signal arriving from every direction)
-      const r0 = 4.2 + Math.random() * 1.4;
-      const u = Math.random() * 2 - 1;
-      const th0 = Math.random() * TAU;
-      const sq = Math.sqrt(1 - u * u);
-      scattered[i * 3] = r0 * sq * Math.cos(th0);
-      scattered[i * 3 + 1] = r0 * u;
-      scattered[i * 3 + 2] = r0 * sq * Math.sin(th0);
-
-      let x, y, z;
-      if (i < CEREBELLUM_START) {
-        // Cerebrum: two folded hemispheres (gyri via layered sine ridges),
-        // narrower at the front, wider/rounder at the back.
-        const p = cerebrumSurface(Math.random() * TAU, Math.random() * Math.PI, true);
-        x = p.x; y = p.y; z = p.z;
-      } else if (i < STEM_START) {
-        // Cerebellum: smaller, tightly-folded lobe tucked underneath/behind.
-        const p = cerebellumSurface(Math.random() * TAU, Math.random() * Math.PI);
-        x = p.x; y = p.y; z = p.z;
-      } else {
-        // Brainstem: short, thin, roughly cylindrical cluster.
-        const t = Math.random();
-        const ang = Math.random() * TAU;
-        const rr = 0.16 * Math.sqrt(Math.random());
-        x = Math.cos(ang) * rr;
-        y = -1.0 - t * 0.6;
-        z = 0.85 + Math.sin(ang) * rr * 0.6;
+    function buildStrand(surfaceFn, sector) {
+      const steps = 7;
+      let theta = Math.random() * TAU;
+      let v = Math.random() * Math.PI;
+      const anchors = [];
+      for (let s = 0; s < steps; s++) {
+        const p = surfaceFn(theta, v);
+        anchors.push(new THREE.Vector3(p.x, p.y, p.z));
+        theta += (Math.random() - 0.5) * 1.1;
+        v = Math.min(Math.PI, Math.max(0, v + (Math.random() - 0.5) * 0.9));
       }
-      brain[i * 3] = x; brain[i * 3 + 1] = y; brain[i * 3 + 2] = z;
-
-      const sector = Math.floor(norm(Math.atan2(z, x)) / (TAU / N_SECTORS)) % N_SECTORS;
-      sectorOf[i] = sector;
-      tmpColor.set(SECTORS[sector].color);
-      baseColor[i * 3] = tmpColor.r; baseColor[i * 3 + 1] = tmpColor.g; baseColor[i * 3 + 2] = tmpColor.b;
+      const curve = new THREE.CatmullRomCurve3(anchors);
+      const pts = curve.getPoints(SEG_COUNT - 1);
+      const positions = new Float32Array(SEG_COUNT * 3);
+      const colors = new Float32Array(SEG_COUNT * 3);
+      pts.forEach((p, i) => { positions[i * 3] = p.x; positions[i * 3 + 1] = p.y; positions[i * 3 + 2] = p.z; });
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      const mat = new THREE.LineBasicMaterial({
+        vertexColors: true, transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false,
+      });
+      const line = new THREE.Line(geo, mat);
+      spinGroup.add(line);
+      // sector from the strand's average azimuth
+      let sx = 0, sz = 0;
+      pts.forEach(p => { sx += p.x; sz += p.z; });
+      const avgAngle = norm(Math.atan2(sz / pts.length, sx / pts.length));
+      const sec = sector != null ? sector : Math.floor(avgAngle / (TAU / N_SECTORS)) % N_SECTORS;
+      strands.push({
+        line, mat, colors, geo, sector: sec,
+        phase: Math.random(), speed: 0.12 + Math.random() * 0.1,
+        delay: Math.random() * 2200,
+      });
     }
 
-    // ── Boundary shells: solid translucent surfaces wrapping the cerebrum
-    // and cerebellum point clouds, so the brain reads as a bounded volume
-    // rather than just dust. Built as triangulated parametric grids using
-    // the exact same surface functions the particles were sampled from. ──
-    function buildSurfaceMesh(fn, thetaSteps, vSteps) {
-      const positions = [];
-      for (let vi = 0; vi <= vSteps; vi++) {
-        const v = (vi / vSteps) * Math.PI;
-        for (let ti = 0; ti <= thetaSteps; ti++) {
-          const theta = (ti / thetaSteps) * TAU;
-          const p = fn(theta, v);
-          positions.push(p.x, p.y, p.z);
-        }
-      }
-      const indices = [];
-      const rowLen = thetaSteps + 1;
-      for (let vi = 0; vi < vSteps; vi++) {
-        for (let ti = 0; ti < thetaSteps; ti++) {
-          const a = vi * rowLen + ti, b = a + 1, c = a + rowLen, d = c + 1;
-          indices.push(a, c, b, b, c, d);
-        }
+    for (let i = 0; i < STRAND_COUNT; i++) buildStrand(cerebrumSurface);
+    for (let i = 0; i < CEREBELLUM_STRANDS; i++) buildStrand(cerebellumSurface);
+
+    // ── Orbiting capability clusters: small non-rotating neuron bursts
+    // parked around the canvas, each wired to a capability, with a flowing
+    // strand reaching in toward the brain — echoes the reference image's
+    // corner neuron clusters connected by light streams. ──
+    const CLUSTER_POS = [
+      { x: -3.3, y: 1.85 }, { x: 3.3, y: 1.85 },
+      { x: -3.85, y: -0.15 }, { x: 3.85, y: -0.15 },
+      { x: -2.7, y: -2.15 }, { x: 2.7, y: -2.15 },
+    ];
+    const clusterGroup = new THREE.Group();
+    scene.add(clusterGroup);
+    const clusters = SECTORS.map((s, idx) => {
+      const pos = CLUSTER_POS[idx];
+      const center = new THREE.Vector3(pos.x, pos.y, -0.6);
+      const n = isSmall ? 16 : 26;
+      const positions = new Float32Array(n * 3);
+      for (let i = 0; i < n; i++) {
+        const r = 0.22 + Math.random() * 0.2;
+        const a = Math.random() * TAU, b = Math.random() * Math.PI;
+        positions[i * 3] = center.x + r * Math.sin(b) * Math.cos(a);
+        positions[i * 3 + 1] = center.y + r * Math.sin(b) * Math.sin(a);
+        positions[i * 3 + 2] = center.z + r * Math.cos(b);
       }
       const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      geo.setIndex(indices);
-      geo.computeVertexNormals();
-      return geo;
-    }
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const mat = new THREE.PointsMaterial({
+        color: s.color, size: 0.06, transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false,
+      });
+      const points = new THREE.Points(geo, mat);
+      clusterGroup.add(points);
 
-    // Glowing wireframe boundary (core + soft halo pass) instead of a filled
-    // surface — traces the same folded contours as a neon outline, closer
-    // to a scan-style brain visualization than a solid membrane.
-    const GLOW_COLOR = 0x67e8f9;
-    function buildGlowWireframe(fn, thetaSteps, vSteps) {
-      const wireGeo = new THREE.WireframeGeometry(buildSurfaceMesh(fn, thetaSteps, vSteps));
-      const coreMat = new THREE.LineBasicMaterial({ color: GLOW_COLOR, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
-      const haloMat = new THREE.LineBasicMaterial({ color: GLOW_COLOR, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
-      const core = new THREE.LineSegments(wireGeo, coreMat);
-      const halo = new THREE.LineSegments(wireGeo, haloMat);
-      halo.scale.setScalar(1.025);
-      return { core, halo, coreMat, haloMat };
-    }
-    const cerebrumWire = buildGlowWireframe((t, v) => cerebrumSurface(t, v, false), 40, 22);
-    const cerebellumWire = buildGlowWireframe(cerebellumSurface, 22, 14);
-    spinGroup.add(cerebrumWire.core, cerebrumWire.halo, cerebellumWire.core, cerebellumWire.halo);
+      // strand reaching from the cluster toward the brain's center
+      const reachPts = [center, center.clone().lerp(new THREE.Vector3(0, 0, 0), 0.5), new THREE.Vector3(0, 0, 0)];
+      const curve = new THREE.CatmullRomCurve3(reachPts);
+      const rpts = curve.getPoints(SEG_COUNT - 1);
+      const rPositions = new Float32Array(SEG_COUNT * 3);
+      const rColors = new Float32Array(SEG_COUNT * 3);
+      rpts.forEach((p, i) => { rPositions[i * 3] = p.x; rPositions[i * 3 + 1] = p.y; rPositions[i * 3 + 2] = p.z; });
+      const rGeo = new THREE.BufferGeometry();
+      rGeo.setAttribute('position', new THREE.BufferAttribute(rPositions, 3));
+      rGeo.setAttribute('color', new THREE.BufferAttribute(rColors, 3));
+      const rMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+      const reachLine = new THREE.Line(rGeo, rMat);
+      clusterGroup.add(reachLine);
 
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(scattered); // current, animated in place
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const colors = new Float32Array(baseColor);
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const material = new THREE.PointsMaterial({
-      size: isSmall ? 0.045 : 0.04, vertexColors: true, transparent: true, opacity: 0.92,
-      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      return { mat, reachMat: rMat, reachColors: rColors, sector: idx, phase: Math.random() };
     });
-    const points = new THREE.Points(geometry, material);
-    spinGroup.add(points);
-
-    // ── Synaptic connections: wire each point to its few nearest neighbors
-    // in the FINAL brain shape, so the cloud reads as a connected network
-    // rather than loose dust once it settles. ──
-    const MAX_NEIGHBORS = isSmall ? 6 : 9;
-    const EDGE_RADIUS2 = 0.3 * 0.3;
-    const edgePairs = [];
-    {
-      const cell = 0.25;
-      const grid = new Map();
-      const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const cx = Math.floor(brain[i * 3] / cell), cy = Math.floor(brain[i * 3 + 1] / cell), cz = Math.floor(brain[i * 3 + 2] / cell);
-        const k = key(cx, cy, cz);
-        if (!grid.has(k)) grid.set(k, []);
-        grid.get(k).push(i);
-      }
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const cx = Math.floor(brain[i * 3] / cell), cy = Math.floor(brain[i * 3 + 1] / cell), cz = Math.floor(brain[i * 3 + 2] / cell);
-        const candidates = [];
-        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
-          const bucket = grid.get(key(cx + dx, cy + dy, cz + dz));
-          if (bucket) for (const j of bucket) if (j > i) candidates.push(j);
-        }
-        candidates.sort((a, b) => {
-          const da = (brain[a*3]-brain[i*3])**2 + (brain[a*3+1]-brain[i*3+1])**2 + (brain[a*3+2]-brain[i*3+2])**2;
-          const db = (brain[b*3]-brain[i*3])**2 + (brain[b*3+1]-brain[i*3+1])**2 + (brain[b*3+2]-brain[i*3+2])**2;
-          return da - db;
-        });
-        let added = 0;
-        for (const j of candidates) {
-          if (added >= MAX_NEIGHBORS) break;
-          const d2 = (brain[j*3]-brain[i*3])**2 + (brain[j*3+1]-brain[i*3+1])**2 + (brain[j*3+2]-brain[i*3+2])**2;
-          if (d2 < EDGE_RADIUS2) { edgePairs.push(i, j); added++; }
-        }
-      }
-    }
-    const edgeCount = edgePairs.length / 2;
-    const linePositions = new Float32Array(edgeCount * 6);
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-    const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x818cf8, transparent: true, opacity: 0, depthWrite: false,
-    });
-    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-    spinGroup.add(lines);
-    function syncLinePositions() {
-      for (let k = 0; k < edgeCount; k++) {
-        const i = edgePairs[k * 2], j = edgePairs[k * 2 + 1];
-        linePositions[k * 6] = positions[i * 3]; linePositions[k * 6 + 1] = positions[i * 3 + 1]; linePositions[k * 6 + 2] = positions[i * 3 + 2];
-        linePositions[k * 6 + 3] = positions[j * 3]; linePositions[k * 6 + 4] = positions[j * 3 + 1]; linePositions[k * 6 + 5] = positions[j * 3 + 2];
-      }
-      lineGeometry.attributes.position.needsUpdate = true;
-    }
 
     function resize() {
       const w = wrap.clientWidth, h = wrap.clientHeight;
@@ -1862,13 +1813,45 @@
     resize();
     window.addEventListener('resize', resize);
 
-    // ── Stage timeline: icons fly in (CSS), then the cloud morphs into the brain ──
-    let morphStart = null;
-    const MORPH_DELAY = 1500;   // let input icons read first
-    const MORPH_DURATION = 2600;
-    function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    // ── Floating ML formulas: real equations drifting slowly in the canvas ──
+    const FORMULAS = [
+      'softmax(QKᵀ/√d)V', 'L = −Σ y·log(ŷ)', 'θ ← θ − η∇L',
+      '∂L/∂θ = ∂L/∂y · ∂y/∂θ', 'σ(x) = 1/(1+e⁻ˣ)', 'W·x + b',
+      'H(p,q) = −Σp(x)log q(x)', 'Attention(Q,K,V)', 'y = ReLU(Wx+b)',
+    ];
+    const formulaLayer = document.getElementById('brainFormulas');
+    if (formulaLayer) {
+      FORMULAS.forEach((f, i) => {
+        const el = document.createElement('span');
+        el.className = 'brain-formula';
+        el.textContent = f;
+        el.style.left = (8 + Math.random() * 78) + '%';
+        el.style.top = (8 + Math.random() * 78) + '%';
+        el.style.animationDelay = (i * 1.1 + Math.random() * 2) + 's';
+        el.style.animationDuration = (8 + Math.random() * 5) + 's';
+        formulaLayer.appendChild(el);
+      });
+    }
 
-    setTimeout(() => { morphStart = performance.now(); }, MORPH_DELAY);
+    // ── Cluster labels (HTML, positioned to roughly match the 3D clusters) ──
+    const labelLayer = document.getElementById('brainClusterLabels');
+    if (labelLayer) {
+      const LABEL_POS = [
+        { left: '15%', top: '18%' }, { left: '85%', top: '18%' },
+        { left: '6%', top: '50%' }, { left: '94%', top: '50%' },
+        { left: '20%', top: '84%' }, { left: '80%', top: '84%' },
+      ];
+      SECTORS.forEach((s, idx) => {
+        const el = document.createElement('div');
+        el.className = 'brain-cluster-label';
+        el.style.left = LABEL_POS[idx].left;
+        el.style.top = LABEL_POS[idx].top;
+        el.style.color = '#' + s.color.toString(16).padStart(6, '0');
+        el.innerHTML = s.title + '<span class="pct">' + s.pct + '%</span>';
+        labelLayer.appendChild(el);
+        setTimeout(() => el.classList.add('is-visible'), 1800 + idx * 220);
+      });
+    }
 
     // ── Auto-rotate + drag ──
     let autoRotate = true;
@@ -1894,12 +1877,13 @@
     wrap.addEventListener('pointerup', endDrag);
     wrap.addEventListener('pointerleave', endDrag);
 
+    function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
     window.brainJumpTo = function (sectorIdx) {
       autoRotate = false;
       clearTimeout(resumeTimer);
       const sectorCenter = (sectorIdx + 0.5) * (TAU / N_SECTORS);
       const targetY = sectorCenter - Math.PI / 2;
-      // shortest angular path
       let cur = spinGroup.rotation.y;
       let delta = ((targetY - cur + Math.PI) % TAU + TAU) % TAU - Math.PI;
       const start = cur, dur = 700, t0 = performance.now();
@@ -1915,6 +1899,9 @@
     const legendItems = document.querySelectorAll('.brain-legend-item');
     const explTitle = document.getElementById('brainExplainerTitle');
     const explBody = document.getElementById('brainExplainerBody');
+    const baseColorObj = new THREE.Color();
+    const whiteColor = new THREE.Color(0xffffff);
+    const dimColor = new THREE.Color(0x334155);
 
     function setActiveSector(idx) {
       if (idx === activeSector) return;
@@ -1923,55 +1910,57 @@
       const s = SECTORS[idx];
       explTitle.innerHTML = s.title;
       explBody.textContent = s.body;
-      // recolor: active sector particles bright/white-mixed, others dimmed
-      const dim = new THREE.Color(0x9ca3af);
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const sc = sectorOf[i];
-        const c = sc === idx
-          ? tmpColor.set(SECTORS[sc].color).lerp(new THREE.Color(0xffffff), 0.25)
-          : tmpColor.set(SECTORS[sc].color).lerp(dim, 0.75);
-        colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-      }
-      geometry.attributes.color.needsUpdate = true;
     }
 
-    let morphed = false;
+    const introStart = performance.now();
     function animate(now) {
       requestAnimationFrame(animate);
+      const elapsed = now - introStart;
 
-      if (morphStart !== null && !morphed) {
-        const t = Math.min(1, (now - morphStart) / MORPH_DURATION);
-        const e = easeInOutCubic(t);
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          positions[i * 3] = scattered[i * 3] + (brain[i * 3] - scattered[i * 3]) * e;
-          positions[i * 3 + 1] = scattered[i * 3 + 1] + (brain[i * 3 + 1] - scattered[i * 3 + 1]) * e;
-          positions[i * 3 + 2] = scattered[i * 3 + 2] + (brain[i * 3 + 2] - scattered[i * 3 + 2]) * e;
+      // Fade in + traveling light pulse along every strand
+      strands.forEach(st => {
+        if (elapsed < st.delay) return;
+        if (st.mat.opacity < 0.85) st.mat.opacity = Math.min(0.85, st.mat.opacity + 0.012);
+        const isActive = st.sector === activeSector;
+        const base = baseColorObj.set(SECTORS[st.sector].color);
+        const tinted = isActive ? base.clone().lerp(whiteColor, 0.35) : base.clone().lerp(dimColor, 0.55);
+        const phase = (now * 0.001 * st.speed + st.phase) % 1;
+        for (let k = 0; k < SEG_COUNT; k++) {
+          const u = k / (SEG_COUNT - 1);
+          const wave = 0.35 + 0.65 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2);
+          st.colors[k * 3] = tinted.r * wave;
+          st.colors[k * 3 + 1] = tinted.g * wave;
+          st.colors[k * 3 + 2] = tinted.b * wave;
         }
-        geometry.attributes.position.needsUpdate = true;
-        syncLinePositions();
-        points.rotation.y = (1 - e) * 2.4;
-        lines.rotation.y = points.rotation.y;
-        cerebrumWire.core.rotation.y = points.rotation.y;
-        cerebrumWire.halo.rotation.y = points.rotation.y;
-        cerebellumWire.core.rotation.y = points.rotation.y;
-        cerebellumWire.halo.rotation.y = points.rotation.y;
-        if (t >= 1) { morphed = true; }
-      }
+        st.geo.attributes.color.needsUpdate = true;
+      });
 
-      if (morphed && lineMaterial.opacity < 0.2) {
-        lineMaterial.opacity = Math.min(0.2, lineMaterial.opacity + 0.01);
-      }
-      if (morphed && cerebrumWire.coreMat.opacity < 0.55) {
-        const step = 0.018;
-        cerebrumWire.coreMat.opacity = Math.min(0.55, cerebrumWire.coreMat.opacity + step);
-        cerebrumWire.haloMat.opacity = Math.min(0.18, cerebrumWire.haloMat.opacity + step * 0.35);
-        cerebellumWire.coreMat.opacity = cerebrumWire.coreMat.opacity;
-        cerebellumWire.haloMat.opacity = cerebrumWire.haloMat.opacity;
-      }
+      // Fade in cluster bursts + their reach-strands, with the same pulse
+      clusters.forEach(cl => {
+        if (elapsed < 1600) return;
+        if (cl.mat.opacity < 0.85) cl.mat.opacity = Math.min(0.85, cl.mat.opacity + 0.01);
+        if (cl.reachMat.opacity < 0.5) cl.reachMat.opacity = Math.min(0.5, cl.reachMat.opacity + 0.008);
+        const isActive = cl.sector === activeSector;
+        const base = baseColorObj.set(SECTORS[cl.sector].color);
+        const tinted = isActive ? base.clone().lerp(whiteColor, 0.4) : base;
+        const phase = (now * 0.001 * 0.18 + cl.phase) % 1;
+        for (let k = 0; k < SEG_COUNT; k++) {
+          const u = k / (SEG_COUNT - 1);
+          const wave = 0.3 + 0.7 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2);
+          cl.reachColors[k * 3] = tinted.r * wave;
+          cl.reachColors[k * 3 + 1] = tinted.g * wave;
+          cl.reachColors[k * 3 + 2] = tinted.b * wave;
+        }
+        cl.reachMat.color.copy(tinted);
+      });
+      // sync reach-line color attribute updates
+      clusterGroup.children.forEach(obj => {
+        if (obj.geometry && obj.geometry.attributes.color) obj.geometry.attributes.color.needsUpdate = true;
+      });
 
-      if (autoRotate && morphed) spinGroup.rotation.y += AUTO_SPEED;
+      if (autoRotate && elapsed > 500) spinGroup.rotation.y += AUTO_SPEED;
 
-      if (morphed) {
+      if (elapsed > 500) {
         const localForward = new THREE.Vector3(0, 0, 1).applyEuler(new THREE.Euler(0, -spinGroup.rotation.y, 0));
         const frontAngle = norm(Math.atan2(localForward.z, localForward.x));
         const idx = Math.floor(frontAngle / (TAU / N_SECTORS)) % N_SECTORS;
