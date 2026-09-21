@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-distillation-centralization-moat",
+      "title": "Distillation, Centralization, and the Moat Question",
+      "excerpt": "If one lab pulls ahead through RSI, does the lead survive contact with distillation? The OpenAI-DeepSeek accusation, what DeepSeek's $5.6M figure actually covers, and Epoch AI's real catch-up-time data.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-21",
+      "readTime": "40 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🏛️",
+      "featured": true
+    },
+    {
       "slug": "rsi-objective-specification-problem",
       "title": "The Objective-Specification Problem",
       "excerpt": "Part 2 of the RSI series. Covers outer vs. inner alignment (Hubinger et al.'s mesa-optimization framework), Goodhart's Law formalized for reinforcement learning, DeepMind's documented specification-gaming catalog (CoastRunners, Karl Sims' evolved creatures), RLHF's own sycophancy problem and reward-model hacking, Constitutional AI and RLAIF, the governance question of who writes an AI's objectives (OpenAI's Model Spec, Anthropic's Collective Constitutional AI experiment with 1,000 representatively-sampled Americans), scalable oversight research (AI Safety via Debate, weak-to-strong generalization), and why specification failures compound rather than resolve as AI automates its own research process.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🎯",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-ai-automating-ai-research",
