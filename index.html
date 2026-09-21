@@ -1658,6 +1658,31 @@
     const spinGroup = new THREE.Group();
     tiltGroup.add(spinGroup);
 
+    // Shared parametric surfaces — used both to scatter particles and to
+    // build the solid boundary shells below, so the shells exactly hug the
+    // point cloud's shape instead of approximating it separately.
+    function cerebrumSurface(theta, v, withFissure) {
+      const gyri = 0.16 * Math.sin(9 * theta) * Math.sin(7 * v)
+                 + 0.09 * Math.sin(17 * theta + 5 * v)
+                 + 0.05 * Math.sin(23 * theta - 6 * v);
+      const rB = 1.7 * (1 + gyri);
+      const frontBack = Math.sin(v);
+      let x = rB * frontBack * Math.cos(theta) * 1.02;
+      const y = rB * Math.cos(v) * 0.86 + 0.28 * frontBack * frontBack;
+      let z = rB * frontBack * Math.sin(theta) * 1.32 * (0.68 + 0.32 * frontBack);
+      z -= 0.15;
+      if (withFissure) x += (x >= 0 ? 1 : -1) * 0.30 * frontBack;
+      return { x, y, z };
+    }
+    function cerebellumSurface(theta, v) {
+      const folia = 1 + 0.22 * Math.sin(22 * theta) * Math.sin(14 * v);
+      const r = 0.62 * folia;
+      const x = r * Math.sin(v) * Math.cos(theta) * 1.15;
+      const y = r * Math.cos(v) * 0.7 - 1.05;
+      const z = r * Math.sin(v) * Math.sin(theta) * 0.85 + 1.05;
+      return { x, y, z };
+    }
+
     // Procedurally build a brain-like point cloud (cerebrum + cerebellum +
     // brainstem) plus a scattered starting cloud (raw incoming multimodal
     // signal) of the same length, so the same particles can morph A → B.
@@ -1684,28 +1709,12 @@
       if (i < CEREBELLUM_START) {
         // Cerebrum: two folded hemispheres (gyri via layered sine ridges),
         // narrower at the front, wider/rounder at the back.
-        const theta = Math.random() * TAU;
-        const v = Math.random() * Math.PI;
-        const gyri = 0.16 * Math.sin(9 * theta) * Math.sin(7 * v)
-                   + 0.09 * Math.sin(17 * theta + 5 * v)
-                   + 0.05 * Math.sin(23 * theta - 6 * v);
-        const rB = 1.7 * (1 + gyri);
-        const frontBack = Math.sin(v);              // 0 at poles, 1 at equator
-        x = rB * frontBack * Math.cos(theta) * 1.02;
-        y = rB * Math.cos(v) * 0.86 + 0.28 * frontBack * frontBack;
-        z = rB * frontBack * Math.sin(theta) * 1.32 * (0.68 + 0.32 * frontBack);
-        z -= 0.15; // shift cerebrum slightly forward to leave room for cerebellum
-        // longitudinal fissure: split the two hemispheres apart
-        x += (x >= 0 ? 1 : -1) * 0.30 * frontBack;
+        const p = cerebrumSurface(Math.random() * TAU, Math.random() * Math.PI, true);
+        x = p.x; y = p.y; z = p.z;
       } else if (i < STEM_START) {
         // Cerebellum: smaller, tightly-folded lobe tucked underneath/behind.
-        const theta = Math.random() * TAU;
-        const v = Math.random() * Math.PI;
-        const folia = 1 + 0.22 * Math.sin(22 * theta) * Math.sin(14 * v);
-        const r = 0.62 * folia;
-        x = r * Math.sin(v) * Math.cos(theta) * 1.15;
-        y = r * Math.cos(v) * 0.7 - 1.05;
-        z = r * Math.sin(v) * Math.sin(theta) * 0.85 + 1.05;
+        const p = cerebellumSurface(Math.random() * TAU, Math.random() * Math.PI);
+        x = p.x; y = p.y; z = p.z;
       } else {
         // Brainstem: short, thin, roughly cylindrical cluster.
         const t = Math.random();
@@ -1722,6 +1731,50 @@
       tmpColor.set(SECTORS[sector].color);
       baseColor[i * 3] = tmpColor.r; baseColor[i * 3 + 1] = tmpColor.g; baseColor[i * 3 + 2] = tmpColor.b;
     }
+
+    // ── Boundary shells: solid translucent surfaces wrapping the cerebrum
+    // and cerebellum point clouds, so the brain reads as a bounded volume
+    // rather than just dust. Built as triangulated parametric grids using
+    // the exact same surface functions the particles were sampled from. ──
+    function buildSurfaceMesh(fn, thetaSteps, vSteps) {
+      const positions = [];
+      for (let vi = 0; vi <= vSteps; vi++) {
+        const v = (vi / vSteps) * Math.PI;
+        for (let ti = 0; ti <= thetaSteps; ti++) {
+          const theta = (ti / thetaSteps) * TAU;
+          const p = fn(theta, v);
+          positions.push(p.x, p.y, p.z);
+        }
+      }
+      const indices = [];
+      const rowLen = thetaSteps + 1;
+      for (let vi = 0; vi < vSteps; vi++) {
+        for (let ti = 0; ti < thetaSteps; ti++) {
+          const a = vi * rowLen + ti, b = a + 1, c = a + rowLen, d = c + 1;
+          indices.push(a, c, b, b, c, d);
+        }
+      }
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geo.setIndex(indices);
+      geo.computeVertexNormals();
+      return geo;
+    }
+
+    const shellMaterial = new THREE.MeshBasicMaterial({
+      color: 0xa5b4fc, transparent: true, opacity: 0,
+      side: THREE.DoubleSide, depthWrite: false,
+    });
+    const cerebellumShellMaterial = shellMaterial.clone();
+    const cerebrumShell = new THREE.Mesh(buildSurfaceMesh((t, v) => cerebrumSurface(t, v, false), 48, 32), shellMaterial);
+    const cerebellumShell = new THREE.Mesh(buildSurfaceMesh(cerebellumSurface, 28, 18), cerebellumShellMaterial);
+    spinGroup.add(cerebrumShell);
+    spinGroup.add(cerebellumShell);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 0.55);
+    keyLight.position.set(2, 3, 4);
+    scene.add(keyLight);
 
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(scattered); // current, animated in place
@@ -1888,11 +1941,17 @@
         syncLinePositions();
         points.rotation.y = (1 - e) * 2.4;
         lines.rotation.y = points.rotation.y;
+        cerebrumShell.rotation.y = points.rotation.y;
+        cerebellumShell.rotation.y = points.rotation.y;
         if (t >= 1) { morphed = true; }
       }
 
       if (morphed && lineMaterial.opacity < 0.2) {
         lineMaterial.opacity = Math.min(0.2, lineMaterial.opacity + 0.01);
+      }
+      if (morphed && shellMaterial.opacity < 0.14) {
+        shellMaterial.opacity = Math.min(0.14, shellMaterial.opacity + 0.005);
+        cerebellumShellMaterial.opacity = shellMaterial.opacity;
       }
 
       if (autoRotate && morphed) spinGroup.rotation.y += AUTO_SPEED;
