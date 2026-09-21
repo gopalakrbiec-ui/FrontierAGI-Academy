@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🧪 [AI Automating AI Research: RSI's Testing Ground](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-ai-automating-ai-research.html) ⭐ | Part 4 of the RSI series. | 2026-09-21 |
+| 🎯 [The Objective-Specification Problem](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-objective-specification-problem.html) ⭐ | Part 2 of the RSI series. | 2026-09-21 |
+| 🧪 [AI Automating AI Research: RSI's Testing Ground](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-ai-automating-ai-research.html) | Part 4 of the RSI series. | 2026-09-21 |
 | 🔁 [Recursive Self-Improvement: A Primer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/recursive-self-improvement-primer.html) | The opening piece in a planned seven-part series on recursive self-improvement (RSI). | 2026-09-21 |
 | 🐉 [The Qwen Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/qwen-lineage-consolidated-comparison.html) | An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model… | 2026-09-20 |
 | 🧑‍🔬 [The AI Researcher Atlas: 50 People Who Built the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-atlas.html) | A tiered survey of roughly fifty ML/DL/AI/AGI researchers behind the labs this site covers — foundational figures (Hinton, Bengio, LeCun,… | 2026-09-19 |

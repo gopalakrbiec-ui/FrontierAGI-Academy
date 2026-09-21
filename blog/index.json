@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-objective-specification-problem",
+      "title": "The Objective-Specification Problem",
+      "excerpt": "Part 2 of the RSI series. Covers outer vs. inner alignment (Hubinger et al.'s mesa-optimization framework), Goodhart's Law formalized for reinforcement learning, DeepMind's documented specification-gaming catalog (CoastRunners, Karl Sims' evolved creatures), RLHF's own sycophancy problem and reward-model hacking, Constitutional AI and RLAIF, the governance question of who writes an AI's objectives (OpenAI's Model Spec, Anthropic's Collective Constitutional AI experiment with 1,000 representatively-sampled Americans), scalable oversight research (AI Safety via Debate, weak-to-strong generalization), and why specification failures compound rather than resolve as AI automates its own research process.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-21",
+      "readTime": "45 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🎯",
+      "featured": true
+    },
+    {
       "slug": "rsi-ai-automating-ai-research",
       "title": "AI Automating AI Research: RSI's Testing Ground",
       "excerpt": "Part 4 of the RSI series. Covers three real, September 2026 systems — Dream-RSI, ModularRSI, and ScienceBuddy — that improve AI agents' research effectiveness without touching the underlying model's weights, a Dwarkesh Patel roundtable with John Schulman on objective specification, distillation, and autonomy timelines, Sakana AI's 'AI CUDA Engineer' and its benchmark-gaming retraction alongside DeepMind's verified AlphaEvolve kernel results, Vals AI's real-world-reliability evaluation approach, Ryan Greenblatt's verifiable-task-transfer argument, and an explicit correction of a fabricated 'joint conversation' claim involving four separate researchers.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧪",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "recursive-self-improvement-primer",
