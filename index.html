@@ -2294,20 +2294,20 @@
     ];
 
     const STEPS = [
-      { act: 0, title: 'Data Collection', formula: '~10¹³ tokens: web, books, code, papers', body: 'Massive corpora are crawled, deduplicated, and filtered for quality before a single training step ever runs.' },
-      { act: 0, title: 'Tokenization', formula: 'text → BPE/SentencePiece subword ids, vocab ≈ 100k–200k', body: 'Raw text is split into subword tokens using a fixed vocabulary learned ahead of time, turning language into integers the model can process.' },
-      { act: 0, title: 'Model Architecture', formula: 'Attention(Q,K,V) = softmax(QKᵀ/√d_k)·V', body: 'Stacked transformer blocks — self-attention plus feed-forward layers — give the model its capacity to weigh relationships between tokens.' },
-      { act: 0, title: 'Pre-training Loop', formula: 'L = −Σ y·log ŷ  (next-token cross-entropy);  θ ← θ − η∇θL', body: 'The model repeatedly predicts the next token, and AdamW nudges every weight to reduce that loss — trillions of times, across many GPUs.' },
-      { act: 1, title: 'Supervised Fine-Tuning (SFT)', formula: 'min_θ Σ −log p_θ(y|x)  on curated (prompt, response) pairs', body: 'The pre-trained model is fine-tuned on a smaller set of high-quality, human-written examples of the behavior it should exhibit.' },
-      { act: 1, title: 'RLHF / RLAIF', formula: 'max_π E[r_φ(x,y)] − β·KL(π‖π_ref)', body: 'A reward model scores outputs by human (or AI) preference, and the policy is updated (PPO or DPO) to earn higher reward without drifting too far from the SFT model.' },
-      { act: 1, title: 'Safety & Constitutional Tuning', formula: 'critique → revise, conditioned on a written rule set', body: 'Additional passes check outputs against explicit principles, teaching the model to catch and correct its own harmful or policy-violating responses.' },
-      { act: 2, title: 'Quantization / Distillation', formula: 'FP16/BF16 weights → INT8/INT4, or distill into a smaller student', body: 'Weights are compressed to run cheaper and faster, or a smaller model is trained to imitate the larger one\'s behavior.' },
-      { act: 2, title: 'Serving Infrastructure', formula: 'sharded across GPU clusters; KV-cache reuse, batching, speculative decoding', body: 'The model is split across accelerators and served with techniques that make generation fast enough for real-time use at scale.' },
-      { act: 2, title: 'API / Product Layer', formula: 'model → REST/streaming endpoint → chat apps, IDEs, agents', body: 'The served model is wrapped in an interface — a chat app, an API, an IDE plugin — that real users and developers actually touch.' },
-      { act: 3, title: 'User Prompt', formula: 'prompt → tokenizer(prompt)', body: 'A user types a request. It gets tokenized with the exact same vocabulary the model was trained on.' },
-      { act: 3, title: 'Frozen Forward Pass', formula: 'y = f_θ*(x),  θ* fixed — no gradient, no weight update', body: 'The deployed model runs a pure forward pass per generated token. Nothing about the model changes during your conversation.' },
-      { act: 3, title: 'Sampling / Decoding', formula: 'p(token) = softmax(logits/T);  top-k / top-p (nucleus) sampling', body: 'At each step the model outputs a probability distribution over the vocabulary; temperature and sampling strategy decide which token is actually picked.' },
-      { act: 3, title: 'Streaming Response', formula: 'token₁, token₂, … → decoded text, streamed live', body: 'Chosen tokens are decoded back into text and streamed to the user one at a time — the "typing" effect you see in a chat UI.' },
+      { act: 0, icon: '🌐', title: 'Data Collection', formula: '~10¹³ tokens: web, books, code, papers', body: 'Massive corpora are crawled, deduplicated, and filtered for quality before a single training step ever runs.' },
+      { act: 0, icon: '🔤', title: 'Tokenization', formula: 'text → BPE/SentencePiece subword ids, vocab ≈ 100k–200k', body: 'Raw text is split into subword tokens using a fixed vocabulary learned ahead of time, turning language into integers the model can process.' },
+      { act: 0, icon: '🧩', title: 'Model Architecture', formula: 'Attention(Q,K,V) = softmax(QKᵀ/√d_k)·V', body: 'Stacked transformer blocks — self-attention plus feed-forward layers — give the model its capacity to weigh relationships between tokens.' },
+      { act: 0, icon: '🔁', title: 'Pre-training Loop', formula: 'L = −Σ y·log ŷ  (next-token cross-entropy);  θ ← θ − η∇θL', body: 'The model repeatedly predicts the next token, and AdamW nudges every weight to reduce that loss — trillions of times, across many GPUs.' },
+      { act: 1, icon: '🎯', title: 'Supervised Fine-Tuning (SFT)', formula: 'min_θ Σ −log p_θ(y|x)  on curated (prompt, response) pairs', body: 'The pre-trained model is fine-tuned on a smaller set of high-quality, human-written examples of the behavior it should exhibit.' },
+      { act: 1, icon: '👍', title: 'RLHF / RLAIF', formula: 'max_π E[r_φ(x,y)] − β·KL(π‖π_ref)', body: 'A reward model scores outputs by human (or AI) preference, and the policy is updated (PPO or DPO) to earn higher reward without drifting too far from the SFT model.' },
+      { act: 1, icon: '🛡️', title: 'Safety & Constitutional Tuning', formula: 'critique → revise, conditioned on a written rule set', body: 'Additional passes check outputs against explicit principles, teaching the model to catch and correct its own harmful or policy-violating responses.' },
+      { act: 2, icon: '🗜️', title: 'Quantization / Distillation', formula: 'FP16/BF16 weights → INT8/INT4, or distill into a smaller student', body: 'Weights are compressed to run cheaper and faster, or a smaller model is trained to imitate the larger one\'s behavior.' },
+      { act: 2, icon: '🖥️', title: 'Serving Infrastructure', formula: 'sharded across GPU clusters; KV-cache reuse, batching, speculative decoding', body: 'The model is split across accelerators and served with techniques that make generation fast enough for real-time use at scale.' },
+      { act: 2, icon: '🔌', title: 'API / Product Layer', formula: 'model → REST/streaming endpoint → chat apps, IDEs, agents', body: 'The served model is wrapped in an interface — a chat app, an API, an IDE plugin — that real users and developers actually touch.' },
+      { act: 3, icon: '⌨️', title: 'User Prompt', formula: 'prompt → tokenizer(prompt)', body: 'A user types a request. It gets tokenized with the exact same vocabulary the model was trained on.' },
+      { act: 3, icon: '🧠', title: 'Frozen Forward Pass', formula: 'y = f_θ*(x),  θ* fixed — no gradient, no weight update', body: 'The deployed model runs a pure forward pass per generated token. Nothing about the model changes during your conversation.' },
+      { act: 3, icon: '🎲', title: 'Sampling / Decoding', formula: 'p(token) = softmax(logits/T);  top-k / top-p (nucleus) sampling', body: 'At each step the model outputs a probability distribution over the vocabulary; temperature and sampling strategy decide which token is actually picked.' },
+      { act: 3, icon: '💬', title: 'Streaming Response', formula: 'token₁, token₂, … → decoded text, streamed live', body: 'Chosen tokens are decoded back into text and streamed to the user one at a time — the "typing" effect you see in a chat UI.' },
     ];
     const N = STEPS.length;
 
@@ -2429,32 +2429,58 @@
         const color = ACTS[s.act].color;
         const isPast = i < activeIdx;
         const isActive = i === activeIdx;
-        const r = (isActive ? 7 : 4.2) * DPR;
+        const r = (isActive ? 15 : 10) * DPR;
+        // icon badge background
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = isActive ? color : (isPast ? color + 'aa' : 'rgba(255,255,255,0.22)');
+        ctx.fillStyle = isActive ? color : (isPast ? color + 'aa' : 'rgba(255,255,255,0.10)');
         ctx.globalAlpha = isActive ? 1 : (isPast ? 0.55 : 0.35);
         ctx.fill();
+        if (isActive || isPast) {
+          ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+          ctx.lineWidth = 1 * DPR;
+          ctx.stroke();
+        }
         ctx.globalAlpha = 1;
         if (isActive) {
           ctx.beginPath();
-          ctx.arc(p.x, p.y, r * 2.1, 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, r * 1.6, 0, Math.PI * 2);
           ctx.strokeStyle = color;
           ctx.globalAlpha = 0.4;
           ctx.lineWidth = 1.5 * DPR;
           ctx.stroke();
           ctx.globalAlpha = 1;
         }
+        // step icon (server/data/architecture pictogram per step)
+        ctx.font = (isActive ? 15 : 11) * DPR + 'px "Apple Color Emoji","Segoe UI Emoji",sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.globalAlpha = isActive ? 1 : (isPast ? 0.85 : 0.5);
+        ctx.fillText(s.icon, p.x, p.y + 0.5 * DPR);
+        ctx.globalAlpha = 1;
+        ctx.textBaseline = 'alphabetic';
         // label
         ctx.font = (isActive ? '700 ' : '600 ') + (8 * DPR) + 'px system-ui, sans-serif';
         ctx.fillStyle = isActive ? '#ffffff' : 'rgba(255,255,255,0.45)';
-        ctx.textAlign = 'center';
         const labelY = p.y + (i % 2 === 0 ? -r - 8 * DPR : r + 16 * DPR);
         ctx.fillText(s.title, p.x, labelY);
       }
 
-      // traveling signal dot between activeIdx and activeIdx+1
+      // trailing "data flowing" particles behind the traveling signal
       const a = nodePos(activeIdx), b = nodePos((activeIdx + 1) % N);
+      for (let t = 1; t <= 4; t++) {
+        const tf = frac - t * 0.06;
+        if (tf < 0) continue;
+        const px = a.x + (b.x - a.x) * tf, py = a.y + (b.y - a.y) * tf;
+        ctx.beginPath();
+        ctx.arc(px, py, (2.2 - t * 0.3) * DPR, 0, Math.PI * 2);
+        ctx.fillStyle = ACTS[STEPS[activeIdx].act].color;
+        ctx.globalAlpha = 0.5 - t * 0.1;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      // traveling signal dot between activeIdx and activeIdx+1
       const tx = a.x + (b.x - a.x) * frac, ty = a.y + (b.y - a.y) * frac;
       ctx.beginPath();
       ctx.arc(tx, ty, 3.2 * DPR, 0, Math.PI * 2);
