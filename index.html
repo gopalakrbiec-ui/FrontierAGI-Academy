@@ -1662,24 +1662,32 @@
     // build the solid boundary shells below, so the shells exactly hug the
     // point cloud's shape instead of approximating it separately.
     function cerebrumSurface(theta, v, withFissure) {
-      const gyri = 0.16 * Math.sin(9 * theta) * Math.sin(7 * v)
-                 + 0.09 * Math.sin(17 * theta + 5 * v)
-                 + 0.05 * Math.sin(23 * theta - 6 * v);
-      const rB = 1.7 * (1 + gyri);
+      const gyri = 0.14 * Math.sin(9 * theta) * Math.sin(7 * v)
+                 + 0.08 * Math.sin(17 * theta + 5 * v)
+                 + 0.045 * Math.sin(23 * theta - 6 * v);
+      // Temporal-lobe bulge: concentrated low on the left/right sides,
+      // so the silhouette steps outward there instead of staying a smooth ellipsoid.
+      const vBulge = Math.exp(-Math.pow((v - 0.62 * Math.PI) / (0.22 * Math.PI), 2));
+      const sideBulge = Math.pow(Math.abs(Math.cos(theta)), 1.4);
+      const temporal = 0.26 * vBulge * sideBulge;
+      const rB = 1.55 * (1 + gyri + temporal);
       const frontBack = Math.sin(v);
-      let x = rB * frontBack * Math.cos(theta) * 1.02;
-      const y = rB * Math.cos(v) * 0.86 + 0.28 * frontBack * frontBack;
-      let z = rB * frontBack * Math.sin(theta) * 1.32 * (0.68 + 0.32 * frontBack);
-      z -= 0.15;
-      if (withFissure) x += (x >= 0 ? 1 : -1) * 0.30 * frontBack;
+      // Occipital (back, +z — where the cerebellum attaches) is rounder;
+      // frontal (−z) is narrower — real brains aren't front/back symmetric.
+      const zAsymmetry = 1.62 + 0.18 * Math.sin(theta);
+      let x = rB * frontBack * Math.cos(theta) * 0.98;
+      const y = rB * Math.cos(v) * 0.72 + 0.16 * frontBack * frontBack - temporal * 0.5;
+      let z = rB * frontBack * Math.sin(theta) * zAsymmetry;
+      z -= 0.05;
+      if (withFissure) x += (x >= 0 ? 1 : -1) * 0.26 * frontBack;
       return { x, y, z };
     }
     function cerebellumSurface(theta, v) {
-      const folia = 1 + 0.22 * Math.sin(22 * theta) * Math.sin(14 * v);
-      const r = 0.62 * folia;
-      const x = r * Math.sin(v) * Math.cos(theta) * 1.15;
-      const y = r * Math.cos(v) * 0.7 - 1.05;
-      const z = r * Math.sin(v) * Math.sin(theta) * 0.85 + 1.05;
+      const folia = 1 + 0.2 * Math.sin(22 * theta) * Math.sin(14 * v);
+      const r = 0.5 * folia;
+      const x = r * Math.sin(v) * Math.cos(theta) * 1.25;
+      const y = r * Math.cos(v) * 0.62 - 1.32;
+      const z = r * Math.sin(v) * Math.sin(theta) * 0.7 + 1.55;
       return { x, y, z };
     }
 
@@ -1721,8 +1729,8 @@
         const ang = Math.random() * TAU;
         const rr = 0.16 * Math.sqrt(Math.random());
         x = Math.cos(ang) * rr;
-        y = -1.15 - t * 0.55;
-        z = 0.55 + Math.sin(ang) * rr * 0.6;
+        y = -1.0 - t * 0.6;
+        z = 0.85 + Math.sin(ang) * rr * 0.6;
       }
       brain[i * 3] = x; brain[i * 3 + 1] = y; brain[i * 3 + 2] = z;
 
