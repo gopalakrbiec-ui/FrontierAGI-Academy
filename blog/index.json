@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "recursive-self-improvement-primer",
+      "title": "Recursive Self-Improvement: A Primer",
+      "excerpt": "The opening piece in a planned seven-part series on recursive self-improvement (RSI). Traces the idea from I.J. Good's 1965 'intelligence explosion' essay through Yudkowsky's naming of RSI, distinguishes it from ordinary capability scaling, covers genuine (if narrow) real-world progress — METR's RE-Bench, OpenAI's MLE-bench, DeepMind's AlphaEvolve — documents the notable 2026 convergence of Anthropic, OpenAI, and Google DeepMind all naming 'AI automating AI research' as an explicit safety-framework risk threshold, surveys the hard-takeoff-vs-soft-takeoff debate, and treats 2026's wave of self-reported lab 'steps toward RSI' claims with explicit skepticism.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-21",
+      "readTime": "45 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🔁",
+      "featured": true
+    },
+    {
       "slug": "qwen-lineage-consolidated-comparison",
       "title": "The Qwen Lineage: A Consolidated Comparison",
       "excerpt": "An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model in August 2023 to an eight-size family spanning 0.5B to 480B parameters, backed by a $50B+ cloud infrastructure pledge. Covers Qwen3's abandoned hybrid-reasoning toggle (split apart within three months of launch), a Meta-style MAU-gated license for flagship models despite Apache 2.0 openness at smaller sizes, documented political-content refusal behavior consistent with China's regulatory environment, contested Hugging Face download-count claims, and the UAE's Qwen-derived K2 Think as a genuine sovereign-AI deployment — closing with the first eight-way comparison across every lab this site has documented.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🐉",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-researcher-atlas",
