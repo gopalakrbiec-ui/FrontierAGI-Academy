@@ -138,8 +138,11 @@
       position: absolute; transform: translate(-50%, -50%); text-align: center;
       font-size: 0.62rem; font-weight: 800; white-space: nowrap; letter-spacing: 0.02em;
       text-shadow: 0 0 8px currentColor; opacity: 0; transition: opacity 1.2s ease;
+      max-width: 40%;
     }
     .brain-cluster-label.is-visible { opacity: 0.9; }
+    .brain-cluster-label.align-left { transform: translateY(-50%); text-align: left; white-space: normal; width: 120px; max-width: none; }
+    .brain-cluster-label.align-right { transform: translateY(-50%); text-align: right; white-space: normal; width: 120px; max-width: none; }
     .brain-cluster-label .pct { display: block; font-size: 0.58rem; font-weight: 700; opacity: 0.75; }
     @keyframes brainIconFly {
       0%   { transform: translate(calc(-50% + var(--ix)), calc(-50% + var(--iy))); opacity: 0; }
@@ -1803,11 +1806,11 @@
     spinGroup.add(particlePoints);
 
     // nearest-neighbor synapse mesh (grid-bucketed, same technique as before)
-    const MAX_NEIGHBORS = isSmall ? 5 : 7;
-    const EDGE_RADIUS2 = 0.28 * 0.28;
+    const MAX_NEIGHBORS = 25;
+    const EDGE_RADIUS2 = 0.42 * 0.42;
     const edgePairs = [];
     {
-      const cell = 0.25;
+      const cell = 0.3;
       const grid = new Map();
       const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -1943,14 +1946,16 @@
     if (labelLayer) {
       const LABEL_POS = [
         { left: '15%', top: '18%' }, { left: '85%', top: '18%' },
-        { left: '6%', top: '50%' }, { left: '94%', top: '50%' },
+        { left: '4%', top: '50%', align: 'left' }, { right: '4%', top: '50%', align: 'right' },
         { left: '20%', top: '84%' }, { left: '80%', top: '84%' },
       ];
       SECTORS.forEach((s, idx) => {
         const el = document.createElement('div');
-        el.className = 'brain-cluster-label';
-        el.style.left = LABEL_POS[idx].left;
-        el.style.top = LABEL_POS[idx].top;
+        const pos = LABEL_POS[idx];
+        el.className = 'brain-cluster-label' + (pos.align ? ' align-' + pos.align : '');
+        if (pos.left) el.style.left = pos.left;
+        if (pos.right) el.style.right = pos.right;
+        el.style.top = pos.top;
         el.style.color = '#' + s.color.toString(16).padStart(6, '0');
         el.innerHTML = s.title + '<span class="pct">' + s.pct + '%</span>';
         labelLayer.appendChild(el);
@@ -2079,7 +2084,7 @@
       // to the strands, brightening whichever sector is currently active.
       if (elapsed > 800) {
         if (particleMat.opacity < 0.55) particleMat.opacity = Math.min(0.55, particleMat.opacity + 0.008);
-        if (synapseMat.opacity < 0.2) synapseMat.opacity = Math.min(0.2, synapseMat.opacity + 0.004);
+        if (synapseMat.opacity < 0.045) synapseMat.opacity = Math.min(0.045, synapseMat.opacity + 0.001);
 
         // Gentle organic drift: every particle wobbles around its base position.
         const tsec = now * 0.001;
