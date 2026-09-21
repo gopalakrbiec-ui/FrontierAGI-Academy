@@ -1760,8 +1760,12 @@
     // the brighter flowing strands rather than replacing them. ──
     const PARTICLE_COUNT = isSmall ? 1400 : 2600;
     const particlePos = new Float32Array(PARTICLE_COUNT * 3);
+    const particleBasePos = new Float32Array(PARTICLE_COUNT * 3);
     const particleColor = new Float32Array(PARTICLE_COUNT * 3);
     const particleSector = new Int8Array(PARTICLE_COUNT);
+    const particlePhase = new Float32Array(PARTICLE_COUNT);
+    const particleFreq = new Float32Array(PARTICLE_COUNT);
+    const particlePing = new Float32Array(PARTICLE_COUNT); // 0..1, decays after firing
     const CEREBELLUM_START = Math.floor(PARTICLE_COUNT * 0.83);
     const STEM_START = Math.floor(PARTICLE_COUNT * 0.94);
     const tmpC = new THREE.Color();
@@ -1779,6 +1783,9 @@
         x = Math.cos(ang) * rr; y = -1.0 - t * 0.6; z = 0.85 + Math.sin(ang) * rr * 0.6;
       }
       particlePos[i * 3] = x; particlePos[i * 3 + 1] = y; particlePos[i * 3 + 2] = z;
+      particleBasePos[i * 3] = x; particleBasePos[i * 3 + 1] = y; particleBasePos[i * 3 + 2] = z;
+      particlePhase[i] = Math.random() * TAU;
+      particleFreq[i] = 0.4 + Math.random() * 0.5;
       const sector = Math.floor(norm(Math.atan2(z, x)) / (TAU / N_SECTORS)) % N_SECTORS;
       particleSector[i] = sector;
       tmpC.set(SECTORS[sector].color);
@@ -1831,18 +1838,27 @@
     }
     const edgeCount = edgePairs.length / 2;
     const synapsePos = new Float32Array(edgeCount * 6);
+    const synapseColor = new Float32Array(edgeCount * 6);
+    const synapseFire = new Float32Array(edgeCount); // 0..1, decays after firing
+    const SYNAPSE_BASE = new THREE.Color(0x818cf8);
+    const SYNAPSE_BRIGHT = new THREE.Color(0xd6f5ff);
     for (let k = 0; k < edgeCount; k++) {
       const i = edgePairs[k * 2], j = edgePairs[k * 2 + 1];
       synapsePos[k * 6] = particlePos[i * 3]; synapsePos[k * 6 + 1] = particlePos[i * 3 + 1]; synapsePos[k * 6 + 2] = particlePos[i * 3 + 2];
       synapsePos[k * 6 + 3] = particlePos[j * 3]; synapsePos[k * 6 + 4] = particlePos[j * 3 + 1]; synapsePos[k * 6 + 5] = particlePos[j * 3 + 2];
+      synapseColor[k * 6] = SYNAPSE_BASE.r; synapseColor[k * 6 + 1] = SYNAPSE_BASE.g; synapseColor[k * 6 + 2] = SYNAPSE_BASE.b;
+      synapseColor[k * 6 + 3] = SYNAPSE_BASE.r; synapseColor[k * 6 + 4] = SYNAPSE_BASE.g; synapseColor[k * 6 + 5] = SYNAPSE_BASE.b;
     }
     const synapseGeo = new THREE.BufferGeometry();
     synapseGeo.setAttribute('position', new THREE.BufferAttribute(synapsePos, 3));
+    synapseGeo.setAttribute('color', new THREE.BufferAttribute(synapseColor, 3));
     const synapseMat = new THREE.LineBasicMaterial({
-      color: 0x818cf8, transparent: true, opacity: 0, depthWrite: false,
+      vertexColors: true, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending,
     });
     const synapseLines = new THREE.LineSegments(synapseGeo, synapseMat);
     spinGroup.add(synapseLines);
+    let activeFires = []; // indices of edges currently glowing
+    let activePings = []; // indices of particles currently glowing
 
     // ── Orbiting capability clusters: small non-rotating neuron bursts
     // parked around the canvas, each wired to a capability, with a flowing
@@ -1992,6 +2008,7 @@
     const whiteColor = new THREE.Color(0xffffff);
     const dimColor = new THREE.Color(0x334155);
 
+    const particleRestColor = new Float32Array(PARTICLE_COUNT * 3);
     function setActiveSector(idx) {
       if (idx === activeSector) return;
       activeSector = idx;
@@ -2004,7 +2021,10 @@
         const c = sc === idx
           ? tmpC.set(SECTORS[sc].color).lerp(whiteColor, 0.3)
           : tmpC.set(SECTORS[sc].color).lerp(dimColor, 0.7);
-        particleColor[i * 3] = c.r; particleColor[i * 3 + 1] = c.g; particleColor[i * 3 + 2] = c.b;
+        particleRestColor[i * 3] = c.r; particleRestColor[i * 3 + 1] = c.g; particleRestColor[i * 3 + 2] = c.b;
+        if (particlePing[i] < 0.05) {
+          particleColor[i * 3] = c.r; particleColor[i * 3 + 1] = c.g; particleColor[i * 3 + 2] = c.b;
+        }
       }
       particleGeo.attributes.color.needsUpdate = true;
     }
@@ -2059,7 +2079,57 @@
       // to the strands, brightening whichever sector is currently active.
       if (elapsed > 800) {
         if (particleMat.opacity < 0.55) particleMat.opacity = Math.min(0.55, particleMat.opacity + 0.008);
-        if (synapseMat.opacity < 0.12) synapseMat.opacity = Math.min(0.12, synapseMat.opacity + 0.004);
+        if (synapseMat.opacity < 0.2) synapseMat.opacity = Math.min(0.2, synapseMat.opacity + 0.004);
+
+        // Gentle organic drift: every particle wobbles around its base position.
+        const tsec = now * 0.001;
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          const ph = particlePhase[i], fr = particleFreq[i];
+          particlePos[i * 3]     = particleBasePos[i * 3]     + Math.sin(tsec * fr + ph) * 0.025;
+          particlePos[i * 3 + 1] = particleBasePos[i * 3 + 1] + Math.cos(tsec * fr * 0.8 + ph) * 0.025;
+          particlePos[i * 3 + 2] = particleBasePos[i * 3 + 2] + Math.sin(tsec * fr * 1.2 + ph * 1.3) * 0.025;
+        }
+        particleGeo.attributes.position.needsUpdate = true;
+
+        // Randomly "ping" a few neurons so they flash brighter, like firing.
+        if (Math.random() < 0.35) {
+          for (let n = 0; n < 3; n++) {
+            const idx = Math.floor(Math.random() * PARTICLE_COUNT);
+            if (particlePing[idx] < 0.05) { particlePing[idx] = 1; activePings.push(idx); }
+          }
+        }
+        for (let p = activePings.length - 1; p >= 0; p--) {
+          const idx = activePings[p];
+          particlePing[idx] *= 0.9;
+          const amt = particlePing[idx];
+          const rc = tmpC.setRGB(particleRestColor[idx * 3], particleRestColor[idx * 3 + 1], particleRestColor[idx * 3 + 2]);
+          const c = amt < 0.05 ? rc : rc.lerp(whiteColor, amt);
+          particleColor[idx * 3] = c.r; particleColor[idx * 3 + 1] = c.g; particleColor[idx * 3 + 2] = c.b;
+          if (amt < 0.05) { particlePing[idx] = 0; activePings.splice(p, 1); }
+        }
+        if (activePings.length) particleGeo.attributes.color.needsUpdate = true;
+
+        // Randomly fire a synapse edge so a signal-like flash travels the mesh.
+        if (Math.random() < 0.5) {
+          for (let n = 0; n < 2; n++) {
+            const idx = Math.floor(Math.random() * edgeCount);
+            if (synapseFire[idx] < 0.05) { synapseFire[idx] = 1; activeFires.push(idx); }
+          }
+        }
+        for (let p = activeFires.length - 1; p >= 0; p--) {
+          const idx = activeFires[p];
+          synapseFire[idx] *= 0.88;
+          const c = SYNAPSE_BASE.clone().lerp(SYNAPSE_BRIGHT, synapseFire[idx]);
+          synapseColor[idx * 6] = c.r; synapseColor[idx * 6 + 1] = c.g; synapseColor[idx * 6 + 2] = c.b;
+          synapseColor[idx * 6 + 3] = c.r; synapseColor[idx * 6 + 4] = c.g; synapseColor[idx * 6 + 5] = c.b;
+          if (synapseFire[idx] < 0.05) {
+            synapseFire[idx] = 0;
+            synapseColor[idx * 6] = SYNAPSE_BASE.r; synapseColor[idx * 6 + 1] = SYNAPSE_BASE.g; synapseColor[idx * 6 + 2] = SYNAPSE_BASE.b;
+            synapseColor[idx * 6 + 3] = SYNAPSE_BASE.r; synapseColor[idx * 6 + 4] = SYNAPSE_BASE.g; synapseColor[idx * 6 + 5] = SYNAPSE_BASE.b;
+            activeFires.splice(p, 1);
+          }
+        }
+        if (activeFires.length) synapseGeo.attributes.color.needsUpdate = true;
       }
 
       if (autoRotate && elapsed > 500) spinGroup.rotation.y += AUTO_SPEED;
