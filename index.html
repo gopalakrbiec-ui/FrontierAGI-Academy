@@ -109,11 +109,6 @@
     }
     .brain-canvas-wrap:active { cursor: grabbing; }
     #brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    .brain-hint {
-      position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
-      font-size: 0.7rem; font-weight: 700; color: #be123c; background: rgba(255,255,255,0.8);
-      padding: 5px 12px; border-radius: 999px; pointer-events: none; z-index: 3;
-    }
     .brain-input-icons { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
     .brain-input-icon {
       position: absolute; left: 50%; top: 50%; font-size: 1.6rem; text-align: center;
@@ -527,7 +522,6 @@
           <span class="brain-input-icon" style="--ix:260px;--iy:40px;" data-emoji="🎬">🎬<i>Video</i></span>
           <span class="brain-input-icon" style="--ix:0px;--iy:180px;" data-emoji="🌐">🌐<i>Real-World Sim</i></span>
         </div>
-        <div class="brain-hint" id="brainHint">🖱️ Drag to rotate · auto-spinning</div>
       </div>
       <div class="brain-legend" id="brainLegend">
         <div class="brain-legend-list">
@@ -1858,7 +1852,6 @@
     const legendItems = document.querySelectorAll('.brain-legend-item');
     const explTitle = document.getElementById('brainExplainerTitle');
     const explBody = document.getElementById('brainExplainerBody');
-    const hint = document.getElementById('brainHint');
 
     function setActiveSector(idx) {
       if (idx === activeSector) return;
@@ -1895,7 +1888,7 @@
         syncLinePositions();
         points.rotation.y = (1 - e) * 2.4;
         lines.rotation.y = points.rotation.y;
-        if (t >= 1) { morphed = true; if (hint) hint.style.opacity = '1'; }
+        if (t >= 1) { morphed = true; }
       }
 
       if (morphed && lineMaterial.opacity < 0.2) {
