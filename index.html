@@ -174,6 +174,59 @@
       .brain-input-icon { font-size: 1.2rem; }
     }
 
+    /* ── LLM Pipeline Showcase ── */
+    .pipeline-section { padding: 20px 24px 70px; background: #fbfbfe; border-bottom: 1px solid var(--border); }
+    .pipeline-stage {
+      display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: stretch;
+      max-width: 1160px; margin: 0 auto;
+    }
+    .pipeline-canvas-wrap {
+      position: relative; height: 340px; border-radius: 20px; overflow: hidden;
+      background: radial-gradient(ellipse at 50% 40%, #0e1630 0%, #070a1a 60%, #04050f 100%);
+      border: 1px solid rgba(103,232,249,0.18); cursor: pointer;
+    }
+    #pipelineCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .pipeline-act-badge {
+      position: absolute; left: 16px; top: 14px; font-size: 0.68rem; font-weight: 800;
+      color: #67e8f9; background: rgba(255,255,255,0.06); padding: 5px 12px; border-radius: 999px;
+      letter-spacing: 0.03em; z-index: 2;
+    }
+    .pipeline-legend { display: flex; flex-direction: column; gap: 10px; }
+    .pipeline-act-list { display: flex; flex-direction: column; gap: 8px; }
+    .pipeline-act-hd {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 9px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--border);
+      cursor: pointer; font-size: 0.78rem; font-weight: 800; color: #1f2937; transition: all 0.2s;
+    }
+    .pipeline-act-hd:hover { border-color: var(--act-color); }
+    .pipeline-act-hd.is-active { background: color-mix(in srgb, var(--act-color) 10%, #fff); border-color: var(--act-color); box-shadow: 0 0 0 1px var(--act-color) inset; }
+    .pipeline-act-hd .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--act-color); flex-shrink: 0; margin-right: 8px; }
+    .pipeline-act-hd .label { display: flex; align-items: center; flex: 1; }
+    .pipeline-act-hd .count { font-size: 0.66rem; color: #9ca3af; font-weight: 700; }
+    .pipeline-substeps { display: none; flex-direction: column; gap: 4px; padding: 4px 4px 2px 30px; }
+    .pipeline-substeps.is-open { display: flex; }
+    .pipeline-substep {
+      font-size: 0.72rem; font-weight: 600; color: #6b7280; padding: 5px 8px; border-radius: 8px;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .pipeline-substep:hover { background: #f3f4f6; color: #1f2937; }
+    .pipeline-substep.is-active { background: color-mix(in srgb, var(--act-color) 12%, #fff); color: var(--act-color); font-weight: 800; }
+    .pipeline-explainer {
+      background: #111827; color: #fff; border-radius: 14px; padding: 18px;
+      display: flex; flex-direction: column; justify-content: center; min-height: 140px;
+    }
+    .pipeline-explainer-title { font-size: 0.92rem; font-weight: 800; margin-bottom: 8px; }
+    .pipeline-explainer-formula {
+      font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.76rem; color: #67e8f9;
+      background: rgba(103,232,249,0.08); border: 1px solid rgba(103,232,249,0.18);
+      padding: 8px 10px; border-radius: 8px; margin-bottom: 10px; line-height: 1.5; word-break: break-word;
+    }
+    .pipeline-explainer-body { font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,0.78); }
+    @media (max-width: 900px) {
+      .pipeline-stage { grid-template-columns: 1fr; }
+      .pipeline-canvas-wrap { height: 300px; }
+    }
+
     .home-stat-strip {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1px;
       background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -579,6 +632,31 @@
         <div class="brain-explainer" id="brainExplainer">
           <div class="brain-explainer-title" id="brainExplainerTitle">Reasoning &amp; Math</div>
           <div class="brain-explainer-body" id="brainExplainerBody">Frontier models now clear graduate-level math and multi-step logic benchmarks at 92% — the region of the network with the most consistent, well-saturated benchmark performance today.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ LLM PIPELINE SHOWCASE ═══════════════════════ -->
+<div class="pipeline-section">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">End to End</div>
+      <h2>How an LLM Is Actually Trained, Deployed, and Used</h2>
+      <p>Fourteen granular steps across four acts — pre-training, alignment, deployment, and what happens the instant a user hits send — with the actual objective functions and notation behind each one. Click any step to jump straight to it.</p>
+    </div>
+    <div class="pipeline-stage">
+      <div class="pipeline-canvas-wrap" id="pipelineCanvasWrap">
+        <canvas id="pipelineCanvas"></canvas>
+        <div class="pipeline-act-badge" id="pipelineActBadge">Act 1 of 4 · Pre-training</div>
+      </div>
+      <div class="pipeline-legend">
+        <div class="pipeline-act-list" id="pipelineActList"></div>
+        <div class="pipeline-explainer" id="pipelineExplainer">
+          <div class="pipeline-explainer-title" id="pipelineExplainerTitle">Data Collection</div>
+          <div class="pipeline-explainer-formula" id="pipelineExplainerFormula"></div>
+          <div class="pipeline-explainer-body" id="pipelineExplainerBody"></div>
         </div>
       </div>
     </div>
@@ -2196,6 +2274,207 @@
       renderer.render(scene, camera);
     }
     requestAnimationFrame(animate);
+  })();
+
+  /* ── LLM Pipeline Showcase: a 2D canvas flowchart of 14 granular steps
+     across 4 acts (pre-training, alignment, deployment, end-user use),
+     auto-advancing with a traveling signal, click-to-jump on any step. ── */
+  (function () {
+    const wrap = document.getElementById('pipelineCanvasWrap');
+    const canvas = document.getElementById('pipelineCanvas');
+    if (!wrap || !canvas) return;
+    const ctx = canvas.getContext('2d');
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    const ACTS = [
+      { name: 'Pre-training', color: '#818cf8' },
+      { name: 'Alignment', color: '#f472b6' },
+      { name: 'Deployment', color: '#2dd4bf' },
+      { name: 'End-User Use', color: '#fbbf24' },
+    ];
+
+    const STEPS = [
+      { act: 0, title: 'Data Collection', formula: '~10¹³ tokens: web, books, code, papers', body: 'Massive corpora are crawled, deduplicated, and filtered for quality before a single training step ever runs.' },
+      { act: 0, title: 'Tokenization', formula: 'text → BPE/SentencePiece subword ids, vocab ≈ 100k–200k', body: 'Raw text is split into subword tokens using a fixed vocabulary learned ahead of time, turning language into integers the model can process.' },
+      { act: 0, title: 'Model Architecture', formula: 'Attention(Q,K,V) = softmax(QKᵀ/√d_k)·V', body: 'Stacked transformer blocks — self-attention plus feed-forward layers — give the model its capacity to weigh relationships between tokens.' },
+      { act: 0, title: 'Pre-training Loop', formula: 'L = −Σ y·log ŷ  (next-token cross-entropy);  θ ← θ − η∇θL', body: 'The model repeatedly predicts the next token, and AdamW nudges every weight to reduce that loss — trillions of times, across many GPUs.' },
+      { act: 1, title: 'Supervised Fine-Tuning (SFT)', formula: 'min_θ Σ −log p_θ(y|x)  on curated (prompt, response) pairs', body: 'The pre-trained model is fine-tuned on a smaller set of high-quality, human-written examples of the behavior it should exhibit.' },
+      { act: 1, title: 'RLHF / RLAIF', formula: 'max_π E[r_φ(x,y)] − β·KL(π‖π_ref)', body: 'A reward model scores outputs by human (or AI) preference, and the policy is updated (PPO or DPO) to earn higher reward without drifting too far from the SFT model.' },
+      { act: 1, title: 'Safety & Constitutional Tuning', formula: 'critique → revise, conditioned on a written rule set', body: 'Additional passes check outputs against explicit principles, teaching the model to catch and correct its own harmful or policy-violating responses.' },
+      { act: 2, title: 'Quantization / Distillation', formula: 'FP16/BF16 weights → INT8/INT4, or distill into a smaller student', body: 'Weights are compressed to run cheaper and faster, or a smaller model is trained to imitate the larger one\'s behavior.' },
+      { act: 2, title: 'Serving Infrastructure', formula: 'sharded across GPU clusters; KV-cache reuse, batching, speculative decoding', body: 'The model is split across accelerators and served with techniques that make generation fast enough for real-time use at scale.' },
+      { act: 2, title: 'API / Product Layer', formula: 'model → REST/streaming endpoint → chat apps, IDEs, agents', body: 'The served model is wrapped in an interface — a chat app, an API, an IDE plugin — that real users and developers actually touch.' },
+      { act: 3, title: 'User Prompt', formula: 'prompt → tokenizer(prompt)', body: 'A user types a request. It gets tokenized with the exact same vocabulary the model was trained on.' },
+      { act: 3, title: 'Frozen Forward Pass', formula: 'y = f_θ*(x),  θ* fixed — no gradient, no weight update', body: 'The deployed model runs a pure forward pass per generated token. Nothing about the model changes during your conversation.' },
+      { act: 3, title: 'Sampling / Decoding', formula: 'p(token) = softmax(logits/T);  top-k / top-p (nucleus) sampling', body: 'At each step the model outputs a probability distribution over the vocabulary; temperature and sampling strategy decide which token is actually picked.' },
+      { act: 3, title: 'Streaming Response', formula: 'token₁, token₂, … → decoded text, streamed live', body: 'Chosen tokens are decoded back into text and streamed to the user one at a time — the "typing" effect you see in a chat UI.' },
+    ];
+    const N = STEPS.length;
+
+    function resize() {
+      canvas.width = wrap.clientWidth * DPR;
+      canvas.height = wrap.clientHeight * DPR;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Node layout: gentle S-curve left to right.
+    function nodePos(i) {
+      const w = canvas.width, h = canvas.height;
+      const marginX = w * 0.05, marginY = h * 0.28;
+      const x = marginX + (w - marginX * 2) * (i / (N - 1));
+      const y = h / 2 + Math.sin((i / (N - 1)) * Math.PI * 3.4) * marginY;
+      return { x, y };
+    }
+
+    let progress = 0; // continuous position along the 14 steps
+    let lastActive = -1;
+    let paused = false;
+    let resumeTimer = null;
+
+    const actListEl = document.getElementById('pipelineActList');
+    const badgeEl = document.getElementById('pipelineActBadge');
+    const explTitle = document.getElementById('pipelineExplainerTitle');
+    const explFormula = document.getElementById('pipelineExplainerFormula');
+    const explBody = document.getElementById('pipelineExplainerBody');
+
+    // Build the accordion legend: 4 act headers, each with its substeps.
+    ACTS.forEach((act, actIdx) => {
+      const hd = document.createElement('div');
+      hd.className = 'pipeline-act-hd';
+      hd.style.setProperty('--act-color', act.color);
+      hd.dataset.act = actIdx;
+      const stepsInAct = STEPS.filter(s => s.act === actIdx).length;
+      hd.innerHTML = '<span class="label"><span class="dot"></span>' + act.name + '</span><span class="count">' + stepsInAct + ' steps</span>';
+      hd.addEventListener('click', () => {
+        const firstIdx = STEPS.findIndex(s => s.act === actIdx);
+        jumpTo(firstIdx);
+      });
+      actListEl.appendChild(hd);
+
+      const sub = document.createElement('div');
+      sub.className = 'pipeline-substeps';
+      sub.dataset.act = actIdx;
+      STEPS.forEach((s, idx) => {
+        if (s.act !== actIdx) return;
+        const row = document.createElement('div');
+        row.className = 'pipeline-substep';
+        row.style.setProperty('--act-color', act.color);
+        row.dataset.idx = idx;
+        row.textContent = s.title;
+        row.addEventListener('click', (e) => { e.stopPropagation(); jumpTo(idx); });
+        sub.appendChild(row);
+      });
+      actListEl.appendChild(sub);
+    });
+
+    function setActive(idx) {
+      if (idx === lastActive) return;
+      lastActive = idx;
+      const s = STEPS[idx];
+      const act = ACTS[s.act];
+      badgeEl.textContent = 'Act ' + (s.act + 1) + ' of 4 · ' + act.name;
+      explTitle.textContent = s.title;
+      explFormula.textContent = s.formula;
+      explBody.textContent = s.body;
+      document.querySelectorAll('.pipeline-act-hd').forEach(el => el.classList.toggle('is-active', Number(el.dataset.act) === s.act));
+      document.querySelectorAll('.pipeline-substeps').forEach(el => el.classList.toggle('is-open', Number(el.dataset.act) === s.act));
+      document.querySelectorAll('.pipeline-substep').forEach(el => el.classList.toggle('is-active', Number(el.dataset.idx) === idx));
+    }
+
+    function jumpTo(idx) {
+      progress = idx;
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, 3200);
+    }
+
+    wrap.addEventListener('click', (e) => {
+      // Clicking directly on the canvas jumps to the nearest node.
+      if (e.target !== canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = (e.clientX - rect.left) * DPR, my = (e.clientY - rect.top) * DPR;
+      let best = 0, bestD = Infinity;
+      for (let i = 0; i < N; i++) {
+        const p = nodePos(i);
+        const d = (p.x - mx) ** 2 + (p.y - my) ** 2;
+        if (d < bestD) { bestD = d; best = i; }
+      }
+      jumpTo(best);
+    });
+
+    const STEP_DURATION = 3.4; // seconds per step
+    let lastFrame = performance.now();
+
+    function draw() {
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // connecting path
+      ctx.beginPath();
+      for (let i = 0; i < N; i++) {
+        const p = nodePos(i);
+        if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1.5 * DPR;
+      ctx.stroke();
+
+      const activeIdx = ((Math.floor(progress) % N) + N) % N;
+      const frac = progress - Math.floor(progress);
+
+      for (let i = 0; i < N; i++) {
+        const p = nodePos(i);
+        const s = STEPS[i];
+        const color = ACTS[s.act].color;
+        const isPast = i < activeIdx;
+        const isActive = i === activeIdx;
+        const r = (isActive ? 7 : 4.2) * DPR;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = isActive ? color : (isPast ? color + 'aa' : 'rgba(255,255,255,0.22)');
+        ctx.globalAlpha = isActive ? 1 : (isPast ? 0.55 : 0.35);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        if (isActive) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r * 2.1, 0, Math.PI * 2);
+          ctx.strokeStyle = color;
+          ctx.globalAlpha = 0.4;
+          ctx.lineWidth = 1.5 * DPR;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+        // label
+        ctx.font = (isActive ? '700 ' : '600 ') + (8 * DPR) + 'px system-ui, sans-serif';
+        ctx.fillStyle = isActive ? '#ffffff' : 'rgba(255,255,255,0.45)';
+        ctx.textAlign = 'center';
+        const labelY = p.y + (i % 2 === 0 ? -r - 8 * DPR : r + 16 * DPR);
+        ctx.fillText(s.title, p.x, labelY);
+      }
+
+      // traveling signal dot between activeIdx and activeIdx+1
+      const a = nodePos(activeIdx), b = nodePos((activeIdx + 1) % N);
+      const tx = a.x + (b.x - a.x) * frac, ty = a.y + (b.y - a.y) * frac;
+      ctx.beginPath();
+      ctx.arc(tx, ty, 3.2 * DPR, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = ACTS[STEPS[activeIdx].act].color;
+      ctx.shadowBlur = 12 * DPR;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      setActive(activeIdx);
+    }
+
+    function loop(now) {
+      requestAnimationFrame(loop);
+      const dt = Math.max(0, Math.min(0.05, (now - lastFrame) / 1000));
+      lastFrame = now;
+      if (!paused) progress = (progress + dt / STEP_DURATION) % N;
+      draw();
+    }
+    requestAnimationFrame(loop);
   })();
 
   function toggleJumpPanel() {
