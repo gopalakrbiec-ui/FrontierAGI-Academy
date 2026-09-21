@@ -104,14 +104,14 @@
     }
     .brain-canvas-wrap {
       position: relative; height: 520px; border-radius: 20px; overflow: hidden;
-      background: radial-gradient(ellipse at 50% 40%, #f5f3ff 0%, #eef2ff 55%, #e0e7ff 100%);
-      border: 1px solid rgba(79,70,229,0.14); cursor: grab;
+      background: radial-gradient(ellipse at 50% 40%, #fff1ee 0%, #fde4df 55%, #f7d2ce 100%);
+      border: 1px solid rgba(190,18,60,0.14); cursor: grab;
     }
     .brain-canvas-wrap:active { cursor: grabbing; }
     #brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .brain-hint {
       position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
-      font-size: 0.7rem; font-weight: 700; color: #6d28d9; background: rgba(255,255,255,0.8);
+      font-size: 0.7rem; font-weight: 700; color: #be123c; background: rgba(255,255,255,0.8);
       padding: 5px 12px; border-radius: 999px; pointer-events: none; z-index: 3;
     }
     .brain-input-icons { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
@@ -531,27 +531,27 @@
       </div>
       <div class="brain-legend" id="brainLegend">
         <div class="brain-legend-list">
-          <div class="brain-legend-item" data-sector="0" style="--dot:#4f46e5" onclick="brainJumpTo(0)">
+          <div class="brain-legend-item" data-sector="0" style="--dot:#be123c" onclick="brainJumpTo(0)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Reasoning &amp; Math</div><div class="brain-legend-val">92%</div></div>
           </div>
-          <div class="brain-legend-item" data-sector="1" style="--dot:#0891b2" onclick="brainJumpTo(1)">
+          <div class="brain-legend-item" data-sector="1" style="--dot:#f1654c" onclick="brainJumpTo(1)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Coding &amp; Tool Use</div><div class="brain-legend-val">88%</div></div>
           </div>
-          <div class="brain-legend-item" data-sector="2" style="--dot:#059669" onclick="brainJumpTo(2)">
+          <div class="brain-legend-item" data-sector="2" style="--dot:#fb7185" onclick="brainJumpTo(2)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Long-Horizon Agents</div><div class="brain-legend-val">61%</div></div>
           </div>
-          <div class="brain-legend-item" data-sector="3" style="--dot:#d97706" onclick="brainJumpTo(3)">
+          <div class="brain-legend-item" data-sector="3" style="--dot:#e8a06f" onclick="brainJumpTo(3)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Multimodal Grounding</div><div class="brain-legend-val">74%</div></div>
           </div>
-          <div class="brain-legend-item" data-sector="4" style="--dot:#db2777" onclick="brainJumpTo(4)">
+          <div class="brain-legend-item" data-sector="4" style="--dot:#ec4899" onclick="brainJumpTo(4)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Continual Learning</div><div class="brain-legend-val">34%</div></div>
           </div>
-          <div class="brain-legend-item" data-sector="5" style="--dot:#2563eb" onclick="brainJumpTo(5)">
+          <div class="brain-legend-item" data-sector="5" style="--dot:#c2618d" onclick="brainJumpTo(5)">
             <span class="brain-legend-dot"></span>
             <div class="brain-legend-txt"><div class="brain-legend-title">Alignment &amp; Interpretability</div><div class="brain-legend-val">41%</div></div>
           </div>
@@ -1629,17 +1629,17 @@
     if (!wrap || !canvas || typeof THREE === 'undefined') return;
 
     const SECTORS = [
-      { title: 'Reasoning &amp; Math', pct: 92, color: 0x4f46e5,
+      { title: 'Reasoning &amp; Math', pct: 92, color: 0xbe123c,
         body: 'Frontier models now clear graduate-level math and multi-step logic benchmarks at 92% — the most consistently well-saturated capability in the network today.' },
-      { title: 'Coding &amp; Tool Use', pct: 88, color: 0x0891b2,
+      { title: 'Coding &amp; Tool Use', pct: 88, color: 0xf1654c,
         body: 'Autonomous coding and tool-calling benchmarks sit at 88%, driven by agentic scaffolding and long-context retrieval over real codebases.' },
-      { title: 'Long-Horizon Agents', pct: 61, color: 0x059669,
+      { title: 'Long-Horizon Agents', pct: 61, color: 0xfb7185,
         body: 'Multi-step, multi-hour agentic task completion trails at 61% — METR-style time-horizon studies show this is the frontier moving fastest year over year.' },
-      { title: 'Multimodal Grounding', pct: 74, color: 0xd97706,
+      { title: 'Multimodal Grounding', pct: 74, color: 0xe8a06f,
         body: 'Vision, audio, and video understanding fused with language sits at 74%, the region this brain\'s five input signals (image, language, speech, video, simulation) feed most directly.' },
-      { title: 'Continual Learning', pct: 34, color: 0xdb2777,
+      { title: 'Continual Learning', pct: 34, color: 0xec4899,
         body: 'Learning persistently from new experience without retraining remains the network\'s weakest region at 34% — still an open research problem, not a solved one.' },
-      { title: 'Alignment &amp; Interpretability', pct: 41, color: 0x2563eb,
+      { title: 'Alignment &amp; Interpretability', pct: 41, color: 0xc2618d,
         body: 'Understanding and steering what a model actually does internally lags at 41% — the safety-critical region every lab flags as unsolved.' },
     ];
     const N_SECTORS = SECTORS.length;
@@ -1745,11 +1745,11 @@
     // ── Synaptic connections: wire each point to its few nearest neighbors
     // in the FINAL brain shape, so the cloud reads as a connected network
     // rather than loose dust once it settles. ──
-    const MAX_NEIGHBORS = 3;
-    const EDGE_RADIUS2 = 0.16 * 0.16;
+    const MAX_NEIGHBORS = isSmall ? 6 : 9;
+    const EDGE_RADIUS2 = 0.3 * 0.3;
     const edgePairs = [];
     {
-      const cell = 0.22;
+      const cell = 0.25;
       const grid = new Map();
       const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -1783,7 +1783,7 @@
     const lineGeometry = new THREE.BufferGeometry();
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x818cf8, transparent: true, opacity: 0, depthWrite: false,
+      color: 0xe8837a, transparent: true, opacity: 0, depthWrite: false,
     });
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     spinGroup.add(lines);
@@ -1868,7 +1868,7 @@
       explTitle.innerHTML = s.title;
       explBody.textContent = s.body;
       // recolor: active sector particles bright/white-mixed, others dimmed
-      const dim = new THREE.Color(0x9ca3af);
+      const dim = new THREE.Color(0xd9b3ac);
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const sc = sectorOf[i];
         const c = sc === idx
@@ -1898,8 +1898,8 @@
         if (t >= 1) { morphed = true; if (hint) hint.style.opacity = '1'; }
       }
 
-      if (morphed && lineMaterial.opacity < 0.32) {
-        lineMaterial.opacity = Math.min(0.32, lineMaterial.opacity + 0.012);
+      if (morphed && lineMaterial.opacity < 0.2) {
+        lineMaterial.opacity = Math.min(0.2, lineMaterial.opacity + 0.01);
       }
 
       if (autoRotate && morphed) spinGroup.rotation.y += AUTO_SPEED;
