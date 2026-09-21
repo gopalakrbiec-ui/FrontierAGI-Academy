@@ -1755,6 +1755,95 @@
     for (let i = 0; i < STRAND_COUNT; i++) buildStrand(cerebrumSurface);
     for (let i = 0; i < CEREBELLUM_STRANDS; i++) buildStrand(cerebellumSurface);
 
+    // ── Point cloud + synapse mesh: fine background texture of individual
+    // "neurons" and their nearest-neighbor connections, layered underneath
+    // the brighter flowing strands rather than replacing them. ──
+    const PARTICLE_COUNT = isSmall ? 1400 : 2600;
+    const particlePos = new Float32Array(PARTICLE_COUNT * 3);
+    const particleColor = new Float32Array(PARTICLE_COUNT * 3);
+    const particleSector = new Int8Array(PARTICLE_COUNT);
+    const CEREBELLUM_START = Math.floor(PARTICLE_COUNT * 0.83);
+    const STEM_START = Math.floor(PARTICLE_COUNT * 0.94);
+    const tmpC = new THREE.Color();
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      let x, y, z;
+      if (i < CEREBELLUM_START) {
+        const p = cerebrumSurface(Math.random() * TAU, Math.random() * Math.PI);
+        x = p.x; y = p.y; z = p.z;
+      } else if (i < STEM_START) {
+        const p = cerebellumSurface(Math.random() * TAU, Math.random() * Math.PI);
+        x = p.x; y = p.y; z = p.z;
+      } else {
+        const t = Math.random(), ang = Math.random() * TAU, rr = 0.16 * Math.sqrt(Math.random());
+        x = Math.cos(ang) * rr; y = -1.0 - t * 0.6; z = 0.85 + Math.sin(ang) * rr * 0.6;
+      }
+      particlePos[i * 3] = x; particlePos[i * 3 + 1] = y; particlePos[i * 3 + 2] = z;
+      const sector = Math.floor(norm(Math.atan2(z, x)) / (TAU / N_SECTORS)) % N_SECTORS;
+      particleSector[i] = sector;
+      tmpC.set(SECTORS[sector].color);
+      particleColor[i * 3] = tmpC.r; particleColor[i * 3 + 1] = tmpC.g; particleColor[i * 3 + 2] = tmpC.b;
+    }
+
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColor, 3));
+    const particleMat = new THREE.PointsMaterial({
+      size: isSmall ? 0.032 : 0.028, vertexColors: true, transparent: true, opacity: 0,
+      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    });
+    const particlePoints = new THREE.Points(particleGeo, particleMat);
+    spinGroup.add(particlePoints);
+
+    // nearest-neighbor synapse mesh (grid-bucketed, same technique as before)
+    const MAX_NEIGHBORS = isSmall ? 5 : 7;
+    const EDGE_RADIUS2 = 0.28 * 0.28;
+    const edgePairs = [];
+    {
+      const cell = 0.25;
+      const grid = new Map();
+      const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const cx = Math.floor(particlePos[i * 3] / cell), cy = Math.floor(particlePos[i * 3 + 1] / cell), cz = Math.floor(particlePos[i * 3 + 2] / cell);
+        const k = key(cx, cy, cz);
+        if (!grid.has(k)) grid.set(k, []);
+        grid.get(k).push(i);
+      }
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const cx = Math.floor(particlePos[i * 3] / cell), cy = Math.floor(particlePos[i * 3 + 1] / cell), cz = Math.floor(particlePos[i * 3 + 2] / cell);
+        const candidates = [];
+        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
+          const bucket = grid.get(key(cx + dx, cy + dy, cz + dz));
+          if (bucket) for (const j of bucket) if (j > i) candidates.push(j);
+        }
+        candidates.sort((a, b) => {
+          const da = (particlePos[a*3]-particlePos[i*3])**2 + (particlePos[a*3+1]-particlePos[i*3+1])**2 + (particlePos[a*3+2]-particlePos[i*3+2])**2;
+          const db = (particlePos[b*3]-particlePos[i*3])**2 + (particlePos[b*3+1]-particlePos[i*3+1])**2 + (particlePos[b*3+2]-particlePos[i*3+2])**2;
+          return da - db;
+        });
+        let added = 0;
+        for (const j of candidates) {
+          if (added >= MAX_NEIGHBORS) break;
+          const d2 = (particlePos[j*3]-particlePos[i*3])**2 + (particlePos[j*3+1]-particlePos[i*3+1])**2 + (particlePos[j*3+2]-particlePos[i*3+2])**2;
+          if (d2 < EDGE_RADIUS2) { edgePairs.push(i, j); added++; }
+        }
+      }
+    }
+    const edgeCount = edgePairs.length / 2;
+    const synapsePos = new Float32Array(edgeCount * 6);
+    for (let k = 0; k < edgeCount; k++) {
+      const i = edgePairs[k * 2], j = edgePairs[k * 2 + 1];
+      synapsePos[k * 6] = particlePos[i * 3]; synapsePos[k * 6 + 1] = particlePos[i * 3 + 1]; synapsePos[k * 6 + 2] = particlePos[i * 3 + 2];
+      synapsePos[k * 6 + 3] = particlePos[j * 3]; synapsePos[k * 6 + 4] = particlePos[j * 3 + 1]; synapsePos[k * 6 + 5] = particlePos[j * 3 + 2];
+    }
+    const synapseGeo = new THREE.BufferGeometry();
+    synapseGeo.setAttribute('position', new THREE.BufferAttribute(synapsePos, 3));
+    const synapseMat = new THREE.LineBasicMaterial({
+      color: 0x818cf8, transparent: true, opacity: 0, depthWrite: false,
+    });
+    const synapseLines = new THREE.LineSegments(synapseGeo, synapseMat);
+    spinGroup.add(synapseLines);
+
     // ── Orbiting capability clusters: small non-rotating neuron bursts
     // parked around the canvas, each wired to a capability, with a flowing
     // strand reaching in toward the brain — echoes the reference image's
@@ -1910,6 +1999,14 @@
       const s = SECTORS[idx];
       explTitle.innerHTML = s.title;
       explBody.textContent = s.body;
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const sc = particleSector[i];
+        const c = sc === idx
+          ? tmpC.set(SECTORS[sc].color).lerp(whiteColor, 0.3)
+          : tmpC.set(SECTORS[sc].color).lerp(dimColor, 0.7);
+        particleColor[i * 3] = c.r; particleColor[i * 3 + 1] = c.g; particleColor[i * 3 + 2] = c.b;
+      }
+      particleGeo.attributes.color.needsUpdate = true;
     }
 
     const introStart = performance.now();
@@ -1957,6 +2054,13 @@
       clusterGroup.children.forEach(obj => {
         if (obj.geometry && obj.geometry.attributes.color) obj.geometry.attributes.color.needsUpdate = true;
       });
+
+      // Fade in the background point cloud + synapse mesh, dimmed relative
+      // to the strands, brightening whichever sector is currently active.
+      if (elapsed > 800) {
+        if (particleMat.opacity < 0.55) particleMat.opacity = Math.min(0.55, particleMat.opacity + 0.008);
+        if (synapseMat.opacity < 0.12) synapseMat.opacity = Math.min(0.12, synapseMat.opacity + 0.004);
+      }
 
       if (autoRotate && elapsed > 500) spinGroup.rotation.y += AUTO_SPEED;
 
