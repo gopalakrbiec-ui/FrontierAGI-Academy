@@ -1752,8 +1752,10 @@
         line, mat, colors, geo, sector: sec,
         phase: Math.random(), speed: 0.12 + Math.random() * 0.1,
         delay: Math.random() * 2200,
+        fire: 0, fireColor: null,
       });
     }
+    let activeStrandFires = []; // strand objects currently flashing
 
     for (let i = 0; i < STRAND_COUNT; i++) buildStrand(cerebrumSurface);
     for (let i = 0; i < CEREBELLUM_STRANDS; i++) buildStrand(cerebellumSurface);
@@ -2044,16 +2046,30 @@
       const elapsed = now - introStart;
 
       // Fade in + traveling light pulse along every strand
+      // Randomly ignite a strand so it flashes brighter on top of its
+      // normal traveling pulse — same "firing" language as the synapses.
+      if (elapsed > 800 && Math.random() < 0.4) {
+        const st = strands[Math.floor(Math.random() * strands.length)];
+        if (st.fire < 0.05) { st.fire = 1; st.fireColor = randomSignalColor(); activeStrandFires.push(st); }
+      }
+      for (let p = activeStrandFires.length - 1; p >= 0; p--) {
+        const st = activeStrandFires[p];
+        st.fire *= 0.9;
+        if (st.fire < 0.05) { st.fire = 0; st.fireColor = null; activeStrandFires.splice(p, 1); }
+      }
+
       strands.forEach(st => {
         if (elapsed < st.delay) return;
         if (st.mat.opacity < 0.85) st.mat.opacity = Math.min(0.85, st.mat.opacity + 0.012);
         const isActive = st.sector === activeSector;
         const base = baseColorObj.set(SECTORS[st.sector].color);
-        const tinted = isActive ? base.clone().lerp(whiteColor, 0.35) : base.clone().lerp(dimColor, 0.55);
+        let tinted = isActive ? base.clone().lerp(whiteColor, 0.35) : base.clone().lerp(dimColor, 0.55);
+        if (st.fire > 0.05) tinted = tinted.lerp(st.fireColor, st.fire);
+        const boost = 1 + st.fire * 1.4;
         const phase = (now * 0.001 * st.speed + st.phase) % 1;
         for (let k = 0; k < SEG_COUNT; k++) {
           const u = k / (SEG_COUNT - 1);
-          const wave = 0.35 + 0.65 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2);
+          const wave = (0.35 + 0.65 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2)) * boost;
           st.colors[k * 3] = tinted.r * wave;
           st.colors[k * 3 + 1] = tinted.g * wave;
           st.colors[k * 3 + 2] = tinted.b * wave;
