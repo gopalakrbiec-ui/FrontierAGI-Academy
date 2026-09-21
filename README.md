@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 📊 [Data vs. Reinforcement Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-data-vs-reinforcement-learning.html) ⭐ | Does RL teach new capabilities or just sharpen what's already latent in the base model? A 2025 pass@k study, DeepSeek-R1's own documented… | 2026-09-21 |
+| 🤖 [The Sim-to-Real Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-sim-to-real-gap.html) ⭐ | A research agent that scores well on a clean benchmark isn't the same as one that accelerates real research. | 2026-09-21 |
+| 📊 [Data vs. Reinforcement Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-data-vs-reinforcement-learning.html) | Does RL teach new capabilities or just sharpen what's already latent in the base model? A 2025 pass@k study, DeepSeek-R1's own documented… | 2026-09-21 |
 | 🏛️ [Distillation, Centralization, and the Moat Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-distillation-centralization-moat.html) | If one lab pulls ahead through RSI, does the lead survive contact with distillation? The OpenAI-DeepSeek accusation, what DeepSeek's $5.6M… | 2026-09-21 |
 | 🎯 [The Objective-Specification Problem](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-objective-specification-problem.html) | Part 2 of the RSI series. | 2026-09-21 |
 | 🧪 [AI Automating AI Research: RSI's Testing Ground](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-ai-automating-ai-research.html) | Part 4 of the RSI series. | 2026-09-21 |

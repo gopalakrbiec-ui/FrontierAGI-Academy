@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-sim-to-real-gap",
+      "title": "The Sim-to-Real Gap",
+      "excerpt": "A research agent that scores well on a clean benchmark isn't the same as one that accelerates real research. OpenAI's Rubik's Cube robot hand told correctly, SWE-Bench Pro's score collapse, and what benchmark authors themselves admit their benchmarks can't measure.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-21",
+      "readTime": "40 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🤖",
+      "featured": true
+    },
+    {
       "slug": "rsi-data-vs-reinforcement-learning",
       "title": "Data vs. Reinforcement Learning",
       "excerpt": "Does RL teach new capabilities or just sharpen what's already latent in the base model? A 2025 pass@k study, DeepSeek-R1's own documented account of pure-RL failure modes, and Epoch AI's data-exhaustion timeline.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "📊",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-distillation-centralization-moat",
