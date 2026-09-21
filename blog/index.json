@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-ai-automating-ai-research",
+      "title": "AI Automating AI Research: RSI's Testing Ground",
+      "excerpt": "Part 4 of the RSI series. Covers three real, September 2026 systems — Dream-RSI, ModularRSI, and ScienceBuddy — that improve AI agents' research effectiveness without touching the underlying model's weights, a Dwarkesh Patel roundtable with John Schulman on objective specification, distillation, and autonomy timelines, Sakana AI's 'AI CUDA Engineer' and its benchmark-gaming retraction alongside DeepMind's verified AlphaEvolve kernel results, Vals AI's real-world-reliability evaluation approach, Ryan Greenblatt's verifiable-task-transfer argument, and an explicit correction of a fabricated 'joint conversation' claim involving four separate researchers.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-21",
+      "readTime": "50 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧪",
+      "featured": true
+    },
+    {
       "slug": "recursive-self-improvement-primer",
       "title": "Recursive Self-Improvement: A Primer",
       "excerpt": "The opening piece in a planned seven-part series on recursive self-improvement (RSI). Traces the idea from I.J. Good's 1965 'intelligence explosion' essay through Yudkowsky's naming of RSI, distinguishes it from ordinary capability scaling, covers genuine (if narrow) real-world progress — METR's RE-Bench, OpenAI's MLE-bench, DeepMind's AlphaEvolve — documents the notable 2026 convergence of Anthropic, OpenAI, and Google DeepMind all naming 'AI automating AI research' as an explicit safety-framework risk threshold, surveys the hard-takeoff-vs-soft-takeoff debate, and treats 2026's wave of self-reported lab 'steps toward RSI' claims with explicit skepticism.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🔁",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "qwen-lineage-consolidated-comparison",
