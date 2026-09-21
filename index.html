@@ -104,8 +104,8 @@
     }
     .brain-canvas-wrap {
       position: relative; height: 520px; border-radius: 20px; overflow: hidden;
-      background: radial-gradient(ellipse at 50% 40%, #f5f3ff 0%, #eef2ff 55%, #e0e7ff 100%);
-      border: 1px solid rgba(79,70,229,0.14); cursor: grab;
+      background: radial-gradient(ellipse at 50% 40%, #0e1630 0%, #070a1a 60%, #04050f 100%);
+      border: 1px solid rgba(103,232,249,0.18); cursor: grab;
     }
     .brain-canvas-wrap:active { cursor: grabbing; }
     #brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -1761,20 +1761,22 @@
       return geo;
     }
 
-    const shellMaterial = new THREE.MeshBasicMaterial({
-      color: 0xa5b4fc, transparent: true, opacity: 0,
-      side: THREE.DoubleSide, depthWrite: false,
-    });
-    const cerebellumShellMaterial = shellMaterial.clone();
-    const cerebrumShell = new THREE.Mesh(buildSurfaceMesh((t, v) => cerebrumSurface(t, v, false), 48, 32), shellMaterial);
-    const cerebellumShell = new THREE.Mesh(buildSurfaceMesh(cerebellumSurface, 28, 18), cerebellumShellMaterial);
-    spinGroup.add(cerebrumShell);
-    spinGroup.add(cerebellumShell);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.55);
-    keyLight.position.set(2, 3, 4);
-    scene.add(keyLight);
+    // Glowing wireframe boundary (core + soft halo pass) instead of a filled
+    // surface — traces the same folded contours as a neon outline, closer
+    // to a scan-style brain visualization than a solid membrane.
+    const GLOW_COLOR = 0x67e8f9;
+    function buildGlowWireframe(fn, thetaSteps, vSteps) {
+      const wireGeo = new THREE.WireframeGeometry(buildSurfaceMesh(fn, thetaSteps, vSteps));
+      const coreMat = new THREE.LineBasicMaterial({ color: GLOW_COLOR, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+      const haloMat = new THREE.LineBasicMaterial({ color: GLOW_COLOR, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+      const core = new THREE.LineSegments(wireGeo, coreMat);
+      const halo = new THREE.LineSegments(wireGeo, haloMat);
+      halo.scale.setScalar(1.025);
+      return { core, halo, coreMat, haloMat };
+    }
+    const cerebrumWire = buildGlowWireframe((t, v) => cerebrumSurface(t, v, false), 40, 22);
+    const cerebellumWire = buildGlowWireframe(cerebellumSurface, 22, 14);
+    spinGroup.add(cerebrumWire.core, cerebrumWire.halo, cerebellumWire.core, cerebellumWire.halo);
 
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(scattered); // current, animated in place
@@ -1941,17 +1943,22 @@
         syncLinePositions();
         points.rotation.y = (1 - e) * 2.4;
         lines.rotation.y = points.rotation.y;
-        cerebrumShell.rotation.y = points.rotation.y;
-        cerebellumShell.rotation.y = points.rotation.y;
+        cerebrumWire.core.rotation.y = points.rotation.y;
+        cerebrumWire.halo.rotation.y = points.rotation.y;
+        cerebellumWire.core.rotation.y = points.rotation.y;
+        cerebellumWire.halo.rotation.y = points.rotation.y;
         if (t >= 1) { morphed = true; }
       }
 
       if (morphed && lineMaterial.opacity < 0.2) {
         lineMaterial.opacity = Math.min(0.2, lineMaterial.opacity + 0.01);
       }
-      if (morphed && shellMaterial.opacity < 0.14) {
-        shellMaterial.opacity = Math.min(0.14, shellMaterial.opacity + 0.005);
-        cerebellumShellMaterial.opacity = shellMaterial.opacity;
+      if (morphed && cerebrumWire.coreMat.opacity < 0.55) {
+        const step = 0.018;
+        cerebrumWire.coreMat.opacity = Math.min(0.55, cerebrumWire.coreMat.opacity + step);
+        cerebrumWire.haloMat.opacity = Math.min(0.18, cerebrumWire.haloMat.opacity + step * 0.35);
+        cerebellumWire.coreMat.opacity = cerebrumWire.coreMat.opacity;
+        cerebellumWire.haloMat.opacity = cerebrumWire.haloMat.opacity;
       }
 
       if (autoRotate && morphed) spinGroup.rotation.y += AUTO_SPEED;
