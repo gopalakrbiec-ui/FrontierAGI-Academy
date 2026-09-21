@@ -230,6 +230,31 @@
     .home-rsi-card-meta { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
     @media (max-width: 600px) { .home-rsi-spotlight { padding: 24px; } }
 
+    .home-series-spotlight {
+      background: linear-gradient(120deg, var(--sp-a), var(--sp-b));
+      border-radius: 18px; padding: 32px; color: #fff; margin-bottom: 40px; position: relative; overflow: hidden;
+    }
+    .home-series-spotlight::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 15% 20%, var(--sp-glow), transparent 65%);
+    }
+    .home-series-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      background: rgba(255,255,255,0.16); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; position: relative;
+    }
+    .home-series-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; position: relative; }
+    .home-series-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 20px; max-width: 760px; position: relative; }
+    .home-series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; position: relative; }
+    .home-series-card {
+      display: block; text-decoration: none; color: #fff; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 12px; padding: 14px 16px; transition: all 0.2s;
+    }
+    .home-series-card:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+    .home-series-card-emoji { font-size: 1.2rem; margin-bottom: 6px; display: block; }
+    .home-series-card-title { font-size: 0.8rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .home-series-card-meta { font-size: 0.68rem; color: rgba(255,255,255,0.65); }
+    @media (max-width: 600px) { .home-series-spotlight { padding: 24px; } }
+
     .home-explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
     .home-explore-card {
       border-radius: 16px; padding: 30px; color: #fff; text-decoration: none; display: block;
@@ -503,7 +528,7 @@
     <div class="home-section-hd">
       <div class="eyebrow">Deep Investigations</div>
       <h2>The Research That Took Weeks, Not Minutes</h2>
-      <p>Long-form, fully sourced investigations into the labs and ideas shaping the race to AGI.</p>
+      <p>Long-form, fully sourced investigations into the labs and ideas shaping the race to AGI — organized below by series, so you can follow one thread start to finish.</p>
     </div>
 
     <div class="home-lineage-spotlight">
@@ -554,331 +579,579 @@
       </div>
     </div>
 
-    <div class="home-card-grid">
-      <a href="blog/ssi-complete-investigation.html" class="home-mini-card">
-        <span class="home-mini-emoji">🕵️</span>
-        <div class="home-mini-title">Safe Superintelligence: The Complete Investigation</div>
-        <div class="home-mini-meta">110 min · Investigation</div>
-      </a>
-      <a href="blog/ai-research-frontier-map-labs-compared.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗺️</span>
-        <div class="home-mini-title">The Research Frontier Map: What Every Lab Is Betting On</div>
-        <div class="home-mini-meta">75 min · Research Strategy</div>
-      </a>
-      <a href="blog/agi-capability-stack-mapped.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧬</span>
-        <div class="home-mini-title">The AGI Capability Stack, Mapped</div>
-        <div class="home-mini-meta">Deep Research</div>
-      </a>
-      <a href="blog/agi-threshold-capability-stack.html" class="home-mini-card">
-        <span class="home-mini-emoji">🎯</span>
-        <div class="home-mini-title">The AGI Threshold: What Actually Has to Be True</div>
-        <div class="home-mini-meta">Deep Research</div>
-      </a>
-      <a href="blog/interpretability-gap-reading-model-minds.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔬</span>
-        <div class="home-mini-title">The Interpretability Gap: Reading Model Minds</div>
-        <div class="home-mini-meta">Deep Research</div>
-      </a>
-      <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-mini-card">
-        <span class="home-mini-emoji">⚡</span>
-        <div class="home-mini-title">The Power Bottleneck: AI's Infrastructure Race</div>
-        <div class="home-mini-meta">Deep Research</div>
-      </a>
-      <a href="blog/evolution-of-neural-networks.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧬</span>
-        <div class="home-mini-title">The Evolution of Neural Networks: From 1943 to Transformers</div>
-        <div class="home-mini-meta">95 min · History</div>
-      </a>
-      <a href="blog/after-transformers-current-methods-and-dead-ends.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔭</span>
-        <div class="home-mini-title">After Transformers: What's Working, What's a Dead End, What's Next</div>
-        <div class="home-mini-meta">90 min · Research Strategy</div>
-      </a>
-      <a href="blog/gpt-1-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">📄</span>
-        <div class="home-mini-title">GPT-1: How the First GPT Was Actually Built</div>
-        <div class="home-mini-meta">70 min · Model Case Study 1</div>
-      </a>
-      <a href="blog/gpt-2-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🌐</span>
-        <div class="home-mini-title">GPT-2: How the Second GPT Was Actually Built</div>
-        <div class="home-mini-meta">70 min · Model Case Study 2</div>
-      </a>
-      <a href="blog/gpt-3-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧠</span>
-        <div class="home-mini-title">GPT-3: How the Third GPT Was Actually Built</div>
-        <div class="home-mini-meta">75 min · Model Case Study 3</div>
-      </a>
-      <a href="blog/gpt-4-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔒</span>
-        <div class="home-mini-title">GPT-4: How the Fourth GPT Was Actually Built</div>
-        <div class="home-mini-meta">70 min · Model Case Study 4</div>
-      </a>
-      <a href="blog/gpt-5-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🚦</span>
-        <div class="home-mini-title">GPT-5: How the Fifth GPT Was Actually Built</div>
-        <div class="home-mini-meta">65 min · Model Case Study 5</div>
-      </a>
-      <a href="blog/gpt-6-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🌌</span>
-        <div class="home-mini-title">GPT-6 Astra: How the Sixth GPT Was Actually Built</div>
-        <div class="home-mini-meta">75 min · Model Case Study 6</div>
-      </a>
-      <a href="blog/gpt-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗂️</span>
-        <div class="home-mini-title">The GPT Lineage: A Consolidated Comparison, GPT-1 to GPT-6 Astra</div>
-        <div class="home-mini-meta">85 min · Model Case Study Lineage</div>
-      </a>
-      <a href="blog/claude-1-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🏛️</span>
-        <div class="home-mini-title">Claude 1: How Anthropic's First Model Was Actually Built</div>
-        <div class="home-mini-meta">65 min · Anthropic Case Study 1</div>
-      </a>
-      <a href="blog/claude-2-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">💬</span>
-        <div class="home-mini-title">Claude 2: How Anthropic's First Public Product Was Actually Built</div>
-        <div class="home-mini-meta">60 min · Anthropic Case Study 2</div>
-      </a>
-      <a href="blog/claude-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗂️</span>
-        <div class="home-mini-title">The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1</div>
-        <div class="home-mini-meta">80 min · Anthropic Case Study Lineage</div>
-      </a>
-      <a href="blog/deepmind-founding-merger-how-it-was-built.html" class="home-mini-card">
-        <span class="home-mini-emoji">🤝</span>
-        <div class="home-mini-title">Google DeepMind: How the Lab Behind Gemini Was Actually Formed</div>
-        <div class="home-mini-meta">60 min · DeepMind Case Study 1</div>
-      </a>
-      <a href="blog/gemini-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗂️</span>
-        <div class="home-mini-title">The Gemini Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">75 min · DeepMind Case Study Lineage</div>
-      </a>
-      <a href="blog/grok-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🚀</span>
-        <div class="home-mini-title">The Grok Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">75 min · xAI Case Study Lineage</div>
-      </a>
-      <a href="blog/deepseek-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🐋</span>
-        <div class="home-mini-title">The DeepSeek Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">80 min · DeepSeek Case Study Lineage</div>
-      </a>
-      <a href="blog/meta-llama-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🦙</span>
-        <div class="home-mini-title">The Meta AI (Llama) Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">80 min · Meta Case Study Lineage</div>
-      </a>
-      <a href="blog/mistral-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🌬️</span>
-        <div class="home-mini-title">The Mistral AI Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">80 min · Mistral Case Study Lineage</div>
-      </a>
-      <a href="blog/frontier-ai-benchmark-landscape.html" class="home-mini-card">
-        <span class="home-mini-emoji">📊</span>
-        <div class="home-mini-title">The Frontier AI Benchmark Landscape</div>
-        <div class="home-mini-meta">55 min · Reference Series</div>
-      </a>
-      <a href="blog/agi-benchmarks-measuring-the-undefined.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧭</span>
-        <div class="home-mini-title">AGI Benchmarks: Measuring the Undefined</div>
-        <div class="home-mini-meta">55 min · Reference Series</div>
-      </a>
-      <a href="blog/stanford-ai-index-2026-research-directions.html" class="home-mini-card">
-        <span class="home-mini-emoji">📈</span>
-        <div class="home-mini-title">What the 2026 Stanford AI Index Says About Research Direction</div>
-        <div class="home-mini-meta">40 min · Reference Series</div>
-      </a>
-      <a href="blog/ai-researcher-atlas.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧑‍🔬</span>
-        <div class="home-mini-title">The AI Researcher Atlas: 50 People Who Built the Field</div>
-        <div class="home-mini-meta">65 min · Reference Series</div>
-      </a>
-      <a href="blog/qwen-lineage-consolidated-comparison.html" class="home-mini-card">
-        <span class="home-mini-emoji">🐉</span>
-        <div class="home-mini-title">The Qwen Lineage: A Consolidated Comparison</div>
-        <div class="home-mini-meta">80 min · Qwen Case Study Lineage</div>
-      </a>
-      <a href="blog/recursive-self-improvement-primer.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔁</span>
-        <div class="home-mini-title">Recursive Self-Improvement: A Primer</div>
-        <div class="home-mini-meta">45 min · RSI Series · Part 1</div>
-      </a>
-      <a href="blog/rsi-objective-specification-problem.html" class="home-mini-card">
-        <span class="home-mini-emoji">🎯</span>
-        <div class="home-mini-title">The Objective-Specification Problem</div>
-        <div class="home-mini-meta">45 min · RSI Series · Part 2</div>
-      </a>
-      <a href="blog/rsi-ai-automating-ai-research.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧪</span>
-        <div class="home-mini-title">AI Automating AI Research: RSI's Testing Ground</div>
-        <div class="home-mini-meta">50 min · RSI Series · Part 4</div>
-      </a>
-      <a href="blog/agi-debate-scaling-vs-new-architectures.html" class="home-mini-card">
-        <span class="home-mini-emoji">⚖️</span>
-        <div class="home-mini-title">The AGI Debate: Scaling vs. New Architectures</div>
-        <div class="home-mini-meta">65 min · Research Strategy</div>
-      </a>
-      <a href="blog/two-threads-architecture-vs-learning-technique.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧵</span>
-        <div class="home-mini-title">Two Threads, One Chain: Architecture vs. Learning Technique</div>
-        <div class="home-mini-meta">85 min · Research Strategy</div>
-      </a>
-      <a href="blog/how-each-architecture-actually-learned.html" class="home-mini-card">
-        <span class="home-mini-emoji">⚙️</span>
-        <div class="home-mini-title">How Each Network Architecture Actually Learned</div>
-        <div class="home-mini-meta">110 min · Research Strategy</div>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ RESEARCHER'S PATH ═══════════════════════ -->
-<div class="home-section alt">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">For Aspiring Researchers</div>
-      <h2>What It Actually Takes to Work on AGI</h2>
-      <p>Papers to read, labs to target, real researcher career paths, and what a real day in this field looks like.</p>
-    </div>
-
-    <div class="home-practicum-spotlight">
-      <span class="home-practicum-emoji">🧑‍💻</span>
-      <div class="home-practicum-body">
-        <span class="home-practicum-tag">✅ Complete · 9-Part Series</span>
-        <div class="home-practicum-title">Frontier Lab Engineering Practicum</div>
-        <div class="home-practicum-desc">A practitioner's companion to the Foundations series above — onboarding, production training code, distributed debugging, compute economics, custom kernels, on-call reality, cross-team code, and a full experiment shipped from idea to merged PR, closing with a week-in-the-life capstone.</div>
-        <div class="home-practicum-links">
-          <a href="blog/frontier-lab-engineering-day-one-onboarding.html" class="primary">Start with Article 1 →</a>
-          <a href="blog/frontier-lab-engineering-week-in-the-life.html">Jump to the Capstone</a>
-          <a href="pages/blog.html">See All 9 Articles</a>
-        </div>
+    <div class="home-series-spotlight" style="--sp-a:#1e1035;--sp-b:#3d1a10;--sp-glow:rgba(234,88,12,0.35);">
+      <span class="home-series-tag">🏗️ Model Case Studies · 9 Articles</span>
+      <div class="home-series-title">Model Case Studies: How Each Model Was Actually Built</div>
+      <div class="home-series-desc">Nine deep dives into the specific engineering, research, and organizational decisions behind individual model releases — read before the consolidated lineage comparisons above.</div>
+      <div class="home-series-grid">
+        <a href="blog/gpt-1-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">📄</span>
+          <div class="home-series-card-title">GPT-1: How the First GPT Was Actually Built</div>
+          <div class="home-series-card-meta">70 min</div>
+        </a>
+        <a href="blog/gpt-2-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌐</span>
+          <div class="home-series-card-title">GPT-2: How the Second GPT Was Actually Built</div>
+          <div class="home-series-card-meta">70 min</div>
+        </a>
+        <a href="blog/gpt-3-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧠</span>
+          <div class="home-series-card-title">GPT-3: How the Third GPT Was Actually Built</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/gpt-4-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔒</span>
+          <div class="home-series-card-title">GPT-4: How the Fourth GPT Was Actually Built</div>
+          <div class="home-series-card-meta">70 min</div>
+        </a>
+        <a href="blog/gpt-5-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🚦</span>
+          <div class="home-series-card-title">GPT-5: How the Fifth GPT Was Actually Built</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+        <a href="blog/gpt-6-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌌</span>
+          <div class="home-series-card-title">GPT-6 Astra: How the Sixth GPT Was Actually Built</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/claude-1-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏛️</span>
+          <div class="home-series-card-title">Claude 1: How Anthropic's First Model Was Actually Built</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+        <a href="blog/claude-2-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">💬</span>
+          <div class="home-series-card-title">Claude 2: How Anthropic's First Public Product Was Actually Built</div>
+          <div class="home-series-card-meta">60 min</div>
+        </a>
+        <a href="blog/deepmind-founding-merger-how-it-was-built.html" class="home-series-card">
+          <span class="home-series-card-emoji">🤝</span>
+          <div class="home-series-card-title">Google DeepMind: How the Lab Behind Gemini Was Actually Formed</div>
+          <div class="home-series-card-meta">60 min</div>
+        </a>
       </div>
     </div>
 
-    <div class="home-card-grid">
-      <a href="blog/ai-researcher-field-guide.html" class="home-mini-card">
-        <span class="home-mini-emoji">🎓</span>
-        <div class="home-mini-title">The Researcher's Field Guide: Papers, Labs, People, Hiring</div>
-        <div class="home-mini-meta">80 min · Careers</div>
-      </a>
-      <a href="blog/agi-researcher-day-in-life.html" class="home-mini-card">
-        <span class="home-mini-emoji">☀️</span>
-        <div class="home-mini-title">A Day in the Life of an AGI Researcher</div>
-        <div class="home-mini-meta">85 min · Careers</div>
-      </a>
-      <a href="blog/building-agi-startup-team-profiles-resumes.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧑‍💼</span>
-        <div class="home-mini-title">Building an AGI Startup: Who You'd Actually Hire</div>
-        <div class="home-mini-meta">45 min · Hiring</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-technical-stack.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧰</span>
-        <div class="home-mini-title">AGI Researcher Foundations: The Technical Stack</div>
-        <div class="home-mini-meta">100+ min · Foundations Series 1</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-self-assessment-deep-dive.html" class="home-mini-card">
-        <span class="home-mini-emoji">✅</span>
-        <div class="home-mini-title">AGI Researcher Foundations: The Self-Assessment Deep Dive</div>
-        <div class="home-mini-meta">65 min · Foundations Series 2</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-mathematical-foundations.html" class="home-mini-card">
-        <span class="home-mini-emoji">📐</span>
-        <div class="home-mini-title">AGI Researcher Foundations: The Mathematical Foundations</div>
-        <div class="home-mini-meta">75 min · Foundations Series 3</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-core-deep-learning-concepts.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧠</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Core Deep Learning Concepts</div>
-        <div class="home-mini-meta">75 min · Foundations Series 4</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-generalization-learning-theory.html" class="home-mini-card">
-        <span class="home-mini-emoji">📊</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Generalization &amp; Learning Theory</div>
-        <div class="home-mini-meta">70 min · Foundations Series 5</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-rl-foundations.html" class="home-mini-card">
-        <span class="home-mini-emoji">🎮</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Reinforcement Learning Foundations</div>
-        <div class="home-mini-meta">75 min · Foundations Series 6</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-interpretability.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔬</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Interpretability</div>
-        <div class="home-mini-meta">75 min · Foundations Series 7</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-alignment.html" class="home-mini-card">
-        <span class="home-mini-emoji">🎯</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Alignment</div>
-        <div class="home-mini-meta">75 min · Foundations Series 8</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-world-models.html" class="home-mini-card">
-        <span class="home-mini-emoji">🌍</span>
-        <div class="home-mini-title">AGI Researcher Foundations: World Models</div>
-        <div class="home-mini-meta">75 min · Foundations Series 9</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-systems.html" class="home-mini-card">
-        <span class="home-mini-emoji">🖧</span>
-        <div class="home-mini-title">AGI Researcher Foundations: Systems</div>
-        <div class="home-mini-meta">80 min · Foundations Series 10</div>
-      </a>
-      <a href="blog/agi-researcher-foundations-capstone.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗺️</span>
-        <div class="home-mini-title">AGI Researcher Foundations: The Capstone</div>
-        <div class="home-mini-meta">65 min · Foundations Series 11</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-day-one-onboarding.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧑‍💻</span>
-        <div class="home-mini-title">Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down</div>
-        <div class="home-mini-meta">55 min · Engineering Practicum 1</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-production-training-code.html" class="home-mini-card">
-        <span class="home-mini-emoji">📜</span>
-        <div class="home-mini-title">Reading and Writing Production Training Code</div>
-        <div class="home-mini-meta">55 min · Engineering Practicum 2</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-debugging-distributed-jobs.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧯</span>
-        <div class="home-mini-title">Debugging a Distributed Job That Won't Converge (Or Won't Start)</div>
-        <div class="home-mini-meta">60 min · Engineering Practicum 3</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-compute-economics.html" class="home-mini-card">
-        <span class="home-mini-emoji">💳</span>
-        <div class="home-mini-title">Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour</div>
-        <div class="home-mini-meta">55 min · Engineering Practicum 4</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-custom-kernels.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧵</span>
-        <div class="home-mini-title">Writing Custom Kernels and Why You Occasionally Have To</div>
-        <div class="home-mini-meta">55 min · Engineering Practicum 5</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-oncall-reality.html" class="home-mini-card">
-        <span class="home-mini-emoji">📟</span>
-        <div class="home-mini-title">The On-Call Reality: Monitoring, Alerts, and 2am Incidents</div>
-        <div class="home-mini-meta">50 min · Engineering Practicum 6</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-other-teams-code.html" class="home-mini-card">
-        <span class="home-mini-emoji">🧩</span>
-        <div class="home-mini-title">Working With (and Around) Other Teams' Code</div>
-        <div class="home-mini-meta">50 min · Engineering Practicum 7</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-idea-to-merged-pr.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔀</span>
-        <div class="home-mini-title">Shipping an Experiment From Idea to Merged PR</div>
-        <div class="home-mini-meta">55 min · Engineering Practicum 8</div>
-      </a>
-      <a href="blog/frontier-lab-engineering-week-in-the-life.html" class="home-mini-card">
-        <span class="home-mini-emoji">🗓️</span>
-        <div class="home-mini-title">Capstone: A Week in the Life of a Research Engineer</div>
-        <div class="home-mini-meta">50 min · Engineering Practicum 9</div>
-      </a>
-      <a href="blog/how-to-read-a-paper-like-a-researcher.html" class="home-mini-card">
-        <span class="home-mini-emoji">🔎</span>
-        <div class="home-mini-title">How to Read a Paper Like a Researcher</div>
-        <div class="home-mini-meta">60 min · Research Skills</div>
-      </a>
+    <div class="home-series-spotlight" style="--sp-a:#0a0e1f;--sp-b:#1e1b4b;--sp-glow:rgba(99,102,241,0.35);">
+      <span class="home-series-tag">📊 Reference Series · 4 Articles</span>
+      <div class="home-series-title">Reference Series: Benchmarks, Research Direction &amp; the People Behind It</div>
+      <div class="home-series-desc">Cross-lab reference pieces this site's lineage articles cite back to — how capability gets measured, how AGI itself gets measured, where research is actually heading, and who's building it.</div>
+      <div class="home-series-grid">
+        <a href="blog/frontier-ai-benchmark-landscape.html" class="home-series-card">
+          <span class="home-series-card-emoji">📊</span>
+          <div class="home-series-card-title">The Frontier AI Benchmark Landscape: How Every Capability Gets Measured</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/agi-benchmarks-measuring-the-undefined.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧭</span>
+          <div class="home-series-card-title">AGI Benchmarks: How the Field Tries to Measure the Thing It Can't Yet Define</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/stanford-ai-index-2026-research-directions.html" class="home-series-card">
+          <span class="home-series-card-emoji">📈</span>
+          <div class="home-series-card-title">What Stanford's 2026 AI Index Says About Where AI Research Is Heading</div>
+          <div class="home-series-card-meta">40 min</div>
+        </a>
+        <a href="blog/ai-researcher-atlas.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧑‍🔬</span>
+          <div class="home-series-card-title">The AI Researcher Atlas: 50 People Who Built the Field</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+      </div>
     </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#0b1c2e;--sp-b:#132a1c;--sp-glow:rgba(37,99,235,0.3);">
+      <span class="home-series-tag">🎓 AGI Researcher Foundations · 11 Articles</span>
+      <div class="home-series-title">AGI Researcher Foundations: An 11-Part Curriculum</div>
+      <div class="home-series-desc">The math, deep learning theory, RL, interpretability, alignment, world models, and systems knowledge an AGI researcher actually needs — plus a technical stack primer and self-assessment.</div>
+      <div class="home-series-grid">
+        <a href="blog/agi-researcher-foundations-technical-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧰</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: The Technical Stack</div>
+          <div class="home-series-card-meta">100+ min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-self-assessment-deep-dive.html" class="home-series-card">
+          <span class="home-series-card-emoji">✅</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: The Self-Assessment Deep Dive</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-mathematical-foundations.html" class="home-series-card">
+          <span class="home-series-card-emoji">📐</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: The Mathematical Foundations</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-core-deep-learning-concepts.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧠</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Core Deep Learning Concepts</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-generalization-learning-theory.html" class="home-series-card">
+          <span class="home-series-card-emoji">📊</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Generalization &amp; Learning Theory</div>
+          <div class="home-series-card-meta">70 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-rl-foundations.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎮</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Reinforcement Learning Foundations</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-interpretability.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔬</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Interpretability</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-alignment.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎯</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Alignment</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-world-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌍</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: World Models</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-systems.html" class="home-series-card">
+          <span class="home-series-card-emoji">🖧</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: Systems</div>
+          <div class="home-series-card-meta">80 min</div>
+        </a>
+        <a href="blog/agi-researcher-foundations-capstone.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗺️</span>
+          <div class="home-series-card-title">AGI Researcher Foundations: The Capstone</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1a1033;--sp-b:#0f2b24;--sp-glow:rgba(16,185,129,0.3);">
+      <span class="home-series-tag">🧑‍💻 Frontier Lab Engineering Practicum · 9 Articles</span>
+      <div class="home-series-title">Frontier Lab Engineering Practicum: A 9-Part Practitioner's Companion</div>
+      <div class="home-series-desc">Onboarding, production training code, distributed debugging, compute economics, custom kernels, on-call reality, cross-team code, and a full experiment shipped from idea to merged PR.</div>
+      <div class="home-series-grid">
+        <a href="blog/frontier-lab-engineering-day-one-onboarding.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧑‍💻</span>
+          <div class="home-series-card-title">Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-production-training-code.html" class="home-series-card">
+          <span class="home-series-card-emoji">📜</span>
+          <div class="home-series-card-title">Reading and Writing Production Training Code</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-debugging-distributed-jobs.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧯</span>
+          <div class="home-series-card-title">Debugging a Distributed Job That Won't Converge (Or Won't Start)</div>
+          <div class="home-series-card-meta">60 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-compute-economics.html" class="home-series-card">
+          <span class="home-series-card-emoji">💳</span>
+          <div class="home-series-card-title">Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-custom-kernels.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧵</span>
+          <div class="home-series-card-title">Writing Custom Kernels and Why You Occasionally Have To</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-oncall-reality.html" class="home-series-card">
+          <span class="home-series-card-emoji">📟</span>
+          <div class="home-series-card-title">The On-Call Reality: Monitoring, Alerts, and 2am Incidents</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-other-teams-code.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧩</span>
+          <div class="home-series-card-title">Working With (and Around) Other Teams' Code</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-idea-to-merged-pr.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔀</span>
+          <div class="home-series-card-title">Shipping an Experiment From Idea to Merged PR</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/frontier-lab-engineering-week-in-the-life.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗓️</span>
+          <div class="home-series-card-title">Capstone: A Week in the Life of a Research Engineer</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1c1017;--sp-b:#1a1033;--sp-glow:rgba(219,39,119,0.3);">
+      <span class="home-series-tag">🧬 Architecture &amp; Learning Technique · 6 Articles</span>
+      <div class="home-series-title">Architecture &amp; Learning Technique: How the Field Actually Got Here</div>
+      <div class="home-series-desc">The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.</div>
+      <div class="home-series-grid">
+        <a href="blog/evolution-of-neural-networks.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧬</span>
+          <div class="home-series-card-title">The Evolution of Neural Networks: From a 1943 Toy Model to Transformers</div>
+          <div class="home-series-card-meta">95 min</div>
+        </a>
+        <a href="blog/how-each-architecture-actually-learned.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚙️</span>
+          <div class="home-series-card-title">How Each Network Architecture Actually Learned</div>
+          <div class="home-series-card-meta">110 min</div>
+        </a>
+        <a href="blog/two-threads-architecture-vs-learning-technique.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧵</span>
+          <div class="home-series-card-title">Two Threads, One Chain: Architecture vs. Learning Technique</div>
+          <div class="home-series-card-meta">85 min</div>
+        </a>
+        <a href="blog/after-transformers-current-methods-and-dead-ends.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔭</span>
+          <div class="home-series-card-title">After Transformers: What's Working, What's a Dead End, What's Next</div>
+          <div class="home-series-card-meta">90 min</div>
+        </a>
+        <a href="blog/agi-debate-scaling-vs-new-architectures.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚖️</span>
+          <div class="home-series-card-title">The AGI Debate: Scaling vs. New Architectures</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+        <a href="blog/how-to-read-a-paper-like-a-researcher.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔎</span>
+          <div class="home-series-card-title">How to Read a Paper Like a Researcher</div>
+          <div class="home-series-card-meta">60 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#0d2b4e;--sp-b:#1a1033;--sp-glow:rgba(66,133,244,0.3);">
+      <span class="home-series-tag">🧭 The Researcher's Path · 4 Articles</span>
+      <div class="home-series-title">The Researcher's Path: Careers, Labs &amp; Field Notes</div>
+      <div class="home-series-desc">What it actually takes to work on AGI — papers to read, labs to target, a real day in the life, and a full investigation into one of the field's most secretive labs.</div>
+      <div class="home-series-grid">
+        <a href="blog/ai-researcher-field-guide.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎓</span>
+          <div class="home-series-card-title">The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired</div>
+          <div class="home-series-card-meta">80 min</div>
+        </a>
+        <a href="blog/agi-researcher-day-in-life.html" class="home-series-card">
+          <span class="home-series-card-emoji">☀️</span>
+          <div class="home-series-card-title">A Day in the Life of an AGI Researcher: The Complete Operating Manual</div>
+          <div class="home-series-card-meta">85 min</div>
+        </a>
+        <a href="blog/ai-research-frontier-map-labs-compared.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗺️</span>
+          <div class="home-series-card-title">The Research Frontier Map: What Every Major AI Lab Is Actually Betting On</div>
+          <div class="home-series-card-meta">75 min</div>
+        </a>
+        <a href="blog/ssi-complete-investigation.html" class="home-series-card">
+          <span class="home-series-card-emoji">🕵️</span>
+          <div class="home-series-card-title">Safe Superintelligence: The Complete Investigation</div>
+          <div class="home-series-card-meta">110 min</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ MORE SERIES ═══════════════════════ -->
+<div class="home-section alt">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">More Series</div>
+      <h2>Startups, the Capability Stack, and Everything Else</h2>
+      <p>The rest of the archive, organized the same way — one section per series, one card per article.</p>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1a0e05;--sp-b:#2a1810;--sp-glow:rgba(251,146,60,0.3);">
+      <span class="home-series-tag">🚀 Founding an AGI Startup · 13 Articles</span>
+      <div class="home-series-title">Founding an AGI Startup: The Complete 12-Part Series</div>
+      <div class="home-series-desc">From finding your idea and choosing your lane through legal foundations, seed capital, building product, go-to-market, scaling, and surviving the market — a full startup lifecycle.</div>
+      <div class="home-series-grid">
+        <a href="blog/founding-agi-startup-series.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗂️</span>
+          <div class="home-series-card-title">Founding an AGI Startup: The Complete 12-Part Series</div>
+          <div class="home-series-card-meta">5 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-01-finding-idea.html" class="home-series-card">
+          <span class="home-series-card-emoji">💡</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 1: Finding the Idea &amp; Choosing Your Lane</div>
+          <div class="home-series-card-meta">22 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-02-legal-foundations.html" class="home-series-card">
+          <span class="home-series-card-emoji">📜</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 2: Legal Foundations</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-03-founding-team.html" class="home-series-card">
+          <span class="home-series-card-emoji">👥</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 3: The Founding Team</div>
+          <div class="home-series-card-meta">29 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-04-seed-capital.html" class="home-series-card">
+          <span class="home-series-card-emoji">💰</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 4: Seed Capital</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-05-office-ops-infrastructure.html" class="home-series-card">
+          <span class="home-series-card-emoji">🖥️</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 5: Office, Ops &amp; Infrastructure</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-06-building-product.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏗️</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 6: Building the Product</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-07-research-function.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔬</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 7: The Research Function</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-08-gtm-marketing.html" class="home-series-card">
+          <span class="home-series-card-emoji">📣</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 8: Go-to-Market &amp; Marketing</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-09-sales-early-customers.html" class="home-series-card">
+          <span class="home-series-card-emoji">🤝</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 9: Sales &amp; Early Customers</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-10-scaling-series-a.html" class="home-series-card">
+          <span class="home-series-card-emoji">📈</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 10: Scaling &amp; Series A</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-11-surviving-market.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚔️</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 11: Surviving the Market (Series Finale)</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/founding-agi-startup-12-financial-modeling.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧮</span>
+          <div class="home-series-card-title">Founding an AGI Startup, Part 12 (Bonus): Financial Modeling</div>
+          <div class="home-series-card-meta">29 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1a1033;--sp-b:#120c08;--sp-glow:rgba(124,58,237,0.3);">
+      <span class="home-series-tag">🎯 AGI Startup Lane Deep Dives · 7 Articles</span>
+      <div class="home-series-title">AGI Startup Lane Deep Dives: Three Bets, Two Angles Each</div>
+      <div class="home-series-desc">Team profiles and a look inside each of the three strategic lanes — frontier scale-first, the applied &amp; agentic layer, and the narrow research bet.</div>
+      <div class="home-series-grid">
+        <a href="blog/building-agi-startup-lane1-frontier-scale.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔴</span>
+          <div class="home-series-card-title">Building an AGI Startup: Frontier Scale-First</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+        <a href="blog/building-agi-startup-lane2-applied-agentic.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔵</span>
+          <div class="home-series-card-title">Building an AGI Startup: The Applied &amp; Agentic Layer</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+        <a href="blog/building-agi-startup-lane3-narrow-research-bet.html" class="home-series-card">
+          <span class="home-series-card-emoji">🟢</span>
+          <div class="home-series-card-title">Building an AGI Startup: The Narrow Research Bet</div>
+          <div class="home-series-card-meta">50 min</div>
+        </a>
+        <a href="blog/building-agi-startup-team-profiles-resumes.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧑‍💼</span>
+          <div class="home-series-card-title">Building an AGI Startup: Who You'd Actually Hire</div>
+          <div class="home-series-card-meta">45 min</div>
+        </a>
+        <a href="blog/inside-agi-team-lane1-frontier-scale.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔴</span>
+          <div class="home-series-card-title">Inside an AGI Startup Team: Frontier Scale-First</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/inside-agi-team-lane2-applied-agentic.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔵</span>
+          <div class="home-series-card-title">Inside an AGI Startup Team: The Applied &amp; Agentic Layer</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+        <a href="blog/inside-agi-team-lane3-narrow-research-bet.html" class="home-series-card">
+          <span class="home-series-card-emoji">🟢</span>
+          <div class="home-series-card-title">Inside an AGI Startup Team: The Narrow Research Bet</div>
+          <div class="home-series-card-meta">55 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#0a0e1f;--sp-b:#0d2b4e;--sp-glow:rgba(6,182,212,0.3);">
+      <span class="home-series-tag">📈 The AGI Capability Stack · 13 Articles</span>
+      <div class="home-series-title">The AGI Capability Stack: Levers, Gaps &amp; Per-Lab Timelines</div>
+      <div class="home-series-desc">Where frontier models actually stand, the six real levers of progress, per-lab release-by-release stack timelines, and the gaps a new entrant could still exploit.</div>
+      <div class="home-series-grid">
+        <a href="blog/frontier-innovation-levers.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛠️</span>
+          <div class="home-series-card-title">Beyond More Data: The Six Real Levers of Frontier AI's Next Advances</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/agi-capability-stack-mapped.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗺️</span>
+          <div class="home-series-card-title">The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/agi-threshold-capability-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧩</span>
+          <div class="home-series-card-title">The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/agi-models-astra-claude-gemini.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔬</span>
+          <div class="home-series-card-title">Astra, Claude &amp; Gemini: Naming Names on the AGI Capability Stack</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/gpt-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">📜</span>
+          <div class="home-series-card-title">The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/claude-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">🟣</span>
+          <div class="home-series-card-title">The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/gemini-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔵</span>
+          <div class="home-series-card-title">The Gemini Series on the AGI Stack: Google DeepMind's Long Game</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/grok-deepseek-qwen-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚡</span>
+          <div class="home-series-card-title">Grok, DeepSeek &amp; Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/agi-lever-gaps-new-entrants.html" class="home-series-card">
+          <span class="home-series-card-emoji">🚪</span>
+          <div class="home-series-card-title">The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+        <a href="blog/agi-startups-to-watch.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔭</span>
+          <div class="home-series-card-title">AGI Startups to Watch: Who's Actually Building in the Open Lanes</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/memory-continual-learning-agi-race.html" class="home-series-card">
+          <span class="home-series-card-emoji">💾</span>
+          <div class="home-series-card-title">Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/interpretability-gap-reading-model-minds.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔍</span>
+          <div class="home-series-card-title">The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title">The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1c1917;--sp-b:#292524;--sp-glow:rgba(217,119,6,0.3);">
+      <span class="home-series-tag">💼 Economics &amp; Society · 2 Articles</span>
+      <div class="home-series-title">Economics &amp; Society: What AI Progress Does to the Rest of the World</div>
+      <div class="home-series-desc">Two pieces on the productivity paradox — what happens to jobs, growth, and the shape of the economy as AI adoption accelerates.</div>
+      <div class="home-series-grid">
+        <a href="blog/ai-productivity-paradox-layoffs.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚖️</span>
+          <div class="home-series-card-title">The AI Productivity Paradox: Adoption, Mass Layoffs &amp; What the Data Actually Shows</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/ai-productivity-paradox-civilization.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌐</span>
+          <div class="home-series-card-title">The AI Productivity Paradox: When Economic Growth Stops Needing Humans</div>
+          <div class="home-series-card-meta">20 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#051512;--sp-b:#0a2e24;--sp-glow:rgba(16,185,129,0.3);">
+      <span class="home-series-tag">🔍 Topic Explainers · 13 Articles</span>
+      <div class="home-series-title">Topic Explainers: Standalone Deep Dives</div>
+      <div class="home-series-desc">World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, and agentic loop engineering — each explained on its own.</div>
+      <div class="home-series-grid">
+        <a href="blog/world-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌍</span>
+          <div class="home-series-card-title">World Models: Teaching AI to Understand Reality</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/physical-intelligence.html" class="home-series-card">
+          <span class="home-series-card-emoji">🦾</span>
+          <div class="home-series-card-title">Physical Intelligence: Teaching AI to Act in the Real World</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/multimodal-consolidation.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧬</span>
+          <div class="home-series-card-title">Multimodality &amp; The Great Consolidation</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/voice-ai-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎙️</span>
+          <div class="home-series-card-title">Voice &amp; Speech AI Models: The Complete Guide</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/image-video-ai-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎨</span>
+          <div class="home-series-card-title">Image &amp; Video AI Models: The Complete Guide</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/reasoning-models-test-time-compute.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧠</span>
+          <div class="home-series-card-title">Reasoning Models &amp; Test-Time Compute: The Second Scaling Law</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/ai-chips-compute-infrastructure.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title">AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/rag-retrieval-knowledge-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔍</span>
+          <div class="home-series-card-title">Retrieval, Knowledge &amp; the RAG Stack</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/ai-agents-enterprise-economy.html" class="home-series-card">
+          <span class="home-series-card-emoji">🤝</span>
+          <div class="home-series-card-title">AI Agents &amp; the Enterprise Agent Economy</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/ai-safety-alignment-interpretability.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛡️</span>
+          <div class="home-series-card-title">AI Safety, Alignment &amp; Interpretability: Building Trust Into the Machine</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/agentic-loop-explained.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚡</span>
+          <div class="home-series-card-title">Loop Engineering: The New Meta for AI Agents</div>
+          <div class="home-series-card-meta">16 min</div>
+        </a>
+        <a href="blog/frontier-model-pricing.html" class="home-series-card">
+          <span class="home-series-card-emoji">💰</span>
+          <div class="home-series-card-title">Frontier Model Pricing: The Complete Guide</div>
+          <div class="home-series-card-meta">20 min</div>
+        </a>
+        <a href="blog/filmmaking-encyclopedia.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎬</span>
+          <div class="home-series-card-title">The Complete Filmmaking Encyclopedia</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" style="--sp-a:#1a0508;--sp-b:#0d0306;--sp-glow:rgba(220,38,38,0.3);">
+      <span class="home-series-tag">📰 News Digests · 2 Articles</span>
+      <div class="home-series-title">News Digests: Monthly Roundups</div>
+      <div class="home-series-desc">Periodic snapshots of what actually happened in AI that month, cutting through the noise.</div>
+      <div class="home-series-grid">
+        <a href="blog/ai-news-august-2026.html" class="home-series-card">
+          <span class="home-series-card-emoji">📅</span>
+          <div class="home-series-card-title">August 2026: The Month in Review</div>
+          <div class="home-series-card-meta">16 min</div>
+        </a>
+        <a href="blog/ai-news-june-22-2026.html" class="home-series-card">
+          <span class="home-series-card-emoji">📰</span>
+          <div class="home-series-card-title">AI News Digest — June 22, 2026</div>
+          <div class="home-series-card-meta">8 min</div>
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>
 
