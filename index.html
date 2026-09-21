@@ -649,35 +649,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════ LLM PIPELINE SHOWCASE ═══════════════════════ -->
-<div class="pipeline-section">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">End to End</div>
-      <h2>How an LLM Is Actually Trained, Deployed, and Used</h2>
-      <p>Fourteen granular steps across four acts — pre-training, alignment, deployment, and what happens the instant a user hits send — with the actual objective functions and notation behind each one. Click any step to jump straight to it.</p>
-    </div>
-    <div class="pipeline-stage">
-      <div class="pipeline-canvas-wrap" id="pipelineCanvasWrap">
-        <canvas id="pipelineCanvas"></canvas>
-        <div class="pipeline-act-badge" id="pipelineActBadge">Act 1 of 4 · Pre-training</div>
-        <div class="pipeline-tooltip" id="pipelineTooltip">
-          <div class="pipeline-tooltip-title" id="pipelineTooltipTitle"></div>
-          <div class="pipeline-tooltip-formula" id="pipelineTooltipFormula"></div>
-        </div>
-      </div>
-      <div class="pipeline-legend">
-        <div class="pipeline-act-list" id="pipelineActList"></div>
-        <div class="pipeline-explainer" id="pipelineExplainer">
-          <div class="pipeline-explainer-title" id="pipelineExplainerTitle">Data Collection</div>
-          <div class="pipeline-explainer-formula" id="pipelineExplainerFormula"></div>
-          <div class="pipeline-explainer-body" id="pipelineExplainerBody"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════════════ STAT STRIP ═══════════════════════ -->
 <div class="home-stat-strip">
   <div class="home-stat"><div class="home-stat-num">55+</div><div class="home-stat-lbl">In-depth articles</div></div>
@@ -865,6 +836,36 @@
       </div>
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-1', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
+
+<!-- ═══════════════════════ LLM PIPELINE SHOWCASE ═══════════════════════ -->
+<div class="pipeline-section">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">End to End</div>
+      <h2>How an LLM Is Actually Trained, Deployed, and Used</h2>
+      <p>Fourteen granular steps across four acts — pre-training, alignment, deployment, and what happens the instant a user hits send — with the actual objective functions and notation behind each one. Click any step to jump straight to it.</p>
+    </div>
+    <div class="pipeline-stage">
+      <div class="pipeline-canvas-wrap" id="pipelineCanvasWrap">
+        <canvas id="pipelineCanvas"></canvas>
+        <div class="pipeline-act-badge" id="pipelineActBadge">Act 1 of 4 · Pre-training</div>
+        <div class="pipeline-tooltip" id="pipelineTooltip">
+          <div class="pipeline-tooltip-title" id="pipelineTooltipTitle"></div>
+          <div class="pipeline-tooltip-formula" id="pipelineTooltipFormula"></div>
+        </div>
+      </div>
+      <div class="pipeline-legend">
+        <div class="pipeline-act-list" id="pipelineActList"></div>
+        <div class="pipeline-explainer" id="pipelineExplainer">
+          <div class="pipeline-explainer-title" id="pipelineExplainerTitle">Data Collection</div>
+          <div class="pipeline-explainer-formula" id="pipelineExplainerFormula"></div>
+          <div class="pipeline-explainer-body" id="pipelineExplainerBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <div class="home-series-spotlight" id="sec-case-studies" style="--sp-accent:#ea580c;--sp-tag-bg:#fff7ed;">
       <span class="home-series-tag">🏗️ Model Case Studies · 9 Articles</span>
