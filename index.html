@@ -191,6 +191,17 @@
       color: #67e8f9; background: rgba(255,255,255,0.06); padding: 5px 12px; border-radius: 999px;
       letter-spacing: 0.03em; z-index: 2;
     }
+    .pipeline-tooltip {
+      position: absolute; z-index: 4; pointer-events: none; opacity: 0; transition: opacity 0.12s ease;
+      transform: translate(-50%, calc(-100% - 14px)); background: #0b1220; border: 1px solid rgba(103,232,249,0.35);
+      border-radius: 10px; padding: 8px 11px; max-width: 240px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .pipeline-tooltip.is-visible { opacity: 1; }
+    .pipeline-tooltip-title { font-size: 0.7rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .pipeline-tooltip-formula {
+      font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.68rem; color: #67e8f9;
+      line-height: 1.5; white-space: normal; word-break: break-word;
+    }
     .pipeline-legend { display: flex; flex-direction: column; gap: 10px; }
     .pipeline-act-list { display: flex; flex-direction: column; gap: 8px; }
     .pipeline-act-hd {
@@ -650,6 +661,10 @@
       <div class="pipeline-canvas-wrap" id="pipelineCanvasWrap">
         <canvas id="pipelineCanvas"></canvas>
         <div class="pipeline-act-badge" id="pipelineActBadge">Act 1 of 4 · Pre-training</div>
+        <div class="pipeline-tooltip" id="pipelineTooltip">
+          <div class="pipeline-tooltip-title" id="pipelineTooltipTitle"></div>
+          <div class="pipeline-tooltip-formula" id="pipelineTooltipFormula"></div>
+        </div>
       </div>
       <div class="pipeline-legend">
         <div class="pipeline-act-list" id="pipelineActList"></div>
@@ -2389,19 +2404,47 @@
       resumeTimer = setTimeout(() => { paused = false; }, 3200);
     }
 
-    wrap.addEventListener('click', (e) => {
-      // Clicking directly on the canvas jumps to the nearest node.
-      if (e.target !== canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      const mx = (e.clientX - rect.left) * DPR, my = (e.clientY - rect.top) * DPR;
+    function nearestNode(mx, my) {
       let best = 0, bestD = Infinity;
       for (let i = 0; i < N; i++) {
         const p = nodePos(i);
         const d = (p.x - mx) ** 2 + (p.y - my) ** 2;
         if (d < bestD) { bestD = d; best = i; }
       }
-      jumpTo(best);
+      return { idx: best, dist2: bestD };
+    }
+
+    wrap.addEventListener('click', (e) => {
+      // Clicking directly on the canvas jumps to the nearest node.
+      if (e.target !== canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = (e.clientX - rect.left) * DPR, my = (e.clientY - rect.top) * DPR;
+      jumpTo(nearestNode(mx, my).idx);
     });
+
+    // Hover tooltip: show the full formula for whichever node the cursor is near.
+    const tooltipEl = document.getElementById('pipelineTooltip');
+    const tooltipTitleEl = document.getElementById('pipelineTooltipTitle');
+    const tooltipFormulaEl = document.getElementById('pipelineTooltipFormula');
+    const HOVER_RADIUS2 = (26 * DPR) ** 2;
+    wrap.addEventListener('mousemove', (e) => {
+      if (e.target !== canvas) { tooltipEl.classList.remove('is-visible'); return; }
+      const rect = canvas.getBoundingClientRect();
+      const mx = (e.clientX - rect.left) * DPR, my = (e.clientY - rect.top) * DPR;
+      const { idx, dist2 } = nearestNode(mx, my);
+      if (dist2 > HOVER_RADIUS2) { tooltipEl.classList.remove('is-visible'); return; }
+      const s = STEPS[idx];
+      tooltipTitleEl.textContent = s.icon + '  ' + s.title;
+      tooltipFormulaEl.textContent = s.formula;
+      const p = nodePos(idx);
+      const wrapW = wrap.clientWidth;
+      const halfTip = 122; // ~half of the tooltip's max-width, for edge clamping
+      const left = Math.min(wrapW - halfTip, Math.max(halfTip, p.x / DPR));
+      tooltipEl.style.left = left + 'px';
+      tooltipEl.style.top = Math.max(60, p.y / DPR) + 'px';
+      tooltipEl.classList.add('is-visible');
+    });
+    wrap.addEventListener('mouseleave', () => tooltipEl.classList.remove('is-visible'));
 
     const STEP_DURATION = 3.4; // seconds per step
     let lastFrame = performance.now();
