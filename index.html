@@ -1664,14 +1664,17 @@
     const spinGroup = new THREE.Group();
     tiltGroup.add(spinGroup);
 
-    // Procedurally build a two-lobe, folded "brain" point cloud + a scattered
-    // starting cloud (representing raw incoming multimodal signal) of the same length.
+    // Procedurally build a brain-like point cloud (cerebrum + cerebellum +
+    // brainstem) plus a scattered starting cloud (raw incoming multimodal
+    // signal) of the same length, so the same particles can morph A → B.
     const scattered = new Float32Array(PARTICLE_COUNT * 3);
     const brain = new Float32Array(PARTICLE_COUNT * 3);
-    const restTheta = new Float32Array(PARTICLE_COUNT);
     const baseColor = new Float32Array(PARTICLE_COUNT * 3);
     const sectorOf = new Int8Array(PARTICLE_COUNT);
     const tmpColor = new THREE.Color();
+
+    const CEREBELLUM_START = Math.floor(PARTICLE_COUNT * 0.83);
+    const STEM_START = Math.floor(PARTICLE_COUNT * 0.94);
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       // scattered sphere (signal arriving from every direction)
@@ -1683,20 +1686,44 @@
       scattered[i * 3 + 1] = r0 * u;
       scattered[i * 3 + 2] = r0 * sq * Math.sin(th0);
 
-      // brain-shaped surface: spherical param with lobed + folded radius
-      const theta = Math.random() * TAU;      // azimuth (used for sectoring)
-      const v = Math.random() * Math.PI;      // polar
-      const fold = 1 + 0.14 * Math.sin(7 * theta) * Math.sin(5 * v) + 0.08 * Math.sin(13 * theta + 3 * v);
-      const rB = 1.7 * fold;
-      let x = rB * Math.sin(v) * Math.cos(theta) * 1.05;
-      const y = rB * Math.cos(v) * 0.88 - 0.05 + 0.35 * Math.sin(v) * Math.sin(v);
-      let z = rB * Math.sin(v) * Math.sin(theta) * 1.4 * (0.72 + 0.28 * Math.sin(v));
-      // central sulcus: push hemispheres apart into two visible lobes
-      x += (x >= 0 ? 1 : -1) * 0.32 * Math.sin(v);
+      let x, y, z;
+      if (i < CEREBELLUM_START) {
+        // Cerebrum: two folded hemispheres (gyri via layered sine ridges),
+        // narrower at the front, wider/rounder at the back.
+        const theta = Math.random() * TAU;
+        const v = Math.random() * Math.PI;
+        const gyri = 0.16 * Math.sin(9 * theta) * Math.sin(7 * v)
+                   + 0.09 * Math.sin(17 * theta + 5 * v)
+                   + 0.05 * Math.sin(23 * theta - 6 * v);
+        const rB = 1.7 * (1 + gyri);
+        const frontBack = Math.sin(v);              // 0 at poles, 1 at equator
+        x = rB * frontBack * Math.cos(theta) * 1.02;
+        y = rB * Math.cos(v) * 0.86 + 0.28 * frontBack * frontBack;
+        z = rB * frontBack * Math.sin(theta) * 1.32 * (0.68 + 0.32 * frontBack);
+        z -= 0.15; // shift cerebrum slightly forward to leave room for cerebellum
+        // longitudinal fissure: split the two hemispheres apart
+        x += (x >= 0 ? 1 : -1) * 0.30 * frontBack;
+      } else if (i < STEM_START) {
+        // Cerebellum: smaller, tightly-folded lobe tucked underneath/behind.
+        const theta = Math.random() * TAU;
+        const v = Math.random() * Math.PI;
+        const folia = 1 + 0.22 * Math.sin(22 * theta) * Math.sin(14 * v);
+        const r = 0.62 * folia;
+        x = r * Math.sin(v) * Math.cos(theta) * 1.15;
+        y = r * Math.cos(v) * 0.7 - 1.05;
+        z = r * Math.sin(v) * Math.sin(theta) * 0.85 + 1.05;
+      } else {
+        // Brainstem: short, thin, roughly cylindrical cluster.
+        const t = Math.random();
+        const ang = Math.random() * TAU;
+        const rr = 0.16 * Math.sqrt(Math.random());
+        x = Math.cos(ang) * rr;
+        y = -1.15 - t * 0.55;
+        z = 0.55 + Math.sin(ang) * rr * 0.6;
+      }
       brain[i * 3] = x; brain[i * 3 + 1] = y; brain[i * 3 + 2] = z;
 
-      restTheta[i] = norm(theta);
-      const sector = Math.floor(restTheta[i] / (TAU / N_SECTORS)) % N_SECTORS;
+      const sector = Math.floor(norm(Math.atan2(z, x)) / (TAU / N_SECTORS)) % N_SECTORS;
       sectorOf[i] = sector;
       tmpColor.set(SECTORS[sector].color);
       baseColor[i * 3] = tmpColor.r; baseColor[i * 3 + 1] = tmpColor.g; baseColor[i * 3 + 2] = tmpColor.b;
@@ -1709,11 +1736,65 @@
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: isSmall ? 0.05 : 0.045, vertexColors: true, transparent: true, opacity: 0.92,
+      size: isSmall ? 0.045 : 0.04, vertexColors: true, transparent: true, opacity: 0.92,
       sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending,
     });
     const points = new THREE.Points(geometry, material);
     spinGroup.add(points);
+
+    // ── Synaptic connections: wire each point to its few nearest neighbors
+    // in the FINAL brain shape, so the cloud reads as a connected network
+    // rather than loose dust once it settles. ──
+    const MAX_NEIGHBORS = 3;
+    const EDGE_RADIUS2 = 0.16 * 0.16;
+    const edgePairs = [];
+    {
+      const cell = 0.22;
+      const grid = new Map();
+      const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const cx = Math.floor(brain[i * 3] / cell), cy = Math.floor(brain[i * 3 + 1] / cell), cz = Math.floor(brain[i * 3 + 2] / cell);
+        const k = key(cx, cy, cz);
+        if (!grid.has(k)) grid.set(k, []);
+        grid.get(k).push(i);
+      }
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const cx = Math.floor(brain[i * 3] / cell), cy = Math.floor(brain[i * 3 + 1] / cell), cz = Math.floor(brain[i * 3 + 2] / cell);
+        const candidates = [];
+        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
+          const bucket = grid.get(key(cx + dx, cy + dy, cz + dz));
+          if (bucket) for (const j of bucket) if (j > i) candidates.push(j);
+        }
+        candidates.sort((a, b) => {
+          const da = (brain[a*3]-brain[i*3])**2 + (brain[a*3+1]-brain[i*3+1])**2 + (brain[a*3+2]-brain[i*3+2])**2;
+          const db = (brain[b*3]-brain[i*3])**2 + (brain[b*3+1]-brain[i*3+1])**2 + (brain[b*3+2]-brain[i*3+2])**2;
+          return da - db;
+        });
+        let added = 0;
+        for (const j of candidates) {
+          if (added >= MAX_NEIGHBORS) break;
+          const d2 = (brain[j*3]-brain[i*3])**2 + (brain[j*3+1]-brain[i*3+1])**2 + (brain[j*3+2]-brain[i*3+2])**2;
+          if (d2 < EDGE_RADIUS2) { edgePairs.push(i, j); added++; }
+        }
+      }
+    }
+    const edgeCount = edgePairs.length / 2;
+    const linePositions = new Float32Array(edgeCount * 6);
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x818cf8, transparent: true, opacity: 0, depthWrite: false,
+    });
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    spinGroup.add(lines);
+    function syncLinePositions() {
+      for (let k = 0; k < edgeCount; k++) {
+        const i = edgePairs[k * 2], j = edgePairs[k * 2 + 1];
+        linePositions[k * 6] = positions[i * 3]; linePositions[k * 6 + 1] = positions[i * 3 + 1]; linePositions[k * 6 + 2] = positions[i * 3 + 2];
+        linePositions[k * 6 + 3] = positions[j * 3]; linePositions[k * 6 + 4] = positions[j * 3 + 1]; linePositions[k * 6 + 5] = positions[j * 3 + 2];
+      }
+      lineGeometry.attributes.position.needsUpdate = true;
+    }
 
     function resize() {
       const w = wrap.clientWidth, h = wrap.clientHeight;
@@ -1811,8 +1892,14 @@
           positions[i * 3 + 2] = scattered[i * 3 + 2] + (brain[i * 3 + 2] - scattered[i * 3 + 2]) * e;
         }
         geometry.attributes.position.needsUpdate = true;
+        syncLinePositions();
         points.rotation.y = (1 - e) * 2.4;
+        lines.rotation.y = points.rotation.y;
         if (t >= 1) { morphed = true; if (hint) hint.style.opacity = '1'; }
+      }
+
+      if (morphed && lineMaterial.opacity < 0.32) {
+        lineMaterial.opacity = Math.min(0.32, lineMaterial.opacity + 0.012);
       }
 
       if (autoRotate && morphed) spinGroup.rotation.y += AUTO_SPEED;
