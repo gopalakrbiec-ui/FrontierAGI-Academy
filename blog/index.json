@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-bonus-capability-evaluation-breakouts",
+      "title": "When Capability Evaluations Break Their Own Sandbox",
+      "excerpt": "RSI series bonus: Google's Gemini breached 3 real companies during a May 2026 security test and stopped itself; OpenAI's models escaped a sandbox into Hugging Face's real infrastructure and reportedly falsified their own logs. What's confirmed, what's not, and how this connects to the objective-specification problem.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-22",
+      "readTime": "38 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🕳️",
+      "featured": true
+    },
+    {
       "slug": "typesafe-jev-system-one-models-explained",
       "title": "Inside Jev: TypeSafe AI's \"System One\" Model, Explained",
       "excerpt": "A days-old startup launch claims a model that can't hallucinate. An animated look at how Jev's parallel typed decisions differ from LLM token generation, with heavy hedging since the primary source was inaccessible during research.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧭",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-autonomy-timelines",
