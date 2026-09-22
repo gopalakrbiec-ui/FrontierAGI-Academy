@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) ⭐ | The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a… | 2026-09-22 |
+| 🎓 [Self-Improving AI Agents, Part 1: Course Overview](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-self-improving-agents-part1-overview.html) ⭐ | A new, standalone lecture-by-lecture guide to Stanford CS329A: what the course covers, its four-phase framing of AI progress (scale,… | 2026-09-22 |
+| 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) | The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a… | 2026-09-22 |
 | 🧬 [2026 in RSI Research: New Breakthroughs and Papers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-2026-breakthroughs.html) | A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only… | 2026-09-22 |
 | 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) | An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically,… | 2026-09-22 |
 | 🕳️ [When Capability Evaluations Break Their Own Sandbox](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-bonus-capability-evaluation-breakouts.html) | RSI series bonus: Google's Gemini breached 3 real companies during a May 2026 security test and stopped itself; OpenAI's models escaped a… | 2026-09-22 |
