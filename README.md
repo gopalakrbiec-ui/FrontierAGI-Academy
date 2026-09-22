@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) ⭐ | An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically,… | 2026-09-22 |
+| 🧬 [2026 in RSI Research: New Breakthroughs and Papers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-2026-breakthroughs.html) ⭐ | A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only… | 2026-09-22 |
+| 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) | An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically,… | 2026-09-22 |
 | 🕳️ [When Capability Evaluations Break Their Own Sandbox](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-bonus-capability-evaluation-breakouts.html) | RSI series bonus: Google's Gemini breached 3 real companies during a May 2026 security test and stopped itself; OpenAI's models escaped a… | 2026-09-22 |
 | 🧭 [Inside Jev: TypeSafe AI's "System One" Model, Explained](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/typesafe-jev-system-one-models-explained.html) | A days-old startup launch claims a model that can't hallucinate. | 2026-09-22 |
 | ⏳ [Autonomy Timelines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-autonomy-timelines.html) | The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and… | 2026-09-22 |

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-2026-breakthroughs",
+      "title": "2026 in RSI Research: New Breakthroughs and Papers",
+      "excerpt": "A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only advancement timeline, and lab-reported self-improvement in production \u2014 plus researcher and practitioner direction at the end.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-22",
+      "readTime": "40 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83e\uddec",
+      "featured": true
+    },
+    {
       "slug": "rsi-literature-survey",
       "title": "Recursive Self-Improvement: A Literature Survey",
       "excerpt": "An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically, and a focused look at AI-automating-AI-research papers \u2014 each with summary, reference link, and video where verifiable.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\udcda",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-bonus-capability-evaluation-breakouts",
