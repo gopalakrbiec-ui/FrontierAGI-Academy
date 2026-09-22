@@ -138,6 +138,21 @@
     .paper-links a:hover { text-decoration: underline; }
     .paper-links .no-video { color: #9ca3af; font-style: italic; font-weight: 600; }
 
+    .timeline-box { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 24px 26px; margin: 24px 0 32px; background: #fafafa; }
+    .timeline-box h3 { margin: 0 0 4px; font-size: 1.05rem; color: #111; }
+    .timeline-box .timeline-sub { font-size: 0.82rem; color: #6b7280; margin-bottom: 16px; }
+    .timeline-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; font-size: 0.76rem; font-weight: 700; color: #374151; }
+    .timeline-legend span.sw { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: middle; position: relative; top: -1px; }
+    .timeline-panel-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; margin: 18px 0 10px; }
+    .timeline-panel-label:first-of-type { margin-top: 0; }
+    .timeline-track { position: relative; margin-left: 8px; padding-left: 22px; border-left: 2.5px solid #e5e7eb; }
+    .timeline-item { position: relative; padding-bottom: 18px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { position: absolute; left: -28.5px; top: 3px; width: 13px; height: 13px; border-radius: 50%; border: 2.5px solid #fafafa; box-shadow: 0 0 0 1.5px currentColor; }
+    .timeline-year { font-size: 0.72rem; font-weight: 800; color: #6b7280; margin-bottom: 2px; }
+    .timeline-item-title { font-size: 0.86rem; font-weight: 700; color: #111; margin-bottom: 2px; }
+    .timeline-item-note { font-size: 0.78rem; color: #4b5563; line-height: 1.5; }
+
     @media (max-width: 768px) {
       .agi-hero h1 { font-size: 1.35rem; }
       .agi-section-nav { top: 94px; }
@@ -279,6 +294,138 @@
 
     <h2 id="opening" class="agi-section">Scope and Method</h2>
     <p>This survey covers three tiers of the recursive self-improvement literature: the pre-2020 theoretical foundations that named and formalized the concept; the technical systems built since 2020 that implement some version of self-improvement empirically; and the narrower, currently very active subfield of AI systems specifically automating AI research work. Papers were selected for direct relevance to self-referential or self-modifying AI systems, not merely for using the word "self-improving" in passing. Confidence levels are stated explicitly per entry — several of the most recent 2026-dated survey papers below postdate this research and could only be characterized from search-indexed summaries, not full-text reading, and that limitation is flagged rather than hidden.</p>
+
+    <div class="timeline-box">
+      <h3>RSI Advancement Timeline</h3>
+      <div class="timeline-sub">Every entry below appears with full discussion in the sections that follow. Two panels because the field's real activity is heavily back-loaded: four sparse decades of theory, then a dense two-year run of empirical systems.</div>
+      <div class="timeline-legend">
+        <span><span class="sw" style="background:#4f46e5;"></span>Foundational theory</span>
+        <span><span class="sw" style="background:#047857;"></span>Named technique</span>
+        <span><span class="sw" style="background:#b45309;"></span>AI automating AI research</span>
+      </div>
+
+      <div class="timeline-panel-label">Foundational theory · 1965–2013</div>
+      <div class="timeline-track">
+        <div class="timeline-item" style="color:#4f46e5;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">1965</div>
+          <div class="timeline-item-title">I.J. Good — "Speculations Concerning the First Ultraintelligent Machine"</div>
+          <div class="timeline-item-note">Names the intelligence explosion: a machine designing better machines than itself.</div>
+        </div>
+        <div class="timeline-item" style="color:#4f46e5;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2002 / 2004</div>
+          <div class="timeline-item-title">Schmidhuber — Optimal Ordered Problem Solver (OOPS)</div>
+          <div class="timeline-item-note">Bias-optimal incremental universal search; the empirical precursor to the Gödel Machine.</div>
+        </div>
+        <div class="timeline-item" style="color:#4f46e5;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2003 / 2006</div>
+          <div class="timeline-item-title">Schmidhuber — Gödel Machine</div>
+          <div class="timeline-item-note">Self-rewriting agent that only changes its own code once it can formally prove the rewrite helps.</div>
+        </div>
+        <div class="timeline-item" style="color:#4f46e5;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2013</div>
+          <div class="timeline-item-title">Yudkowsky — Intelligence Explosion Microeconomics</div>
+          <div class="timeline-item-note">Formalizes RSI as a returns-on-cognitive-reinvestment production function.</div>
+        </div>
+      </div>
+
+      <div class="timeline-panel-label">Empirical systems &amp; AI automating AI research · 2020–2025</div>
+      <div class="timeline-track">
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2020</div>
+          <div class="timeline-item-title">AutoML-Zero</div>
+          <div class="timeline-item-note">Evolves ML algorithms from near-scratch using only basic math operations.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2023 (May)</div>
+          <div class="timeline-item-title">Voyager</div>
+          <div class="timeline-item-note">Open-ended Minecraft agent that writes and accumulates its own skill library.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2023 (Sep)</div>
+          <div class="timeline-item-title">Promptbreeder</div>
+          <div class="timeline-item-note">Self-referential evolution of the prompts that do the evolving, not just the task prompts.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2023 (Oct)</div>
+          <div class="timeline-item-title">STOP &amp; Eureka</div>
+          <div class="timeline-item-note">STOP: a language model recursively improving its own scaffolding code. Eureka: LLM-authored reward functions for robot skill learning.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2023 (Dec)</div>
+          <div class="timeline-item-title">FunSearch</div>
+          <div class="timeline-item-note">LLM-guided evolutionary search finds a new, published-worthy result in extremal combinatorics.</div>
+        </div>
+        <div class="timeline-item" style="color:#b45309;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2024 (Aug)</div>
+          <div class="timeline-item-title">The AI Scientist</div>
+          <div class="timeline-item-note">End-to-end automated pipeline: idea, experiment, write-up, for real ML papers.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2024 (Oct)</div>
+          <div class="timeline-item-title">Gödel Agent</div>
+          <div class="timeline-item-note">A practical, code-level attempt to give an LLM agent Gödel-Machine-style self-rewriting.</div>
+        </div>
+        <div class="timeline-item" style="color:#b45309;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2024 (Oct)</div>
+          <div class="timeline-item-title">MLE-bench &amp; AutoML-Agent</div>
+          <div class="timeline-item-note">Benchmarking and agentizing the full applied-ML-engineering pipeline.</div>
+        </div>
+        <div class="timeline-item" style="color:#b45309;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2024 (Nov)</div>
+          <div class="timeline-item-title">RE-Bench</div>
+          <div class="timeline-item-note">METR's benchmark comparing frontier agents against human experts on real AI R&amp;D tasks.</div>
+        </div>
+        <div class="timeline-item" style="color:#b45309;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (Feb)</div>
+          <div class="timeline-item-title">Evaluating Sakana's AI Scientist</div>
+          <div class="timeline-item-note">Independent scrutiny of the 2024 AI Scientist's claimed autonomous results.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (Apr)</div>
+          <div class="timeline-item-title">SICA</div>
+          <div class="timeline-item-note">A self-improving coding agent that edits its own codebase across iterations.</div>
+        </div>
+        <div class="timeline-item" style="color:#b45309;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (Apr)</div>
+          <div class="timeline-item-title">The AI Scientist-v2</div>
+          <div class="timeline-item-note">A revised pipeline after the v1 scrutiny above, with tightened claims.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (May)</div>
+          <div class="timeline-item-title">Darwin Gödel Machine</div>
+          <div class="timeline-item-note">Empirically validates code self-modification against a benchmark instead of formal proof.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (Jun)</div>
+          <div class="timeline-item-title">AlphaEvolve</div>
+          <div class="timeline-item-note">DeepMind's LLM-driven evolutionary coding agent, applied to its own production infrastructure.</div>
+        </div>
+        <div class="timeline-item" style="color:#047857;">
+          <span class="timeline-dot"></span>
+          <div class="timeline-year">2025 (Oct)</div>
+          <div class="timeline-item-title">Huxley-Gödel Machine</div>
+          <div class="timeline-item-note">The most recent named technique surveyed here; least independently confirmed entry.</div>
+        </div>
+      </div>
+    </div>
 
     <h2 id="foundations" class="agi-section">Foundational Theory</h2>
 
