@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-practitioners-primer",
+      "title": "A Practitioner's Primer on RSI",
+      "excerpt": "The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a new experiment, realistic compute/funding resources, and how to keep up in a subfield producing ~500 papers a quarter.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-22",
+      "readTime": "35 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83e\udded",
+      "featured": true
+    },
+    {
       "slug": "rsi-2026-breakthroughs",
       "title": "2026 in RSI Research: New Breakthroughs and Papers",
       "excerpt": "A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only advancement timeline, and lab-reported self-improvement in production \u2014 plus researcher and practitioner direction at the end.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83e\uddec",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-literature-survey",
