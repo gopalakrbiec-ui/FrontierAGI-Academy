@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| ⏳ [Autonomy Timelines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-autonomy-timelines.html) ⭐ | The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and… | 2026-09-22 |
+| 🧭 [Inside Jev: TypeSafe AI's "System One" Model, Explained](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/typesafe-jev-system-one-models-explained.html) ⭐ | A days-old startup launch claims a model that can't hallucinate. | 2026-09-22 |
+| ⏳ [Autonomy Timelines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-autonomy-timelines.html) | The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and… | 2026-09-22 |
 | 🤖 [The Sim-to-Real Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-sim-to-real-gap.html) | A research agent that scores well on a clean benchmark isn't the same as one that accelerates real research. | 2026-09-21 |
 | 📊 [Data vs. Reinforcement Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-data-vs-reinforcement-learning.html) | Does RL teach new capabilities or just sharpen what's already latent in the base model? A 2025 pass@k study, DeepSeek-R1's own documented… | 2026-09-21 |
 | 🏛️ [Distillation, Centralization, and the Moat Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-distillation-centralization-moat.html) | If one lab pulls ahead through RSI, does the lead survive contact with distillation? The OpenAI-DeepSeek accusation, what DeepSeek's $5.6M… | 2026-09-21 |

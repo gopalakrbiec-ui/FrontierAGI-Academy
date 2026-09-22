@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "typesafe-jev-system-one-models-explained",
+      "title": "Inside Jev: TypeSafe AI's \"System One\" Model, Explained",
+      "excerpt": "A days-old startup launch claims a model that can't hallucinate. An animated look at how Jev's parallel typed decisions differ from LLM token generation, with heavy hedging since the primary source was inaccessible during research.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-22",
+      "readTime": "35 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧭",
+      "featured": true
+    },
+    {
       "slug": "rsi-autonomy-timelines",
       "title": "Autonomy Timelines",
       "excerpt": "The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and why the same metric's own creators warn against extrapolating it too far.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "⏳",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-sim-to-real-gap",
