@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-autonomy-timelines",
+      "title": "Autonomy Timelines",
+      "excerpt": "The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and why the same metric's own creators warn against extrapolating it too far.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-22",
+      "readTime": "42 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "⏳",
+      "featured": true
+    },
+    {
       "slug": "rsi-sim-to-real-gap",
       "title": "The Sim-to-Real Gap",
       "excerpt": "A research agent that scores well on a clean benchmark isn't the same as one that accelerates real research. OpenAI's Rubik's Cube robot hand told correctly, SWE-Bench Pro's score collapse, and what benchmark authors themselves admit their benchmarks can't measure.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🤖",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-data-vs-reinforcement-learning",
