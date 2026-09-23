@@ -396,6 +396,9 @@
       <div class="check-row"><span class="check-num">4</span><div><strong>Evaluating research synthesis specifically (DeepScholar-style benchmarks).</strong> A literature-review or research-synthesis agent has to search, retrieve, read, extract, compare, synthesize, cite, and write — with failure possible at every one of those stages, and no simple unit-test equivalent the way code has. Common failure modes named in this space include missing important sources, retrieving low-quality ones, misreading evidence, incomplete coverage of relevant facts, unsupported claims, and outright wrong citations.</div></div>
     </div>
     <p>Across long-horizon agents generally, a recognizable set of failure modes keeps showing up regardless of the specific domain: poor upfront planning, choosing the wrong tool despite having the right one available, declaring a task finished prematurely, getting stuck in repetitive unproductive loops, gradually losing track of the original requirements (context drift), a small early mistake contaminating everything downstream (cascading errors), a verifier that wrongly accepts a bad intermediate result, and simply continuing to spend compute well past the point of diminishing returns. That last one points to a genuinely underrated design problem: a capable agent needs a sensible <em>stopping policy</em> — not just knowing how to think, but knowing when continuing to think stops being worth the cost.</p>
+    <div class="idea-box">
+      <strong>Want the expanded version?</strong> <a href="cs329a-evaluation-and-open-problems.html">Evaluation and the Open Problems</a> (Deep Dive 5 of 5, the final part in this series) covers METR, GDPval, and DeepScholar-Bench with verified citations, plus a closer look at the three problems below.
+    </div>
 
     <h2 id="openproblems" class="agi-section">What's Still Missing</h2>
     <div class="checklist">

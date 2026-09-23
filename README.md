@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🔍 [Competitive Programming and Retrieval Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-competitive-programming-and-retrieval-agents.html) ⭐ | Deep Dive 4 of 5 on the CS329A field handbook: AlphaCode and AlphaCode 2's shift from brute-force generation to learned selection, plus… | 2026-09-23 |
+| 📏 [Evaluation and the Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-evaluation-and-open-problems.html) ⭐ | Deep Dive 5 of 5, closing the CS329A field handbook series: METR's time-horizon methodology, GDPval, and DeepScholar-Bench, expanded with… | 2026-09-23 |
+| 🔍 [Competitive Programming and Retrieval Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-competitive-programming-and-retrieval-agents.html) | Deep Dive 4 of 5 on the CS329A field handbook: AlphaCode and AlphaCode 2's shift from brute-force generation to learned selection, plus… | 2026-09-23 |
 | 🏋️ [Training on What Search Finds](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-training-on-what-search-finds.html) | Deep Dive 3 of 5 on the CS329A field handbook: STaR's bootstrapped-rationale training, GRPO's critic-free group-relative RL from… | 2026-09-23 |
 | 🌳 [Planning as Search](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-planning-as-search.html) | Deep Dive 2 of 5 on the CS329A field handbook: LATS tree search, SPRINT parallel reasoning, and SWiRL synthetic-trajectory training,… | 2026-09-23 |
 | 🔁 [Agentic Feedback Loops in Practice](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-agentic-feedback-loops.html) | Deep Dive 1 of 5 on the CS329A field handbook: ReAct, RLEF, and Constitutional AI expanded with verified paper citations (real arXiv IDs,… | 2026-09-23 |

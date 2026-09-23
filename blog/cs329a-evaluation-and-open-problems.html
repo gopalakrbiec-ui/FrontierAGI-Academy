@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Competitive Programming and Retrieval Agents — FrontierAGI Academy Blog</title>
+  <title>Evaluation and the Open Problems — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -281,14 +281,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Competitive Programming and Retrieval Agents</span>
+      <span>Evaluation and the Open Problems</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Deep Dive · 4 of 5</span>
-      <span class="agi-hero-icon">🔍</span>
-      <h1>Competitive Programming and Retrieval Agents</h1>
-      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a> used AlphaCode as a case study for how generation gives way to selection, and covered retrieval agents in a few paragraphs. This deep dive expands both threads — AlphaCode's two generations, and two techniques for making search itself part of the reasoning loop — with verified citations and original diagrams.</p>
+      <span class="series-badge">Deep Dive · 5 of 5</span>
+      <span class="agi-hero-icon">📏</span>
+      <h1>Evaluation and the Open Problems</h1>
+      <p>The final deep dive in this series. The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a> covered long-horizon evaluation and the field's remaining open problems in a few paragraphs each. This piece expands both — METR's time-horizon methodology, GDPval, and DeepScholar-Bench with verified citations, plus a closer look at meta-verification, self-generated curricula, and continual learning, the three problems nobody in this series has solved yet.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -296,204 +296,113 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 23, 2026 · 22 min read</div>
+          <div class="blog-post-date">September 23, 2026 · 24 min read</div>
         </div>
       </div>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
-      <strong>On the citations below:</strong> AlphaCode's identity (Science journal, DOI, full author list) is confirmed at high confidence. AlphaCode 2 was never published as a peer-reviewed paper or arXiv preprint — it's a DeepMind technical report with no arXiv ID; its full ~29-person author list wasn't independently confirmed, though the report's existence, publisher, and headline results are corroborated across multiple sources. Search-O1 and Search-R1 are both high confidence, including Search-O1's EMNLP 2025 acceptance. No genuine companion video was found for Search-O1 or Search-R1 specifically — don't assume one exists.
+      <strong>On the citations below:</strong> all three benchmarks' identities are high confidence, corroborated across multiple independent sources. METR's original 7-month doubling-time figure (from their March 2025 paper) is high confidence; a claimed acceleration to a roughly 3-4 month doubling time in 2026, and any specific 2026 model results, come only from secondary forum/blog commentary on METR's own updates and are explicitly flagged as unverified — check metr.org directly for current figures before citing them. DeepScholar-Bench is a joint Stanford/UC Berkeley effort, not solely Stanford, despite living in the same intellectual neighborhood as this course.
     </div>
 
     <div class="agi-section-nav">
-      <a href="#opening"         class="agi-nav-btn">Two Threads, One Pattern</a>
-      <a href="#alphacode"       class="agi-nav-btn">AlphaCode</a>
-      <a href="#alphacode2"      class="agi-nav-btn">AlphaCode 2</a>
-      <a href="#searcho1"        class="agi-nav-btn">Search-O1</a>
-      <a href="#searchr1"        class="agi-nav-btn">Search-R1</a>
-      <a href="#comparison"      class="agi-nav-btn">Comparing the Four</a>
+      <a href="#opening"         class="agi-nav-btn">Why Evaluation Gets Hard</a>
+      <a href="#metr"            class="agi-nav-btn">METR's Time-Horizon Method</a>
+      <a href="#gdpval"          class="agi-nav-btn">GDPval</a>
+      <a href="#deepscholar"     class="agi-nav-btn">DeepScholar-Bench</a>
+      <a href="#openproblems"    class="agi-nav-btn">The Three Unsolved Problems</a>
+      <a href="#seriesclose"     class="agi-nav-btn">Closing the Series</a>
       <a href="#gaps"            class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
       <a href="#references"      class="agi-nav-btn">Full Reference List</a>
     </div>
 
-    <h2 id="opening" class="agi-section">Two Threads, One Pattern</h2>
-    <p>AlphaCode and its sequel are a case study in generation giving way to selection as the field handbook describes it. Search-O1 and Search-R1 are a case study in the same shift applied to a different resource: instead of asking "which of many generated programs is correct," they ask "when, during reasoning, is it actually worth pausing to look something up." Both threads are really the same lesson from different angles — more of a resource (candidate programs, search queries) only helps once something decides when and how much of it to actually use.</p>
+    <h2 id="opening" class="agi-section">Why Evaluation Gets Hard</h2>
+    <p>Every technique across this five-part series was justified with a benchmark number — HumanEval pass rates, Codeforces percentiles, AIME scores, QA benchmark gains. Those numbers share a property that makes them easy to trust and easy to over-trust: a short task, a fixed correct answer, graded in isolation. An agent that has to complete a task made of dozens or hundreds of sequential decisions, using tools, under ambiguous instructions, with no single "check the final answer" moment, doesn't fit that mold — and the three benchmarks below were each built specifically because the old mold stopped being enough.</p>
 
-    <h2 id="alphacode" class="agi-section">AlphaCode: Brute-Force Generation, Then Filter and Cluster</h2>
+    <h2 id="metr" class="agi-section">METR: Measuring Capability as a Time Horizon</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Competition-Level Code Generation with AlphaCode <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Science, Dec 2022</span></div>
-      <div class="paper-authors">Yujia Li, David Choi, Junyoung Chung, Nate Kushman, et al. (DeepMind, 25 authors) — arXiv:2203.07814; DOI: 10.1126/science.abq1158</div>
-      <div class="paper-summary">Samples up to roughly one million candidate programs per problem from a transformer trained on competitive-programming data, filters out candidates that fail the problem's public example test cases, then clusters the behaviorally similar survivors so the final handful of submissions aren't near-duplicates of each other. Evaluated across ten real Codeforces contests with 5,000+ participants each, AlphaCode achieved an average ranking around the top 54.3% — an estimated Codeforces rating of 1238, roughly the level of an average recently-active competitor, not an expert.</div>
+      <div class="paper-hd"><span class="paper-title">Measuring AI Ability to Complete Long Tasks <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">METR, Mar 2025</span></div>
+      <div class="paper-authors">Thomas Kwa, Ben West, Joel Becker, et al. (METR, 25 authors) — arXiv:2503.14499</div>
+      <div class="paper-summary">Defines a "50%-task-completion time horizon": the length of a task, measured by how long it takes a human professional, that a model can complete with 50% success. Rather than asking what fraction of fixed questions a model answers correctly, this reframes capability as how much real-world task duration is actually reachable — exposing something accuracy scores hide, since small per-step error rates compound multiplicatively across a long task. The original paper reported this time horizon doubling roughly every 7 months since 2019, with Claude 3.7 Sonnet at publication reaching around 50 minutes.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2203.07814" target="_blank" rel="noopener">📄 arXiv:2203.07814</a>
-        <span class="no-video">📺 A DeepMind co-author talk exists (David Choi, via a seminar series listing) — host/date not independently confirmed</span>
+        <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">📄 arXiv:2503.14499</a>
+        <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener">🔗 METR blog post</a>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AlphaCode pipeline diagram">
+      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="METR time-horizon doubling diagram">
         <defs>
-          <marker id="arrowAc1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrowMetr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
           </marker>
         </defs>
-        <rect x="15" y="70" width="140" height="60" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="85" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Sample ~1M</text>
-        <text x="85" y="113" text-anchor="middle" font-size="10" fill="#475569">candidate programs</text>
+        <line x1="60" y1="180" x2="680" y2="180" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowMetr)"/>
+        <line x1="60" y1="180" x2="60" y2="20" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowMetr)"/>
+        <text x="365" y="205" text-anchor="middle" font-size="11" fill="#6b7280">time (model release date) →</text>
+        <text x="30" y="100" text-anchor="middle" font-size="11" fill="#6b7280" transform="rotate(-90 30 100)">task horizon →</text>
 
-        <rect x="200" y="70" width="140" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-        <text x="270" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">Filter</text>
-        <text x="270" y="113" text-anchor="middle" font-size="10" fill="#475569">drop failed public tests</text>
+        <path d="M 60 175 C 200 172, 300 150, 380 110 C 460 70, 550 45, 650 30" stroke="#2563eb" stroke-width="2.5" fill="none"/>
 
-        <rect x="385" y="70" width="140" height="60" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="455" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Cluster</text>
-        <text x="455" y="113" text-anchor="middle" font-size="10" fill="#475569">group behaviorally similar</text>
+        <circle cx="120" cy="174" r="4" fill="#2563eb"/>
+        <circle cx="280" cy="158" r="4" fill="#2563eb"/>
+        <circle cx="420" cy="95" r="4" fill="#2563eb"/>
+        <circle cx="580" cy="42" r="4" fill="#2563eb"/>
 
-        <rect x="570" y="70" width="135" height="60" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="637" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">Submit ~10</text>
-        <text x="637" y="113" text-anchor="middle" font-size="10" fill="#475569">one per cluster</text>
+        <text x="120" y="195" text-anchor="middle" font-size="9" fill="#475569">2019</text>
+        <text x="420" y="195" text-anchor="middle" font-size="9" fill="#475569">2025</text>
+        <text x="580" y="26" text-anchor="middle" font-size="9" fill="#1e3a8a" font-weight="700">reported to accelerate further</text>
 
-        <line x1="155" y1="100" x2="195" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
-        <line x1="340" y1="100" x2="380" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
-        <line x1="525" y1="100" x2="565" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
-        <text x="360" y="30" text-anchor="middle" font-size="11" fill="#6b7280">Diversity management: avoid submitting ten near-identical wrong guesses</text>
+        <rect x="380" y="130" width="220" height="40" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="490" y="154" text-anchor="middle" font-size="10" fill="#92400e">exact 2026 doubling rate: unverified, see caveats</text>
       </svg>
-      <div class="diagram-caption">AlphaCode's original pipeline: scale of generation compensates for weak per-candidate reliability, with clustering preventing wasted, near-duplicate submissions.</div>
+      <div class="diagram-caption">The trend is a real, well-sourced curve; the exact current doubling rate and most recent data points are contested and should be checked at metr.org directly, not taken from this diagram's shape.</div>
+    </div>
+    <div class="why-box">
+      <strong>Why "reliably" matters more than "capable."</strong> An agent that completes a hard task 20% of the time and one that completes it 95% of the time both demonstrate the task sits within the model's reach — but only the second is something you'd actually delegate. If per-step success is 98% and a task needs 100 sequential correct steps, overall success probability is roughly 0.98¹⁰⁰ ≈ 13%. That's why METR's methodology tracks a 50%-success threshold specifically, and why a rising time horizon doesn't automatically mean an agent is safe to hand real, unsupervised work to at that duration.</div>
+
+    <h2 id="gdpval" class="agi-section">GDPval: Measuring Economic Usefulness Directly</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">OpenAI, Oct 2025</span></div>
+      <div class="paper-authors">Tejal Patwardhan et al. (OpenAI, ~19 authors) — arXiv:2510.04374</div>
+      <div class="paper-summary">1,320 tasks across 44 occupations spanning the top nine GDP-contributing sectors, built from real work products — reports, spreadsheets, slide decks, diagrams — created by professionals averaging around 14 years of experience, graded by expert comparison against actual human deliverables rather than a single "correct answer." The paper reports frontier model quality closing in on human-expert level on this benchmark and improving roughly linearly over time; a 220-task "gold" subset is openly released with automated grading.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2510.04374" target="_blank" rel="noopener">📄 arXiv:2510.04374</a>
+        <a href="https://openai.com/index/gdpval/" target="_blank" rel="noopener">🔗 Official OpenAI report</a>
+      </div>
     </div>
 
-    <h2 id="alphacode2" class="agi-section">AlphaCode 2: Learned Scoring Replaces Brute Force</h2>
+    <h2 id="deepscholar" class="agi-section">DeepScholar-Bench: Evaluating Research Synthesis</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">AlphaCode 2 Technical Report <span class="conf-badge conf-medium">MEDIUM-HIGH — report, not a peer-reviewed paper</span></span><span class="paper-meta">DeepMind, Dec 2023</span></div>
-      <div class="paper-authors">AlphaCode Team, Google DeepMind (led by Yujia Li and David Choi, per secondary sources) — no arXiv ID; official technical report</div>
-      <div class="paper-summary">Built on a fine-tuned Gemini Pro model rather than the original's smaller transformer, still generating up to roughly a million C++ samples per problem, but now pruning them via filtering, behavioral clustering, <em>and</em> a learned scoring model that ranks surviving candidates — shifting weight from pure brute-force volume toward selection quality. Evaluated on 12 Codeforces contests (77 problems, 8,000+ competitors), it reportedly solved 43% of problems and reached roughly the 85th percentile, up from the original AlphaCode's ~54th-percentile-from-the-top result — moving from "average competitor" to roughly the Expert/Candidate Master boundary on Codeforces.</div>
+      <div class="paper-hd"><span class="paper-title">DeepScholar-Bench: A Live Benchmark and Automated Evaluation for Generative Research Synthesis <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Aug 2025</span></div>
+      <div class="paper-authors">Liana Patel (Stanford), Negar Arabzadeh (UC Berkeley), Harshit Gupta (Stanford), Ankita Sundar (UC Berkeley), Ion Stoica (UC Berkeley), Matei Zaharia (UC Berkeley), Carlos Guestrin (Stanford) — arXiv:2508.20033</div>
+      <div class="paper-summary">A "live" benchmark that draws its queries and reference material directly from recent arXiv papers, testing whether an agent can write a paper's related-work section by retrieving, synthesizing, and correctly citing prior research — graded on knowledge synthesis quality, retrieval quality, and verifiability, alongside a reference pipeline called DeepScholar-Base. The headline finding: the benchmark is far from saturated — no evaluated system, including OpenAI's Deep Research, exceeded roughly 19% on the combined metrics at time of publication, a sharp contrast with how close frontier models get on shorter-form benchmarks.</div>
       <div class="paper-links">
-        <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf" target="_blank" rel="noopener">📄 Official technical report (PDF)</a>
-        <span class="no-video">📺 DeepMind published an official announcement/demo video alongside the report</span>
+        <a href="https://arxiv.org/abs/2508.20033" target="_blank" rel="noopener">📄 arXiv:2508.20033</a>
+        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
       </div>
     </div>
     <div class="idea-box">
-      <strong>What actually changed between the two:</strong> not the core idea (still generate many, then narrow down) but where the narrowing effort goes. AlphaCode's narrowing was almost entirely mechanical — pass/fail on public tests, then behavioral clustering. AlphaCode 2 adds a fourth, learned step on top: a model trained specifically to judge which surviving candidates are actually most likely to be correct, rather than relying on clustering diversity alone to pick a good final set. That's the field handbook's "generation gives way to selection" pattern showing up as a literal architecture change between two versions of the same system.</div>
+      <strong>Why DeepScholar-Bench's low ceiling matters more than METR's or GDPval's numbers:</strong> METR shows agents can complete meaningfully long tasks, and GDPval shows they're closing in on human-expert quality on well-scoped professional deliverables. DeepScholar-Bench, evaluating the same kind of open-ended research synthesis this whole course keeps returning to, shows the opposite — a task where even the strongest available systems are still under a fifth of the way to good. Read together, these three don't tell one consistent story about "how close are we" — they tell you the answer depends entirely on which kind of task you're asking about.</div>
 
-    <h2 id="searcho1" class="agi-section">Search-O1: Search as a Conditional Action, Not a First Step</h2>
-    <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Search-o1: Agentic Search-Enhanced Large Reasoning Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">EMNLP 2025</span></div>
-      <div class="paper-authors">Xiaoxi Li, Guanting Dong, Jiajie Jin, Yuyao Zhang, Yujia Zhou, Yutao Zhu, Peitian Zhang, Zhicheng Dou (Renmin University of China) — arXiv:2501.05366</div>
-      <div class="paper-summary">Equips a long-reasoning model with a search action it can trigger conditionally, mid-chain, rather than retrieving documents once upfront the way standard RAG does. When the model detects it's missing knowledge it needs, it issues a query; a separate "Reason-in-Documents" module digests the retrieved passages before folding them back into the ongoing reasoning chain, which keeps irrelevant retrieved material from diluting the model's context the way naive RAG can. Evaluated across science, math, and coding reasoning tasks plus six open-domain QA benchmarks, with reported gains over baselines.</div>
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2501.05366" target="_blank" rel="noopener">📄 arXiv:2501.05366</a>
-        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
-      </div>
-    </div>
-    <div class="diagram-box">
-      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Search-O1 conditional search diagram">
-        <defs>
-          <marker id="arrowS1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
-          </marker>
-        </defs>
-        <rect x="15" y="75" width="140" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="85" y="107" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Reason</text>
-
-        <path d="M 155 102 L 210 102 L 190 82 M 210 102 L 190 122" fill="none" stroke="#f59e0b" stroke-width="2"/>
-        <text x="180" y="70" text-anchor="middle" font-size="9.5" fill="#92400e">knowledge gap detected?</text>
-
-        <rect x="220" y="75" width="130" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="285" y="107" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Search</text>
-
-        <line x1="350" y1="102" x2="405" y2="102" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowS1)"/>
-        <rect x="410" y="75" width="150" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="485" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#5b21b6">Reason-in-Documents</text>
-        <text x="485" y="113" text-anchor="middle" font-size="9.5" fill="#475569">digest before reinjecting</text>
-
-        <path d="M 560 102 C 610 102, 610 150, 400 150 C 200 150, 150 150, 150 130" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowS1)"/>
-        <text x="360" y="175" text-anchor="middle" font-size="10" fill="#6b7280">continues reasoning with digested evidence, not raw dumped text</text>
-      </svg>
-      <div class="diagram-caption">Search-O1 only searches when the model itself detects a gap, and filters what comes back before it re-enters the reasoning chain.</div>
+    <h2 id="openproblems" class="agi-section">The Three Unsolved Problems</h2>
+    <p>Every deep dive in this series named a place where the field genuinely doesn't have an answer yet. Pulled together, they're really three problems, not many:</p>
+    <div class="checklist">
+      <div class="check-row"><span class="check-num">1</span><div><strong>Meta-verification.</strong> Deep Dive 1's Constitutional AI showed a verifier can itself be an AI judge rather than a human — but nothing in this series checks whether that judge is trustworthy. Nearly every technique across all five deep dives depends on some external reference to check against: a test suite, a reward model, a known answer. A system that has to judge reasoning with no reference answer at all — is this internally coherent, does the cited evidence actually support the conclusion, can an independent model reproduce the result — runs into a verifier-of-the-verifier regress nobody in this literature has fully closed.</div></div>
+      <div class="check-row"><span class="check-num">2</span><div><strong>Self-generated tasks and curricula.</strong> Every benchmark in this series, including the three above, was built by humans. If humans have to keep hand-writing every new training or evaluation task, improvement stays bottlenecked on human task-authoring capacity. A more autonomous loop would have the system generate its own next task, attempt it, verify the outcome, and generate a harder one next — with the genuine difficulty being keeping generated tasks in a productive zone: hard enough to teach something, not so hard every attempt fails and there's no signal at all.</div></div>
+      <div class="check-row"><span class="check-num">3</span><div><strong>Continual learning and memory.</strong> Every technique across all five deep dives — STaR, GRPO, DAPO, Search-R1, all of it — follows the same train-then-freeze-then-deploy cycle. None of them let a deployed agent keep learning from its own live experience. Doing that safely opens a long list of problems this series hasn't touched: catastrophic forgetting, instability from noisy or adversarial feedback, and the practical question of what a long-lived agent should actually remember versus discard across working memory, episodic memory, and learned procedural strategies.</div></div>
     </div>
 
-    <h2 id="searchr1" class="agi-section">Search-R1: Learning the Search Decision via RL</h2>
-    <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, Mar 2025</span></div>
-      <div class="paper-authors">Bowen Jin, Hansi Zeng, Zhenrui Yue, Jinsung Yoon, Sercan Ö. Arık, Dong Wang, Hamed Zamani, Jiawei Han (UIUC, UMass Amherst, Google Cloud AI Research) — arXiv:2503.09516</div>
-      <div class="paper-summary">Where Search-O1 prompts a model to search when it notices a gap, Search-R1 trains that decision directly with reinforcement learning — using only an outcome-based reward, with no supervised examples of when-to-search — so the model learns when and how to issue multiple search queries interleaved with its own reasoning, retrieving in real time rather than following a fixed retrieval pattern. Retrieved-token masking keeps the RL training stable despite the retrieved text not being something the model itself generated. Reported gains over various RAG baselines across seven QA benchmarks: roughly 41% with a 7B model and 20% with a 3B model.</div>
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2503.09516" target="_blank" rel="noopener">📄 arXiv:2503.09516</a>
-        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
-      </div>
-    </div>
-    <div class="diagram-box">
-      <svg viewBox="0 0 720 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Search-R1 RL loop diagram">
-        <defs>
-          <marker id="arrowSr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
-          </marker>
-        </defs>
-        <rect x="15" y="65" width="140" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="85" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Reason + decide</text>
-
-        <line x1="155" y1="92" x2="215" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
-        <rect x="220" y="65" width="130" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="285" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Search query</text>
-
-        <line x1="350" y1="92" x2="410" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
-        <rect x="415" y="65" width="140" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="485" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Retrieved tokens</text>
-        <text x="485" y="112" text-anchor="middle" font-size="9" fill="#475569">masked in RL update</text>
-
-        <line x1="555" y1="92" x2="615" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
-        <rect x="620" y="65" width="90" height="55" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="665" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Reward</text>
-
-        <path d="M 665 120 C 665 165, 85 165, 85 120" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowSr1)"/>
-        <text x="360" y="155" text-anchor="middle" font-size="10" fill="#6b7280">outcome-based reward trains the search-or-not decision itself, no supervised examples needed</text>
-      </svg>
-      <div class="diagram-caption">Search-R1 trains when-to-search directly via RL — the search decision is learned, not just prompted.</div>
-    </div>
-
-    <h2 id="comparison" class="agi-section">Comparing the Four</h2>
-    <table class="repo-table">
-      <thead><tr><th>System</th><th>Resource being managed</th><th>How the decision gets made</th><th>Headline result</th></tr></thead>
-      <tbody>
-        <tr>
-          <td data-label="System" class="repo-name">AlphaCode</td>
-          <td data-label="Resource">Which of ~1M generated programs to submit</td>
-          <td data-label="Decision">Mechanical: test-filter + behavioral clustering</td>
-          <td data-label="Result">~54th percentile on Codeforces (average competitor)</td>
-        </tr>
-        <tr>
-          <td data-label="System" class="repo-name">AlphaCode 2</td>
-          <td data-label="Resource">Same, plus which candidates actually look best</td>
-          <td data-label="Decision">Mechanical filtering + a learned scoring model</td>
-          <td data-label="Result">~85th percentile on Codeforces</td>
-        </tr>
-        <tr>
-          <td data-label="System" class="repo-name">Search-O1</td>
-          <td data-label="Resource">When to pause reasoning and search</td>
-          <td data-label="Decision">Prompted: model notices a gap and triggers search</td>
-          <td data-label="Result">Gains across science/math/coding reasoning + 6 QA benchmarks</td>
-        </tr>
-        <tr>
-          <td data-label="System" class="repo-name">Search-R1</td>
-          <td data-label="Resource">Same as Search-O1</td>
-          <td data-label="Decision">Learned via RL: no supervised search-trace examples</td>
-          <td data-label="Result">~41% (7B) / ~20% (3B) gains over RAG baselines across 7 QA benchmarks</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <h2 id="seriesclose" class="agi-section">Closing the Series</h2>
     <div class="verdict-box">
-      <div class="verdict-title">🎯 The Bottom Line</div>
+      <div class="verdict-title">🎯 The Bottom Line — For the Whole Series</div>
       <div class="verdict-body">
-        Look at the progression within each pair and the same move repeats: AlphaCode → AlphaCode 2 replaces a mechanical selection rule with a learned one; Search-O1 → Search-R1 replaces a prompted decision rule with a learned one. <strong>In both cases, "learned" beat "mechanical/prompted" by a wide margin</strong> — AlphaCode 2's roughly 30-percentile jump, Search-R1's reported edge over prompted search-triggering baselines. The pattern worth carrying forward: whenever a system has to decide something repeatedly (which candidate to trust, when to search), training that decision usually outperforms hand-writing a rule for it, provided you have a reliable enough reward signal to train against — which loops back to the verification theme running through every deep dive in this series.
+        Five deep dives, thirteen techniques, one recurring idea: <strong>generate, verify, keep what works, then train the system to reproduce the good version directly</strong> — applied to single answers (Deep Dive 1), multi-step plans (Deep Dive 2), the model's own weights (Deep Dive 3), and which candidate or which search query to trust (Deep Dive 4). Every technique that worked, worked because its verification step was reliable — execution results for RLEF, test cases for AlphaCode, a group's own relative scores for GRPO. Every open problem this deep dive just named is a case where that verification step doesn't exist yet: judging reasoning with no reference answer, generating a task worth learning from, deciding what a system should remember. If you take one idea out of this entire five-part series, take this one: <strong>the ceiling on self-improving agents was never generation. It was always verification, and it still is.</strong>
       </div>
-    </div>
-
-    <div class="idea-box">
-      <strong>Finishing the deep dives?</strong> <a href="cs329a-evaluation-and-open-problems.html">Deep Dive 5 — Evaluation and the Open Problems</a> covers METR's time-horizon methodology, GDPval, and DeepScholar-Bench, plus the three problems nobody in this series has solved yet.
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
-      AlphaCode's identity and results are high confidence, confirmed against its Science publication and DOI. AlphaCode 2 was never peer-reviewed or given an arXiv ID — it exists only as a DeepMind technical report; its headline results (43% solve rate, 85th percentile) are corroborated across multiple independent sources, but its full author roster was not independently confirmed. Search-O1 and Search-R1 are both high confidence on identity and core claims; neither has a confirmed dedicated companion video, and this article does not claim one exists for either. None of the four items were verified against a direct arxiv.org fetch in this research environment — check primary sources before citing specific figures formally.
+      All three benchmarks' identities, authors, and core methodology are high confidence, corroborated across multiple independent sources. METR's original 7-month doubling-time figure is high confidence, directly from their March 2025 paper; any claim of an accelerated ~3–4 month doubling rate in 2026, and any specific recent model's time-horizon score, comes only from secondary forum and blog commentary on METR's later updates, not independently confirmed against metr.org directly in this research pass — treat those specific numbers as unverified and check the source before citing them. DeepScholar-Bench is correctly a joint Stanford/UC Berkeley project; don't attribute it to Stanford alone. None of the three papers were fetched directly from arxiv.org in this research environment.
     </div>
 
     <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
@@ -503,10 +412,11 @@
         <a href="cs329a-agentic-feedback-loops.html">Deep Dive 1 — Agentic Feedback Loops in Practice</a>
         <a href="cs329a-planning-as-search.html">Deep Dive 2 — Planning as Search</a>
         <a href="cs329a-training-on-what-search-finds.html">Deep Dive 3 — Training on What Search Finds</a>
-        <a href="https://arxiv.org/abs/2203.07814" target="_blank" rel="noopener">AlphaCode — arXiv:2203.07814</a>
-        <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf" target="_blank" rel="noopener">AlphaCode 2 — official technical report</a>
-        <a href="https://arxiv.org/abs/2501.05366" target="_blank" rel="noopener">Search-O1 — arXiv:2501.05366</a>
-        <a href="https://arxiv.org/abs/2503.09516" target="_blank" rel="noopener">Search-R1 — arXiv:2503.09516</a>
+        <a href="cs329a-competitive-programming-and-retrieval-agents.html">Deep Dive 4 — Competitive Programming and Retrieval Agents</a>
+        <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">METR — arXiv:2503.14499</a>
+        <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener">METR — blog post</a>
+        <a href="https://arxiv.org/abs/2510.04374" target="_blank" rel="noopener">GDPval — arXiv:2510.04374</a>
+        <a href="https://arxiv.org/abs/2508.20033" target="_blank" rel="noopener">DeepScholar-Bench — arXiv:2508.20033</a>
       </div>
     </div>
 
