@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "top-ai-research-phd-programs",
+      "title": "Top AI Research PhD Programs: A Researcher's Guide",
+      "excerpt": "Twenty programs across the US, UK, Europe, Canada, and Asia -- real program structure, admission statistics where they are actually public, faculty links, and funding, verified through direct research. Most acceptance rates are simply not disclosed, and this article says so rather than guessing.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "26 min",
+      "tags": [
+        "Career",
+        "AI Research"
+      ],
+      "emoji": "\ud83c\udf93",
+      "featured": true
+    },
+    {
       "slug": "frontier-ai-research-study-stack",
       "title": "A Public Study Stack for Frontier AI Research Roles",
       "excerpt": "Four researchers who actually interviewed at OpenAI, DeepMind, and elsewhere published their prep notes and topic lists. Stanford put a from-scratch LLM course online with the assignments included. Read together, it is close to a real curriculum for what frontier labs expect a research hire to know.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\uddc2\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs329a-evaluation-and-open-problems",
