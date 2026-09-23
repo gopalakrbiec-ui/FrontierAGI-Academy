@@ -352,6 +352,9 @@
       <div class="check-row"><span class="check-num">3</span><div><strong>Parallelizing reasoning.</strong> Ordinary chain-of-thought reasoning is sequential by construction — each step depends on the last, which adds latency. Some more recent approaches instead decompose a problem into genuinely independent sub-plans that can be reasoned about simultaneously and then combined, trading the difficulty of finding a valid decomposition for the ability to use parallel compute instead of paying for depth serially.</div></div>
       <div class="check-row"><span class="check-num">4</span><div><strong>Learning tool use from synthetic trajectories.</strong> Training an agent to use tools well normally means letting it interact with real, live environments during training — slow, expensive, and sometimes unsafe. An alternative is generating synthetic multi-step tool-use trajectories offline, filtering them for quality, and training on those instead of on live rollouts. The open question with this approach is always the same one any simulation-to-reality method faces: does a policy trained on synthetic trajectories actually generalize to environments it never saw during training?</div></div>
     </div>
+    <div class="idea-box">
+      <strong>Want the expanded version?</strong> <a href="cs329a-planning-as-search.html">Planning as Search</a> (Deep Dive 2 of 5) covers LATS, SPRINT, and SWiRL with verified citations, original diagrams, and a closer look at the irreversible-action problem.
+    </div>
 
     <h2 id="trainrl" class="agi-section">Training the Model to Reproduce What Search Finds</h2>
     <p>Search and sampling can discover a correct answer that was already somewhere in the model's distribution. Training is how that discovery gets turned into something the model produces reliably on the first try, without needing to search for it again.</p>

@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agentic Feedback Loops in Practice — FrontierAGI Academy Blog</title>
+  <title>Planning as Search — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -115,11 +115,6 @@
       padding: 16px 20px; margin: 22px 0; font-size: 0.79rem; color: #854d0e; line-height: 1.6;
     }
     .caveat-box strong { color: #713f12; }
-
-    .verdict-box { background: linear-gradient(135deg, #030a08, #1a1033); border-radius: 16px; padding: 28px; margin: 28px 0; color: #fff; }
-    .verdict-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-    .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
-    .verdict-body strong { color: #6ee7b7; }
 
     .series-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
     .series-card { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; background: #fff; position: relative; }
@@ -286,14 +281,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Agentic Feedback Loops in Practice</span>
+      <span>Planning as Search</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Deep Dive · 1 of 5</span>
-      <span class="agi-hero-icon">🔁</span>
-      <h1>Agentic Feedback Loops in Practice</h1>
-      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s "Agentic Feedback Loops" section introduced ReAct, RLEF, and Constitutional AI in a few paragraphs each. This is the expanded version — the real papers, verified citations, and an original diagram for each loop so you can see exactly where information flows and where the feedback signal actually comes from.</p>
+      <span class="series-badge">Deep Dive · 2 of 5</span>
+      <span class="agi-hero-icon">🌳</span>
+      <h1>Planning as Search</h1>
+      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s "Planning as Search" section covered tree search, parallel reasoning, and synthetic tool-use trajectories in a few paragraphs. This deep dive expands all three with verified citations and original diagrams — plus a closer look at the irreversible-action problem that tree search quietly assumes away.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -301,201 +296,214 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 23, 2026 · 24 min read</div>
+          <div class="blog-post-date">September 23, 2026 · 22 min read</div>
         </div>
       </div>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
-      <strong>On the citations below:</strong> all three papers' titles, authors, arXiv IDs, and venues were independently verified through direct research rather than carried over from any single source. Two small caveats are flagged where they apply: RLEF's exact co-author ordering and Constitutional AI's full ~50-person author list could not be byte-for-byte confirmed against the primary arXiv page in this research pass (arxiv.org itself was not directly browsable), though the paper identity, arXiv ID, and core claims are high confidence, cross-corroborated across multiple independent sources. Video links are only included where a genuine, specifically-identifiable recording was found — no fabricated links.
+      <strong>On the citations below:</strong> all three papers' identities were independently verified through direct research. One naming caveat is worth flagging up front: "SPRINT" is used by multiple, unrelated ML papers — the one covered here (parallelizing LLM reasoning) is a 2025 paper out of Stanford's Scaling Intelligence Lab, not the earlier, unrelated "SPRINT" paper about robot policy pre-training. arXiv itself was not directly browsable in this research environment, so all details are cross-corroborated from multiple independent secondary sources (lab publication pages, conference listings, indexing sites) rather than a byte-for-byte primary-source check — treat as high confidence but verify directly before citing formally.
     </div>
 
     <div class="agi-section-nav">
-      <a href="#opening"        class="agi-nav-btn">Why These Three Together</a>
-      <a href="#react"          class="agi-nav-btn">ReAct</a>
-      <a href="#rlef"           class="agi-nav-btn">RLEF</a>
-      <a href="#cai"            class="agi-nav-btn">Constitutional AI</a>
-      <a href="#comparison"     class="agi-nav-btn">Comparing the Three Loops</a>
+      <a href="#opening"        class="agi-nav-btn">Why Planning Becomes Search</a>
+      <a href="#lats"           class="agi-nav-btn">LATS</a>
+      <a href="#irreversible"   class="agi-nav-btn">The Irreversible-Action Problem</a>
+      <a href="#sprint"         class="agi-nav-btn">SPRINT</a>
+      <a href="#swirl"          class="agi-nav-btn">SWiRL</a>
+      <a href="#comparison"     class="agi-nav-btn">Comparing the Three</a>
       <a href="#gaps"           class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
       <a href="#references"     class="agi-nav-btn">Full Reference List</a>
     </div>
 
-    <h2 id="opening" class="agi-section">Why These Three Together</h2>
-    <p>All three techniques answer the same underlying question — how does a language model get feedback on something more complex than "is this single answer right or wrong" — but they source that feedback from three genuinely different places: ReAct grounds reasoning in real-world tool results, RLEF grounds it in code execution, and Constitutional AI grounds it in the model's own critique against a written set of principles, with an AI (not a human) judging the result. Seeing the three loops side by side makes clear that "agentic feedback" isn't one mechanism — it's a design choice about where the ground truth for "good" comes from.</p>
+    <h2 id="opening" class="agi-section">Why Planning Becomes Search</h2>
+    <p>A single chain-of-thought commits to one line of reasoning from the first token. That's fine for problems where the first reasonable approach is usually right. It breaks down for problems where several different approaches look equally promising at the start, and only diverge in quality several steps in — by the time a single chain discovers it picked the wrong branch, most of its computation is already spent. The three techniques below are three different answers to the same question: how do you let an agent consider more than one path without paying for full sequential depth on every path it rejects.</p>
 
-    <h2 id="react" class="agi-section">ReAct: Reasoning Grounded in Tool Results</h2>
+    <h2 id="lats" class="agi-section">LATS: Tree Search Over Reasoning and Actions</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">ReAct: Synergizing Reasoning and Acting in Language Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">ICLR 2023</span></div>
-      <div class="paper-authors">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao — arXiv:2210.03629</div>
-      <div class="paper-summary">Proposes prompting an LLM to interleave chain-of-thought reasoning with discrete actions — API or tool calls to external sources — and the observations those actions return, rather than doing pure reasoning or pure acting alone. On HotpotQA and FEVER, grounding reasoning in retrieved facts this way reduces hallucination and error propagation compared to reasoning with no external check. On interactive decision-making benchmarks (ALFWorld, WebShop), it substantially outperforms imitation- and RL-trained baselines using only one or two in-context examples.</div>
+      <div class="paper-hd"><span class="paper-title">Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">ICML 2024</span></div>
+      <div class="paper-authors">Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang, Yu-Xiong Wang — arXiv:2310.04406</div>
+      <div class="paper-summary">Adapts Monte Carlo Tree Search to LLM agents, with the language model playing three roles at once: the agent proposing actions, the value function scoring how promising a branch looks, and the self-reflection mechanism that critiques failed attempts before trying again. Rather than one chain, LATS explores a tree of reasoning-and-action sequences, using environment feedback to decide which branches deserve more computation. The paper reports a pass@1 of roughly 92–94% on HumanEval coding tasks with GPT-4, and web-navigation performance on WebShop (using GPT-3.5) competitive with baselines that required task-specific fine-tuning — without LATS itself needing any.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">📄 arXiv:2210.03629</a>
-        <a href="https://slideslive.com/38996448" target="_blank" rel="noopener">📺 ICLR 2023 conference recording (SlidesLive)</a>
+        <a href="https://arxiv.org/abs/2310.04406" target="_blank" rel="noopener">📄 arXiv:2310.04406</a>
+        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ReAct loop diagram">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LATS tree search diagram">
         <defs>
-          <marker id="arrowReact" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <marker id="arrowLats" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+          </marker>
+        </defs>
+        <circle cx="360" cy="35" r="22" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="360" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">State</text>
+
+        <line x1="360" y1="57" x2="180" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
+        <line x1="360" y1="57" x2="360" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
+        <line x1="360" y1="57" x2="540" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
+
+        <circle cx="180" cy="138" r="20" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+        <text x="180" y="143" text-anchor="middle" font-size="10" fill="#7f1d1d">low-value</text>
+        <circle cx="360" cy="138" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="360" y="143" text-anchor="middle" font-size="10" fill="#065f46">promising</text>
+        <circle cx="540" cy="138" r="20" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="540" y="143" text-anchor="middle" font-size="10" fill="#78350f">uncertain</text>
+
+        <line x1="360" y1="158" x2="290" y2="215" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowLats)"/>
+        <line x1="360" y1="158" x2="430" y2="215" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowLats)"/>
+
+        <circle cx="290" cy="238" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="290" y="243" text-anchor="middle" font-size="10" fill="#065f46">expand</text>
+        <circle cx="430" cy="238" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="430" y="243" text-anchor="middle" font-size="10" fill="#065f46">expand</text>
+
+        <text x="80" y="138" text-anchor="middle" font-size="10" fill="#7f1d1d" font-style="italic">pruned</text>
+        <text x="620" y="138" text-anchor="middle" font-size="10" fill="#78350f" font-style="italic">reflect &amp; retry</text>
+
+        <rect x="20" y="270" width="680" height="24" rx="6" fill="#f9fafb"/>
+        <text x="360" y="286" text-anchor="middle" font-size="10.5" fill="#475569">More compute flows to green (promising) branches; red branches are abandoned early</text>
+      </svg>
+      <div class="diagram-caption">LATS's tree: each node is a state reached by a reasoning-and-action step; the value function decides which branches earn more search, and self-reflection lets a failed branch retry instead of being discarded outright.</div>
+    </div>
+
+    <h2 id="irreversible" class="agi-section">The Irreversible-Action Problem</h2>
+    <p>LATS-style tree search has a quiet assumption baked in: exploring a branch and abandoning it is cheap. That's true for a coding sandbox or a text-based shopping simulation — pruning a bad branch just means throwing away some generated text. It stops being true the instant an agent's actions have real-world consequences. Sending an email, deleting a file, transferring money, or modifying a production system can't be pruned after the fact the way a rejected tree branch can.</p>
+    <div class="why-box">
+      <strong>Why this matters specifically for tree-search agents:</strong> a system designed around "try it, see the value, backtrack if it's bad" needs an explicit boundary between the part of its process where mistakes are recoverable (planning, simulation, sandboxed execution) and the part where they aren't (anything with a real external effect). Reliable agent architectures enforce this with mechanisms like simulating an action before actually taking it, requiring explicit human or programmatic approval before high-stakes steps execute, or setting a much higher confidence threshold before anything irreversible is allowed to run at all. None of this is a solved, standardized part of the LATS paper itself — it's a design requirement every practical deployment of tree-search-style agents has to add on top.</div>
+
+    <h2 id="sprint" class="agi-section">SPRINT: Parallelizing Reasoning Instead of Extending It</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">SPRINT: Enabling Interleaved Planning and Parallelized Execution in Reasoning Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">NeurIPS 2025</span></div>
+      <div class="paper-authors">Emil Biju, Shayan Talaei, Zhemin Huang, Mohammadreza Pourreza, Amin Saberi, Azalia Mirhoseini — arXiv:2506.05745</div>
+      <div class="paper-summary">A post-training and inference-time framework that trains a reasoning model to notice, mid-reasoning, when part of its remaining work can be split into independent sub-tasks — restructuring what would be one long sequential chain into rounds of planning followed by branches that run in parallel. The paper reports SPRINT matches standard reasoning-model accuracy on math benchmarks while cutting sequential token counts by up to roughly 39% on longer problems, with similar reductions on GPQA and the Countdown benchmark. Note the "SPRINT" name is reused elsewhere in ML for an unrelated robot-policy-pretraining method (arXiv:2306.11886) — this is a different paper.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2506.05745" target="_blank" rel="noopener">📄 arXiv:2506.05745</a>
+        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SPRINT parallel reasoning diagram">
+        <defs>
+          <marker id="arrowSprint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
           </marker>
         </defs>
-        <rect x="20" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="90" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Thought</text>
-        <text x="90" y="120" text-anchor="middle" font-size="11" fill="#475569">reason about next step</text>
+        <rect x="20" y="80" width="130" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="85" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Plan</text>
 
-        <rect x="290" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="360" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Action</text>
-        <text x="360" y="120" text-anchor="middle" font-size="11" fill="#475569">call a tool / API</text>
+        <line x1="150" y1="107" x2="220" y2="60" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="150" y1="107" x2="220" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="150" y1="107" x2="220" y2="154" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
 
-        <rect x="560" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="630" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Observation</text>
-        <text x="630" y="120" text-anchor="middle" font-size="11" fill="#475569">real result returned</text>
+        <rect x="225" y="35" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="285" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task A</text>
+        <rect x="225" y="82" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="285" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task B</text>
+        <rect x="225" y="129" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="285" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task C</text>
+        <text x="285" y="200" text-anchor="middle" font-size="10.5" fill="#065f46" font-weight="700">run in parallel</text>
 
-        <line x1="160" y1="105" x2="285" y2="105" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowReact)"/>
-        <line x1="430" y1="105" x2="555" y2="105" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowReact)"/>
-        <path d="M 630 145 C 630 195, 90 195, 90 145" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowReact)"/>
-        <text x="360" y="205" text-anchor="middle" font-size="11" fill="#b45309">loop back until the answer is well-grounded</text>
+        <line x1="345" y1="60" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="345" y1="107" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="345" y1="154" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+
+        <rect x="445" y="80" width="130" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="510" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Merge</text>
+
+        <line x1="575" y1="107" x2="645" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <text x="680" y="112" text-anchor="middle" font-size="18">…</text>
+        <text x="360" y="20" text-anchor="middle" font-size="11" fill="#6b7280">wall-clock time reduced; total reasoning still complete</text>
       </svg>
-      <div class="diagram-caption">The ReAct loop: each action's real-world observation feeds the next thought, instead of reasoning happening in one unchecked pass.</div>
+      <div class="diagram-caption">SPRINT interleaves planning and parallel execution: independent sub-tasks branch out and run simultaneously instead of one long sequential chain.</div>
     </div>
 
-    <h2 id="rlef" class="agi-section">RLEF: Reinforcement Learning from Execution Feedback</h2>
+    <h2 id="swirl" class="agi-section">SWiRL: Training on Synthetic Multi-Step Trajectories</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv 2024 → ICML 2025</span></div>
-      <div class="paper-authors">Jonas Gehring, Kunhao Zheng, Jade Copet, Vegard Mella, Taco Cohen, Gabriel Synnaeve, and coauthors — arXiv:2410.02089 <span class="conf-badge conf-medium">exact co-author ordering not byte-for-byte confirmed</span></div>
-      <div class="paper-summary">Trains code-generating LLMs end-to-end with reinforcement learning (PPO) to actually use execution feedback: the model writes code, that code runs against public test cases, and any failure output is fed back into the conversation for the model to repair — with the reward based on held-out private tests the model never sees directly. This teaches genuine iterative self-correction, not just better first-try accuracy, and the paper reports state-of-the-art results on competitive programming benchmarks with both 8B and 70B models, using an order of magnitude fewer samples than prior approaches to reach comparable performance.</div>
+      <div class="paper-hd"><span class="paper-title">Synthetic Data Generation &amp; Multi-Step RL for Reasoning &amp; Tool Use (SWiRL) <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, 2025</span></div>
+      <div class="paper-authors">Anna Goldie, Azalia Mirhoseini, Hao Zhou, Irene Cai, Christopher D. Manning — arXiv:2504.04736</div>
+      <div class="paper-summary">Generates synthetic multi-step reasoning-and-tool-use trajectories offline, without needing live environment rollouts during training. Each trajectory is decomposed into per-step sub-trajectories, filtered by model-based judgment rather than gold labels or human annotation, and optimized step by step — whether that step is a reasoning step, a tool call, or a final answer. The paper reports relative accuracy gains over baselines of roughly 21.5%, 12.3%, 14.8%, 11.1%, and 15.3% on GSM8K, HotPotQA, CofCA, MuSiQue, and BeerQA respectively, plus cross-task generalization — training only on HotPotQA improved zero-shot GSM8K performance by around 16.9%.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2410.02089" target="_blank" rel="noopener">📄 arXiv:2410.02089</a>
-        <span class="no-video">📺 ICML 2025 poster session exists; no specific named recorded talk independently confirmed</span>
+        <a href="https://arxiv.org/abs/2504.04736" target="_blank" rel="noopener">📄 arXiv:2504.04736</a>
+        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RLEF loop diagram">
+      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SWiRL synthetic trajectory pipeline diagram">
         <defs>
-          <marker id="arrowRlef" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#047857"/>
-          </marker>
-        </defs>
-        <rect x="20" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="95" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Generate Code</text>
-        <text x="95" y="128" text-anchor="middle" font-size="10" fill="#475569">candidate solution</text>
-
-        <rect x="285" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="360" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Execute + Test</text>
-        <text x="360" y="128" text-anchor="middle" font-size="10" fill="#475569">public + private tests</text>
-
-        <rect x="550" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="625" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Reward + PPO Update</text>
-        <text x="625" y="128" text-anchor="middle" font-size="10" fill="#475569">policy learns to fix failures</text>
-
-        <line x1="170" y1="115" x2="280" y2="115" stroke="#047857" stroke-width="2" marker-end="url(#arrowRlef)"/>
-        <line x1="435" y1="115" x2="545" y2="115" stroke="#047857" stroke-width="2" marker-end="url(#arrowRlef)"/>
-        <path d="M 625 155 C 625 205, 95 205, 95 155" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowRlef)"/>
-        <text x="360" y="220" text-anchor="middle" font-size="11" fill="#b45309">failed public-test feedback re-enters the next generation attempt</text>
-      </svg>
-      <div class="diagram-caption">The RLEF loop: execution results, not a learned judge, decide the reward — the same objective feedback pattern the practitioner's primer highlighted as a domain advantage for code.</div>
-    </div>
-
-    <h2 id="cai" class="agi-section">Constitutional AI: Feedback from a Written Constitution, Judged by AI</h2>
-    <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Constitutional AI: Harmlessness from AI Feedback <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Anthropic, Dec 2022</span></div>
-      <div class="paper-authors">Yuntao Bai, et al. (large Anthropic team) — arXiv:2212.08073 <span class="conf-badge conf-medium">full ~50-person author order not byte-for-byte confirmed</span></div>
-      <div class="paper-summary">Trains a helpful-and-harmless assistant using no human harm labels at all. In a supervised phase, the model critiques and revises its own outputs against a written set of principles (the "constitution"). In an RL phase — this is the part often shorthanded RLAIF, reinforcement learning from AI feedback — an AI model, not human raters, judges pairs of outputs to build a preference dataset, and the assistant is trained against that AI-generated preference model. The paper reports the resulting model was preferred by human crowdworkers over prior RLHF-only harmlessness training, while being less evasive and more willing to actually engage with a question.</div>
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">📄 arXiv:2212.08073</a>
-        <span class="no-video">📺 No dedicated technical-talk recording of this specific paper independently confirmed</span>
-      </div>
-    </div>
-    <div class="diagram-box">
-      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Constitutional AI loop diagram">
-        <defs>
-          <marker id="arrowCai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <marker id="arrowSwirl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
           </marker>
         </defs>
-        <text x="180" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#6b21a8">SUPERVISED PHASE</text>
-        <rect x="20" y="45" width="130" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="85" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Response</text>
-        <text x="85" y="90" text-anchor="middle" font-size="10" fill="#475569">initial model output</text>
+        <rect x="15" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="85" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Generate</text>
+        <text x="85" y="113" text-anchor="middle" font-size="10" fill="#475569">synthetic trajectory</text>
 
-        <rect x="220" y="45" width="150" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="295" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Self-Critique</text>
-        <text x="295" y="84" text-anchor="middle" font-size="10" fill="#475569">vs. written constitution</text>
-        <text x="295" y="98" text-anchor="middle" font-size="10" fill="#475569">→ Revision</text>
+        <rect x="200" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="270" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Decompose</text>
+        <text x="270" y="113" text-anchor="middle" font-size="10" fill="#475569">into per-step pieces</text>
 
-        <line x1="150" y1="77" x2="215" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
+        <rect x="385" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="455" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Filter</text>
+        <text x="455" y="113" text-anchor="middle" font-size="10" fill="#475569">model judgment, no gold labels</text>
 
-        <text x="540" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#6b21a8">RL PHASE (RLAIF)</text>
-        <rect x="440" y="45" width="150" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="515" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">AI Preference Judge</text>
-        <text x="515" y="90" text-anchor="middle" font-size="10" fill="#475569">ranks output pairs</text>
+        <rect x="570" y="70" width="135" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="637" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">RL Update</text>
+        <text x="637" y="113" text-anchor="middle" font-size="10" fill="#475569">per reasoning/tool step</text>
 
-        <rect x="630" y="45" width="70" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="665" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">RL</text>
-        <text x="665" y="88" text-anchor="middle" font-size="10" fill="#475569">Update</text>
-
-        <line x1="370" y1="77" x2="435" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
-        <line x1="590" y1="77" x2="625" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
-
-        <rect x="20" y="160" width="680" height="70" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="360" y="188" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">No human harm labels used in either phase</text>
-        <text x="360" y="208" text-anchor="middle" font-size="11" fill="#78350f">Ground truth comes from the written constitution + an AI judge, not a human rater</text>
+        <line x1="155" y1="100" x2="195" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
+        <line x1="340" y1="100" x2="380" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
+        <line x1="525" y1="100" x2="565" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
+        <text x="360" y="30" text-anchor="middle" font-size="11" fill="#6b7280">No live environment rollouts required during this pipeline</text>
       </svg>
-      <div class="diagram-caption">Constitutional AI's two phases: a supervised critique-and-revise loop, then an RL phase where an AI — not a human — supplies the preference signal.</div>
+      <div class="diagram-caption">SWiRL's offline pipeline: synthetic trajectories are generated once, then decomposed and filtered before RL ever needs to touch a real environment.</div>
     </div>
 
-    <h2 id="comparison" class="agi-section">Comparing the Three Loops</h2>
+    <h2 id="comparison" class="agi-section">Comparing the Three</h2>
     <table class="repo-table">
-      <thead><tr><th>Technique</th><th>Where feedback comes from</th><th>How objective is it</th><th>Best-suited domain</th></tr></thead>
+      <thead><tr><th>Technique</th><th>What it parallelizes or searches over</th><th>When it pays off</th><th>What it costs</th></tr></thead>
       <tbody>
         <tr>
-          <td data-label="Technique" class="repo-name">ReAct</td>
-          <td data-label="Feedback source">Real tool/API results returned mid-reasoning</td>
-          <td data-label="Objectivity">High — the observation is a real external fact</td>
-          <td data-label="Domain">Question answering, retrieval-grounded tasks, interactive environments</td>
+          <td data-label="Technique" class="repo-name">LATS</td>
+          <td data-label="What">Alternative reasoning-and-action sequences (a tree)</td>
+          <td data-label="Payoff">Tasks with multiple plausible approaches and cheap-to-abandon branches (code, sandboxed environments)</td>
+          <td data-label="Cost">Much higher inference compute than a single chain; assumes exploration is safe to prune</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">RLEF</td>
-          <td data-label="Feedback source">Code execution against test cases</td>
-          <td data-label="Objectivity">Very high — tests pass or fail, no judgment call</td>
-          <td data-label="Domain">Code generation and repair specifically</td>
+          <td data-label="Technique" class="repo-name">SPRINT</td>
+          <td data-label="What">Independent sub-tasks within one problem's reasoning</td>
+          <td data-label="Payoff">Long reasoning chains with genuinely decomposable sub-parts</td>
+          <td data-label="Cost">Requires post-training the model to recognize decomposition opportunities in the first place</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">Constitutional AI</td>
-          <td data-label="Feedback source">Written principles + an AI judge's preference</td>
-          <td data-label="Objectivity">Lower — depends on how well the model applies the constitution</td>
-          <td data-label="Domain">Behaviors that can't be unit-tested (tone, harmlessness, style)</td>
+          <td data-label="Technique" class="repo-name">SWiRL</td>
+          <td data-label="What">Training data itself — generated and filtered offline instead of live</td>
+          <td data-label="Payoff">Multi-step tool-use domains where live environment rollouts are slow, expensive, or unsafe during training</td>
+          <td data-label="Cost">Depends on the offline filter's judgment being reliable — a weak filter propagates bad trajectories into training</td>
         </tr>
       </tbody>
     </table>
-    <div class="why-box">
-      <strong>The pattern underneath all three:</strong> the more objectively "correct" the feedback source is, the less the loop depends on trusting a judge — ReAct and RLEF both ground themselves in something the world (or a test suite) directly confirms, while Constitutional AI's RL phase depends on the AI judge itself being reliable, which is exactly the "who verifies the verifier" problem the field handbook's meta-verification section flags as still largely unsolved.</div>
 
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        If you're choosing which of these three to build with first, choose based on how objective your feedback source can be, not on which technique sounds most sophisticated. <strong>RLEF is the strongest default wherever code execution is available</strong> — the reward is unambiguous and doesn't require trusting a judge. ReAct is the right pattern the moment a task needs real-world facts a model can't reliably know from training alone. Constitutional AI is the fallback for everything else — behaviors that can't be unit-tested — but it inherits a weakness the other two mostly avoid: its RL phase's entire signal depends on the AI judge being trustworthy, which is exactly the meta-verification problem the field still hasn't solved. Pick the loop whose ground truth you'd actually bet on.
+        All three techniques buy the same thing — considering more of the solution space than a single sequential pass would — but they spend a different resource to get it. <strong>LATS spends inference compute exploring a tree; SPRINT spends training effort teaching the model to decompose problems so parallel compute can substitute for sequential depth; SWiRL spends offline data-generation effort so training itself doesn't need live rollouts at all.</strong> None of them resolve the irreversible-action problem — that's a deployment-level safeguard every one of these systems still needs layered on top, not something "more search" or "more parallelism" solves on its own.
       </div>
-    </div>
-
-    <div class="idea-box">
-      <strong>Continuing the deep dives?</strong> <a href="cs329a-planning-as-search.html">Deep Dive 2 — Planning as Search</a> covers LATS's tree search, SPRINT's parallel reasoning, SWiRL's synthetic-trajectory training, and the irreversible-action problem tree search quietly assumes away.
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
-      All three papers' core identity (title, arXiv ID, venue, central claims) are high confidence, cross-corroborated across multiple independent sources during research for this piece. Two narrower details are flagged individually above rather than presented as fully certain: RLEF's exact co-author ordering and Constitutional AI's complete ~50-person author list could not be verified byte-for-byte against the primary arXiv abstract page in this research pass, since arxiv.org itself wasn't directly browsable in this environment. If you're citing either paper formally, pull the author list directly from the arXiv page rather than from this summary.
+      All three papers' core identity (title, arXiv ID, venue, central claims) are high confidence, cross-corroborated across multiple independent sources. None could be verified against a direct arxiv.org/abs page load in this research environment, so treat specific reported numbers (LATS's pass@1 figures, SPRINT's token-reduction percentage, SWiRL's per-benchmark accuracy gains) as accurately transcribed from secondary sources, not independently recomputed. The SPRINT name-collision caveat is worth repeating: confirm you're looking at arXiv:2506.05745 specifically, not the unrelated 2023 robot-policy paper of the same name.
     </div>
 
     <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
     <div class="ref-box">
       <div class="ref-list">
         <a href="cs329a-self-improving-agents-handbook.html">Self-Improving AI Agents: A Field Handbook (base article)</a>
-        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct — arXiv:2210.03629</a>
-        <a href="https://slideslive.com/38996448" target="_blank" rel="noopener">ReAct — ICLR 2023 recording</a>
-        <a href="https://arxiv.org/abs/2410.02089" target="_blank" rel="noopener">RLEF — arXiv:2410.02089</a>
-        <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">Constitutional AI — arXiv:2212.08073</a>
+        <a href="cs329a-agentic-feedback-loops.html">Deep Dive 1 — Agentic Feedback Loops in Practice</a>
+        <a href="https://arxiv.org/abs/2310.04406" target="_blank" rel="noopener">LATS — arXiv:2310.04406</a>
+        <a href="https://arxiv.org/abs/2506.05745" target="_blank" rel="noopener">SPRINT — arXiv:2506.05745</a>
+        <a href="https://arxiv.org/abs/2504.04736" target="_blank" rel="noopener">SWiRL — arXiv:2504.04736</a>
       </div>
     </div>
 

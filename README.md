@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🔁 [Agentic Feedback Loops in Practice](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-agentic-feedback-loops.html) ⭐ | Deep Dive 1 of 5 on the CS329A field handbook: ReAct, RLEF, and Constitutional AI expanded with verified paper citations (real arXiv IDs,… | 2026-09-23 |
+| 🌳 [Planning as Search](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-planning-as-search.html) ⭐ | Deep Dive 2 of 5 on the CS329A field handbook: LATS tree search, SPRINT parallel reasoning, and SWiRL synthetic-trajectory training,… | 2026-09-23 |
+| 🔁 [Agentic Feedback Loops in Practice](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-agentic-feedback-loops.html) | Deep Dive 1 of 5 on the CS329A field handbook: ReAct, RLEF, and Constitutional AI expanded with verified paper citations (real arXiv IDs,… | 2026-09-23 |
 | 📘 [Self-Improving AI Agents: A Field Handbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-self-improving-agents-handbook.html) | A standalone companion to our CS329A guide covering the rest of the course in one place: agentic feedback loops (ReAct, RLEF,… | 2026-09-23 |
 | ⚙️ [Running RSI Repos Yourself: A Hands-On Walkthrough](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-hands-on-repo-walkthrough.html) | A deep-dive companion to the practitioner's primer: FunSearch, SICA, and Godel Agent, actually cloned and read through, with real setup… | 2026-09-23 |
 | 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) | The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a… | 2026-09-22 |
