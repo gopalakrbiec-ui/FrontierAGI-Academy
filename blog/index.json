@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-ai-research-study-stack",
+      "title": "A Public Study Stack for Frontier AI Research Roles",
+      "excerpt": "Four researchers who actually interviewed at OpenAI, DeepMind, and elsewhere published their prep notes and topic lists. Stanford put a from-scratch LLM course online with the assignments included. Read together, it is close to a real curriculum for what frontier labs expect a research hire to know.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "16 min",
+      "tags": [
+        "Career",
+        "AI Research"
+      ],
+      "emoji": "\ud83d\uddc2\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "cs329a-evaluation-and-open-problems",
       "title": "Evaluation and the Open Problems",
       "excerpt": "Deep Dive 5 of 5, closing the CS329A field handbook series: METR's time-horizon methodology, GDPval, and DeepScholar-Bench, expanded with verified citations, plus a closer look at meta-verification, self-generated curricula, and continual learning -- the three problems this whole series never solved.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\udccf",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs329a-competitive-programming-and-retrieval-agents",
