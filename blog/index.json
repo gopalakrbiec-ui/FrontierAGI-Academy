@@ -31,36 +31,6 @@
       "featured": false
     },
     {
-      "slug": "cs329a-self-improving-agents-part2-test-time-compute-verification",
-      "title": "Self-Improving AI Agents, Part 2: Test-Time Compute & Verification",
-      "excerpt": "Lecture 2 and 3 of Stanford CS329A: sampling/coverage curves, the Archon architecture-search framework, and the progression from outcome reward models to process reward models to Weaver, the NeurIPS 2025 verifier-ensembling paper.",
-      "author": "FrontierAGI Team",
-      "authorInitials": "FL",
-      "date": "2026-09-22",
-      "readTime": "20 min",
-      "tags": [
-        "Deep Research",
-        "AI Research"
-      ],
-      "emoji": "\ud83d\udd0e",
-      "featured": false
-    },
-    {
-      "slug": "cs329a-self-improving-agents-part1-overview",
-      "title": "Self-Improving AI Agents, Part 1: Course Overview",
-      "excerpt": "A new, standalone lecture-by-lecture guide to Stanford CS329A: what the course covers, its four-phase framing of AI progress (scale, post-training, test-time compute, agentic loops), and its core thesis that verification, not generation, sets the ceiling.",
-      "author": "FrontierAGI Team",
-      "authorInitials": "FL",
-      "date": "2026-09-22",
-      "readTime": "18 min",
-      "tags": [
-        "Deep Research",
-        "AI Research"
-      ],
-      "emoji": "\ud83c\udf93",
-      "featured": false
-    },
-    {
       "slug": "rsi-practitioners-primer",
       "title": "A Practitioner's Primer on RSI",
       "excerpt": "The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a new experiment, realistic compute/funding resources, and how to keep up in a subfield producing ~500 papers a quarter.",
