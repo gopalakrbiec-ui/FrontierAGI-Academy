@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "cs329a-training-on-what-search-finds",
+      "title": "Training on What Search Finds",
+      "excerpt": "Deep Dive 3 of 5 on the CS329A field handbook: STaR's bootstrapped-rationale training, GRPO's critic-free group-relative RL from DeepSeekMath, and DAPO's fixes for long-chain RL instability, expanded with verified citations and an original diagram for each.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-23",
+      "readTime": "23 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83c\udfcb\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "cs329a-planning-as-search",
       "title": "Planning as Search",
       "excerpt": "Deep Dive 2 of 5 on the CS329A field handbook: LATS tree search, SPRINT parallel reasoning, and SWiRL synthetic-trajectory training, expanded with verified paper citations and an original diagram for each, plus a closer look at the irreversible-action problem tree search assumes away.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83c\udf33",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs329a-agentic-feedback-loops",

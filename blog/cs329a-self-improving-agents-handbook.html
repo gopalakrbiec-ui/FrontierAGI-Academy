@@ -368,6 +368,9 @@
     </div>
     <div class="why-box">
       <strong>A subtlety worth sitting with:</strong> RL applied this way often improves how <em>reliably</em> a model produces a strategy it could already sometimes produce, more than it discovers a genuinely new capability. If a model solves a hard problem 15% of the time before training and 75% of the time after, that's a real and valuable improvement — but it may mean the training mostly made an existing good strategy more probable, rather than expanding what the model is fundamentally capable of. Whether self-improvement loops can reliably push outward on <em>capability</em>, not just reliability, remains one of the more contested open questions in this literature.</div>
+    <div class="idea-box">
+      <strong>Want the expanded version?</strong> <a href="cs329a-training-on-what-search-finds.html">Training on What Search Finds</a> (Deep Dive 3 of 5) covers STaR, GRPO, and DAPO with verified citations and original diagrams for each.
+    </div>
 
     <h2 id="alphacode" class="agi-section">Case Study: Competitive Programming as a Search Problem</h2>
     <p>Competitive programming is a useful case study because it makes the generate-verify-select loop concrete and because two generations of the same underlying system illustrate the shift toward learned selection. Early approaches to this problem leaned heavily on brute-force generation: produce a very large number of candidate programs for a given problem, filter out ones that are obviously invalid, cluster the survivors to avoid submitting many near-duplicate solutions, and only then submit a small diverse set. Diversity management — making sure your limited number of submission attempts aren't all the same idea in different clothing — turns out to matter almost as much as raw generation volume.</p>

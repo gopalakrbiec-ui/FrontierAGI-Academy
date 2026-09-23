@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planning as Search — FrontierAGI Academy Blog</title>
+  <title>Training on What Search Finds — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -281,14 +281,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Planning as Search</span>
+      <span>Training on What Search Finds</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Deep Dive · 2 of 5</span>
-      <span class="agi-hero-icon">🌳</span>
-      <h1>Planning as Search</h1>
-      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s "Planning as Search" section covered tree search, parallel reasoning, and synthetic tool-use trajectories in a few paragraphs. This deep dive expands all three with verified citations and original diagrams — plus a closer look at the irreversible-action problem that tree search quietly assumes away.</p>
+      <span class="series-badge">Deep Dive · 3 of 5</span>
+      <span class="agi-hero-icon">🏋️</span>
+      <h1>Training on What Search Finds</h1>
+      <p>Search can discover a correct answer that was already somewhere in a model's distribution. Training is how that discovery becomes something the model produces reliably on the first try. This deep dive expands the <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s coverage of STaR, GRPO, and DAPO with verified citations and original diagrams for each.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -296,190 +296,194 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 23, 2026 · 22 min read</div>
+          <div class="blog-post-date">September 23, 2026 · 23 min read</div>
         </div>
       </div>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
-      <strong>On the citations below:</strong> all three papers' identities were independently verified through direct research. One naming caveat is worth flagging up front: "SPRINT" is used by multiple, unrelated ML papers — the one covered here (parallelizing LLM reasoning) is a 2025 paper out of Stanford's Scaling Intelligence Lab, not the earlier, unrelated "SPRINT" paper about robot policy pre-training. arXiv itself was not directly browsable in this research environment, so all details are cross-corroborated from multiple independent secondary sources (lab publication pages, conference listings, indexing sites) rather than a byte-for-byte primary-source check — treat as high confidence but verify directly before citing formally.
+      <strong>On the citations below:</strong> STaR's identity is confirmed against the official NeurIPS 2022 proceedings page — high confidence, including a genuine conference-talk recording. GRPO is introduced inside the DeepSeekMath paper rather than as a standalone paper — its arXiv ID and core mechanism are high confidence, but its complete author roster wasn't independently verified byte-for-byte. DAPO's core identity and reported results are high confidence via ByteDance Seed's own publications page; its full ~30-person author list and its exact peer-review status weren't independently confirmed. arXiv itself wasn't directly browsable in this research environment for any of the three — treat specific numbers as accurately transcribed from secondary sources, not independently recomputed.
     </div>
 
     <div class="agi-section-nav">
-      <a href="#opening"        class="agi-nav-btn">Why Planning Becomes Search</a>
-      <a href="#lats"           class="agi-nav-btn">LATS</a>
-      <a href="#irreversible"   class="agi-nav-btn">The Irreversible-Action Problem</a>
-      <a href="#sprint"         class="agi-nav-btn">SPRINT</a>
-      <a href="#swirl"          class="agi-nav-btn">SWiRL</a>
+      <a href="#opening"        class="agi-nav-btn">From Search to Weights</a>
+      <a href="#star"           class="agi-nav-btn">STaR</a>
+      <a href="#grpo"           class="agi-nav-btn">GRPO</a>
+      <a href="#zerovariance"   class="agi-nav-btn">The Zero-Variance Problem</a>
+      <a href="#dapo"           class="agi-nav-btn">DAPO</a>
       <a href="#comparison"     class="agi-nav-btn">Comparing the Three</a>
       <a href="#gaps"           class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
       <a href="#references"     class="agi-nav-btn">Full Reference List</a>
     </div>
 
-    <h2 id="opening" class="agi-section">Why Planning Becomes Search</h2>
-    <p>A single chain-of-thought commits to one line of reasoning from the first token. That's fine for problems where the first reasonable approach is usually right. It breaks down for problems where several different approaches look equally promising at the start, and only diverge in quality several steps in — by the time a single chain discovers it picked the wrong branch, most of its computation is already spent. The three techniques below are three different answers to the same question: how do you let an agent consider more than one path without paying for full sequential depth on every path it rejects.</p>
+    <h2 id="opening" class="agi-section">From Search to Weights</h2>
+    <p>Everything in Deep Dives 1 and 2 spends extra computation at inference time — sampling more, searching a tree, running parallel branches — to get a better answer to one specific problem. None of that computation carries over to the next problem unless something captures what worked and bakes it into the model's weights. The three techniques below are three different ways of doing that capture, in increasing order of sophistication: bootstrapping training data from the model's own successful attempts, comparing sampled responses against each other instead of an external value function, and stabilizing that comparison-based training over very long reasoning chains.</p>
 
-    <h2 id="lats" class="agi-section">LATS: Tree Search Over Reasoning and Actions</h2>
+    <h2 id="star" class="agi-section">STaR: Bootstrapping Reasoning With Reasoning</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">ICML 2024</span></div>
-      <div class="paper-authors">Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang, Yu-Xiong Wang — arXiv:2310.04406</div>
-      <div class="paper-summary">Adapts Monte Carlo Tree Search to LLM agents, with the language model playing three roles at once: the agent proposing actions, the value function scoring how promising a branch looks, and the self-reflection mechanism that critiques failed attempts before trying again. Rather than one chain, LATS explores a tree of reasoning-and-action sequences, using environment feedback to decide which branches deserve more computation. The paper reports a pass@1 of roughly 92–94% on HumanEval coding tasks with GPT-4, and web-navigation performance on WebShop (using GPT-3.5) competitive with baselines that required task-specific fine-tuning — without LATS itself needing any.</div>
+      <div class="paper-hd"><span class="paper-title">STaR: Bootstrapping Reasoning With Reasoning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">NeurIPS 2022</span></div>
+      <div class="paper-authors">Eric Zelikman, Yuhuai Wu, Jesse Mu, Noah D. Goodman (Stanford) — arXiv:2203.14465</div>
+      <div class="paper-summary">Bootstraps a model's reasoning ability without a large hand-labeled rationale dataset. The loop: generate chain-of-thought rationales for many questions via few-shot prompting; keep only the rationales whose final answer is correct; for questions the model got wrong, use "rationalization" — show the model the correct answer and have it construct a rationale that leads there; fine-tune on the pooled correct-and-rationalized examples; repeat with the improved model. This lets a model improve iteratively on reasoning tasks using only its own generations as training data, evaluated on tasks spanning arithmetic/symbolic reasoning and commonsense QA.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2310.04406" target="_blank" rel="noopener">📄 arXiv:2310.04406</a>
-        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
+        <a href="https://arxiv.org/abs/2203.14465" target="_blank" rel="noopener">📄 arXiv:2203.14465</a>
+        <a href="https://slideslive.com/38991144/selftaught-reasoner-star" target="_blank" rel="noopener">📺 NeurIPS 2022 conference talk (SlidesLive)</a>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LATS tree search diagram">
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="STaR bootstrap loop diagram">
         <defs>
-          <marker id="arrowLats" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
-          </marker>
-        </defs>
-        <circle cx="360" cy="35" r="22" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="360" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">State</text>
-
-        <line x1="360" y1="57" x2="180" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
-        <line x1="360" y1="57" x2="360" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
-        <line x1="360" y1="57" x2="540" y2="115" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowLats)"/>
-
-        <circle cx="180" cy="138" r="20" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-        <text x="180" y="143" text-anchor="middle" font-size="10" fill="#7f1d1d">low-value</text>
-        <circle cx="360" cy="138" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="360" y="143" text-anchor="middle" font-size="10" fill="#065f46">promising</text>
-        <circle cx="540" cy="138" r="20" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="540" y="143" text-anchor="middle" font-size="10" fill="#78350f">uncertain</text>
-
-        <line x1="360" y1="158" x2="290" y2="215" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowLats)"/>
-        <line x1="360" y1="158" x2="430" y2="215" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowLats)"/>
-
-        <circle cx="290" cy="238" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="290" y="243" text-anchor="middle" font-size="10" fill="#065f46">expand</text>
-        <circle cx="430" cy="238" r="20" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="430" y="243" text-anchor="middle" font-size="10" fill="#065f46">expand</text>
-
-        <text x="80" y="138" text-anchor="middle" font-size="10" fill="#7f1d1d" font-style="italic">pruned</text>
-        <text x="620" y="138" text-anchor="middle" font-size="10" fill="#78350f" font-style="italic">reflect &amp; retry</text>
-
-        <rect x="20" y="270" width="680" height="24" rx="6" fill="#f9fafb"/>
-        <text x="360" y="286" text-anchor="middle" font-size="10.5" fill="#475569">More compute flows to green (promising) branches; red branches are abandoned early</text>
-      </svg>
-      <div class="diagram-caption">LATS's tree: each node is a state reached by a reasoning-and-action step; the value function decides which branches earn more search, and self-reflection lets a failed branch retry instead of being discarded outright.</div>
-    </div>
-
-    <h2 id="irreversible" class="agi-section">The Irreversible-Action Problem</h2>
-    <p>LATS-style tree search has a quiet assumption baked in: exploring a branch and abandoning it is cheap. That's true for a coding sandbox or a text-based shopping simulation — pruning a bad branch just means throwing away some generated text. It stops being true the instant an agent's actions have real-world consequences. Sending an email, deleting a file, transferring money, or modifying a production system can't be pruned after the fact the way a rejected tree branch can.</p>
-    <div class="why-box">
-      <strong>Why this matters specifically for tree-search agents:</strong> a system designed around "try it, see the value, backtrack if it's bad" needs an explicit boundary between the part of its process where mistakes are recoverable (planning, simulation, sandboxed execution) and the part where they aren't (anything with a real external effect). Reliable agent architectures enforce this with mechanisms like simulating an action before actually taking it, requiring explicit human or programmatic approval before high-stakes steps execute, or setting a much higher confidence threshold before anything irreversible is allowed to run at all. None of this is a solved, standardized part of the LATS paper itself — it's a design requirement every practical deployment of tree-search-style agents has to add on top.</div>
-
-    <h2 id="sprint" class="agi-section">SPRINT: Parallelizing Reasoning Instead of Extending It</h2>
-    <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">SPRINT: Enabling Interleaved Planning and Parallelized Execution in Reasoning Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">NeurIPS 2025</span></div>
-      <div class="paper-authors">Emil Biju, Shayan Talaei, Zhemin Huang, Mohammadreza Pourreza, Amin Saberi, Azalia Mirhoseini — arXiv:2506.05745</div>
-      <div class="paper-summary">A post-training and inference-time framework that trains a reasoning model to notice, mid-reasoning, when part of its remaining work can be split into independent sub-tasks — restructuring what would be one long sequential chain into rounds of planning followed by branches that run in parallel. The paper reports SPRINT matches standard reasoning-model accuracy on math benchmarks while cutting sequential token counts by up to roughly 39% on longer problems, with similar reductions on GPQA and the Countdown benchmark. Note the "SPRINT" name is reused elsewhere in ML for an unrelated robot-policy-pretraining method (arXiv:2306.11886) — this is a different paper.</div>
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2506.05745" target="_blank" rel="noopener">📄 arXiv:2506.05745</a>
-        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
-      </div>
-    </div>
-    <div class="diagram-box">
-      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SPRINT parallel reasoning diagram">
-        <defs>
-          <marker id="arrowSprint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrowStar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
           </marker>
         </defs>
-        <rect x="20" y="80" width="130" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="85" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Plan</text>
+        <rect x="20" y="30" width="150" height="60" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="95" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Generate Rationale</text>
+        <text x="95" y="74" text-anchor="middle" font-size="10" fill="#475569">few-shot chain-of-thought</text>
 
-        <line x1="150" y1="107" x2="220" y2="60" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
-        <line x1="150" y1="107" x2="220" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
-        <line x1="150" y1="107" x2="220" y2="154" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="170" y1="60" x2="240" y2="60" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowStar)"/>
+        <path d="M 220 40 L 260 60 L 220 80 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="235" y="64" text-anchor="middle" font-size="9" fill="#1e3a8a">correct?</text>
 
-        <rect x="225" y="35" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="285" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task A</text>
-        <rect x="225" y="82" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="285" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task B</text>
-        <rect x="225" y="129" width="120" height="50" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="285" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Sub-task C</text>
-        <text x="285" y="200" text-anchor="middle" font-size="10.5" fill="#065f46" font-weight="700">run in parallel</text>
+        <line x1="260" y1="50" x2="330" y2="30" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowStar)"/>
+        <text x="300" y="24" text-anchor="middle" font-size="9" fill="#065f46">yes</text>
+        <rect x="330" y="10" width="150" height="45" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="405" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Keep as-is</text>
 
-        <line x1="345" y1="60" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
-        <line x1="345" y1="107" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
-        <line x1="345" y1="154" x2="440" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
+        <line x1="260" y1="70" x2="330" y2="100" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrowStar)"/>
+        <text x="300" y="100" text-anchor="middle" font-size="9" fill="#92400e">no</text>
+        <rect x="330" y="85" width="150" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="405" y="107" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">Rationalize</text>
+        <text x="405" y="123" text-anchor="middle" font-size="9" fill="#78350f">shown the answer, works backward</text>
 
-        <rect x="445" y="80" width="130" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="510" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Merge</text>
+        <line x1="405" y1="55" x2="405" y2="80" stroke="#047857" stroke-width="1.5" stroke-dasharray="0"/>
+        <line x1="480" y1="35" x2="560" y2="80" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowStar)"/>
+        <line x1="480" y1="110" x2="560" y2="90" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowStar)"/>
 
-        <line x1="575" y1="107" x2="645" y2="107" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowSprint)"/>
-        <text x="680" y="112" text-anchor="middle" font-size="18">…</text>
-        <text x="360" y="20" text-anchor="middle" font-size="11" fill="#6b7280">wall-clock time reduced; total reasoning still complete</text>
+        <rect x="555" y="60" width="140" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="625" y="83" text-anchor="middle" font-size="11" font-weight="700" fill="#5b21b6">Fine-tune</text>
+        <text x="625" y="99" text-anchor="middle" font-size="9" fill="#5b21b6">on pooled rationales</text>
+
+        <path d="M 625 115 C 625 200, 95 200, 95 90" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowStar)"/>
+        <text x="360" y="215" text-anchor="middle" font-size="10.5" fill="#6b7280">repeat with the improved model on new questions</text>
+
+        <rect x="20" y="230" width="680" height="24" rx="6" fill="#f9fafb"/>
+        <text x="360" y="246" text-anchor="middle" font-size="10" fill="#475569">Every rationale used in training was self-generated — no large hand-labeled rationale dataset required</text>
       </svg>
-      <div class="diagram-caption">SPRINT interleaves planning and parallel execution: independent sub-tasks branch out and run simultaneously instead of one long sequential chain.</div>
+      <div class="diagram-caption">STaR's loop: correct rationales are kept directly; incorrect attempts get a second chance via rationalization before the whole pool is used to fine-tune the next iteration.</div>
     </div>
 
-    <h2 id="swirl" class="agi-section">SWiRL: Training on Synthetic Multi-Step Trajectories</h2>
+    <h2 id="grpo" class="agi-section">GRPO: Comparing Within a Group Instead of Learning a Critic</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Synthetic Data Generation &amp; Multi-Step RL for Reasoning &amp; Tool Use (SWiRL) <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, 2025</span></div>
-      <div class="paper-authors">Anna Goldie, Azalia Mirhoseini, Hao Zhou, Irene Cai, Christopher D. Manning — arXiv:2504.04736</div>
-      <div class="paper-summary">Generates synthetic multi-step reasoning-and-tool-use trajectories offline, without needing live environment rollouts during training. Each trajectory is decomposed into per-step sub-trajectories, filtered by model-based judgment rather than gold labels or human annotation, and optimized step by step — whether that step is a reasoning step, a tool call, or a final answer. The paper reports relative accuracy gains over baselines of roughly 21.5%, 12.3%, 14.8%, 11.1%, and 15.3% on GSM8K, HotPotQA, CofCA, MuSiQue, and BeerQA respectively, plus cross-task generalization — training only on HotPotQA improved zero-shot GSM8K performance by around 16.9%.</div>
+      <div class="paper-hd"><span class="paper-title">DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models <span class="conf-badge conf-high">HIGH identity</span> <span class="conf-badge conf-medium">full author list unconfirmed</span></span><span class="paper-meta">arXiv preprint, Feb 2024</span></div>
+      <div class="paper-authors">Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, et al. (DeepSeek-AI) — arXiv:2402.03300</div>
+      <div class="paper-summary">Introduces Group Relative Policy Optimization (GRPO) as its RL algorithm — a critic-free variant of PPO. For each prompt, a group of responses is sampled and each scored by a reward model; the advantage used to update the policy is computed relative to that group's own mean and standard deviation, rather than from a separately learned value/critic model, cutting memory and compute versus standard PPO. DeepSeekMath 7B, continued-pretrained on roughly 120B math-related tokens, reportedly reached 51.7% on the MATH benchmark without external tools or majority voting — approaching the level of much larger closed models on that benchmark at the time.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2504.04736" target="_blank" rel="noopener">📄 arXiv:2504.04736</a>
+        <a href="https://arxiv.org/abs/2402.03300" target="_blank" rel="noopener">📄 arXiv:2402.03300</a>
+        <span class="no-video">📺 No official author-produced video confirmed; third-party explainers exist (e.g. AI Papers Academy's "GRPO Reinforcement Learning Explained")</span>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GRPO group-relative scoring diagram">
+        <defs>
+          <marker id="arrowGrpo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+          </marker>
+        </defs>
+        <rect x="20" y="90" width="110" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="75" y="119" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Prompt</text>
+
+        <line x1="130" y1="115" x2="185" y2="45" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+        <line x1="130" y1="115" x2="185" y2="90" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+        <line x1="130" y1="115" x2="185" y2="140" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+        <line x1="130" y1="115" x2="185" y2="185" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+
+        <rect x="190" y="25" width="110" height="35" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="245" y="47" text-anchor="middle" font-size="11" fill="#065f46">r₁ = 0.9</text>
+        <rect x="190" y="70" width="110" height="35" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+        <text x="245" y="92" text-anchor="middle" font-size="11" fill="#7f1d1d">r₂ = 0.1</text>
+        <rect x="190" y="115" width="110" height="35" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="245" y="137" text-anchor="middle" font-size="11" fill="#065f46">r₃ = 0.8</text>
+        <rect x="190" y="160" width="110" height="35" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+        <text x="245" y="182" text-anchor="middle" font-size="11" fill="#7f1d1d">r₄ = 0.2</text>
+
+        <line x1="300" y1="105" x2="365" y2="105" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+        <rect x="370" y="70" width="150" height="70" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="445" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Group mean/std</text>
+        <text x="445" y="115" text-anchor="middle" font-size="10" fill="#1e3a8a">no separate critic model</text>
+
+        <line x1="520" y1="105" x2="580" y2="105" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
+        <rect x="585" y="70" width="120" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="645" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">Advantage</text>
+        <text x="645" y="115" text-anchor="middle" font-size="10" fill="#78350f">above/below group</text>
+
+        <text x="360" y="215" text-anchor="middle" font-size="10.5" fill="#6b7280">r₁ and r₃ (above the group's average) get reinforced; r₂ and r₄ get discouraged</text>
+      </svg>
+      <div class="diagram-caption">GRPO scores a group of sampled responses against each other, not against a learned value model — the advantage is purely relative standing within the batch.</div>
+    </div>
+
+    <h2 id="zerovariance" class="agi-section">The Zero-Variance Problem</h2>
+    <p>Group-relative methods like GRPO run into an obvious failure case: if every response in a sampled group is wrong, or every one is right, there's no meaningful relative signal — reinforcing "above the group average" is meaningless when the whole group scored the same. Training efficiency then depends heavily on how many prompts actually produce a mix of successes and failures across the sampled group, which is part of what motivates the dynamic sampling technique inside DAPO below: rather than wasting compute on prompts whose group happens to be uniform, filter them out and resample prompts more likely to produce a useful gradient.</p>
+
+    <h2 id="dapo" class="agi-section">DAPO: Stabilizing RL Over Long Reasoning Chains</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">DAPO: An Open-Source LLM Reinforcement Learning System at Scale <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, Mar 2025</span></div>
+      <div class="paper-authors">Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu Yue, et al. — ByteDance Seed, Institute for AI Industry Research (AIR) Tsinghua University, The University of Hong Kong — arXiv:2503.14476</div>
+      <div class="paper-summary">Extends the GRPO-style approach with four techniques aimed specifically at long-chain-of-thought RL stability: <strong>Clip-Higher</strong> (decoupled, asymmetric upper/lower clipping ranges that preserve exploration and resist entropy collapse — where the model's outputs narrow onto a small set of "safe" behaviors); <strong>Dynamic Sampling</strong> (filtering out prompts whose sampled group is entirely correct or entirely incorrect, directly addressing the zero-variance problem above); <strong>Token-Level Policy Gradient Loss</strong> (argued to matter specifically in long-CoT settings, where response-level loss averaging can distort learning); and <strong>Overlong Reward Shaping</strong> (reducing reward noise introduced by responses that get truncated for running too long). Using a Qwen2.5-32B base model, DAPO reportedly reaches 50 points on AIME 2024, said to outperform a previously reported DeepSeek-R1-Zero-Qwen-32B result using roughly half the training steps. The team fully open-sourced their training code (built on the verl RL framework) and curated dataset.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2503.14476" target="_blank" rel="noopener">📄 arXiv:2503.14476</a>
+        <a href="https://dapo-sia.github.io" target="_blank" rel="noopener">🔗 Project site</a>
         <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SWiRL synthetic trajectory pipeline diagram">
-        <defs>
-          <marker id="arrowSwirl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
-          </marker>
-        </defs>
-        <rect x="15" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="85" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Generate</text>
-        <text x="85" y="113" text-anchor="middle" font-size="10" fill="#475569">synthetic trajectory</text>
+      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAPO stabilization techniques diagram">
+        <rect x="20" y="30" width="160" height="80" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="100" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Clip-Higher</text>
+        <text x="100" y="76" text-anchor="middle" font-size="9.5" fill="#475569">asymmetric clipping —</text>
+        <text x="100" y="90" text-anchor="middle" font-size="9.5" fill="#475569">resists entropy collapse</text>
 
-        <rect x="200" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="270" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Decompose</text>
-        <text x="270" y="113" text-anchor="middle" font-size="10" fill="#475569">into per-step pieces</text>
+        <rect x="195" y="30" width="160" height="80" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="275" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">Dynamic Sampling</text>
+        <text x="275" y="76" text-anchor="middle" font-size="9.5" fill="#475569">skips zero-variance</text>
+        <text x="275" y="90" text-anchor="middle" font-size="9.5" fill="#475569">prompt groups</text>
 
-        <rect x="385" y="70" width="140" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="455" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Filter</text>
-        <text x="455" y="113" text-anchor="middle" font-size="10" fill="#475569">model judgment, no gold labels</text>
+        <rect x="370" y="30" width="160" height="80" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="450" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Token-Level Loss</text>
+        <text x="450" y="76" text-anchor="middle" font-size="9.5" fill="#475569">avoids response-length</text>
+        <text x="450" y="90" text-anchor="middle" font-size="9.5" fill="#475569">distortion in long CoT</text>
 
-        <rect x="570" y="70" width="135" height="60" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="637" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">RL Update</text>
-        <text x="637" y="113" text-anchor="middle" font-size="10" fill="#475569">per reasoning/tool step</text>
+        <rect x="545" y="30" width="155" height="80" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="622" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Overlong Reward</text>
+        <text x="622" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Shaping</text>
+        <text x="622" y="90" text-anchor="middle" font-size="9.5" fill="#475569">reduces truncation noise</text>
 
-        <line x1="155" y1="100" x2="195" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
-        <line x1="340" y1="100" x2="380" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
-        <line x1="525" y1="100" x2="565" y2="100" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSwirl)"/>
-        <text x="360" y="30" text-anchor="middle" font-size="11" fill="#6b7280">No live environment rollouts required during this pipeline</text>
+        <rect x="20" y="140" width="680" height="40" rx="8" fill="#f9fafb"/>
+        <text x="360" y="165" text-anchor="middle" font-size="11" fill="#374151">Together: a GRPO-style loop that stays stable over much longer reasoning chains</text>
       </svg>
-      <div class="diagram-caption">SWiRL's offline pipeline: synthetic trajectories are generated once, then decomposed and filtered before RL ever needs to touch a real environment.</div>
+      <div class="diagram-caption">DAPO's four techniques each target a different failure mode of naive group-relative RL once reasoning chains get long.</div>
     </div>
 
     <h2 id="comparison" class="agi-section">Comparing the Three</h2>
     <table class="repo-table">
-      <thead><tr><th>Technique</th><th>What it parallelizes or searches over</th><th>When it pays off</th><th>What it costs</th></tr></thead>
+      <thead><tr><th>Technique</th><th>What it captures into weights</th><th>Core mechanism</th><th>Where it fits</th></tr></thead>
       <tbody>
         <tr>
-          <td data-label="Technique" class="repo-name">LATS</td>
-          <td data-label="What">Alternative reasoning-and-action sequences (a tree)</td>
-          <td data-label="Payoff">Tasks with multiple plausible approaches and cheap-to-abandon branches (code, sandboxed environments)</td>
-          <td data-label="Cost">Much higher inference compute than a single chain; assumes exploration is safe to prune</td>
+          <td data-label="Technique" class="repo-name">STaR</td>
+          <td data-label="Captures">Self-generated rationales that reach correct answers</td>
+          <td data-label="Mechanism">Filter-then-fine-tune, plus rationalization for near-misses</td>
+          <td data-label="Fits">Bootstrapping reasoning ability with no large labeled rationale dataset</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">SPRINT</td>
-          <td data-label="What">Independent sub-tasks within one problem's reasoning</td>
-          <td data-label="Payoff">Long reasoning chains with genuinely decomposable sub-parts</td>
-          <td data-label="Cost">Requires post-training the model to recognize decomposition opportunities in the first place</td>
+          <td data-label="Technique" class="repo-name">GRPO</td>
+          <td data-label="Captures">Which sampled responses beat their own group's average</td>
+          <td data-label="Mechanism">Critic-free RL, group-relative advantage estimation</td>
+          <td data-label="Fits">Efficient RL for reasoning without a separate value model</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">SWiRL</td>
-          <td data-label="What">Training data itself — generated and filtered offline instead of live</td>
-          <td data-label="Payoff">Multi-step tool-use domains where live environment rollouts are slow, expensive, or unsafe during training</td>
-          <td data-label="Cost">Depends on the offline filter's judgment being reliable — a weak filter propagates bad trajectories into training</td>
+          <td data-label="Technique" class="repo-name">DAPO</td>
+          <td data-label="Captures">Same as GRPO, made stable over much longer chains</td>
+          <td data-label="Mechanism">Decoupled clipping, dynamic sampling, token-level loss, reward shaping</td>
+          <td data-label="Fits">Long-chain-of-thought RL at scale without entropy collapse</td>
         </tr>
       </tbody>
     </table>
@@ -487,17 +491,13 @@
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        All three techniques buy the same thing — considering more of the solution space than a single sequential pass would — but they spend a different resource to get it. <strong>LATS spends inference compute exploring a tree; SPRINT spends training effort teaching the model to decompose problems so parallel compute can substitute for sequential depth; SWiRL spends offline data-generation effort so training itself doesn't need live rollouts at all.</strong> None of them resolve the irreversible-action problem — that's a deployment-level safeguard every one of these systems still needs layered on top, not something "more search" or "more parallelism" solves on its own.
+        These three sit on one continuous line, not three unrelated options. <strong>STaR shows that a model can generate its own training data if you can verify correctness; GRPO shows you can turn that same self-generated-and-verified data into an RL signal without a separate critic model; DAPO shows what breaks when you push that RL signal over reasoning chains long enough for entropy collapse and zero-variance batches to actually matter, and fixes each failure mode individually.</strong> None of the three tells you anything about whether the model actually got more capable versus just more reliable at reproducing strategies it could already sometimes find — that distinction, raised in the field handbook, is a separate question these training methods don't resolve on their own.
       </div>
-    </div>
-
-    <div class="idea-box">
-      <strong>Continuing the deep dives?</strong> <a href="cs329a-training-on-what-search-finds.html">Deep Dive 3 — Training on What Search Finds</a> covers STaR's bootstrapped reasoning, GRPO's critic-free group comparison, and DAPO's fixes for long-chain RL instability.
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
-      All three papers' core identity (title, arXiv ID, venue, central claims) are high confidence, cross-corroborated across multiple independent sources. None could be verified against a direct arxiv.org/abs page load in this research environment, so treat specific reported numbers (LATS's pass@1 figures, SPRINT's token-reduction percentage, SWiRL's per-benchmark accuracy gains) as accurately transcribed from secondary sources, not independently recomputed. The SPRINT name-collision caveat is worth repeating: confirm you're looking at arXiv:2506.05745 specifically, not the unrelated 2023 robot-policy paper of the same name.
+      STaR's identity and its NeurIPS 2022 talk recording are confirmed against official sources — high confidence. GRPO's core mechanism and arXiv ID are high confidence since it's a well-documented part of the widely-discussed DeepSeekMath paper, but its complete author roster wasn't independently verified byte-for-byte against the arXiv abstract page in this research pass. DAPO's identity, reported AIME 2024 score, and open-source release are high confidence via ByteDance Seed's own publications page, but its full ~30-person author list and exact peer-review status (versus simply being publicized alongside ICLR 2025 activity) were not independently confirmed. None of the three papers were directly fetched from arxiv.org in this research environment — verify specific figures directly before citing them formally.
     </div>
 
     <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
@@ -505,9 +505,12 @@
       <div class="ref-list">
         <a href="cs329a-self-improving-agents-handbook.html">Self-Improving AI Agents: A Field Handbook (base article)</a>
         <a href="cs329a-agentic-feedback-loops.html">Deep Dive 1 — Agentic Feedback Loops in Practice</a>
-        <a href="https://arxiv.org/abs/2310.04406" target="_blank" rel="noopener">LATS — arXiv:2310.04406</a>
-        <a href="https://arxiv.org/abs/2506.05745" target="_blank" rel="noopener">SPRINT — arXiv:2506.05745</a>
-        <a href="https://arxiv.org/abs/2504.04736" target="_blank" rel="noopener">SWiRL — arXiv:2504.04736</a>
+        <a href="cs329a-planning-as-search.html">Deep Dive 2 — Planning as Search</a>
+        <a href="https://arxiv.org/abs/2203.14465" target="_blank" rel="noopener">STaR — arXiv:2203.14465</a>
+        <a href="https://slideslive.com/38991144/selftaught-reasoner-star" target="_blank" rel="noopener">STaR — NeurIPS 2022 talk</a>
+        <a href="https://arxiv.org/abs/2402.03300" target="_blank" rel="noopener">DeepSeekMath / GRPO — arXiv:2402.03300</a>
+        <a href="https://arxiv.org/abs/2503.14476" target="_blank" rel="noopener">DAPO — arXiv:2503.14476</a>
+        <a href="https://dapo-sia.github.io" target="_blank" rel="noopener">DAPO — project site</a>
       </div>
     </div>
 
