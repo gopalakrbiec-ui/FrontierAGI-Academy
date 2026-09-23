@@ -158,6 +158,11 @@
     .conf-medium { background: #fef3c7; color: #b45309; }
     .conf-low { background: #fee2e2; color: #b91c1c; }
 
+    .verdict-box { background: linear-gradient(135deg, #051224, #1e1b4b); border-radius: 16px; padding: 28px; margin: 28px 0; color: #fff; }
+    .verdict-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .verdict-body strong { color: #93c5fd; }
+
     .repo-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 16px 0 24px; }
     .repo-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; padding: 8px 10px; border-bottom: 2px solid #e5e7eb; }
     .repo-table td { padding: 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; color: #374151; line-height: 1.5; }
@@ -424,6 +429,13 @@
     </table>
     <div class="unlock-box">
       <strong>If there's one idea to take away from this whole handbook:</strong> the scarce resource in self-improving AI isn't generation, and increasingly isn't even compute — it's trustworthy verification. Every layer in the table above works fine as long as the "checked by" column is reliable, and breaks down in exactly the way you'd expect when it isn't: an agent that games a weak verifier, a training run that reinforces a lucky-but-wrong reasoning trace, a research agent that confidently synthesizes claims its sources don't actually support. That's the same conclusion the practitioner's primer reached from the paper-literature side (self-improvement strength tracks verifier quality) — this course arrives at it independently from the systems-and-training side.</div>
+
+    <div class="verdict-box">
+      <div class="verdict-title">🎯 The Bottom Line</div>
+      <div class="verdict-body">
+        CS329A isn't really nine separate lectures — it's one argument told nine times from different angles. <strong>Generation is cheap and getting cheaper; verification is expensive and stays the bottleneck</strong>, whether that verification is a reward model checking an answer, a test suite checking code, an AI judging a critique, or a tree search deciding which branch to keep exploring. Every technique in this handbook is a different answer to "how do I get a trustworthy check on this specific kind of output," and every open problem in the "What's Still Missing" section is a case where nobody has a good answer yet — most pointedly, checking the checker itself. If you take one framework out of this course, it's that: before building the agent, design what tells you it's actually working.
+      </div>
+    </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">

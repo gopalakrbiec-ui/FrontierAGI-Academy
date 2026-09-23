@@ -158,6 +158,11 @@
     .conf-medium { background: #fef3c7; color: #b45309; }
     .conf-low { background: #fee2e2; color: #b91c1c; }
 
+    .verdict-box { background: linear-gradient(135deg, #051224, #1e1b4b); border-radius: 16px; padding: 28px; margin: 28px 0; color: #fff; }
+    .verdict-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .verdict-body strong { color: #93c5fd; }
+
     .diagram-box { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 20px; margin: 18px 0 24px; background: #fafafa; text-align: center; }
     .diagram-box svg { max-width: 100%; height: auto; }
     .diagram-caption { font-size: 0.76rem; color: #6b7280; margin-top: 10px; font-style: italic; }
@@ -466,6 +471,13 @@
     </table>
     <div class="why-box">
       <strong>The pattern underneath all three:</strong> the more objectively "correct" the feedback source is, the less the loop depends on trusting a judge — ReAct and RLEF both ground themselves in something the world (or a test suite) directly confirms, while Constitutional AI's RL phase depends on the AI judge itself being reliable, which is exactly the "who verifies the verifier" problem the field handbook's meta-verification section flags as still largely unsolved.</div>
+
+    <div class="verdict-box">
+      <div class="verdict-title">🎯 The Bottom Line</div>
+      <div class="verdict-body">
+        If you're choosing which of these three to build with first, choose based on how objective your feedback source can be, not on which technique sounds most sophisticated. <strong>RLEF is the strongest default wherever code execution is available</strong> — the reward is unambiguous and doesn't require trusting a judge. ReAct is the right pattern the moment a task needs real-world facts a model can't reliably know from training alone. Constitutional AI is the fallback for everything else — behaviors that can't be unit-tested — but it inherits a weakness the other two mostly avoid: its RL phase's entire signal depends on the AI judge being trustworthy, which is exactly the meta-verification problem the field still hasn't solved. Pick the loop whose ground truth you'd actually bet on.
+      </div>
+    </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
