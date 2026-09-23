@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rsi-hands-on-repo-walkthrough",
+      "title": "Running RSI Repos Yourself: A Hands-On Walkthrough",
+      "excerpt": "A deep-dive companion to the practitioner's primer: FunSearch, SICA, and Godel Agent, actually cloned and read through, with real setup steps, required credentials, a difficulty comparison table, and a safety note on running agents that execute generated code.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-23",
+      "readTime": "22 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\u2699\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "cs329a-self-improving-agents-part2-test-time-compute-verification",
       "title": "Self-Improving AI Agents, Part 2: Test-Time Compute & Verification",
       "excerpt": "Lecture 2 and 3 of Stanford CS329A: sampling/coverage curves, the Archon architecture-search framework, and the progression from outcome reward models to process reward models to Weaver, the NeurIPS 2025 verifier-ensembling paper.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\udd0e",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs329a-self-improving-agents-part1-overview",
