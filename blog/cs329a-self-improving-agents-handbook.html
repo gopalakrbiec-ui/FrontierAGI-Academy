@@ -383,6 +383,9 @@
       <div class="check-row"><span class="check-num">3</span><div><strong>Learning when searching is worth it.</strong> Beyond prompting a model to search whenever it feels uncertain, some approaches train the search-or-not decision itself via reinforcement learning — implicitly weighing the expected value of new information against the real cost of getting it (latency, compute, the risk of retrieving something misleading). Search stops being a fixed pipeline stage and becomes a resource-allocation decision the agent makes repeatedly.</div></div>
       <div class="check-row"><span class="check-num">4</span><div><strong>Retrieval doesn't end the problem — it creates a new one.</strong> Fetching a whole document doesn't guarantee anything useful was actually found in it. A capable research agent still has to separate relevant passages from irrelevant ones, distinguish real evidence from speculation, and tell primary sources from secondary summaries — a reasoning problem layered on top of the retrieval problem, not a substitute for it.</div></div>
     </div>
+    <div class="idea-box">
+      <strong>Want the expanded version?</strong> <a href="cs329a-competitive-programming-and-retrieval-agents.html">Competitive Programming and Retrieval Agents</a> (Deep Dive 4 of 5) covers AlphaCode's two generations plus Search-O1 and Search-R1 with verified citations and original diagrams.
+    </div>
 
     <h2 id="evaluation" class="agi-section">Evaluating Agents That Take Hundreds of Steps</h2>
     <p>Traditional benchmarks — short questions, fixed correct answers, one isolated reasoning problem at a time — don't capture what matters about an agent that has to complete a task made of dozens or hundreds of sequential decisions, using tools, under ambiguous instructions, with no single "check the final answer" moment.</p>

@@ -4,7 +4,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Training on What Search Finds — FrontierAGI Academy Blog</title>
+  <title>Competitive Programming and Retrieval Agents — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
@@ -281,14 +281,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Training on What Search Finds</span>
+      <span>Competitive Programming and Retrieval Agents</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Deep Dive · 3 of 5</span>
-      <span class="agi-hero-icon">🏋️</span>
-      <h1>Training on What Search Finds</h1>
-      <p>Search can discover a correct answer that was already somewhere in a model's distribution. Training is how that discovery becomes something the model produces reliably on the first try. This deep dive expands the <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s coverage of STaR, GRPO, and DAPO with verified citations and original diagrams for each.</p>
+      <span class="series-badge">Deep Dive · 4 of 5</span>
+      <span class="agi-hero-icon">🔍</span>
+      <h1>Competitive Programming and Retrieval Agents</h1>
+      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a> used AlphaCode as a case study for how generation gives way to selection, and covered retrieval agents in a few paragraphs. This deep dive expands both threads — AlphaCode's two generations, and two techniques for making search itself part of the reasoning loop — with verified citations and original diagrams.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -296,194 +296,186 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 23, 2026 · 23 min read</div>
+          <div class="blog-post-date">September 23, 2026 · 22 min read</div>
         </div>
       </div>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
-      <strong>On the citations below:</strong> STaR's identity is confirmed against the official NeurIPS 2022 proceedings page — high confidence, including a genuine conference-talk recording. GRPO is introduced inside the DeepSeekMath paper rather than as a standalone paper — its arXiv ID and core mechanism are high confidence, but its complete author roster wasn't independently verified byte-for-byte. DAPO's core identity and reported results are high confidence via ByteDance Seed's own publications page; its full ~30-person author list and its exact peer-review status weren't independently confirmed. arXiv itself wasn't directly browsable in this research environment for any of the three — treat specific numbers as accurately transcribed from secondary sources, not independently recomputed.
+      <strong>On the citations below:</strong> AlphaCode's identity (Science journal, DOI, full author list) is confirmed at high confidence. AlphaCode 2 was never published as a peer-reviewed paper or arXiv preprint — it's a DeepMind technical report with no arXiv ID; its full ~29-person author list wasn't independently confirmed, though the report's existence, publisher, and headline results are corroborated across multiple sources. Search-O1 and Search-R1 are both high confidence, including Search-O1's EMNLP 2025 acceptance. No genuine companion video was found for Search-O1 or Search-R1 specifically — don't assume one exists.
     </div>
 
     <div class="agi-section-nav">
-      <a href="#opening"        class="agi-nav-btn">From Search to Weights</a>
-      <a href="#star"           class="agi-nav-btn">STaR</a>
-      <a href="#grpo"           class="agi-nav-btn">GRPO</a>
-      <a href="#zerovariance"   class="agi-nav-btn">The Zero-Variance Problem</a>
-      <a href="#dapo"           class="agi-nav-btn">DAPO</a>
-      <a href="#comparison"     class="agi-nav-btn">Comparing the Three</a>
-      <a href="#gaps"           class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
-      <a href="#references"     class="agi-nav-btn">Full Reference List</a>
+      <a href="#opening"         class="agi-nav-btn">Two Threads, One Pattern</a>
+      <a href="#alphacode"       class="agi-nav-btn">AlphaCode</a>
+      <a href="#alphacode2"      class="agi-nav-btn">AlphaCode 2</a>
+      <a href="#searcho1"        class="agi-nav-btn">Search-O1</a>
+      <a href="#searchr1"        class="agi-nav-btn">Search-R1</a>
+      <a href="#comparison"      class="agi-nav-btn">Comparing the Four</a>
+      <a href="#gaps"            class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
+      <a href="#references"      class="agi-nav-btn">Full Reference List</a>
     </div>
 
-    <h2 id="opening" class="agi-section">From Search to Weights</h2>
-    <p>Everything in Deep Dives 1 and 2 spends extra computation at inference time — sampling more, searching a tree, running parallel branches — to get a better answer to one specific problem. None of that computation carries over to the next problem unless something captures what worked and bakes it into the model's weights. The three techniques below are three different ways of doing that capture, in increasing order of sophistication: bootstrapping training data from the model's own successful attempts, comparing sampled responses against each other instead of an external value function, and stabilizing that comparison-based training over very long reasoning chains.</p>
+    <h2 id="opening" class="agi-section">Two Threads, One Pattern</h2>
+    <p>AlphaCode and its sequel are a case study in generation giving way to selection as the field handbook describes it. Search-O1 and Search-R1 are a case study in the same shift applied to a different resource: instead of asking "which of many generated programs is correct," they ask "when, during reasoning, is it actually worth pausing to look something up." Both threads are really the same lesson from different angles — more of a resource (candidate programs, search queries) only helps once something decides when and how much of it to actually use.</p>
 
-    <h2 id="star" class="agi-section">STaR: Bootstrapping Reasoning With Reasoning</h2>
+    <h2 id="alphacode" class="agi-section">AlphaCode: Brute-Force Generation, Then Filter and Cluster</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">STaR: Bootstrapping Reasoning With Reasoning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">NeurIPS 2022</span></div>
-      <div class="paper-authors">Eric Zelikman, Yuhuai Wu, Jesse Mu, Noah D. Goodman (Stanford) — arXiv:2203.14465</div>
-      <div class="paper-summary">Bootstraps a model's reasoning ability without a large hand-labeled rationale dataset. The loop: generate chain-of-thought rationales for many questions via few-shot prompting; keep only the rationales whose final answer is correct; for questions the model got wrong, use "rationalization" — show the model the correct answer and have it construct a rationale that leads there; fine-tune on the pooled correct-and-rationalized examples; repeat with the improved model. This lets a model improve iteratively on reasoning tasks using only its own generations as training data, evaluated on tasks spanning arithmetic/symbolic reasoning and commonsense QA.</div>
+      <div class="paper-hd"><span class="paper-title">Competition-Level Code Generation with AlphaCode <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Science, Dec 2022</span></div>
+      <div class="paper-authors">Yujia Li, David Choi, Junyoung Chung, Nate Kushman, et al. (DeepMind, 25 authors) — arXiv:2203.07814; DOI: 10.1126/science.abq1158</div>
+      <div class="paper-summary">Samples up to roughly one million candidate programs per problem from a transformer trained on competitive-programming data, filters out candidates that fail the problem's public example test cases, then clusters the behaviorally similar survivors so the final handful of submissions aren't near-duplicates of each other. Evaluated across ten real Codeforces contests with 5,000+ participants each, AlphaCode achieved an average ranking around the top 54.3% — an estimated Codeforces rating of 1238, roughly the level of an average recently-active competitor, not an expert.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2203.14465" target="_blank" rel="noopener">📄 arXiv:2203.14465</a>
-        <a href="https://slideslive.com/38991144/selftaught-reasoner-star" target="_blank" rel="noopener">📺 NeurIPS 2022 conference talk (SlidesLive)</a>
+        <a href="https://arxiv.org/abs/2203.07814" target="_blank" rel="noopener">📄 arXiv:2203.07814</a>
+        <span class="no-video">📺 A DeepMind co-author talk exists (David Choi, via a seminar series listing) — host/date not independently confirmed</span>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="STaR bootstrap loop diagram">
+      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AlphaCode pipeline diagram">
         <defs>
-          <marker id="arrowStar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrowAc1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
           </marker>
         </defs>
-        <rect x="20" y="30" width="150" height="60" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="95" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Generate Rationale</text>
-        <text x="95" y="74" text-anchor="middle" font-size="10" fill="#475569">few-shot chain-of-thought</text>
+        <rect x="15" y="70" width="140" height="60" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="85" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Sample ~1M</text>
+        <text x="85" y="113" text-anchor="middle" font-size="10" fill="#475569">candidate programs</text>
 
-        <line x1="170" y1="60" x2="240" y2="60" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowStar)"/>
-        <path d="M 220 40 L 260 60 L 220 80 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-        <text x="235" y="64" text-anchor="middle" font-size="9" fill="#1e3a8a">correct?</text>
+        <rect x="200" y="70" width="140" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+        <text x="270" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">Filter</text>
+        <text x="270" y="113" text-anchor="middle" font-size="10" fill="#475569">drop failed public tests</text>
 
-        <line x1="260" y1="50" x2="330" y2="30" stroke="#047857" stroke-width="1.5" marker-end="url(#arrowStar)"/>
-        <text x="300" y="24" text-anchor="middle" font-size="9" fill="#065f46">yes</text>
-        <rect x="330" y="10" width="150" height="45" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="405" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Keep as-is</text>
+        <rect x="385" y="70" width="140" height="60" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="455" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Cluster</text>
+        <text x="455" y="113" text-anchor="middle" font-size="10" fill="#475569">group behaviorally similar</text>
 
-        <line x1="260" y1="70" x2="330" y2="100" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrowStar)"/>
-        <text x="300" y="100" text-anchor="middle" font-size="9" fill="#92400e">no</text>
-        <rect x="330" y="85" width="150" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="405" y="107" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">Rationalize</text>
-        <text x="405" y="123" text-anchor="middle" font-size="9" fill="#78350f">shown the answer, works backward</text>
+        <rect x="570" y="70" width="135" height="60" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="637" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">Submit ~10</text>
+        <text x="637" y="113" text-anchor="middle" font-size="10" fill="#475569">one per cluster</text>
 
-        <line x1="405" y1="55" x2="405" y2="80" stroke="#047857" stroke-width="1.5" stroke-dasharray="0"/>
-        <line x1="480" y1="35" x2="560" y2="80" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowStar)"/>
-        <line x1="480" y1="110" x2="560" y2="90" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowStar)"/>
-
-        <rect x="555" y="60" width="140" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="625" y="83" text-anchor="middle" font-size="11" font-weight="700" fill="#5b21b6">Fine-tune</text>
-        <text x="625" y="99" text-anchor="middle" font-size="9" fill="#5b21b6">on pooled rationales</text>
-
-        <path d="M 625 115 C 625 200, 95 200, 95 90" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowStar)"/>
-        <text x="360" y="215" text-anchor="middle" font-size="10.5" fill="#6b7280">repeat with the improved model on new questions</text>
-
-        <rect x="20" y="230" width="680" height="24" rx="6" fill="#f9fafb"/>
-        <text x="360" y="246" text-anchor="middle" font-size="10" fill="#475569">Every rationale used in training was self-generated — no large hand-labeled rationale dataset required</text>
+        <line x1="155" y1="100" x2="195" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
+        <line x1="340" y1="100" x2="380" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
+        <line x1="525" y1="100" x2="565" y2="100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowAc1)"/>
+        <text x="360" y="30" text-anchor="middle" font-size="11" fill="#6b7280">Diversity management: avoid submitting ten near-identical wrong guesses</text>
       </svg>
-      <div class="diagram-caption">STaR's loop: correct rationales are kept directly; incorrect attempts get a second chance via rationalization before the whole pool is used to fine-tune the next iteration.</div>
+      <div class="diagram-caption">AlphaCode's original pipeline: scale of generation compensates for weak per-candidate reliability, with clustering preventing wasted, near-duplicate submissions.</div>
     </div>
 
-    <h2 id="grpo" class="agi-section">GRPO: Comparing Within a Group Instead of Learning a Critic</h2>
+    <h2 id="alphacode2" class="agi-section">AlphaCode 2: Learned Scoring Replaces Brute Force</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models <span class="conf-badge conf-high">HIGH identity</span> <span class="conf-badge conf-medium">full author list unconfirmed</span></span><span class="paper-meta">arXiv preprint, Feb 2024</span></div>
-      <div class="paper-authors">Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, et al. (DeepSeek-AI) — arXiv:2402.03300</div>
-      <div class="paper-summary">Introduces Group Relative Policy Optimization (GRPO) as its RL algorithm — a critic-free variant of PPO. For each prompt, a group of responses is sampled and each scored by a reward model; the advantage used to update the policy is computed relative to that group's own mean and standard deviation, rather than from a separately learned value/critic model, cutting memory and compute versus standard PPO. DeepSeekMath 7B, continued-pretrained on roughly 120B math-related tokens, reportedly reached 51.7% on the MATH benchmark without external tools or majority voting — approaching the level of much larger closed models on that benchmark at the time.</div>
+      <div class="paper-hd"><span class="paper-title">AlphaCode 2 Technical Report <span class="conf-badge conf-medium">MEDIUM-HIGH — report, not a peer-reviewed paper</span></span><span class="paper-meta">DeepMind, Dec 2023</span></div>
+      <div class="paper-authors">AlphaCode Team, Google DeepMind (led by Yujia Li and David Choi, per secondary sources) — no arXiv ID; official technical report</div>
+      <div class="paper-summary">Built on a fine-tuned Gemini Pro model rather than the original's smaller transformer, still generating up to roughly a million C++ samples per problem, but now pruning them via filtering, behavioral clustering, <em>and</em> a learned scoring model that ranks surviving candidates — shifting weight from pure brute-force volume toward selection quality. Evaluated on 12 Codeforces contests (77 problems, 8,000+ competitors), it reportedly solved 43% of problems and reached roughly the 85th percentile, up from the original AlphaCode's ~54th-percentile-from-the-top result — moving from "average competitor" to roughly the Expert/Candidate Master boundary on Codeforces.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2402.03300" target="_blank" rel="noopener">📄 arXiv:2402.03300</a>
-        <span class="no-video">📺 No official author-produced video confirmed; third-party explainers exist (e.g. AI Papers Academy's "GRPO Reinforcement Learning Explained")</span>
+        <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf" target="_blank" rel="noopener">📄 Official technical report (PDF)</a>
+        <span class="no-video">📺 DeepMind published an official announcement/demo video alongside the report</span>
       </div>
     </div>
-    <div class="diagram-box">
-      <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GRPO group-relative scoring diagram">
-        <defs>
-          <marker id="arrowGrpo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
-          </marker>
-        </defs>
-        <rect x="20" y="90" width="110" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="75" y="119" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Prompt</text>
+    <div class="idea-box">
+      <strong>What actually changed between the two:</strong> not the core idea (still generate many, then narrow down) but where the narrowing effort goes. AlphaCode's narrowing was almost entirely mechanical — pass/fail on public tests, then behavioral clustering. AlphaCode 2 adds a fourth, learned step on top: a model trained specifically to judge which surviving candidates are actually most likely to be correct, rather than relying on clustering diversity alone to pick a good final set. That's the field handbook's "generation gives way to selection" pattern showing up as a literal architecture change between two versions of the same system.</div>
 
-        <line x1="130" y1="115" x2="185" y2="45" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-        <line x1="130" y1="115" x2="185" y2="90" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-        <line x1="130" y1="115" x2="185" y2="140" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-        <line x1="130" y1="115" x2="185" y2="185" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-
-        <rect x="190" y="25" width="110" height="35" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="245" y="47" text-anchor="middle" font-size="11" fill="#065f46">r₁ = 0.9</text>
-        <rect x="190" y="70" width="110" height="35" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-        <text x="245" y="92" text-anchor="middle" font-size="11" fill="#7f1d1d">r₂ = 0.1</text>
-        <rect x="190" y="115" width="110" height="35" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="245" y="137" text-anchor="middle" font-size="11" fill="#065f46">r₃ = 0.8</text>
-        <rect x="190" y="160" width="110" height="35" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-        <text x="245" y="182" text-anchor="middle" font-size="11" fill="#7f1d1d">r₄ = 0.2</text>
-
-        <line x1="300" y1="105" x2="365" y2="105" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-        <rect x="370" y="70" width="150" height="70" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="445" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Group mean/std</text>
-        <text x="445" y="115" text-anchor="middle" font-size="10" fill="#1e3a8a">no separate critic model</text>
-
-        <line x1="520" y1="105" x2="580" y2="105" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrowGrpo)"/>
-        <rect x="585" y="70" width="120" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="645" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">Advantage</text>
-        <text x="645" y="115" text-anchor="middle" font-size="10" fill="#78350f">above/below group</text>
-
-        <text x="360" y="215" text-anchor="middle" font-size="10.5" fill="#6b7280">r₁ and r₃ (above the group's average) get reinforced; r₂ and r₄ get discouraged</text>
-      </svg>
-      <div class="diagram-caption">GRPO scores a group of sampled responses against each other, not against a learned value model — the advantage is purely relative standing within the batch.</div>
-    </div>
-
-    <h2 id="zerovariance" class="agi-section">The Zero-Variance Problem</h2>
-    <p>Group-relative methods like GRPO run into an obvious failure case: if every response in a sampled group is wrong, or every one is right, there's no meaningful relative signal — reinforcing "above the group average" is meaningless when the whole group scored the same. Training efficiency then depends heavily on how many prompts actually produce a mix of successes and failures across the sampled group, which is part of what motivates the dynamic sampling technique inside DAPO below: rather than wasting compute on prompts whose group happens to be uniform, filter them out and resample prompts more likely to produce a useful gradient.</p>
-
-    <h2 id="dapo" class="agi-section">DAPO: Stabilizing RL Over Long Reasoning Chains</h2>
+    <h2 id="searcho1" class="agi-section">Search-O1: Search as a Conditional Action, Not a First Step</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">DAPO: An Open-Source LLM Reinforcement Learning System at Scale <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, Mar 2025</span></div>
-      <div class="paper-authors">Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu Yue, et al. — ByteDance Seed, Institute for AI Industry Research (AIR) Tsinghua University, The University of Hong Kong — arXiv:2503.14476</div>
-      <div class="paper-summary">Extends the GRPO-style approach with four techniques aimed specifically at long-chain-of-thought RL stability: <strong>Clip-Higher</strong> (decoupled, asymmetric upper/lower clipping ranges that preserve exploration and resist entropy collapse — where the model's outputs narrow onto a small set of "safe" behaviors); <strong>Dynamic Sampling</strong> (filtering out prompts whose sampled group is entirely correct or entirely incorrect, directly addressing the zero-variance problem above); <strong>Token-Level Policy Gradient Loss</strong> (argued to matter specifically in long-CoT settings, where response-level loss averaging can distort learning); and <strong>Overlong Reward Shaping</strong> (reducing reward noise introduced by responses that get truncated for running too long). Using a Qwen2.5-32B base model, DAPO reportedly reaches 50 points on AIME 2024, said to outperform a previously reported DeepSeek-R1-Zero-Qwen-32B result using roughly half the training steps. The team fully open-sourced their training code (built on the verl RL framework) and curated dataset.</div>
+      <div class="paper-hd"><span class="paper-title">Search-o1: Agentic Search-Enhanced Large Reasoning Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">EMNLP 2025</span></div>
+      <div class="paper-authors">Xiaoxi Li, Guanting Dong, Jiajie Jin, Yuyao Zhang, Yujia Zhou, Yutao Zhu, Peitian Zhang, Zhicheng Dou (Renmin University of China) — arXiv:2501.05366</div>
+      <div class="paper-summary">Equips a long-reasoning model with a search action it can trigger conditionally, mid-chain, rather than retrieving documents once upfront the way standard RAG does. When the model detects it's missing knowledge it needs, it issues a query; a separate "Reason-in-Documents" module digests the retrieved passages before folding them back into the ongoing reasoning chain, which keeps irrelevant retrieved material from diluting the model's context the way naive RAG can. Evaluated across science, math, and coding reasoning tasks plus six open-domain QA benchmarks, with reported gains over baselines.</div>
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2503.14476" target="_blank" rel="noopener">📄 arXiv:2503.14476</a>
-        <a href="https://dapo-sia.github.io" target="_blank" rel="noopener">🔗 Project site</a>
+        <a href="https://arxiv.org/abs/2501.05366" target="_blank" rel="noopener">📄 arXiv:2501.05366</a>
         <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
       </div>
     </div>
     <div class="diagram-box">
-      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAPO stabilization techniques diagram">
-        <rect x="20" y="30" width="160" height="80" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="100" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Clip-Higher</text>
-        <text x="100" y="76" text-anchor="middle" font-size="9.5" fill="#475569">asymmetric clipping —</text>
-        <text x="100" y="90" text-anchor="middle" font-size="9.5" fill="#475569">resists entropy collapse</text>
+      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Search-O1 conditional search diagram">
+        <defs>
+          <marker id="arrowS1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+          </marker>
+        </defs>
+        <rect x="15" y="75" width="140" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="85" y="107" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Reason</text>
 
-        <rect x="195" y="30" width="160" height="80" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
-        <text x="275" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">Dynamic Sampling</text>
-        <text x="275" y="76" text-anchor="middle" font-size="9.5" fill="#475569">skips zero-variance</text>
-        <text x="275" y="90" text-anchor="middle" font-size="9.5" fill="#475569">prompt groups</text>
+        <path d="M 155 102 L 210 102 L 190 82 M 210 102 L 190 122" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <text x="180" y="70" text-anchor="middle" font-size="9.5" fill="#92400e">knowledge gap detected?</text>
 
-        <rect x="370" y="30" width="160" height="80" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="450" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Token-Level Loss</text>
-        <text x="450" y="76" text-anchor="middle" font-size="9.5" fill="#475569">avoids response-length</text>
-        <text x="450" y="90" text-anchor="middle" font-size="9.5" fill="#475569">distortion in long CoT</text>
+        <rect x="220" y="75" width="130" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="285" y="107" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Search</text>
 
-        <rect x="545" y="30" width="155" height="80" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
-        <text x="622" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Overlong Reward</text>
-        <text x="622" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Shaping</text>
-        <text x="622" y="90" text-anchor="middle" font-size="9.5" fill="#475569">reduces truncation noise</text>
+        <line x1="350" y1="102" x2="405" y2="102" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowS1)"/>
+        <rect x="410" y="75" width="150" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="485" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#5b21b6">Reason-in-Documents</text>
+        <text x="485" y="113" text-anchor="middle" font-size="9.5" fill="#475569">digest before reinjecting</text>
 
-        <rect x="20" y="140" width="680" height="40" rx="8" fill="#f9fafb"/>
-        <text x="360" y="165" text-anchor="middle" font-size="11" fill="#374151">Together: a GRPO-style loop that stays stable over much longer reasoning chains</text>
+        <path d="M 560 102 C 610 102, 610 150, 400 150 C 200 150, 150 150, 150 130" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowS1)"/>
+        <text x="360" y="175" text-anchor="middle" font-size="10" fill="#6b7280">continues reasoning with digested evidence, not raw dumped text</text>
       </svg>
-      <div class="diagram-caption">DAPO's four techniques each target a different failure mode of naive group-relative RL once reasoning chains get long.</div>
+      <div class="diagram-caption">Search-O1 only searches when the model itself detects a gap, and filters what comes back before it re-enters the reasoning chain.</div>
     </div>
 
-    <h2 id="comparison" class="agi-section">Comparing the Three</h2>
+    <h2 id="searchr1" class="agi-section">Search-R1: Learning the Search Decision via RL</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv preprint, Mar 2025</span></div>
+      <div class="paper-authors">Bowen Jin, Hansi Zeng, Zhenrui Yue, Jinsung Yoon, Sercan Ö. Arık, Dong Wang, Hamed Zamani, Jiawei Han (UIUC, UMass Amherst, Google Cloud AI Research) — arXiv:2503.09516</div>
+      <div class="paper-summary">Where Search-O1 prompts a model to search when it notices a gap, Search-R1 trains that decision directly with reinforcement learning — using only an outcome-based reward, with no supervised examples of when-to-search — so the model learns when and how to issue multiple search queries interleaved with its own reasoning, retrieving in real time rather than following a fixed retrieval pattern. Retrieved-token masking keeps the RL training stable despite the retrieved text not being something the model itself generated. Reported gains over various RAG baselines across seven QA benchmarks: roughly 41% with a 7B model and 20% with a 3B model.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2503.09516" target="_blank" rel="noopener">📄 arXiv:2503.09516</a>
+        <span class="no-video">📺 No specific dedicated talk/interview independently confirmed</span>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Search-R1 RL loop diagram">
+        <defs>
+          <marker id="arrowSr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+          </marker>
+        </defs>
+        <rect x="15" y="65" width="140" height="55" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="85" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Reason + decide</text>
+
+        <line x1="155" y1="92" x2="215" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
+        <rect x="220" y="65" width="130" height="55" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+        <text x="285" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Search query</text>
+
+        <line x1="350" y1="92" x2="410" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
+        <rect x="415" y="65" width="140" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="485" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Retrieved tokens</text>
+        <text x="485" y="112" text-anchor="middle" font-size="9" fill="#475569">masked in RL update</text>
+
+        <line x1="555" y1="92" x2="615" y2="92" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowSr1)"/>
+        <rect x="620" y="65" width="90" height="55" rx="10" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="665" y="97" text-anchor="middle" font-size="11" font-weight="700" fill="#065f46">Reward</text>
+
+        <path d="M 665 120 C 665 165, 85 165, 85 120" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowSr1)"/>
+        <text x="360" y="155" text-anchor="middle" font-size="10" fill="#6b7280">outcome-based reward trains the search-or-not decision itself, no supervised examples needed</text>
+      </svg>
+      <div class="diagram-caption">Search-R1 trains when-to-search directly via RL — the search decision is learned, not just prompted.</div>
+    </div>
+
+    <h2 id="comparison" class="agi-section">Comparing the Four</h2>
     <table class="repo-table">
-      <thead><tr><th>Technique</th><th>What it captures into weights</th><th>Core mechanism</th><th>Where it fits</th></tr></thead>
+      <thead><tr><th>System</th><th>Resource being managed</th><th>How the decision gets made</th><th>Headline result</th></tr></thead>
       <tbody>
         <tr>
-          <td data-label="Technique" class="repo-name">STaR</td>
-          <td data-label="Captures">Self-generated rationales that reach correct answers</td>
-          <td data-label="Mechanism">Filter-then-fine-tune, plus rationalization for near-misses</td>
-          <td data-label="Fits">Bootstrapping reasoning ability with no large labeled rationale dataset</td>
+          <td data-label="System" class="repo-name">AlphaCode</td>
+          <td data-label="Resource">Which of ~1M generated programs to submit</td>
+          <td data-label="Decision">Mechanical: test-filter + behavioral clustering</td>
+          <td data-label="Result">~54th percentile on Codeforces (average competitor)</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">GRPO</td>
-          <td data-label="Captures">Which sampled responses beat their own group's average</td>
-          <td data-label="Mechanism">Critic-free RL, group-relative advantage estimation</td>
-          <td data-label="Fits">Efficient RL for reasoning without a separate value model</td>
+          <td data-label="System" class="repo-name">AlphaCode 2</td>
+          <td data-label="Resource">Same, plus which candidates actually look best</td>
+          <td data-label="Decision">Mechanical filtering + a learned scoring model</td>
+          <td data-label="Result">~85th percentile on Codeforces</td>
         </tr>
         <tr>
-          <td data-label="Technique" class="repo-name">DAPO</td>
-          <td data-label="Captures">Same as GRPO, made stable over much longer chains</td>
-          <td data-label="Mechanism">Decoupled clipping, dynamic sampling, token-level loss, reward shaping</td>
-          <td data-label="Fits">Long-chain-of-thought RL at scale without entropy collapse</td>
+          <td data-label="System" class="repo-name">Search-O1</td>
+          <td data-label="Resource">When to pause reasoning and search</td>
+          <td data-label="Decision">Prompted: model notices a gap and triggers search</td>
+          <td data-label="Result">Gains across science/math/coding reasoning + 6 QA benchmarks</td>
+        </tr>
+        <tr>
+          <td data-label="System" class="repo-name">Search-R1</td>
+          <td data-label="Resource">Same as Search-O1</td>
+          <td data-label="Decision">Learned via RL: no supervised search-trace examples</td>
+          <td data-label="Result">~41% (7B) / ~20% (3B) gains over RAG baselines across 7 QA benchmarks</td>
         </tr>
       </tbody>
     </table>
@@ -491,17 +483,13 @@
     <div class="verdict-box">
       <div class="verdict-title">🎯 The Bottom Line</div>
       <div class="verdict-body">
-        These three sit on one continuous line, not three unrelated options. <strong>STaR shows that a model can generate its own training data if you can verify correctness; GRPO shows you can turn that same self-generated-and-verified data into an RL signal without a separate critic model; DAPO shows what breaks when you push that RL signal over reasoning chains long enough for entropy collapse and zero-variance batches to actually matter, and fixes each failure mode individually.</strong> None of the three tells you anything about whether the model actually got more capable versus just more reliable at reproducing strategies it could already sometimes find — that distinction, raised in the field handbook, is a separate question these training methods don't resolve on their own.
+        Look at the progression within each pair and the same move repeats: AlphaCode → AlphaCode 2 replaces a mechanical selection rule with a learned one; Search-O1 → Search-R1 replaces a prompted decision rule with a learned one. <strong>In both cases, "learned" beat "mechanical/prompted" by a wide margin</strong> — AlphaCode 2's roughly 30-percentile jump, Search-R1's reported edge over prompted search-triggering baselines. The pattern worth carrying forward: whenever a system has to decide something repeatedly (which candidate to trust, when to search), training that decision usually outperforms hand-writing a rule for it, provided you have a reliable enough reward signal to train against — which loops back to the verification theme running through every deep dive in this series.
       </div>
-    </div>
-
-    <div class="idea-box">
-      <strong>Continuing the deep dives?</strong> <a href="cs329a-competitive-programming-and-retrieval-agents.html">Deep Dive 4 — Competitive Programming and Retrieval Agents</a> covers AlphaCode's two generations and two techniques for making search itself part of the reasoning loop.
     </div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
-      STaR's identity and its NeurIPS 2022 talk recording are confirmed against official sources — high confidence. GRPO's core mechanism and arXiv ID are high confidence since it's a well-documented part of the widely-discussed DeepSeekMath paper, but its complete author roster wasn't independently verified byte-for-byte against the arXiv abstract page in this research pass. DAPO's identity, reported AIME 2024 score, and open-source release are high confidence via ByteDance Seed's own publications page, but its full ~30-person author list and exact peer-review status (versus simply being publicized alongside ICLR 2025 activity) were not independently confirmed. None of the three papers were directly fetched from arxiv.org in this research environment — verify specific figures directly before citing them formally.
+      AlphaCode's identity and results are high confidence, confirmed against its Science publication and DOI. AlphaCode 2 was never peer-reviewed or given an arXiv ID — it exists only as a DeepMind technical report; its headline results (43% solve rate, 85th percentile) are corroborated across multiple independent sources, but its full author roster was not independently confirmed. Search-O1 and Search-R1 are both high confidence on identity and core claims; neither has a confirmed dedicated companion video, and this article does not claim one exists for either. None of the four items were verified against a direct arxiv.org fetch in this research environment — check primary sources before citing specific figures formally.
     </div>
 
     <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
@@ -510,11 +498,11 @@
         <a href="cs329a-self-improving-agents-handbook.html">Self-Improving AI Agents: A Field Handbook (base article)</a>
         <a href="cs329a-agentic-feedback-loops.html">Deep Dive 1 — Agentic Feedback Loops in Practice</a>
         <a href="cs329a-planning-as-search.html">Deep Dive 2 — Planning as Search</a>
-        <a href="https://arxiv.org/abs/2203.14465" target="_blank" rel="noopener">STaR — arXiv:2203.14465</a>
-        <a href="https://slideslive.com/38991144/selftaught-reasoner-star" target="_blank" rel="noopener">STaR — NeurIPS 2022 talk</a>
-        <a href="https://arxiv.org/abs/2402.03300" target="_blank" rel="noopener">DeepSeekMath / GRPO — arXiv:2402.03300</a>
-        <a href="https://arxiv.org/abs/2503.14476" target="_blank" rel="noopener">DAPO — arXiv:2503.14476</a>
-        <a href="https://dapo-sia.github.io" target="_blank" rel="noopener">DAPO — project site</a>
+        <a href="cs329a-training-on-what-search-finds.html">Deep Dive 3 — Training on What Search Finds</a>
+        <a href="https://arxiv.org/abs/2203.07814" target="_blank" rel="noopener">AlphaCode — arXiv:2203.07814</a>
+        <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf" target="_blank" rel="noopener">AlphaCode 2 — official technical report</a>
+        <a href="https://arxiv.org/abs/2501.05366" target="_blank" rel="noopener">Search-O1 — arXiv:2501.05366</a>
+        <a href="https://arxiv.org/abs/2503.09516" target="_blank" rel="noopener">Search-R1 — arXiv:2503.09516</a>
       </div>
     </div>
 

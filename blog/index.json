@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "cs329a-competitive-programming-and-retrieval-agents",
+      "title": "Competitive Programming and Retrieval Agents",
+      "excerpt": "Deep Dive 4 of 5 on the CS329A field handbook: AlphaCode and AlphaCode 2's shift from brute-force generation to learned selection, plus Search-O1 and Search-R1's two approaches to making search itself part of the reasoning loop, with verified citations and original diagrams.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-23",
+      "readTime": "22 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83d\udd0d",
+      "featured": true
+    },
+    {
       "slug": "cs329a-training-on-what-search-finds",
       "title": "Training on What Search Finds",
       "excerpt": "Deep Dive 3 of 5 on the CS329A field handbook: STaR's bootstrapped-rationale training, GRPO's critic-free group-relative RL from DeepSeekMath, and DAPO's fixes for long-chain RL instability, expanded with verified citations and an original diagram for each.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83c\udfcb\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs329a-planning-as-search",
