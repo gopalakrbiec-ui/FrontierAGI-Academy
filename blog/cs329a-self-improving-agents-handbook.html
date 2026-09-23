@@ -127,7 +127,7 @@
     .series-card-title { font-weight: 800; font-size: 0.92rem; color: #111; margin-bottom: 6px; }
     .series-card-body { font-size: 0.8rem; color: #374151; line-height: 1.6; }
 
-    .paper-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
+    .rsrch-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
     .paper-hd { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
     .paper-title { font-weight: 800; font-size: 0.98rem; color: #111; }
     .paper-meta { font-size: 0.74rem; color: #6b7280; font-weight: 600; }
@@ -334,6 +334,9 @@
       <div class="check-row"><span class="check-num">1</span><div><strong>ReAct — reasoning interleaved with acting.</strong> Instead of a model reasoning entirely inside its own head and then producing a final answer, ReAct-style agents alternate between a reasoning step and an action step — calling a search tool, querying a database, running a calculation — then folding the result of that action back into the next round of reasoning. The effect is that reasoning stays grounded in real, checkable information instead of drifting into confident-sounding guesses.</div></div>
       <div class="check-row"><span class="check-num">2</span><div><strong>RLEF — reinforcement learning from execution feedback.</strong> Code is unusually well-suited to this kind of loop because its correctness can often be checked automatically: generate code, run it, see whether it passes tests, and use that pass/fail (or partial-credit) signal as a training reward. Because execution feedback is objective and doesn't require a human in the loop, it scales far more easily than most other reward sources — one reason coding has become one of the most productive domains for this style of training.</div></div>
       <div class="check-row"><span class="check-num">3</span><div><strong>Constitutional AI — feedback without an executable check.</strong> Not everything can be graded by running code. Constitutional-AI-style methods instead give the model a written set of principles, have it critique its own response against those principles, revise accordingly, and use that critique-and-revise process as a training signal. It's a weaker, less objective feedback source than execution — how well it works depends heavily on how well the model actually applies the stated principles — but it extends the same generate-check-improve pattern to behaviors that can't be unit-tested.</div></div>
+    </div>
+    <div class="idea-box">
+      <strong>Want the expanded version?</strong> <a href="cs329a-agentic-feedback-loops.html">Agentic Feedback Loops in Practice</a> (Deep Dive 1 of 5) covers all three techniques with verified paper citations and an original diagram for each loop.
     </div>
 
     <h2 id="planning" class="agi-section">Planning as Search</h2>

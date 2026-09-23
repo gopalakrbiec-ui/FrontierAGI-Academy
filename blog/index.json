@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "cs329a-agentic-feedback-loops",
+      "title": "Agentic Feedback Loops in Practice",
+      "excerpt": "Deep Dive 1 of 5 on the CS329A field handbook: ReAct, RLEF, and Constitutional AI expanded with verified paper citations (real arXiv IDs, not guesses) and an original diagram for each feedback loop, plus a comparison of where each technique actually gets its ground truth.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-23",
+      "readTime": "24 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83d\udd01",
+      "featured": true
+    },
+    {
       "slug": "cs329a-self-improving-agents-handbook",
       "title": "Self-Improving AI Agents: A Field Handbook",
       "excerpt": "A standalone companion to our CS329A guide covering the rest of the course in one place: agentic feedback loops (ReAct, RLEF, Constitutional AI), planning as search, training on what search finds (STaR, GRPO, DAPO), AlphaCode, retrieval agents, long-horizon evaluation (METR, GDPval), and the field's open problems.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\udcd8",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rsi-hands-on-repo-walkthrough",

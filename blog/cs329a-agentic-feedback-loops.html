@@ -4,28 +4,28 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running RSI Repos Yourself: A Hands-On Walkthrough — FrontierAGI Academy Blog</title>
+  <title>Agentic Feedback Loops in Practice — FrontierAGI Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     .agi-hero {
-      background: linear-gradient(135deg, #051512 0%, #0a2e24 40%, #1a1033 75%, #030a08 100%);
+      background: linear-gradient(135deg, #051224 0%, #0a2440 40%, #331d05 75%, #05070f 100%);
       color: #fff; padding: 72px 40px 56px; border-radius: 16px; text-align: center;
       margin-bottom: 48px; position: relative; overflow: hidden;
     }
     .agi-hero::before {
       content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(16,185,129,0.26) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 45% at 85% 25%, rgba(139,92,246,0.24) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(236,72,153,0.14) 0%, transparent 60%);
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(37,99,235,0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 25%, rgba(245,158,11,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(14,165,233,0.16) 0%, transparent 60%);
     }
     .agi-hero-icon { font-size: 4rem; display: block; margin-bottom: 16px; position: relative; animation: agiPulse 3s ease-in-out infinite; }
-    @keyframes agiPulse { 0%,100%{filter:drop-shadow(0 0 10px rgba(16,185,129,0.5));transform:scale(1);} 50%{filter:drop-shadow(0 0 26px rgba(139,92,246,0.6));transform:scale(1.05);} }
+    @keyframes agiPulse { 0%,100%{filter:drop-shadow(0 0 10px rgba(37,99,235,0.5));transform:scale(1);} 50%{filter:drop-shadow(0 0 26px rgba(245,158,11,0.6));transform:scale(1.05);} }
     .agi-hero h1 { font-size: 2.1rem; font-weight: 800; margin: 0 0 16px; position: relative; line-height: 1.25; }
     .agi-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 780px; margin: 0 auto; position: relative; }
     .series-badge {
       display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-      background: rgba(16,185,129,0.3); padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; position: relative;
+      background: rgba(37,99,235,0.32); padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; position: relative;
     }
 
     .agi-section-nav {
@@ -123,7 +123,7 @@
 
     .series-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
     .series-card { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; background: #fff; position: relative; }
-    .series-card-num { font-size: 0.68rem; font-weight: 800; color: #fff; background: #047857; padding: 2px 9px; border-radius: 999px; display: inline-block; margin-bottom: 8px; }
+    .series-card-num { font-size: 0.68rem; font-weight: 800; color: #fff; background: #2563eb; padding: 2px 9px; border-radius: 999px; display: inline-block; margin-bottom: 8px; }
     .series-card-title { font-weight: 800; font-size: 0.92rem; color: #111; margin-bottom: 6px; }
     .series-card-body { font-size: 0.8rem; color: #374151; line-height: 1.6; }
 
@@ -134,7 +134,7 @@
     .paper-authors { font-size: 0.78rem; color: #6b7280; margin-bottom: 8px; font-style: italic; }
     .paper-summary { font-size: 0.85rem; color: #374151; line-height: 1.6; margin-bottom: 10px; }
     .paper-links { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.76rem; }
-    .paper-links a { color: #047857; text-decoration: none; font-weight: 700; }
+    .paper-links a { color: #1d4ed8; text-decoration: none; font-weight: 700; }
     .paper-links a:hover { text-decoration: underline; }
     .paper-links .no-video { color: #9ca3af; font-style: italic; font-weight: 600; }
 
@@ -157,6 +157,10 @@
     .conf-high { background: #d1fae5; color: #047857; }
     .conf-medium { background: #fef3c7; color: #b45309; }
     .conf-low { background: #fee2e2; color: #b91c1c; }
+
+    .diagram-box { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 20px; margin: 18px 0 24px; background: #fafafa; text-align: center; }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption { font-size: 0.76rem; color: #6b7280; margin-top: 10px; font-style: italic; }
 
     .repo-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 16px 0 24px; }
     .repo-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; padding: 8px 10px; border-bottom: 2px solid #e5e7eb; }
@@ -277,14 +281,14 @@
       <span>›</span>
       <a href="../pages/blog.html">Blog</a>
       <span>›</span>
-      <span>Running RSI Repos Yourself: A Hands-On Walkthrough</span>
+      <span>Agentic Feedback Loops in Practice</span>
     </div>
 
     <div class="agi-hero">
-      <span class="series-badge">Practitioner's Primer · Deep Dive</span>
-      <span class="agi-hero-icon">⚙️</span>
-      <h1>Running RSI Repos Yourself: A Hands-On Walkthrough</h1>
-      <p>The <a href="rsi-practitioners-primer.html" style="color:#fff; text-decoration:underline;">practitioner's primer</a> lists which RSI repos are real and runnable. This piece goes one level deeper on three of them — FunSearch, the Self-Improving Coding Agent (SICA), and Gödel Agent — actually cloning each and reading through what setting them up really involves, so you know what you're getting into before you start.</p>
+      <span class="series-badge">Deep Dive · 1 of 5</span>
+      <span class="agi-hero-icon">🔁</span>
+      <h1>Agentic Feedback Loops in Practice</h1>
+      <p>The <a href="cs329a-self-improving-agents-handbook.html" style="color:#fff; text-decoration:underline;">field handbook</a>'s "Agentic Feedback Loops" section introduced ReAct, RLEF, and Constitutional AI in a few paragraphs each. This is the expanded version — the real papers, verified citations, and an original diagram for each loop so you can see exactly where information flows and where the feedback signal actually comes from.</p>
     </div>
 
     <div class="blog-meta-row">
@@ -292,105 +296,190 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">September 23, 2026 · 22 min read</div>
+          <div class="blog-post-date">September 23, 2026 · 24 min read</div>
         </div>
       </div>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
-      <strong>What "hands-on" means here, precisely:</strong> all three repos below were actually cloned and their real README files, directory structures, and setup instructions read directly — this is not secondhand summary. What was <em>not</em> done: none of the three were actually executed end-to-end, since that requires LLM API keys (SICA needs at least one provider key plus Docker; Gödel Agent needs an OpenAI key), and in SICA's case a full benchmark run that takes real compute time. So treat everything below as "verified setup steps and repo structure," not "confirmed final output" — the distinction matters and is called out again per repo below.
+      <strong>On the citations below:</strong> all three papers' titles, authors, arXiv IDs, and venues were independently verified through direct research rather than carried over from any single source. Two small caveats are flagged where they apply: RLEF's exact co-author ordering and Constitutional AI's full ~50-person author list could not be byte-for-byte confirmed against the primary arXiv page in this research pass (arxiv.org itself was not directly browsable), though the paper identity, arXiv ID, and core claims are high confidence, cross-corroborated across multiple independent sources. Video links are only included where a genuine, specifically-identifiable recording was found — no fabricated links.
     </div>
 
     <div class="agi-section-nav">
-      <a href="#why"           class="agi-nav-btn">Why This Companion Exists</a>
-      <a href="#funsearch"     class="agi-nav-btn">FunSearch</a>
-      <a href="#sica"          class="agi-nav-btn">SICA</a>
-      <a href="#godel-agent"   class="agi-nav-btn">Gödel Agent</a>
-      <a href="#comparison"    class="agi-nav-btn">Comparing the Three</a>
-      <a href="#safety"        class="agi-nav-btn">A Safety Note Worth Repeating</a>
-      <a href="#gaps"          class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
-      <a href="#references"    class="agi-nav-btn">Full Reference List</a>
+      <a href="#opening"        class="agi-nav-btn">Why These Three Together</a>
+      <a href="#react"          class="agi-nav-btn">ReAct</a>
+      <a href="#rlef"           class="agi-nav-btn">RLEF</a>
+      <a href="#cai"            class="agi-nav-btn">Constitutional AI</a>
+      <a href="#comparison"     class="agi-nav-btn">Comparing the Three Loops</a>
+      <a href="#gaps"           class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
+      <a href="#references"     class="agi-nav-btn">Full Reference List</a>
     </div>
 
-    <h2 id="why" class="agi-section">Why This Companion Exists</h2>
-    <p>The primer's repo table tells you a technique has a real, official repository and gives a one-line note on what running it takes. That's useful for deciding what to try, but it stops short of telling you what you'll actually see when you clone the thing — what files are there, whether "just run the demo" is really that simple, and where the friction actually is. This piece exists to close that gap for three repos spanning the difficulty range the primer describes: FunSearch (the easiest — zero local install), Gödel Agent (a middle case — plain Python, one API key), and SICA (the most involved — Docker, multiple possible API providers, and an explicit safety warning from the authors themselves).</p>
+    <h2 id="opening" class="agi-section">Why These Three Together</h2>
+    <p>All three techniques answer the same underlying question — how does a language model get feedback on something more complex than "is this single answer right or wrong" — but they source that feedback from three genuinely different places: ReAct grounds reasoning in real-world tool results, RLEF grounds it in code execution, and Constitutional AI grounds it in the model's own critique against a written set of principles, with an AI (not a human) judging the result. Seeing the three loops side by side makes clear that "agentic feedback" isn't one mechanism — it's a design choice about where the ground truth for "good" comes from.</p>
 
-    <h2 id="funsearch" class="agi-section">FunSearch: Zero Install, Runs in Colab</h2>
+    <h2 id="react" class="agi-section">ReAct: Reasoning Grounded in Tool Results</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">google-deepmind/funsearch</span><span class="paper-meta">Verified by direct clone</span></div>
-      <div class="paper-summary">The repository's own README states plainly: "No installation is required. All notebooks can be opened and run in Google Colab." That's confirmed accurate from reading the actual README — there's no setup section beyond that one line. The repo is organized as six independent directories, four of which (<code>cap_set</code>, <code>admissible_set</code>, <code>bin_packing</code>, <code>cyclic_graphs</code>) each hold a runnable Colab notebook plus the specific mathematical objects FunSearch discovered for that problem, provided in numerical format so you can inspect the actual output without running anything. A fifth, <code>corner_free_sets</code>, provides discovered index sets in the same numerical format without a notebook. The sixth, <code>implementation</code>, is different in kind: it's the evolutionary-algorithm and code-manipulation logic itself — but the README is explicit that this directory does <em>not</em> include the language model that proposes new programs, the sandbox for executing untrusted code, or the distributed infrastructure DeepMind actually used. It's there for understanding the method and adapting it to your own LLM/sandbox setup, not for a one-command reproduction.</div>
+      <div class="paper-hd"><span class="paper-title">ReAct: Synergizing Reasoning and Acting in Language Models <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">ICLR 2023</span></div>
+      <div class="paper-authors">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao — arXiv:2210.03629</div>
+      <div class="paper-summary">Proposes prompting an LLM to interleave chain-of-thought reasoning with discrete actions — API or tool calls to external sources — and the observations those actions return, rather than doing pure reasoning or pure acting alone. On HotpotQA and FEVER, grounding reasoning in retrieved facts this way reduces hallucination and error propagation compared to reasoning with no external check. On interactive decision-making benchmarks (ALFWorld, WebShop), it substantially outperforms imitation- and RL-trained baselines using only one or two in-context examples.</div>
       <div class="paper-links">
-        <a href="https://github.com/google-deepmind/funsearch" target="_blank" rel="noopener">📄 github.com/google-deepmind/funsearch</a>
+        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">📄 arXiv:2210.03629</a>
+        <a href="https://slideslive.com/38996448" target="_blank" rel="noopener">📺 ICLR 2023 conference recording (SlidesLive)</a>
       </div>
     </div>
-    <div class="idea-box">
-      <strong>What this means practically:</strong> if you want to see FunSearch's actual discovered solutions with no setup at all, open one of the four notebooks in Colab and read through it — the interesting mathematical objects are already there as data. If you want to adapt FunSearch's search-and-evaluate loop to your own problem, you're building the LLM-sampling and sandboxing layers yourself on top of the provided `implementation` directory — a real engineering task, not a config change.</div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ReAct loop diagram">
+        <defs>
+          <marker id="arrowReact" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+          </marker>
+        </defs>
+        <rect x="20" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="90" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Thought</text>
+        <text x="90" y="120" text-anchor="middle" font-size="11" fill="#475569">reason about next step</text>
 
-    <h2 id="sica" class="agi-section">SICA: Docker, API Keys, and an Explicit Safety Warning</h2>
+        <rect x="290" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="360" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Action</text>
+        <text x="360" y="120" text-anchor="middle" font-size="11" fill="#475569">call a tool / API</text>
+
+        <rect x="560" y="70" width="140" height="70" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="630" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Observation</text>
+        <text x="630" y="120" text-anchor="middle" font-size="11" fill="#475569">real result returned</text>
+
+        <line x1="160" y1="105" x2="285" y2="105" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowReact)"/>
+        <line x1="430" y1="105" x2="555" y2="105" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowReact)"/>
+        <path d="M 630 145 C 630 195, 90 195, 90 145" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowReact)"/>
+        <text x="360" y="205" text-anchor="middle" font-size="11" fill="#b45309">loop back until the answer is well-grounded</text>
+      </svg>
+      <div class="diagram-caption">The ReAct loop: each action's real-world observation feeds the next thought, instead of reasoning happening in one unchecked pass.</div>
+    </div>
+
+    <h2 id="rlef" class="agi-section">RLEF: Reinforcement Learning from Execution Feedback</h2>
     <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">MaximeRobeyns/self_improving_coding_agent</span><span class="paper-meta">Verified by direct clone</span></div>
-      <div class="paper-summary">This is the most operationally involved of the three. The README's first instruction, in bold, is: always run the agent in the provided Docker container, because the agent can execute shell commands and this offers isolation from your host machine. The actual setup sequence, as written in the repo: export at least one LLM provider API key (the README lists support for Anthropic, OpenAI, Gemini, Vertex, Fireworks, and DeepSeek — you only need one, and omitting the others just makes those providers' models unavailable to the agent); build the Docker image via <code>make image</code> (or <code>make image-mac</code> on Apple Silicon); then separately <code>pip install</code> the requirements plus the <code>swebench</code> package into your local Python environment. To confirm the setup worked, <code>make int</code> starts the container and attaches your shell, from which you run the agent interactively and can watch its execution on a local web UI at <code>localhost:8080</code>, showing the event bus and agent callgraph in real time.</div>
+      <div class="paper-hd"><span class="paper-title">RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">arXiv 2024 → ICML 2025</span></div>
+      <div class="paper-authors">Jonas Gehring, Kunhao Zheng, Jade Copet, Vegard Mella, Taco Cohen, Gabriel Synnaeve, and coauthors — arXiv:2410.02089 <span class="conf-badge conf-medium">exact co-author ordering not byte-for-byte confirmed</span></div>
+      <div class="paper-summary">Trains code-generating LLMs end-to-end with reinforcement learning (PPO) to actually use execution feedback: the model writes code, that code runs against public test cases, and any failure output is fed back into the conversation for the model to repair — with the reward based on held-out private tests the model never sees directly. This teaches genuine iterative self-correction, not just better first-try accuracy, and the paper reports state-of-the-art results on competitive programming benchmarks with both 8B and 70B models, using an order of magnitude fewer samples than prior approaches to reach comparable performance.</div>
       <div class="paper-links">
-        <a href="https://github.com/MaximeRobeyns/self_improving_coding_agent" target="_blank" rel="noopener">📄 github.com/MaximeRobeyns/self_improving_coding_agent</a>
-        <a href="https://openreview.net/pdf?id=rShJCyLsOr" target="_blank" rel="noopener">📄 Workshop paper (linked from the repo)</a>
+        <a href="https://arxiv.org/abs/2410.02089" target="_blank" rel="noopener">📄 arXiv:2410.02089</a>
+        <span class="no-video">📺 ICML 2025 poster session exists; no specific named recorded talk independently confirmed</span>
       </div>
     </div>
-    <p>The actual self-improvement loop is a separate step from the interactive test: after confirming the interactive agent works, running <code>python runner.py</code> starts the full loop described in the primer — evaluate the current agent version on benchmark tasks, archive the results, let the agent edit its own codebase, repeat. Before doing this, the README says to check <code>base_agent/src/benchmarks/__init__.py</code> and make sure the benchmarks you actually want included are uncommented. The repo's own "Things to work on" list is candid about the system's current limits — it names reducing the variance of self-improvement runs (since early features reportedly influence what gets built later) and building more of the agent's own benchmarks as open problems, not solved ones.</p>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RLEF loop diagram">
+        <defs>
+          <marker id="arrowRlef" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#047857"/>
+          </marker>
+        </defs>
+        <rect x="20" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="95" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Generate Code</text>
+        <text x="95" y="128" text-anchor="middle" font-size="10" fill="#475569">candidate solution</text>
 
-    <h2 id="godel-agent" class="agi-section">Gödel Agent: The Middle Ground</h2>
-    <div class="rsrch-entry">
-      <div class="paper-hd"><span class="paper-title">Arvid-pku/Godel_Agent</span><span class="paper-meta">Verified by direct clone</span></div>
-      <div class="paper-summary">Simpler than SICA, more setup than FunSearch. The full install is three steps per the README: clone the repo, <code>pip install -r requirements.txt</code>, then run <code>python src/main.py</code>. The one piece of required configuration is an OpenAI API key, set in a <code>key.env</code> file — no Docker, no choice of provider, no separate benchmark-selection step. The codebase is organized so that <code>agent_module.py</code> holds the actual self-awareness and self-modification logic (this is the file the primer's repo table points to directly), while separate <code>task_*.py</code> files (adapted from the ADAS project, per the README) define what environment or benchmark the agent is being evaluated against. The README's own "Development Tips" section is a genuine extension guide, not filler: it walks through exactly what you'd add to give the agent a new action (an entry in <code>agent.action_functions</code>, the implementation itself, and optionally a mention in the goal prompt) or to point it at a new environment (a reward function, an <code>action_evaluate_on_task</code> implementation, and an initial policy).</div>
-      <div class="paper-links">
-        <a href="https://github.com/Arvid-pku/Godel_Agent" target="_blank" rel="noopener">📄 github.com/Arvid-pku/Godel_Agent</a>
-        <a href="https://arxiv.org/abs/2410.04444" target="_blank" rel="noopener">📄 arXiv:2410.04444</a>
-      </div>
+        <rect x="285" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="360" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Execute + Test</text>
+        <text x="360" y="128" text-anchor="middle" font-size="10" fill="#475569">public + private tests</text>
+
+        <rect x="550" y="80" width="150" height="70" rx="12" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+        <text x="625" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">Reward + PPO Update</text>
+        <text x="625" y="128" text-anchor="middle" font-size="10" fill="#475569">policy learns to fix failures</text>
+
+        <line x1="170" y1="115" x2="280" y2="115" stroke="#047857" stroke-width="2" marker-end="url(#arrowRlef)"/>
+        <line x1="435" y1="115" x2="545" y2="115" stroke="#047857" stroke-width="2" marker-end="url(#arrowRlef)"/>
+        <path d="M 625 155 C 625 205, 95 205, 95 155" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowRlef)"/>
+        <text x="360" y="220" text-anchor="middle" font-size="11" fill="#b45309">failed public-test feedback re-enters the next generation attempt</text>
+      </svg>
+      <div class="diagram-caption">The RLEF loop: execution results, not a learned judge, decide the reward — the same objective feedback pattern the practitioner's primer highlighted as a domain advantage for code.</div>
     </div>
 
-    <h2 id="comparison" class="agi-section">Comparing the Three</h2>
+    <h2 id="cai" class="agi-section">Constitutional AI: Feedback from a Written Constitution, Judged by AI</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">Constitutional AI: Harmlessness from AI Feedback <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Anthropic, Dec 2022</span></div>
+      <div class="paper-authors">Yuntao Bai, et al. (large Anthropic team) — arXiv:2212.08073 <span class="conf-badge conf-medium">full ~50-person author order not byte-for-byte confirmed</span></div>
+      <div class="paper-summary">Trains a helpful-and-harmless assistant using no human harm labels at all. In a supervised phase, the model critiques and revises its own outputs against a written set of principles (the "constitution"). In an RL phase — this is the part often shorthanded RLAIF, reinforcement learning from AI feedback — an AI model, not human raters, judges pairs of outputs to build a preference dataset, and the assistant is trained against that AI-generated preference model. The paper reports the resulting model was preferred by human crowdworkers over prior RLHF-only harmlessness training, while being less evasive and more willing to actually engage with a question.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">📄 arXiv:2212.08073</a>
+        <span class="no-video">📺 No dedicated technical-talk recording of this specific paper independently confirmed</span>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Constitutional AI loop diagram">
+        <defs>
+          <marker id="arrowCai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+          </marker>
+        </defs>
+        <text x="180" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#6b21a8">SUPERVISED PHASE</text>
+        <rect x="20" y="45" width="130" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="85" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Response</text>
+        <text x="85" y="90" text-anchor="middle" font-size="10" fill="#475569">initial model output</text>
+
+        <rect x="220" y="45" width="150" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="295" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Self-Critique</text>
+        <text x="295" y="84" text-anchor="middle" font-size="10" fill="#475569">vs. written constitution</text>
+        <text x="295" y="98" text-anchor="middle" font-size="10" fill="#475569">→ Revision</text>
+
+        <line x1="150" y1="77" x2="215" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
+
+        <text x="540" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#6b21a8">RL PHASE (RLAIF)</text>
+        <rect x="440" y="45" width="150" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="515" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">AI Preference Judge</text>
+        <text x="515" y="90" text-anchor="middle" font-size="10" fill="#475569">ranks output pairs</text>
+
+        <rect x="630" y="45" width="70" height="65" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="665" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">RL</text>
+        <text x="665" y="88" text-anchor="middle" font-size="10" fill="#475569">Update</text>
+
+        <line x1="370" y1="77" x2="435" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
+        <line x1="590" y1="77" x2="625" y2="77" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowCai)"/>
+
+        <rect x="20" y="160" width="680" height="70" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="360" y="188" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">No human harm labels used in either phase</text>
+        <text x="360" y="208" text-anchor="middle" font-size="11" fill="#78350f">Ground truth comes from the written constitution + an AI judge, not a human rater</text>
+      </svg>
+      <div class="diagram-caption">Constitutional AI's two phases: a supervised critique-and-revise loop, then an RL phase where an AI — not a human — supplies the preference signal.</div>
+    </div>
+
+    <h2 id="comparison" class="agi-section">Comparing the Three Loops</h2>
     <table class="repo-table">
-      <thead><tr><th>Repo</th><th>Install</th><th>Required credentials</th><th>Where the "self-improvement" actually happens</th></tr></thead>
+      <thead><tr><th>Technique</th><th>Where feedback comes from</th><th>How objective is it</th><th>Best-suited domain</th></tr></thead>
       <tbody>
         <tr>
-          <td data-label="Repo" class="repo-name">FunSearch</td>
-          <td data-label="Install">None — open a notebook in Colab</td>
-          <td data-label="Credentials">None to inspect existing results; your own LLM API access if you extend it</td>
-          <td data-label="Where">The evolutionary loop over generated programs, in the (LLM-less) <code>implementation</code> directory you'd extend yourself</td>
+          <td data-label="Technique" class="repo-name">ReAct</td>
+          <td data-label="Feedback source">Real tool/API results returned mid-reasoning</td>
+          <td data-label="Objectivity">High — the observation is a real external fact</td>
+          <td data-label="Domain">Question answering, retrieval-grounded tasks, interactive environments</td>
         </tr>
         <tr>
-          <td data-label="Repo" class="repo-name">Gödel Agent</td>
-          <td data-label="Install"><code>pip install -r requirements.txt</code></td>
-          <td data-label="Credentials">One OpenAI API key in <code>key.env</code></td>
-          <td data-label="Where"><code>agent_module.py</code> — the agent modifies its own code via what the paper calls monkey patching</td>
+          <td data-label="Technique" class="repo-name">RLEF</td>
+          <td data-label="Feedback source">Code execution against test cases</td>
+          <td data-label="Objectivity">Very high — tests pass or fail, no judgment call</td>
+          <td data-label="Domain">Code generation and repair specifically</td>
         </tr>
         <tr>
-          <td data-label="Repo" class="repo-name">SICA</td>
-          <td data-label="Install">Docker image build + local <code>pip install</code></td>
-          <td data-label="Credentials">At least one of six supported LLM provider keys; optionally Modal tokens for web access</td>
-          <td data-label="Where"><code>runner.py</code>'s full loop — evaluate, archive, self-edit the codebase, repeat</td>
+          <td data-label="Technique" class="repo-name">Constitutional AI</td>
+          <td data-label="Feedback source">Written principles + an AI judge's preference</td>
+          <td data-label="Objectivity">Lower — depends on how well the model applies the constitution</td>
+          <td data-label="Domain">Behaviors that can't be unit-tested (tone, harmlessness, style)</td>
         </tr>
       </tbody>
     </table>
-
-    <h2 id="safety" class="agi-section">A Safety Note Worth Repeating</h2>
-    <div class="caveat-box">
-      SICA's own authors put a warning at the very top of their README, not buried in a docs page: run the agent only in the provided Docker container, because it can execute shell commands and unsandboxed use risks unintended file-system changes on your actual machine. This isn't a generic disclaimer this article is adding — it's the repo's own stated first instruction, underlined by the fact that the primer's synthesis piece explicitly connects benchmark-gaming and evaluator design to real research risk. If you're trying any of these three repos yourself, treat SICA's Docker requirement as non-optional, and be similarly cautious with any RSI-adjacent agent framework that executes generated code, regardless of whether its own README says so as directly as this one does.
-    </div>
+    <div class="why-box">
+      <strong>The pattern underneath all three:</strong> the more objectively "correct" the feedback source is, the less the loop depends on trusting a judge — ReAct and RLEF both ground themselves in something the world (or a test suite) directly confirms, while Constitutional AI's RL phase depends on the AI judge itself being reliable, which is exactly the "who verifies the verifier" problem the field handbook's meta-verification section flags as still largely unsolved.</div>
 
     <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
     <div class="caveat-box">
-      Everything above about file structure, README content, and stated setup steps was read directly from each repository during research for this piece — it is not secondhand. What was not verified: whether following these steps actually produces a working run end to end (no API keys or Docker execution were used here), whether the specific benchmark numbers referenced in the primer and earlier RSI pieces reproduce if you run these repos yourself, and how each repo's setup instructions may have changed since this was written — these are actively maintained projects. If you hit a mismatch between what's written here and what you see when you clone a repo, trust the repo.
+      All three papers' core identity (title, arXiv ID, venue, central claims) are high confidence, cross-corroborated across multiple independent sources during research for this piece. Two narrower details are flagged individually above rather than presented as fully certain: RLEF's exact co-author ordering and Constitutional AI's complete ~50-person author list could not be verified byte-for-byte against the primary arXiv abstract page in this research pass, since arxiv.org itself wasn't directly browsable in this environment. If you're citing either paper formally, pull the author list directly from the arXiv page rather than from this summary.
     </div>
 
     <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
     <div class="ref-box">
       <div class="ref-list">
-        <a href="rsi-practitioners-primer.html">A Practitioner's Primer on RSI (base article)</a>
-        <a href="https://github.com/google-deepmind/funsearch" target="_blank" rel="noopener">FunSearch — official repo</a>
-        <a href="https://github.com/MaximeRobeyns/self_improving_coding_agent" target="_blank" rel="noopener">SICA — official repo</a>
-        <a href="https://openreview.net/pdf?id=rShJCyLsOr" target="_blank" rel="noopener">SICA workshop paper</a>
-        <a href="https://github.com/Arvid-pku/Godel_Agent" target="_blank" rel="noopener">Gödel Agent — official repo</a>
-        <a href="https://arxiv.org/abs/2410.04444" target="_blank" rel="noopener">Gödel Agent — arXiv:2410.04444</a>
+        <a href="cs329a-self-improving-agents-handbook.html">Self-Improving AI Agents: A Field Handbook (base article)</a>
+        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct — arXiv:2210.03629</a>
+        <a href="https://slideslive.com/38996448" target="_blank" rel="noopener">ReAct — ICLR 2023 recording</a>
+        <a href="https://arxiv.org/abs/2410.02089" target="_blank" rel="noopener">RLEF — arXiv:2410.02089</a>
+        <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">Constitutional AI — arXiv:2212.08073</a>
       </div>
     </div>
 

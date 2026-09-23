@@ -127,7 +127,7 @@
     .series-card-title { font-weight: 800; font-size: 0.92rem; color: #111; margin-bottom: 6px; }
     .series-card-body { font-size: 0.8rem; color: #374151; line-height: 1.6; }
 
-    .paper-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
+    .rsrch-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
     .paper-hd { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
     .paper-title { font-weight: 800; font-size: 0.98rem; color: #111; }
     .paper-meta { font-size: 0.74rem; color: #6b7280; font-weight: 600; }
@@ -429,7 +429,7 @@
 
     <h2 id="foundations" class="agi-section">Foundational Theory</h2>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Speculations Concerning the First Ultraintelligent Machine</span><span class="paper-meta">1965</span></div>
       <div class="paper-authors">I.J. Good — <em>Advances in Computers</em>, Vol. 6, pp. 31–88</div>
       <div class="paper-summary">The origin of the "intelligence explosion" concept: an ultraintelligent machine could design even better machines than itself, triggering a runaway explosion of intelligence that leaves human intellect far behind — "the last invention man need ever make," provided the machine remains controllable enough to tell us how to keep it under control. Every later formalization of RSI, from Schmidhuber's Gödel Machine to the 2026 survey papers below, traces back to this single paragraph-length speculation.</div>
@@ -439,7 +439,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Gödel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements</span><span class="paper-meta">2003 / 2006</span></div>
       <div class="paper-authors">Jürgen Schmidhuber — TR IDSIA-19-03; arXiv:cs/0309048</div>
       <div class="paper-summary">Proposes a fully self-referential agent whose initial code includes an axiomatized description of itself, its environment, and its utility function, plus a proof searcher. The machine rewrites any part of its own code the instant it can formally <em>prove</em> the rewrite provably increases expected utility — giving mathematically optimal, not just locally optimal, self-improvement. The catch, which the paper is honest about: the proof search is generally intractable, making this a foundational theoretical construct rather than a deployable system.</div>
@@ -449,7 +449,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Optimal Ordered Problem Solver (OOPS)</span><span class="paper-meta">2002 / 2004</span></div>
       <div class="paper-authors">Jürgen Schmidhuber — <em>Machine Learning</em>, 54:211–254; earlier as NeurIPS 2002 "Bias-Optimal Incremental Problem Solving"</div>
       <div class="paper-summary">An early, concrete precursor to the full Gödel Machine: introduces bias-optimal incremental universal search, where the system reuses and organizes solutions to earlier tasks to systematically accelerate solving new ones. This is the empirical half of Schmidhuber's self-referential-search program, published before the fully formalized Gödel Machine paper.</div>
@@ -459,7 +459,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Intelligence Explosion Microeconomics</span><span class="paper-meta">2013</span></div>
       <div class="paper-authors">Eliezer Yudkowsky — MIRI Technical Report 2013-1</div>
       <div class="paper-summary">Not peer-reviewed, but the canonical foundational document from the Machine Intelligence Research Institute — roughly 40,000 words attempting to formalize "returns on cognitive reinvestment": under what conditions would AI self-improvement accelerate versus plateau. Frames RSI as an economic production-function problem (optimization power in, intelligence out, which becomes more optimization power), a framing that directly anticipates the "recursive reproduction number" approach in the 2026 "Recursive Criticality" paper covered below.</div>
@@ -472,7 +472,7 @@
     <h2 id="surveys" class="agi-section">The Four Recent Formal Surveys</h2>
     <p>All four of the following postdate this research's ability to read full text directly and were characterized from search-indexed abstracts and summaries only — treat the summaries below as a starting point for your own reading, not a substitute for it.</p>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops</span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">arXiv:2607.07663</div>
       <div class="paper-summary">Systematically surveys roughly 1,250 arXiv papers (2024–2026) along two axes: what is being improved (deployment-time behavior, the trained policy, the evaluator, or the research process itself), and degree of loop closure (from human-in-the-loop refinement to fully closed autonomous loops). Also surveys the evaluator-design space — LLM judges, process reward models, verifiers, rubrics, meta-evaluation — as the actual bottleneck for safe closed-loop RSI, a framing worth reading against Part 2 of the objective-specification literature.</div>
@@ -482,7 +482,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement</span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">arXiv:2609.11873</div>
       <div class="paper-summary">Surveys 491 papers against a 5-level maturity ladder (L1 through L5) for self-improvement claims. The central, striking finding: 75.4% of surveyed work sits at L1–L2 (basic self-refinement or in-context iteration), while only 5.7% reaches L4 (deployment-time self-adaptation) and 5.9% reaches L5 (meta-level improvement of the improvement process itself). If accurate, this is strong evidence that genuine RSI remains rare in the literature despite how often the term gets applied loosely.</div>
@@ -492,7 +492,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Self-Improvements in Modern Agentic Systems: A Survey</span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">arXiv:2607.13104</div>
       <div class="paper-summary">Broader in scope than pure RSI — surveys self-referential neural architectures and self-improvement mechanisms across modern agentic AI systems generally, including self-refinement, self-play, and memory-based adaptation alongside stricter recursive self-improvement. Useful as a map of how RSI proper relates to the wider "agentic self-improvement" literature it's often conflated with.</div>
@@ -502,7 +502,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Recursive Criticality of AI Self-Improvement</span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">arXiv:2609.00137</div>
       <div class="paper-summary">A more theoretical and quantitative entry than the other three surveys — models the rate of AI capability growth as a function of baseline research productivity, the strength of recursive feedback, and the increasing marginal difficulty of further research progress, deriving an epidemiology-style "recursive reproduction number" for when self-improvement becomes explosive versus self-limiting. Directly extends the economic framing Yudkowsky introduced in 2013 into a more formal model.</div>
@@ -512,7 +512,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">A Survey of Self-Evolving Agents: What, When, How, and Where to Evolve on the Path to Artificial Super Intelligence</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">Huan-ang Gao et al. — arXiv:2507.21046</div>
       <div class="paper-summary">The most-cited general taxonomy paper in this space as of late 2025: the first systematic taxonomy of "self-evolving agents" along four dimensions (what to evolve, when to evolve, how to evolve, where to evolve), and the first to clearly distinguish intra-test-time evolution (real-time adaptation within a single task) from inter-test-time evolution (updates that persist across tasks and episodes) — a distinction worth applying to every technique paper in the next section.</div>
@@ -524,7 +524,7 @@
 
     <h2 id="techniques" class="agi-section">Named Techniques, Chronologically</h2>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AutoML-Zero: Evolving Machine Learning Algorithms From Scratch</span><span class="paper-meta">2020</span></div>
       <div class="paper-authors">Esteban Real, Chen Liang, David R. So, Quoc V. Le — ICML 2020, arXiv:2003.03384</div>
       <div class="paper-summary">Evolves entire ML algorithms — not just architectures or hyperparameters — from primitive mathematical operations, using regularized evolution over a generic instruction-based search space. Notably rediscovers real concepts like backpropagation, gradient normalization, bilinear interactions, and dropout-like regularization without any of them being pre-specified in the search space, making it one of the earliest credible demonstrations that a search process can reinvent known ML building blocks from near-first-principles.</div>
@@ -534,7 +534,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Promptbreeder: Self-Referential Self-Improvement via Prompt Evolution</span><span class="paper-meta">2023</span></div>
       <div class="paper-authors">Chrisantha Fernando, Dylan Banarse, Henryk Michalewski, Simon Osindero, Tim Rocktäschel (Google DeepMind) — arXiv:2309.16797</div>
       <div class="paper-summary">Evolves a population of task-prompts using LLM-generated mutation-prompts that are themselves evolved self-referentially — the mutation strategy improves alongside the prompts it's mutating. Outperforms Chain-of-Thought and Plan-and-Solve prompting on reasoning benchmarks without any human prompt-engineering after the initial seed.</div>
@@ -544,7 +544,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">STOP: Self-Taught Optimizer — Recursively Self-Improving Code Generation</span><span class="paper-meta">2023</span></div>
       <div class="paper-authors">Eric Zelikman, Eliana Lorch, Lester Mackey, Adam Tauman Kalai (Stanford / Microsoft) — arXiv:2310.02304</div>
       <div class="paper-summary">A seed "improver" program — one that calls an LLM multiple times to improve a candidate program against a utility function — is applied to improve <em>itself</em>. The resulting improved improvers discover real optimization strategies (beam search, genetic algorithms, simulated annealing) without being told to. The authors are explicit about the limitation this article treats as important throughout: since the underlying LLM's weights never change, this is scaffolding-level self-improvement, not weight-level RSI.</div>
@@ -554,7 +554,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Voyager: An Open-Ended Embodied Agent with Large Language Models</span><span class="paper-meta">2023</span></div>
       <div class="paper-authors">Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan, Anima Anandkumar — arXiv:2305.16291</div>
       <div class="paper-summary">A Minecraft agent with an automatic curriculum, an ever-growing executable skill library, and iterative GPT-4 prompting that incorporates environment feedback and self-verification. Skills compound over time without any weight updates, sidestepping catastrophic forgetting entirely by storing improvement in an external, growing code library rather than in the model itself — a design pattern that reappears in SICA and the Darwin Gödel Machine below.</div>
@@ -564,7 +564,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Eureka: Human-Level Reward Design via Coding Large Language Models</span><span class="paper-meta">2023</span></div>
       <div class="paper-authors">Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi Fan, Anima Anandkumar (NVIDIA / UPenn / Caltech) — arXiv:2310.12931</div>
       <div class="paper-summary">Uses GPT-4 as an evolutionary reward-function designer for robotics RL: it generates reward code, the code gets evaluated via GPU-parallelized training in Isaac Gym, and the LLM iterates using the resulting training statistics as textual feedback. Outperformed human-expert-written reward functions on 83% of a 29-task robotics benchmark — a rare case where an LLM-in-the-loop system beat domain-expert humans on a task those humans specialize in.</div>
@@ -574,7 +574,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">FunSearch: Mathematical Discoveries from Program Search with Large Language Models</span><span class="paper-meta">2023 / 2024</span></div>
       <div class="paper-authors">Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, et al. (Google DeepMind) — <em>Nature</em> 625, 468–475</div>
       <div class="paper-summary">Pairs a frozen, unmodified pretrained LLM (which proposes candidate programs) with an automated evaluator in an evolutionary loop over a growing program database. Found genuinely new constructions for the cap set problem and improved bin-packing heuristics — the first case of an LLM-driven system producing new results on an open mathematics problem, published in Nature rather than merely claimed in a preprint.</div>
@@ -584,7 +584,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement</span><span class="paper-meta">2024 / 2025</span></div>
       <div class="paper-authors">Xunjian Yin, Xinyi Wang, Liangming Pan, Li Lin, Xiaojun Wan, William Yang Wang — arXiv:2410.04444</div>
       <div class="paper-summary">Explicitly Gödel-Machine-inspired but empirical rather than proof-based: an LLM agent that can inspect and rewrite its own logic and code — including the code that does the inspecting and rewriting — guided only by a high-level objective stated in the prompt, without a fixed meta-optimization algorithm imposed from outside. Reports roughly 11% improvement on complex reasoning tasks over manually crafted meta-learning baselines.</div>
@@ -594,7 +594,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">Alexander Novikov, Ngân Vũ, Marvin Eisenberger, et al. (Google DeepMind) — arXiv:2506.13131</div>
       <div class="paper-summary">A Gemini-powered evolutionary coding agent pairing LLM-generated code mutations with automated evaluators. Found a 4×4 complex matrix multiplication algorithm using 48 scalar multiplications — the first improvement over Strassen's 1969 algorithm in this specific setting in over five decades — and matched or exceeded best-known solutions on a large fraction of a battery of open math problems. Notably, it was also applied recursively to improve Google's own data-center scheduling, chip design, and LLM training pipelines, including the training of the very Gemini models AlphaEvolve itself runs on — a genuine, disclosed feedback loop rather than a hypothetical one.</div>
@@ -604,7 +604,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">Jenny Zhang, Shengran Hu, Cong Lu, Robert Lange, Jeff Clune (UBC / Vector Institute / Sakana AI) — arXiv:2505.22954</div>
       <div class="paper-summary">Explicitly built on Schmidhuber's Gödel Machine but replaces the intractable formal proof-of-improvement requirement with empirical validation: maintains a growing archive of agent versions, samples from that archive, and lets the sampled agent self-modify its own Python codebase — its own tools, context management, and review mechanisms. Raised SWE-bench performance from 20.0% to 50.0% and Polyglot benchmark performance from 14.2% to 30.7% purely through iterative self-modification, without any human editing the code between iterations.</div>
@@ -615,7 +615,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">A Self-Improving Coding Agent (SICA)</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">Maxime Robeyns et al. (University of Bristol) — arXiv:2504.15228</div>
       <div class="paper-summary">A fully self-referential design: the same agent that solves coding tasks is the one that edits its own entire codebase — its tools, sub-agents, and orchestration logic — via a "Meta-Agent Loop" in which the best archived version of the agent acts as the improver for the next iteration. Improved a subset of SWE-bench Verified from 17% to 53% through this process alone.</div>
@@ -625,7 +625,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Huxley-Gödel Machine</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">arXiv:2510.21614</div>
       <div class="paper-summary">A follow-on to the Darwin Gödel Machine claiming further progress toward human-level coding-agent self-improvement. This entry's author list and precise technical contribution were not independently verified in depth during research for this piece — included for completeness, but readers should treat it as the least-confirmed entry in this section pending direct reading.</div>
@@ -638,7 +638,7 @@
     <h2 id="airesearch" class="agi-section">AI Automating AI Research</h2>
     <p>The narrower subfield this survey was specifically asked to focus on: papers about AI systems automating the process of AI/ML research itself — ideation, experiment design, execution, and writing up results — rather than self-modifying code in the abstract.</p>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery</span><span class="paper-meta">2024</span></div>
       <div class="paper-authors">Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Foerster, Jeff Clune, David Ha (Sakana AI, with Oxford/UBC) — arXiv:2408.06292</div>
       <div class="paper-summary">An end-to-end automated research pipeline: idea generation, literature check, experiment execution, paper writing, and automated LLM-based peer review, applied to small machine learning research topics such as diffusion models and grokking. Best generation results used Claude 3.5 Sonnet, with GPT-4o performing the review step; the authors claim roughly $15 per generated paper.</div>
@@ -648,7 +648,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Evaluating Sakana's AI Scientist for Autonomous Research</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">arXiv:2502.14297</div>
       <div class="paper-summary">A deliberate skeptical counterweight to include alongside The AI Scientist itself: an independent evaluation specifically questioning the actual research quality and validity of AI Scientist's outputs, asking whether the system represents genuine progress toward "Artificial Research Intelligence" or overstates what it actually achieves. Worth reading paired with the original paper rather than in isolation.</div>
@@ -658,7 +658,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search</span><span class="paper-meta">2025</span></div>
       <div class="paper-authors">Sakana AI — arXiv:2504.08066</div>
       <div class="paper-summary">Removes v1's reliance on human-authored code templates entirely, replacing it with a progressive agentic tree-search methodology and a dedicated experiment-manager agent that incorporates vision-language-model feedback on generated figures. Produced the first fully AI-generated paper to pass peer review at an ICLR 2025 workshop — 1 of 3 submitted papers cleared the acceptance threshold, a specific, checkable claim rather than a vague one.</div>
@@ -668,7 +668,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">RE-Bench: Evaluating Frontier AI R&amp;D Capabilities of Language Model Agents Against Human Experts</span><span class="paper-meta">2024</span></div>
       <div class="paper-authors">METR — arXiv:2411.15114</div>
       <div class="paper-summary">A benchmark of seven open-ended ML research-engineering environments (e.g., fitting scaling laws, optimizing GPU kernels), compared directly against 71 eight-hour attempts by 61 human experts — one of the few papers in this survey with a genuine human baseline rather than only a model-to-model comparison. The widely cited finding, worth verifying the exact framing against the paper's own tables before repeating it elsewhere: the best AI agents scored roughly 4x higher than human experts when both were given a 2-hour budget, though the human/AI comparison narrows or reverses at longer time budgets.</div>
@@ -678,7 +678,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering</span><span class="paper-meta">2024</span></div>
       <div class="paper-authors">OpenAI — arXiv:2410.07095</div>
       <div class="paper-summary">75 Kaggle-derived ML engineering competitions with real human leaderboard baselines to compare against. The best tested setup (o1-preview with AIDE scaffolding) achieved at least Kaggle-bronze-medal-equivalent performance in 16.9% of competitions. Explicitly framed by OpenAI as part of its Preparedness Framework work on measuring AI-autonomy and AI-R&amp;D-automation risk, not as a pure capability showcase.</div>
@@ -688,7 +688,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AutoML-Agent: A Multi-Agent LLM Framework for Full-Pipeline AutoML</span><span class="paper-meta">2024 / 2025</span></div>
       <div class="paper-authors">Patara Trirat, Wonyong Jeong, Sung Ju Hwang — arXiv:2410.02958, ICML 2025</div>
       <div class="paper-summary">A multi-agent LLM system automating the full AutoML pipeline — retrieval-augmented planning, parallel specialized sub-agents, and multi-stage verification — end to end. Distinct from the self-modifying-code systems above: this automates the ML engineering <em>workflow</em> rather than modifying its own underlying code, making it a useful contrast case for where "automating AI research" and "recursive self-improvement" diverge as categories.</div>

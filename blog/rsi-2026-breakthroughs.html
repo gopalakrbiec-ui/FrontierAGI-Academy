@@ -127,7 +127,7 @@
     .series-card-title { font-weight: 800; font-size: 0.92rem; color: #111; margin-bottom: 6px; }
     .series-card-body { font-size: 0.8rem; color: #374151; line-height: 1.6; }
 
-    .paper-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
+    .rsrch-entry { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; margin: 16px 0; background: #fff; }
     .paper-hd { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
     .paper-title { font-weight: 800; font-size: 0.98rem; color: #111; }
     .paper-meta { font-size: 0.74rem; color: #6b7280; font-weight: 600; }
@@ -402,7 +402,7 @@
 
     <h2 id="techniques2026" class="agi-section">New Named Techniques</h2>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Red Queen Gödel Machine (RQGM) <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Jun 2026</span></div>
       <div class="paper-authors">Alex Iacob, Andrej Jovanović, et al. — arXiv:2606.26294</div>
       <div class="paper-summary">The clearest direct successor to the Darwin Gödel Machine line covered in the base survey. Where DGM validates self-modifications against a fixed benchmark, RQGM co-evolves the agent <em>and</em> the evaluator judging it, letting evaluation criteria shift at defined "epoch" boundaries. The stated goal is closing a known failure mode in earlier self-improving-agent loops: agents learning to game a static benchmark rather than genuinely improving. Applied to coding, paper-writing, and proof-generation tasks.</div>
@@ -412,7 +412,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Digital Red Queen <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Jan 2026</span></div>
       <div class="paper-authors">Sakana AI × MIT — arXiv:2601.03335</div>
       <div class="paper-summary">Not a task-performance system like most of the base survey's techniques — an open-endedness testbed. Competing LLM-authored programs coevolve adversarially inside a Core War-style sandbox, with complexity emerging from competitive pressure rather than an explicit objective. Framed by the authors as infrastructure for studying open-ended RSI dynamics directly, separate from the "improve at task X" framing that dominates the rest of this literature.</div>
@@ -422,7 +422,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">DARWIN (Dynamic Agentically Rewriting Self-Improving Network) <span class="conf-badge conf-medium">MEDIUM</span></span><span class="paper-meta">Feb 2026</span></div>
       <div class="paper-authors">arXiv:2602.05848</div>
       <div class="paper-summary">Title and arXiv ID surfaced directly in search results, but the abstract itself was not opened and read during this research pass. Named similarly enough to the unrelated Darwin Gödel Machine that the two should not be conflated. Included here as a lead worth following up, not as a confirmed description of what the system actually does.</div>
@@ -432,7 +432,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AlphaEvolve: general availability, no renamed successor <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Jul 2026</span></div>
       <div class="paper-authors">Google DeepMind</div>
       <div class="paper-summary">Rather than a new named technique, AlphaEvolve (covered in the base survey) reached general availability on Google Cloud's Gemini Enterprise Agent Platform around July 2026, upgraded to run on Gemini 2.5 Pro. No differently-named DeepMind successor to AlphaEvolve was found in this research pass — worth noting explicitly so it isn't assumed to exist.</div>
@@ -442,7 +442,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Sakana Fugu / Fugu Ultra — relevance uncertain <span class="conf-badge conf-low">LOW relevance</span></span><span class="paper-meta">Jun 22, 2026</span></div>
       <div class="paper-authors">Sakana AI — sakana.ai/fugu/</div>
       <div class="paper-summary">Confirmed to exist and to have launched, alongside a separately-announced "Sakana AI RSI Lab" research initiative. But Fugu is marketed as a multi-agent orchestration system positioned as "a model," and it is unclear from available material whether it implements genuine self-improvement in the AlphaEvolve/Gödel-Machine sense or is adjacent branding. Listed here for completeness, flagged rather than treated as confirmed RSI.</div>
@@ -454,7 +454,7 @@
 
     <h2 id="surveys2026" class="agi-section">New Survey Papers</h2>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Jul 2026</span></div>
       <div class="paper-authors">Mingguang Chen et al. — arXiv:2607.07663</div>
       <div class="paper-summary">The corpus-scale survey this article leans on for its "why 2026 is different" framing: reviews roughly 1,250 RSI-adjacent papers from 2024–2026 and taxonomizes by <em>what</em> improves (behavior, policy, evaluator, or the research process itself) and by <em>degree of loop closure</em>. Its central distinction — convergent "bounded self-refinement" already in industrial use, versus open-ended RSI still bounded by grounding, collapse dynamics, and compute — is the organizing idea for this whole follow-up piece.</div>
@@ -464,7 +464,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Sep 2026</span></div>
       <div class="paper-authors">arXiv:2609.11873 (v2)</div>
       <div class="paper-summary">Confirmed to exist via both its arXiv page and an alphaXiv mirror. Content was not read in full during this research pass — the title alone suggests a position paper on what would distinguish "genuine" RSI from the bounded self-refinement now common in industry, which tracks the same distinction as the July survey above, but this should be confirmed by reading the paper directly before citing its argument specifically.</div>
@@ -474,7 +474,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Recursive Criticality of AI Self-Improvement <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Sep 2026</span></div>
       <div class="paper-authors">arXiv:2609.00137</div>
       <div class="paper-summary">Confirmed via its arXiv abstract page and a Hugging Face paper page; not read in full. The title suggests a formal treatment of self-improvement dynamics near a "critical" threshold — potentially connecting to Yudkowsky's 2013 "returns on cognitive reinvestment" framing from the base survey's foundational-theory section, but that connection is this article's inference, not a confirmed claim from the paper itself.</div>
@@ -484,7 +484,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">International AI Safety Report 2026 <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Feb 2026</span></div>
       <div class="paper-authors">Multi-government/multi-lab convened report — arXiv:2602.21012</div>
       <div class="paper-summary">Confirmed to exist as a large, formally convened cross-institution report. Likely contains material relevant to RSI risk given the report series' scope in prior years, but its specific RSI content was not independently read here — cited as a pointer for researchers who want the policy-facing companion to the technical surveys above.</div>
@@ -494,7 +494,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">ICLR 2026 Workshop: AI with Recursive Self-Improvement <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">iclr.cc/virtual/2026/workshop/10000796</div>
       <div class="paper-summary">Not a paper — a dedicated workshop, confirmed to exist on the official ICLR 2026 program. Its existence is itself a data point: the subfield formalized enough in 2026 to warrant its own venue, distinct from being folded into general agents or alignment tracks as in prior years.</div>
@@ -507,7 +507,7 @@
     <h2 id="airesearch2026" class="agi-section">AI Automating AI Research: The 2026 Benchmark Wave</h2>
     <p>The single biggest shift from the base survey's "AI Automating AI Research" section isn't one breakthrough system — it's how many benchmarks for exactly this capability launched within a few months of each other in 2026. Read as a group, they suggest the field converged on "can an agent do the whole research loop" as the open question worth measuring, rather than continuing to ship one-off pipelines like 2024's AI Scientist.</p>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AutoResearchClaw &amp; ARC-Bench <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">May 2026</span></div>
       <div class="paper-authors">arXiv:2605.20025</div>
       <div class="paper-summary">An open-source multi-agent autonomous-research system built around structured multi-agent debate, a self-healing executor, verifiable reporting meant to resist hallucinated results, and seven distinct human-in-the-loop intervention modes. Its companion benchmark, ARC-Bench, spans 25 ML topics plus a 20-topic extension into physics/biology/statistics. The paper claims a 54.7% improvement over The AI Scientist-v2 on that benchmark — a claim made by the same team that built the benchmark, so treat the specific margin as self-reported pending independent replication.</div>
@@ -517,7 +517,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">PostTrainBench: Can LLM Agents Automate LLM Post-Training? <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Mar 2026</span></div>
       <div class="paper-authors">arXiv:2603.08640</div>
       <div class="paper-summary">Directly targets a question the base survey's MLE-bench and AutoML-Agent entries only touched indirectly: not "can an agent do ML engineering" but specifically "can an agent post-train a model as well as a human team." A commonly cited figure — that AI-run post-training as of March 2026 achieves roughly half the uplift of human-run post-training — comes from a secondary summary and should be confirmed against the paper's actual tables before being repeated as precise.</div>
@@ -527,7 +527,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">AutoLLMResearch, AutoLab, "Act As a Real Researcher," ResearchClawBench, AutoResearchBench <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Apr–Jun 2026</span></div>
       <div class="paper-authors">arXiv:2605.11518 · 2606.05080 · 2606.07462 · 2606.07591 · 2604.25256</div>
       <div class="paper-summary">Five separate benchmark/system papers, all confirmed to exist, released within a roughly ten-week window. Together they cover: automating LLM experiment configuration (AutoLLMResearch); long-horizon research-and-engineering tasks for frontier models (AutoLab); a full research-lifecycle benchmark suite ("Act As a Real Researcher"); an end-to-end autonomous science benchmark related to the AutoResearchClaw family (ResearchClawBench); and literature discovery across roughly 3 million arXiv papers (AutoResearchBench). None of the five were read past their arXiv listing for this article — they're grouped here as a cluster worth surveying together rather than described individually, since the overlap between several of them (especially ResearchClawBench vs. ARC-Bench) was not resolved in this research pass.</div>
@@ -540,7 +540,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">METR: Measuring AI R&amp;D Automation <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Mar 2026</span></div>
       <div class="paper-authors">arXiv:2603.03992</div>
       <div class="paper-summary">METR's direct 2026 follow-on to RE-Bench and MLE-bench from the base survey, explicitly measuring how much of real AI R&amp;D work has become automatable rather than benchmarking a specific system's score. The natural companion read to METR's February 2026 blog note projecting roughly 99% AI R&amp;D automation around 2032, from a simplified timelines model.</div>
@@ -552,7 +552,7 @@
 
     <h2 id="labs2026" class="agi-section">What Frontier Labs Actually Said in 2026</h2>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Automated Researchers Can Reliably Mitigate Alignment Failures <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Aug 28, 2026</span></div>
       <div class="paper-authors">Anthropic — official research page</div>
       <div class="paper-summary">The strongest primary-source item in this entire update. Anthropic reports applying a Claude-driven automated researcher to ten categories of alignment failure — deception, sycophancy, jailbreak susceptibility, and others — and closing what they describe as a substantial portion of the safety gap to their fully-trained production model. The reported sample efficiency figure (roughly 2,400 training examples, claimed around 15,000× more efficient than full production alignment training) comes directly from Anthropic's own page, not a secondary summary, which is why this is flagged HIGH rather than MEDIUM like most other 2026 entries here.</div>
@@ -562,7 +562,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">Anthropic's disclosures on Claude's role in its own R&amp;D <span class="conf-badge conf-medium">MEDIUM</span></span><span class="paper-meta">Aug 28, 2026</span></div>
       <div class="paper-authors">Reported via TechCrunch, "An Anthropic researcher just gave us a peek at self-improving AI"</div>
       <div class="paper-summary">The TechCrunch article itself is a real, directly-found piece of reporting. But two specific numbers attached to this story in wider circulation — that Claude leads "26%" of Anthropic's AI R&amp;D and runs across "30,000 concurrent agents," and separately that Claude writes over 80% of Anthropic's merged code as of May 2026 — traced back only to a secondary aggregator and an AI-generated search summary respectively, not to an Anthropic primary source verified in this research pass. Treat the qualitative claim (Anthropic uses Claude substantially in its own R&amp;D) as credible and the specific percentages as unverified.</div>
@@ -572,7 +572,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">OpenAI's "automated AI research intern" goal <span class="conf-badge conf-medium">MEDIUM</span></span><span class="paper-meta">2026</span></div>
       <div class="paper-authors">Reported via Import AI newsletter and secondary coverage</div>
       <div class="paper-summary">OpenAI reportedly set a goal of shipping something like an automated AI research intern by around September 2026. This research pass found the goal reported by third parties, not an OpenAI product page or paper confirming it shipped, and did not confirm whether the September target was met. A separately circulating claim referencing a model called "GPT-5.6 Sol" helping post-train a smaller model could not be verified as a real model name and should not be repeated without independent confirmation.</div>
@@ -582,7 +582,7 @@
       </div>
     </div>
 
-    <div class="paper-entry">
+    <div class="rsrch-entry">
       <div class="paper-hd"><span class="paper-title">METR Frontier Risk Report: cross-lab misalignment pilot <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">Feb–May 2026</span></div>
       <div class="paper-authors">metr.org/blog/2026-05-19-frontier-risk-report/</div>
       <div class="paper-summary">Describes a February 2026 pilot assessing misalignment risk specifically from AI agents used <em>inside</em> frontier labs' own workflows, with Anthropic, Google, Meta, and OpenAI all reported as participants. Not itself an RSI technique paper, but directly relevant context: it's an attempt to measure risk from the same "AI helping build AI" pattern the rest of this article covers, rather than risk from AI deployed to end users.</div>
