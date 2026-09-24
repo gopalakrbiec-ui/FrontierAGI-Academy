@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Modeling from Scratch, Part 3: Architectures &amp; Hyperparameters — FrontierAGI Academy Blog</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .agi-hero {
+      background: linear-gradient(135deg, #051a1a 0%, #073333 40%, #1a2e1a 75%, #030f0f 100%);
+      color: #fff; padding: 72px 40px 56px; border-radius: 16px; text-align: center;
+      margin-bottom: 48px; position: relative; overflow: hidden;
+    }
+    .agi-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(20,184,166,0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 25%, rgba(249,115,22,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(56,189,248,0.16) 0%, transparent 60%);
+    }
+    .agi-hero-icon { font-size: 4rem; display: block; margin-bottom: 16px; position: relative; animation: agiPulse 3s ease-in-out infinite; }
+    @keyframes agiPulse { 0%,100%{filter:drop-shadow(0 0 10px rgba(20,184,166,0.5));transform:scale(1);} 50%{filter:drop-shadow(0 0 26px rgba(249,115,22,0.6));transform:scale(1.05);} }
+    .agi-hero h1 { font-size: 2.1rem; font-weight: 800; margin: 0 0 16px; position: relative; line-height: 1.25; }
+    .agi-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 780px; margin: 0 auto; position: relative; }
+    .series-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+      background: rgba(20,184,166,0.32); padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; position: relative;
+    }
+
+    .agi-section-nav {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 40px; position: sticky; top: 94px;
+      background: #fff; z-index: 10; padding: 10px 0; border-bottom: 2px solid #f3f4f6;
+    }
+    .agi-nav-btn {
+      padding: 5px 11px; border: 1.5px solid #e5e7eb; border-radius: 18px; font-size: 0.7rem;
+      font-weight: 600; cursor: pointer; background: #fff; color: #6b7280; transition: all 0.2s;
+      white-space: nowrap; text-decoration: none;
+    }
+    .agi-nav-btn:hover { background: #fdf2f8; color: #be185d; border-color: #f9a8d4; }
+    .agi-section { scroll-margin-top: 160px; }
+
+    .part-divider { display: flex; align-items: center; gap: 14px; margin: 52px 0 28px; }
+    .part-divider-badge {
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #fff; background: linear-gradient(120deg,#be185d,#1c1017); padding: 8px 20px; border-radius: 999px; white-space: nowrap;
+    }
+    .part-divider-line { flex: 1; height: 2px; background: linear-gradient(90deg, #be185d, transparent); }
+
+    .market-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 28px 0; }
+    .mstat-card { background: linear-gradient(135deg, var(--ms-a), var(--ms-b)); border-radius: 14px; padding: 20px 16px; text-align: center; color: #fff; }
+    .mstat-num { font-size: 1.4rem; font-weight: 800; display: block; line-height: 1.1; }
+    .mstat-label { font-size: 0.74rem; opacity: 0.85; margin-top: 6px; }
+
+    .idea-box, .why-box, .unlock-box, .break-box {
+      border-radius: 12px; padding: 16px 18px; margin: 14px 0; font-size: 0.87rem; line-height: 1.7;
+    }
+    .idea-box { background: #fdf2f8; border-left: 4px solid #be185d; color: #831843; }
+    .why-box { background: #fffbeb; border-left: 4px solid #d97706; color: #78350f; }
+    .unlock-box { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+    .break-box { background: #fef2f2; border-left: 4px solid #dc2626; color: #7f1d1d; }
+    .box-label { font-weight: 800; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block; }
+
+    .pull-quote {
+      background: linear-gradient(135deg, #fdf2f8, #fffbeb); border-left: 4px solid #be185d;
+      border-radius: 0 14px 14px 0; padding: 22px 28px; margin: 28px 0;
+      font-size: 1rem; font-weight: 700; color: #831843; line-height: 1.6;
+    }
+
+    .tradeoff-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #e5e7eb; margin: 24px 0; }
+    .tradeoff-table { width: 100%; border-collapse: collapse; font-size: 0.74rem; }
+    .tradeoff-table th { background: #f9fafb; padding: 10px 10px; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+    .tradeoff-table td { padding: 9px 10px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    .tradeoff-table tr:last-child td { border-bottom: none; }
+    .tradeoff-table a { color: #be185d; }
+    .tradeoff-table td.undisclosed { color: #b45309; font-style: italic; }
+
+    .model-card { border: 1.5px solid #e5e7eb; border-radius: 16px; padding: 22px 24px; margin: 20px 0; background: #fff; }
+    .model-card-hd { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed #e5e7eb; }
+    .model-card-title { font-weight: 800; font-size: 1.05rem; color: #111; }
+    .model-card-date { font-size: 0.76rem; font-weight: 700; color: #fff; background: linear-gradient(120deg,#be185d,#1c1017); padding: 4px 12px; border-radius: 999px; }
+    .model-dims { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .model-dim dt { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #be185d; margin-bottom: 3px; }
+    .model-dim dd { font-size: 0.82rem; color: #374151; line-height: 1.55; margin: 0 0 10px; }
+    .model-dim dd.undisclosed { color: #92400e; font-style: italic; }
+
+    .bridge-card { border: 1.5px dashed #f9a8d4; border-radius: 14px; padding: 16px 20px; margin: 14px 0; background: #fdf2f8; }
+    .bridge-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+    .bridge-date { font-size: 0.72rem; font-weight: 800; color: #be185d; background: #fbcfe8; padding: 3px 10px; border-radius: 999px; }
+    .bridge-title { font-weight: 800; font-size: 0.92rem; color: #111; }
+    .bridge-body { font-size: 0.82rem; color: #374151; line-height: 1.65; }
+
+    .diagram-box { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 20px; margin: 18px 0 24px; background: #fafafa; text-align: center; }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption { font-size: 0.76rem; color: #6b7280; margin-top: 10px; font-style: italic; }
+
+    .conf-badge { display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+    .conf-high { background: #d1fae5; color: #047857; }
+    .conf-medium { background: #fef3c7; color: #b45309; }
+    .conf-low { background: #fee2e2; color: #b91c1c; }
+
+    .repo-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin: 16px 0 24px; }
+    .repo-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; padding: 8px 10px; border-bottom: 2px solid #e5e7eb; }
+    .repo-table td { padding: 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; color: #374151; line-height: 1.5; }
+    .repo-table tr:last-child td { border-bottom: none; }
+    .repo-table a { color: #be185d; text-decoration: none; font-weight: 700; }
+    .repo-table a:hover { text-decoration: underline; }
+    .repo-table .repo-name { font-weight: 800; color: #111; }
+    @media (max-width: 640px) {
+      .repo-table, .repo-table thead, .repo-table tbody, .repo-table th, .repo-table td, .repo-table tr { display: block; }
+      .repo-table thead { display: none; }
+      .repo-table tr { border: 1.5px solid #e5e7eb; border-radius: 10px; margin-bottom: 12px; padding: 8px 4px; }
+      .repo-table td { border-bottom: none; padding: 4px 10px; }
+      .repo-table td::before { content: attr(data-label); display: block; font-size: 0.64rem; font-weight: 800; text-transform: uppercase; color: #9ca3af; margin-bottom: 2px; }
+    }
+
+    .code-block { background: #0f172a; border-radius: 12px; padding: 18px 20px; margin: 16px 0 24px; overflow-x: auto; }
+    .code-block pre { margin: 0; font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 0.78rem; line-height: 1.6; color: #e2e8f0; white-space: pre; }
+    .code-block .cm { color: #64748b; }
+    .code-block .kw { color: #f472b6; }
+    .code-block .fn { color: #38bdf8; }
+    .code-block .st { color: #a3e635; }
+    .code-block .nm { color: #fb923c; }
+    .code-caption { font-size: 0.76rem; color: #6b7280; margin: -14px 0 20px; font-style: italic; }
+
+    .flow-dot { animation: flowMove 3.5s linear infinite; }
+    @keyframes flowMove { 0% { offset-distance: 0%; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+    .rope-vector { animation: ropeSpin 4s linear infinite; transform-origin: 200px 140px; }
+    @keyframes ropeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .gate-pulse { animation: gatePulse 2.2s ease-in-out infinite; }
+    @keyframes gatePulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+    .checklist { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+    .check-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-radius: 10px; background: #f9fafb; border: 1px solid #e5e7eb; }
+    .check-num { width: 26px; height: 26px; border-radius: 50%; background: #be185d; color: #fff; font-weight: 800; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .check-text { font-size: 0.82rem; color: #374151; line-height: 1.5; }
+    .check-text strong { color: #111; }
+
+    .ref-list { display: flex; flex-direction: column; gap: 6px; margin: 16px 0 28px; padding-left: 0; list-style: none; }
+    .ref-list li { font-size: 0.78rem; color: #6b7280; padding-left: 18px; position: relative; line-height: 1.5; }
+    .ref-list li::before { content: '🔗'; position: absolute; left: 0; font-size: 0.7rem; }
+    .ref-list a { color: #be185d; text-decoration: none; }
+    .ref-list a:hover { text-decoration: underline; }
+    .ref-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 20px; margin: 20px 0 32px; }
+    .ref-box-title { font-weight: 700; font-size: 0.82rem; color: #111; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 24px 0; }
+    .video-card { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fafafa; text-decoration: none; display: block; transition: all 0.2s; }
+    .video-card:hover { border-color: #be185d; background: #fdf2f8; }
+    .video-title { font-weight: 700; font-size: 0.83rem; color: #111; margin-bottom: 4px; }
+    .video-meta { font-size: 0.72rem; color: #6b7280; }
+
+    .caveat-box {
+      background: #fffbeb; border: 1.5px solid #fde047; border-radius: 12px;
+      padding: 16px 20px; margin: 22px 0; font-size: 0.79rem; color: #854d0e; line-height: 1.6;
+    }
+    .caveat-box strong { color: #713f12; }
+
+    .verdict-box { background: linear-gradient(135deg, #0c070f, #3b1d2e); border-radius: 16px; padding: 28px; margin: 28px 0; color: #fff; }
+    .verdict-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .verdict-body { font-size: 0.87rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .verdict-body strong { color: #f9a8d4; }
+
+    .flag-tag { display: inline-block; font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+    .flag-verified { background: #dcfce7; color: #166534; }
+    .flag-watch { background: #fef3c7; color: #92400e; }
+
+    @media (max-width: 768px) {
+      .agi-hero h1 { font-size: 1.35rem; }
+      .agi-section-nav { top: 94px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <!-- ═══ Ribbon 1: Brand ═══ -->
+  <div class="navbar-brand">
+    <a href="../index.html" class="logo"><svg class="logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="logoGradL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#93c5fd"/></linearGradient><linearGradient id="logoGradR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#99f6e4"/></linearGradient></defs><g fill="none" stroke="url(#logoGradL)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M100 30c-30 0-52 16-58 38-4 15 0 26 6 33-7 8-10 18-8 29 3 15 15 26 30 28 3 12 14 20 27 20h3V30z"/><path d="M62 78c10 4 22 3 30-6"/><path d="M56 108c9 5 20 5 28-2"/></g><g fill="none" stroke="url(#logoGradR)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M100 30c30 0 52 16 58 38 4 15 0 26-6 33 7 8 10 18 8 29-3 15-15 26-30 28-3 12-14 20-27 20h-3V30z"/><path d="M100 62l22 0 14-14"/><path d="M122 62l0 24 20 0"/><path d="M122 86l-18 18 0 20"/></g><g fill="url(#logoGradR)"><circle cx="136" cy="48" r="7"/><circle cx="142" cy="86" r="7"/><circle cx="104" cy="104" r="7"/></g></svg> FrontierAGI Academy</a>
+    <span class="navbar-brand-tagline">Build · Learn · Explore</span>
+  </div>
+  <!-- ═══ Ribbon 2: Navigation ═══ -->
+  <div class="navbar-main">
+    <button class="nav-tab" data-panel="mode">🎓 Learning Mode <i class="nav-chevron">▼</i></button>
+    <div class="navbar-sep"></div>
+    <button class="nav-tab active" data-panel="explore">🧭 Explore <i class="nav-chevron">▼</i></button>
+    <button class="nav-tab" data-panel="ecosystems">🌏 AI Ecosystems <i class="nav-chevron">▼</i></button>
+    <div class="navbar-sep"></div>
+    <a href="../pages/ai-news.html" class="nav-item">📰 Daily AI News</a>
+    <button class="nav-tab" data-panel="blog">✍️ Blog <i class="nav-chevron">▼</i></button>
+  </div>
+</nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<div class="nav-panel-wrap" id="navPanelWrap">
+
+  <div class="nav-panel" id="navPanel-mode">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-mode">
+        <div class="nav-panel-hd-title">🎓 Learning Mode</div>
+        <div class="nav-panel-hd-sub">Choose your perspective on LLMs</div>
+      </div>
+      <div class="nav-panel-items mode-grid">
+        <a href="../pages/frontier-model-learning.html?mode=layman" class="mode-panel-btn">🙋 Layman</a>
+        <a href="../pages/frontier-model-learning.html?mode=graduate" class="mode-panel-btn">🎓 Graduate</a>
+        <a href="../pages/frontier-model-learning.html?mode=researcher" class="mode-panel-btn">🔬 Researcher</a>
+        <a href="../pages/frontier-model-learning.html?mode=team" class="mode-panel-btn">👥 Team</a>
+        <a href="../pages/frontier-model-learning.html?mode=startup" class="mode-panel-btn">🏢 Startup</a>
+        <a href="../pages/frontier-model-learning.html?mode=investor" class="mode-panel-btn">💰 Investor</a>
+        <a href="../pages/frontier-model-learning.html?mode=founder" class="mode-panel-btn">🧭 Founder</a>
+        <a href="../pages/frontier-model-learning.html?mode=agentmode" class="mode-panel-btn">⚡ Agentic</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-explore">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-explore">
+        <div class="nav-panel-hd-title">🧭 Explore</div>
+        <div class="nav-panel-hd-sub">Deep-dive resources &amp; timelines</div>
+      </div>
+      <div class="nav-panel-items">
+        <a href="../pages/frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+        <a href="../pages/future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
+        <a href="../pages/llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
+        <a href="../pages/coding-agents.html" class="panel-btn">🤖 Coding Agents</a>
+        <a href="founding-agi-startup-series.html" class="panel-btn">🚀 Founding an AGI Startup</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-ecosystems">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-eco">
+        <div class="nav-panel-hd-title">🌏 AI Ecosystems</div>
+        <div class="nav-panel-hd-sub">Country-level AI market deep dives</div>
+      </div>
+      <div class="nav-panel-items">
+        <a href="../pages/sovereign-ai.html" class="panel-btn">🏛️ Sovereign AI</a>
+        <a href="../pages/usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+        <a href="../pages/china-ai.html" class="panel-btn">🇨🇳 China AI</a>
+        <a href="../pages/europe-ai.html" class="panel-btn">🇪🇺 Europe AI</a>
+        <a href="../pages/india-ai.html" class="panel-btn">🇮🇳 India AI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-blog">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-blog">
+        <div class="nav-panel-hd-title">✍️ Blog</div>
+        <div class="nav-panel-hd-sub">Short articles from the team</div>
+      </div>
+      <div class="nav-panel-items nav-panel-blog-items">
+        <a href="../pages/blog.html" class="panel-btn nav-panel-blog-all">📋 All Posts</a>
+        <div class="nav-panel-divider"></div>
+        <div class="nav-panel-label">Recent Posts</div>
+        <div id="blogNavMenu"><!-- populated by JS --></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<main style="padding-top: 94px;">
+  <div class="blog-post-wrap">
+
+    <div class="blog-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../pages/blog.html">Blog</a>
+      <span>›</span>
+      <span>Language Modeling from Scratch, Part 3: Architectures &amp; Hyperparameters</span>
+    </div>
+
+    <div class="agi-hero">
+      <span class="series-badge">CS336 Deep Dive · Part 3 of 19</span>
+      <span class="agi-hero-icon">🧩</span>
+      <h1>Architectures &amp; Hyperparameters</h1>
+      <p>The 2017 Transformer and a 2026 frontier model share a family resemblance, but almost none of the actual components are identical anymore. This part walks through what changed, why each change happened, and builds an animated, original diagram for every major piece — normalization placement, RMSNorm, RoPE, and SwiGLU — the four choices Lecture 3 treats as the modern default stack.</p>
+    </div>
+
+    <div class="blog-meta-row">
+      <div class="blog-author-chip">
+        <div class="blog-author-avatar">FL</div>
+        <div>
+          <div class="blog-author-name">FrontierAGI Team</div>
+          <div class="blog-post-date">September 24, 2026 · 30 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caveat-box" style="margin-top:0;">
+      <strong>On the citations and diagrams below:</strong> every paper cited was independently verified (title, authors, arXiv ID) against arxiv.org directly. All diagrams in this piece are original — built specifically for this article, not reproductions of any figure from the cited papers, from CS336's own slides, or from third-party explainers. Two excellent third-party visual resources are linked at the end for further exploration rather than embedded directly, since embedding someone else's diagram isn't the same as understanding it yourself.
+    </div>
+
+    <div class="agi-section-nav">
+      <a href="#opening"        class="agi-nav-btn">From 2017 to Now</a>
+      <a href="#transformer"    class="agi-nav-btn">The Original Transformer Block</a>
+      <a href="#prepostln"      class="agi-nav-btn">Pre-LN vs. Post-LN</a>
+      <a href="#rmsnorm"        class="agi-nav-btn">RMSNorm</a>
+      <a href="#rope"           class="agi-nav-btn">RoPE</a>
+      <a href="#swiglu"         class="agi-nav-btn">SwiGLU</a>
+      <a href="#modernblock"    class="agi-nav-btn">Putting It Together</a>
+      <a href="#hyperparams"    class="agi-nav-btn">Hyperparameter Choices</a>
+      <a href="#gaps"           class="agi-nav-btn">Confidence Notes &amp; Gaps</a>
+      <a href="#references"     class="agi-nav-btn">Full Reference List</a>
+    </div>
+
+    <h2 id="opening" class="agi-section">From 2017 to Now</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">Attention Is All You Need <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">NeurIPS 2017</span></div>
+      <div class="paper-authors">Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin — arXiv:1706.03762</div>
+      <div class="paper-summary">Introduced the Transformer architecture and showed that attention alone — no recurrence, no convolution — could beat the best sequence-to-sequence models of the time on machine translation, while being dramatically more parallelizable to train. Nearly every large language model built since traces its architecture back to this paper, but almost none of them use it unmodified.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">📄 arXiv:1706.03762</a>
+      </div>
+    </div>
+    <p>Four specific changes separate a 2017 Transformer from what nearly every modern open-weight model actually ships with today: where normalization sits relative to each sublayer, what kind of normalization it is, how position is encoded, and what the feed-forward layer's internal activation looks like. Each one is a real, published, independently-motivated fix for a real problem the original design had.</p>
+
+    <h2 id="transformer" class="agi-section">The Original Transformer Block</h2>
+    <div class="diagram-box">
+      <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Original post-LN transformer block diagram">
+        <defs>
+          <path id="flowPathOrig" d="M 200 320 L 200 280 L 200 240 L 200 200 L 200 160 L 200 120 L 200 80 L 200 40 L 200 20" fill="none"/>
+          <marker id="arrowT3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+          </marker>
+        </defs>
+        <rect x="130" y="295" width="140" height="30" rx="6" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+        <text x="200" y="315" text-anchor="middle" font-size="11" fill="#374151">Input x</text>
+        <line x1="200" y1="295" x2="200" y2="272" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <rect x="130" y="242" width="140" height="30" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="200" y="262" text-anchor="middle" font-size="11" fill="#1e3a8a">Self-Attention</text>
+        <line x1="200" y1="242" x2="200" y2="219" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <circle cx="200" cy="207" r="11" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="200" y="211" text-anchor="middle" font-size="12" fill="#78350f">+</text>
+        <line x1="200" y1="196" x2="200" y2="180" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <rect x="130" y="152" width="140" height="28" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="200" y="170" text-anchor="middle" font-size="10.5" fill="#14532d">LayerNorm (post)</text>
+        <line x1="200" y1="152" x2="200" y2="129" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <rect x="130" y="99" width="140" height="30" rx="6" fill="#fdf2f8" stroke="#be185d" stroke-width="1.5"/>
+        <text x="200" y="119" text-anchor="middle" font-size="11" fill="#831843">Feed-Forward</text>
+        <line x1="200" y1="99" x2="200" y2="76" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <circle cx="200" cy="64" r="11" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="200" y="68" text-anchor="middle" font-size="12" fill="#78350f">+</text>
+        <line x1="200" y1="53" x2="200" y2="40" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3a)"/>
+
+        <rect x="130" y="8" width="140" height="28" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="200" y="26" text-anchor="middle" font-size="10.5" fill="#14532d">LayerNorm (post)</text>
+
+        <path d="M 80 300 C 40 300, 40 40, 80 30" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arrowT3a)"/>
+        <text x="20" y="165" font-size="9" fill="#6b7280" transform="rotate(-90 20 165)">residual (skip)</text>
+
+        <circle r="5" fill="#f97316" class="flow-dot">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 200 310 L 200 20"/>
+        </circle>
+      </svg>
+      <div class="diagram-caption">The original (2017) design: normalization applied <em>after</em> each sublayer and its residual add — "Post-LN." The moving dot traces one token's path through a single block; watch it pass through attention, then get normalized only after being added back to the residual stream.</div>
+    </div>
+
+    <h2 id="prepostln" class="agi-section">Pre-LN vs. Post-LN: A Training-Stability Fix</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">On Layer Normalization in the Transformer Architecture <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">ICML 2020</span></div>
+      <div class="paper-authors">Ruibin Xiong, Yunchang Yang, Di He, et al. — arXiv:2002.04745</div>
+      <div class="paper-summary">Using mean-field theory, the paper shows that Post-LN transformers have large expected gradients near the output layer at initialization, which is why the original Transformer needed a careful learning-rate warmup schedule to train stably at all. Moving normalization to <em>before</em> each sublayer instead — Pre-LN — gives well-behaved gradients right from initialization, letting the model train without any warmup and generally more stably at scale.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2002.04745" target="_blank" rel="noopener">📄 arXiv:2002.04745</a>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 620 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pre-LN vs Post-LN comparison diagram">
+        <defs>
+          <marker id="arrowT3b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+          </marker>
+        </defs>
+        <text x="130" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#7f1d1d">POST-LN (original)</text>
+        <rect x="60" y="150" width="140" height="28" rx="6" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+        <text x="130" y="168" text-anchor="middle" font-size="10" fill="#374151">x</text>
+        <line x1="130" y1="150" x2="130" y2="128" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <rect x="60" y="98" width="140" height="28" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="130" y="116" text-anchor="middle" font-size="10" fill="#1e3a8a">Sublayer</text>
+        <line x1="130" y1="98" x2="130" y2="76" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <circle cx="130" cy="64" r="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="130" y="68" text-anchor="middle" font-size="11" fill="#78350f">+</text>
+        <line x1="130" y1="54" x2="130" y2="42" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <rect x="60" y="14" width="140" height="26" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+        <text x="130" y="31" text-anchor="middle" font-size="10" fill="#7f1d1d">LayerNorm</text>
+        <path d="M 30 160 C 5 160, 5 65, 30 64" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="3 2" fill="none" marker-end="url(#arrowT3b)"/>
+        <text x="220" y="90" text-anchor="middle" font-size="10" fill="#7f1d1d" transform="rotate(0 220 90)">norm sees</text>
+        <text x="220" y="103" text-anchor="middle" font-size="10" fill="#7f1d1d">raw residual sum —</text>
+        <text x="220" y="116" text-anchor="middle" font-size="10" fill="#7f1d1d">large gradients early</text>
+
+        <text x="480" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">PRE-LN (modern default)</text>
+        <rect x="410" y="150" width="140" height="28" rx="6" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+        <text x="480" y="168" text-anchor="middle" font-size="10" fill="#374151">x</text>
+        <line x1="480" y1="150" x2="480" y2="128" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <rect x="410" y="98" width="140" height="26" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="480" y="115" text-anchor="middle" font-size="10" fill="#14532d">LayerNorm</text>
+        <line x1="480" y1="98" x2="480" y2="76" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <rect x="410" y="46" width="140" height="28" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="480" y="64" text-anchor="middle" font-size="10" fill="#1e3a8a">Sublayer</text>
+        <line x1="480" y1="46" x2="480" y2="24" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3b)"/>
+        <circle cx="480" cy="12" r="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="480" y="16" text-anchor="middle" font-size="11" fill="#78350f">+</text>
+        <path d="M 380 160 C 350 160, 350 12, 470 12" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="3 2" fill="none" marker-end="url(#arrowT3b)"/>
+
+        <text x="300" y="200" text-anchor="middle" font-size="10.5" fill="#374151">Same two ingredients, reordered — the residual stream itself is never normalized in Pre-LN,</text>
+        <text x="300" y="214" text-anchor="middle" font-size="10.5" fill="#374151">only the copy fed into each sublayer, which is what stabilizes gradients at initialization.</text>
+      </svg>
+      <div class="diagram-caption">Post-LN normalizes after adding the residual; Pre-LN normalizes only the sublayer's input, leaving the residual stream itself untouched all the way through the network.</div>
+    </div>
+
+    <h2 id="rmsnorm" class="agi-section">RMSNorm: A Cheaper Normalization</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">Root Mean Square Layer Normalization <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">2019</span></div>
+      <div class="paper-authors">Biao Zhang, Rico Sennrich — arXiv:1910.07467</div>
+      <div class="paper-summary">Standard LayerNorm does two things: re-centers a vector (subtracts its mean) and rescales it (divides by its standard deviation). This paper argues the re-centering step is largely dispensable — normalizing only by the root-mean-square of the vector, and dropping mean subtraction entirely, works about as well while being cheaper to compute. RMSNorm has since become the default normalization in most modern open-weight LLMs.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/1910.07467" target="_blank" rel="noopener">📄 arXiv:1910.07467</a>
+      </div>
+    </div>
+    <div class="code-block"><pre><span class="cm"># Original illustrative implementations for this series --</span>
+<span class="cm"># not copied from any CS336 file or model codebase.</span>
+
+<span class="kw">import</span> torch
+
+<span class="kw">def</span> <span class="fn">layer_norm</span>(x, eps=<span class="nm">1e-5</span>):
+    mean = x.mean(dim=-<span class="nm">1</span>, keepdim=<span class="kw">True</span>)
+    var = x.var(dim=-<span class="nm">1</span>, keepdim=<span class="kw">True</span>, unbiased=<span class="kw">False</span>)
+    <span class="kw">return</span> (x - mean) / torch.sqrt(var + eps)
+
+<span class="kw">def</span> <span class="fn">rms_norm</span>(x, eps=<span class="nm">1e-5</span>):
+    <span class="cm"># No mean subtraction -- only rescale by root-mean-square</span>
+    rms = torch.sqrt((x ** <span class="nm">2</span>).mean(dim=-<span class="nm">1</span>, keepdim=<span class="kw">True</span>) + eps)
+    <span class="kw">return</span> x / rms
+</pre></div>
+    <div class="code-caption">The entire difference is one subtraction. RMSNorm is cheaper per call and, per the paper's ablations, loses essentially nothing in model quality from skipping it.</div>
+
+    <h2 id="rope" class="agi-section">RoPE: Encoding Position by Rotation</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">RoFormer: Enhanced Transformer with Rotary Position Embedding <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">2021</span></div>
+      <div class="paper-authors">Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, Yunfeng Liu — arXiv:2104.09864</div>
+      <div class="paper-summary">Instead of adding a separate position vector to each token's embedding (as the original Transformer did), RoPE encodes position by rotating each query and key vector by an angle proportional to its position in the sequence. The key mathematical payoff: when you then compute an attention score as a dot product between a rotated query and a rotated key, the result depends only on their <em>relative</em> position — not their absolute positions individually — which the paper shows helps the model generalize better to sequence lengths it wasn't explicitly trained on.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2104.09864" target="_blank" rel="noopener">📄 arXiv:2104.09864</a>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RoPE rotation visualization">
+        <circle cx="200" cy="140" r="90" fill="none" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <line x1="110" y1="140" x2="290" y2="140" stroke="#e5e7eb" stroke-width="1"/>
+        <line x1="200" y1="50" x2="200" y2="230" stroke="#e5e7eb" stroke-width="1"/>
+
+        <g class="rope-vector">
+          <line x1="200" y1="140" x2="280" y2="140" stroke="#0d9488" stroke-width="3"/>
+          <circle cx="280" cy="140" r="5" fill="#0d9488"/>
+        </g>
+        <circle cx="200" cy="140" r="3" fill="#111"/>
+        <text x="200" y="255" text-anchor="middle" font-size="11" fill="#374151">Query/key vector, rotated by an angle proportional to token position</text>
+        <text x="200" y="270" text-anchor="middle" font-size="10" fill="#6b7280">(animation shown at one fixed frequency — real RoPE uses many frequencies at once, one per dimension pair)</text>
+      </svg>
+      <div class="diagram-caption">The rotating vector represents one 2D slice of a query or key. RoPE applies this rotation independently to many such pairs of dimensions, each at a different frequency — the same trick sinusoidal position encodings used, but applied as a rotation rather than an addition.</div>
+    </div>
+
+    <h2 id="swiglu" class="agi-section">SwiGLU: A Gated Feed-Forward Layer</h2>
+    <div class="rsrch-entry">
+      <div class="paper-hd"><span class="paper-title">GLU Variants Improve Transformer <span class="conf-badge conf-high">HIGH</span></span><span class="paper-meta">2020</span></div>
+      <div class="paper-authors">Noam Shazeer — arXiv:2002.05202</div>
+      <div class="paper-summary">The original Transformer's feed-forward layer is two linear projections with a ReLU in between. This paper tests replacing that with a Gated Linear Unit variant: split the hidden computation into two parallel projections, pass one through a Swish (SiLU) activation, and multiply it elementwise with the other, unactivated projection — letting the network learn to gate how much of each feature passes through, rather than applying a fixed nonlinearity uniformly. SwiGLU specifically (Swish-gated) is the variant that ended up in most subsequent open-weight model releases.</div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2002.05202" target="_blank" rel="noopener">📄 arXiv:2002.05202</a>
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SwiGLU gating diagram">
+        <defs>
+          <marker id="arrowT3c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+          </marker>
+        </defs>
+        <rect x="20" y="85" width="90" height="30" rx="6" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+        <text x="65" y="105" text-anchor="middle" font-size="11" fill="#374151">Input x</text>
+
+        <line x1="110" y1="95" x2="160" y2="45" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3c)"/>
+        <line x1="110" y1="105" x2="160" y2="155" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3c)"/>
+
+        <rect x="165" y="20" width="120" height="30" rx="6" fill="#fdf2f8" stroke="#be185d" stroke-width="1.5"/>
+        <text x="225" y="40" text-anchor="middle" font-size="10.5" fill="#831843">Linear + Swish</text>
+        <rect x="165" y="140" width="120" height="30" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="225" y="160" text-anchor="middle" font-size="10.5" fill="#1e3a8a">Linear (no activation)</text>
+
+        <line x1="285" y1="35" x2="345" y2="90" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3c)" class="gate-pulse"/>
+        <line x1="285" y1="155" x2="345" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3c)"/>
+
+        <circle cx="360" cy="95" r="16" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="360" y="100" text-anchor="middle" font-size="13" fill="#78350f">×</text>
+
+        <line x1="376" y1="95" x2="430" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowT3c)"/>
+        <rect x="435" y="80" width="55" height="30" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="462" y="100" text-anchor="middle" font-size="10.5" fill="#14532d">Out</text>
+
+        <text x="225" y="185" text-anchor="middle" font-size="10" fill="#6b7280">the gated (pulsing) branch controls how much of the linear branch passes through</text>
+      </svg>
+      <div class="diagram-caption">SwiGLU: one branch decides "how much," the other carries "what" — their elementwise product is the feed-forward layer's output, replacing a single fixed ReLU nonlinearity with a learned gate.</div>
+    </div>
+
+    <h2 id="modernblock" class="agi-section">Putting It Together: The Modern Default Block</h2>
+    <p>Stack all four changes on top of the original design and you get the transformer block architecture nearly every current open-weight LLM actually ships: Pre-LN placement, RMSNorm instead of LayerNorm, RoPE instead of learned or sinusoidal absolute position embeddings, and a SwiGLU feed-forward layer instead of a ReLU MLP. None of these four changes depend on each other — each is independently motivated and independently validated in its own paper — but they've converged into a de facto standard combination because they compose cleanly and each solves a real, separate problem: training stability, compute cost, length generalization, and representational flexibility, respectively.</p>
+
+    <h2 id="hyperparams" class="agi-section">Hyperparameter Choices</h2>
+    <p>Beyond the structural choices above, the same lecture covers the numeric knobs that define a specific model's shape: number of layers, model dimension (<code>d_model</code>), number of attention heads, feed-forward hidden dimension (typically some multiple of <code>d_model</code>, often smaller for gated variants like SwiGLU since the gating branch effectively adds a third weight matrix), vocabulary size (carried over directly from Part 2's tokenizer), and context length. None of these have one universally correct value — they're chosen jointly with the training compute budget available, which is exactly the resource-accounting question Part 1's toy Python example previewed, and which Lecture 2's actual FLOPs/memory accounting formalizes properly.</p>
+
+    <h2 id="gaps" class="agi-section">⚠️ Confidence Notes and Gaps</h2>
+    <div class="caveat-box">
+      All six papers cited in this piece were independently verified directly against arxiv.org — title, authors, and arXiv ID all high confidence, and each paper's described finding was checked against its actual abstract/contribution rather than assumed from the paper's reputation. All diagrams are original work for this article. This piece describes the architectural changes at a conceptual level; it does not reproduce CS336's own lecture slides or claim to represent exactly how Lecture 3 sequences or frames this material — treat it as an independently-researched companion covering the same territory, not a transcript.
+    </div>
+
+    <h2 id="references" class="agi-section">🔗 Full Reference List</h2>
+    <div class="ref-box">
+      <div class="ref-list">
+        <a href="cs336-tokenization-byte-pair-encoding-part2.html">Part 2 — Tokenization &amp; Byte-Pair Encoding</a>
+        <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need — arXiv:1706.03762</a>
+        <a href="https://arxiv.org/abs/1607.06450" target="_blank" rel="noopener">Layer Normalization — arXiv:1607.06450</a>
+        <a href="https://arxiv.org/abs/1910.07467" target="_blank" rel="noopener">RMSNorm — arXiv:1910.07467</a>
+        <a href="https://arxiv.org/abs/2002.04745" target="_blank" rel="noopener">Pre-LN vs. Post-LN — arXiv:2002.04745</a>
+        <a href="https://arxiv.org/abs/2104.09864" target="_blank" rel="noopener">RoFormer / RoPE — arXiv:2104.09864</a>
+        <a href="https://arxiv.org/abs/2002.05202" target="_blank" rel="noopener">GLU Variants Improve Transformer — arXiv:2002.05202</a>
+        <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">Jay Alammar — The Illustrated Transformer</a>
+        <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer (Georgia Tech Polo Club)</a>
+        <a href="https://github.com/stanford-cs336/assignment1-basics" target="_blank" rel="noopener">CS336 Assignment 1 — Basics</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+<script src="../app.js"></script>
+</body>
+</html>

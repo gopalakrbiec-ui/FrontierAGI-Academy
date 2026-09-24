@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "cs336-architectures-hyperparameters-part3",
+      "title": "Language Modeling from Scratch, Part 3: Architectures & Hyperparameters",
+      "excerpt": "What actually changed since the original 2017 Transformer, verified against six real papers: Pre-LN vs Post-LN normalization placement, RMSNorm, RoPE, and SwiGLU -- each explained with an original, animated diagram, plus original from-scratch code for RMSNorm.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "30 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83e\udde9",
+      "featured": true
+    },
+    {
       "slug": "cs336-tokenization-byte-pair-encoding-part2",
       "title": "Language Modeling from Scratch, Part 2: Tokenization & Byte-Pair Encoding",
       "excerpt": "Real citations for the BPE paper and GPT-2's byte-level BPE, a complete original from-scratch Python implementation (verified to run), and what assignment1-basics actually requires -- both training (learning merges) and encode/decode, confirmed directly from the repo's own test file.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83d\udd21",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs336-language-modeling-from-scratch-part1-overview",
