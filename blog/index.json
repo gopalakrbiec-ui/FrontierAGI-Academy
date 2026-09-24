@@ -1,8 +1,23 @@
 {
   "posts": [
     {
-      "slug": "cs336-architectures-hyperparameters-part3",
-      "title": "Language Modeling from Scratch, Part 3: Architectures & Hyperparameters",
+      "slug": "cs336-pytorch-resource-accounting-part3",
+      "title": "Language Modeling from Scratch, Part 3: PyTorch & Resource Accounting",
+      "excerpt": "FLOPs, memory, and arithmetic intensity from first principles -- the 6N training-compute heuristic, the real cost of Adam's optimizer state, and the roofline model -- with original, executed Python and a hands-on look at what assignment1-basics does (and doesn't) ask you to build.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "22 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83e\uddee",
+      "featured": true
+    },
+    {
+      "slug": "cs336-architectures-hyperparameters-part4",
+      "title": "Language Modeling from Scratch, Part 4: Architectures & Hyperparameters",
       "excerpt": "What actually changed since the original 2017 Transformer, verified against six real papers: Pre-LN vs Post-LN normalization placement, RMSNorm, RoPE, and SwiGLU -- each explained with an original, animated diagram, plus original from-scratch code for RMSNorm.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83e\udde9",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs336-tokenization-byte-pair-encoding-part2",
