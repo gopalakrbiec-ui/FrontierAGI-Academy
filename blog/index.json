@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "compute-frontier-ai-infrastructure-explainer",
+      "title": "Compute Frontier: Why AI Keeps Building Bigger Clusters",
+      "excerpt": "If MoE and better kernels make models cheaper per unit of intelligence, why do labs keep building million-chip clusters? The efficiency-paradox equation, real disclosed training runs (Llama 3.1, DeepSeek-V3, Llama 4), the mega-clusters (Google, Microsoft, AWS, xAI), the hardware timeline from A100 to Rubin, and an original executed Python model of the training-run planning math.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "24 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83d\udda5\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "cs336-pytorch-resource-accounting-part3",
       "title": "Language Modeling from Scratch, Part 3: PyTorch & Resource Accounting",
       "excerpt": "FLOPs, memory, and arithmetic intensity from first principles -- the 6N training-compute heuristic, the real cost of Adam's optimizer state, and the roofline model -- with original, executed Python and a hands-on look at what assignment1-basics does (and doesn't) ask you to build.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83e\uddee",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "cs336-architectures-hyperparameters-part4",
