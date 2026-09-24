@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "cs336-language-modeling-from-scratch-part1-overview",
+      "title": "Language Modeling from Scratch, Part 1: Course Primer & Overview",
+      "excerpt": "Opening a lecture-by-lecture series on Stanford CS336. What the course actually is (quoted directly from its own site), the five public assignments, real instructors and offerings, the full 19-lecture syllabus, and an original Python resource-accounting warm-up before tokenization in Part 2.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-24",
+      "readTime": "20 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "\ud83e\uddf1",
+      "featured": true
+    },
+    {
       "slug": "top-ai-research-phd-programs",
       "title": "Top AI Research PhD Programs: A Researcher's Guide",
       "excerpt": "Twenty programs across the US, UK, Europe, Canada, and Asia -- real program structure, admission statistics where they are actually public, faculty links, and funding, verified through direct research. Most acceptance rates are simply not disclosed, and this article says so rather than guessing.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "\ud83c\udf93",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-ai-research-study-stack",

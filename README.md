@@ -51,7 +51,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
-| 🎓 [Top AI Research PhD Programs: A Researcher's Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/top-ai-research-phd-programs.html) ⭐ | Twenty programs across the US, UK, Europe, Canada, and Asia -- real program structure, admission statistics where they are actually public,… | 2026-09-24 |
+| 🧱 [Language Modeling from Scratch, Part 1: Course Primer & Overview](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-language-modeling-from-scratch-part1-overview.html) ⭐ | Opening a lecture-by-lecture series on Stanford CS336. | 2026-09-24 |
+| 🎓 [Top AI Research PhD Programs: A Researcher's Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/top-ai-research-phd-programs.html) | Twenty programs across the US, UK, Europe, Canada, and Asia -- real program structure, admission statistics where they are actually public,… | 2026-09-24 |
 | 🗂️ [A Public Study Stack for Frontier AI Research Roles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-ai-research-study-stack.html) | Four researchers who actually interviewed at OpenAI, DeepMind, and elsewhere published their prep notes and topic lists. | 2026-09-24 |
 | 📏 [Evaluation and the Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-evaluation-and-open-problems.html) | Deep Dive 5 of 5, closing the CS329A field handbook series: METR's time-horizon methodology, GDPval, and DeepScholar-Bench, expanded with… | 2026-09-23 |
 | 🔍 [Competitive Programming and Retrieval Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-competitive-programming-and-retrieval-agents.html) | Deep Dive 4 of 5 on the CS329A field handbook: AlphaCode and AlphaCode 2's shift from brute-force generation to learned selection, plus… | 2026-09-23 |
