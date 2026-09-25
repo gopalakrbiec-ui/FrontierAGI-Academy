@@ -235,6 +235,7 @@
       "slugs": [
         "how-a-transformer-works-decoder-only",
         "how-llm-pretraining-works",
+        "how-llm-fine-tuning-works",
         "typesafe-jev-system-one-models-explained",
         "world-models",
         "physical-intelligence",

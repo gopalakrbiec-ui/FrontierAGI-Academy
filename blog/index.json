@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "how-llm-fine-tuning-works",
+      "title": "How LLM Fine-Tuning Works: Adapting a Base Model to a Task",
+      "excerpt": "How a pretrained model becomes an assistant or a specialist: defining the goal, curating data, chat templates and prompt-masked loss, full fine-tuning versus LoRA and QLoRA, forgetting and evaluation -- with a runnable experiment that pits full fine-tuning against a from-scratch LoRA.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-25",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfaf",
+      "featured": true
+    },
+    {
       "slug": "how-llm-pretraining-works",
       "title": "How LLM Pretraining Works: From Raw Text to a Foundation Model",
       "excerpt": "The full pretraining pipeline, stage by stage: collecting, filtering and deduplicating web-scale text, tokenizing and packing it, the next-token objective, the training recipe (warmup and cosine decay, AdamW, clipping, bf16), parallelism across thousands of GPUs, and checkpoints -- with real numbers from Llama 3, GPT-3 and FineWeb, and a miniature pipeline you can run on a laptop.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfed",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-a-transformer-works-decoder-only",
