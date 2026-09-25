@@ -6682,3 +6682,14 @@ body {
     padding-right: 0;
   }
 }
+
+/* ═══════════════════════ MOBILE OVERFLOW GUARDS ═══════════════════════ */
+@media (max-width: 640px) {
+  .part-divider-badge { white-space: normal !important; }
+  main table { display: block; overflow-x: auto; max-width: 100%; }
+  main { overflow-wrap: anywhere; }
+  main table, main table * { overflow-wrap: normal; }
+  main .le-setup-col { min-width: 0; }
+  main .cc-wrap, main .dc-bar-wrap, main .le-setup-col, main .pillar-card, main svg, main img { max-width: 100%; }
+  main pre { overflow-x: auto; max-width: 100%; }
+}
