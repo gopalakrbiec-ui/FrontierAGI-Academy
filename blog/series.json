@@ -47,6 +47,20 @@
       ]
     },
     {
+      "id": "sec-llm-pipeline",
+      "title": "How LLMs Are Built: From Architecture to Scale",
+      "short": "How LLMs Are Built",
+      "icon": "🛠️",
+      "slugs": [
+        "how-a-transformer-works-decoder-only",
+        "how-llm-pretraining-works",
+        "how-llm-fine-tuning-works",
+        "how-llm-post-training-works",
+        "how-llm-inference-works",
+        "how-llm-scaling-and-distributed-training-works"
+      ]
+    },
+    {
       "id": "sec-lineage",
       "title": "The Model Lineage Series",
       "short": "The Model Lineage Series",
@@ -233,12 +247,6 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
-        "how-a-transformer-works-decoder-only",
-        "how-llm-pretraining-works",
-        "how-llm-fine-tuning-works",
-        "how-llm-post-training-works",
-        "how-llm-inference-works",
-        "how-llm-scaling-and-distributed-training-works",
         "typesafe-jev-system-one-models-explained",
         "world-models",
         "physical-intelligence",

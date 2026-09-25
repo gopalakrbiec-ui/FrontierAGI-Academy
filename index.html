@@ -678,6 +678,7 @@
     <a href="#sec-rsi">Recursive Self-Improvement</a>
     <a href="#sec-cs329a">Self-Improving AI Agents Course</a>
     <a href="#sec-cs336">Language Modeling from Scratch</a>
+    <a href="#sec-llm-pipeline">How LLMs Are Built</a>
     <a href="#sec-lineage">Model Lineage</a>
     <a href="#sec-case-studies">Model Case Studies</a>
     <a href="#sec-reference">Reference Series</a>
@@ -835,6 +836,40 @@
           <div class="home-series-card-title" title="Language Modeling from Scratch, Part 4: Architectures &amp; Hyperparameters">Part 4 — Architectures &amp; Hyperparameters</div>
           <div class="home-series-card-meta">42 min · diagrams + parameter counting</div>
         </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" id="sec-llm-pipeline" style="--sp-accent:#7c3aed;--sp-tag-bg:#f5f3ff;">
+      <span class="home-series-tag">🛠️ How LLMs Are Built · 6 Articles</span>
+      <div class="home-series-title">How LLMs Are Built: From Architecture to Scale</div>
+      <div class="home-series-desc">The full lifecycle of a large language model, one in-depth article per stage — the transformer, pretraining, fine-tuning, post-training, inference, and scaling with distributed training — each with runnable code, real output, and sources checked.</div>
+      <div class="home-series-grid" id="grid-16">
+        <a href="blog/how-a-transformer-works-decoder-only.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚙️</span>
+          <div class="home-series-card-title" title="How a Transformer Works: A Decoder-Only Model, End to End">How a Transformer Works: A Decoder-Only Model, End to End</div>
+          <div class="home-series-card-meta">45 min · interactive + runnable code</div>
+        </a>
+        <a href="blog/how-llm-pretraining-works.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏭</span>
+          <div class="home-series-card-title" title="How LLM Pretraining Works: From Raw Text to a Foundation Model">How LLM Pretraining Works: From Raw Text to a Foundation Model</div>
+          <div class="home-series-card-meta">40 min · runnable mini pipeline</div>
+        </a>
+        <a href="blog/how-llm-fine-tuning-works.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎯</span>
+          <div class="home-series-card-title" title="How LLM Fine-Tuning Works: Adapting a Base Model to a Task">How LLM Fine-Tuning Works: Adapting a Base Model to a Task</div>
+          <div class="home-series-card-meta">40 min · full FT vs LoRA experiment</div>
+        </a>
+        <a href="blog/how-llm-post-training-works.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧭</span>
+          <div class="home-series-card-title" title="How Post-Training Works: SFT, RLHF, DPO and RLAIF">How Post-Training Works: SFT, RLHF, DPO and RLAIF</div>
+          <div class="home-series-card-meta">45 min · SFT vs DPO vs RLHF experiment</div>
+        </a>
+        <a href="blog/how-llm-inference-works.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚡</span>
+          <div class="home-series-card-title" title="How LLM Inference Works: From a Request to a Streamed Response">How LLM Inference Works: From a Request to a Streamed Response</div>
+          <div class="home-series-card-meta">40 min · runnable mini inference engine</div>
+        </a>
+        <a href="blog/how-llm-scaling-and-distributed-training-works.html" class="home-series-card"><span class="home-series-card-emoji">📈</span><div class="home-series-card-title" title="Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built">Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built</div><div class="home-series-card-meta">40 min · scaling study + all-reduce check</div></a>
       </div>
     </div>
   </div>
@@ -1506,36 +1541,10 @@
     </div>
 
     <div class="home-series-spotlight" id="sec-explainers" style="--sp-accent:#047857;--sp-tag-bg:#ecfdf5;">
-      <span class="home-series-tag">🔍 Topic Explainers · 20 Articles</span>
+      <span class="home-series-tag">🔍 Topic Explainers · 14 Articles</span>
       <div class="home-series-title">Topic Explainers: Standalone Deep Dives</div>
       <div class="home-series-desc">World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, and fresh launches like TypeSafe's Jev — each explained on its own.</div>
       <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-12">
-        <a href="blog/how-a-transformer-works-decoder-only.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚙️</span>
-          <div class="home-series-card-title" title="How a Transformer Works: A Decoder-Only Model, End to End">How a Transformer Works: A Decoder-Only Model, End to End</div>
-          <div class="home-series-card-meta">45 min · interactive + runnable code</div>
-        </a>
-        <a href="blog/how-llm-pretraining-works.html" class="home-series-card">
-          <span class="home-series-card-emoji">🏭</span>
-          <div class="home-series-card-title" title="How LLM Pretraining Works: From Raw Text to a Foundation Model">How LLM Pretraining Works: From Raw Text to a Foundation Model</div>
-          <div class="home-series-card-meta">40 min · runnable mini pipeline</div>
-        </a>
-        <a href="blog/how-llm-fine-tuning-works.html" class="home-series-card">
-          <span class="home-series-card-emoji">🎯</span>
-          <div class="home-series-card-title" title="How LLM Fine-Tuning Works: Adapting a Base Model to a Task">How LLM Fine-Tuning Works: Adapting a Base Model to a Task</div>
-          <div class="home-series-card-meta">40 min · full FT vs LoRA experiment</div>
-        </a>
-        <a href="blog/how-llm-post-training-works.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧭</span>
-          <div class="home-series-card-title" title="How Post-Training Works: SFT, RLHF, DPO and RLAIF">How Post-Training Works: SFT, RLHF, DPO and RLAIF</div>
-          <div class="home-series-card-meta">45 min · SFT vs DPO vs RLHF experiment</div>
-        </a>
-        <a href="blog/how-llm-inference-works.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚡</span>
-          <div class="home-series-card-title" title="How LLM Inference Works: From a Request to a Streamed Response">How LLM Inference Works: From a Request to a Streamed Response</div>
-          <div class="home-series-card-meta">40 min · runnable mini inference engine</div>
-        </a>
-        <a href="blog/how-llm-scaling-and-distributed-training-works.html" class="home-series-card"><span class="home-series-card-emoji">📈</span><div class="home-series-card-title" title="Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built">Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built</div><div class="home-series-card-meta">40 min · scaling study + all-reduce check</div></a>
         <a href="blog/typesafe-jev-system-one-models-explained.html" class="home-series-card">
           <span class="home-series-card-emoji">🧭</span>
           <div class="home-series-card-title" title="Inside Jev: TypeSafe AI's System One Model, Explained">Inside Jev: TypeSafe AI's "System One" Model, Explained</div>
