@@ -312,6 +312,7 @@
     .home-section { padding: 72px 0; }
     .home-section.alt { background: #fafafb; }
     .home-section-hd { text-align: center; max-width: 620px; margin: 0 auto 40px; }
+    .home-jumpnav a.jn-group { font-weight: 800; color: var(--accent); margin-top: 6px; }
     .home-section-hd .eyebrow { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
     .home-section-hd h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
     .home-section-hd p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
@@ -678,169 +679,46 @@
 <div class="home-jumpbar-wrap" id="homeJumpPanel">
   <input type="text" id="articleSearch" class="home-search-input" placeholder="Search articles…" oninput="filterHomeArticles(this.value)">
   <div class="home-jumpnav" id="homeJumpNav">
-    <a href="#sec-rsi">Recursive Self-Improvement</a>
-    <a href="#sec-cs329a">Self-Improving AI Agents Course</a>
-    <a href="#sec-cs336">Language Modeling from Scratch</a>
-    <a href="#sec-llm-lifecycle">How LLMs Are Built</a>
+    <a href="#sec-llm-lifecycle" class="jn-group">01 · How LLMs Are Built</a>
+    <a href="#sec-architecture">Architecture &amp; Learning</a>
+    <a href="#sec-explainers">Topic Explainers</a>
     <a href="#sec-lineage">Model Lineage</a>
     <a href="#sec-case-studies">Model Case Studies</a>
     <a href="#sec-reference">Reference Series</a>
+    <a href="#grp-courses" class="jn-group">02 · Courses</a>
+    <a href="#sec-cs336">Language Modeling from Scratch</a>
+    <a href="#sec-cs329a">Self-Improving AI Agents Course</a>
+    <a href="#grp-frontier" class="jn-group">03 · Frontier</a>
+    <a href="#sec-rsi">Recursive Self-Improvement</a>
+    <a href="#sec-capstack">Capability Stack</a>
+    <a href="#grp-researcher" class="jn-group">04 · Researcher</a>
     <a href="#sec-foundations">Researcher Foundations</a>
     <a href="#sec-practicum">Engineering Practicum</a>
-    <a href="#sec-architecture">Architecture &amp; Learning</a>
     <a href="#sec-path">Researcher's Path</a>
+    <a href="#grp-company" class="jn-group">05 · Company</a>
     <a href="#sec-startup">Founding a Startup</a>
     <a href="#sec-lanes">Startup Lane Deep Dives</a>
-    <a href="#sec-capstack">Capability Stack</a>
     <a href="#sec-econ">Economics &amp; Society</a>
-    <a href="#sec-explainers">Topic Explainers</a>
   </div>
   <div id="searchNoResults" class="home-search-empty" style="display:none;">No articles match your search.</div>
 </div>
 
-<!-- ═══════════════════════ RSI SERIES SPOTLIGHT ═══════════════════════ -->
+<!-- ═══════════════════════ LATEST SIGNAL ═══════════════════════ -->
 <div class="home-section">
   <div class="container">
-    <div class="home-rsi-spotlight" id="sec-rsi">
-      <span class="home-rsi-tag">✅ Complete · 7 of 7 Parts + 1 Bonus Report + 3 Research Updates</span>
-      <div class="home-rsi-title">The Recursive Self-Improvement Series</div>
-      <div class="home-rsi-desc">A seven-part deep dive into whether AI can meaningfully accelerate the process that builds better AI — from the 1965 origin of the "intelligence explosion" concept through the real, independently verified systems (Dream-RSI, ModularRSI, ScienceBuddy, AlphaEvolve) attacking pieces of the problem today, with every claim checked against primary sources before publication.</div>
-      <div class="home-rsi-grid home-grid-collapsible is-collapsed" id="grid-0">
-        <a href="blog/recursive-self-improvement-primer.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🔁</span>
-          <div class="home-rsi-card-title" title="Part 1 — The Primer">Part 1 — The Primer</div>
-          <div class="home-rsi-card-meta">Origin, definitions, safety-framework convergence</div>
-        </a>
-        <a href="blog/rsi-ai-automating-ai-research.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🧪</span>
-          <div class="home-rsi-card-title" title="Part 4 — AI Automating AI Research">Part 4 — AI Automating AI Research</div>
-          <div class="home-rsi-card-meta">Dream-RSI, ModularRSI, ScienceBuddy &amp; more</div>
-        </a>
-        <a href="blog/rsi-objective-specification-problem.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🎯</span>
-          <div class="home-rsi-card-title" title="Part 2 — Objective Specification">Part 2 — Objective Specification</div>
-          <div class="home-rsi-card-meta">Outer/inner alignment, Goodhart's Law &amp; reward hacking</div>
-        </a>
-        <a href="blog/rsi-distillation-centralization-moat.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🏛️</span>
-          <div class="home-rsi-card-title" title="Part 3 — Distillation, Centralization &amp; the Moat Question">Part 3 — Distillation &amp; Centralization</div>
-          <div class="home-rsi-card-meta">The OpenAI-DeepSeek accusation &amp; Epoch AI's catch-up data</div>
-        </a>
-        <a href="blog/rsi-data-vs-reinforcement-learning.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">📊</span>
-          <div class="home-rsi-card-title" title="Part 5 — Data vs. Reinforcement Learning">Part 5 — Data vs. Reinforcement Learning</div>
-          <div class="home-rsi-card-meta">Does RL teach or just sharpen? DeepSeek-R1's own account</div>
-        </a>
-        <a href="blog/rsi-sim-to-real-gap.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🤖</span>
-          <div class="home-rsi-card-title" title="Part 6 — The Sim-to-Real Gap">Part 6 — The Sim-to-Real Gap</div>
-          <div class="home-rsi-card-meta">The robot hand, told correctly, &amp; SWE-Bench Pro's score drop</div>
-        </a>
-        <a href="blog/rsi-autonomy-timelines.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">⏳</span>
-          <div class="home-rsi-card-title" title="Part 7 — Autonomy Timelines">Part 7 — Autonomy Timelines</div>
-          <div class="home-rsi-card-meta">METR's real doubling-time data, series finale</div>
-        </a>
-        <a href="blog/rsi-bonus-capability-evaluation-breakouts.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🕳️</span>
-          <div class="home-rsi-card-title" title="Bonus — When Capability Evaluations Break Their Own Sandbox">Bonus — Capability Evaluations That Broke Their Sandbox</div>
-          <div class="home-rsi-card-meta">Gemini &amp; OpenAI's real Sept 2026 sandbox-escape incidents</div>
-        </a>
-        <a href="blog/rsi-literature-survey.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">📚</span>
-          <div class="home-rsi-card-title" title="Research Update — Recursive Self-Improvement: A Literature Survey">Research Update — A Literature Survey</div>
-          <div class="home-rsi-card-meta">Foundational theory, four surveys &amp; 13 named techniques, annotated</div>
-        </a>
-        <a href="blog/rsi-2026-breakthroughs.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🧬</span>
-          <div class="home-rsi-card-title" title="Research Update — 2026 in RSI Research: New Breakthroughs and Papers">Research Update — 2026 Breakthroughs and Papers</div>
-          <div class="home-rsi-card-meta">This year's new techniques, surveys &amp; the benchmark wave</div>
-        </a>
-        <a href="blog/rsi-practitioners-primer.html" class="home-rsi-card">
-          <span class="home-rsi-card-emoji">🧭</span>
-          <div class="home-rsi-card-title" title="Research Update — A Practitioner's Primer on RSI">Research Update — A Practitioner's Primer</div>
-          <div class="home-rsi-card-meta">What to read, run, implement, fund &amp; publish, hands-on</div>
-        </a>
-      </div>
-      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-0', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
+    <div class="home-section-hd">
+      <div class="eyebrow">Latest Signal</div>
+      <h2>What Just Happened in AGI Research</h2>
+      <p>The most recent deep dive from the team — pulled straight from the blog's featured post.</p>
     </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ CS329A COURSE GUIDE ═══════════════════════ -->
-<div class="home-section">
-  <div class="container">
-    <div class="home-series-spotlight" id="sec-cs329a" style="--sp-accent:#2563eb;--sp-tag-bg:#eff6ff;">
-      <span class="home-series-tag">🎓 Course Guide · Handbook + 5 Deep Dives (Complete)</span>
-      <div class="home-series-title">Self-Improving AI Agents: A Guide to Stanford's CS329A</div>
-      <div class="home-series-desc">A standalone companion to Stanford's course on the mechanics behind self-improving agents — test-time compute, verification, agentic feedback loops, planning as search, RL for reasoning, and long-horizon evaluation. A different branch of "self-improvement" from this site's RSI series, covered on its own.</div>
-      <div class="home-series-grid" id="grid-14">
-        <a href="blog/cs329a-self-improving-agents-handbook.html" class="home-series-card">
-          <span class="home-series-card-emoji">📘</span>
-          <div class="home-series-card-title" title="Self-Improving AI Agents: A Field Handbook">A Field Handbook</div>
-          <div class="home-series-card-meta">32 min · rest of the course in one place</div>
-        </a>
-        <a href="blog/cs329a-agentic-feedback-loops.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔁</span>
-          <div class="home-series-card-title" title="Agentic Feedback Loops in Practice">Deep Dive 1 — Agentic Feedback Loops</div>
-          <div class="home-series-card-meta">24 min · ReAct, RLEF &amp; Constitutional AI, with diagrams</div>
-        </a>
-        <a href="blog/cs329a-planning-as-search.html" class="home-series-card">
-          <span class="home-series-card-emoji">🌳</span>
-          <div class="home-series-card-title" title="Planning as Search">Deep Dive 2 — Planning as Search</div>
-          <div class="home-series-card-meta">22 min · LATS, SPRINT &amp; SWiRL, with diagrams</div>
-        </a>
-        <a href="blog/cs329a-training-on-what-search-finds.html" class="home-series-card">
-          <span class="home-series-card-emoji">🏋️</span>
-          <div class="home-series-card-title" title="Training on What Search Finds">Deep Dive 3 — Training on What Search Finds</div>
-          <div class="home-series-card-meta">23 min · STaR, GRPO &amp; DAPO, with diagrams</div>
-        </a>
-        <a href="blog/cs329a-competitive-programming-and-retrieval-agents.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔍</span>
-          <div class="home-series-card-title" title="Competitive Programming and Retrieval Agents">Deep Dive 4 — Competitive Programming &amp; Retrieval Agents</div>
-          <div class="home-series-card-meta">22 min · AlphaCode, Search-O1 &amp; Search-R1, with diagrams</div>
-        </a>
-        <a href="blog/cs329a-evaluation-and-open-problems.html" class="home-series-card">
-          <span class="home-series-card-emoji">📏</span>
-          <div class="home-series-card-title" title="Evaluation and the Open Problems">Deep Dive 5 — Evaluation &amp; the Open Problems</div>
-          <div class="home-series-card-meta">24 min · METR, GDPval &amp; DeepScholar-Bench, with diagrams</div>
-        </a>
+    <div id="latestSignal">
+      <div class="home-signal-card">
+        <div class="home-signal-emoji">⏳</div>
+        <div class="home-signal-body">
+          <div class="home-signal-title">Loading latest research…</div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ CS336 LANGUAGE MODELING FROM SCRATCH ═══════════════════════ -->
-<div class="home-section">
-  <div class="container">
-    <div class="home-series-spotlight" id="sec-cs336" style="--sp-accent:#0d9488;--sp-tag-bg:#f0fdfa;">
-      <span class="home-series-tag">🧱 Lecture Series · Part 4 of 19</span>
-      <div class="home-series-title">Language Modeling from Scratch: A Guide to Stanford's CS336</div>
-      <div class="home-series-desc">A lecture-by-lecture deep-dive series on Stanford's from-scratch LLM-building course — tokenization, architectures, systems, scaling laws, data, and alignment, with real citations, original code walkthroughs, and hands-on directions tied to the actual public assignment repos. One full article per lecture, no length cap.</div>
-      <div class="home-series-grid" id="grid-15">
-        <a href="blog/cs336-language-modeling-from-scratch-part1-overview.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧱</span>
-          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 1: Course Primer &amp; Overview">Part 1 — Course Primer &amp; Overview</div>
-          <div class="home-series-card-meta">20 min</div>
-        </a>
-        <a href="blog/cs336-tokenization-byte-pair-encoding-part2.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔡</span>
-          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 2: Tokenization &amp; Byte-Pair Encoding">Part 2 — Tokenization &amp; Byte-Pair Encoding</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/cs336-pytorch-resource-accounting-part3.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧮</span>
-          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 3: PyTorch &amp; Resource Accounting">Part 3 — PyTorch &amp; Resource Accounting</div>
-          <div class="home-series-card-meta">22 min</div>
-        </a>
-        <a href="blog/cs336-architectures-hyperparameters-part4.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧩</span>
-          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 4: Architectures &amp; Hyperparameters">Part 4 — Architectures &amp; Hyperparameters</div>
-          <div class="home-series-card-meta">42 min · diagrams + parameter counting</div>
-        </a>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -848,7 +726,7 @@
 <div class="pipeline-section" id="sec-llm-lifecycle">
   <div class="container">
     <div class="home-section-hd">
-      <div class="eyebrow">End to End</div>
+      <div class="eyebrow">01 · Learn How LLMs Work</div>
       <h2>How LLMs Are Built: From Raw Text to Your Screen</h2>
       <p>Fourteen steps across four acts — pre-training, alignment, deployment, and what happens the instant a user hits send — with the objective functions behind each one. Take the interactive tour first, then go deeper: every step links to a full article with runnable code.</p>
     </div>
@@ -908,59 +786,126 @@
   </div>
 </div>
 
-<!-- ═══════════════════════ LATEST SIGNAL ═══════════════════════ -->
+<!-- ═══════════════════════ 01 · LEARN (CONTINUED) ═══════════════════════ -->
 <div class="home-section">
   <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">Latest Signal</div>
-      <h2>What Just Happened in AGI Research</h2>
-      <p>The most recent deep dive from the team — pulled straight from the blog's featured post.</p>
-    </div>
-    <div id="latestSignal">
-      <div class="home-signal-card">
-        <div class="home-signal-emoji">⏳</div>
-        <div class="home-signal-body">
-          <div class="home-signal-title">Loading latest research…</div>
-        </div>
+    <div class="home-series-spotlight" id="sec-architecture" style="--sp-accent:#be185d;--sp-tag-bg:#fdf2f8;">
+      <span class="home-series-tag">🧬 Architecture &amp; Learning Technique · 6 Articles</span>
+      <div class="home-series-title">Architecture &amp; Learning Technique: How the Field Actually Got Here</div>
+      <div class="home-series-desc">The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.</div>
+      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-6">
+        <a href="blog/evolution-of-neural-networks.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧬</span>
+          <div class="home-series-card-title" title="The Evolution of Neural Networks: From a 1943 Toy Model to Transformers">The Evolution of Neural Networks: From a 1943 Toy Model to Transformers</div>
+          <div class="home-series-card-meta">95 min</div>
+        </a>
+        <a href="blog/how-each-architecture-actually-learned.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚙️</span>
+          <div class="home-series-card-title" title="How Each Network Architecture Actually Learned">How Each Network Architecture Actually Learned</div>
+          <div class="home-series-card-meta">110 min</div>
+        </a>
+        <a href="blog/two-threads-architecture-vs-learning-technique.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧵</span>
+          <div class="home-series-card-title" title="Two Threads, One Chain: Architecture vs. Learning Technique">Two Threads, One Chain: Architecture vs. Learning Technique</div>
+          <div class="home-series-card-meta">85 min</div>
+        </a>
+        <a href="blog/after-transformers-current-methods-and-dead-ends.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔭</span>
+          <div class="home-series-card-title" title="After Transformers: What's Working, What's a Dead End, What's Next">After Transformers: What's Working, What's a Dead End, What's Next</div>
+          <div class="home-series-card-meta">90 min</div>
+        </a>
+        <a href="blog/agi-debate-scaling-vs-new-architectures.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚖️</span>
+          <div class="home-series-card-title" title="The AGI Debate: Scaling vs. New Architectures">The AGI Debate: Scaling vs. New Architectures</div>
+          <div class="home-series-card-meta">65 min</div>
+        </a>
+        <a href="blog/how-to-read-a-paper-like-a-researcher.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔎</span>
+          <div class="home-series-card-title" title="How to Read a Paper Like a Researcher">How to Read a Paper Like a Researcher</div>
+          <div class="home-series-card-meta">60 min</div>
+        </a>
       </div>
+      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-6', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════ THREE LANES ═══════════════════════ -->
-<div class="home-section alt">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">The AGI Startup Landscape</div>
-      <h2>Three Lanes, Three Very Different Bets</h2>
-      <p>Every AGI-adjacent startup — and increasingly, every researcher's career choice — falls into one of three strategic lanes.</p>
+    <div class="home-series-spotlight" id="sec-explainers" style="--sp-accent:#047857;--sp-tag-bg:#ecfdf5;">
+      <span class="home-series-tag">🔍 Topic Explainers · 14 Articles</span>
+      <div class="home-series-title">Topic Explainers: Standalone Deep Dives</div>
+      <div class="home-series-desc">World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, and fresh launches like TypeSafe's Jev — each explained on its own.</div>
+      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-12">
+        <a href="blog/typesafe-jev-system-one-models-explained.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧭</span>
+          <div class="home-series-card-title" title="Inside Jev: TypeSafe AI's System One Model, Explained">Inside Jev: TypeSafe AI's "System One" Model, Explained</div>
+          <div class="home-series-card-meta">35 min</div>
+        </a>
+        <a href="blog/world-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌍</span>
+          <div class="home-series-card-title" title="World Models: Teaching AI to Understand Reality">World Models: Teaching AI to Understand Reality</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/physical-intelligence.html" class="home-series-card">
+          <span class="home-series-card-emoji">🦾</span>
+          <div class="home-series-card-title" title="Physical Intelligence: Teaching AI to Act in the Real World">Physical Intelligence: Teaching AI to Act in the Real World</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/multimodal-consolidation.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧬</span>
+          <div class="home-series-card-title" title="Multimodality &amp; The Great Consolidation">Multimodality &amp; The Great Consolidation</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/voice-ai-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎙️</span>
+          <div class="home-series-card-title" title="Voice &amp; Speech AI Models: The Complete Guide">Voice &amp; Speech AI Models: The Complete Guide</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/image-video-ai-models.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎨</span>
+          <div class="home-series-card-title" title="Image &amp; Video AI Models: The Complete Guide">Image &amp; Video AI Models: The Complete Guide</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/reasoning-models-test-time-compute.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧠</span>
+          <div class="home-series-card-title" title="Reasoning Models &amp; Test-Time Compute: The Second Scaling Law">Reasoning Models &amp; Test-Time Compute: The Second Scaling Law</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/ai-chips-compute-infrastructure.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title" title="AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence">AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/rag-retrieval-knowledge-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔍</span>
+          <div class="home-series-card-title" title="Retrieval, Knowledge &amp; the RAG Stack">Retrieval, Knowledge &amp; the RAG Stack</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/ai-agents-enterprise-economy.html" class="home-series-card">
+          <span class="home-series-card-emoji">🤝</span>
+          <div class="home-series-card-title" title="AI Agents &amp; the Enterprise Agent Economy">AI Agents &amp; the Enterprise Agent Economy</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/ai-safety-alignment-interpretability.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛡️</span>
+          <div class="home-series-card-title" title="AI Safety, Alignment &amp; Interpretability: Building Trust Into the Machine">AI Safety, Alignment &amp; Interpretability: Building Trust Into the Machine</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/agentic-loop-explained.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚡</span>
+          <div class="home-series-card-title" title="Loop Engineering: The New Meta for AI Agents">Loop Engineering: The New Meta for AI Agents</div>
+          <div class="home-series-card-meta">16 min</div>
+        </a>
+        <a href="blog/frontier-model-pricing.html" class="home-series-card">
+          <span class="home-series-card-emoji">💰</span>
+          <div class="home-series-card-title" title="Frontier Model Pricing: The Complete Guide">Frontier Model Pricing: The Complete Guide</div>
+          <div class="home-series-card-meta">20 min</div>
+        </a>
+        <a href="blog/filmmaking-encyclopedia.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎬</span>
+          <div class="home-series-card-title" title="The Complete Filmmaking Encyclopedia">The Complete Filmmaking Encyclopedia</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+      </div>
+      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-12', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
-    <div class="home-lane-grid">
-      <a href="blog/building-agi-startup-lane1-frontier-scale.html" class="home-lane-card">
-        <span class="home-lane-icon">🔴</span>
-        <div class="home-lane-title">Lane 1 — Frontier Scale-First</div>
-        <div class="home-lane-desc">Training your own foundation model from scratch. Capital-intensive, research-credibility-gated, and the slowest feedback loop of the three.</div>
-        <div class="home-lane-links"><span>Explore Lane 1 →</span></div>
-      </a>
-      <a href="blog/building-agi-startup-lane2-applied-agentic.html" class="home-lane-card">
-        <span class="home-lane-icon">🔵</span>
-        <div class="home-lane-title">Lane 2 — Applied &amp; Agentic Layer</div>
-        <div class="home-lane-desc">Building on top of existing frontier models. Fast shipping cadence, flat teams, and the most legible path to revenue.</div>
-        <div class="home-lane-links"><span>Explore Lane 2 →</span></div>
-      </a>
-      <a href="blog/building-agi-startup-lane3-narrow-research-bet.html" class="home-lane-card">
-        <span class="home-lane-icon">🟢</span>
-        <div class="home-lane-title">Lane 3 — Narrow Research Bet</div>
-        <div class="home-lane-desc">A small, senior team betting everything on one research thesis. No product, no revenue plan — just conviction and capital.</div>
-        <div class="home-lane-links"><span>Explore Lane 3 →</span></div>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ DEEP INVESTIGATIONS ═══════════════════════ -->
-<div class="home-section">
-  <div class="container">
 
     <div class="home-lineage-spotlight" id="sec-lineage">
       <span class="home-lineage-tag">✅ Complete · 8 Labs, Fully Cross-Referenced</span>
@@ -1010,8 +955,6 @@
       </div>
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-1', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
-
-
 
     <div class="home-series-spotlight" id="sec-case-studies" style="--sp-accent:#ea580c;--sp-tag-bg:#fff7ed;">
       <span class="home-series-tag">🏗️ Model Case Studies · 9 Articles</span>
@@ -1129,6 +1072,246 @@
         </a>
       </div>
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-3', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ 02 · COURSES ═══════════════════════ -->
+<div class="home-section alt" id="grp-courses">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">02 · Take a Course</div>
+      <h2>Full University Courses, Lecture by Lecture</h2>
+      <p>Guides to Stanford courses on building language models from scratch and on self-improving agents.</p>
+    </div>
+
+    <div class="home-series-spotlight" id="sec-cs336" style="--sp-accent:#0d9488;--sp-tag-bg:#f0fdfa;">
+      <span class="home-series-tag">🧱 Lecture Series · Part 4 of 19</span>
+      <div class="home-series-title">Language Modeling from Scratch: A Guide to Stanford's CS336</div>
+      <div class="home-series-desc">A lecture-by-lecture deep-dive series on Stanford's from-scratch LLM-building course — tokenization, architectures, systems, scaling laws, data, and alignment, with real citations, original code walkthroughs, and hands-on directions tied to the actual public assignment repos. One full article per lecture, no length cap.</div>
+      <div class="home-series-grid" id="grid-15">
+        <a href="blog/cs336-language-modeling-from-scratch-part1-overview.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧱</span>
+          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 1: Course Primer &amp; Overview">Part 1 — Course Primer &amp; Overview</div>
+          <div class="home-series-card-meta">20 min</div>
+        </a>
+        <a href="blog/cs336-tokenization-byte-pair-encoding-part2.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔡</span>
+          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 2: Tokenization &amp; Byte-Pair Encoding">Part 2 — Tokenization &amp; Byte-Pair Encoding</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/cs336-pytorch-resource-accounting-part3.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧮</span>
+          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 3: PyTorch &amp; Resource Accounting">Part 3 — PyTorch &amp; Resource Accounting</div>
+          <div class="home-series-card-meta">22 min</div>
+        </a>
+        <a href="blog/cs336-architectures-hyperparameters-part4.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧩</span>
+          <div class="home-series-card-title" title="Language Modeling from Scratch, Part 4: Architectures &amp; Hyperparameters">Part 4 — Architectures &amp; Hyperparameters</div>
+          <div class="home-series-card-meta">42 min · diagrams + parameter counting</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" id="sec-cs329a" style="--sp-accent:#2563eb;--sp-tag-bg:#eff6ff;">
+      <span class="home-series-tag">🎓 Course Guide · Handbook + 5 Deep Dives (Complete)</span>
+      <div class="home-series-title">Self-Improving AI Agents: A Guide to Stanford's CS329A</div>
+      <div class="home-series-desc">A standalone companion to Stanford's course on the mechanics behind self-improving agents — test-time compute, verification, agentic feedback loops, planning as search, RL for reasoning, and long-horizon evaluation. A different branch of "self-improvement" from this site's RSI series, covered on its own.</div>
+      <div class="home-series-grid" id="grid-14">
+        <a href="blog/cs329a-self-improving-agents-handbook.html" class="home-series-card">
+          <span class="home-series-card-emoji">📘</span>
+          <div class="home-series-card-title" title="Self-Improving AI Agents: A Field Handbook">A Field Handbook</div>
+          <div class="home-series-card-meta">32 min · rest of the course in one place</div>
+        </a>
+        <a href="blog/cs329a-agentic-feedback-loops.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔁</span>
+          <div class="home-series-card-title" title="Agentic Feedback Loops in Practice">Deep Dive 1 — Agentic Feedback Loops</div>
+          <div class="home-series-card-meta">24 min · ReAct, RLEF &amp; Constitutional AI, with diagrams</div>
+        </a>
+        <a href="blog/cs329a-planning-as-search.html" class="home-series-card">
+          <span class="home-series-card-emoji">🌳</span>
+          <div class="home-series-card-title" title="Planning as Search">Deep Dive 2 — Planning as Search</div>
+          <div class="home-series-card-meta">22 min · LATS, SPRINT &amp; SWiRL, with diagrams</div>
+        </a>
+        <a href="blog/cs329a-training-on-what-search-finds.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏋️</span>
+          <div class="home-series-card-title" title="Training on What Search Finds">Deep Dive 3 — Training on What Search Finds</div>
+          <div class="home-series-card-meta">23 min · STaR, GRPO &amp; DAPO, with diagrams</div>
+        </a>
+        <a href="blog/cs329a-competitive-programming-and-retrieval-agents.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔍</span>
+          <div class="home-series-card-title" title="Competitive Programming and Retrieval Agents">Deep Dive 4 — Competitive Programming &amp; Retrieval Agents</div>
+          <div class="home-series-card-meta">22 min · AlphaCode, Search-O1 &amp; Search-R1, with diagrams</div>
+        </a>
+        <a href="blog/cs329a-evaluation-and-open-problems.html" class="home-series-card">
+          <span class="home-series-card-emoji">📏</span>
+          <div class="home-series-card-title" title="Evaluation and the Open Problems">Deep Dive 5 — Evaluation &amp; the Open Problems</div>
+          <div class="home-series-card-meta">24 min · METR, GDPval &amp; DeepScholar-Bench, with diagrams</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ 03 · FRONTIER ═══════════════════════ -->
+<div class="home-section" id="grp-frontier">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">03 · Follow the Frontier</div>
+      <h2>Where AGI Research Is Heading</h2>
+      <p>Long-form, fully sourced series on recursive self-improvement and the capabilities that still separate today’s models from AGI.</p>
+    </div>
+
+    <div class="home-rsi-spotlight" id="sec-rsi">
+      <span class="home-rsi-tag">✅ Complete · 7 of 7 Parts + 1 Bonus Report + 3 Research Updates</span>
+      <div class="home-rsi-title">The Recursive Self-Improvement Series</div>
+      <div class="home-rsi-desc">A seven-part deep dive into whether AI can meaningfully accelerate the process that builds better AI — from the 1965 origin of the "intelligence explosion" concept through the real, independently verified systems (Dream-RSI, ModularRSI, ScienceBuddy, AlphaEvolve) attacking pieces of the problem today, with every claim checked against primary sources before publication.</div>
+      <div class="home-rsi-grid home-grid-collapsible is-collapsed" id="grid-0">
+        <a href="blog/recursive-self-improvement-primer.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🔁</span>
+          <div class="home-rsi-card-title" title="Part 1 — The Primer">Part 1 — The Primer</div>
+          <div class="home-rsi-card-meta">Origin, definitions, safety-framework convergence</div>
+        </a>
+        <a href="blog/rsi-ai-automating-ai-research.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🧪</span>
+          <div class="home-rsi-card-title" title="Part 4 — AI Automating AI Research">Part 4 — AI Automating AI Research</div>
+          <div class="home-rsi-card-meta">Dream-RSI, ModularRSI, ScienceBuddy &amp; more</div>
+        </a>
+        <a href="blog/rsi-objective-specification-problem.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🎯</span>
+          <div class="home-rsi-card-title" title="Part 2 — Objective Specification">Part 2 — Objective Specification</div>
+          <div class="home-rsi-card-meta">Outer/inner alignment, Goodhart's Law &amp; reward hacking</div>
+        </a>
+        <a href="blog/rsi-distillation-centralization-moat.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🏛️</span>
+          <div class="home-rsi-card-title" title="Part 3 — Distillation, Centralization &amp; the Moat Question">Part 3 — Distillation &amp; Centralization</div>
+          <div class="home-rsi-card-meta">The OpenAI-DeepSeek accusation &amp; Epoch AI's catch-up data</div>
+        </a>
+        <a href="blog/rsi-data-vs-reinforcement-learning.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">📊</span>
+          <div class="home-rsi-card-title" title="Part 5 — Data vs. Reinforcement Learning">Part 5 — Data vs. Reinforcement Learning</div>
+          <div class="home-rsi-card-meta">Does RL teach or just sharpen? DeepSeek-R1's own account</div>
+        </a>
+        <a href="blog/rsi-sim-to-real-gap.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🤖</span>
+          <div class="home-rsi-card-title" title="Part 6 — The Sim-to-Real Gap">Part 6 — The Sim-to-Real Gap</div>
+          <div class="home-rsi-card-meta">The robot hand, told correctly, &amp; SWE-Bench Pro's score drop</div>
+        </a>
+        <a href="blog/rsi-autonomy-timelines.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">⏳</span>
+          <div class="home-rsi-card-title" title="Part 7 — Autonomy Timelines">Part 7 — Autonomy Timelines</div>
+          <div class="home-rsi-card-meta">METR's real doubling-time data, series finale</div>
+        </a>
+        <a href="blog/rsi-bonus-capability-evaluation-breakouts.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🕳️</span>
+          <div class="home-rsi-card-title" title="Bonus — When Capability Evaluations Break Their Own Sandbox">Bonus — Capability Evaluations That Broke Their Sandbox</div>
+          <div class="home-rsi-card-meta">Gemini &amp; OpenAI's real Sept 2026 sandbox-escape incidents</div>
+        </a>
+        <a href="blog/rsi-literature-survey.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">📚</span>
+          <div class="home-rsi-card-title" title="Research Update — Recursive Self-Improvement: A Literature Survey">Research Update — A Literature Survey</div>
+          <div class="home-rsi-card-meta">Foundational theory, four surveys &amp; 13 named techniques, annotated</div>
+        </a>
+        <a href="blog/rsi-2026-breakthroughs.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🧬</span>
+          <div class="home-rsi-card-title" title="Research Update — 2026 in RSI Research: New Breakthroughs and Papers">Research Update — 2026 Breakthroughs and Papers</div>
+          <div class="home-rsi-card-meta">This year's new techniques, surveys &amp; the benchmark wave</div>
+        </a>
+        <a href="blog/rsi-practitioners-primer.html" class="home-rsi-card">
+          <span class="home-rsi-card-emoji">🧭</span>
+          <div class="home-rsi-card-title" title="Research Update — A Practitioner's Primer on RSI">Research Update — A Practitioner's Primer</div>
+          <div class="home-rsi-card-meta">What to read, run, implement, fund &amp; publish, hands-on</div>
+        </a>
+      </div>
+      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-0', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
+    </div>
+
+    <div class="home-series-spotlight" id="sec-capstack" style="--sp-accent:#0e7490;--sp-tag-bg:#ecfeff;">
+      <span class="home-series-tag">📈 The AGI Capability Stack · 13 Articles</span>
+      <div class="home-series-title">The AGI Capability Stack: Levers, Gaps &amp; Per-Lab Timelines</div>
+      <div class="home-series-desc">Where frontier models actually stand, the six real levers of progress, per-lab release-by-release stack timelines, and the gaps a new entrant could still exploit.</div>
+      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-10">
+        <a href="blog/frontier-innovation-levers.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛠️</span>
+          <div class="home-series-card-title" title="Beyond More Data: The Six Real Levers of Frontier AI's Next Advances">Beyond More Data: The Six Real Levers of Frontier AI's Next Advances</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/agi-capability-stack-mapped.html" class="home-series-card">
+          <span class="home-series-card-emoji">🗺️</span>
+          <div class="home-series-card-title" title="The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap">The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/agi-threshold-capability-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧩</span>
+          <div class="home-series-card-title" title="The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?">The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/agi-models-astra-claude-gemini.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔬</span>
+          <div class="home-series-card-title" title="Astra, Claude &amp; Gemini: Naming Names on the AGI Capability Stack">Astra, Claude &amp; Gemini: Naming Names on the AGI Capability Stack</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/gpt-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">📜</span>
+          <div class="home-series-card-title" title="The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next">The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/claude-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">🟣</span>
+          <div class="home-series-card-title" title="The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently">The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/gemini-series-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔵</span>
+          <div class="home-series-card-title" title="The Gemini Series on the AGI Stack: Google DeepMind's Long Game">The Gemini Series on the AGI Stack: Google DeepMind's Long Game</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/grok-deepseek-qwen-agi-stack-timeline.html" class="home-series-card">
+          <span class="home-series-card-emoji">⚡</span>
+          <div class="home-series-card-title" title="Grok, DeepSeek &amp; Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race">Grok, DeepSeek &amp; Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/agi-lever-gaps-new-entrants.html" class="home-series-card">
+          <span class="home-series-card-emoji">🚪</span>
+          <div class="home-series-card-title" title="The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win">The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+        <a href="blog/agi-startups-to-watch.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔭</span>
+          <div class="home-series-card-title" title="AGI Startups to Watch: Who's Actually Building in the Open Lanes">AGI Startups to Watch: Who's Actually Building in the Open Lanes</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/memory-continual-learning-agi-race.html" class="home-series-card">
+          <span class="home-series-card-emoji">💾</span>
+          <div class="home-series-card-title" title="Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won">Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/interpretability-gap-reading-model-minds.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔍</span>
+          <div class="home-series-card-title" title="The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore">The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title" title="The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race">The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+      </div>
+      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-10', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ 04 · RESEARCHER ═══════════════════════ -->
+<div class="home-section alt" id="grp-researcher">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">04 · Become a Researcher</div>
+      <h2>From Foundations to a Frontier-Lab Career</h2>
+      <p>The curriculum, the engineering practice and the career path.</p>
     </div>
 
     <div class="home-series-spotlight" id="sec-foundations" style="--sp-accent:#2563eb;--sp-tag-bg:#eff6ff;">
@@ -1249,45 +1432,6 @@
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-5', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
 
-    <div class="home-series-spotlight" id="sec-architecture" style="--sp-accent:#be185d;--sp-tag-bg:#fdf2f8;">
-      <span class="home-series-tag">🧬 Architecture &amp; Learning Technique · 6 Articles</span>
-      <div class="home-series-title">Architecture &amp; Learning Technique: How the Field Actually Got Here</div>
-      <div class="home-series-desc">The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.</div>
-      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-6">
-        <a href="blog/evolution-of-neural-networks.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧬</span>
-          <div class="home-series-card-title" title="The Evolution of Neural Networks: From a 1943 Toy Model to Transformers">The Evolution of Neural Networks: From a 1943 Toy Model to Transformers</div>
-          <div class="home-series-card-meta">95 min</div>
-        </a>
-        <a href="blog/how-each-architecture-actually-learned.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚙️</span>
-          <div class="home-series-card-title" title="How Each Network Architecture Actually Learned">How Each Network Architecture Actually Learned</div>
-          <div class="home-series-card-meta">110 min</div>
-        </a>
-        <a href="blog/two-threads-architecture-vs-learning-technique.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧵</span>
-          <div class="home-series-card-title" title="Two Threads, One Chain: Architecture vs. Learning Technique">Two Threads, One Chain: Architecture vs. Learning Technique</div>
-          <div class="home-series-card-meta">85 min</div>
-        </a>
-        <a href="blog/after-transformers-current-methods-and-dead-ends.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔭</span>
-          <div class="home-series-card-title" title="After Transformers: What's Working, What's a Dead End, What's Next">After Transformers: What's Working, What's a Dead End, What's Next</div>
-          <div class="home-series-card-meta">90 min</div>
-        </a>
-        <a href="blog/agi-debate-scaling-vs-new-architectures.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚖️</span>
-          <div class="home-series-card-title" title="The AGI Debate: Scaling vs. New Architectures">The AGI Debate: Scaling vs. New Architectures</div>
-          <div class="home-series-card-meta">65 min</div>
-        </a>
-        <a href="blog/how-to-read-a-paper-like-a-researcher.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔎</span>
-          <div class="home-series-card-title" title="How to Read a Paper Like a Researcher">How to Read a Paper Like a Researcher</div>
-          <div class="home-series-card-meta">60 min</div>
-        </a>
-      </div>
-      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-6', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
-    </div>
-
     <div class="home-series-spotlight" id="sec-path" style="--sp-accent:#1d4ed8;--sp-tag-bg:#eff6ff;">
       <span class="home-series-tag">🧭 The Researcher's Path · 4 Articles</span>
       <div class="home-series-title">The Researcher's Path: Careers, Labs &amp; Field Notes</div>
@@ -1320,15 +1464,40 @@
   </div>
 </div>
 
-<!-- ═══════════════════════ MORE SERIES ═══════════════════════ -->
-<div class="home-section alt">
+<!-- ═══════════════════════ THREE LANES ═══════════════════════ -->
+<div class="home-section alt" id="grp-company">
   <div class="container">
     <div class="home-section-hd">
-      <div class="eyebrow">More Series</div>
-      <h2>Startups, the Capability Stack, and Everything Else</h2>
-      <p>The rest of the archive, organized the same way — one section per series, one card per article.</p>
+      <div class="eyebrow">05 · Build a Company</div>
+      <h2>Three Lanes, Three Very Different Bets</h2>
+      <p>Every AGI-adjacent startup — and increasingly, every researcher's career choice — falls into one of three strategic lanes.</p>
     </div>
+    <div class="home-lane-grid">
+      <a href="blog/building-agi-startup-lane1-frontier-scale.html" class="home-lane-card">
+        <span class="home-lane-icon">🔴</span>
+        <div class="home-lane-title">Lane 1 — Frontier Scale-First</div>
+        <div class="home-lane-desc">Training your own foundation model from scratch. Capital-intensive, research-credibility-gated, and the slowest feedback loop of the three.</div>
+        <div class="home-lane-links"><span>Explore Lane 1 →</span></div>
+      </a>
+      <a href="blog/building-agi-startup-lane2-applied-agentic.html" class="home-lane-card">
+        <span class="home-lane-icon">🔵</span>
+        <div class="home-lane-title">Lane 2 — Applied &amp; Agentic Layer</div>
+        <div class="home-lane-desc">Building on top of existing frontier models. Fast shipping cadence, flat teams, and the most legible path to revenue.</div>
+        <div class="home-lane-links"><span>Explore Lane 2 →</span></div>
+      </a>
+      <a href="blog/building-agi-startup-lane3-narrow-research-bet.html" class="home-lane-card">
+        <span class="home-lane-icon">🟢</span>
+        <div class="home-lane-title">Lane 3 — Narrow Research Bet</div>
+        <div class="home-lane-desc">A small, senior team betting everything on one research thesis. No product, no revenue plan — just conviction and capital.</div>
+        <div class="home-lane-links"><span>Explore Lane 3 →</span></div>
+      </a>
+    </div>
+  </div>
+</div>
 
+<!-- ═══════════════════════ 05 · BUILD (CONTINUED) ═══════════════════════ -->
+<div class="home-section alt">
+  <div class="container">
     <div class="home-series-spotlight" id="sec-startup" style="--sp-accent:#c2410c;--sp-tag-bg:#fff7ed;">
       <span class="home-series-tag">🚀 Founding an AGI Startup · 13 Articles</span>
       <div class="home-series-title">Founding an AGI Startup: The Complete 12-Part Series</div>
@@ -1447,80 +1616,6 @@
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-9', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
 
-    <div class="home-series-spotlight" id="sec-capstack" style="--sp-accent:#0e7490;--sp-tag-bg:#ecfeff;">
-      <span class="home-series-tag">📈 The AGI Capability Stack · 13 Articles</span>
-      <div class="home-series-title">The AGI Capability Stack: Levers, Gaps &amp; Per-Lab Timelines</div>
-      <div class="home-series-desc">Where frontier models actually stand, the six real levers of progress, per-lab release-by-release stack timelines, and the gaps a new entrant could still exploit.</div>
-      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-10">
-        <a href="blog/frontier-innovation-levers.html" class="home-series-card">
-          <span class="home-series-card-emoji">🛠️</span>
-          <div class="home-series-card-title" title="Beyond More Data: The Six Real Levers of Frontier AI's Next Advances">Beyond More Data: The Six Real Levers of Frontier AI's Next Advances</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/agi-capability-stack-mapped.html" class="home-series-card">
-          <span class="home-series-card-emoji">🗺️</span>
-          <div class="home-series-card-title" title="The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap">The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/agi-threshold-capability-stack.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧩</span>
-          <div class="home-series-card-title" title="The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?">The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/agi-models-astra-claude-gemini.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔬</span>
-          <div class="home-series-card-title" title="Astra, Claude &amp; Gemini: Naming Names on the AGI Capability Stack">Astra, Claude &amp; Gemini: Naming Names on the AGI Capability Stack</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/gpt-series-agi-stack-timeline.html" class="home-series-card">
-          <span class="home-series-card-emoji">📜</span>
-          <div class="home-series-card-title" title="The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next">The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/claude-series-agi-stack-timeline.html" class="home-series-card">
-          <span class="home-series-card-emoji">🟣</span>
-          <div class="home-series-card-title" title="The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently">The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/gemini-series-agi-stack-timeline.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔵</span>
-          <div class="home-series-card-title" title="The Gemini Series on the AGI Stack: Google DeepMind's Long Game">The Gemini Series on the AGI Stack: Google DeepMind's Long Game</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/grok-deepseek-qwen-agi-stack-timeline.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚡</span>
-          <div class="home-series-card-title" title="Grok, DeepSeek &amp; Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race">Grok, DeepSeek &amp; Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/agi-lever-gaps-new-entrants.html" class="home-series-card">
-          <span class="home-series-card-emoji">🚪</span>
-          <div class="home-series-card-title" title="The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win">The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win</div>
-          <div class="home-series-card-meta">30 min</div>
-        </a>
-        <a href="blog/agi-startups-to-watch.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔭</span>
-          <div class="home-series-card-title" title="AGI Startups to Watch: Who's Actually Building in the Open Lanes">AGI Startups to Watch: Who's Actually Building in the Open Lanes</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/memory-continual-learning-agi-race.html" class="home-series-card">
-          <span class="home-series-card-emoji">💾</span>
-          <div class="home-series-card-title" title="Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won">Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/interpretability-gap-reading-model-minds.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔍</span>
-          <div class="home-series-card-title" title="The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore">The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔌</span>
-          <div class="home-series-card-title" title="The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race">The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-      </div>
-      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-10', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
-    </div>
-
     <div class="home-series-spotlight" id="sec-econ" style="--sp-accent:#b45309;--sp-tag-bg:#fffbeb;">
       <span class="home-series-tag">💼 Economics &amp; Society · 2 Articles</span>
       <div class="home-series-title">Economics &amp; Society: What AI Progress Does to the Rest of the World</div>
@@ -1538,85 +1633,6 @@
         </a>
       </div>
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-11', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
-    </div>
-
-    <div class="home-series-spotlight" id="sec-explainers" style="--sp-accent:#047857;--sp-tag-bg:#ecfdf5;">
-      <span class="home-series-tag">🔍 Topic Explainers · 14 Articles</span>
-      <div class="home-series-title">Topic Explainers: Standalone Deep Dives</div>
-      <div class="home-series-desc">World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, and fresh launches like TypeSafe's Jev — each explained on its own.</div>
-      <div class="home-series-grid home-grid-collapsible is-collapsed" id="grid-12">
-        <a href="blog/typesafe-jev-system-one-models-explained.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧭</span>
-          <div class="home-series-card-title" title="Inside Jev: TypeSafe AI's System One Model, Explained">Inside Jev: TypeSafe AI's "System One" Model, Explained</div>
-          <div class="home-series-card-meta">35 min</div>
-        </a>
-        <a href="blog/world-models.html" class="home-series-card">
-          <span class="home-series-card-emoji">🌍</span>
-          <div class="home-series-card-title" title="World Models: Teaching AI to Understand Reality">World Models: Teaching AI to Understand Reality</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/physical-intelligence.html" class="home-series-card">
-          <span class="home-series-card-emoji">🦾</span>
-          <div class="home-series-card-title" title="Physical Intelligence: Teaching AI to Act in the Real World">Physical Intelligence: Teaching AI to Act in the Real World</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/multimodal-consolidation.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧬</span>
-          <div class="home-series-card-title" title="Multimodality &amp; The Great Consolidation">Multimodality &amp; The Great Consolidation</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/voice-ai-models.html" class="home-series-card">
-          <span class="home-series-card-emoji">🎙️</span>
-          <div class="home-series-card-title" title="Voice &amp; Speech AI Models: The Complete Guide">Voice &amp; Speech AI Models: The Complete Guide</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/image-video-ai-models.html" class="home-series-card">
-          <span class="home-series-card-emoji">🎨</span>
-          <div class="home-series-card-title" title="Image &amp; Video AI Models: The Complete Guide">Image &amp; Video AI Models: The Complete Guide</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/reasoning-models-test-time-compute.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧠</span>
-          <div class="home-series-card-title" title="Reasoning Models &amp; Test-Time Compute: The Second Scaling Law">Reasoning Models &amp; Test-Time Compute: The Second Scaling Law</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/ai-chips-compute-infrastructure.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔌</span>
-          <div class="home-series-card-title" title="AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence">AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/rag-retrieval-knowledge-stack.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔍</span>
-          <div class="home-series-card-title" title="Retrieval, Knowledge &amp; the RAG Stack">Retrieval, Knowledge &amp; the RAG Stack</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/ai-agents-enterprise-economy.html" class="home-series-card">
-          <span class="home-series-card-emoji">🤝</span>
-          <div class="home-series-card-title" title="AI Agents &amp; the Enterprise Agent Economy">AI Agents &amp; the Enterprise Agent Economy</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/ai-safety-alignment-interpretability.html" class="home-series-card">
-          <span class="home-series-card-emoji">🛡️</span>
-          <div class="home-series-card-title" title="AI Safety, Alignment &amp; Interpretability: Building Trust Into the Machine">AI Safety, Alignment &amp; Interpretability: Building Trust Into the Machine</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/agentic-loop-explained.html" class="home-series-card">
-          <span class="home-series-card-emoji">⚡</span>
-          <div class="home-series-card-title" title="Loop Engineering: The New Meta for AI Agents">Loop Engineering: The New Meta for AI Agents</div>
-          <div class="home-series-card-meta">16 min</div>
-        </a>
-        <a href="blog/frontier-model-pricing.html" class="home-series-card">
-          <span class="home-series-card-emoji">💰</span>
-          <div class="home-series-card-title" title="Frontier Model Pricing: The Complete Guide">Frontier Model Pricing: The Complete Guide</div>
-          <div class="home-series-card-meta">20 min</div>
-        </a>
-        <a href="blog/filmmaking-encyclopedia.html" class="home-series-card">
-          <span class="home-series-card-emoji">🎬</span>
-          <div class="home-series-card-title" title="The Complete Filmmaking Encyclopedia">The Complete Filmmaking Encyclopedia</div>
-          <div class="home-series-card-meta">30 min</div>
-        </a>
-      </div>
-      <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-12', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
 
   </div>

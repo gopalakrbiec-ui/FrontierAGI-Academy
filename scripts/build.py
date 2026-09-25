@@ -201,6 +201,7 @@ def render_404(nav_template):
 
 
 ICON_OVERRIDES = {"sec-rsi": "🔁", "sec-lineage": "🗂️"}
+PRIMARY_SERIES = {"sec-rsi"}
 
 
 def spotlight_blocks(index_html):
@@ -226,7 +227,10 @@ def load_series(index_html):
             "slugs": slugs,
         }
         series.append(entry)
-        for slug in slugs:
+    # A post listed in two spotlights belongs to the first one in page order, except that a
+    # PRIMARY_SERIES spotlight always keeps its own posts (so moving sections doesn't re-home them).
+    for entry in sorted(series, key=lambda e: e["id"] not in PRIMARY_SERIES):
+        for slug in entry["slugs"]:
             owner.setdefault(slug, entry)
     return series, owner
 

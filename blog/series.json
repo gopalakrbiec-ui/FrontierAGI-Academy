@@ -2,51 +2,6 @@
   "generated_by": "scripts/build.py",
   "series": [
     {
-      "id": "sec-rsi",
-      "title": "The Recursive Self-Improvement Series",
-      "short": "The Recursive Self-Improvement Series",
-      "icon": "🔁",
-      "slugs": [
-        "recursive-self-improvement-primer",
-        "rsi-ai-automating-ai-research",
-        "rsi-objective-specification-problem",
-        "rsi-distillation-centralization-moat",
-        "rsi-data-vs-reinforcement-learning",
-        "rsi-sim-to-real-gap",
-        "rsi-autonomy-timelines",
-        "rsi-bonus-capability-evaluation-breakouts",
-        "rsi-literature-survey",
-        "rsi-2026-breakthroughs",
-        "rsi-practitioners-primer"
-      ]
-    },
-    {
-      "id": "sec-cs329a",
-      "title": "Self-Improving AI Agents: A Guide to Stanford's CS329A",
-      "short": "Self-Improving AI Agents",
-      "icon": "🎓",
-      "slugs": [
-        "cs329a-self-improving-agents-handbook",
-        "cs329a-agentic-feedback-loops",
-        "cs329a-planning-as-search",
-        "cs329a-training-on-what-search-finds",
-        "cs329a-competitive-programming-and-retrieval-agents",
-        "cs329a-evaluation-and-open-problems"
-      ]
-    },
-    {
-      "id": "sec-cs336",
-      "title": "Language Modeling from Scratch: A Guide to Stanford's CS336",
-      "short": "Language Modeling from Scratch",
-      "icon": "🧱",
-      "slugs": [
-        "cs336-language-modeling-from-scratch-part1-overview",
-        "cs336-tokenization-byte-pair-encoding-part2",
-        "cs336-pytorch-resource-accounting-part3",
-        "cs336-architectures-hyperparameters-part4"
-      ]
-    },
-    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
@@ -58,6 +13,42 @@
         "how-llm-post-training-works",
         "how-llm-inference-works",
         "how-llm-scaling-and-distributed-training-works"
+      ]
+    },
+    {
+      "id": "sec-architecture",
+      "title": "Architecture & Learning Technique: How the Field Actually Got Here",
+      "short": "Architecture & Learning Technique",
+      "icon": "🧬",
+      "slugs": [
+        "evolution-of-neural-networks",
+        "how-each-architecture-actually-learned",
+        "two-threads-architecture-vs-learning-technique",
+        "after-transformers-current-methods-and-dead-ends",
+        "agi-debate-scaling-vs-new-architectures",
+        "how-to-read-a-paper-like-a-researcher"
+      ]
+    },
+    {
+      "id": "sec-explainers",
+      "title": "Topic Explainers: Standalone Deep Dives",
+      "short": "Topic Explainers",
+      "icon": "🔍",
+      "slugs": [
+        "typesafe-jev-system-one-models-explained",
+        "world-models",
+        "physical-intelligence",
+        "multimodal-consolidation",
+        "voice-ai-models",
+        "image-video-ai-models",
+        "reasoning-models-test-time-compute",
+        "ai-chips-compute-infrastructure",
+        "rag-retrieval-knowledge-stack",
+        "ai-agents-enterprise-economy",
+        "ai-safety-alignment-interpretability",
+        "agentic-loop-explained",
+        "frontier-model-pricing",
+        "filmmaking-encyclopedia"
       ]
     },
     {
@@ -113,6 +104,72 @@
       ]
     },
     {
+      "id": "sec-cs336",
+      "title": "Language Modeling from Scratch: A Guide to Stanford's CS336",
+      "short": "Language Modeling from Scratch",
+      "icon": "🧱",
+      "slugs": [
+        "cs336-language-modeling-from-scratch-part1-overview",
+        "cs336-tokenization-byte-pair-encoding-part2",
+        "cs336-pytorch-resource-accounting-part3",
+        "cs336-architectures-hyperparameters-part4"
+      ]
+    },
+    {
+      "id": "sec-cs329a",
+      "title": "Self-Improving AI Agents: A Guide to Stanford's CS329A",
+      "short": "Self-Improving AI Agents",
+      "icon": "🎓",
+      "slugs": [
+        "cs329a-self-improving-agents-handbook",
+        "cs329a-agentic-feedback-loops",
+        "cs329a-planning-as-search",
+        "cs329a-training-on-what-search-finds",
+        "cs329a-competitive-programming-and-retrieval-agents",
+        "cs329a-evaluation-and-open-problems"
+      ]
+    },
+    {
+      "id": "sec-rsi",
+      "title": "The Recursive Self-Improvement Series",
+      "short": "The Recursive Self-Improvement Series",
+      "icon": "🔁",
+      "slugs": [
+        "recursive-self-improvement-primer",
+        "rsi-ai-automating-ai-research",
+        "rsi-objective-specification-problem",
+        "rsi-distillation-centralization-moat",
+        "rsi-data-vs-reinforcement-learning",
+        "rsi-sim-to-real-gap",
+        "rsi-autonomy-timelines",
+        "rsi-bonus-capability-evaluation-breakouts",
+        "rsi-literature-survey",
+        "rsi-2026-breakthroughs",
+        "rsi-practitioners-primer"
+      ]
+    },
+    {
+      "id": "sec-capstack",
+      "title": "The AGI Capability Stack: Levers, Gaps & Per-Lab Timelines",
+      "short": "The AGI Capability Stack",
+      "icon": "📈",
+      "slugs": [
+        "frontier-innovation-levers",
+        "agi-capability-stack-mapped",
+        "agi-threshold-capability-stack",
+        "agi-models-astra-claude-gemini",
+        "gpt-series-agi-stack-timeline",
+        "claude-series-agi-stack-timeline",
+        "gemini-series-agi-stack-timeline",
+        "grok-deepseek-qwen-agi-stack-timeline",
+        "agi-lever-gaps-new-entrants",
+        "agi-startups-to-watch",
+        "memory-continual-learning-agi-race",
+        "interpretability-gap-reading-model-minds",
+        "power-bottleneck-ai-infrastructure-race"
+      ]
+    },
+    {
       "id": "sec-foundations",
       "title": "AGI Researcher Foundations: An 11-Part Curriculum",
       "short": "AGI Researcher Foundations",
@@ -146,20 +203,6 @@
         "frontier-lab-engineering-other-teams-code",
         "frontier-lab-engineering-idea-to-merged-pr",
         "frontier-lab-engineering-week-in-the-life"
-      ]
-    },
-    {
-      "id": "sec-architecture",
-      "title": "Architecture & Learning Technique: How the Field Actually Got Here",
-      "short": "Architecture & Learning Technique",
-      "icon": "🧬",
-      "slugs": [
-        "evolution-of-neural-networks",
-        "how-each-architecture-actually-learned",
-        "two-threads-architecture-vs-learning-technique",
-        "after-transformers-current-methods-and-dead-ends",
-        "agi-debate-scaling-vs-new-architectures",
-        "how-to-read-a-paper-like-a-researcher"
       ]
     },
     {
@@ -211,27 +254,6 @@
       ]
     },
     {
-      "id": "sec-capstack",
-      "title": "The AGI Capability Stack: Levers, Gaps & Per-Lab Timelines",
-      "short": "The AGI Capability Stack",
-      "icon": "📈",
-      "slugs": [
-        "frontier-innovation-levers",
-        "agi-capability-stack-mapped",
-        "agi-threshold-capability-stack",
-        "agi-models-astra-claude-gemini",
-        "gpt-series-agi-stack-timeline",
-        "claude-series-agi-stack-timeline",
-        "gemini-series-agi-stack-timeline",
-        "grok-deepseek-qwen-agi-stack-timeline",
-        "agi-lever-gaps-new-entrants",
-        "agi-startups-to-watch",
-        "memory-continual-learning-agi-race",
-        "interpretability-gap-reading-model-minds",
-        "power-bottleneck-ai-infrastructure-race"
-      ]
-    },
-    {
       "id": "sec-econ",
       "title": "Economics & Society: What AI Progress Does to the Rest of the World",
       "short": "Economics & Society",
@@ -239,28 +261,6 @@
       "slugs": [
         "ai-productivity-paradox-layoffs",
         "ai-productivity-paradox-civilization"
-      ]
-    },
-    {
-      "id": "sec-explainers",
-      "title": "Topic Explainers: Standalone Deep Dives",
-      "short": "Topic Explainers",
-      "icon": "🔍",
-      "slugs": [
-        "typesafe-jev-system-one-models-explained",
-        "world-models",
-        "physical-intelligence",
-        "multimodal-consolidation",
-        "voice-ai-models",
-        "image-video-ai-models",
-        "reasoning-models-test-time-compute",
-        "ai-chips-compute-infrastructure",
-        "rag-retrieval-knowledge-stack",
-        "ai-agents-enterprise-economy",
-        "ai-safety-alignment-interpretability",
-        "agentic-loop-explained",
-        "frontier-model-pricing",
-        "filmmaking-encyclopedia"
       ]
     }
   ]
