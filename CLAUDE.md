@@ -1,7 +1,7 @@
 # FrontierAGI Academy — Claude Agent Context
 
 ## Project Type
-Static educational website. No build step, no framework, no backend.
+Static educational website. No framework, no backend — one small Python script (`scripts/build.py`, see below) keeps shared markup in sync.
 All pages are plain HTML/CSS/JS served as files.
 
 ## File Structure
