@@ -262,16 +262,6 @@
         "frontier-model-pricing",
         "filmmaking-encyclopedia"
       ]
-    },
-    {
-      "id": "sec-news",
-      "title": "News Digests: Monthly Roundups",
-      "short": "News Digests",
-      "icon": "📰",
-      "slugs": [
-        "ai-news-august-2026",
-        "ai-news-june-22-2026"
-      ]
     }
   ]
 }
