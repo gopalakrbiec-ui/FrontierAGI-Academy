@@ -3,11 +3,11 @@
     {
       "slug": "how-a-transformer-works-decoder-only",
       "title": "How a Transformer Works: A Decoder-Only Model, End to End",
-      "excerpt": "Follow \"The cat sat on the\" through every stage of a GPT-style model -- tokens, embeddings, masked attention, the MLP, logits and sampling -- with the tensor shape at each step, interactive attention and sampling demos, and a 110-line PyTorch GPT you can train in seconds.",
+      "excerpt": "Follow \"The cat sat on the\" through every stage of a GPT-style model -- tokens, embeddings, masked attention, the MLP, logits and sampling -- with the tensor shape at each step, a parameter count, how backpropagation and Adam train it, interactive demos, and a 110-line PyTorch GPT you can train in seconds.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-25",
-      "readTime": "30 min",
+      "readTime": "45 min",
       "tags": [
         "AI Research",
         "Explainer"

@@ -398,7 +398,7 @@
       <span class="series-badge">Explainer · With runnable code</span>
       <span class="agi-hero-icon">⚙️</span>
       <h1>How a Transformer Works: A Decoder-Only Model, End to End</h1>
-      <p>Follow the sentence "The cat sat on the" through every stage of a GPT-style model — tokens, embeddings, attention, the feed-forward layer, logits, sampling — and watch the tensor shapes at each step. Then build the whole thing in about 110 lines of PyTorch, train it for a few seconds, and see it predict the next word.</p>
+      <p>Follow the sentence "The cat sat on the" through every stage of a GPT-style model — tokens, embeddings, attention, the feed-forward layer, logits, sampling — watch the tensor shapes at each step, count the parameters, and see how backpropagation trains it. Then build the whole thing in about 110 lines of PyTorch, train it for a few seconds, and see it predict the next word.</p>
     </div>
 
     <div class="caveat-box" style="margin-top:0;">
@@ -413,6 +413,8 @@
       <a href="#mlp"        class="agi-nav-btn">The Feed-Forward Layer</a>
       <a href="#output"     class="agi-nav-btn">Vectors to a Prediction</a>
       <a href="#generate"   class="agi-nav-btn">The Generation Loop</a>
+      <a href="#params"     class="agi-nav-btn">How Many Parameters?</a>
+      <a href="#learn"      class="agi-nav-btn">How It Learns</a>
       <a href="#code"       class="agi-nav-btn">Build It in PyTorch</a>
       <a href="#shapes"     class="agi-nav-btn">Shape Cheat Sheet</a>
       <a href="#references" class="agi-nav-btn">References</a>
@@ -569,6 +571,180 @@ x = x + mlp(layer_norm_2(x))        <span class="cm"># per-token</span></pre></d
       <div class="tf-loop-cap" id="tfLoopCap">Each step: run the model on everything so far → sample one token → append it.</div>
     </div>
     <p>Two practical consequences follow. First, generation is sequential — token 100 can't be computed before token 99 exists — which is why output tokens are slower and cost more than input tokens. Second, running the full model over the whole sequence at every step would repeat almost all of the work; real inference engines cache each layer's keys and values (the <strong>KV cache</strong>) so each new step only computes attention for the one new token.</p>
+
+    <h2 id="params" class="agi-section">How Many Parameters?</h2>
+    <p>Only a few stages have learned weights: the embedding tables, the four attention projections and two MLP matrices in each block, the norms, and the LM head. Ignoring biases and norm scales (a tiny fraction), the count is:</p>
+    <div class="pc-formula">
+      <div class="pc-formula-main">total ≈ <b>V·d</b> + N·(<b>4d²</b> + <b>2·d·d<sub>ff</sub></b>) + <b>d·V</b></div>
+      <div class="pc-formula-parts"><span>token embeddings V·d</span><span>attention 4d² per block</span><span>MLP 2·d·d<sub>ff</sub> per block</span><span>LM head d·V (0 if tied)</span></div>
+      <div class="pc-formula-note">With d<sub>ff</sub> = 4d each block is 12d². Learned positions add T<sub>max</sub>·d; RoPE adds nothing.</div>
+    </div>
+    <p>Worked example at the size of a typical "7B" model — d = 4,096, d<sub>ff</sub> = 16,384, N = 32, V = 50,000:</p>
+    <table class="repo-table pc-num">
+      <thead><tr><th>Piece</th><th>Arithmetic</th><th>Parameters</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Piece">Token embeddings</td><td data-label="Arithmetic">50,000 × 4,096</td><td data-label="Parameters">204,800,000</td></tr>
+        <tr><td data-label="Piece">Attention, one block</td><td data-label="Arithmetic">4 × 4,096²</td><td data-label="Parameters">67,108,864</td></tr>
+        <tr><td data-label="Piece">MLP, one block</td><td data-label="Arithmetic">2 × 4,096 × 16,384</td><td data-label="Parameters">134,217,728</td></tr>
+        <tr class="pc-sub"><td data-label="Piece">One block</td><td data-label="Arithmetic">12 × 4,096²</td><td data-label="Parameters">201,326,592</td></tr>
+        <tr><td data-label="Piece">32 blocks</td><td data-label="Arithmetic">32 × 201,326,592</td><td data-label="Parameters">6,442,450,944</td></tr>
+        <tr><td data-label="Piece">LM head</td><td data-label="Arithmetic">4,096 × 50,000</td><td data-label="Parameters">204,800,000</td></tr>
+        <tr class="pc-total"><td data-label="Piece">Total, untied</td><td data-label="Arithmetic"></td><td data-label="Parameters">≈ 6.85B</td></tr>
+        <tr class="pc-total"><td data-label="Piece">Total, tied</td><td data-label="Arithmetic">minus one 204.8M matrix</td><td data-label="Parameters">≈ 6.65B</td></tr>
+      </tbody>
+    </table>
+    <div class="why-box">
+      <strong>A common slip:</strong> writing the per-block count as 2·d·d<sub>ff</sub> ≈ 134M and forgetting attention's 4d². That drops a third of every block and makes this model look like ~4.7B instead of ~6.85B. A quick sanity check: with d<sub>ff</sub> = 4d a block is 12d², and 12 × 4,096² ≈ 201M. The same shape with Llama 2's settings (SwiGLU at d<sub>ff</sub> = 11,008, V = 32,000, untied, RMSNorm scales included) comes to 6,738,415,616 by the same kind of arithmetic — the figure usually reported for Llama 2 7B.
+    </div>
+    <p>For every term, including biases and norm scales, and a PyTorch script that counts them from a real model, see <a href="cs336-architectures-hyperparameters-part4.html#params">Part 4's parameter count</a>.</p>
+
+    <h2 id="learn" class="agi-section">How It Learns: Backpropagation</h2>
+    <p>Everything so far was the <em>forward</em> pass: run the model and get a prediction. Training adds a <em>backward</em> pass that works out, for every one of those parameters, which direction to nudge it so the prediction gets better. The training loop in our script is three lines:</p>
+    <div class="code-block"><pre>logits = model(data[:, :-1])                                            <span class="cm"># forward: predict each next token</span>
+loss = F.cross_entropy(logits.reshape(-1, V), data[:, 1:].reshape(-1))  <span class="cm"># how wrong were we?</span>
+opt.zero_grad(); loss.backward(); opt.step()                            <span class="cm"># backward, then update</span></pre></div>
+    <p><code>loss.backward()</code> computes a gradient for every parameter; <code>opt.step()</code> uses them to update the weights. The rest of this section is what those two calls do.</p>
+
+    <h3 class="pc-h3">1. The loss</h3>
+    <p>Training text supplies the right answer at every position: after "The cat sat on the" the next token really was "mat". The loss is cross-entropy — the negative log of the probability the model gave the correct token:</p>
+    <div class="pc-formula">
+      <div class="pc-formula-main">L = −log p(correct token)</div>
+      <div class="pc-formula-note">Using the scores from the sampler above (temperature 1), p(mat) = 0.454, so L = −log 0.454 = <b>0.790</b>. A perfect prediction (p = 1) gives L = 0; a confident wrong one gives a large L. In training this is averaged over every position of every sequence in the batch.</div>
+    </div>
+
+    <h3 class="pc-h3">2. The first gradient: p − y</h3>
+    <p>Backpropagation starts at the loss and applies the chain rule backwards. The first step has a famously clean answer: for softmax followed by cross-entropy, the gradient of the loss with respect to each logit is simply <strong>predicted probability minus target</strong>, where the target y is 1 for the correct token and 0 for everything else. Checked with PyTorch's autograd:</p>
+    <table class="repo-table pc-num">
+      <thead><tr><th>Token</th><th>p (predicted)</th><th>y (target)</th><th>∂L/∂z = p − y</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Token">mat</td><td data-label="p">0.454</td><td data-label="y">1</td><td data-label="p − y">−0.546</td></tr>
+        <tr><td data-label="Token">floor</td><td data-label="p">0.204</td><td data-label="y">0</td><td data-label="p − y">+0.204</td></tr>
+        <tr><td data-label="Token">sofa</td><td data-label="p">0.151</td><td data-label="y">0</td><td data-label="p − y">+0.151</td></tr>
+        <tr><td data-label="Token">bed</td><td data-label="p">0.112</td><td data-label="y">0</td><td data-label="p − y">+0.112</td></tr>
+        <tr><td data-label="Token">dog</td><td data-label="p">0.046</td><td data-label="y">0</td><td data-label="p − y">+0.046</td></tr>
+        <tr><td data-label="Token">roof</td><td data-label="p">0.034</td><td data-label="y">0</td><td data-label="p − y">+0.034</td></tr>
+      </tbody>
+    </table>
+    <p>Read it as instructions. Gradient descent moves opposite the gradient, so "mat"'s score gets pushed <em>up</em> (its gradient is negative), and every other token's score gets pushed <em>down</em> in proportion to how much probability it wrongly took. The rows sum to zero: probability can only move between tokens.</p>
+
+    <h3 class="pc-h3">3. The gradient flows backward through the model</h3>
+    <div class="diagram-box">
+      <svg viewBox="0 0 600 560" role="img" aria-label="Forward pass flows down from token IDs to the loss; the backward pass flows up from the loss to the embeddings, producing a gradient for every learned component">
+        <defs>
+          <marker id="bpDown" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#334155"/></marker>
+          <marker id="bpUp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/></marker>
+        </defs>
+        <line x1="110" y1="40" x2="110" y2="520" stroke="#334155" stroke-width="2.5" marker-end="url(#bpDown)"/>
+        <text x="96" y="280" font-size="14" fill="#334155" text-anchor="middle" font-weight="700" transform="rotate(-90 96 280)">forward: compute activations</text>
+        <path id="bpBack" d="M 490 525 L 490 105" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#bpUp)"/>
+        <text x="508" y="320" font-size="14" fill="#dc2626" text-anchor="middle" font-weight="700" transform="rotate(90 508 320)">backward: compute gradients</text>
+
+        <rect x="140" y="20" width="320" height="50" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="300" y="42" font-size="15" text-anchor="middle" font-weight="800" fill="#475569">Tokenization → IDs</text>
+        <text x="300" y="60" font-size="13" text-anchor="middle" fill="#64748b">discrete lookup: no gradient, nothing to learn</text>
+
+        <rect x="140" y="92" width="320" height="56" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+        <text x="300" y="115" font-size="15" text-anchor="middle" font-weight="800" fill="#78350f">Token + position embeddings</text>
+        <text x="300" y="135" font-size="13" text-anchor="middle" fill="#92400e">∂L/∂E: only rows of tokens in the batch</text>
+
+        <rect x="140" y="170" width="320" height="170" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="300" y="194" font-size="15" text-anchor="middle" font-weight="800" fill="#4c1d95">N blocks, visited in reverse</text>
+        <rect x="165" y="208" width="270" height="52" rx="8" fill="#ffedd5" stroke="#ea580c"/>
+        <text x="300" y="229" font-size="14" text-anchor="middle" font-weight="700" fill="#7c2d12">MLP branch first</text>
+        <text x="300" y="247" font-size="12.5" text-anchor="middle" fill="#9a3412">∂L/∂W_up, ∂L/∂W_down, ∂L/∂γ (norm 2)</text>
+        <rect x="165" y="270" width="270" height="52" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+        <text x="300" y="291" font-size="14" text-anchor="middle" font-weight="700" fill="#4c1d95">then the attention branch</text>
+        <text x="300" y="309" font-size="12.5" text-anchor="middle" fill="#5b21b6">∂L/∂W_Q, W_K, W_V, W_O, ∂L/∂γ (norm 1)</text>
+
+        <rect x="140" y="362" width="320" height="50" rx="10" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+        <text x="300" y="384" font-size="15" text-anchor="middle" font-weight="800" fill="#134e4a">Final LayerNorm</text>
+        <text x="300" y="402" font-size="13" text-anchor="middle" fill="#0f766e">∂L/∂γ, ∂L/∂β</text>
+
+        <rect x="140" y="432" width="320" height="50" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="300" y="454" font-size="15" text-anchor="middle" font-weight="800" fill="#0c4a6e">LM head</text>
+        <text x="300" y="472" font-size="13" text-anchor="middle" fill="#075985">∂L/∂W_vocab = xᵀ · (p − y)</text>
+
+        <rect x="140" y="502" width="320" height="50" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+        <text x="300" y="524" font-size="15" text-anchor="middle" font-weight="800" fill="#7f1d1d">Softmax + cross-entropy → L</text>
+        <text x="300" y="542" font-size="13" text-anchor="middle" fill="#991b1b">start here: ∂L/∂z = p − y</text>
+
+        <circle r="7" fill="#dc2626"><animateMotion dur="3.5s" repeatCount="indefinite"><mpath href="#bpBack"/></animateMotion></circle>
+      </svg>
+      <div class="diagram-caption">The forward pass runs top to bottom and ends in a single number, the loss. The backward pass runs bottom to top, and every learned component it passes collects a gradient for its own weights while handing a gradient for its input to the layer before it. (Original diagram.)</div>
+    </div>
+    <p>Every component does the same two things on the way back: compute the gradient for <em>its own weights</em> (to be updated), and the gradient for <em>its input</em> (to pass further back). Four pieces are worth understanding:</p>
+
+    <div class="checklist">
+      <div class="check-row"><span class="check-num">1</span><span><strong>Linear layers</strong> — most weights in the model, and the rule is short. For Y = X·W, with the incoming gradient G = ∂L/∂Y: <code>∂L/∂X = G·Wᵀ</code> is passed back, and <code>∂L/∂W = Xᵀ·G</code> updates the weights. The shapes force it: X is (T, d<sub>in</sub>), W is (d<sub>in</sub>, d<sub>out</sub>), G is (T, d<sub>out</sub>), and those are the only products that give back the right shapes. The same rule updates W<sub>Q</sub>, W<sub>K</sub>, W<sub>V</sub>, W<sub>O</sub>, both MLP matrices and the LM head.</span></div>
+      <div class="check-row"><span class="check-num">2</span><span><strong>Residual connections</strong> — for y = x + f(x), the gradient reaching x is ∂L/∂y <em>plus</em> whatever comes back through f. So even when a block's branch has learned almost nothing, the gradient passes through undiminished. In our check, a branch scaled to 0.001 still delivered a gradient of about 1.00 to its input. This "gradient highway" is why 32- or 100-block models train at all.</span></div>
+      <div class="check-row"><span class="check-num">3</span><span><strong>LayerNorm</strong> — the forward pass subtracts the mean and divides by the standard deviation, so the backward pass has to account for every element's effect on that mean and variance. Autograd handles it; the result is gradients for the scale γ and shift β, and a gradient for the input with its mean component removed.</span></div>
+      <div class="check-row"><span class="check-num">4</span><span><strong>Attention</strong> — the gradient flows back through the weighted sum into V, through the softmax into the scores, and through QKᵀ into both Q and K, then down the three projections. Masked positions had weight exactly zero, so no gradient flows through them: a token's loss can only shape how it reads from <em>earlier</em> tokens.</span></div>
+    </div>
+    <p>Two things never receive a gradient: tokenization (a discrete lookup, not a differentiable function), and the embedding rows of tokens that didn't appear in the batch — their gradient is exactly zero that step.</p>
+
+    <h3 class="pc-h3">4. The update: Adam</h3>
+    <p>With a gradient g for every parameter θ, the simplest update is θ ← θ − η·g (plain gradient descent, learning rate η). Language models almost always use Adam, which keeps two running averages per parameter and scales each step by them:</p>
+    <div class="pc-formula">
+      <div class="pc-formula-main">m ← β₁m + (1−β₁)g &nbsp;·&nbsp; v ← β₂v + (1−β₂)g²</div>
+      <div class="pc-formula-main" style="margin-top:8px">θ ← θ − η · m̂ / (√v̂ + ε)</div>
+      <div class="pc-formula-note">m is a running average of the gradient (momentum), v of its square (scale); the hats mean bias-corrected for the early steps (m̂ = m / (1−β₁ᵗ), v̂ = v / (1−β₂ᵗ)). Typical values: β₁ = 0.9, β₂ = 0.95–0.999, ε = 10⁻⁸.</div>
+    </div>
+    <p>Dividing by √v̂ gives every parameter its own step size. It shows up clearly on the very first step: our check applied gradients of 0.5 and −1.5 to two parameters with η = 0.1, and <em>both</em> moved by exactly 0.1, because m̂/√v̂ reduces to the sign of the gradient when there's only one step of history. Our training script uses <strong>AdamW</strong>, which applies weight decay directly to the weights instead of mixing it into the gradient — the standard choice for transformers. Adam also stores m and v for every parameter, which is why optimizer state takes more memory than the model itself (see <a href="cs336-pytorch-resource-accounting-part3.html#memory">Part 3</a>).</p>
+
+    <h3 class="pc-h3">Check every claim in this section</h3>
+    <p>This script verifies each rule above with PyTorch's autograd: p − y, both linear-layer rules, the residual gradient, and one Adam step by hand versus <code>torch.optim.Adam</code>.</p>
+    <div class="code-block"><pre>import torch
+import torch.nn.functional as F
+
+torch.manual_seed(0)
+
+<span class="cm"># 1. Softmax + cross-entropy: the gradient of the loss w.r.t. the logits is p - y</span>
+vocab = ["mat", "floor", "sofa", "bed", "dog", "roof"]
+z = torch.tensor([3.2, 2.4, 2.1, 1.8, 0.9, 0.6], requires_grad=True)   <span class="cm"># logits</span>
+target = torch.tensor(0)                                                <span class="cm"># true next token: "mat"</span>
+loss = F.cross_entropy(z[None], target[None])
+loss.backward()
+p = z.softmax(-1).detach()
+y = F.one_hot(target, len(vocab)).float()
+print(f"loss = -log p(mat) = {loss.item():.3f}   (p(mat) = {p[0]:.3f})")
+print("autograd dL/dz:", [round(g, 3) for g in z.grad.tolist()])
+print("p - y        :", [round(g, 3) for g in (p - y).tolist()])
+
+<span class="cm"># 2. Linear layer Y = X W: dL/dX = dL/dY W^T and dL/dW = X^T dL/dY</span>
+X = torch.randn(5, 8, requires_grad=True)       <span class="cm"># 5 tokens, d_in = 8</span>
+W = torch.randn(8, 3, requires_grad=True)       <span class="cm"># d_out = 3</span>
+Y = X @ W
+G = torch.randn_like(Y)                         <span class="cm"># pretend upstream gradient dL/dY</span>
+Y.backward(G)
+print("dL/dX == dL/dY @ W^T :", torch.allclose(X.grad, G @ W.T))
+print("dL/dW == X^T @ dL/dY :", torch.allclose(W.grad, X.T @ G))
+
+<span class="cm"># 3. Residual y = x + f(x): the gradient reaching x is dL/dy PLUS the branch's contribution</span>
+x = torch.randn(4, requires_grad=True)
+f = lambda t: 0.001 * torch.tanh(t)              <span class="cm"># a branch that has barely learned anything</span>
+y = x + f(x)
+y.sum().backward()
+print("residual grad at x (~1.0 even though f is tiny):", [round(g, 4) for g in x.grad.tolist()])
+
+<span class="cm"># 4. One Adam step (bias-corrected), by hand vs torch.optim.Adam</span>
+theta = torch.tensor([1.0, -2.0], requires_grad=True)
+opt = torch.optim.Adam([theta], lr=0.1, betas=(0.9, 0.999), eps=1e-8)
+g = torch.tensor([0.5, -1.5])
+theta.grad = g.clone()
+m = 0.1 * g                      <span class="cm"># m = b1*0 + (1-b1)*g</span>
+v = 0.001 * g ** 2               <span class="cm"># v = b2*0 + (1-b2)*g^2</span>
+m_hat, v_hat = m / (1 - 0.9), v / (1 - 0.999)
+by_hand = theta.detach() - 0.1 * m_hat / (v_hat.sqrt() + 1e-8)
+opt.step()
+print("Adam step by hand:", [round(t, 4) for t in by_hand.tolist()], " torch:", [round(t, 4) for t in theta.tolist()])</pre></div>
+    <p>Output:</p>
+    <div class="code-block"><pre>loss = -log p(mat) = 0.790   (p(mat) = 0.454)
+autograd dL/dz: [-0.546, 0.204, 0.151, 0.112, 0.046, 0.034]
+p - y        : [-0.546, 0.204, 0.151, 0.112, 0.046, 0.034]
+dL/dX == dL/dY @ W^T : True
+dL/dW == X^T @ dL/dY : True
+residual grad at x (~1.0 even though f is tiny): [1.0, 1.0008, 1.0009, 1.0002]
+Adam step by hand: [0.9, -1.9]  torch: [0.9, -1.9]</pre></div>
 
     <h2 id="code" class="agi-section">Build It in PyTorch</h2>
     <p>Everything above in one runnable script: a 2-block, 64-wide GPT with 103,296 parameters, a toy word-level vocabulary standing in for BPE, a shape trace at every stage, a 200-step training run on a 20-word corpus, and the generation loop with temperature and top-k. Install PyTorch (<code>pip install torch</code>), save as <code>tiny_gpt.py</code>, and run <code>python tiny_gpt.py</code>. It finishes in seconds on a laptop CPU.</p>
@@ -754,7 +930,7 @@ parameters: 103,296</pre></div>
 
     <div class="verdict-box">
       <div class="verdict-title">The whole idea in four sentences</div>
-      <div class="verdict-body">Turn tokens into vectors and add position. Pass them through a stack of blocks, where attention lets each token gather information from earlier tokens and an MLP processes each token on its own, with residual connections carrying the signal through. Project the last token's vector onto the vocabulary to get next-token probabilities. Sample one, append it, and repeat.</div>
+      <div class="verdict-body">Turn tokens into vectors and add position. Pass them through a stack of blocks, where attention lets each token gather information from earlier tokens and an MLP processes each token on its own, with residual connections carrying the signal through. Project the last token's vector onto the vocabulary to get next-token probabilities. Sample one, append it, and repeat — and to train it, measure how wrong each prediction was, send that error backward through every layer, and nudge every weight to make it a little less wrong.</div>
     </div>
 
     <div class="idea-box">
@@ -763,7 +939,7 @@ parameters: 103,296</pre></div>
 
     <h2 id="gaps" class="agi-section">⚠️ Notes</h2>
     <div class="caveat-box">
-      The architecture described (pre-norm placement, 4d GELU MLP, final LayerNorm, causal mask) was checked line by line against OpenAI's released <code>gpt-2/src/model.py</code>. All tensor shapes, the attention worked example, the training loss and the generated text are real outputs from the scripts described, not hand-written. The temperature/top-k widget uses illustrative scores, labeled as such. The claim that MLPs store much of a model's knowledge is a simplification of an active interpretability research area, not a settled result. All diagrams are original.
+      The architecture described (pre-norm placement, 4d GELU MLP, final LayerNorm, causal mask) was checked line by line against OpenAI's released <code>gpt-2/src/model.py</code>. All tensor shapes, the attention worked example, the training loss and the generated text are real outputs from the scripts described, not hand-written. The temperature/top-k widget uses illustrative scores, labeled as such. The backpropagation rules (softmax + cross-entropy gradient p − y, the two linear-layer rules, the residual gradient) and the Adam update were each verified numerically with PyTorch autograd; the script and its output are included. The 7B-shape parameter example was computed from the formula, and the Llama 2 7B cross-check (6,738,415,616) matches the size usually reported for that model. The claim that MLPs store much of a model's knowledge is a simplification of an active interpretability research area, not a settled result. All diagrams are original.
     </div>
 
     <h2 id="references" class="agi-section">🔗 References</h2>
@@ -775,6 +951,8 @@ parameters: 103,296</pre></div>
         <a href="https://arxiv.org/abs/1606.08415" target="_blank" rel="noopener">Hendrycks &amp; Gimpel — Gaussian Error Linear Units (GELUs) (arXiv:1606.08415)</a>
         <a href="https://arxiv.org/abs/2002.04745" target="_blank" rel="noopener">Xiong et al. — On Layer Normalization in the Transformer Architecture (Pre-LN, arXiv:2002.04745)</a>
         <a href="https://arxiv.org/abs/1904.09751" target="_blank" rel="noopener">Holtzman et al. — The Curious Case of Neural Text Degeneration (nucleus sampling, ICLR 2020, arXiv:1904.09751)</a>
+        <a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="noopener">Kingma &amp; Ba — Adam: A Method for Stochastic Optimization (ICLR 2015, arXiv:1412.6980)</a>
+        <a href="https://arxiv.org/abs/1711.05101" target="_blank" rel="noopener">Loshchilov &amp; Hutter — Decoupled Weight Decay Regularization (AdamW, arXiv:1711.05101)</a>
         <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">Jay Alammar — The Illustrated Transformer</a>
         <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer (Georgia Tech Polo Club) — interactive GPT-2 in the browser</a>
       </div>
