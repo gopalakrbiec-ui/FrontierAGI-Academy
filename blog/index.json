@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "how-llm-inference-works",
+      "title": "How LLM Inference Works: From a Request to a Streamed Response",
+      "excerpt": "How a trained model is served at scale: prefill and decode, why decode is memory-bound, the KV cache (with a calculator), sampling and a corrected top-p example, continuous batching, quantization, speculative decoding, multi-GPU serving and the metrics that matter -- with a runnable mini inference engine that checks every optimization against the unoptimized output.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-25",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\u26a1",
+      "featured": true
+    },
+    {
       "slug": "how-llm-post-training-works",
       "title": "How Post-Training Works: SFT, RLHF, DPO and RLAIF",
       "excerpt": "How a pretrained model becomes a helpful, safe assistant: supervised fine-tuning, preference data, RLHF with a reward model and PPO, DPO (with the reference model diagrams often drop), RLAIF, verifiable rewards, evaluation, deployment and the feedback loop -- with a runnable experiment comparing SFT, DPO and RLHF on the same model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udded",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-llm-fine-tuning-works",
