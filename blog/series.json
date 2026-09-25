@@ -2,6 +2,46 @@
   "generated_by": "scripts/build.py",
   "series": [
     {
+      "id": "sec-rsi",
+      "title": "The Recursive Self-Improvement Series",
+      "short": "The Recursive Self-Improvement Series",
+      "icon": "🔁",
+      "slugs": [
+        "recursive-self-improvement-primer",
+        "rsi-ai-automating-ai-research",
+        "rsi-objective-specification-problem",
+        "rsi-distillation-centralization-moat",
+        "rsi-data-vs-reinforcement-learning",
+        "rsi-sim-to-real-gap",
+        "rsi-autonomy-timelines",
+        "rsi-bonus-capability-evaluation-breakouts",
+        "rsi-literature-survey",
+        "rsi-2026-breakthroughs",
+        "rsi-practitioners-primer"
+      ]
+    },
+    {
+      "id": "sec-capstack",
+      "title": "The AGI Capability Stack: Levers, Gaps & Per-Lab Timelines",
+      "short": "The AGI Capability Stack",
+      "icon": "📈",
+      "slugs": [
+        "frontier-innovation-levers",
+        "agi-capability-stack-mapped",
+        "agi-threshold-capability-stack",
+        "agi-models-astra-claude-gemini",
+        "gpt-series-agi-stack-timeline",
+        "claude-series-agi-stack-timeline",
+        "gemini-series-agi-stack-timeline",
+        "grok-deepseek-qwen-agi-stack-timeline",
+        "agi-lever-gaps-new-entrants",
+        "agi-startups-to-watch",
+        "memory-continual-learning-agi-race",
+        "interpretability-gap-reading-model-minds",
+        "power-bottleneck-ai-infrastructure-race"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
@@ -127,46 +167,6 @@
         "cs329a-training-on-what-search-finds",
         "cs329a-competitive-programming-and-retrieval-agents",
         "cs329a-evaluation-and-open-problems"
-      ]
-    },
-    {
-      "id": "sec-rsi",
-      "title": "The Recursive Self-Improvement Series",
-      "short": "The Recursive Self-Improvement Series",
-      "icon": "🔁",
-      "slugs": [
-        "recursive-self-improvement-primer",
-        "rsi-ai-automating-ai-research",
-        "rsi-objective-specification-problem",
-        "rsi-distillation-centralization-moat",
-        "rsi-data-vs-reinforcement-learning",
-        "rsi-sim-to-real-gap",
-        "rsi-autonomy-timelines",
-        "rsi-bonus-capability-evaluation-breakouts",
-        "rsi-literature-survey",
-        "rsi-2026-breakthroughs",
-        "rsi-practitioners-primer"
-      ]
-    },
-    {
-      "id": "sec-capstack",
-      "title": "The AGI Capability Stack: Levers, Gaps & Per-Lab Timelines",
-      "short": "The AGI Capability Stack",
-      "icon": "📈",
-      "slugs": [
-        "frontier-innovation-levers",
-        "agi-capability-stack-mapped",
-        "agi-threshold-capability-stack",
-        "agi-models-astra-claude-gemini",
-        "gpt-series-agi-stack-timeline",
-        "claude-series-agi-stack-timeline",
-        "gemini-series-agi-stack-timeline",
-        "grok-deepseek-qwen-agi-stack-timeline",
-        "agi-lever-gaps-new-entrants",
-        "agi-startups-to-watch",
-        "memory-continual-learning-agi-race",
-        "interpretability-gap-reading-model-minds",
-        "power-bottleneck-ai-infrastructure-race"
       ]
     },
     {
