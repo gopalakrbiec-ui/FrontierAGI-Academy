@@ -45,7 +45,7 @@ def build_table(posts):
         lines.append(f"| {emoji} [{title}]({url}){featured} | {summary} | {date} |")
     return "\n".join(lines)
 
-def update_readme():
+def update_readme(check=False):
     with open(MANIFEST, encoding="utf-8") as f:
         data = json.load(f)
     posts = data.get("posts", [])
@@ -64,7 +64,9 @@ def update_readme():
         print("ERROR: markers not found in README.md")
         return 1
 
-    updated = pattern.sub(new_block, content)
+    updated = pattern.sub(lambda _: new_block, content)
+    if check:
+        return 0 if updated == content else 1
     with open(README, "w", encoding="utf-8") as f:
         f.write(updated)
 
@@ -72,4 +74,5 @@ def update_readme():
     return 0
 
 if __name__ == "__main__":
-    raise SystemExit(update_readme())
+    import sys
+    raise SystemExit(update_readme(check="--check" in sys.argv))

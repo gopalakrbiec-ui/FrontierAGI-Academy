@@ -101,8 +101,18 @@ Only one post should have `"featured": true` at a time.
 ## Adding a New Page
 1. Copy an existing page from `pages/` as your template
 2. Place the new file in `pages/`
-3. Update the nav panel in ALL HTML files (use a Python bulk-replace script — see `docs/CONTRIBUTING.md`)
+3. If it belongs in the nav, edit `partials/nav.html` (never the generated block inside pages), then run `python3 scripts/build.py`
 4. Paths: use `../styles.css`, `../app.js`, `../index.html` at top
+
+## Build Step (`scripts/build.py`)
+Still no framework — one Python script keeps shared markup in sync. Run it after ANY change (new post, manifest edit, nav edit):
+```bash
+python3 scripts/build.py          # rewrites generated blocks, sitemap.xml, robots.txt, 404.html, README table
+python3 scripts/build.py --check  # what CI runs: fails if anything is stale or an internal link/anchor is broken
+```
+- Nav source of truth: `partials/nav.html` (`{{ROOT}}`/`{{PAGES}}`/`{{BLOG}}` path prefixes, `{{ACTIVE_x}}` tab markers). Pages hold it between `<!-- NAV:START -->`/`<!-- NAV:END -->` — never hand-edit that block.
+- SEO block (`<!-- SEO:START -->…<!-- SEO:END -->`) after `<title>`: description, canonical, Open Graph, Twitter card. Blog posts take title/excerpt/date from `blog/index.json`; other pages use their first intro paragraph.
+- Social preview image: `assets/og-default.png`.
 
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`

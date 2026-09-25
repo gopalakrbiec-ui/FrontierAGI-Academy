@@ -55,6 +55,36 @@
    <script src="../app.js"></script>
    ```
 
+3. **Add it to the nav (if it belongs there)** — edit `partials/nav.html` once, using `{{PAGES}}your-new-page.html`. Do not edit the `<!-- NAV:START -->…<!-- NAV:END -->` block inside any page; it is regenerated.
+
+   Then run the build, which re-inserts the nav and SEO tags into every page, updates `sitemap.xml` and `README.md`, and fails on broken internal links:
+   ```bash
+   python3 scripts/build.py
+   ```
+
+4. **Commit and push**
+   ```bash
+   git add blog/your-post-slug.html blog/index.json
+   git commit -m "Blog: add post — Your Post Title"
+   git push
+   ```
+
+---
+
+## Adding a New Sub-Page
+
+1. **Copy an existing page** from `pages/` as your starting point:
+   ```bash
+   cp pages/india-ai.html pages/your-new-page.html
+   ```
+
+2. **Set correct paths** at the top of the file:
+   ```html
+   <link rel="stylesheet" href="../styles.css" />
+   ...
+   <script src="../app.js"></script>
+   ```
+
 3. **Update the nav panels** — add a link to the new page in every HTML file that has nav panels. The easiest way is a small Python script:
    ```python
    import os, glob
@@ -76,7 +106,7 @@
 
 4. **Commit and push**
    ```bash
-   git add pages/your-new-page.html
+   git add -A pages partials sitemap.xml README.md
    git commit -m "Add: Your New Page title"
    git push
    ```
