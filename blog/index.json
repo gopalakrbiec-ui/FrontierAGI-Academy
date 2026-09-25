@@ -33,11 +33,11 @@
     {
       "slug": "cs336-architectures-hyperparameters-part4",
       "title": "Language Modeling from Scratch, Part 4: Architectures & Hyperparameters",
-      "excerpt": "What actually changed since the original 2017 Transformer, verified against six real papers: Pre-LN vs Post-LN normalization placement, RMSNorm, RoPE, and SwiGLU -- each explained with an original, animated diagram, plus original from-scratch code for RMSNorm.",
+      "excerpt": "What actually changed since the original 2017 Transformer -- Pre-LN, RMSNorm, RoPE and SwiGLU, each with an original animated diagram -- plus a full parameter count of a decoder-only model, component by component, checked by building it in PyTorch.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-24",
-      "readTime": "30 min",
+      "readTime": "42 min",
       "tags": [
         "Deep Research",
         "AI Research"
