@@ -114,7 +114,7 @@ python3 scripts/build.py --check  # what CI runs: fails if anything is stale or 
 - SEO block (`<!-- SEO:START -->…<!-- SEO:END -->`) after `<title>`: description, canonical, Open Graph, Twitter card. Blog posts take title/excerpt/date from `blog/index.json`; other pages use their first intro paragraph.
 - Social preview image: `assets/og-default.png`.
 - Series footer (`<!-- SERIES:START -->…<!-- SERIES:END -->`, before `</main>` in every post): prev/next links. A series = one homepage spotlight grid, in card order, so adding a card to the right grid on `index.html` is all it takes — build.py picks it up.
-- `blog/series.json` (generated): every series with its short label, icon and ordered slugs. `pages/blog.html` builds its sidebar categories and card labels from it, and the homepage "Latest Signal" card uses it for its label. Manifest `tags` are no longer used for navigation.
+- `blog/series.json` (generated): every series with its short label, icon and ordered slugs. `pages/blog.html` builds its sidebar categories and card labels from it. Manifest `tags` are no longer used for navigation.
 - Homepage "· N Articles" counts on spotlight tags are kept in sync automatically.
 - `pages/start-here.html`: hand-curated reading tracks (new to AI / research / building). Update when a better entry point is published.
 

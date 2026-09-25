@@ -312,17 +312,6 @@
     .home-section-hd h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
     .home-section-hd p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
 
-    .home-signal-card {
-      display: flex; gap: 24px; align-items: center; background: linear-gradient(135deg,#0f172a,#1e1b4b);
-      border-radius: 18px; padding: 30px 32px; color: #fff; flex-wrap: wrap;
-    }
-    .home-signal-emoji { font-size: 2.6rem; flex-shrink: 0; }
-    .home-signal-body { flex: 1; min-width: 240px; }
-    .home-signal-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
-    .home-signal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; }
-    .home-signal-excerpt { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 14px; }
-    .home-signal-link { color: #93c5fd; font-weight: 700; font-size: 0.85rem; text-decoration: none; }
-    .home-signal-link:hover { text-decoration: underline; }
 
     .home-lane-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
     .home-lane-card {
@@ -455,7 +444,6 @@
 
     @media (max-width: 768px) {
       .home-hero { padding: 110px 20px 60px; }
-      .home-signal-card { flex-direction: column; text-align: center; }
     }
     /* ── Compact article cards + fully collapsible sections ── */
     .home-series-grid, .home-rsi-grid, .home-lineage-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
@@ -856,25 +844,6 @@
     <a href="#sec-econ">Economics &amp; Society</a>
   </div>
   <div id="searchNoResults" class="home-search-empty" style="display:none;">No articles match your search.</div>
-</div>
-
-<!-- ═══════════════════════ LATEST SIGNAL ═══════════════════════ -->
-<div class="home-section">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">Latest Signal</div>
-      <h2>What Just Happened in AGI Research</h2>
-      <p>The most recent deep dive from the team — pulled straight from the blog's featured post.</p>
-    </div>
-    <div id="latestSignal">
-      <div class="home-signal-card">
-        <div class="home-signal-emoji">⏳</div>
-        <div class="home-signal-body">
-          <div class="home-signal-title">Loading latest research…</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- ═══════════════════════ LLM PIPELINE SHOWCASE ═══════════════════════ -->
@@ -1690,37 +1659,6 @@
 </footer>
 
 <script>
-  async function loadLatestSignal() {
-    const el = document.getElementById('latestSignal');
-    try {
-      const r = await fetch('blog/index.json');
-      const data = await r.json();
-      const posts = data.posts || [];
-      const featured = posts.find(p => p.featured) || posts[0];
-      if (!featured) return;
-      let label = (featured.tags || [])[0] || 'Research';
-      try {
-        const series = (await (await fetch('blog/series.json')).json()).series || [];
-        const home = series.find(x => x.slugs.includes(featured.slug));
-        if (home) label = home.short;
-      } catch (e) {}
-      el.innerHTML = `
-        <a href="blog/${featured.slug}.html" style="text-decoration:none;color:inherit;">
-          <div class="home-signal-card">
-            <div class="home-signal-emoji">${featured.emoji || '📝'}</div>
-            <div class="home-signal-body">
-              <span class="home-signal-tag">${label} · ${featured.readTime}</span>
-              <div class="home-signal-title">${featured.title}</div>
-              <div class="home-signal-excerpt">${featured.excerpt}</div>
-              <span class="home-signal-link">Read the full piece →</span>
-            </div>
-          </div>
-        </a>`;
-    } catch (e) {
-      el.innerHTML = '<div class="home-signal-card"><div class="home-signal-body"><div class="home-signal-title">Could not load latest research.</div></div></div>';
-    }
-  }
-  loadLatestSignal();
 
   /* ── AGI Capability Pulse: animate bars into view once ── */
   (function () {
