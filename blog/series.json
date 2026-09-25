@@ -48,7 +48,7 @@
     },
     {
       "id": "sec-llm-pipeline",
-      "title": "How LLMs Are Built: From Architecture to Scale",
+      "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
       "icon": "🛠️",
       "slugs": [
