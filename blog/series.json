@@ -233,6 +233,7 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
+        "how-a-transformer-works-decoder-only",
         "typesafe-jev-system-one-models-explained",
         "world-models",
         "physical-intelligence",
