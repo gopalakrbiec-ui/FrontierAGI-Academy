@@ -113,6 +113,8 @@ python3 scripts/build.py --check  # what CI runs: fails if anything is stale or 
 - Nav source of truth: `partials/nav.html` (`{{ROOT}}`/`{{PAGES}}`/`{{BLOG}}` path prefixes, `{{ACTIVE_x}}` tab markers). Pages hold it between `<!-- NAV:START -->`/`<!-- NAV:END -->` — never hand-edit that block.
 - SEO block (`<!-- SEO:START -->…<!-- SEO:END -->`) after `<title>`: description, canonical, Open Graph, Twitter card. Blog posts take title/excerpt/date from `blog/index.json`; other pages use their first intro paragraph.
 - Social preview image: `assets/og-default.png`.
+- Series footer (`<!-- SERIES:START -->…<!-- SERIES:END -->`, before `</main>` in every post): prev/next links. A series = one homepage spotlight grid, in card order, so adding a card to the right grid on `index.html` is all it takes — build.py picks it up.
+- `pages/start-here.html`: hand-curated reading tracks (new to AI / research / building). Update when a better entry point is published.
 
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`
