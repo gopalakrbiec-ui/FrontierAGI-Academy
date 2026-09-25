@@ -200,19 +200,48 @@ def render_404(nav_template):
 """
 
 
+ICON_OVERRIDES = {"sec-rsi": "🔁", "sec-lineage": "🗂️"}
+
+
+def spotlight_blocks(index_html):
+    pattern = r'<div class="home-(?:series|rsi|lineage)-spotlight[^"]*" id="(sec-[^"]+)"'
+    for m in re.finditer(pattern, index_html):
+        yield m.group(1), m.start(), div_block_end(index_html, m.start())
+
+
 def load_series(index_html):
     """Series = each homepage spotlight grid, in card order. A post listed twice keeps its first series."""
     series, owner = [], {}
-    pattern = r'<div class="home-(?:series|rsi|lineage)-spotlight[^"]*" id="(sec-[^"]+)"'
-    for m in re.finditer(pattern, index_html):
-        block = index_html[m.start():div_block_end(index_html, m.start())]
+    for sec_id, a, b in spotlight_blocks(index_html):
+        block = index_html[a:b]
         title = re.search(r'class="home-(?:series|rsi|lineage)-title"[^>]*>(.*?)</div>', block, re.S)
+        tag = re.search(r'class="home-(?:series|rsi|lineage)-tag">\s*(\S+)', block)
         slugs = list(dict.fromkeys(re.findall(r'href="blog/([^"#]+)\.html"', block)))
-        entry = {"id": m.group(1), "title": clean_text(title.group(1)) if title else "", "slugs": slugs}
+        full = clean_text(title.group(1)) if title else sec_id
+        entry = {
+            "id": sec_id,
+            "title": full,
+            "short": full.split(":")[0].strip(),
+            "icon": ICON_OVERRIDES.get(sec_id, tag.group(1) if tag else "📚"),
+            "slugs": slugs,
+        }
         series.append(entry)
         for slug in slugs:
             owner.setdefault(slug, entry)
-    return owner
+    return series, owner
+
+
+def sync_series_counts(index_html):
+    """Keep the hand-written "· N Articles" labels on homepage spotlights equal to the real card count."""
+    out, last = [], 0
+    for _, a, b in spotlight_blocks(index_html):
+        block = index_html[a:b]
+        n = len(set(re.findall(r'href="blog/([^"#]+)\.html"', block)))
+        block = re.sub(r'(home-series-tag">[^<]*?· )\d+ Articles?',
+                       lambda m: f"{m.group(1)}{n} Article{'s' if n != 1 else ''}", block, count=1)
+        out.append(index_html[last:a] + block)
+        last = b
+    return "".join(out) + index_html[last:]
 
 
 def render_series(slug, owner, manifest):
@@ -278,16 +307,20 @@ def main():
     manifest = {p["slug"]: p for p in json.loads((ROOT / "blog/index.json").read_text())["posts"]}
     nav_template = (ROOT / "partials/nav.html").read_text(encoding="utf-8")
     files = html_files()
-    series_owner = load_series((ROOT / "index.html").read_text(encoding="utf-8"))
+    series, series_owner = load_series((ROOT / "index.html").read_text(encoding="utf-8"))
 
     outputs = {}
     for f in files:
         s = f.read_text(encoding="utf-8")
         s = replace_nav(s, render_nav(nav_template, f), f)
         s = replace_seo(s, render_seo(f, s, manifest))
+        if f.name == "index.html" and f.parent == ROOT:
+            s = sync_series_counts(s)
         if f.parent.name == "blog" and f.stem in manifest:
             s = replace_series(s, render_series(f.stem, series_owner, manifest))
         outputs[f] = s
+    outputs[ROOT / "blog/series.json"] = json.dumps(
+        {"generated_by": "scripts/build.py", "series": series}, indent=2, ensure_ascii=False) + "\n"
     outputs[ROOT / "sitemap.xml"] = render_sitemap(files, manifest)
     outputs[ROOT / "robots.txt"] = ROBOTS
     outputs[ROOT / "404.html"] = render_404(nav_template)
