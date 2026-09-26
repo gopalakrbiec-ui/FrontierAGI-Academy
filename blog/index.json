@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "context-engineering-and-memory",
+      "title": "Context Engineering and Memory Architecture for LLMs",
+      "excerpt": "What goes into a model's context window and how it's chosen: history management, working vs persistent memory, write and retrieval pipelines, compaction, token budgets, prompt caching and agent memory \u2014 with five memory strategies measured on the same 100-turn conversation.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udde9",
+      "featured": true
+    },
+    {
       "slug": "production-llm-system-design",
       "title": "Production LLM System Design: Anatomy of a ChatGPT- or Claude-Style Assistant",
       "excerpt": "The full system around the model: gateway, conversation state and memory, retrieval, a context builder working to a token budget, layered safety including prompt-injection defence, tool orchestration, serving, streaming and caching \u2014 with a runnable mini runtime that implements every piece.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfd7\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-llm-scaling-and-distributed-training-works",

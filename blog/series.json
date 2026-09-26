@@ -53,7 +53,8 @@
         "how-llm-post-training-works",
         "how-llm-inference-works",
         "how-llm-scaling-and-distributed-training-works",
-        "production-llm-system-design"
+        "production-llm-system-design",
+        "context-engineering-and-memory"
       ]
     },
     {
