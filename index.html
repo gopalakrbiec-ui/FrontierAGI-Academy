@@ -116,11 +116,9 @@
     .brain-canvas-wrap {
       position: relative; height: 520px; border-radius: 20px; overflow: hidden; touch-action: pan-y;
       background: radial-gradient(ellipse at 50% 45%, #111a38 0%, #080c1e 58%, #04050f 100%);
-      border: 1px solid rgba(129,140,248,0.22); cursor: grab; user-select: none;
+      border: 1px solid rgba(56,189,248,0.25); user-select: none;
     }
-    .brain-canvas-wrap.is-dragging { cursor: grabbing; }
-    #brainCanvas, #brainFlow { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    #brainFlow { pointer-events: none; z-index: 2; }
+    #brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .brain-input {
       position: absolute; z-index: 3; display: flex; align-items: center; gap: 6px; pointer-events: none;
       padding: 5px 10px 5px 7px; border-radius: 999px; background: rgba(15,23,42,0.82);
@@ -602,12 +600,11 @@
     <div class="home-section-hd">
       <div class="eyebrow">Inside the Machine</div>
       <h2>How Multimodal Signal Becomes an Artificial Mind</h2>
-      <p>Images, language, speech, video and simulated worlds are all turned into the same kind of vectors, fused in one network — and out of it come capabilities at very different stages of maturity. Watch the loop, drag to rotate, or pick a region.</p>
+      <p>Images, language, speech, video and simulated worlds are all turned into the same kind of vectors, fused in one network — and out of it come capabilities at very different stages of maturity. Watch the loop, or pick a region on the brain or in the list.</p>
     </div>
     <div class="brain-stage">
       <div class="brain-canvas-wrap" id="brainCanvasWrap">
         <canvas id="brainCanvas" aria-hidden="true"></canvas>
-        <canvas id="brainFlow" aria-hidden="true"></canvas>
         <span class="brain-input left" data-input="0" style="--c:#f59e0b;top:17%;"><b>🖼️</b>Image</span>
         <span class="brain-input right" data-input="1" style="--c:#818cf8;top:24%;"><b>💬</b>Language</span>
         <span class="brain-input left" data-input="2" style="--c:#2dd4bf;top:44%;"><b>🎙️</b>Speech</span>
@@ -1852,39 +1849,38 @@
   })();
 </script>
 
-<script src="assets/vendor/three.min.js"></script>
 <script src="app.js"></script>
 <script>
-  /* ── Artificial Brain Showcase: a 12-second, three-beat loop.
-     Beat 1 (0–4 s): five input streams flow from their chips into the core.
-     Beat 2 (4–8 s): the streams fuse into one representation at the core.
-     Beat 3 (8–12 s): pulses travel out and light six capability regions in turn.
-     The brain is one point cloud (two hemispheres + cerebellum) split into six
-     regions; idle regions shimmer according to their status (strong / improving /
-     open problem). Hover, tap or pick a region to focus it; drag to rotate. ── */
+  /* ── Artificial Brain Showcase: a circuit-board brain drawn on a 2D canvas.
+     A side-view brain outline glows over a dim circuit background; inside it,
+     procedurally generated circuit traces are split into six capability regions.
+     A 12-second, three-beat loop: (1) five input streams run along traces into
+     the brain, (2) they fuse at a core, (3) sparks light each region in turn.
+     Idle regions shimmer by status (strong / improving / open problem) and gold
+     sparks travel the traces. Hover, tap or pick a region to focus it. ── */
   (function () {
     const wrap = document.getElementById('brainCanvasWrap');
     const canvas = document.getElementById('brainCanvas');
-    const flow = document.getElementById('brainFlow');
-    if (!wrap || !canvas || !flow || typeof THREE === 'undefined') return;
+    if (!wrap || !canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
 
     const REGIONS = [
-      { title: 'Reasoning & Math', color: '#6366f1', level: 'strong', status: 'Strong', dir: [0, 0.45, -1],
+      { title: 'Reasoning & Math', color: '#818cf8', level: 'strong', status: 'Strong',
         body: 'Models that think step by step before answering now solve competition-level math and multi-step logic problems that were out of reach a few years ago. Many reasoning benchmarks are close to saturated, which is why harder ones keep appearing.',
         href: 'blog/reasoning-models-test-time-compute.html' },
-      { title: 'Coding & Tool Use', color: '#06b6d4', level: 'strong', status: 'Strong', dir: [-1, 0.3, -0.5],
+      { title: 'Coding & Tool Use', color: '#22d3ee', level: 'strong', status: 'Strong',
         body: 'Models write, debug and refactor real code and call tools reliably inside agent loops. Coding is where AI agents deliver the most measurable value today.',
         href: 'blog/agentic-loop-explained.html' },
-      { title: 'Long-Horizon Agents', color: '#10b981', level: 'fast', status: 'Improving fast', dir: [0.45, 1, 0.1],
+      { title: 'Long-Horizon Agents', color: '#34d399', level: 'fast', status: 'Improving fast',
         body: 'Agents can now finish tasks that take a person minutes to hours, and measurements of the task length they can complete have been rising quickly. Reliability on long, open-ended work is still the gap.',
         href: 'blog/agi-capability-stack-mapped.html' },
-      { title: 'Multimodal Grounding', color: '#f59e0b', level: 'improving', status: 'Improving', dir: [0, 0.15, 1],
+      { title: 'Multimodal Grounding', color: '#fbbf24', level: 'improving', status: 'Improving',
         body: 'One network now reads images, charts, audio and video alongside text. Grounding — tying words to what is actually in a scene, or to the physical world — is still uneven.',
         href: 'blog/multimodal-consolidation.html' },
-      { title: 'Continual Learning', color: '#ec4899', level: 'open', status: 'Open problem', dir: [-1, -0.5, 0.35],
+      { title: 'Continual Learning', color: '#f472b6', level: 'open', status: 'Open problem',
         body: 'Models don’t learn from experience after training: memory features store notes outside the model while its weights stay frozen. Learning continually without forgetting is an open research problem.',
         href: 'blog/memory-continual-learning-agi-race.html' },
-      { title: 'Alignment & Interpretability', color: '#3b82f6', level: 'open', status: 'Open problem', dir: [1, -0.35, 0.1],
+      { title: 'Alignment & Interpretability', color: '#60a5fa', level: 'open', status: 'Open problem',
         body: 'Training can shape how models behave, but we can’t yet reliably read what a model is computing internally or verify how it will behave in new situations. Interpretability research is progressing, but this is unsolved.',
         href: 'blog/interpretability-gap-reading-model-minds.html' },
     ];
@@ -1896,142 +1892,121 @@
     ];
     const LOOP = 12, TAU = Math.PI * 2;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isSmall = window.innerWidth < 700;
 
-    // ── scene ──
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isSmall ? 1.25 : 1.75));
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-    camera.position.set(0, 0, 7.6);
-    const tiltGroup = new THREE.Group(); tiltGroup.rotation.x = -0.12; scene.add(tiltGroup);
-    const spin = new THREE.Group(); tiltGroup.add(spin);
-
-    function dotTexture(soft) {
-      const c = document.createElement('canvas'); c.width = c.height = 64;
-      const g = c.getContext('2d'), grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      grad.addColorStop(0, 'rgba(255,255,255,1)');
-      grad.addColorStop(soft ? 0.25 : 0.45, 'rgba(255,255,255,' + (soft ? 0.55 : 0.9) + ')');
-      grad.addColorStop(1, 'rgba(255,255,255,0)');
-      g.fillStyle = grad; g.fillRect(0, 0, 64, 64);
-      const t = new THREE.CanvasTexture(c); return t;
+    // ── the brain, in a 1000 × 640 design space (side view, facing left) ──
+    const CEREBRUM = new Path2D('M 250 430 C 185 385 180 255 262 180 C 335 110 470 78 585 92 C 705 106 805 168 845 262 C 875 335 852 402 790 432 C 742 455 695 452 662 470 C 600 503 482 505 420 472 C 390 456 378 432 358 426 C 318 441 282 452 250 430 Z');
+    const FISSURE = new Path2D('M 358 426 C 430 385 565 352 690 382');
+    const CEREBELLUM = new Path2D('M 650 470 C 660 430 760 420 815 440 C 850 455 845 520 800 540 C 745 562 668 548 648 515 C 640 500 642 482 650 470 Z');
+    const STEM = new Path2D('M 598 488 C 590 530 578 568 562 612 L 606 618 C 620 574 632 534 640 492');
+    const CORE = { x: 560, y: 300 };
+    function fissureY(x) { const t = Math.min(1, Math.max(0, (x - 358) / 332)); return 426 + (382 - 426) * t - 55 * Math.sin(Math.PI * t); }
+    function regionAt(x, y) {
+      if (y > fissureY(x) && x > 360 && x < 700) return 4;          // temporal lobe
+      if (x < 405) return 0;                                           // frontal
+      if (x > 735) return 3;                                           // occipital
+      if (y < 240) return x < 570 ? 1 : 2;                             // upper middle
+      return 5;                                                        // central
     }
 
-    // ── brain point cloud ──
-    function cerebrum(theta, v) {
-      const gyri = 0.07 * Math.sin(9 * theta) * Math.sin(7 * v) + 0.04 * Math.sin(17 * theta + 5 * v);
-      const temporal = 0.22 * Math.exp(-Math.pow((v - 0.62 * Math.PI) / (0.22 * Math.PI), 2)) * Math.pow(Math.abs(Math.cos(theta)), 1.4);
-      const r = 1.55 * (1 + gyri + temporal), s = Math.sin(v);
-      return [r * s * Math.cos(theta) * 0.98, r * Math.cos(v) * 0.72 + 0.16 * s * s - temporal * 0.5, r * s * Math.sin(theta) * (1.62 + 0.18 * Math.sin(theta)) - 0.05];
-    }
-    function cerebellum(theta, v) {
-      const r = 0.5 * (1 + 0.12 * Math.sin(22 * theta) * Math.sin(14 * v));
-      return [r * Math.sin(v) * Math.cos(theta) * 1.25, r * Math.cos(v) * 0.62 - 1.32, r * Math.sin(v) * Math.sin(theta) * 0.7 + 1.55];
-    }
-    const dirs = REGIONS.map(R => { const l = Math.hypot(...R.dir); return R.dir.map(x => x / l); });
-    const pts = [], region = [];
-    const N_CEREBRUM = isSmall ? 1100 : 1700, N_CEREB = isSmall ? 180 : 280;
-    while (pts.length < N_CEREBRUM) {
-      const theta = Math.random() * TAU, v = Math.acos(1 - 2 * Math.random());
-      let [x, y, z] = cerebrum(theta, v);
-      if (Math.abs(x) < 0.07 && y > -0.2) continue;                   // the fissure between hemispheres
-      x += Math.sign(x) * 0.05;
-      const l = Math.hypot(x, y, z);
-      let best = 0, bd = -2;
-      dirs.forEach((d, i) => { const dp = (x * d[0] + y * d[1] + z * d[2]) / l; if (dp > bd) { bd = dp; best = i; } });
-      pts.push([x, y, z]); region.push(best);
-    }
-    for (let i = 0; i < N_CEREB; i++) { pts.push(cerebellum(Math.random() * TAU, Math.acos(1 - 2 * Math.random()))); region.push(-1); }
-    const N = pts.length;
-    const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), phase = new Float32Array(N);
-    pts.forEach((p, i) => { pos.set(p, i * 3); phase[i] = Math.random() * TAU; });
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    const cloud = new THREE.Points(geo, new THREE.PointsMaterial({
-      size: isSmall ? 0.085 : 0.075, map: dotTexture(false), vertexColors: true, transparent: true,
-      depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true,
-    }));
-    spin.add(cloud);
-
-    // region centroids (label anchors) and short connection arcs inside each region
-    const colors = REGIONS.map(R => new THREE.Color(R.color));
-    const centroid = REGIONS.map(() => new THREE.Vector3());
-    const counts = REGIONS.map(() => 0);
-    pts.forEach((p, i) => { if (region[i] >= 0) { centroid[region[i]].add(new THREE.Vector3(...p)); counts[region[i]]++; } });
-    centroid.forEach((c, i) => c.divideScalar(counts[i]).multiplyScalar(1.12));
-    const arcs = REGIONS.map((R, r) => {
-      const idx = []; region.forEach((g, i) => { if (g === r) idx.push(i); });
-      const seg = [];
-      for (let k = 0; k < (isSmall ? 40 : 70) && idx.length; k++) {
-        const a = idx[Math.floor(Math.random() * idx.length)];
-        let bi = -1, bd = 1e9;
-        for (let t = 0; t < 30; t++) {
-          const b = idx[Math.floor(Math.random() * idx.length)];
-          const d = (pts[a][0] - pts[b][0]) ** 2 + (pts[a][1] - pts[b][1]) ** 2 + (pts[a][2] - pts[b][2]) ** 2;
-          if (b !== a && d < bd && d > 0.01) { bd = d; bi = b; }
-        }
-        if (bi >= 0 && bd < 0.09) seg.push(...pts[a], ...pts[bi]);
+    // seeded random, so the circuit layout is the same on every visit
+    let seed = 7;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const off = document.createElement('canvas').getContext('2d');
+    const inBrain = (x, y) => off.isPointInPath(CEREBRUM, x, y);
+    const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]];
+    function walk(x, y, steps, ok, step) {
+      const pts = [[x, y]]; let d = DIRS[Math.floor(rnd() * 4)];
+      for (let s = 0; s < steps; s++) {
+        if (rnd() < 0.3) { const c = DIRS[Math.floor(rnd() * 8)]; if (c[0] !== -d[0] || c[1] !== -d[1]) d = c; }
+        const nx = x + d[0] * step, ny = y + d[1] * step;
+        if (!ok(nx, ny)) break;
+        x = nx; y = ny; pts.push([x, y]);
       }
-      const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(seg, 3));
-      const m = new THREE.LineBasicMaterial({ color: colors[r], transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
-      const lines = new THREE.LineSegments(g, m); spin.add(lines); return m;
+      return pts;
+    }
+    const traces = [];                            // inside the brain
+    for (let i = 0; i < 260; i++) {
+      let x, y; do { x = 200 + rnd() * 660; y = 80 + rnd() * 430; } while (!inBrain(x, y));
+      x = Math.round(x / 12) * 12; y = Math.round(y / 12) * 12;
+      const pts = walk(x, y, 4 + Math.floor(rnd() * 10), inBrain, 12);
+      if (pts.length > 2) traces.push({ pts, region: regionAt(x, y) });
+    }
+    const mesh = [];                              // faint low-poly wireframe
+    const nodes = []; while (nodes.length < 90) { const x = 190 + rnd() * 680, y = 80 + rnd() * 440; if (inBrain(x, y)) nodes.push([x, y]); }
+    nodes.forEach((a, i) => nodes.slice(i + 1).forEach(b => { const d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (d < 95) mesh.push([a, b]); }));
+    const regionPaths = REGIONS.map(() => new Path2D());
+    const centroid = REGIONS.map(() => ({ x: 0, y: 0, n: 0 }));
+    traces.forEach(t => {
+      const p = regionPaths[t.region]; p.moveTo(...t.pts[0]); t.pts.slice(1).forEach(q => p.lineTo(...q));
+      const c = centroid[t.region]; c.x += t.pts[0][0]; c.y += t.pts[0][1]; c.n++;
     });
+    centroid.forEach(c => { c.x /= c.n; c.y /= c.n; });
 
-    // pulses: 10 sparks per region travelling from the core to the region
-    const PER = 10, pulsePos = new Float32Array(REGIONS.length * PER * 3), pulseCol = new Float32Array(REGIONS.length * PER * 3);
-    const pgeo = new THREE.BufferGeometry();
-    pgeo.setAttribute('position', new THREE.BufferAttribute(pulsePos, 3));
-    pgeo.setAttribute('color', new THREE.BufferAttribute(pulseCol, 3));
-    spin.add(new THREE.Points(pgeo, new THREE.PointsMaterial({ size: 0.16, map: dotTexture(true), vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending })));
-
-    // the fusion core
-    const core = new THREE.Sprite(new THREE.SpriteMaterial({ map: dotTexture(true), color: 0xc7d2fe, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
-    tiltGroup.add(core);
-
-    // ── overlay: input streams (2D canvas) ──
-    const fctx = flow.getContext('2d');
-    let W = 1, H = 1, DPR = 1, anchors = [];
+    // ── layout (design space → screen) ──
+    let W = 1, H = 1, DPR = 1, S = 1, OX = 0, OY = 0, anchors = [], bg = null, base = null;
+    const tx = x => OX + x * S, ty = y => OY + y * S;
     function layout() {
       W = wrap.clientWidth; H = wrap.clientHeight; DPR = Math.min(window.devicePixelRatio || 1, 2);
-      renderer.setSize(W, H, false);
-      camera.aspect = W / H; camera.position.z = W / H < 0.9 ? 7.6 / Math.max(0.55, W / H) * 0.95 : 7.6; camera.updateProjectionMatrix();
-      flow.width = W * DPR; flow.height = H * DPR;
+      canvas.width = W * DPR; canvas.height = H * DPR;
+      S = Math.min(W / 1000, (H - 70) / 640) * (W < 560 ? 1.08 : 0.94);
+      OX = (W - 1000 * S) / 2 - (W < 560 ? 20 * S : 0); OY = (H - 70 - 640 * S) / 2 + 4;
       const wr = wrap.getBoundingClientRect();
       anchors = INPUTS.map(({ el }) => {
         const r = el.getBoundingClientRect(), left = el.classList.contains('left');
-        return { x: (left ? r.right : r.left) - wr.left, y: r.top + r.height / 2 - wr.top };
+        return { x: (left ? r.right : r.left) - wr.left, y: r.top + r.height / 2 - wr.top, left };
       });
-      requestFrame();
+      bg = drawBackground(); base = drawBase(); requestFrame();
     }
-    function coreScreen() {
-      const v = new THREE.Vector3(); core.getWorldPosition(v); v.project(camera);
-      return { x: (v.x + 1) / 2 * W, y: (1 - v.y) / 2 * H };
+    function layer() { const c = document.createElement('canvas'); c.width = W * DPR; c.height = H * DPR; const g = c.getContext('2d'); g.setTransform(DPR, 0, 0, DPR, 0, 0); return [c, g]; }
+    function drawBackground() {
+      const [c, g] = layer();
+      const grad = g.createRadialGradient(W / 2, H * 0.45, 0, W / 2, H * 0.45, Math.max(W, H) * 0.75);
+      grad.addColorStop(0, '#0a1a3a'); grad.addColorStop(0.55, '#061027'); grad.addColorStop(1, '#030712');
+      g.fillStyle = grad; g.fillRect(0, 0, W, H);
+      const step = 16, save = seed; seed = 99;
+      g.lineWidth = 1; g.strokeStyle = 'rgba(56,130,246,0.16)'; g.fillStyle = 'rgba(56,160,246,0.35)';
+      for (let i = 0; i < Math.round(W * H / 2600); i++) {
+        const x = Math.round(rnd() * W / step) * step, y = Math.round(rnd() * H / step) * step;
+        const pts = walk(x, y, 3 + Math.floor(rnd() * 9), () => true, step);
+        g.beginPath(); g.moveTo(...pts[0]); pts.slice(1).forEach(p => g.lineTo(...p)); g.stroke();
+        const e = pts[pts.length - 1]; g.fillRect(e[0] - 1.5, e[1] - 1.5, 3, 3);
+      }
+      for (let i = 0; i < Math.round(W * H / 5000); i++) {       // scattered pads
+        g.fillStyle = 'rgba(59,130,246,' + (0.08 + rnd() * 0.3).toFixed(2) + ')';
+        const s = 2 + rnd() * 5; g.fillRect(rnd() * W, rnd() * H, s, s);
+      }
+      seed = save; return c;
     }
-    function drawFlow(lt, streamAmt, fuseAmt) {
-      fctx.setTransform(DPR, 0, 0, DPR, 0, 0); fctx.clearRect(0, 0, W, H);
-      if (streamAmt < 0.01) return;
-      const c = coreScreen();
-      fctx.globalCompositeOperation = 'lighter';
-      anchors.forEach((a, i) => {
-        const cx = (a.x + c.x) / 2, cy = a.y + (c.y - a.y) * 0.15 - 30;
-        const color = INPUTS[i].color;
-        fctx.globalAlpha = 0.18 * streamAmt; fctx.strokeStyle = color; fctx.lineWidth = 1.2;
-        fctx.beginPath(); fctx.moveTo(a.x, a.y); fctx.quadraticCurveTo(cx, cy, c.x, c.y); fctx.stroke();
-        for (let k = 0; k < 14; k++) {
-          const p = (lt * 0.42 + k / 14 + i * 0.13) % 1;
-          const x = (1 - p) * (1 - p) * a.x + 2 * (1 - p) * p * cx + p * p * c.x;
-          const y = (1 - p) * (1 - p) * a.y + 2 * (1 - p) * p * cy + p * p * c.y;
-          const fuse = fuseAmt * Math.max(0, (p - 0.55) / 0.45);
-          fctx.globalAlpha = streamAmt * (0.35 + 0.65 * Math.sin(p * Math.PI));
-          fctx.fillStyle = fuse > 0.5 ? '#c7d2fe' : color;
-          fctx.beginPath(); fctx.arc(x, y, 2.2 + 1.2 * Math.sin(p * Math.PI), 0, TAU); fctx.fill();
-        }
+    function inDesign(g, fn) { g.save(); g.translate(OX, OY); g.scale(S, S); fn(); g.restore(); }
+    function drawBase() {
+      const [c, g] = layer();
+      inDesign(g, () => {
+        g.save(); g.clip(CEREBRUM);
+        g.fillStyle = 'rgba(8,30,70,0.55)'; g.fill(CEREBRUM);
+        g.strokeStyle = 'rgba(125,211,252,0.13)'; g.lineWidth = 0.8;
+        g.beginPath(); mesh.forEach(([a, b]) => { g.moveTo(...a); g.lineTo(...b); }); g.stroke();
+        g.strokeStyle = 'rgba(96,165,250,0.42)'; g.lineWidth = 1.3;
+        regionPaths.forEach(p => g.stroke(p));
+        g.fillStyle = 'rgba(147,197,253,0.7)';
+        traces.forEach(t => { const e = t.pts[t.pts.length - 1]; g.beginPath(); g.arc(e[0], e[1], 2.4, 0, TAU); g.fill(); });
+        g.restore();
+        // cerebellum folia and brain stem
+        g.save(); g.clip(CEREBELLUM);
+        g.fillStyle = 'rgba(8,30,70,0.5)'; g.fill(CEREBELLUM);
+        g.strokeStyle = 'rgba(96,165,250,0.4)'; g.lineWidth = 1.2;
+        for (let k = 0; k < 9; k++) { g.beginPath(); g.ellipse(735, 492, 110 - k * 11, 62 - k * 6.5, -0.12, Math.PI * 0.95, Math.PI * 2.05); g.stroke(); }
+        g.restore();
+        g.fillStyle = 'rgba(8,30,70,0.5)'; g.fill(STEM);
+        // glowing outlines
+        g.shadowColor = '#38bdf8'; g.shadowBlur = 16;
+        g.strokeStyle = '#7dd3fc'; g.lineWidth = 3; [CEREBRUM, CEREBELLUM, STEM].forEach(p => g.stroke(p));
+        g.lineWidth = 2.2; g.stroke(FISSURE);
+        g.shadowBlur = 0; g.strokeStyle = '#e0f2fe'; g.lineWidth = 1.1; [CEREBRUM, CEREBELLUM, STEM, FISSURE].forEach(p => g.stroke(p));
       });
-      fctx.globalAlpha = 1; fctx.globalCompositeOperation = 'source-over';
+      return c;
     }
 
-    // ── UI: legend, explainer, chip, caption ──
+    // ── UI ──
     const legendItems = [...document.querySelectorAll('#brainLegend .brain-legend-item')];
     const chip = document.getElementById('brainChip'), caption = document.getElementById('brainCaption');
     const exTitle = document.getElementById('brainExplainerTitle'), exStatus = document.getElementById('brainExplainerStatus');
@@ -2045,7 +2020,7 @@
       exStatus.innerHTML = '<span class="brain-status ' + R.level + '">' + R.status + '</span>';
       exBody.textContent = R.body; exLink.href = R.href;
       chip.style.setProperty('--c', R.color);
-      chip.innerHTML = ''; chip.append(R.title); const s = document.createElement('small'); s.textContent = R.status; chip.append(s);
+      chip.textContent = R.title; const s = document.createElement('small'); s.textContent = R.status; chip.append(s);
     }
     function setCaption(i) {
       if (i === captionIdx) return; captionIdx = i;
@@ -2054,166 +2029,130 @@
 
     // ── state ──
     let playing = !reduceMotion, visible = true, running = false, last = 0;
-    let lt = reduceMotion ? 10.5 : 0;            // loop time
-    let focus = -1, focusUntil = 0;              // user-selected region
-    let rotY = Math.PI / 2 - 0.35, velY = 0, targetY = null, dragging = false;
-    const weight = REGIONS.map(() => 0);
+    let lt = reduceMotion ? 10.5 : 0, focus = -1, focusUntil = 0;
+    const weight = REGIONS.map(() => 0), sparkAt = REGIONS.map(() => -1e9);
     const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+    const gold = Array.from({ length: 34 }, () => ({ t: traces[Math.floor(rnd() * traces.length)], p: rnd(), v: 0.25 + rnd() * 0.5 }));
+    const twinkle = Array.from({ length: 26 }, () => ({ t: traces[Math.floor(rnd() * traces.length)], ph: rnd() * TAU }));
 
-    function activeRegion() {
-      if (focus >= 0) return focus;
-      if (lt < 8) return shown < 0 ? 0 : shown;
-      return Math.min(5, Math.floor((lt - 8) / (4 / 6)));
+    function along(pts, p) {                     // point at fraction p along a polyline
+      const n = pts.length - 1, f = p * n, i = Math.min(n - 1, Math.floor(f)), u = f - i;
+      return [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * u, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * u];
     }
-    function faceRegion(r) {
-      const c = centroid[r], phi = Math.atan2(c.x, c.z);
-      let t = -phi; while (t - rotY > Math.PI) t -= TAU; while (t - rotY < -Math.PI) t += TAU;
-      targetY = t;
+    function streamPath(a) {                     // chip → horizontal → 45° → core, circuit style
+      const cx = tx(CORE.x), cy = ty(CORE.y), dir = a.left ? 1 : -1;
+      const p1 = [a.x + dir * 26, a.y], dy = cy - p1[1];
+      let dxd = Math.abs(dy); if (Math.abs(cx - p1[0]) < dxd + 10) dxd = Math.max(0, Math.abs(cx - p1[0]) - 10);
+      const p2 = [p1[0] + dir * dxd, p1[1] + Math.sign(dy) * dxd];
+      return [[a.x, a.y], p1, p2, [cx, p2[1] === cy ? cy : p2[1]], [cx, cy]];
     }
-    window.brainJumpTo = function (r) {
-      focus = r; focusUntil = performance.now() + 9000; faceRegion(r);
-      sparkAt[r] = performance.now();
-      requestFrame();
-    };
-    const sparkAt = REGIONS.map(() => -1e9);
+    function glowDot(x, y, r, color, a) {
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, color); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.globalAlpha = a; ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill();
+    }
 
     function frame(now) {
       running = false;
       const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
-      if (focus >= 0 && now > focusUntil && playing) { focus = -1; lt = 0; targetY = null; }
-      const prevLt = lt;
+      if (focus >= 0 && now > focusUntil && playing) { focus = -1; lt = 0; }
+      const prev = lt;
       if (playing && focus < 0) lt = (lt + dt) % LOOP;
-      // launch the beat-3 pulses as each slot begins
-      if (focus < 0) REGIONS.forEach((_, r) => { const s = 8 + r * 4 / 6; if (prevLt < s && lt >= s) sparkAt[r] = now; });
-
-      // rotation: drag momentum, focus easing, or slow auto-spin
-      if (!dragging) {
-        if (targetY !== null) { rotY += (targetY - rotY) * Math.min(1, dt * 3.5); }
-        else if (playing) { rotY += velY * dt; velY *= 0.94; rotY += 0.16 * dt; }
-      }
-      spin.rotation.y = rotY;
-      const act = activeRegion();
-      const upTilt = focus >= 0 && dirs[focus][1] > 0.7 ? 0.42 : -0.12;
-      tiltGroup.rotation.x += (upTilt - tiltGroup.rotation.x) * Math.min(1, dt * 3);
-
+      if (focus < 0) REGIONS.forEach((_, r) => { const s = 8 + r * 4 / 6; if (prev < s && lt >= s) sparkAt[r] = now; });
+      const lit = focus >= 0 || lt >= 8;
+      const act = focus >= 0 ? focus : lt >= 8 ? Math.min(5, Math.floor((lt - 8) / (4 / 6))) : Math.max(0, shown);
+      REGIONS.forEach((_, r) => { weight[r] += ((lit && r === act ? 1 : 0) - weight[r]) * Math.min(1, dt * 5); });
       const streamAmt = focus >= 0 ? 0 : smooth(0, 0.6, lt) * (1 - smooth(4.4, 5.6, lt));
       const fuseAmt = focus >= 0 ? 0 : smooth(3.2, 4.4, lt) * (1 - smooth(8.2, 9.4, lt));
-      const beat = lt < 4 ? 0 : lt < 8 ? 1 : 2;
-      const litPhase = focus >= 0 || lt >= 8;
-
-      // region weights ease toward the active region
-      REGIONS.forEach((_, r) => { const tgt = litPhase && r === act ? 1 : 0; weight[r] += (tgt - weight[r]) * Math.min(1, dt * 4); });
-
-      // point colours: idle blue-grey, tinted and animated by status, region colour when active
       const t = now / 1000;
-      const idle = [0.2, 0.26, 0.42];
-      for (let i = 0; i < N; i++) {
-        const r = region[i];
-        let tint = 0, bright = 0.55 + 0.12 * Math.sin(t * 1.3 + phase[i]);
-        if (r >= 0) {
-          const lv = REGIONS[r].level;
-          if (lv === 'strong') tint = 0.5;
-          else if (lv === 'fast') tint = 0.4 + 0.2 * Math.sin(t * 3 + phase[i] * 0.2);
-          else if (lv === 'improving') tint = 0.35 + 0.15 * Math.sin(t * 1.6);
-          else { tint = 0.22; bright *= 0.75 + 0.35 * (Math.sin(t * 7 + phase[i] * 5) > 0.85 ? 1 : 0); }
-          const w = weight[r]; tint = tint + (1 - tint) * w; bright = bright + (1.6 - bright) * w;
-          const c = colors[r];
-          col[i * 3] = (idle[0] + (c.r - idle[0]) * tint) * bright;
-          col[i * 3 + 1] = (idle[1] + (c.g - idle[1]) * tint) * bright;
-          col[i * 3 + 2] = (idle[2] + (c.b - idle[2]) * tint) * bright;
-        } else {
-          col[i * 3] = idle[0] * bright; col[i * 3 + 1] = idle[1] * bright; col[i * 3 + 2] = idle[2] * bright;
-        }
-      }
-      geo.attributes.color.needsUpdate = true;
-      arcs.forEach((m, r) => { m.opacity = 0.7 * weight[r]; });
 
-      // sparks from the core to each region
-      REGIONS.forEach((_, r) => {
-        const age = (now - sparkAt[r]) / 700, c = colors[r];
-        for (let k = 0; k < PER; k++) {
-          const j = (r * PER + k) * 3, p = age - k * 0.06;
-          const on = p > 0 && p < 1;
-          const q = Math.min(1, Math.max(0, p));
-          pulsePos[j] = centroid[r].x * q; pulsePos[j + 1] = on ? centroid[r].y * q : 999; pulsePos[j + 2] = centroid[r].z * q;
-          const a = on ? Math.sin(q * Math.PI) : 0;
-          pulseCol[j] = c.r * a; pulseCol[j + 1] = c.g * a; pulseCol[j + 2] = c.b * a;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      if (bg) ctx.drawImage(bg, 0, 0); if (base) ctx.drawImage(base, 0, 0);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ctx.globalCompositeOperation = 'lighter';
+
+      // region overlays: status shimmer when idle, full colour + glow when active
+      inDesign(ctx, () => {
+        REGIONS.forEach((R, r) => {
+          let a;
+          if (R.level === 'strong') a = 0.34;
+          else if (R.level === 'fast') a = 0.22 + 0.16 * (0.5 + 0.5 * Math.sin(t * 3.2));
+          else if (R.level === 'improving') a = 0.2 + 0.1 * Math.sin(t * 1.5);
+          else a = Math.sin(t * 9 + r) > 0.75 ? 0.28 : 0.1;
+          a += (1 - a) * weight[r];
+          ctx.globalAlpha = a; ctx.strokeStyle = R.color; ctx.lineWidth = 1.6 + weight[r];
+          if (weight[r] > 0.05) { ctx.shadowColor = R.color; ctx.shadowBlur = 14 * weight[r]; }
+          ctx.stroke(regionPaths[r]); ctx.shadowBlur = 0;
+        });
+      });
+
+      // gold sparks along traces, and twinkling nodes
+      gold.forEach(s => {
+        s.p += s.v * dt * (playing ? 1 : 0); if (s.p > 1) { s.p = 0; s.t = traces[Math.floor(rnd() * traces.length)]; }
+        const [x, y] = along(s.t.pts, s.p);
+        glowDot(tx(x), ty(y), 7, 'rgba(251,191,36,0.9)', Math.sin(s.p * Math.PI));
+      });
+      twinkle.forEach(k => {
+        const e = k.t.pts[k.t.pts.length - 1], a = Math.max(0, Math.sin(t * 1.7 + k.ph));
+        glowDot(tx(e[0]), ty(e[1]), 9, 'rgba(253,224,71,0.85)', a * 0.9);
+      });
+
+      // beat 1–2: input streams run along circuit paths into the core
+      if (streamAmt > 0.01) anchors.forEach((a, i) => {
+        const path = streamPath(a), color = INPUTS[i].color;
+        ctx.globalAlpha = 0.28 * streamAmt; ctx.strokeStyle = color; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.moveTo(...path[0]); path.slice(1).forEach(p => ctx.lineTo(...p)); ctx.stroke();
+        for (let k = 0; k < 10; k++) {
+          const p = (lt * 0.4 + k / 10 + i * 0.11) % 1, [x, y] = along(path, p);
+          glowDot(x, y, 6, p > 0.7 && fuseAmt > 0.5 ? 'rgba(199,210,254,1)' : color, streamAmt * Math.sin(p * Math.PI));
         }
       });
-      pgeo.attributes.position.needsUpdate = true; pgeo.attributes.color.needsUpdate = true;
+      // the fusion core
+      const coreAmt = Math.max(fuseAmt, streamAmt * 0.45, lit && focus < 0 ? 0.3 : 0.12);
+      glowDot(tx(CORE.x), ty(CORE.y), (26 + 40 * coreAmt + 3 * Math.sin(t * 4)) * Math.max(S, 0.45), 'rgba(191,219,254,0.95)', Math.min(1, coreAmt + 0.1));
+      // beat 3: sparks from the core to each region
+      REGIONS.forEach((R, r) => {
+        const age = (now - sparkAt[r]) / 650;
+        if (age < 0 || age > 1.3) return;
+        for (let k = 0; k < 6; k++) {
+          const p = Math.min(1, Math.max(0, age - k * 0.07)); if (p <= 0 || p >= 1) continue;
+          const x = CORE.x + (centroid[r].x - CORE.x) * p, y = CORE.y + (centroid[r].y - CORE.y) * p;
+          glowDot(tx(x), ty(y), 8, R.color, Math.sin(p * Math.PI));
+        }
+      });
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
 
-      // the core swells during fusion
-      const coreAmt = 0.25 + 0.75 * Math.max(fuseAmt, streamAmt * 0.5) + (litPhase && focus < 0 ? 0.2 : 0);
-      core.scale.setScalar(0.5 + 0.9 * coreAmt + 0.08 * Math.sin(t * 4));
-      core.material.opacity = Math.min(1, coreAmt);
-
-      renderer.render(scene, camera);
-      drawFlow(lt, streamAmt, fuseAmt);
       INPUTS.forEach(({ el }) => el.classList.toggle('is-live', streamAmt > 0.3));
-
-      // chip on the active region, clamped inside the canvas
-      if (litPhase) {
+      if (lit) {
         showRegion(act);
-        const v = centroid[act].clone().applyMatrix4(spin.matrixWorld), depth = v.z;
-        v.project(camera);
-        const x = (v.x + 1) / 2 * W, y = (1 - v.y) / 2 * H;
-        const cw = chip.offsetWidth, ch = chip.offsetHeight;
+        const x = tx(centroid[act].x), y = ty(centroid[act].y), cw = chip.offsetWidth, ch = chip.offsetHeight;
         chip.style.left = Math.max(8, Math.min(W - cw - 8, x - cw / 2)) + 'px';
-        chip.style.top = Math.max(8, Math.min(H - ch - 60, y - ch - 14)) + 'px';
-        chip.style.opacity = depth > -0.4 ? '1' : '0.45';
+        chip.style.top = Math.max(8, Math.min(H - ch - 64, y - ch - 18)) + 'px';
+        chip.style.opacity = '1';
       } else chip.style.opacity = '0';
-      setCaption(focus >= 0 ? 2 : beat);
+      setCaption(focus >= 0 ? 2 : lt < 4 ? 0 : lt < 8 ? 1 : 2);
 
-      const animating = (playing && visible) || dragging || (targetY !== null && Math.abs(targetY - rotY) > 0.002)
-        || weight.some((w, r) => Math.abs((litPhase && r === act ? 1 : 0) - w) > 0.01) || sparkAt.some(s => now - s < 1400);
-      if (animating && visible) requestFrame();
+      if (visible && (playing || weight.some((w, r) => Math.abs((lit && r === act ? 1 : 0) - w) > 0.01) || sparkAt.some(s => now - s < 1200))) requestFrame();
     }
     function requestFrame() { if (!running) { running = true; requestAnimationFrame(frame); } }
 
     // ── interaction ──
-    function nearestRegion(px, py) {
-      let best = -1, bd = 70 * 70;
-      centroid.forEach((c, r) => {
-        const v = c.clone().applyMatrix4(spin.matrixWorld); if (v.z < -0.3) return;
-        v.project(camera);
-        const d = ((v.x + 1) / 2 * W - px) ** 2 + ((1 - v.y) / 2 * H - py) ** 2;
-        if (d < bd) { bd = d; best = r; }
-      });
-      return best;
+    window.brainJumpTo = function (r) { focus = r; focusUntil = performance.now() + 9000; sparkAt[r] = performance.now(); requestFrame(); };
+    function hit(e) {
+      const b = wrap.getBoundingClientRect(), x = (e.clientX - b.left - OX) / S, y = (e.clientY - b.top - OY) / S;
+      return inBrain(x, y) ? regionAt(x, y) : -1;
     }
-    let downX = 0, downY = 0, lastX = 0, moved = false;
-    wrap.addEventListener('pointerdown', e => {
-      if (e.target.closest('button')) return;
-      dragging = true; moved = false; downX = lastX = e.clientX; downY = e.clientY; targetY = null;
-      wrap.classList.add('is-dragging'); wrap.setPointerCapture(e.pointerId); requestFrame();
-    });
-    wrap.addEventListener('pointermove', e => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX; lastX = e.clientX;
-      if (Math.abs(e.clientX - downX) + Math.abs(e.clientY - downY) > 5) moved = true;
-      rotY += dx * 0.009; velY = dx * 0.5; requestFrame();
-    });
-    const endDrag = e => {
-      if (!dragging) return; dragging = false; wrap.classList.remove('is-dragging');
-      if (!moved) {
-        const r = wrap.getBoundingClientRect(), hit = nearestRegion(e.clientX - r.left, e.clientY - r.top);
-        if (hit >= 0) window.brainJumpTo(hit);
-      }
-      requestFrame();
-    };
-    wrap.addEventListener('pointerup', endDrag);
-    wrap.addEventListener('pointercancel', endDrag);
+    wrap.addEventListener('pointermove', e => { wrap.style.cursor = hit(e) >= 0 ? 'pointer' : 'default'; });
+    wrap.addEventListener('click', e => { if (e.target.closest('button')) return; const r = hit(e); if (r >= 0) window.brainJumpTo(r); });
     legendItems.forEach((el, r) => el.addEventListener('mouseenter', () => { if (window.matchMedia('(hover: hover)').matches) window.brainJumpTo(r); }));
-
     const playBtn = document.getElementById('brainPlay');
     function syncPlay() { playBtn.textContent = playing ? '❚❚' : '▶'; playBtn.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation'); }
     playBtn.addEventListener('click', () => { playing = !playing; last = 0; syncPlay(); requestFrame(); });
     syncPlay();
 
     new ResizeObserver(layout).observe(wrap);
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; requestFrame(); } }).observe(wrap);
-    }
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; requestFrame(); } }).observe(wrap);
     showRegion(0); setCaption(reduceMotion ? 2 : 0);
     layout();
   })();
