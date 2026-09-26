@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "llm-harness-engineering",
+      "title": "LLM Harness Engineering: Engineering the System Around the Model",
+      "excerpt": "What harness engineering is, and why the same model can fail or succeed depending on the system around it: context, tools, environment, verification, guardrails and feedback loops \u2014 with a same-model ablation across five harnesses.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "20 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\uddf0",
+      "featured": true
+    },
+    {
       "slug": "transformer-to-agentic-ai-complete-stack",
       "title": "From Transformer to Production Agentic AI: The Complete Stack",
       "excerpt": "The series finale as an interactive map: twenty components from data and tokenization to agents, production platforms and evaluation. Play a request or a model build through the whole stack, and click any component for its role, a real result from the series, and its deep dive.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\uddfa\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "evaluating-agents",

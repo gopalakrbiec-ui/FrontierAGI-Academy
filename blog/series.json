@@ -63,7 +63,8 @@
         "agent-memory-and-planning-patterns",
         "mcp-model-context-protocol",
         "production-agent-architecture",
-        "evaluating-agents"
+        "evaluating-agents",
+        "llm-harness-engineering"
       ]
     },
     {
