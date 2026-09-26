@@ -366,10 +366,11 @@
     .home-rsi-spotlight { --sp-accent: #047857; }
     .home-lineage-spotlight { --sp-accent: #7c3aed; }
     .home-series-spotlight, .home-rsi-spotlight, .home-lineage-spotlight {
-      background: radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--sp-accent) 7%, #fff) 0%, #fff 55%);
-      border-color: color-mix(in srgb, var(--sp-accent) 14%, #e5e7eb); border-left-color: var(--sp-accent);
+      background: radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--sp-accent) 11%, #fff) 0%, #fff 60%);
+      border-color: color-mix(in srgb, var(--sp-accent) 24%, #e5e7eb); border-left-color: var(--sp-accent);
       box-shadow: 0 1px 2px rgba(15,23,42,0.06), 0 12px 32px -8px rgba(15,23,42,0.12),
-                  0 0 30px -6px color-mix(in srgb, var(--sp-accent) 16%, transparent);
+                  0 0 0 1px color-mix(in srgb, var(--sp-accent) 10%, transparent),
+                  0 0 44px -4px color-mix(in srgb, var(--sp-accent) 32%, transparent);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
     .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover,
@@ -379,7 +380,8 @@
     .home-lineage-spotlight:has(.home-grid-collapsible:not(.is-collapsed)) {
       border-color: color-mix(in srgb, var(--sp-accent) 38%, #e5e7eb); border-left-color: var(--sp-accent);
       box-shadow: 0 2px 4px rgba(15,23,42,0.06), 0 18px 40px -10px rgba(15,23,42,0.18),
-                  0 0 36px -4px color-mix(in srgb, var(--sp-accent) 26%, transparent);
+                  0 0 0 1px color-mix(in srgb, var(--sp-accent) 18%, transparent),
+                  0 0 56px 0 color-mix(in srgb, var(--sp-accent) 45%, transparent);
     }
     .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: translateY(-2px); }
     @media (prefers-reduced-motion: reduce) { .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: none; } }
