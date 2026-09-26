@@ -362,6 +362,27 @@
     .home-hero { background: linear-gradient(135deg, rgba(248,250,252,0.72) 0%, rgba(238,242,255,0.72) 45%, rgba(245,240,255,0.72) 100%); }
     .home-section.alt { background: rgba(250,250,251,0.62); }
     .pipeline-section { background: rgba(251,251,254,0.62); }
+    /* ── Focus: section boxes lifted, softly lit in their own accent colour ── */
+    .home-rsi-spotlight { --sp-accent: #047857; }
+    .home-lineage-spotlight { --sp-accent: #7c3aed; }
+    .home-series-spotlight, .home-rsi-spotlight, .home-lineage-spotlight {
+      background: radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--sp-accent) 7%, #fff) 0%, #fff 55%);
+      border-color: color-mix(in srgb, var(--sp-accent) 14%, #e5e7eb); border-left-color: var(--sp-accent);
+      box-shadow: 0 1px 2px rgba(15,23,42,0.06), 0 12px 32px -8px rgba(15,23,42,0.12),
+                  0 0 30px -6px color-mix(in srgb, var(--sp-accent) 16%, transparent);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover,
+    .home-series-spotlight:focus-within, .home-rsi-spotlight:focus-within, .home-lineage-spotlight:focus-within,
+    .home-series-spotlight:has(.home-grid-collapsible:not(.is-collapsed)),
+    .home-rsi-spotlight:has(.home-grid-collapsible:not(.is-collapsed)),
+    .home-lineage-spotlight:has(.home-grid-collapsible:not(.is-collapsed)) {
+      border-color: color-mix(in srgb, var(--sp-accent) 38%, #e5e7eb); border-left-color: var(--sp-accent);
+      box-shadow: 0 2px 4px rgba(15,23,42,0.06), 0 18px 40px -10px rgba(15,23,42,0.18),
+                  0 0 36px -4px color-mix(in srgb, var(--sp-accent) 26%, transparent);
+    }
+    .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: translateY(-2px); }
+    @media (prefers-reduced-motion: reduce) { .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: none; } }
   </style>
 </head>
 <body>
@@ -1634,6 +1655,12 @@
         ctx.strokeStyle = 'rgba(14,165,233,' + (0.35 * (1 - r.t)).toFixed(3) + ')'; ctx.lineWidth = 1.5;
         ctx.beginPath(); ctx.arc(r.x, r.y, 10 + r.t * 90, 0, TAU); ctx.stroke();
       });
+      // soften the network behind the reading column so the eye stays on the content
+      const fade = ctx.createLinearGradient(0, 0, W, 0);
+      fade.addColorStop(0, 'rgba(0,0,0,0)'); fade.addColorStop(0.2, 'rgba(0,0,0,0.4)');
+      fade.addColorStop(0.8, 'rgba(0,0,0,0.4)'); fade.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = fade; ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
     }
 
     let last = 0, nextIdle = 0, running = false, hidden = false;
