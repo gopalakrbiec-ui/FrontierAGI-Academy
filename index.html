@@ -114,75 +114,76 @@
       max-width: 1160px; margin: 0 auto;
     }
     .brain-canvas-wrap {
-      position: relative; height: 520px; border-radius: 20px; overflow: hidden;
-      background: radial-gradient(ellipse at 50% 40%, #0e1630 0%, #070a1a 60%, #04050f 100%);
-      border: 1px solid rgba(103,232,249,0.18); cursor: grab;
+      position: relative; height: 520px; border-radius: 20px; overflow: hidden; touch-action: pan-y;
+      background: radial-gradient(ellipse at 50% 45%, #111a38 0%, #080c1e 58%, #04050f 100%);
+      border: 1px solid rgba(129,140,248,0.22); cursor: grab; user-select: none;
     }
-    .brain-canvas-wrap:active { cursor: grabbing; }
-    #brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    .brain-input-icons { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
-    .brain-input-icon {
-      position: absolute; left: 50%; top: 50%; font-size: 1.6rem; text-align: center;
-      transform: translate(calc(-50% + var(--ix)), calc(-50% + var(--iy)));
-      animation: brainIconFly 2.4s cubic-bezier(.3,.6,.3,1) forwards;
-      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    .brain-canvas-wrap.is-dragging { cursor: grabbing; }
+    #brainCanvas, #brainFlow { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #brainFlow { pointer-events: none; z-index: 2; }
+    .brain-input {
+      position: absolute; z-index: 3; display: flex; align-items: center; gap: 6px; pointer-events: none;
+      padding: 5px 10px 5px 7px; border-radius: 999px; background: rgba(15,23,42,0.82);
+      border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); color: #f8fafc;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.01em; transition: box-shadow .4s, opacity .4s;
     }
-    .brain-input-icon i {
-      font-style: normal; font-size: 0.62rem; font-weight: 800; color: #4338ca;
-      background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 999px; white-space: nowrap;
+    .brain-input b { font-size: 0.95rem; line-height: 1; }
+    .brain-input.is-live { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, transparent), 0 0 18px color-mix(in srgb, var(--c) 45%, transparent); }
+    .brain-input.left { left: 14px; } .brain-input.right { right: 14px; }
+    .brain-caption {
+      position: absolute; z-index: 3; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(92%, 560px);
+      text-align: center; color: #e2e8f0; font-size: 0.8rem; font-weight: 600; line-height: 1.45;
+      background: rgba(15,23,42,0.72); border: 1px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 8px 14px;
+      transition: opacity .5s; pointer-events: none;
     }
-    .brain-formulas { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
-    .brain-formula {
-      position: absolute; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.72rem;
-      color: #67e8f9; opacity: 0; white-space: nowrap; text-shadow: 0 0 8px rgba(103,232,249,0.6);
-      animation: brainFormulaDrift 9s ease-in-out infinite;
+    .brain-caption span { color: #a5b4fc; font-weight: 800; margin-right: 6px; }
+    .brain-chip {
+      position: absolute; z-index: 4; pointer-events: none; opacity: 0; transition: opacity .35s;
+      background: rgba(15,23,42,0.9); border: 1.5px solid var(--c, #6366f1); border-radius: 10px;
+      padding: 6px 10px; color: #fff; font-size: 0.74rem; font-weight: 800; white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     }
-    @keyframes brainFormulaDrift {
-      0%   { opacity: 0; transform: translateY(14px); }
-      12%  { opacity: 0.4; }
-      50%  { opacity: 0.28; transform: translateY(-6px); }
-      88%  { opacity: 0.35; }
-      100% { opacity: 0; transform: translateY(-22px); }
+    .brain-chip small { display: block; font-size: 0.64rem; font-weight: 700; color: var(--c, #a5b4fc); margin-top: 2px; }
+    .brain-play {
+      position: absolute; z-index: 5; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(148,163,184,0.35); background: rgba(15,23,42,0.8); color: #e2e8f0;
+      font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
-    .brain-cluster-labels { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-    .brain-cluster-label {
-      position: absolute; transform: translate(-50%, -50%); text-align: center;
-      font-size: 0.62rem; font-weight: 800; white-space: nowrap; letter-spacing: 0.02em;
-      text-shadow: 0 0 8px currentColor; opacity: 0; transition: opacity 1.2s ease;
-      max-width: 40%;
-    }
-    .brain-cluster-label.is-visible { opacity: 0.9; }
-    .brain-cluster-label.align-left { transform: translateY(-50%); text-align: left; white-space: normal; width: 120px; max-width: none; }
-    .brain-cluster-label.align-right { transform: translateY(-50%); text-align: right; white-space: normal; width: 120px; max-width: none; }
-    .brain-cluster-label .pct { display: block; font-size: 0.58rem; font-weight: 700; opacity: 0.75; }
-    @keyframes brainIconFly {
-      0%   { transform: translate(calc(-50% + var(--ix)), calc(-50% + var(--iy))); opacity: 0; }
-      12%  { opacity: 1; }
-      70%  { opacity: 1; transform: translate(calc(-50% + var(--ix) * 0.35), calc(-50% + var(--iy) * 0.35)); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
-    }
+    .brain-play:hover { background: rgba(30,41,59,0.95); }
+    .brain-play:focus-visible, .brain-legend-item:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; }
     .brain-legend { display: flex; flex-direction: column; gap: 10px; }
     .brain-legend-list { display: flex; flex-direction: column; gap: 8px; }
     .brain-legend-item {
-      display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px;
-      background: #fff; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; text-align: left;
+      background: #fff; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; font-family: inherit; width: 100%;
     }
     .brain-legend-item:hover { border-color: var(--dot); }
     .brain-legend-item.is-active { background: color-mix(in srgb, var(--dot) 10%, #fff); border-color: var(--dot); box-shadow: 0 0 0 1px var(--dot) inset; }
     .brain-legend-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--dot); flex-shrink: 0; }
-    .brain-legend-txt { display: flex; justify-content: space-between; flex: 1; align-items: baseline; }
+    .brain-legend-txt { display: flex; justify-content: space-between; flex: 1; align-items: center; gap: 8px; }
     .brain-legend-title { font-size: 0.78rem; font-weight: 700; color: #1f2937; }
-    .brain-legend-val { font-size: 0.78rem; font-weight: 800; color: var(--dot); }
+    .brain-status { font-size: 0.64rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+    .brain-status.strong { background: #dcfce7; color: #166534; }
+    .brain-status.fast { background: #dbeafe; color: #1e40af; }
+    .brain-status.improving { background: #fef3c7; color: #92400e; }
+    .brain-status.open { background: #fce7f3; color: #9d174d; }
     .brain-explainer {
       flex: 1; background: #111827; color: #fff; border-radius: 14px; padding: 18px;
-      display: flex; flex-direction: column; justify-content: center; min-height: 120px;
+      display: flex; flex-direction: column; justify-content: center; min-height: 150px;
     }
-    .brain-explainer-title { font-size: 0.92rem; font-weight: 800; margin-bottom: 8px; }
-    .brain-explainer-body { font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,0.78); }
+    .brain-explainer-title { font-size: 0.92rem; font-weight: 800; margin-bottom: 6px; }
+    .brain-explainer-status { margin-bottom: 8px; }
+    .brain-explainer-body { font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,0.8); }
+    .brain-explainer-link { margin-top: 10px; font-size: 0.78rem; font-weight: 800; color: #a5b4fc; text-decoration: none; }
+    .brain-explainer-link:hover { text-decoration: underline; }
     @media (max-width: 900px) {
       .brain-stage { grid-template-columns: 1fr; }
-      .brain-canvas-wrap { height: 400px; }
-      .brain-input-icon { font-size: 1.2rem; }
+      .brain-canvas-wrap { height: 420px; }
+    }
+    @media (max-width: 560px) {
+      .brain-input { font-size: 0; padding: 6px; gap: 0; }
+      .brain-input b { font-size: 1rem; }
+      .brain-caption { font-size: 0.72rem; bottom: 10px; }
     }
 
     /* ── LLM Pipeline Showcase ── */
@@ -601,51 +602,53 @@
     <div class="home-section-hd">
       <div class="eyebrow">Inside the Machine</div>
       <h2>How Multimodal Signal Becomes an Artificial Mind</h2>
-      <p>Image, language, speech, video, and real-world simulation converge into a single network — which this project visualizes here as a rotatable, benchmark-annotated brain. Drag it, or let it spin on its own.</p>
+      <p>Images, language, speech, video and simulated worlds are all turned into the same kind of vectors, fused in one network — and out of it come capabilities at very different stages of maturity. Watch the loop, drag to rotate, or pick a region.</p>
     </div>
     <div class="brain-stage">
       <div class="brain-canvas-wrap" id="brainCanvasWrap">
-        <canvas id="brainCanvas"></canvas>
-        <div class="brain-input-icons" id="brainInputIcons">
-          <span class="brain-input-icon" style="--ix:-220px;--iy:-160px;" data-emoji="🖼️">🖼️<i>Image</i></span>
-          <span class="brain-input-icon" style="--ix:220px;--iy:-160px;" data-emoji="💬">💬<i>Language</i></span>
-          <span class="brain-input-icon" style="--ix:-260px;--iy:40px;" data-emoji="🎙️">🎙️<i>Speech</i></span>
-          <span class="brain-input-icon" style="--ix:260px;--iy:40px;" data-emoji="🎬">🎬<i>Video</i></span>
-          <span class="brain-input-icon" style="--ix:0px;--iy:180px;" data-emoji="🌐">🌐<i>Real-World Sim</i></span>
-        </div>
-        <div class="brain-formulas" id="brainFormulas"></div>
-        <div class="brain-cluster-labels" id="brainClusterLabels"></div>
+        <canvas id="brainCanvas" aria-hidden="true"></canvas>
+        <canvas id="brainFlow" aria-hidden="true"></canvas>
+        <span class="brain-input left" data-input="0" style="--c:#f59e0b;top:17%;"><b>🖼️</b>Image</span>
+        <span class="brain-input right" data-input="1" style="--c:#818cf8;top:24%;"><b>💬</b>Language</span>
+        <span class="brain-input left" data-input="2" style="--c:#2dd4bf;top:44%;"><b>🎙️</b>Speech</span>
+        <span class="brain-input right" data-input="3" style="--c:#f472b6;top:58%;"><b>🎬</b>Video</span>
+        <span class="brain-input left" data-input="4" style="--c:#4ade80;top:71%;"><b>🌐</b>Simulation</span>
+        <div class="brain-chip" id="brainChip"></div>
+        <div class="brain-caption" id="brainCaption"></div>
+        <button type="button" class="brain-play" id="brainPlay" aria-label="Pause animation">❚❚</button>
       </div>
       <div class="brain-legend" id="brainLegend">
         <div class="brain-legend-list">
-          <div class="brain-legend-item" data-sector="0" style="--dot:#4f46e5" onclick="brainJumpTo(0)">
+          <button type="button" class="brain-legend-item" data-sector="0" style="--dot:#6366f1" onclick="brainJumpTo(0)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Reasoning &amp; Math</div><div class="brain-legend-val">92%</div></div>
-          </div>
-          <div class="brain-legend-item" data-sector="1" style="--dot:#0891b2" onclick="brainJumpTo(1)">
+            <span class="brain-legend-txt"><span class="brain-legend-title">Reasoning &amp; Math</span><span class="brain-status strong">Strong</span></span>
+          </button>
+          <button type="button" class="brain-legend-item" data-sector="1" style="--dot:#06b6d4" onclick="brainJumpTo(1)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Coding &amp; Tool Use</div><div class="brain-legend-val">88%</div></div>
-          </div>
-          <div class="brain-legend-item" data-sector="2" style="--dot:#059669" onclick="brainJumpTo(2)">
+            <span class="brain-legend-txt"><span class="brain-legend-title">Coding &amp; Tool Use</span><span class="brain-status strong">Strong</span></span>
+          </button>
+          <button type="button" class="brain-legend-item" data-sector="2" style="--dot:#10b981" onclick="brainJumpTo(2)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Long-Horizon Agents</div><div class="brain-legend-val">61%</div></div>
-          </div>
-          <div class="brain-legend-item" data-sector="3" style="--dot:#d97706" onclick="brainJumpTo(3)">
+            <span class="brain-legend-txt"><span class="brain-legend-title">Long-Horizon Agents</span><span class="brain-status fast">Improving fast</span></span>
+          </button>
+          <button type="button" class="brain-legend-item" data-sector="3" style="--dot:#f59e0b" onclick="brainJumpTo(3)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Multimodal Grounding</div><div class="brain-legend-val">74%</div></div>
-          </div>
-          <div class="brain-legend-item" data-sector="4" style="--dot:#db2777" onclick="brainJumpTo(4)">
+            <span class="brain-legend-txt"><span class="brain-legend-title">Multimodal Grounding</span><span class="brain-status improving">Improving</span></span>
+          </button>
+          <button type="button" class="brain-legend-item" data-sector="4" style="--dot:#ec4899" onclick="brainJumpTo(4)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Continual Learning</div><div class="brain-legend-val">34%</div></div>
-          </div>
-          <div class="brain-legend-item" data-sector="5" style="--dot:#2563eb" onclick="brainJumpTo(5)">
+            <span class="brain-legend-txt"><span class="brain-legend-title">Continual Learning</span><span class="brain-status open">Open problem</span></span>
+          </button>
+          <button type="button" class="brain-legend-item" data-sector="5" style="--dot:#3b82f6" onclick="brainJumpTo(5)">
             <span class="brain-legend-dot"></span>
-            <div class="brain-legend-txt"><div class="brain-legend-title">Alignment &amp; Interpretability</div><div class="brain-legend-val">41%</div></div>
-          </div>
+            <span class="brain-legend-txt"><span class="brain-legend-title">Alignment &amp; Interpretability</span><span class="brain-status open">Open problem</span></span>
+          </button>
         </div>
-        <div class="brain-explainer" id="brainExplainer">
+        <div class="brain-explainer" id="brainExplainer" aria-live="polite">
           <div class="brain-explainer-title" id="brainExplainerTitle">Reasoning &amp; Math</div>
-          <div class="brain-explainer-body" id="brainExplainerBody">Frontier models now clear graduate-level math and multi-step logic benchmarks at 92% — the region of the network with the most consistent, well-saturated benchmark performance today.</div>
+          <div class="brain-explainer-status" id="brainExplainerStatus"><span class="brain-status strong">Strong</span></div>
+          <div class="brain-explainer-body" id="brainExplainerBody"></div>
+          <a class="brain-explainer-link" id="brainExplainerLink" href="blog/reasoning-models-test-time-compute.html">Read more →</a>
         </div>
       </div>
     </div>
@@ -1852,562 +1855,367 @@
 <script src="assets/vendor/three.min.js"></script>
 <script src="app.js"></script>
 <script>
-  /* ── Artificial Brain Showcase: a glowing "flowing strand" brain built
-     from curved light-trail lines (not a dot/wireframe mesh), auto-rotating
-     or drag-rotatable through 360°, with 6 capability-labeled neuron
-     clusters orbiting it and floating ML formulas drifting in the canvas. ── */
+  /* ── Artificial Brain Showcase: a 12-second, three-beat loop.
+     Beat 1 (0–4 s): five input streams flow from their chips into the core.
+     Beat 2 (4–8 s): the streams fuse into one representation at the core.
+     Beat 3 (8–12 s): pulses travel out and light six capability regions in turn.
+     The brain is one point cloud (two hemispheres + cerebellum) split into six
+     regions; idle regions shimmer according to their status (strong / improving /
+     open problem). Hover, tap or pick a region to focus it; drag to rotate. ── */
   (function () {
     const wrap = document.getElementById('brainCanvasWrap');
     const canvas = document.getElementById('brainCanvas');
-    if (!wrap || !canvas || typeof THREE === 'undefined') return;
+    const flow = document.getElementById('brainFlow');
+    if (!wrap || !canvas || !flow || typeof THREE === 'undefined') return;
 
-    const SECTORS = [
-      { title: 'Reasoning &amp; Math', pct: 92, color: 0x4f46e5,
-        body: 'Frontier models now clear graduate-level math and multi-step logic benchmarks at 92% — the most consistently well-saturated capability in the network today.' },
-      { title: 'Coding &amp; Tool Use', pct: 88, color: 0x0891b2,
-        body: 'Autonomous coding and tool-calling benchmarks sit at 88%, driven by agentic scaffolding and long-context retrieval over real codebases.' },
-      { title: 'Long-Horizon Agents', pct: 61, color: 0x059669,
-        body: 'Multi-step, multi-hour agentic task completion trails at 61% — METR-style time-horizon studies show this is the frontier moving fastest year over year.' },
-      { title: 'Multimodal Grounding', pct: 74, color: 0xd97706,
-        body: 'Vision, audio, and video understanding fused with language sits at 74%, the region this brain\'s five input signals (image, language, speech, video, simulation) feed most directly.' },
-      { title: 'Continual Learning', pct: 34, color: 0xdb2777,
-        body: 'Learning persistently from new experience without retraining remains the network\'s weakest region at 34% — still an open research problem, not a solved one.' },
-      { title: 'Alignment &amp; Interpretability', pct: 41, color: 0x2563eb,
-        body: 'Understanding and steering what a model actually does internally lags at 41% — the safety-critical region every lab flags as unsolved.' },
+    const REGIONS = [
+      { title: 'Reasoning & Math', color: '#6366f1', level: 'strong', status: 'Strong', dir: [0, 0.45, -1],
+        body: 'Models that think step by step before answering now solve competition-level math and multi-step logic problems that were out of reach a few years ago. Many reasoning benchmarks are close to saturated, which is why harder ones keep appearing.',
+        href: 'blog/reasoning-models-test-time-compute.html' },
+      { title: 'Coding & Tool Use', color: '#06b6d4', level: 'strong', status: 'Strong', dir: [-1, 0.3, -0.5],
+        body: 'Models write, debug and refactor real code and call tools reliably inside agent loops. Coding is where AI agents deliver the most measurable value today.',
+        href: 'blog/agentic-loop-explained.html' },
+      { title: 'Long-Horizon Agents', color: '#10b981', level: 'fast', status: 'Improving fast', dir: [0.45, 1, 0.1],
+        body: 'Agents can now finish tasks that take a person minutes to hours, and measurements of the task length they can complete have been rising quickly. Reliability on long, open-ended work is still the gap.',
+        href: 'blog/agi-capability-stack-mapped.html' },
+      { title: 'Multimodal Grounding', color: '#f59e0b', level: 'improving', status: 'Improving', dir: [0, 0.15, 1],
+        body: 'One network now reads images, charts, audio and video alongside text. Grounding — tying words to what is actually in a scene, or to the physical world — is still uneven.',
+        href: 'blog/multimodal-consolidation.html' },
+      { title: 'Continual Learning', color: '#ec4899', level: 'open', status: 'Open problem', dir: [-1, -0.5, 0.35],
+        body: 'Models don’t learn from experience after training: memory features store notes outside the model while its weights stay frozen. Learning continually without forgetting is an open research problem.',
+        href: 'blog/memory-continual-learning-agi-race.html' },
+      { title: 'Alignment & Interpretability', color: '#3b82f6', level: 'open', status: 'Open problem', dir: [1, -0.35, 0.1],
+        body: 'Training can shape how models behave, but we can’t yet reliably read what a model is computing internally or verify how it will behave in new situations. Interpretability research is progressing, but this is unsolved.',
+        href: 'blog/interpretability-gap-reading-model-minds.html' },
     ];
-    const N_SECTORS = SECTORS.length;
-    const TAU = Math.PI * 2;
-    function norm(a) { a = a % TAU; if (a < 0) a += TAU; return a; }
-
+    const INPUTS = [...wrap.querySelectorAll('.brain-input')].map(el => ({ el, color: getComputedStyle(el).getPropertyValue('--c').trim() }));
+    const CAPTIONS = [
+      ['1', 'Five kinds of input — images, text, speech, video and simulation — stream in.'],
+      ['2', 'Each is encoded into vectors in one shared space and fused in a single network.'],
+      ['3', 'Out of that network come capabilities — at very different stages of maturity.'],
+    ];
+    const LOOP = 12, TAU = Math.PI * 2;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isSmall = window.innerWidth < 700;
 
+    // ── scene ──
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isSmall ? 1.25 : 1.75));
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(0, 0, 7.6);
+    const tiltGroup = new THREE.Group(); tiltGroup.rotation.x = -0.12; scene.add(tiltGroup);
+    const spin = new THREE.Group(); tiltGroup.add(spin);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-    const tiltGroup = new THREE.Group();
-    tiltGroup.rotation.x = -0.18;
-    scene.add(tiltGroup);
-    const spinGroup = new THREE.Group();
-    tiltGroup.add(spinGroup);
-
-    // Same brain silhouette (cerebrum + cerebellum) as before — now used only
-    // to sample anchor points that flowing strands travel across, not to
-    // place discrete particles.
-    function cerebrumSurface(theta, v) {
-      const gyri = 0.14 * Math.sin(9 * theta) * Math.sin(7 * v)
-                 + 0.08 * Math.sin(17 * theta + 5 * v)
-                 + 0.045 * Math.sin(23 * theta - 6 * v);
-      const vBulge = Math.exp(-Math.pow((v - 0.62 * Math.PI) / (0.22 * Math.PI), 2));
-      const sideBulge = Math.pow(Math.abs(Math.cos(theta)), 1.4);
-      const temporal = 0.26 * vBulge * sideBulge;
-      const rB = 1.55 * (1 + gyri + temporal);
-      const frontBack = Math.sin(v);
-      const zAsymmetry = 1.62 + 0.18 * Math.sin(theta);
-      const x = rB * frontBack * Math.cos(theta) * 0.98;
-      const y = rB * Math.cos(v) * 0.72 + 0.16 * frontBack * frontBack - temporal * 0.5;
-      const z = rB * frontBack * Math.sin(theta) * zAsymmetry - 0.05;
-      return { x, y, z };
-    }
-    function cerebellumSurface(theta, v) {
-      const folia = 1 + 0.2 * Math.sin(22 * theta) * Math.sin(14 * v);
-      const r = 0.5 * folia;
-      const x = r * Math.sin(v) * Math.cos(theta) * 1.25;
-      const y = r * Math.cos(v) * 0.62 - 1.32;
-      const z = r * Math.sin(v) * Math.sin(theta) * 0.7 + 1.55;
-      return { x, y, z };
+    function dotTexture(soft) {
+      const c = document.createElement('canvas'); c.width = c.height = 64;
+      const g = c.getContext('2d'), grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grad.addColorStop(0, 'rgba(255,255,255,1)');
+      grad.addColorStop(soft ? 0.25 : 0.45, 'rgba(255,255,255,' + (soft ? 0.55 : 0.9) + ')');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = grad; g.fillRect(0, 0, 64, 64);
+      const t = new THREE.CanvasTexture(c); return t;
     }
 
-    // ── Flowing strands: each is a smooth curve random-walking across the
-    // brain surface, rendered as a THREE.Line with per-vertex colors that
-    // animate a traveling bright band along its length every frame. ──
-    const STRAND_COUNT = isSmall ? 55 : 95;
-    const CEREBELLUM_STRANDS = isSmall ? 12 : 20;
-    const SEG_COUNT = 22;
-    const strands = [];
-
-    function buildStrand(surfaceFn, sector) {
-      const steps = 7;
-      let theta = Math.random() * TAU;
-      let v = Math.random() * Math.PI;
-      const anchors = [];
-      for (let s = 0; s < steps; s++) {
-        const p = surfaceFn(theta, v);
-        anchors.push(new THREE.Vector3(p.x, p.y, p.z));
-        theta += (Math.random() - 0.5) * 1.1;
-        v = Math.min(Math.PI, Math.max(0, v + (Math.random() - 0.5) * 0.9));
-      }
-      const curve = new THREE.CatmullRomCurve3(anchors);
-      const pts = curve.getPoints(SEG_COUNT - 1);
-      const positions = new Float32Array(SEG_COUNT * 3);
-      const colors = new Float32Array(SEG_COUNT * 3);
-      pts.forEach((p, i) => { positions[i * 3] = p.x; positions[i * 3 + 1] = p.y; positions[i * 3 + 2] = p.z; });
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-      const mat = new THREE.LineBasicMaterial({
-        vertexColors: true, transparent: true, opacity: 0,
-        blending: THREE.AdditiveBlending, depthWrite: false,
-      });
-      const line = new THREE.Line(geo, mat);
-      spinGroup.add(line);
-      // sector from the strand's average azimuth
-      let sx = 0, sz = 0;
-      pts.forEach(p => { sx += p.x; sz += p.z; });
-      const avgAngle = norm(Math.atan2(sz / pts.length, sx / pts.length));
-      const sec = sector != null ? sector : Math.floor(avgAngle / (TAU / N_SECTORS)) % N_SECTORS;
-      strands.push({
-        line, mat, colors, geo, sector: sec,
-        phase: Math.random(), speed: 0.12 + Math.random() * 0.1,
-        delay: Math.random() * 2200,
-        fire: 0, fireColor: null,
-      });
+    // ── brain point cloud ──
+    function cerebrum(theta, v) {
+      const gyri = 0.07 * Math.sin(9 * theta) * Math.sin(7 * v) + 0.04 * Math.sin(17 * theta + 5 * v);
+      const temporal = 0.22 * Math.exp(-Math.pow((v - 0.62 * Math.PI) / (0.22 * Math.PI), 2)) * Math.pow(Math.abs(Math.cos(theta)), 1.4);
+      const r = 1.55 * (1 + gyri + temporal), s = Math.sin(v);
+      return [r * s * Math.cos(theta) * 0.98, r * Math.cos(v) * 0.72 + 0.16 * s * s - temporal * 0.5, r * s * Math.sin(theta) * (1.62 + 0.18 * Math.sin(theta)) - 0.05];
     }
-    let activeStrandFires = []; // strand objects currently flashing
-
-    for (let i = 0; i < STRAND_COUNT; i++) buildStrand(cerebrumSurface);
-    for (let i = 0; i < CEREBELLUM_STRANDS; i++) buildStrand(cerebellumSurface);
-
-    // ── Point cloud + synapse mesh: fine background texture of individual
-    // "neurons" and their nearest-neighbor connections, layered underneath
-    // the brighter flowing strands rather than replacing them. ──
-    const PARTICLE_COUNT = isSmall ? 1400 : 2600;
-    const particlePos = new Float32Array(PARTICLE_COUNT * 3);
-    const particleBasePos = new Float32Array(PARTICLE_COUNT * 3);
-    const particleColor = new Float32Array(PARTICLE_COUNT * 3);
-    const particleSector = new Int8Array(PARTICLE_COUNT);
-    const particlePhase = new Float32Array(PARTICLE_COUNT);
-    const particleFreq = new Float32Array(PARTICLE_COUNT);
-    const particlePing = new Float32Array(PARTICLE_COUNT); // 0..1, decays after firing
-    const CEREBELLUM_START = Math.floor(PARTICLE_COUNT * 0.83);
-    const STEM_START = Math.floor(PARTICLE_COUNT * 0.94);
-    const tmpC = new THREE.Color();
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      let x, y, z;
-      if (i < CEREBELLUM_START) {
-        const p = cerebrumSurface(Math.random() * TAU, Math.random() * Math.PI);
-        x = p.x; y = p.y; z = p.z;
-      } else if (i < STEM_START) {
-        const p = cerebellumSurface(Math.random() * TAU, Math.random() * Math.PI);
-        x = p.x; y = p.y; z = p.z;
-      } else {
-        const t = Math.random(), ang = Math.random() * TAU, rr = 0.16 * Math.sqrt(Math.random());
-        x = Math.cos(ang) * rr; y = -1.0 - t * 0.6; z = 0.85 + Math.sin(ang) * rr * 0.6;
-      }
-      particlePos[i * 3] = x; particlePos[i * 3 + 1] = y; particlePos[i * 3 + 2] = z;
-      particleBasePos[i * 3] = x; particleBasePos[i * 3 + 1] = y; particleBasePos[i * 3 + 2] = z;
-      particlePhase[i] = Math.random() * TAU;
-      particleFreq[i] = 0.4 + Math.random() * 0.5;
-      const sector = Math.floor(norm(Math.atan2(z, x)) / (TAU / N_SECTORS)) % N_SECTORS;
-      particleSector[i] = sector;
-      tmpC.set(SECTORS[sector].color);
-      particleColor[i * 3] = tmpC.r; particleColor[i * 3 + 1] = tmpC.g; particleColor[i * 3 + 2] = tmpC.b;
+    function cerebellum(theta, v) {
+      const r = 0.5 * (1 + 0.12 * Math.sin(22 * theta) * Math.sin(14 * v));
+      return [r * Math.sin(v) * Math.cos(theta) * 1.25, r * Math.cos(v) * 0.62 - 1.32, r * Math.sin(v) * Math.sin(theta) * 0.7 + 1.55];
     }
+    const dirs = REGIONS.map(R => { const l = Math.hypot(...R.dir); return R.dir.map(x => x / l); });
+    const pts = [], region = [];
+    const N_CEREBRUM = isSmall ? 1100 : 1700, N_CEREB = isSmall ? 180 : 280;
+    while (pts.length < N_CEREBRUM) {
+      const theta = Math.random() * TAU, v = Math.acos(1 - 2 * Math.random());
+      let [x, y, z] = cerebrum(theta, v);
+      if (Math.abs(x) < 0.07 && y > -0.2) continue;                   // the fissure between hemispheres
+      x += Math.sign(x) * 0.05;
+      const l = Math.hypot(x, y, z);
+      let best = 0, bd = -2;
+      dirs.forEach((d, i) => { const dp = (x * d[0] + y * d[1] + z * d[2]) / l; if (dp > bd) { bd = dp; best = i; } });
+      pts.push([x, y, z]); region.push(best);
+    }
+    for (let i = 0; i < N_CEREB; i++) { pts.push(cerebellum(Math.random() * TAU, Math.acos(1 - 2 * Math.random()))); region.push(-1); }
+    const N = pts.length;
+    const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), phase = new Float32Array(N);
+    pts.forEach((p, i) => { pos.set(p, i * 3); phase[i] = Math.random() * TAU; });
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const cloud = new THREE.Points(geo, new THREE.PointsMaterial({
+      size: isSmall ? 0.085 : 0.075, map: dotTexture(false), vertexColors: true, transparent: true,
+      depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true,
+    }));
+    spin.add(cloud);
 
-    const particleGeo = new THREE.BufferGeometry();
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
-    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColor, 3));
-    const particleMat = new THREE.PointsMaterial({
-      size: isSmall ? 0.032 : 0.028, vertexColors: true, transparent: true, opacity: 0,
-      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    });
-    const particlePoints = new THREE.Points(particleGeo, particleMat);
-    spinGroup.add(particlePoints);
-
-    // nearest-neighbor synapse mesh (grid-bucketed, same technique as before)
-    const MAX_NEIGHBORS = 25;
-    const EDGE_RADIUS2 = 0.42 * 0.42;
-    const edgePairs = [];
-    {
-      const cell = 0.3;
-      const grid = new Map();
-      const key = (cx, cy, cz) => cx + '_' + cy + '_' + cz;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const cx = Math.floor(particlePos[i * 3] / cell), cy = Math.floor(particlePos[i * 3 + 1] / cell), cz = Math.floor(particlePos[i * 3 + 2] / cell);
-        const k = key(cx, cy, cz);
-        if (!grid.has(k)) grid.set(k, []);
-        grid.get(k).push(i);
-      }
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const cx = Math.floor(particlePos[i * 3] / cell), cy = Math.floor(particlePos[i * 3 + 1] / cell), cz = Math.floor(particlePos[i * 3 + 2] / cell);
-        const candidates = [];
-        for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
-          const bucket = grid.get(key(cx + dx, cy + dy, cz + dz));
-          if (bucket) for (const j of bucket) if (j > i) candidates.push(j);
+    // region centroids (label anchors) and short connection arcs inside each region
+    const colors = REGIONS.map(R => new THREE.Color(R.color));
+    const centroid = REGIONS.map(() => new THREE.Vector3());
+    const counts = REGIONS.map(() => 0);
+    pts.forEach((p, i) => { if (region[i] >= 0) { centroid[region[i]].add(new THREE.Vector3(...p)); counts[region[i]]++; } });
+    centroid.forEach((c, i) => c.divideScalar(counts[i]).multiplyScalar(1.12));
+    const arcs = REGIONS.map((R, r) => {
+      const idx = []; region.forEach((g, i) => { if (g === r) idx.push(i); });
+      const seg = [];
+      for (let k = 0; k < (isSmall ? 40 : 70) && idx.length; k++) {
+        const a = idx[Math.floor(Math.random() * idx.length)];
+        let bi = -1, bd = 1e9;
+        for (let t = 0; t < 30; t++) {
+          const b = idx[Math.floor(Math.random() * idx.length)];
+          const d = (pts[a][0] - pts[b][0]) ** 2 + (pts[a][1] - pts[b][1]) ** 2 + (pts[a][2] - pts[b][2]) ** 2;
+          if (b !== a && d < bd && d > 0.01) { bd = d; bi = b; }
         }
-        candidates.sort((a, b) => {
-          const da = (particlePos[a*3]-particlePos[i*3])**2 + (particlePos[a*3+1]-particlePos[i*3+1])**2 + (particlePos[a*3+2]-particlePos[i*3+2])**2;
-          const db = (particlePos[b*3]-particlePos[i*3])**2 + (particlePos[b*3+1]-particlePos[i*3+1])**2 + (particlePos[b*3+2]-particlePos[i*3+2])**2;
-          return da - db;
-        });
-        let added = 0;
-        for (const j of candidates) {
-          if (added >= MAX_NEIGHBORS) break;
-          const d2 = (particlePos[j*3]-particlePos[i*3])**2 + (particlePos[j*3+1]-particlePos[i*3+1])**2 + (particlePos[j*3+2]-particlePos[i*3+2])**2;
-          if (d2 < EDGE_RADIUS2) { edgePairs.push(i, j); added++; }
+        if (bi >= 0 && bd < 0.09) seg.push(...pts[a], ...pts[bi]);
+      }
+      const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(seg, 3));
+      const m = new THREE.LineBasicMaterial({ color: colors[r], transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
+      const lines = new THREE.LineSegments(g, m); spin.add(lines); return m;
+    });
+
+    // pulses: 10 sparks per region travelling from the core to the region
+    const PER = 10, pulsePos = new Float32Array(REGIONS.length * PER * 3), pulseCol = new Float32Array(REGIONS.length * PER * 3);
+    const pgeo = new THREE.BufferGeometry();
+    pgeo.setAttribute('position', new THREE.BufferAttribute(pulsePos, 3));
+    pgeo.setAttribute('color', new THREE.BufferAttribute(pulseCol, 3));
+    spin.add(new THREE.Points(pgeo, new THREE.PointsMaterial({ size: 0.16, map: dotTexture(true), vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending })));
+
+    // the fusion core
+    const core = new THREE.Sprite(new THREE.SpriteMaterial({ map: dotTexture(true), color: 0xc7d2fe, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+    tiltGroup.add(core);
+
+    // ── overlay: input streams (2D canvas) ──
+    const fctx = flow.getContext('2d');
+    let W = 1, H = 1, DPR = 1, anchors = [];
+    function layout() {
+      W = wrap.clientWidth; H = wrap.clientHeight; DPR = Math.min(window.devicePixelRatio || 1, 2);
+      renderer.setSize(W, H, false);
+      camera.aspect = W / H; camera.position.z = W / H < 0.9 ? 7.6 / Math.max(0.55, W / H) * 0.95 : 7.6; camera.updateProjectionMatrix();
+      flow.width = W * DPR; flow.height = H * DPR;
+      const wr = wrap.getBoundingClientRect();
+      anchors = INPUTS.map(({ el }) => {
+        const r = el.getBoundingClientRect(), left = el.classList.contains('left');
+        return { x: (left ? r.right : r.left) - wr.left, y: r.top + r.height / 2 - wr.top };
+      });
+      requestFrame();
+    }
+    function coreScreen() {
+      const v = new THREE.Vector3(); core.getWorldPosition(v); v.project(camera);
+      return { x: (v.x + 1) / 2 * W, y: (1 - v.y) / 2 * H };
+    }
+    function drawFlow(lt, streamAmt, fuseAmt) {
+      fctx.setTransform(DPR, 0, 0, DPR, 0, 0); fctx.clearRect(0, 0, W, H);
+      if (streamAmt < 0.01) return;
+      const c = coreScreen();
+      fctx.globalCompositeOperation = 'lighter';
+      anchors.forEach((a, i) => {
+        const cx = (a.x + c.x) / 2, cy = a.y + (c.y - a.y) * 0.15 - 30;
+        const color = INPUTS[i].color;
+        fctx.globalAlpha = 0.18 * streamAmt; fctx.strokeStyle = color; fctx.lineWidth = 1.2;
+        fctx.beginPath(); fctx.moveTo(a.x, a.y); fctx.quadraticCurveTo(cx, cy, c.x, c.y); fctx.stroke();
+        for (let k = 0; k < 14; k++) {
+          const p = (lt * 0.42 + k / 14 + i * 0.13) % 1;
+          const x = (1 - p) * (1 - p) * a.x + 2 * (1 - p) * p * cx + p * p * c.x;
+          const y = (1 - p) * (1 - p) * a.y + 2 * (1 - p) * p * cy + p * p * c.y;
+          const fuse = fuseAmt * Math.max(0, (p - 0.55) / 0.45);
+          fctx.globalAlpha = streamAmt * (0.35 + 0.65 * Math.sin(p * Math.PI));
+          fctx.fillStyle = fuse > 0.5 ? '#c7d2fe' : color;
+          fctx.beginPath(); fctx.arc(x, y, 2.2 + 1.2 * Math.sin(p * Math.PI), 0, TAU); fctx.fill();
         }
-      }
-    }
-    const edgeCount = edgePairs.length / 2;
-    const synapsePos = new Float32Array(edgeCount * 6);
-    const synapseColor = new Float32Array(edgeCount * 6);
-    const synapseFire = new Float32Array(edgeCount); // 0..1, decays after firing
-    const SYNAPSE_BASE = new THREE.Color(0x818cf8);
-    const SYNAPSE_BRIGHT = new THREE.Color(0xd6f5ff);
-    for (let k = 0; k < edgeCount; k++) {
-      const i = edgePairs[k * 2], j = edgePairs[k * 2 + 1];
-      synapsePos[k * 6] = particlePos[i * 3]; synapsePos[k * 6 + 1] = particlePos[i * 3 + 1]; synapsePos[k * 6 + 2] = particlePos[i * 3 + 2];
-      synapsePos[k * 6 + 3] = particlePos[j * 3]; synapsePos[k * 6 + 4] = particlePos[j * 3 + 1]; synapsePos[k * 6 + 5] = particlePos[j * 3 + 2];
-      synapseColor[k * 6] = SYNAPSE_BASE.r; synapseColor[k * 6 + 1] = SYNAPSE_BASE.g; synapseColor[k * 6 + 2] = SYNAPSE_BASE.b;
-      synapseColor[k * 6 + 3] = SYNAPSE_BASE.r; synapseColor[k * 6 + 4] = SYNAPSE_BASE.g; synapseColor[k * 6 + 5] = SYNAPSE_BASE.b;
-    }
-    const synapseGeo = new THREE.BufferGeometry();
-    synapseGeo.setAttribute('position', new THREE.BufferAttribute(synapsePos, 3));
-    synapseGeo.setAttribute('color', new THREE.BufferAttribute(synapseColor, 3));
-    const synapseMat = new THREE.LineBasicMaterial({
-      vertexColors: true, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending,
-    });
-    const synapseLines = new THREE.LineSegments(synapseGeo, synapseMat);
-    spinGroup.add(synapseLines);
-    let activeFires = []; // indices of edges currently glowing
-    const fireColors = new Map(); // idx -> THREE.Color chosen for this flash
-    function randomSignalColor() {
-      return new THREE.Color().setHSL(Math.random(), 0.85, 0.68);
-    }
-    let activePings = []; // indices of particles currently glowing
-
-    // ── Orbiting capability clusters: small non-rotating neuron bursts
-    // parked around the canvas, each wired to a capability, with a flowing
-    // strand reaching in toward the brain — echoes the reference image's
-    // corner neuron clusters connected by light streams. ──
-    const CLUSTER_POS = [
-      { x: -3.3, y: 1.85 }, { x: 3.3, y: 1.85 },
-      { x: -3.85, y: -0.15 }, { x: 3.85, y: -0.15 },
-      { x: -2.7, y: -2.15 }, { x: 2.7, y: -2.15 },
-    ];
-    const clusterGroup = new THREE.Group();
-    scene.add(clusterGroup);
-    const clusters = SECTORS.map((s, idx) => {
-      const pos = CLUSTER_POS[idx];
-      const center = new THREE.Vector3(pos.x, pos.y, -0.6);
-      const n = isSmall ? 16 : 26;
-      const positions = new Float32Array(n * 3);
-      for (let i = 0; i < n; i++) {
-        const r = 0.22 + Math.random() * 0.2;
-        const a = Math.random() * TAU, b = Math.random() * Math.PI;
-        positions[i * 3] = center.x + r * Math.sin(b) * Math.cos(a);
-        positions[i * 3 + 1] = center.y + r * Math.sin(b) * Math.sin(a);
-        positions[i * 3 + 2] = center.z + r * Math.cos(b);
-      }
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      const mat = new THREE.PointsMaterial({
-        color: s.color, size: 0.06, transparent: true, opacity: 0,
-        blending: THREE.AdditiveBlending, depthWrite: false,
       });
-      const points = new THREE.Points(geo, mat);
-      clusterGroup.add(points);
-
-      // strand reaching from the cluster toward the brain's center
-      const reachPts = [center, center.clone().lerp(new THREE.Vector3(0, 0, 0), 0.5), new THREE.Vector3(0, 0, 0)];
-      const curve = new THREE.CatmullRomCurve3(reachPts);
-      const rpts = curve.getPoints(SEG_COUNT - 1);
-      const rPositions = new Float32Array(SEG_COUNT * 3);
-      const rColors = new Float32Array(SEG_COUNT * 3);
-      rpts.forEach((p, i) => { rPositions[i * 3] = p.x; rPositions[i * 3 + 1] = p.y; rPositions[i * 3 + 2] = p.z; });
-      const rGeo = new THREE.BufferGeometry();
-      rGeo.setAttribute('position', new THREE.BufferAttribute(rPositions, 3));
-      rGeo.setAttribute('color', new THREE.BufferAttribute(rColors, 3));
-      const rMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
-      const reachLine = new THREE.Line(rGeo, rMat);
-      clusterGroup.add(reachLine);
-
-      return {
-        mat, reachMat: rMat, reachColors: rColors, sector: idx, phase: Math.random(),
-        baseColor: new THREE.Color(s.color), baseSize: 0.06, fire: 0, fireColor: null,
-      };
-    });
-    let activeClusterFires = []; // cluster objects currently flashing
-
-    function resize() {
-      const w = wrap.clientWidth, h = wrap.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // ── Floating ML formulas: real equations drifting slowly in the canvas ──
-    const FORMULAS = [
-      'softmax(QKᵀ/√d)V', 'L = −Σ y·log(ŷ)', 'θ ← θ − η∇L',
-      '∂L/∂θ = ∂L/∂y · ∂y/∂θ', 'σ(x) = 1/(1+e⁻ˣ)', 'W·x + b',
-      'H(p,q) = −Σp(x)log q(x)', 'Attention(Q,K,V)', 'y = ReLU(Wx+b)',
-    ];
-    const formulaLayer = document.getElementById('brainFormulas');
-    if (formulaLayer) {
-      FORMULAS.forEach((f, i) => {
-        const el = document.createElement('span');
-        el.className = 'brain-formula';
-        el.textContent = f;
-        el.style.left = (8 + Math.random() * 78) + '%';
-        el.style.top = (8 + Math.random() * 78) + '%';
-        el.style.animationDelay = (i * 1.1 + Math.random() * 2) + 's';
-        el.style.animationDuration = (8 + Math.random() * 5) + 's';
-        formulaLayer.appendChild(el);
-      });
+      fctx.globalAlpha = 1; fctx.globalCompositeOperation = 'source-over';
     }
 
-    // ── Cluster labels (HTML, positioned to roughly match the 3D clusters) ──
-    const labelLayer = document.getElementById('brainClusterLabels');
-    if (labelLayer) {
-      const LABEL_POS = [
-        { left: '15%', top: '18%' }, { left: '85%', top: '18%' },
-        { left: '4%', top: '50%', align: 'left' }, { right: '4%', top: '50%', align: 'right' },
-        { left: '20%', top: '84%' }, { left: '80%', top: '84%' },
-      ];
-      SECTORS.forEach((s, idx) => {
-        const el = document.createElement('div');
-        const pos = LABEL_POS[idx];
-        el.className = 'brain-cluster-label' + (pos.align ? ' align-' + pos.align : '');
-        if (pos.left) el.style.left = pos.left;
-        if (pos.right) el.style.right = pos.right;
-        el.style.top = pos.top;
-        el.style.color = '#' + s.color.toString(16).padStart(6, '0');
-        el.innerHTML = s.title + '<span class="pct">' + s.pct + '%</span>';
-        labelLayer.appendChild(el);
-        setTimeout(() => el.classList.add('is-visible'), 1800 + idx * 220);
-      });
+    // ── UI: legend, explainer, chip, caption ──
+    const legendItems = [...document.querySelectorAll('#brainLegend .brain-legend-item')];
+    const chip = document.getElementById('brainChip'), caption = document.getElementById('brainCaption');
+    const exTitle = document.getElementById('brainExplainerTitle'), exStatus = document.getElementById('brainExplainerStatus');
+    const exBody = document.getElementById('brainExplainerBody'), exLink = document.getElementById('brainExplainerLink');
+    let shown = -1, captionIdx = -1;
+    function showRegion(r) {
+      if (r === shown) return; shown = r;
+      legendItems.forEach((el, i) => el.classList.toggle('is-active', i === r));
+      const R = REGIONS[r];
+      exTitle.textContent = R.title;
+      exStatus.innerHTML = '<span class="brain-status ' + R.level + '">' + R.status + '</span>';
+      exBody.textContent = R.body; exLink.href = R.href;
+      chip.style.setProperty('--c', R.color);
+      chip.innerHTML = ''; chip.append(R.title); const s = document.createElement('small'); s.textContent = R.status; chip.append(s);
+    }
+    function setCaption(i) {
+      if (i === captionIdx) return; captionIdx = i;
+      caption.innerHTML = '<span>' + CAPTIONS[i][0] + '</span>'; caption.append(CAPTIONS[i][1]);
     }
 
-    // ── Auto-rotate + drag ──
-    let autoRotate = true;
-    let resumeTimer = null;
-    const AUTO_SPEED = reduceMotion ? 0 : 0.0032;
-    let dragging = false, lastX = 0;
+    // ── state ──
+    let playing = !reduceMotion, visible = true, running = false, last = 0;
+    let lt = reduceMotion ? 10.5 : 0;            // loop time
+    let focus = -1, focusUntil = 0;              // user-selected region
+    let rotY = Math.PI / 2 - 0.35, velY = 0, targetY = null, dragging = false;
+    const weight = REGIONS.map(() => 0);
+    const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 
-    wrap.addEventListener('pointerdown', (e) => {
-      dragging = true; autoRotate = false; lastX = e.clientX;
-      clearTimeout(resumeTimer);
-      wrap.setPointerCapture(e.pointerId);
-    });
-    wrap.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX; lastX = e.clientX;
-      spinGroup.rotation.y += dx * 0.01;
-    });
-    function endDrag() {
-      if (!dragging) return;
-      dragging = false;
-      resumeTimer = setTimeout(() => { autoRotate = true; }, 2200);
+    function activeRegion() {
+      if (focus >= 0) return focus;
+      if (lt < 8) return shown < 0 ? 0 : shown;
+      return Math.min(5, Math.floor((lt - 8) / (4 / 6)));
     }
-    wrap.addEventListener('pointerup', endDrag);
-    wrap.addEventListener('pointerleave', endDrag);
-
-    function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-
-    window.brainJumpTo = function (sectorIdx) {
-      autoRotate = false;
-      clearTimeout(resumeTimer);
-      const sectorCenter = (sectorIdx + 0.5) * (TAU / N_SECTORS);
-      const targetY = sectorCenter - Math.PI / 2;
-      let cur = spinGroup.rotation.y;
-      let delta = ((targetY - cur + Math.PI) % TAU + TAU) % TAU - Math.PI;
-      const start = cur, dur = 700, t0 = performance.now();
-      (function step() {
-        const t = Math.min(1, (performance.now() - t0) / dur);
-        spinGroup.rotation.y = start + delta * easeInOutCubic(t);
-        if (t < 1) requestAnimationFrame(step); else resumeTimer = setTimeout(() => { autoRotate = true; }, 2600);
-      })();
+    function faceRegion(r) {
+      const c = centroid[r], phi = Math.atan2(c.x, c.z);
+      let t = -phi; while (t - rotY > Math.PI) t -= TAU; while (t - rotY < -Math.PI) t += TAU;
+      targetY = t;
+    }
+    window.brainJumpTo = function (r) {
+      focus = r; focusUntil = performance.now() + 9000; faceRegion(r);
+      sparkAt[r] = performance.now();
+      requestFrame();
     };
+    const sparkAt = REGIONS.map(() => -1e9);
 
-    // ── Active sector → legend + explainer text ──
-    let activeSector = -1;
-    const legendItems = document.querySelectorAll('.brain-legend-item');
-    const explTitle = document.getElementById('brainExplainerTitle');
-    const explBody = document.getElementById('brainExplainerBody');
-    const baseColorObj = new THREE.Color();
-    const whiteColor = new THREE.Color(0xffffff);
-    const dimColor = new THREE.Color(0x334155);
+    function frame(now) {
+      running = false;
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      if (focus >= 0 && now > focusUntil && playing) { focus = -1; lt = 0; targetY = null; }
+      const prevLt = lt;
+      if (playing && focus < 0) lt = (lt + dt) % LOOP;
+      // launch the beat-3 pulses as each slot begins
+      if (focus < 0) REGIONS.forEach((_, r) => { const s = 8 + r * 4 / 6; if (prevLt < s && lt >= s) sparkAt[r] = now; });
 
-    const particleRestColor = new Float32Array(PARTICLE_COUNT * 3);
-    function setActiveSector(idx) {
-      if (idx === activeSector) return;
-      activeSector = idx;
-      legendItems.forEach(el => el.classList.toggle('is-active', Number(el.dataset.sector) === idx));
-      const s = SECTORS[idx];
-      explTitle.innerHTML = s.title;
-      explBody.textContent = s.body;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const sc = particleSector[i];
-        const c = sc === idx
-          ? tmpC.set(SECTORS[sc].color).lerp(whiteColor, 0.3)
-          : tmpC.set(SECTORS[sc].color).lerp(dimColor, 0.7);
-        particleRestColor[i * 3] = c.r; particleRestColor[i * 3 + 1] = c.g; particleRestColor[i * 3 + 2] = c.b;
-        if (particlePing[i] < 0.05) {
-          particleColor[i * 3] = c.r; particleColor[i * 3 + 1] = c.g; particleColor[i * 3 + 2] = c.b;
+      // rotation: drag momentum, focus easing, or slow auto-spin
+      if (!dragging) {
+        if (targetY !== null) { rotY += (targetY - rotY) * Math.min(1, dt * 3.5); }
+        else if (playing) { rotY += velY * dt; velY *= 0.94; rotY += 0.16 * dt; }
+      }
+      spin.rotation.y = rotY;
+      const act = activeRegion();
+      const upTilt = focus >= 0 && dirs[focus][1] > 0.7 ? 0.42 : -0.12;
+      tiltGroup.rotation.x += (upTilt - tiltGroup.rotation.x) * Math.min(1, dt * 3);
+
+      const streamAmt = focus >= 0 ? 0 : smooth(0, 0.6, lt) * (1 - smooth(4.4, 5.6, lt));
+      const fuseAmt = focus >= 0 ? 0 : smooth(3.2, 4.4, lt) * (1 - smooth(8.2, 9.4, lt));
+      const beat = lt < 4 ? 0 : lt < 8 ? 1 : 2;
+      const litPhase = focus >= 0 || lt >= 8;
+
+      // region weights ease toward the active region
+      REGIONS.forEach((_, r) => { const tgt = litPhase && r === act ? 1 : 0; weight[r] += (tgt - weight[r]) * Math.min(1, dt * 4); });
+
+      // point colours: idle blue-grey, tinted and animated by status, region colour when active
+      const t = now / 1000;
+      const idle = [0.2, 0.26, 0.42];
+      for (let i = 0; i < N; i++) {
+        const r = region[i];
+        let tint = 0, bright = 0.55 + 0.12 * Math.sin(t * 1.3 + phase[i]);
+        if (r >= 0) {
+          const lv = REGIONS[r].level;
+          if (lv === 'strong') tint = 0.5;
+          else if (lv === 'fast') tint = 0.4 + 0.2 * Math.sin(t * 3 + phase[i] * 0.2);
+          else if (lv === 'improving') tint = 0.35 + 0.15 * Math.sin(t * 1.6);
+          else { tint = 0.22; bright *= 0.75 + 0.35 * (Math.sin(t * 7 + phase[i] * 5) > 0.85 ? 1 : 0); }
+          const w = weight[r]; tint = tint + (1 - tint) * w; bright = bright + (1.6 - bright) * w;
+          const c = colors[r];
+          col[i * 3] = (idle[0] + (c.r - idle[0]) * tint) * bright;
+          col[i * 3 + 1] = (idle[1] + (c.g - idle[1]) * tint) * bright;
+          col[i * 3 + 2] = (idle[2] + (c.b - idle[2]) * tint) * bright;
+        } else {
+          col[i * 3] = idle[0] * bright; col[i * 3 + 1] = idle[1] * bright; col[i * 3 + 2] = idle[2] * bright;
         }
       }
-      particleGeo.attributes.color.needsUpdate = true;
-    }
+      geo.attributes.color.needsUpdate = true;
+      arcs.forEach((m, r) => { m.opacity = 0.7 * weight[r]; });
 
-    const introStart = performance.now();
-    function animate(now) {
-      requestAnimationFrame(animate);
-      const elapsed = now - introStart;
-
-      // Fade in + traveling light pulse along every strand
-      // Randomly ignite a strand so it flashes brighter on top of its
-      // normal traveling pulse — same "firing" language as the synapses.
-      if (elapsed > 800 && Math.random() < 0.4) {
-        const st = strands[Math.floor(Math.random() * strands.length)];
-        if (st.fire < 0.05) { st.fire = 1; st.fireColor = randomSignalColor(); activeStrandFires.push(st); }
-      }
-      for (let p = activeStrandFires.length - 1; p >= 0; p--) {
-        const st = activeStrandFires[p];
-        st.fire *= 0.9;
-        if (st.fire < 0.05) { st.fire = 0; st.fireColor = null; activeStrandFires.splice(p, 1); }
-      }
-
-      strands.forEach(st => {
-        if (elapsed < st.delay) return;
-        if (st.mat.opacity < 0.85) st.mat.opacity = Math.min(0.85, st.mat.opacity + 0.012);
-        const isActive = st.sector === activeSector;
-        const base = baseColorObj.set(SECTORS[st.sector].color);
-        let tinted = isActive ? base.clone().lerp(whiteColor, 0.35) : base.clone().lerp(dimColor, 0.55);
-        if (st.fire > 0.05) tinted = tinted.lerp(st.fireColor, st.fire);
-        const boost = 1 + st.fire * 1.4;
-        const phase = (now * 0.001 * st.speed + st.phase) % 1;
-        for (let k = 0; k < SEG_COUNT; k++) {
-          const u = k / (SEG_COUNT - 1);
-          const wave = (0.35 + 0.65 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2)) * boost;
-          st.colors[k * 3] = tinted.r * wave;
-          st.colors[k * 3 + 1] = tinted.g * wave;
-          st.colors[k * 3 + 2] = tinted.b * wave;
+      // sparks from the core to each region
+      REGIONS.forEach((_, r) => {
+        const age = (now - sparkAt[r]) / 700, c = colors[r];
+        for (let k = 0; k < PER; k++) {
+          const j = (r * PER + k) * 3, p = age - k * 0.06;
+          const on = p > 0 && p < 1;
+          const q = Math.min(1, Math.max(0, p));
+          pulsePos[j] = centroid[r].x * q; pulsePos[j + 1] = on ? centroid[r].y * q : 999; pulsePos[j + 2] = centroid[r].z * q;
+          const a = on ? Math.sin(q * Math.PI) : 0;
+          pulseCol[j] = c.r * a; pulseCol[j + 1] = c.g * a; pulseCol[j + 2] = c.b * a;
         }
-        st.geo.attributes.color.needsUpdate = true;
       });
+      pgeo.attributes.position.needsUpdate = true; pgeo.attributes.color.needsUpdate = true;
 
-      // Randomly ignite a cluster burst so it flashes brighter, same
-      // firing language as the strands and synapses.
-      if (elapsed > 1600 && Math.random() < 0.1) {
-        const cl = clusters[Math.floor(Math.random() * clusters.length)];
-        if (cl.fire < 0.05) { cl.fire = 1; cl.fireColor = randomSignalColor(); activeClusterFires.push(cl); }
-      }
-      for (let p = activeClusterFires.length - 1; p >= 0; p--) {
-        const cl = activeClusterFires[p];
-        cl.fire *= 0.91;
-        if (cl.fire < 0.05) { cl.fire = 0; cl.fireColor = null; activeClusterFires.splice(p, 1); }
-      }
-
-      // Fade in cluster bursts + their reach-strands, with the same pulse
-      clusters.forEach(cl => {
-        if (elapsed < 1600) return;
-        if (cl.mat.opacity < 0.85) cl.mat.opacity = Math.min(0.85, cl.mat.opacity + 0.01);
-        if (cl.reachMat.opacity < 0.5) cl.reachMat.opacity = Math.min(0.5, cl.reachMat.opacity + 0.008);
-        const isActive = cl.sector === activeSector;
-        const base = baseColorObj.set(SECTORS[cl.sector].color);
-        let tinted = isActive ? base.clone().lerp(whiteColor, 0.4) : base;
-        if (cl.fire > 0.05) tinted = tinted.clone().lerp(cl.fireColor, cl.fire);
-        const boost = 1 + cl.fire * 1.3;
-        cl.mat.color.copy(cl.baseColor).lerp(cl.fireColor || cl.baseColor, cl.fire);
-        cl.mat.size = cl.baseSize * boost;
-        const phase = (now * 0.001 * 0.18 + cl.phase) % 1;
-        for (let k = 0; k < SEG_COUNT; k++) {
-          const u = k / (SEG_COUNT - 1);
-          const wave = (0.3 + 0.7 * Math.pow(Math.max(0, Math.sin(Math.PI * (1 - Math.abs(((u - phase + 1.5) % 1) * 2 - 1)))), 2)) * boost;
-          cl.reachColors[k * 3] = tinted.r * wave;
-          cl.reachColors[k * 3 + 1] = tinted.g * wave;
-          cl.reachColors[k * 3 + 2] = tinted.b * wave;
-        }
-        cl.reachMat.color.copy(tinted);
-      });
-      // sync reach-line color attribute updates
-      clusterGroup.children.forEach(obj => {
-        if (obj.geometry && obj.geometry.attributes.color) obj.geometry.attributes.color.needsUpdate = true;
-      });
-
-      // Fade in the background point cloud + synapse mesh, dimmed relative
-      // to the strands, brightening whichever sector is currently active.
-      if (elapsed > 800) {
-        if (particleMat.opacity < 0.55) particleMat.opacity = Math.min(0.55, particleMat.opacity + 0.008);
-        if (synapseMat.opacity < 0.045) synapseMat.opacity = Math.min(0.045, synapseMat.opacity + 0.001);
-
-        // Gentle organic drift: every particle wobbles around its base position.
-        const tsec = now * 0.001;
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          const ph = particlePhase[i], fr = particleFreq[i];
-          particlePos[i * 3]     = particleBasePos[i * 3]     + Math.sin(tsec * fr + ph) * 0.025;
-          particlePos[i * 3 + 1] = particleBasePos[i * 3 + 1] + Math.cos(tsec * fr * 0.8 + ph) * 0.025;
-          particlePos[i * 3 + 2] = particleBasePos[i * 3 + 2] + Math.sin(tsec * fr * 1.2 + ph * 1.3) * 0.025;
-        }
-        particleGeo.attributes.position.needsUpdate = true;
-
-        // Randomly "ping" a few neurons so they flash brighter, like firing.
-        if (Math.random() < 0.35) {
-          for (let n = 0; n < 3; n++) {
-            const idx = Math.floor(Math.random() * PARTICLE_COUNT);
-            if (particlePing[idx] < 0.05) { particlePing[idx] = 1; activePings.push(idx); }
-          }
-        }
-        for (let p = activePings.length - 1; p >= 0; p--) {
-          const idx = activePings[p];
-          particlePing[idx] *= 0.9;
-          const amt = particlePing[idx];
-          const rc = tmpC.setRGB(particleRestColor[idx * 3], particleRestColor[idx * 3 + 1], particleRestColor[idx * 3 + 2]);
-          const c = amt < 0.05 ? rc : rc.lerp(whiteColor, amt);
-          particleColor[idx * 3] = c.r; particleColor[idx * 3 + 1] = c.g; particleColor[idx * 3 + 2] = c.b;
-          if (amt < 0.05) { particlePing[idx] = 0; activePings.splice(p, 1); }
-        }
-        if (activePings.length) particleGeo.attributes.color.needsUpdate = true;
-
-        // Randomly fire a synapse edge so a signal-like flash travels the mesh —
-        // each flash gets its own random color, not a single fixed hue.
-        if (Math.random() < 0.5) {
-          for (let n = 0; n < 2; n++) {
-            const idx = Math.floor(Math.random() * edgeCount);
-            if (synapseFire[idx] < 0.05) {
-              synapseFire[idx] = 1;
-              fireColors.set(idx, randomSignalColor());
-              activeFires.push(idx);
-            }
-          }
-        }
-        for (let p = activeFires.length - 1; p >= 0; p--) {
-          const idx = activeFires[p];
-          synapseFire[idx] *= 0.88;
-          const bright = fireColors.get(idx) || SYNAPSE_BRIGHT;
-          const c = SYNAPSE_BASE.clone().lerp(bright, synapseFire[idx]);
-          synapseColor[idx * 6] = c.r; synapseColor[idx * 6 + 1] = c.g; synapseColor[idx * 6 + 2] = c.b;
-          synapseColor[idx * 6 + 3] = c.r; synapseColor[idx * 6 + 4] = c.g; synapseColor[idx * 6 + 5] = c.b;
-          if (synapseFire[idx] < 0.05) {
-            synapseFire[idx] = 0;
-            synapseColor[idx * 6] = SYNAPSE_BASE.r; synapseColor[idx * 6 + 1] = SYNAPSE_BASE.g; synapseColor[idx * 6 + 2] = SYNAPSE_BASE.b;
-            synapseColor[idx * 6 + 3] = SYNAPSE_BASE.r; synapseColor[idx * 6 + 4] = SYNAPSE_BASE.g; synapseColor[idx * 6 + 5] = SYNAPSE_BASE.b;
-            fireColors.delete(idx);
-            activeFires.splice(p, 1);
-          }
-        }
-        if (activeFires.length) synapseGeo.attributes.color.needsUpdate = true;
-      }
-
-      if (autoRotate && elapsed > 500) spinGroup.rotation.y += AUTO_SPEED;
-
-      if (elapsed > 500) {
-        const localForward = new THREE.Vector3(0, 0, 1).applyEuler(new THREE.Euler(0, -spinGroup.rotation.y, 0));
-        const frontAngle = norm(Math.atan2(localForward.z, localForward.x));
-        const idx = Math.floor(frontAngle / (TAU / N_SECTORS)) % N_SECTORS;
-        setActiveSector(idx);
-      }
+      // the core swells during fusion
+      const coreAmt = 0.25 + 0.75 * Math.max(fuseAmt, streamAmt * 0.5) + (litPhase && focus < 0 ? 0.2 : 0);
+      core.scale.setScalar(0.5 + 0.9 * coreAmt + 0.08 * Math.sin(t * 4));
+      core.material.opacity = Math.min(1, coreAmt);
 
       renderer.render(scene, camera);
+      drawFlow(lt, streamAmt, fuseAmt);
+      INPUTS.forEach(({ el }) => el.classList.toggle('is-live', streamAmt > 0.3));
+
+      // chip on the active region, clamped inside the canvas
+      if (litPhase) {
+        showRegion(act);
+        const v = centroid[act].clone().applyMatrix4(spin.matrixWorld), depth = v.z;
+        v.project(camera);
+        const x = (v.x + 1) / 2 * W, y = (1 - v.y) / 2 * H;
+        const cw = chip.offsetWidth, ch = chip.offsetHeight;
+        chip.style.left = Math.max(8, Math.min(W - cw - 8, x - cw / 2)) + 'px';
+        chip.style.top = Math.max(8, Math.min(H - ch - 60, y - ch - 14)) + 'px';
+        chip.style.opacity = depth > -0.4 ? '1' : '0.45';
+      } else chip.style.opacity = '0';
+      setCaption(focus >= 0 ? 2 : beat);
+
+      const animating = (playing && visible) || dragging || (targetY !== null && Math.abs(targetY - rotY) > 0.002)
+        || weight.some((w, r) => Math.abs((litPhase && r === act ? 1 : 0) - w) > 0.01) || sparkAt.some(s => now - s < 1400);
+      if (animating && visible) requestFrame();
     }
-    requestAnimationFrame(animate);
+    function requestFrame() { if (!running) { running = true; requestAnimationFrame(frame); } }
+
+    // ── interaction ──
+    function nearestRegion(px, py) {
+      let best = -1, bd = 70 * 70;
+      centroid.forEach((c, r) => {
+        const v = c.clone().applyMatrix4(spin.matrixWorld); if (v.z < -0.3) return;
+        v.project(camera);
+        const d = ((v.x + 1) / 2 * W - px) ** 2 + ((1 - v.y) / 2 * H - py) ** 2;
+        if (d < bd) { bd = d; best = r; }
+      });
+      return best;
+    }
+    let downX = 0, downY = 0, lastX = 0, moved = false;
+    wrap.addEventListener('pointerdown', e => {
+      if (e.target.closest('button')) return;
+      dragging = true; moved = false; downX = lastX = e.clientX; downY = e.clientY; targetY = null;
+      wrap.classList.add('is-dragging'); wrap.setPointerCapture(e.pointerId); requestFrame();
+    });
+    wrap.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX; lastX = e.clientX;
+      if (Math.abs(e.clientX - downX) + Math.abs(e.clientY - downY) > 5) moved = true;
+      rotY += dx * 0.009; velY = dx * 0.5; requestFrame();
+    });
+    const endDrag = e => {
+      if (!dragging) return; dragging = false; wrap.classList.remove('is-dragging');
+      if (!moved) {
+        const r = wrap.getBoundingClientRect(), hit = nearestRegion(e.clientX - r.left, e.clientY - r.top);
+        if (hit >= 0) window.brainJumpTo(hit);
+      }
+      requestFrame();
+    };
+    wrap.addEventListener('pointerup', endDrag);
+    wrap.addEventListener('pointercancel', endDrag);
+    legendItems.forEach((el, r) => el.addEventListener('mouseenter', () => { if (window.matchMedia('(hover: hover)').matches) window.brainJumpTo(r); }));
+
+    const playBtn = document.getElementById('brainPlay');
+    function syncPlay() { playBtn.textContent = playing ? '❚❚' : '▶'; playBtn.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation'); }
+    playBtn.addEventListener('click', () => { playing = !playing; last = 0; syncPlay(); requestFrame(); });
+    syncPlay();
+
+    new ResizeObserver(layout).observe(wrap);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; requestFrame(); } }).observe(wrap);
+    }
+    showRegion(0); setCaption(reduceMotion ? 2 : 0);
+    layout();
   })();
 
   /* ── LLM Pipeline Showcase: a 2D canvas flowchart of 14 granular steps
