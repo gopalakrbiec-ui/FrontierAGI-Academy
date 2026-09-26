@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agentic-systems-multi-step-goals",
+      "title": "Agentic Systems: From Single Tool Calls to Multi-Step Goal Completion",
+      "excerpt": "The agent loop \u2014 plan, act, observe, update state, reflect, replan, stop \u2014 and everything around it: components, memory, human approval, failure recovery, subagents and termination, with a runnable agent and the arithmetic of why long runs fail.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udd16",
+      "featured": true
+    },
+    {
       "slug": "tool-and-function-calling",
       "title": "Tool and Function Calling: How an LLM Goes from Answering to Acting",
       "excerpt": "How models call tools: schemas, the call loop, read vs action tools, orchestration, sequential and parallel calls, validation, permissions and confirmation, errors and retries, prompt-injection defence and observability \u2014 with a runnable orchestrator.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udee0\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rag-retrieval-augmented-generation",

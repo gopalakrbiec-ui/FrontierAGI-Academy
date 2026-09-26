@@ -56,7 +56,8 @@
         "production-llm-system-design",
         "context-engineering-and-memory",
         "rag-retrieval-augmented-generation",
-        "tool-and-function-calling"
+        "tool-and-function-calling",
+        "agentic-systems-multi-step-goals"
       ]
     },
     {
