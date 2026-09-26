@@ -1580,10 +1580,8 @@
       const nd = 4 + Math.floor(Math.random() * 3), base = Math.random() * TAU;
       for (let i = 0; i < nd; i++) branch(cx, cy, base + i * TAU / nd + rand(-0.3, 0.3), rand(38, 62), rand(2.4, 3.4), 0);
       const r = rand(7, 10), grad = g.createRadialGradient(cx - 2, cy - 2, 1, cx, cy, r * 1.6);
-      grad.addColorStop(0, '#4a66a8'); grad.addColorStop(0.55, '#243d7a'); grad.addColorStop(1, 'rgba(36,61,122,0)');
+      grad.addColorStop(0, '#e0f2fe'); grad.addColorStop(0.5, '#93b4e6'); grad.addColorStop(1, 'rgba(107,134,196,0)');
       g.fillStyle = grad; g.beginPath(); g.ellipse(cx, cy, r * 1.5, r * 1.15, base, 0, TAU); g.fill();
-      g.fillStyle = '#1b2f63'; g.beginPath(); g.ellipse(cx, cy, r * 0.95, r * 0.75, base, 0, TAU); g.fill();   // dense cell body
-      g.fillStyle = '#6f8fd0'; g.beginPath(); g.arc(cx - r * 0.2, cy - r * 0.2, r * 0.28, 0, TAU); g.fill();   // nucleus highlight
       return { img: c, size, tips };
     }
 
