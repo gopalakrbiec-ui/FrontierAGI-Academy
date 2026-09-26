@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-model-production-engineering",
+      "title": "Frontier Model Production Engineering: Training, Serving and Operating Models at Scale",
+      "excerpt": "How frontier models are trained across thousands of GPUs and served to millions: parallelism, ZeRO, MoE all-to-all, failure-proof checkpointing, continuous batching, prefill vs decode, disaggregation, paged KV cache, speculative decoding, kernels, quantization and deployment \u2014 with interactive diagrams and a runnable serving simulator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfed",
+      "featured": true
+    },
+    {
       "slug": "frontier-model-research-and-innovation",
       "title": "Frontier Model Research & Innovation: What's Changing Inside the Models",
       "excerpt": "Mixture-of-experts, compressed sparse attention for million-token context, RL and test-time reasoning, controllable thinking, native multimodality, embodied reasoning and distillation \u2014 explained with interactive diagrams and grounded in documented 2026 models.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\uddec",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "llm-harness-engineering",
