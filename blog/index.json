@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-model-research-and-innovation",
+      "title": "Frontier Model Research & Innovation: What's Changing Inside the Models",
+      "excerpt": "Mixture-of-experts, compressed sparse attention for million-token context, RL and test-time reasoning, controllable thinking, native multimodality, embodied reasoning and distillation \u2014 explained with interactive diagrams and grounded in documented 2026 models.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\uddec",
+      "featured": true
+    },
+    {
       "slug": "llm-harness-engineering",
       "title": "LLM Harness Engineering: Engineering the System Around the Model",
       "excerpt": "What harness engineering is, and why the same model can fail or succeed depending on the system around it: context, tools, environment, verification, guardrails and feedback loops \u2014 with a same-model ablation across five harnesses.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\uddf0",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "transformer-to-agentic-ai-complete-stack",
