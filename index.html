@@ -1637,7 +1637,7 @@
       for (let i = 0; i < r * 5; i++) { const a = rnd(0, TAU), d = rnd(0, r); g.fillStyle = Math.random() < 0.5 ? '#93c5fd' : '#1e1b4b'; g.fillRect(x + Math.cos(a) * d, y + Math.sin(a) * d, 1.2, 1.2); }
       g.restore();
     }
-    const Z = 0.5;                                                  // neuron size scale
+    const Z = 0.35;                                                 // neuron size scale
     function build() {
       W = hero.clientWidth; H = hero.clientHeight; DPR = Math.min(window.devicePixelRatio || 1, W < 700 ? 1.25 : 1.75);
       cv.width = W * DPR; cv.height = H * DPR;
