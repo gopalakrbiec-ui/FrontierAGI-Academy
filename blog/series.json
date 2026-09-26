@@ -47,6 +47,7 @@
       "short": "How LLMs Are Built",
       "icon": "🛠️",
       "slugs": [
+        "transformer-to-agentic-ai-complete-stack",
         "how-a-transformer-works-decoder-only",
         "how-llm-pretraining-works",
         "how-llm-fine-tuning-works",
@@ -62,8 +63,7 @@
         "agent-memory-and-planning-patterns",
         "mcp-model-context-protocol",
         "production-agent-architecture",
-        "evaluating-agents",
-        "transformer-to-agentic-ai-complete-stack"
+        "evaluating-agents"
       ]
     },
     {
