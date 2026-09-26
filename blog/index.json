@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-market-landscape",
+      "title": "The Harness Market Landscape: Who Builds the Infrastructure Around Frontier Models",
+      "excerpt": "The agent-infrastructure market as of September 2026: frameworks at 1.0, the MCP ecosystem and registry, retrieval, memory, browsers, sandboxes, durable workflows, observability, gateways, guardrails and managed platforms \u2014 with 2025\u201326 deals, an interactive stack builder and a runnable availability model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udded",
+      "featured": true
+    },
+    {
       "slug": "harness-production-engineering",
       "title": "Harness Production Engineering: Running Agents Reliably at Scale",
       "excerpt": "The production side of agent harnesses: durable runtimes, async long-running jobs, context lifecycles, state stores, tool execution gates, MCP's 2026 stateless spec, sandboxes, guardrails and approvals, orchestration, tracing, reliability patterns and deployment architecture \u2014 with interactive diagrams and a runnable crash-and-idempotency simulation.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfd7\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-scaffolding-research-and-innovation",
