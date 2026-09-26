@@ -1574,8 +1574,9 @@
           const n = Math.random() < 0.6 ? 2 : 1;
           for (let k = 0; k < n; k++) branch(ex, ey, ang + rand(-0.7, 0.7), len * rand(0.55, 0.75), w * 0.6, depth + 1);
         } else tips.push([ex - cx, ey - cy]);
+        if (Math.random() < 0.5) tips.push([mx - cx, my - cy]);        // sparkle points along branches too
       }
-      g.strokeStyle = '#6b86c4';
+      g.strokeStyle = '#3f5a9a';
       const nd = 4 + Math.floor(Math.random() * 3), base = Math.random() * TAU;
       for (let i = 0; i < nd; i++) branch(cx, cy, base + i * TAU / nd + rand(-0.3, 0.3), rand(38, 62), rand(2.4, 3.4), 0);
       const r = rand(7, 10), grad = g.createRadialGradient(cx - 2, cy - 2, 1, cx, cy, r * 1.6);
@@ -1630,11 +1631,17 @@
       neurons.forEach(n => {
         const s = n.sprite;
         ctx.save(); ctx.translate(n.x, n.y); ctx.rotate(n.rot);
-        ctx.globalAlpha = 0.22; ctx.drawImage(s.img, -s.size / 2, -s.size / 2, s.size, s.size);
+        ctx.globalAlpha = 0.34; ctx.drawImage(s.img, -s.size / 2, -s.size / 2, s.size, s.size);
         ctx.globalAlpha = 1;
         s.tips.forEach((p, k) => {
-          const a = Math.max(0, Math.sin(now / 900 + n.ph + k * 1.7)) * 0.45;
-          if (a > 0.05) { ctx.fillStyle = 'rgba(245,158,11,' + a.toFixed(2) + ')'; ctx.beginPath(); ctx.arc(p[0], p[1], 1.8, 0, TAU); ctx.fill(); }
+          const w = Math.sin(now / 700 + n.ph + k * 1.7), a = Math.pow(Math.max(0, w), 3) * 0.95;
+          if (a > 0.04) {
+            const warm = k % 3 !== 0, col = warm ? '245,158,11' : '14,165,233', r = 1.6 + 1.6 * a;
+            ctx.fillStyle = 'rgba(' + col + ',' + (a * 0.25).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(p[0], p[1], r * 3, 0, TAU); ctx.fill();
+            ctx.fillStyle = 'rgba(' + col + ',' + a.toFixed(3) + ')'; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, TAU); ctx.fill();
+            if (a > 0.6) { ctx.strokeStyle = 'rgba(255,255,255,' + ((a - 0.6) * 1.8).toFixed(3) + ')'; ctx.lineWidth = 0.8;
+              ctx.beginPath(); ctx.moveTo(p[0] - r * 3, p[1]); ctx.lineTo(p[0] + r * 3, p[1]); ctx.moveTo(p[0], p[1] - r * 3); ctx.lineTo(p[0], p[1] + r * 3); ctx.stroke(); }
+          }
         });
         ctx.restore();
         if (n.flash > 0.02) {
