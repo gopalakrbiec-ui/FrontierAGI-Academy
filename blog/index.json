@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "frontier-model-case-studies",
+      "title": "Frontier Model Case Studies: DeepSeek-V3 \u2192 R1, Llama 4 and Qwen3 / Qwen3-Next",
+      "excerpt": "Three open model families taken apart: DeepSeek's efficient MoE and RL-trained reasoning, Llama 4's early-fusion multimodality and sparse layouts, and Qwen's hybrid thinking and hybrid linear attention \u2014 with interactive diagrams and a calculator built from their published configurations.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd2c",
+      "featured": true
+    },
+    {
       "slug": "frontier-model-market-landscape",
       "title": "The Frontier Model Market Landscape: Who Builds, Trains, Serves and Sells the Models",
       "excerpt": "The model-side market as of September 2026: closed labs and their line-ups and prices, the open-weight ecosystem, training and serving software, hubs, chips and clouds, build vs buy, and where value is concentrating \u2014 with an interactive cost calculator and break-even model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\uddfa\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-model-production-engineering",
