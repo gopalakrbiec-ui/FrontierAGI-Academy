@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "rag-retrieval-augmented-generation",
+      "title": "RAG: Retrieval-Augmented Generation, End to End",
+      "excerpt": "The full RAG system \u2014 ingestion, chunking, embeddings, vector search, hybrid retrieval, reranking, cited generation and evaluation \u2014 with a pipeline measured on 622 real documents and 30 labelled questions, including where it fails.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd0e",
+      "featured": true
+    },
+    {
       "slug": "context-engineering-and-memory",
       "title": "Context Engineering and Memory Architecture for LLMs",
       "excerpt": "What goes into a model's context window and how it's chosen: history management, working vs persistent memory, write and retrieval pipelines, compaction, token budgets, prompt caching and agent memory \u2014 with five memory strategies measured on the same 100-turn conversation.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udde9",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "production-llm-system-design",

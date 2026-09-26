@@ -54,7 +54,8 @@
         "how-llm-inference-works",
         "how-llm-scaling-and-distributed-training-works",
         "production-llm-system-design",
-        "context-engineering-and-memory"
+        "context-engineering-and-memory",
+        "rag-retrieval-augmented-generation"
       ]
     },
     {
