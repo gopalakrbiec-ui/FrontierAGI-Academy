@@ -396,6 +396,7 @@
     .home-hero .home-cta-secondary { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.28); }
     .home-hero .home-cta-secondary:hover { background: rgba(255,255,255,0.16); }
     .home-hero .agi-pulse { background: rgba(255,255,255,0.93); }
+    .home-soon { display: inline-block; font-size: 0.78rem; font-weight: 800; color: #92400e; background: #fef3c7; border: 1px dashed #f59e0b; border-radius: 999px; padding: 6px 14px; }
   </style>
 </head>
 <body>
@@ -701,6 +702,7 @@
     <a href="#sec-rsi">Recursive Self-Improvement</a>
     <a href="#sec-capstack">Capability Stack</a>
     <a href="#sec-llm-lifecycle" class="jn-group">02 · How LLMs Are Built</a>
+    <a href="#sec-frontier-arch">Frontier Architecture &amp; Reasoning</a>
     <a href="#sec-architecture">Architecture &amp; Learning</a>
     <a href="#sec-explainers">Topic Explainers</a>
     <a href="#sec-lineage">Model Lineage</a>
@@ -792,6 +794,14 @@
         <a href="blog/production-agent-architecture.html" class="home-series-card"><span class="home-series-card-emoji">🏛️</span><div class="home-series-card-title" title="Production Agent Architecture: End-to-End System Design">Production Agent Architecture: End-to-End System Design</div><div class="home-series-card-meta">30 min · platform mechanics measured</div></a>
         <a href="blog/evaluating-agents.html" class="home-series-card"><span class="home-series-card-emoji">📏</span><div class="home-series-card-title" title="Evaluating Agents: Measuring Success, Safety and Reliability">Evaluating Agents: Measuring Success, Safety and Reliability</div><div class="home-series-card-meta">30 min · runnable evaluation harness</div></a>
         <a href="blog/llm-harness-engineering.html" class="home-series-card"><span class="home-series-card-emoji">🧰</span><div class="home-series-card-title" title="LLM Harness Engineering: Engineering the System Around the Model">LLM Harness Engineering: Engineering the System Around the Model</div><div class="home-series-card-meta">20 min · same model, five harnesses</div></a>
+      </div>
+    </div>
+
+    <div class="home-series-spotlight" id="sec-frontier-arch" style="--sp-accent:#b45309;--sp-tag-bg:#fffbeb;">
+      <span class="home-series-tag">🧬 New Series · Coming Soon</span>
+      <div class="home-series-title">Frontier Model Architecture &amp; Reasoning — Research, Production, Market &amp; Case Studies</div>
+      <div class="home-series-desc">How today's frontier models are actually designed and how they reason — the research behind each architectural idea, what it takes to run it in production, where it stands in the market, and case studies of the models that use it.</div>
+      <div class="home-series-grid" id="grid-17">
       </div>
     </div>
   </div>
@@ -2192,6 +2202,7 @@
       grid.after(btn);
     }
     const n = grid.querySelectorAll('.home-rsi-card, .home-lineage-card, .home-series-card').length;
+    if (!n) { grid.remove(); btn.remove(); const soon = document.createElement('div'); soon.className = 'home-soon'; soon.textContent = 'First articles coming soon'; sp.appendChild(soon); return; }
     btn.dataset.more = 'Show ' + n + ' article' + (n === 1 ? '' : 's') + ' ↓';
     btn.dataset.less = 'Hide articles ↑';
     btn.textContent = btn.dataset.more;

@@ -172,7 +172,7 @@
       const [r, sr] = await Promise.all([fetch('../blog/index.json'), fetch('../blog/series.json')]);
       const data = await r.json();
       allPosts = data.posts || [];
-      CATEGORIES = ((await sr.json()).series || []).map(x => ({ id: x.id, label: x.short, icon: x.icon, slugs: x.slugs }));
+      CATEGORIES = ((await sr.json()).series || []).filter(x => x.slugs.length).map(x => ({ id: x.id, label: x.short, icon: x.icon, slugs: x.slugs }));
       CATEGORIES.forEach(c => c.slugs.forEach(slug => { if (!seriesOf[slug]) seriesOf[slug] = c; }));
       buildSidebar(allPosts);
       applyDensityUI();

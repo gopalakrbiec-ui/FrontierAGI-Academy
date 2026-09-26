@@ -68,6 +68,13 @@
       ]
     },
     {
+      "id": "sec-frontier-arch",
+      "title": "Frontier Model Architecture & Reasoning — Research, Production, Market & Case Studies",
+      "short": "Frontier Model Architecture & Reasoning — Research, Production, Market & Case Studies",
+      "icon": "🧬",
+      "slugs": []
+    },
+    {
       "id": "sec-architecture",
       "title": "Architecture & Learning Technique: How the Field Actually Got Here",
       "short": "Architecture & Learning Technique",
