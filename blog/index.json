@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agent-memory-and-planning-patterns",
+      "title": "Agent Memory and Planning Patterns: How Agents Remember, Plan, Reflect and Keep Going",
+      "excerpt": "Memory types and architecture, planning patterns, task state and checkpoints, memory write policies, reflection and long-running persistence \u2014 with experiments on crash recovery, learning from experience, what to store, and replanning.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\uddc2\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "multi-agent-systems-architecture",
       "title": "Multi-Agent Systems: End-to-End Architecture",
       "excerpt": "Supervisors, specialists and reviewers: roles, routing, coordination patterns, shared state, parallel execution, failure handling and cost \u2014 with experiments showing when cross-checking actually reduces errors and what sharing everything costs.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udc65",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agentic-systems-multi-step-goals",

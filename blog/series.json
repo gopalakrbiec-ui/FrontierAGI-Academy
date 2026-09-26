@@ -58,7 +58,8 @@
         "rag-retrieval-augmented-generation",
         "tool-and-function-calling",
         "agentic-systems-multi-step-goals",
-        "multi-agent-systems-architecture"
+        "multi-agent-systems-architecture",
+        "agent-memory-and-planning-patterns"
       ]
     },
     {
