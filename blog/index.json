@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "tool-and-function-calling",
+      "title": "Tool and Function Calling: How an LLM Goes from Answering to Acting",
+      "excerpt": "How models call tools: schemas, the call loop, read vs action tools, orchestration, sequential and parallel calls, validation, permissions and confirmation, errors and retries, prompt-injection defence and observability \u2014 with a runnable orchestrator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udee0\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "rag-retrieval-augmented-generation",
       "title": "RAG: Retrieval-Augmented Generation, End to End",
       "excerpt": "The full RAG system \u2014 ingestion, chunking, embeddings, vector search, hybrid retrieval, reranking, cited generation and evaluation \u2014 with a pipeline measured on 622 real documents and 30 labelled questions, including where it fails.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udd0e",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "context-engineering-and-memory",

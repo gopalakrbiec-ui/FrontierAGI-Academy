@@ -55,7 +55,8 @@
         "how-llm-scaling-and-distributed-training-works",
         "production-llm-system-design",
         "context-engineering-and-memory",
-        "rag-retrieval-augmented-generation"
+        "rag-retrieval-augmented-generation",
+        "tool-and-function-calling"
       ]
     },
     {
