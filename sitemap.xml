@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-news.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/china-ai.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/coding-agents.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/europe-ai.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-model-learning.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-timeline.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/future-frontier.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/india-ai.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-engineering.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sovereign-ai.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/usa-ai.html</loc><lastmod>2026-09-25</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-news.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/china-ai.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/coding-agents.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/europe-ai.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-model-learning.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-timeline.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/future-frontier.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/india-ai.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-engineering.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sovereign-ai.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/usa-ai.html</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/after-transformers-current-methods-and-dead-ends.html</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-loop-explained.html</loc><lastmod>2026-06-22</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-benchmarks-measuring-the-undefined.html</loc><lastmod>2026-09-18</lastmod></url>
@@ -125,6 +125,7 @@
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multimodal-consolidation.html</loc><lastmod>2026-07-03</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/physical-intelligence.html</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/power-bottleneck-ai-infrastructure-race.html</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/production-llm-system-design.html</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/qwen-lineage-consolidated-comparison.html</loc><lastmod>2026-09-20</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rag-retrieval-knowledge-stack.html</loc><lastmod>2026-07-21</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/reasoning-models-test-time-compute.html</loc><lastmod>2026-07-12</lastmod></url>

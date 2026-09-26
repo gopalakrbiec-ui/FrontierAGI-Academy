@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "production-llm-system-design",
+      "title": "Production LLM System Design: Anatomy of a ChatGPT- or Claude-Style Assistant",
+      "excerpt": "The full system around the model: gateway, conversation state and memory, retrieval, a context builder working to a token budget, layered safety including prompt-injection defence, tool orchestration, serving, streaming and caching \u2014 with a runnable mini runtime that implements every piece.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfd7\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "how-llm-scaling-and-distributed-training-works",
       "title": "Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built",
       "excerpt": "Scaling laws and compute-optimal training, how GPUs turn matrix multiplies into FLOPs, and how data, tensor, pipeline and expert parallelism split one model across thousands of GPUs \u2014 with a runnable mini scaling study, a roofline benchmark and a data-parallel all-reduce check.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udcc8",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "how-llm-inference-works",
