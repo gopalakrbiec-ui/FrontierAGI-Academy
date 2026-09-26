@@ -84,7 +84,9 @@
       "title": "Latest in Harness Engineering (Agentic Scaffoldings) — 4-Lens Review",
       "short": "Latest in Harness Engineering (Agentic Scaffoldings) — 4-Lens Review",
       "icon": "🧰",
-      "slugs": []
+      "slugs": [
+        "harness-scaffolding-research-and-innovation"
+      ]
     },
     {
       "id": "sec-architecture",

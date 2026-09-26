@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-scaffolding-research-and-innovation",
+      "title": "Harness & Scaffolding Research and Innovation: What's Changing Around the Models",
+      "excerpt": "The research frontier of agent harnesses in 2026: context engineering, compaction, structured and prospective memory, planning and replanning, subagents, dynamic tool loading, sandboxes, verifiers in the loop and adaptive harnesses \u2014 with interactive diagrams, a compaction simulator and the 2026 benchmarks that show where agents still fail.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\uddf0",
+      "featured": true
+    },
+    {
       "slug": "frontier-model-case-studies",
       "title": "Frontier Model Case Studies: DeepSeek-V3 \u2192 R1, Llama 4 and Qwen3 / Qwen3-Next",
       "excerpt": "Three open model families taken apart: DeepSeek's efficient MoE and RL-trained reasoning, Llama 4's early-fusion multimodality and sparse layouts, and Qwen's hybrid thinking and hybrid linear attention \u2014 with interactive diagrams and a calculator built from their published configurations.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udd2c",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-model-market-landscape",
