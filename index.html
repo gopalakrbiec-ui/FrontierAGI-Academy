@@ -1637,6 +1637,7 @@
       for (let i = 0; i < r * 5; i++) { const a = rnd(0, TAU), d = rnd(0, r); g.fillStyle = Math.random() < 0.5 ? '#93c5fd' : '#1e1b4b'; g.fillRect(x + Math.cos(a) * d, y + Math.sin(a) * d, 1.2, 1.2); }
       g.restore();
     }
+    const Z = 0.5;                                                  // neuron size scale
     function build() {
       W = hero.clientWidth; H = hero.clientHeight; DPR = Math.min(window.devicePixelRatio || 1, W < 700 ? 1.25 : 1.75);
       cv.width = W * DPR; cv.height = H * DPR;
@@ -1651,8 +1652,8 @@
       const backN = Math.min(14, Math.round(W * H / 110000) + 3);
       for (let i = 0; i < backN; i++) {
         const x = rnd(0, W), y = rnd(0, H), s = rnd(0.45, 0.7);
-        for (let k = 0; k < 5; k++) branch(bg2, x, y, k / 5 * TAU + rnd(-0.3, 0.3), rnd(50, 90) * s, 5 * s, 1, s, null);
-        soma(bg2, x, y, 12 * s);
+        for (let k = 0; k < 5; k++) branch(bg2, x, y, k / 5 * TAU + rnd(-0.3, 0.3), rnd(50, 90) * s * Z, 5 * s * Z, 1, s, null);
+        soma(bg2, x, y, 12 * s * Z);
       }
       g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 0.45; g.filter = 'blur(3px)'; g.drawImage(bk, 0, 0); g.restore();
       for (let i = 0; i < Math.round(W * H / 9000); i++) {           // bokeh (soft radial dots, no filter needed)
@@ -1667,7 +1668,7 @@
       cells = [];
       const slots = small ? [[0.12, 0.18], [0.85, 0.12], [0.1, 0.72], [0.9, 0.62], [0.5, 0.96]]
                           : [[0.08, 0.22], [0.25, 0.08], [0.88, 0.18], [0.72, 0.05], [0.06, 0.78], [0.94, 0.72], [0.3, 0.97], [0.66, 0.95]];
-      slots.slice(0, count).forEach(([fx, fy]) => cells.push({ x: fx * W + rnd(-20, 20), y: fy * H + rnd(-15, 15), r: rnd(22, 30) * (small ? 0.7 : 1), ph: rnd(0, TAU), glow: 0 }));
+      slots.slice(0, count).forEach(([fx, fy]) => cells.push({ x: fx * W + rnd(-20, 20), y: fy * H + rnd(-15, 15), r: rnd(22, 30) * (small ? 0.7 : 1) * Z, ph: rnd(0, TAU), glow: 0 }));
       links = [];
       cells.forEach((a, i) => {
         cells.map((b, j) => [j, Math.hypot(a.x - b.x, a.y - b.y)]).filter(([j]) => j !== i).sort((p, q) => p[1] - q[1]).slice(0, 2).forEach(([j]) => {
@@ -1677,11 +1678,11 @@
           links.push({ a: i, b: j, pts });
         });
       });
-      links.forEach(l => taper(g, l.pts, 10, 4, '#2b3fa0', '#22b8a8'));
+      links.forEach(l => taper(g, l.pts, 10 * Z, 4 * Z, '#2b3fa0', '#22b8a8'));
       sparks = [];
       cells.forEach(c => {
         const tips = [];
-        for (let k = 0; k < 6; k++) branch(g, c.x, c.y, k / 6 * TAU + rnd(-0.35, 0.35), rnd(65, 110) * (small ? 0.7 : 1), 10, 0, 1, tips);
+        for (let k = 0; k < 6; k++) branch(g, c.x, c.y, k / 6 * TAU + rnd(-0.35, 0.35), rnd(65, 110) * (small ? 0.7 : 1) * Z, 10 * Z, 0, 1, tips);
         tips.forEach(t => { if (Math.random() < 0.35) sparks.push({ x: t[0], y: t[1], ph: rnd(0, TAU), sp: rnd(0.6, 1.4) }); });
       });
       links.forEach(l => { const m = l.pts[20]; sparks.push({ x: m[0], y: m[1], ph: rnd(0, TAU), sp: rnd(0.5, 1) }); });
@@ -1694,7 +1695,7 @@
     }
     function starburst(x, y, s, a) {
       ctx.strokeStyle = `rgba(253,224,71,${a})`; ctx.lineWidth = 1;
-      for (let k = 0; k < 10; k++) { const ang = k / 10 * TAU + s, len = (6 + (k % 3) * 5) * (0.6 + a);
+      for (let k = 0; k < 10; k++) { const ang = k / 10 * TAU + s, len = (6 + (k % 3) * 5) * (0.6 + a) * Z;
         ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(ang) * len, y + Math.sin(ang) * len); ctx.stroke(); }
     }
     function draw(now) {
