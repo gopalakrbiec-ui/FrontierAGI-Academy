@@ -59,7 +59,8 @@
         "tool-and-function-calling",
         "agentic-systems-multi-step-goals",
         "multi-agent-systems-architecture",
-        "agent-memory-and-planning-patterns"
+        "agent-memory-and-planning-patterns",
+        "mcp-model-context-protocol"
       ]
     },
     {

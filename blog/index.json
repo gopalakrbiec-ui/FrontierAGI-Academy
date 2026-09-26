@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "mcp-model-context-protocol",
+      "title": "MCP and Tool Ecosystems: How Agents Discover, Connect to and Use External Capabilities",
+      "excerpt": "The Model Context Protocol as it works on the wire: hosts, clients and servers; tools, resources and prompts; discovery, invocation, transports, OAuth 2.1, errors and security \u2014 with an MCP server written from the spec and verified against the official SDK.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd0c",
+      "featured": true
+    },
+    {
       "slug": "agent-memory-and-planning-patterns",
       "title": "Agent Memory and Planning Patterns: How Agents Remember, Plan, Reflect and Keep Going",
       "excerpt": "Memory types and architecture, planning patterns, task state and checkpoints, memory write policies, reflection and long-running persistence \u2014 with experiments on crash recovery, learning from experience, what to store, and replanning.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\uddc2\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "multi-agent-systems-architecture",
