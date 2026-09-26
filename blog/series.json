@@ -57,7 +57,8 @@
         "context-engineering-and-memory",
         "rag-retrieval-augmented-generation",
         "tool-and-function-calling",
-        "agentic-systems-multi-step-goals"
+        "agentic-systems-multi-step-goals",
+        "multi-agent-systems-architecture"
       ]
     },
     {
