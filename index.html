@@ -1590,26 +1590,14 @@
         x: rand(0, W), y: rand(0, H), vx: rand(-6, 6), vy: rand(-5, 5),
         rot: rand(0, TAU), vr: rand(-0.03, 0.03), sprite: makeSprite(), flash: 0, ph: rand(0, TAU),
       }));
-      // every dendrite tip is wired to the nearest dendrite tip of one of its three closest neurons
       edges = []; const seen = new Set();
       neurons.forEach((a, i) => {
-        const near = neurons.map((b, j) => [j, Math.hypot(a.x - b.x, a.y - b.y)]).filter(([j]) => j !== i)
-          .sort((p, q) => p[1] - q[1]).slice(0, 3).map(([j]) => j);
-        a.sprite.tips.forEach((_, ta) => {
-          const pa = tipPos(a, ta); let best = null, bd = Infinity;
-          near.forEach(j => neurons[j].sprite.tips.forEach((__, tb) => {
-            const pb = tipPos(neurons[j], tb), d = Math.hypot(pa[0] - pb[0], pa[1] - pb[1]);
-            if (d < bd) { bd = d; best = [j, tb]; }
-          }));
-          if (!best) return;
-          const key = [i, ta, best[0], best[1]].join(':'), rev = [best[0], best[1], i, ta].join(':');
-          if (!seen.has(key) && !seen.has(rev)) { seen.add(key); edges.push({ a: i, ta, b: best[0], tb: best[1], bend: rand(-0.25, 0.25) }); }
-        });
+        neurons.map((b, j) => [j, Math.hypot(a.x - b.x, a.y - b.y)]).filter(([j]) => j !== i)
+          .sort((p, q) => p[1] - q[1]).slice(0, 2).forEach(([j]) => {
+            const key = Math.min(i, j) + ':' + Math.max(i, j);
+            if (!seen.has(key)) { seen.add(key); edges.push({ a: i, b: j, bend: rand(-0.35, 0.35) }); }
+          });
       });
-    }
-    function tipPos(n, k) {                       // a dendrite tip in screen coordinates
-      const t = n.sprite.tips[k], c = Math.cos(n.rot), s = Math.sin(n.rot);
-      return [n.x + t[0] * c - t[1] * s, n.y + t[0] * s + t[1] * c];
     }
     function resize() {
       DPR = Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1.25 : 1.75);
@@ -1618,10 +1606,10 @@
       build(); draw(performance.now(), 0);
     }
 
-    function curve(e) {                          // a fibre joining two dendrite tips
-      const [ax, ay] = tipPos(neurons[e.a], e.ta), [bx, by] = tipPos(neurons[e.b], e.tb);
-      const mx = (ax + bx) / 2 - (by - ay) * e.bend, my = (ay + by) / 2 + (bx - ax) * e.bend;
-      return [ax, ay, mx, my, bx, by];
+    function curve(e) {                          // axon as a quadratic curve between two somas
+      const a = neurons[e.a], b = neurons[e.b];
+      const mx = (a.x + b.x) / 2 - (b.y - a.y) * e.bend, my = (a.y + b.y) / 2 + (b.x - a.x) * e.bend;
+      return [a.x, a.y, mx, my, b.x, b.y];
     }
     function tooLong(e) { const a = neurons[e.a], b = neurons[e.b]; return Math.hypot(a.x - b.x, a.y - b.y) > 0.5 * Math.hypot(W, H); }
     function at(c, t, rev) { if (rev) t = 1 - t; const u = 1 - t; return [u * u * c[0] + 2 * u * t * c[2] + t * t * c[4], u * u * c[1] + 2 * u * t * c[3] + t * t * c[5]]; }
