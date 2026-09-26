@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "evaluating-agents",
+      "title": "Evaluating Agents: Measuring Success, Safety and Reliability",
+      "excerpt": "How to evaluate agents, not just answers: outcome, trajectory and system levels, automated checks, environment signals, LLM judges and human review, pass^k reliability, adversarial scenarios and release gates \u2014 with a harness that catches an agent that looks better but is unsafe.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udccf",
+      "featured": true
+    },
+    {
       "slug": "production-agent-architecture",
       "title": "Production Agent Architecture: End-to-End System Design",
       "excerpt": "The capstone: control plane vs execution plane, core platform components, and the infrastructure that makes agents production-grade \u2014 durable execution with idempotent side effects, model routing, tracing, scaling limits and circuit breakers, each measured.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfdb\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "mcp-model-context-protocol",

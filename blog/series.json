@@ -61,7 +61,8 @@
         "multi-agent-systems-architecture",
         "agent-memory-and-planning-patterns",
         "mcp-model-context-protocol",
-        "production-agent-architecture"
+        "production-agent-architecture",
+        "evaluating-agents"
       ]
     },
     {
