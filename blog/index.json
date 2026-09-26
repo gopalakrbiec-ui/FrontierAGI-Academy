@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-production-engineering",
+      "title": "Harness Production Engineering: Running Agents Reliably at Scale",
+      "excerpt": "The production side of agent harnesses: durable runtimes, async long-running jobs, context lifecycles, state stores, tool execution gates, MCP's 2026 stateless spec, sandboxes, guardrails and approvals, orchestration, tracing, reliability patterns and deployment architecture \u2014 with interactive diagrams and a runnable crash-and-idempotency simulation.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfd7\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "harness-scaffolding-research-and-innovation",
       "title": "Harness & Scaffolding Research and Innovation: What's Changing Around the Models",
       "excerpt": "The research frontier of agent harnesses in 2026: context engineering, compaction, structured and prospective memory, planning and replanning, subagents, dynamic tool loading, sandboxes, verifiers in the loop and adaptive harnesses \u2014 with interactive diagrams, a compaction simulator and the 2026 benchmarks that show where agents still fail.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\uddf0",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-model-case-studies",
