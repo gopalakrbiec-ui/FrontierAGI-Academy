@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "transformer-to-agentic-ai-complete-stack",
+      "title": "From Transformer to Production Agentic AI: The Complete Stack",
+      "excerpt": "The series finale as an interactive map: twenty components from data and tokenization to agents, production platforms and evaluation. Play a request or a model build through the whole stack, and click any component for its role, a real result from the series, and its deep dive.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-26",
+      "readTime": "10 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\uddfa\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "evaluating-agents",
       "title": "Evaluating Agents: Measuring Success, Safety and Reliability",
       "excerpt": "How to evaluate agents, not just answers: outcome, trajectory and system levels, automated checks, environment signals, LLM judges and human review, pass^k reliability, adversarial scenarios and release gates \u2014 with a harness that catches an agent that looks better but is unsafe.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udccf",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "production-agent-architecture",
