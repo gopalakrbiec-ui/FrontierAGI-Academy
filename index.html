@@ -385,6 +385,17 @@
     }
     .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: translateY(-2px); }
     @media (prefers-reduced-motion: reduce) { .home-series-spotlight:hover, .home-rsi-spotlight:hover, .home-lineage-spotlight:hover { transform: none; } }
+    /* ── Dark neuron hero ── */
+    .home-hero { background: #050b1f !important; }
+    .home-hero::before { display: none; }
+    #heroNeurons { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+    .home-hero-inner { z-index: 1; }
+    .home-hero h1 { color: #fff; text-shadow: 0 2px 24px rgba(3,7,18,0.9); }
+    .home-hero p { color: #cbd5e1; text-shadow: 0 1px 12px rgba(3,7,18,0.95); }
+    .home-hero-badge { background: rgba(15,23,42,0.7); color: #fbbf24; border-color: rgba(251,191,36,0.35); }
+    .home-hero .home-cta-secondary { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.28); }
+    .home-hero .home-cta-secondary:hover { background: rgba(255,255,255,0.16); }
+    .home-hero .agi-pulse { background: rgba(255,255,255,0.93); }
   </style>
 </head>
 <body>
@@ -1556,6 +1567,181 @@
 
 <script src="app.js"></script>
 <script>
+  /* ── Hero neuron scene: deep-navy backdrop with bokeh and a blurred back layer, sharp front neurons
+     (textured blue-violet somas with glowing orange cores, tapered blue→teal dendrites, long dendrites
+     joining neighbouring cells), twinkling synapse sparks, and click-triggered pulses that travel
+     from cell to cell and burst on arrival. Static layers are drawn once; only glows move. ── */
+  (function () {
+    const hero = document.querySelector('.home-hero');
+    if (!hero) return;
+    const cv = document.createElement('canvas'); cv.id = 'heroNeurons'; cv.setAttribute('aria-hidden', 'true');
+    hero.prepend(cv);
+    const ctx = cv.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const TAU = Math.PI * 2, rnd = (a, b) => a + Math.random() * (b - a);
+    let W = 0, H = 0, DPR = 1, bg = null, fg = null, cells = [], links = [], sparks = [], pulses = [], bursts = [];
+
+    function layer() { const c = document.createElement('canvas'); c.width = W * DPR; c.height = H * DPR; const g = c.getContext('2d'); g.setTransform(DPR, 0, 0, DPR, 0, 0); return [c, g]; }
+    function taper(g, pts, w0, w1, c0, c1) {                   // a tapered, colour-graded curve through pts
+      const n = pts.length - 1;
+      for (let i = 0; i < n; i++) {
+        const t = i / n, w = w0 + (w1 - w0) * t;
+        const grad = g.createLinearGradient(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]);
+        grad.addColorStop(0, mix(c0, c1, t)); grad.addColorStop(1, mix(c0, c1, (i + 1) / n));
+        g.strokeStyle = grad; g.lineWidth = w; g.lineCap = 'round';
+        g.beginPath(); g.moveTo(pts[i][0], pts[i][1]); g.lineTo(pts[i + 1][0], pts[i + 1][1]); g.stroke();
+      }
+    }
+    function mix(a, b, t) {
+      const p = x => [1, 3, 5].map(i => parseInt(x.slice(i, i + 2), 16));
+      const A = p(a), B = p(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`;
+    }
+    function bez(p0, p1, p2, p3, steps = 18) {
+      const out = [];
+      for (let i = 0; i <= steps; i++) { const t = i / steps, u = 1 - t;
+        out.push([u*u*u*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t*t*t*p3[0], u*u*u*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t*t*t*p3[1]]); }
+      return out;
+    }
+    function branch(g, x, y, ang, len, w, depth, scale, tips) {
+      const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len, bend = rnd(-0.6, 0.6);
+      const pts = bez([x, y], [x + Math.cos(ang + bend) * len * 0.35, y + Math.sin(ang + bend) * len * 0.35],
+                      [x + Math.cos(ang - bend) * len * 0.7, y + Math.sin(ang - bend) * len * 0.7], [ex, ey], 10);
+      taper(g, pts, w, w * 0.45, '#2c3f9e', '#1fb5a8');
+      if (depth < 3 && Math.random() < 0.85) {
+        const k = Math.random() < 0.55 ? 2 : 1;
+        for (let i = 0; i < k; i++) branch(g, ex, ey, ang + rnd(-0.8, 0.8), len * rnd(0.5, 0.75), w * 0.55, depth + 1, scale, tips);
+      } else if (tips) tips.push([ex, ey]);
+    }
+    function soma(g, x, y, r) {
+      g.save();
+      const halo = g.createRadialGradient(x, y, r * 0.5, x, y, r * 3.2);
+      halo.addColorStop(0, 'rgba(45,212,191,0.28)'); halo.addColorStop(1, 'rgba(45,212,191,0)');
+      g.fillStyle = halo; g.beginPath(); g.arc(x, y, r * 3.2, 0, TAU); g.fill();
+      g.beginPath();                                                 // lumpy body
+      for (let i = 0; i <= 14; i++) { const a = i / 14 * TAU, rr = r * rnd(0.85, 1.15); g.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr * 0.9); }
+      const body = g.createRadialGradient(x, y, r * 0.1, x, y, r * 1.1);
+      body.addColorStop(0, '#fcd34d'); body.addColorStop(0.28, '#f97316'); body.addColorStop(0.55, '#6d3fb8'); body.addColorStop(1, '#233b8f');
+      g.fillStyle = body; g.fill();
+      g.globalAlpha = 0.35;                                          // speckle texture
+      for (let i = 0; i < r * 5; i++) { const a = rnd(0, TAU), d = rnd(0, r); g.fillStyle = Math.random() < 0.5 ? '#93c5fd' : '#1e1b4b'; g.fillRect(x + Math.cos(a) * d, y + Math.sin(a) * d, 1.2, 1.2); }
+      g.restore();
+    }
+    function build() {
+      W = hero.clientWidth; H = hero.clientHeight; DPR = Math.min(window.devicePixelRatio || 1, W < 700 ? 1.25 : 1.75);
+      cv.width = W * DPR; cv.height = H * DPR;
+      // background: navy, teal haze, bokeh, blurred back-layer neurons
+      let g; [bg, g] = layer();
+      const base = g.createRadialGradient(W / 2, H * 0.4, 0, W / 2, H * 0.4, Math.max(W, H) * 0.8);
+      base.addColorStop(0, '#0b2140'); base.addColorStop(0.55, '#07122b'); base.addColorStop(1, '#030712');
+      g.fillStyle = base; g.fillRect(0, 0, W, H);
+      for (let i = 0; i < 4; i++) { const hx = rnd(0, W), hy = rnd(0, H), hr = rnd(W * 0.15, W * 0.3), h = g.createRadialGradient(hx, hy, 0, hx, hy, hr);
+        h.addColorStop(0, 'rgba(20,184,166,0.13)'); h.addColorStop(1, 'rgba(20,184,166,0)'); g.fillStyle = h; g.fillRect(0, 0, W, H); }
+      const [bk, bg2] = layer();                                   // back layer drawn sharp, then blurred once
+      const backN = Math.min(14, Math.round(W * H / 110000) + 3);
+      for (let i = 0; i < backN; i++) {
+        const x = rnd(0, W), y = rnd(0, H), s = rnd(0.45, 0.7);
+        for (let k = 0; k < 5; k++) branch(bg2, x, y, k / 5 * TAU + rnd(-0.3, 0.3), rnd(50, 90) * s, 5 * s, 1, s, null);
+        soma(bg2, x, y, 12 * s);
+      }
+      g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 0.45; g.filter = 'blur(3px)'; g.drawImage(bk, 0, 0); g.restore();
+      for (let i = 0; i < Math.round(W * H / 9000); i++) {           // bokeh (soft radial dots, no filter needed)
+        const x = rnd(0, W), y = rnd(0, H), r = rnd(1.5, 5), warm = Math.random() < 0.6;
+        const b = g.createRadialGradient(x, y, 0, x, y, r * 2);
+        b.addColorStop(0, warm ? 'rgba(251,146,60,0.75)' : 'rgba(96,165,250,0.6)'); b.addColorStop(1, 'rgba(0,0,0,0)');
+        g.fillStyle = b; g.beginPath(); g.arc(x, y, r * 2, 0, TAU); g.fill();
+      }
+      // foreground: sharp neurons around the edges of the text column, connected by long dendrites
+      [fg, g] = layer();
+      const small = W < 700, count = small ? 5 : 8;
+      cells = [];
+      const slots = small ? [[0.12, 0.18], [0.85, 0.12], [0.1, 0.72], [0.9, 0.62], [0.5, 0.96]]
+                          : [[0.08, 0.22], [0.25, 0.08], [0.88, 0.18], [0.72, 0.05], [0.06, 0.78], [0.94, 0.72], [0.3, 0.97], [0.66, 0.95]];
+      slots.slice(0, count).forEach(([fx, fy]) => cells.push({ x: fx * W + rnd(-20, 20), y: fy * H + rnd(-15, 15), r: rnd(22, 30) * (small ? 0.7 : 1), ph: rnd(0, TAU), glow: 0 }));
+      links = [];
+      cells.forEach((a, i) => {
+        cells.map((b, j) => [j, Math.hypot(a.x - b.x, a.y - b.y)]).filter(([j]) => j !== i).sort((p, q) => p[1] - q[1]).slice(0, 2).forEach(([j]) => {
+          if (links.some(l => (l.a === i && l.b === j) || (l.a === j && l.b === i))) return;
+          const b = cells[j], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, nx = -(b.y - a.y) * 0.25, ny = (b.x - a.x) * 0.25, s = rnd(-1, 1);
+          const pts = bez([a.x, a.y], [a.x + (mx - a.x) * 0.6 + nx * s, a.y + (my - a.y) * 0.6 + ny * s], [b.x - (b.x - mx) * 0.6 + nx * s, b.y - (b.y - my) * 0.6 + ny * s], [b.x, b.y], 40);
+          links.push({ a: i, b: j, pts });
+        });
+      });
+      links.forEach(l => taper(g, l.pts, 10, 4, '#2b3fa0', '#22b8a8'));
+      sparks = [];
+      cells.forEach(c => {
+        const tips = [];
+        for (let k = 0; k < 6; k++) branch(g, c.x, c.y, k / 6 * TAU + rnd(-0.35, 0.35), rnd(65, 110) * (small ? 0.7 : 1), 10, 0, 1, tips);
+        tips.forEach(t => { if (Math.random() < 0.35) sparks.push({ x: t[0], y: t[1], ph: rnd(0, TAU), sp: rnd(0.6, 1.4) }); });
+      });
+      links.forEach(l => { const m = l.pts[20]; sparks.push({ x: m[0], y: m[1], ph: rnd(0, TAU), sp: rnd(0.5, 1) }); });
+      cells.forEach(c => soma(g, c.x, c.y, c.r));
+      draw(performance.now());
+    }
+    function glow(x, y, r, color, a) {
+      const gr = ctx.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, color.replace('A', a)); gr.addColorStop(1, color.replace('A', 0));
+      ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill();
+    }
+    function starburst(x, y, s, a) {
+      ctx.strokeStyle = `rgba(253,224,71,${a})`; ctx.lineWidth = 1;
+      for (let k = 0; k < 10; k++) { const ang = k / 10 * TAU + s, len = (6 + (k % 3) * 5) * (0.6 + a);
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(ang) * len, y + Math.sin(ang) * len); ctx.stroke(); }
+    }
+    function draw(now) {
+      const t = now / 1000;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.globalCompositeOperation = 'source-over';
+      if (bg) ctx.drawImage(bg, 0, 0, W, H); if (fg) ctx.drawImage(fg, 0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      cells.forEach(c => {                                           // breathing cores + fired glow
+        const a = 0.35 + 0.2 * Math.sin(t * 1.6 + c.ph) + c.glow * 0.6;
+        glow(c.x, c.y, c.r * (1.6 + c.glow), 'rgba(253,186,116,A)', Math.min(0.95, a).toFixed(3));
+      });
+      sparks.forEach(s => {                                          // twinkling synapse sparks
+        const a = Math.pow(Math.max(0, Math.sin(t * s.sp + s.ph)), 4);
+        if (a > 0.05) { glow(s.x, s.y, 9, 'rgba(251,191,36,A)', (a * 0.9).toFixed(3)); if (a > 0.55) starburst(s.x, s.y, s.ph, a * 0.7); }
+      });
+      pulses.forEach(p => {                                          // signals travelling along dendrites
+        const pts = links[p.l].pts, u = Math.min(1, p.t), idx = Math.floor((p.rev ? 1 - u : u) * (pts.length - 1)), q = pts[idx];
+        glow(q[0], q[1], 14, 'rgba(251,146,60,A)', 0.95); glow(q[0], q[1], 5, 'rgba(255,247,237,A)', 1);
+      });
+      bursts.forEach(b => { starburst(b.x, b.y, b.s, 1 - b.t); glow(b.x, b.y, 26 * (0.5 + b.t), 'rgba(253,224,71,A)', (0.8 * (1 - b.t)).toFixed(3)); });
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    function fire(i, hop) {
+      cells[i].glow = 1;
+      if (hop > 2) return;
+      links.forEach((l, k) => { if (l.a === i || l.b === i) pulses.push({ l: k, rev: l.b === i, t: 0, hop }); });
+    }
+    let last = 0, running = false, visible = true, nextIdle = 0;
+    function step(now) {
+      running = false;
+      if (!visible || document.hidden) return;
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      cells.forEach(c => { c.glow *= Math.pow(0.15, dt); });
+      pulses.forEach(p => { p.t += dt * 0.9; });
+      pulses = pulses.filter(p => {
+        if (p.t < 1) return true;
+        const l = links[p.l], to = p.rev ? l.a : l.b; bursts.push({ x: cells[to].x, y: cells[to].y, s: Math.random() * 3, t: 0 });
+        if (p.hop < 2) fire(to, p.hop + 1); else cells[to].glow = 1;
+        return false;
+      });
+      bursts.forEach(b => { b.t += dt * 1.6; }); bursts = bursts.filter(b => b.t < 1);
+      if (now > nextIdle && cells.length) { fire(Math.floor(Math.random() * cells.length), 2); nextIdle = now + rnd(3000, 5000); }
+      draw(now); schedule();
+    }
+    function schedule() { if (!running && !reduce) { running = true; requestAnimationFrame(step); } }
+    hero.addEventListener('pointerdown', e => {
+      if (reduce || !cells.length || e.target.closest('a, button, input')) return;
+      const r = hero.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      let best = 0, bd = Infinity; cells.forEach((c, i) => { const d = Math.hypot(c.x - x, c.y - y); if (d < bd) { bd = d; best = i; } });
+      bursts.push({ x, y, s: 0, t: 0 }); fire(best, 0); schedule();
+    });
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; schedule(); } }).observe(hero);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) { last = 0; schedule(); } });
+    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(() => { build(); schedule(); }, 120); }).observe(hero);
+    build(); schedule();
+  })();
+</script>
+<script>
   /* ── Neuron-network background: faint neurons drift behind the homepage.
      Each neuron (soma + branching dendrites) is pre-drawn once to its own
      sprite; axons between neighbours and travelling signals are drawn live.
@@ -1586,11 +1772,11 @@
           for (let k = 0; k < n; k++) branch(ex, ey, ang + rand(-0.7, 0.7), len * rand(0.55, 0.75), w * 0.6, depth + 1);
         } else tips.push([ex - cx, ey - cy]);
       }
-      g.strokeStyle = '#1e3266';
+      g.strokeStyle = '#3b6fb0';
       const nd = 4 + Math.floor(Math.random() * 3), base = Math.random() * TAU;
       for (let i = 0; i < nd; i++) branch(cx, cy, base + i * TAU / nd + rand(-0.3, 0.3), rand(38, 62), rand(2.4, 3.4), 0);
       const r = rand(7, 10), grad = g.createRadialGradient(cx - 2, cy - 2, 1, cx, cy, r * 1.6);
-      grad.addColorStop(0, '#3a5391'); grad.addColorStop(0.5, '#1e3266'); grad.addColorStop(1, 'rgba(30,50,102,0)');
+      grad.addColorStop(0, '#fbbf24'); grad.addColorStop(0.3, '#f97316'); grad.addColorStop(0.6, '#4f5fb8'); grad.addColorStop(1, 'rgba(59,111,176,0)');
       g.fillStyle = grad; g.beginPath(); g.ellipse(cx, cy, r * 1.5, r * 1.15, base, 0, TAU); g.fill();
       return { img: c, size, tips };
     }
@@ -1635,7 +1821,7 @@
     function draw(now, dt) {
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
       // axons
-      ctx.lineWidth = 1.3; ctx.strokeStyle = 'rgba(30,50,102,0.34)';
+      ctx.lineWidth = 1.3; ctx.strokeStyle = 'rgba(38,166,154,0.30)';
       edges.forEach(e => { if (tooLong(e)) return; const c = curve(e); ctx.beginPath(); ctx.moveTo(c[0], c[1]); ctx.quadraticCurveTo(c[2], c[3], c[4], c[5]); ctx.stroke(); });
       // neurons and twinkling dendrite tips
       neurons.forEach(n => {
