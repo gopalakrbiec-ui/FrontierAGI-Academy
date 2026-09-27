@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-case-studies",
+      "title": "Harness Case Studies: OpenAI Codex, Claude Code Auto Mode and Gemini Deep Research",
+      "excerpt": "Three real agent harnesses taken apart from public documentation: Codex's parallel worktrees and sandbox policies, Claude Code auto mode's sandbox and two-stage classifier with published error rates, and Gemini Deep Research's iterative cited research \u2014 with interactive diagrams and a runnable approval-fatigue simulation.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd0d",
+      "featured": true
+    },
+    {
       "slug": "harness-market-landscape",
       "title": "The Harness Market Landscape: Who Builds the Infrastructure Around Frontier Models",
       "excerpt": "The agent-infrastructure market as of September 2026: frameworks at 1.0, the MCP ecosystem and registry, retrieval, memory, browsers, sandboxes, durable workflows, observability, gateways, guardrails and managed platforms \u2014 with 2025\u201326 deals, an interactive stack builder and a runnable availability model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udded",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-production-engineering",
