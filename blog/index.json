@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-architecture-comparison",
+      "title": "Harness Product Architecture Comparison: Foundry, ADK, LangChain, CrewAI, Temporal, E2B, Browserbase and AgentCore",
+      "excerpt": "Eight more agent platforms, architecture only: what each manages and leaves to you, how Microsoft Foundry, Google ADK and Agent Runtime, LangChain, CrewAI, Temporal, E2B, Browserbase and AWS AgentCore harness compose \u2014 with a coverage map, lifecycle animations, a stack composer and a runnable set-cover model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "deepseek-harness-dsh",
       "title": "DeepSeek Harness (dsh): an Open-Source, Plugin-Composed Agent Runtime",
       "excerpt": "Product case study #3: DeepSeek's MIT-licensed agent harness, taken apart from its repository \u2014 Cordis plugins with reversible effects, profiles and bundles, turns and steps, the event-sourced session log, capability seams, the tool runtime and opt-in MCP \u2014 with interactive diagrams and a runnable miniature of its core ideas.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udc0b",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "claude-agent-sdk-managed-agents",
