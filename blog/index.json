@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "harness-across-real-world-contexts",
+      "title": "Harness Engineering Across Real-World Contexts: One Pattern, Nine Domains",
+      "excerpt": "The same agent harness runs code, contact centres, sales, legal, finance, healthcare, construction, factories and research. What changes is context, tools, verification and approvals \u2014 with a domain explorer, real incidents mapped to missing layers, the regulation that now requires some of them, and a runnable autonomy-vs-risk model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udf10",
+      "featured": true
+    },
+    {
       "slug": "agentic-developer-workbenches",
       "title": "Agentic Developer Workbenches: Cursor, GitHub Copilot, Google Antigravity 2.0 and Devin Desktop Compared",
       "excerpt": "How four agentic coding workbenches are built, layer by layer: surfaces, harnesses, models, local vs cloud agents, parallelism, SDKs and protocols (JSON-RPC, ACP) \u2014 with an 11-layer explorer, protocol animations and a simulator showing why review, not agent count, caps throughput.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udee0\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-architecture-comparison",
