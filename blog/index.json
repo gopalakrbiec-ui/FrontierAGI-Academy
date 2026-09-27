@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-doing-rd",
+      "title": "AI Doing R&D: From Research Assistant to Autonomous Research Organization",
+      "excerpt": "Where AI already does science: Co-Scientist, ERA, AlphaEvolve, Robin, The AI Scientist-v2, OpenAI's research intern and Navier\u2013Stokes claim, Anthropic's automated alignment researchers \u2014 the research cycle, an R0\u2013R7 autonomy ladder, the architecture of an AI research organisation, and a runnable model of why taste and verification are the bottleneck.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd2c",
+      "featured": true
+    },
+    {
       "slug": "are-we-approaching-rsi",
       "title": "Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025\u20132026",
       "excerpt": "An evidence review of the path to recursive self-improvement: OpenAI's automated research intern, Claude leading 26% of Anthropic's AI R&D, Google's 75% AI-written code, distillation, the 2026 sandbox-escape incidents, and the steps no lab has shown \u2014 with timelines, attack-path replays and a runnable containment model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udded",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "recursive-harness-self-improvement",
