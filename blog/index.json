@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agentic-developer-workbenches",
+      "title": "Agentic Developer Workbenches: Cursor, GitHub Copilot, Google Antigravity 2.0 and Devin Desktop Compared",
+      "excerpt": "How four agentic coding workbenches are built, layer by layer: surfaces, harnesses, models, local vs cloud agents, parallelism, SDKs and protocols (JSON-RPC, ACP) \u2014 with an 11-layer explorer, protocol animations and a simulator showing why review, not agent count, caps throughput.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udee0\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "harness-architecture-comparison",
       "title": "Harness Product Architecture Comparison: Foundry, ADK, LangChain, CrewAI, Temporal, E2B, Browserbase and AgentCore",
       "excerpt": "Eight more agent platforms, architecture only: what each manages and leaves to you, how Microsoft Foundry, Google ADK and Agent Runtime, LangChain, CrewAI, Temporal, E2B, Browserbase and AWS AgentCore harness compose \u2014 with a coverage map, lifecycle animations, a stack composer and a runnable set-cover model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfdb\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "deepseek-harness-dsh",

@@ -92,7 +92,8 @@
         "openai-agents-api-codex-harness",
         "claude-agent-sdk-managed-agents",
         "deepseek-harness-dsh",
-        "harness-architecture-comparison"
+        "harness-architecture-comparison",
+        "agentic-developer-workbenches"
       ]
     },
     {
