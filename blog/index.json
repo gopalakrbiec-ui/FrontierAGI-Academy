@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "openai-agents-api-codex-harness",
+      "title": "OpenAI Agents API: the Codex Harness as a Managed Production Runtime",
+      "excerpt": "Product case study #1: OpenAI's public-beta Agents API, taken apart from its documentation \u2014 the OpenAI/developer boundary, agents, environments, sessions and events, the managed loop, automatic compaction, tools and MCP, hosted, partner and self-hosted execution, subagents and recovery \u2014 with interactive diagrams and a runnable session-cost model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udde9",
+      "featured": true
+    },
+    {
       "slug": "harness-case-studies",
       "title": "Harness Case Studies: OpenAI Codex, Claude Code Auto Mode and Gemini Deep Research",
       "excerpt": "Three real agent harnesses taken apart from public documentation: Codex's parallel worktrees and sandbox policies, Claude Code auto mode's sandbox and two-stage classifier with published error rates, and Gemini Deep Research's iterative cited research \u2014 with interactive diagrams and a runnable approval-fatigue simulation.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udd0d",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-market-landscape",
