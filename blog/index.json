@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "are-we-approaching-rsi",
+      "title": "Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025\u20132026",
+      "excerpt": "An evidence review of the path to recursive self-improvement: OpenAI's automated research intern, Claude leading 26% of Anthropic's AI R&D, Google's 75% AI-written code, distillation, the 2026 sandbox-escape incidents, and the steps no lab has shown \u2014 with timelines, attack-path replays and a runnable containment model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udded",
+      "featured": true
+    },
+    {
       "slug": "recursive-harness-self-improvement",
       "title": "Recursive Harness Self-Improvement: How Agents Are Starting to Improve the Systems That Run Them",
       "excerpt": "The recursive self-improvement arriving in 2026 is harness-first: agents evolve their own prompts, tools, context and policies behind a release gate. Inner and outer loops, the lineage from Self-Refine to RHI, HELIX, ModularRSI, RRSI and RegenHarness, the model\u2013harness flywheel, failure modes \u2014 and a runnable model of why the gate matters.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\u267b\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-across-real-world-contexts",
