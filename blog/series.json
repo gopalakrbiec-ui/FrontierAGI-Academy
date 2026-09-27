@@ -89,7 +89,8 @@
         "harness-production-engineering",
         "harness-market-landscape",
         "harness-case-studies",
-        "openai-agents-api-codex-harness"
+        "openai-agents-api-codex-harness",
+        "claude-agent-sdk-managed-agents"
       ]
     },
     {

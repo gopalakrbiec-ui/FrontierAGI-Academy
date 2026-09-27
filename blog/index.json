@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "claude-agent-sdk-managed-agents",
+      "title": "Claude Agent SDK and Managed Agents: the Claude Code Harness in Production",
+      "excerpt": "Product case study #2: Anthropic's Claude Agent SDK and Claude Managed Agents, taken apart from documentation and engineering posts \u2014 boundary, session/harness/sandbox, the agent loop, compaction, tools, subagents and hooks, the documented permission chain, brain-vs-hands architecture and recovery \u2014 with interactive diagrams and a runnable permission engine.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-27",
+      "readTime": "30 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udde0",
+      "featured": true
+    },
+    {
       "slug": "openai-agents-api-codex-harness",
       "title": "OpenAI Agents API: the Codex Harness as a Managed Production Runtime",
       "excerpt": "Product case study #1: OpenAI's public-beta Agents API, taken apart from its documentation \u2014 the OpenAI/developer boundary, agents, environments, sessions and events, the managed loop, automatic compaction, tools and MCP, hosted, partner and self-hosted execution, subagents and recovery \u2014 with interactive diagrams and a runnable session-cost model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udde9",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "harness-case-studies",
