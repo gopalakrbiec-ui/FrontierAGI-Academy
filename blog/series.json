@@ -90,7 +90,8 @@
         "harness-market-landscape",
         "harness-case-studies",
         "openai-agents-api-codex-harness",
-        "claude-agent-sdk-managed-agents"
+        "claude-agent-sdk-managed-agents",
+        "deepseek-harness-dsh"
       ]
     },
     {
