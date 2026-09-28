@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "automated-rd-to-effective-rsi",
+      "title": "From Automated R&D to Effective RSI: Frontier, Evidence and Open Problems",
+      "excerpt": "What is already real in AI R&D, the difference between structural and effective recursion, the first experiments built to test it (AIDE\u00b2, AI4AI-Bench, PAST-Bench), a runnable power analysis of why a few generations can't prove compounding, and the twelve open problems still blocking genuine RSI.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-28",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcc8",
+      "featured": true
+    },
+    {
       "slug": "self-improving-agentic-systems",
       "title": "How Self-Improving Agentic Systems Actually Work: Mechanisms, Architecture and the Path to Verified Persistent Improvement",
       "excerpt": "A field map of self-improving AI: five levels, the closed improvement loop across model, harness, evaluator, research-process and data substrates, the improvement router, eight mechanisms from Reflexion to the Darwin G\u00f6del Machine, the fast/slow flywheel (with a runnable model), the verification hierarchy, safe inheritance and five tests for real improvement.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\uddec",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-doing-rd",
