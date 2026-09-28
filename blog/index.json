@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "self-improving-agentic-systems",
+      "title": "How Self-Improving Agentic Systems Actually Work: Mechanisms, Architecture and the Path to Verified Persistent Improvement",
+      "excerpt": "A field map of self-improving AI: five levels, the closed improvement loop across model, harness, evaluator, research-process and data substrates, the improvement router, eight mechanisms from Reflexion to the Darwin G\u00f6del Machine, the fast/slow flywheel (with a runnable model), the verification hierarchy, safe inheritance and five tests for real improvement.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-28",
+      "readTime": "35 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\uddec",
+      "featured": true
+    },
+    {
       "slug": "ai-doing-rd",
       "title": "AI Doing R&D: From Research Assistant to Autonomous Research Organization",
       "excerpt": "Where AI already does science: Co-Scientist, ERA, AlphaEvolve, Robin, The AI Scientist-v2, OpenAI's research intern and Navier\u2013Stokes claim, Anthropic's automated alignment researchers \u2014 the research cycle, an R0\u2013R7 autonomy ladder, the architecture of an AI research organisation, and a runnable model of why taste and verification are the bottleneck.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udd2c",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "are-we-approaching-rsi",
