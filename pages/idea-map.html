@@ -60,6 +60,8 @@
     .im-panel h3 { font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: #6b7280; margin: 14px 0 6px; }
     .im-chips { display: flex; flex-wrap: wrap; gap: 5px; }
     .im-chips button { display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px; border: 1.5px solid #e5e7eb; background: #fff; font: inherit; font-size: .74rem; cursor: pointer; text-align: left; }
+    .im-chips span { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; background: #f3f4f6; font-size: .72rem; }
+    .im-chips span i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
     .im-chips button i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
     .im-chips button:hover { border-color: #4f46e5; }
     .im-intro li { margin: 6px 0; line-height: 1.5; }
@@ -77,6 +79,22 @@
     .im-list ul { margin: 0; padding-left: 18px; columns: 2; column-gap: 28px; font-size: .84rem; }
     .im-list li { margin: 3px 0; break-inside: avoid; }
 
+    /* embed mode (homepage iframe: ?embed=1) */
+    body.im-embed { background: transparent; }
+    body.im-embed .navbar, body.im-embed .nav-panel-wrap, body.im-embed .nav-backdrop, body.im-embed .im-hero, body.im-embed .im-bar, body.im-embed .im-areas, body.im-embed .im-era, body.im-embed .im-notes, body.im-embed .im-list { display: none !important; }
+    body.im-embed main { padding-top: 0 !important; }
+    body.im-embed .im-wrap { max-width: none; padding: 0; }
+    body.im-embed .im-stage { grid-template-columns: 1fr 280px; border-radius: 0; box-shadow: none; }
+    body.im-embed .im-canvas-wrap, body.im-embed .im-panel { height: 100vh; min-height: 0; }
+    body.im-embed .im-panel { padding: 14px; font-size: .82rem; }
+    .im-open { display: block; margin-top: 12px; padding: 9px 12px; border-radius: 10px; border: 1.5px solid #4f46e5; color: #3730a3; font-weight: 700; text-decoration: none; text-align: center; }
+    .im-open:hover { background: #eef2ff; }
+    @media (max-width: 700px) {
+      body.im-embed .im-stage { grid-template-columns: 1fr; }
+      body.im-embed .im-panel { position: absolute; left: 8px; right: 8px; bottom: 8px; height: auto; max-height: 46%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); display: none; }
+      body.im-embed .im-stage.has-sel .im-panel { display: block; }
+      body.im-embed .im-zoom { top: 10px; bottom: auto; }
+    }
     @media (max-width: 900px) {
       .im-stage { grid-template-columns: 1fr; }
       .im-panel { height: auto; min-height: 0; max-height: none; }
@@ -203,6 +221,7 @@
       <button type="button" class="im-btn" id="imPrize" aria-pressed="false">🏆 Prize-recognised only</button>
       <button type="button" class="im-btn on" id="imSpin" aria-pressed="true">⟳ Auto-rotate</button>
       <button type="button" class="im-btn" id="imReset">↺ Reset view</button>
+      <a class="im-btn" id="imCoreToggle" href="idea-map.html?view=core" style="text-decoration:none">⭐ Core 120 ideas</a>
     </div>
     <div class="im-areas" id="imAreas" aria-label="Research areas"></div>
     <div class="im-era">
@@ -239,6 +258,8 @@
 (function () {
   'use strict';
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var QS = new URLSearchParams(location.search), EMBED = QS.has('embed'), CORE = EMBED || QS.get('view') === 'core', TOP = EMBED ? ' target="_top"' : '';
+  if (EMBED) document.body.classList.add('im-embed');
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var ORDER = ['nn', 'opt', 'rl', 'sym', 'lang', 'sys', 'vis', 'gen'];
@@ -251,7 +272,22 @@
 
   /* ── layout ── */
   var hOf = function (y) { return (y < 2011 ? (y - 1950) * 1.7 : 112 + (y - 2011) * 15.5) - 170; };
+  function coreOnly(g) {
+    // keep the curated core; reconnect each core idea to its nearest core ancestors through any hidden ideas
+    var keep = new Set(g.core), par = {}, links = [], seen = {};
+    g.links.forEach(function (l) { (par[l[1]] = par[l[1]] || []).push(l); });
+    g.core.forEach(function (id) {
+      var stack = (par[id] || []).slice(), vis = {};
+      while (stack.length) {
+        var l = stack.pop(), src = l[0]; if (vis[src]) continue; vis[src] = 1;
+        if (keep.has(src)) { if (!seen[src + '>' + id]) { seen[src + '>' + id] = 1; links.push(l[1] === id ? l : [src, id]); } }
+        else (par[src] || []).forEach(function (p) { stack.push(p); });
+      }
+    });
+    return Object.assign({}, g, { nodes: g.nodes.filter(function (n) { return keep.has(n.id); }), links: links, tours: g.tours.map(function (t) { return [t[0], t[1].filter(function (x) { return keep.has(x); })]; }) });
+  }
   function build(g) {
+    if (CORE && g.core && g.core.length) g = coreOnly(g);
     G = g;
     g.areas.forEach(function (a) { AREA[a[0]] = { id: a[0], name: a[1], c: a[2], i: ORDER.indexOf(a[0]) }; });
     N = g.nodes.map(function (n) { return Object.assign({}, n, { par: [], kid: [] }); });
@@ -323,16 +359,17 @@
     var top = proj(0, hOf(2026) + 30, 0), bot = proj(0, hOf(1950) - 20, 0);
     ctx.strokeStyle = 'rgba(165,180,252,.35)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(bot.x, bot.y); ctx.lineTo(top.x, top.y); ctx.stroke();
     ctx.font = '600 10px system-ui, sans-serif'; ctx.textAlign = 'left';
-    YEARS.forEach(function (y) {
+    var lastLabelY = -1e9;
+    YEARS.slice().reverse().forEach(function (y) {
       var h = hOf(y), dim = y < st.from || y > st.to; ctx.strokeStyle = dim ? 'rgba(148,163,184,.05)' : (y % 10 === 0 || y === 2011 ? 'rgba(165,180,252,.2)' : 'rgba(165,180,252,.09)');
       ctx.beginPath();
       for (var i = 0; i <= 48; i++) { var a = i / 48 * Math.PI * 2, p = proj(R * Math.cos(a), h, R * Math.sin(a), ringPt); if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }
       ctx.stroke();
-      var c = proj(0, h, 0, ringPt); ctx.fillStyle = dim ? 'rgba(165,180,252,.25)' : 'rgba(199,210,254,.85)'; ctx.fillText(y === 2010 ? '2010' : String(y), c.x + 5, c.y + 3);
+      var c = proj(0, h, 0, ringPt); if (Math.abs(c.y - lastLabelY) < 14) return; lastLabelY = c.y; ctx.fillStyle = dim ? 'rgba(165,180,252,.25)' : 'rgba(199,210,254,.85)'; ctx.fillText(y === 2010 ? '2010' : String(y), c.x + 5, c.y + 3);
     });
     // area labels above the helix
     ctx.textAlign = 'center'; ctx.font = '700 11px system-ui, sans-serif';
-    ORDER.forEach(function (id, i) {
+    if (W >= 520) ORDER.forEach(function (id, i) {
       var a = AREA[id], p = proj(R * 1.55 * Math.cos(i * Math.PI / 4), hOf(2026) + 26, R * 1.55 * Math.sin(i * Math.PI / 4), ringPt);
       if (p.s <= 0) return; ctx.fillStyle = st.off[id] ? 'rgba(148,163,184,.3)' : hexA(a.c, 0.95); ctx.fillText(a.name, p.x, p.y);
     });
@@ -415,7 +452,7 @@
   }
   function resize() {
     var r = wrap.getBoundingClientRect(); DPR = Math.min(2, window.devicePixelRatio || 1); W = r.width; H = r.height;
-    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); K = Math.min(W, H) / 470;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); K = Math.max(Math.min(W, H) / 470, W < 520 ? W / 330 : 0);
   }
   function flyTo(n) {
     var yaw = -Math.PI / 2 - n.th; while (yaw - cam.yaw > Math.PI) yaw -= 2 * Math.PI; while (yaw - cam.yaw < -Math.PI) yaw += 2 * Math.PI;
@@ -426,6 +463,13 @@
   /* ── side panel ── */
   var chip = function (n) { return '<button type="button" data-id="' + esc(n.id) + '" style="--c:' + AREA[n.a].c + '"><i></i>' + esc(n.e) + ' ' + esc(n.t) + ' · ' + n.y + '</button>'; };
   function panelIntro() {
+    $('imWrap').parentNode.classList.remove('has-sel');
+    if (EMBED) {
+      $('imPanel').innerHTML = '<span class="im-badge">🌌 AI Idea Map</span><h2>' + N.length + ' key ideas, 1950 → 2026</h2><p>Time runs up the helix; each colour is a research area. Glowing lines carry ideas forward into the work they made possible.</p><ul class="im-intro"><li><b>Drag</b> to rotate; click the map, then scroll to zoom.</li><li><b>Click a dot</b> to trace what it built on and led to.</li></ul>' +
+        '<div class="im-chips" style="margin-top:8px">' + ORDER.map(function (id) { return '<span style="--c:' + AREA[id].c + '"><i></i>' + esc(AREA[id].name) + '</span>'; }).join('') + '</div>' +
+        '<a class="im-open" href="idea-map.html" target="_top">Open the full map (all ideas, tours, filters) →</a>';
+      return;
+    }
     var conv = N.filter(function (n) { return n.conv; }).length;
     $('imPanel').innerHTML = '<span class="im-badge">How to use</span><h2>' + N.length + ' ideas, ' + E.length + ' connections</h2>' +
       '<ul class="im-intro"><li><b>Drag</b> to spin the helix in any direction; <b>scroll or pinch</b> to zoom.</li><li><b>Click a dot</b> to light up everything it built on (below it) and everything it led to (above it).</li><li>Pick a <b>guided tour</b> to follow one story, such as how we got to ChatGPT.</li><li>Every dot links to its paper card in the year article.</li></ul>' +
@@ -445,10 +489,10 @@
       (n.b.length ? '<div style="margin-top:8px">' + n.b.map(function (b) { return '<span class="bdg">' + esc(b) + '</span>'; }).join('') + '</div>' : '') +
       '<p>' + esc(n.d) + '</p>' +
       (mixed ? '<p style="font-size:.8rem;color:#4338ca"><b>Convergence:</b> this idea combined work from ' + Array.from(new Set(par.map(function (p) { return AREA[p.a].name; }))).map(esc).join(', ') + '.</p>' : '') +
-      `<a class="read" href="${esc(n.u)}">Read the paper card in ${esc(n.l)} →</a>` +
+      `<a class="read" href="${esc(n.u)}"${TOP}>Read the paper card in ${esc(n.l)} →</a>` +
       (par.length ? '<h3>⬇ Built on (' + par.length + ')</h3><div class="im-chips">' + par.map(chip).join('') + '</div>' : '<h3>⬇ Built on</h3><p class="meta">A starting point in this series.</p>') +
       (kid.length ? '<h3>⬆ Led to (' + kid.length + ')</h3><div class="im-chips">' + kid.map(chip).join('') + '</div>' : '<h3>⬆ Led to</h3><p class="meta">Too recent (or too specialised) for later work in the series to build on yet.</p>') +
-      '<h3>&nbsp;</h3><button type="button" class="im-btn" id="imClear">✕ Clear selection</button>';
+      '<h3>&nbsp;</h3><button type="button" class="im-btn" id="imClear">✕ Clear selection</button>' + (EMBED ? `<a class="im-open" href="idea-map.html#idea=${encodeURIComponent(n.id)}" target="_top">Open in the full map →</a>` : '');
     $('imClear').onclick = resetView;
   }
   function panelTour() {
@@ -460,14 +504,15 @@
   }
   function tourGo(i) { st.step = i; st.sel = st.tour.stops[i]; flyTo(st.sel); panelTour(); }
   function select(n, fly) {
+    $('imWrap').parentNode.classList.toggle('has-sel', !!n);
     st.tour = null; $('imTour').value = ''; st.sel = n; computeFocus();
     if (n) { panelNode(n); if (fly !== false) flyTo(n); setHash(n.id); } else panelIntro();
   }
-  function setHash(id) { try { history.replaceState(null, '', id ? '#idea=' + id : location.pathname + location.search); } catch (e) {} }
+  function setHash(id) { if (EMBED) return; try { history.replaceState(null, '', id ? '#idea=' + id : location.pathname + location.search); } catch (e) {} }
 
   /* ── input ── */
   var drag = null, moved = 0, pinch = null;
-  wrap.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, id: e.pointerId }; moved = 0; goal = null; idle = 0; wrap.classList.add('drag'); wrap.setPointerCapture(e.pointerId); });
+  wrap.addEventListener('pointerdown', function (e) { engaged = true; drag = { x: e.clientX, y: e.clientY, id: e.pointerId }; moved = 0; goal = null; idle = 0; wrap.classList.add('drag'); wrap.setPointerCapture(e.pointerId); });
   wrap.addEventListener('pointermove', function (e) {
     var r = wrap.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
     if (drag && drag.id === e.pointerId && !pinch) {
@@ -490,7 +535,8 @@
   wrap.addEventListener('pointerup', endDrag); wrap.addEventListener('pointercancel', function () { drag = null; wrap.classList.remove('drag'); });
   wrap.addEventListener('pointerleave', function () { st.hover = null; $('imTip').style.opacity = 0; });
   var zoom = function (f) { goal = null; cam.dist = Math.max(220, Math.min(1600, cam.dist * f)); idle = 0; };
-  wrap.addEventListener('wheel', function (e) { e.preventDefault(); zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+  var engaged = !EMBED;
+  wrap.addEventListener('wheel', function (e) { if (!engaged) return; e.preventDefault(); zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
   wrap.addEventListener('touchstart', function (e) { if (e.touches.length === 2) pinch = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); }, { passive: true });
   wrap.addEventListener('touchmove', function (e) { if (pinch && e.touches.length === 2) { var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); zoom(pinch / d); pinch = d; } }, { passive: true });
   wrap.addEventListener('touchend', function (e) { if (e.touches.length < 2) setTimeout(function () { pinch = null; }, 50); });
@@ -540,6 +586,9 @@
 
   fetch('../blog/idea-graph.json').then(function (r) { return r.json(); }).then(function (g) {
     build(g); wireControls(); listView(); resize(); count();
+    if (CORE && !EMBED) { var ct = $('imCoreToggle'); ct.textContent = '🌐 Show all ' + g.nodes.length + ' ideas'; ct.href = 'idea-map.html'; ct.classList.add('on'); }
+    else $('imCoreToggle').textContent = '⭐ Core ' + (g.core || []).length + ' ideas';
+    if (EMBED) document.querySelector('.im-hint').textContent = 'Drag to rotate · click the map, then scroll to zoom · click a dot';
     var m = /idea=([^&]+)/.exec(location.hash), n = m && byId[decodeURIComponent(m[1])];
     if (n) select(n); else panelIntro();
     requestAnimationFrame(frame);

@@ -348,8 +348,9 @@ def render_idea_graph():
     problems += [f"data/idea-map.json: unknown card {k} in nodeArea" for k in src["nodeArea"] if k not in keys]
     problems += [f"data/idea-map.json: link to unknown card {x}" for l in src["links"] for x in l[:2] if x not in keys]
     problems += [f"data/idea-map.json: tour stop {x} unknown" for t in src["tours"] for x in t[1] if x not in keys]
+    problems += [f"data/idea-map.json: core idea {x} unknown" for x in src.get("core", []) if x not in keys]
     out = {"generated_by": "scripts/build.py from data/idea-map.json + blog/ai-research-*-papers.html",
-           "areas": src["areas"], "nodes": nodes, "links": src["links"], "tours": src["tours"]}
+           "areas": src["areas"], "nodes": nodes, "links": src["links"], "tours": src["tours"], "core": src.get("core", [])}
     return json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", problems
 
 

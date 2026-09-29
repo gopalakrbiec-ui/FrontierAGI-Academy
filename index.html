@@ -321,6 +321,11 @@
     .home-series-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; position: relative; color: #111; }
     .home-series-desc { font-size: 0.87rem; color: #4b5563; line-height: 1.6; margin-bottom: 20px; max-width: 760px; position: relative; }
     .home-series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; position: relative; }
+    .home-idea-embed { margin: 4px 0 18px; }
+    .home-idea-embed iframe { display: block; width: 100%; height: 540px; border: 0; border-radius: 16px; background: #0a0f26; box-shadow: 0 12px 34px rgba(15, 23, 42, .18); }
+    .home-idea-embed-link { display: inline-block; margin-top: 8px; font-size: .86rem; font-weight: 700; color: var(--sp-accent, #1d4ed8); text-decoration: none; }
+    .home-idea-embed-link:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .home-idea-embed iframe { height: 480px; } }
     .home-series-card {
       display: block; text-decoration: none; color: #111; background: #f9fafb;
       border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; transition: all 0.2s;
@@ -556,6 +561,10 @@
       <span class="home-series-tag">📅 AI Research Progress · 19 Articles</span>
       <div class="home-series-title">AI Research Progress Through the Years</div>
       <div class="home-series-desc">A year-by-year record of the papers and ideas that moved AI research forward — explained in plain English with animations, and linked to the sources.</div>
+      <div class="home-idea-embed">
+        <iframe src="pages/idea-map.html?embed=1" title="AI Idea Map: 120 key AI research ideas from 1950 to 2026 on a rotatable 3D time helix" loading="lazy"></iframe>
+        <a href="pages/idea-map.html" class="home-idea-embed-link">🌌 Open the full 3D idea map — all 281 papers, guided tours and filters →</a>
+      </div>
       <div class="home-series-grid" id="grid-20">
         <a href="pages/idea-map.html" class="home-series-card"><span class="home-series-card-emoji">🌌</span><div class="home-series-card-title" title="AI Idea Map: How 76 Years of Ideas Evolved and Converged (3D)">AI Idea Map: How 76 Years of Ideas Evolved and Converged (3D)</div><div class="home-series-card-meta">Interactive · 281 papers, 1950 → 2026</div></a>
         <a href="blog/ai-research-2026-papers.html" class="home-series-card"><span class="home-series-card-emoji">📅</span><div class="home-series-card-title" title="AI Research in 2026: The Papers and Ideas Reshaping the Field">AI Research in 2026: The Papers and Ideas Reshaping the Field</div><div class="home-series-card-meta">40 min · 14 papers, ICLR &amp; ICML 2026</div></a>
