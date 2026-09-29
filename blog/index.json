@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-1980-2000-papers",
+      "title": "AI Research in 1980\u20132000: The Two Decades That Invented Modern AI's Core Ideas",
+      "excerpt": "Twenty papers and milestones from 1980\u20132000 in eight themes \u2014 Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning, TD-Gammon, SVMs, AdaBoost, Bayesian networks, HMMs, expert systems and Deep Blue \u2014 each explained in plain English with an animation, plus a runnable backpropagation lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "50 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcfc",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2001-2010-papers",
       "title": "AI Research in 2001\u20132010: The Decade That Set the Stage for Deep Learning",
       "excerpt": "Eighteen papers and milestones from 2001\u20132010 in eight themes \u2014 deep belief nets, neural language models, ImageNet, GPUs, Viola\u2013Jones, SIFT, HOG, random forests, LDA, CRFs, CTC, UCT, Stanley and the Netflix Prize \u2014 each explained in plain English with an animation, plus a runnable matrix-factorisation lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udded",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2011-papers",
