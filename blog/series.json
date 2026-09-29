@@ -94,7 +94,15 @@
         "deepseek-harness-dsh",
         "harness-architecture-comparison",
         "agentic-developer-workbenches",
-        "harness-across-real-world-contexts",
+        "harness-across-real-world-contexts"
+      ]
+    },
+    {
+      "id": "sec-practical-rsi",
+      "title": "Practical RSI — How Agents Are Starting to Improve Themselves",
+      "short": "Practical RSI — How Agents Are Starting to Improve Themselves",
+      "icon": "♻️",
+      "slugs": [
         "recursive-harness-self-improvement",
         "are-we-approaching-rsi",
         "ai-doing-rd",
