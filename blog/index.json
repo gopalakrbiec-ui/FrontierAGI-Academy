@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2024-papers",
+      "title": "AI Research in 2024: The Year Context, Agents and World Models Took Shape",
+      "excerpt": "Twenty-one papers that prepared the ground for reasoning models and agentic AI \u2014 Gemini 1.5, Llama 3, LongRoPE, Quiet-STaR, Self-Rewarding LMs, test-time compute scaling, SWE-agent, Mamba-2, BitNet, VAR, rectified flow, Genie, debate, model stealing, PRISM, AlphaFold 3, ViT registers and more \u2014 each explained in plain English with animations and sources.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "45 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udded",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2025-papers",
       "title": "AI Research in 2025: The Year Reasoning, Agents and Test-Time Compute Broke Out",
       "excerpt": "Eighteen papers that set up the 2026 self-improving-agent era \u2014 DeepSeek-R1, s1, Absolute Zero, the Darwin G\u00f6del Machine, CollabLLM, gated attention, AlphaEdit, masked-diffusion ordering, shallow safety alignment, The Illusion of Thinking, Artificial Hivemind, AlphaEvolve and more \u2014 grouped by research direction, each explained in plain English with animations and sources.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\ude80",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2026-papers",
