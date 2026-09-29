@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2019-papers",
+      "title": "AI Research in 2019: The Year Pretraining Became the Default",
+      "excerpt": "Sixteen 2019 papers in eight themes \u2014 GPT-2, XLNet, RoBERTa, BART, Transformer-XL, Megatron-LM, ALBERT, EfficientNet, StyleGAN, AlphaStar, MuZero, SuperGLUE and more \u2014 each explained in plain English with an animation, plus a runnable model-parallelism lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "45 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfd7\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2020-papers",
       "title": "AI Research in 2020: The Year Scaling Became the AI Strategy",
       "excerpt": "Twelve 2020 papers in eight themes \u2014 scaling laws, GPT-3, T5, RAG, learning from human feedback, ViT, DETR, SimCLR, wav2vec 2.0, DDPM, NeRF and GShard \u2014 each explained in plain English with an animation, plus a runnable scaling-laws lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udcd0",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2021-papers",
