@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2011-papers",
+      "title": "AI Research in 2011: The Year Before the Breakthrough",
+      "excerpt": "Thirteen 2011 papers and systems in eight themes \u2014 ReLU, AdaGrad, GPU CNNs beating humans on traffic signs, Hogwild!, deep speech, NLP from scratch, text-generating RNNs, IBM Watson, Kinect, scikit-learn and TPE \u2014 each explained in plain English with an animation, plus a runnable AdaGrad lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udf05",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2012-papers",
       "title": "AI Research in 2012: The Year Deep Learning Broke Through",
       "excerpt": "Eight 2012 papers in eight themes \u2014 AlexNet, DistBelief, the cat-neuron experiment, deep networks for speech, dropout, multi-column CNNs, random search and Bayesian optimisation \u2014 each explained in plain English with an animation, plus a runnable random-vs-grid-search lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udca5",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2013-papers",
