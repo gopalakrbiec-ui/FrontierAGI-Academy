@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2022-papers",
+      "title": "AI Research in 2022: The Year Reasoning, Alignment and Generative AI Converged",
+      "excerpt": "Seventeen 2022 papers in eight themes \u2014 Chinchilla, InstructGPT, chain-of-thought, ReAct, latent diffusion, Flamingo, FlashAttention and more \u2014 each explained in plain English with an animation, plus a runnable Chinchilla scaling lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "45 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udf31",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2023-papers",
       "title": "AI Research in 2023: The Year Foundation Models Became Platforms",
       "excerpt": "Seventeen papers that turned foundation models into platforms \u2014 GPT-4, LLaMA, Llama 2, QLoRA, DPO, Tree of Thoughts, Toolformer, Reflexion, Generative Agents, Voyager, SAM, LLaVA, RT-2, AlphaDev, the emergence 'mirage', data-constrained scaling and DecodingTrust \u2014 each explained in plain English with animations and sources.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfd7\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2024-papers",
