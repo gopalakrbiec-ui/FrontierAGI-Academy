@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2018-papers",
+      "title": "AI Research in 2018: The Year Pretraining Changed Everything",
+      "excerpt": "Fourteen 2018 papers in eight themes \u2014 ELMo, ULMFiT, GPT-1, BERT, GLUE, World Models, AlphaZero, OpenAI Five, Dactyl, graph networks, Neural ODEs and BigGAN \u2014 each explained in plain English with an animation, plus a runnable Neural ODE lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udd13",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2019-papers",
       "title": "AI Research in 2019: The Year Pretraining Became the Default",
       "excerpt": "Sixteen 2019 papers in eight themes \u2014 GPT-2, XLNet, RoBERTa, BART, Transformer-XL, Megatron-LM, ALBERT, EfficientNet, StyleGAN, AlphaStar, MuZero, SuperGLUE and more \u2014 each explained in plain English with an animation, plus a runnable model-parallelism lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfd7\ufe0f",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2020-papers",
