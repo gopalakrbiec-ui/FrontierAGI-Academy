@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2023-papers",
+      "title": "AI Research in 2023: The Year Foundation Models Became Platforms",
+      "excerpt": "Seventeen papers that turned foundation models into platforms \u2014 GPT-4, LLaMA, Llama 2, QLoRA, DPO, Tree of Thoughts, Toolformer, Reflexion, Generative Agents, Voyager, SAM, LLaVA, RT-2, AlphaDev, the emergence 'mirage', data-constrained scaling and DecodingTrust \u2014 each explained in plain English with animations and sources.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "45 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83c\udfd7\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2024-papers",
       "title": "AI Research in 2024: The Year Context, Agents and World Models Took Shape",
       "excerpt": "Twenty-one papers that prepared the ground for reasoning models and agentic AI \u2014 Gemini 1.5, Llama 3, LongRoPE, Quiet-STaR, Self-Rewarding LMs, test-time compute scaling, SWE-agent, Mamba-2, BitNet, VAR, rectified flow, Genie, debate, model stealing, PRISM, AlphaFold 3, ViT registers and more \u2014 each explained in plain English with animations and sources.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udded",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2025-papers",
