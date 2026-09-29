@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2016-papers",
+      "title": "AI Research in 2016: The Year Deep Learning Became a General-Purpose Engine",
+      "excerpt": "Twelve 2016 papers in eight themes \u2014 ResNet, AlphaGo, A3C, the Differentiable Neural Computer, learned optimisers, GNMT, BPE, Deep Speech 2, YOLO, WaveNet, PixelRNN and InfoGAN \u2014 each explained in plain English with an animation, plus a runnable residual-gradient lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\u2699\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2017-papers",
       "title": "AI Research in 2017: The Year the Modern AI Architecture Was Born",
       "excerpt": "Eleven 2017 papers in eight themes \u2014 the Transformer, AlphaGo Zero, RL from human preferences, PPO, neural architecture search, population-based training, sparse experts, pix2pix, CycleGAN, WGAN and capsules \u2014 each explained in plain English with an animation, plus a runnable self-attention lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udf31",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2018-papers",
