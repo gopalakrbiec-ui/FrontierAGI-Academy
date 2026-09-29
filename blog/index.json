@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2020-papers",
+      "title": "AI Research in 2020: The Year Scaling Became the AI Strategy",
+      "excerpt": "Twelve 2020 papers in eight themes \u2014 scaling laws, GPT-3, T5, RAG, learning from human feedback, ViT, DETR, SimCLR, wav2vec 2.0, DDPM, NeRF and GShard \u2014 each explained in plain English with an animation, plus a runnable scaling-laws lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcd0",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2021-papers",
       "title": "AI Research in 2021: The Year the Foundation-Model Stack Emerged",
       "excerpt": "Fourteen 2021 papers in eight themes \u2014 Switch Transformer, the Foundation Models report, LoRA, CLIP, Codex, RETRO, WebGPT, diffusion beating GANs and AlphaFold 2 \u2014 each explained in plain English with an animation, plus a runnable LoRA lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\uddf1",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2022-papers",
