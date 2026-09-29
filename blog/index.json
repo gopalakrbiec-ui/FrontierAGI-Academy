@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2026-papers",
+      "title": "AI Research in 2026: The Papers and Ideas Reshaping the Field",
+      "excerpt": "Fourteen of 2026's most-awarded and most-discussed AI papers from ICLR and ICML \u2014 Transformer succinctness, memorisation capacity, reasoning without answer keys, self-improving agents, the diffusion 'flexibility trap', deception detectors, multi-turn failures, AI-scientist benchmarks and more \u2014 each explained in plain English with animations and sources.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcc5",
+      "featured": true
+    },
+    {
       "slug": "open-problems-in-rsi",
       "title": "Open Problems in Recursive Self-Improvement: A Research Map",
       "excerpt": "Sixteen open problems blocking genuine recursive self-improvement in five clusters \u2014 measurement, evaluation, research capability, dynamics and bottlenecks, safety and governance \u2014 each with its question, best evidence, status and references, plus an interactive map, a dependency graph and a runnable feedback-loop model.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83e\udde9",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "automated-rd-to-effective-rsi",

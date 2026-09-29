@@ -2,6 +2,15 @@
   "generated_by": "scripts/build.py",
   "series": [
     {
+      "id": "sec-ai-progress",
+      "title": "AI Research Progress Through the Years",
+      "short": "AI Research Progress Through the Years",
+      "icon": "📅",
+      "slugs": [
+        "ai-research-2026-papers"
+      ]
+    },
+    {
       "id": "sec-rsi",
       "title": "The Recursive Self-Improvement Series",
       "short": "The Recursive Self-Improvement Series",
