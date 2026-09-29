@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2013-papers",
+      "title": "AI Research in 2013: The Year Representation Learning Became the Language of AI",
+      "excerpt": "Twelve 2013 papers in eight themes \u2014 word2vec, the Atari DQN, the VAE, deep LSTMs, DeViSE, Network In Network, OverFeat, Zeiler & Fergus and the first adversarial examples \u2014 each explained in plain English with an animation, plus a runnable reparameterisation-trick lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcd0",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2014-papers",
       "title": "AI Research in 2014: The Year Deep Learning Learned to Generate, Translate and Remember",
       "excerpt": "Twelve 2014 papers in eight themes \u2014 GANs, Seq2Seq, GRU, attention, Neural Turing Machines, VGG, GoogLeNet, R-CNN, DeepFace, adversarial examples, dropout and GloVe \u2014 each explained in plain English with an animation, plus a runnable adversarial-examples lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udfad",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2015-papers",
