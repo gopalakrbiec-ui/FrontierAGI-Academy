@@ -306,6 +306,53 @@ def broken_links(files):
     return problems
 
 
+PRIZE_WORDS = ("Nobel", "Turing", "Gödel", "Test of Time", "Best Paper", "Outstanding", "Award", "Prize")
+
+
+def render_idea_graph():
+    """Merge data/idea-map.json (areas, lineage links, tours) with every paper card in the
+    "AI Research in YEAR" articles into blog/idea-graph.json for pages/idea-map.html.
+    Returns (json_text, problems)."""
+    src = json.loads((ROOT / "data/idea-map.json").read_text(encoding="utf-8"))
+    labels = src.get("labels", {})
+    nodes, problems = [], []
+    for f in sorted((ROOT / "blog").glob("ai-research-*-papers.html")):
+        s = f.read_text(encoding="utf-8")
+        span = f.stem[len("ai-research-"):-len("-papers")]
+        years = [int(y) for y in span.split("-")]
+        short = {p[0]: p for p in json.loads(re.search(r"const P = (\[\[.*?\]\]);", s).group(1))}
+        legend = dict(re.findall(r'<span class="ar-b ([\w-]+)">([^<]+)</span>', s[s.find('class="ar-legend"'):][:3000]))
+        for m in re.finditer(r'<div class="ar-card" id="([^"]+)">(.*?)<div class="op-refs">', s, re.S):
+            cid, card = m.groups()
+            key = f"{span}/{cid}"
+            small = clean_text(re.search(r"<small>(.*?)</small>", card, re.S).group(1))
+            year = years[0]
+            if len(years) > 1:
+                found = [int(y) for y in re.findall(r"\b(19\d\d|20\d\d)\b", small) if years[0] <= int(y) <= years[1]]
+                year = found[0] if found else years[0]
+            eli = re.search(r'<div class="ar-eli"><b>[^<]*</b><p>(.*?)</p>', card, re.S)
+            desc = clean_text(eli.group(1)) if eli else ""
+            first = re.match(r"(.+?[.!?])(\s|$)", desc)
+            badges = [html.unescape(legend.get(b, b)) for b in short.get(cid, [0] * 5)[4]]
+            nodes.append({
+                "id": key, "y": year, "a": src["nodeArea"].get(key, ""),
+                "t": labels.get(key) or html.unescape(short[cid][3]) if cid in short else cid,
+                "e": short[cid][2] if cid in short else "•",
+                "d": truncate(first.group(1) if first else desc, 190),
+                "w": small, "b": badges, "p": any(w in b for b in badges for w in PRIZE_WORDS),
+                "u": f"../blog/{f.name}#{cid}", "l": f"AI Research in {span.replace('-', '–')}",
+            })
+    keys = {n["id"] for n in nodes}
+    area_ids = {a[0] for a in src["areas"]}
+    problems += [f"data/idea-map.json: card {k} has no area" for k in sorted(keys) if src["nodeArea"].get(k) not in area_ids]
+    problems += [f"data/idea-map.json: unknown card {k} in nodeArea" for k in src["nodeArea"] if k not in keys]
+    problems += [f"data/idea-map.json: link to unknown card {x}" for l in src["links"] for x in l[:2] if x not in keys]
+    problems += [f"data/idea-map.json: tour stop {x} unknown" for t in src["tours"] for x in t[1] if x not in keys]
+    out = {"generated_by": "scripts/build.py from data/idea-map.json + blog/ai-research-*-papers.html",
+           "areas": src["areas"], "nodes": nodes, "links": src["links"], "tours": src["tours"]}
+    return json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", problems
+
+
 def main():
     check = "--check" in sys.argv
     manifest = {p["slug"]: p for p in json.loads((ROOT / "blog/index.json").read_text())["posts"]}
@@ -325,6 +372,7 @@ def main():
         outputs[f] = s
     outputs[ROOT / "blog/series.json"] = json.dumps(
         {"generated_by": "scripts/build.py", "series": series}, indent=2, ensure_ascii=False) + "\n"
+    outputs[ROOT / "blog/idea-graph.json"], graph_problems = render_idea_graph()
     outputs[ROOT / "sitemap.xml"] = render_sitemap(files, manifest)
     outputs[ROOT / "robots.txt"] = ROBOTS
     outputs[ROOT / "404.html"] = render_404(nav_template)
@@ -335,7 +383,7 @@ def main():
         stale = [p for p in stale if p.name != "sitemap.xml"]
         readme = subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py"), "--check"])
         problems = [f"stale: {p.relative_to(ROOT)} (run python3 scripts/build.py)" for p in stale]
-        problems += broken_links(files)
+        problems += broken_links(files) + graph_problems
         if readme.returncode:
             problems.append("stale: README.md (run python3 scripts/build.py)")
         for line in problems:
@@ -345,7 +393,7 @@ def main():
     for p in stale:
         p.write_text(outputs[p], encoding="utf-8")
     subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py")], check=True)
-    problems = broken_links(files)
+    problems = broken_links(files) + graph_problems
     print(f"build: {len(stale)} file(s) updated, {len(files)} pages checked, {len(problems)} broken link(s)")
     for line in problems:
         print("  " + line)
