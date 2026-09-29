@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-1950-1980-papers",
+      "title": "AI Research in 1950\u20131980: The Three Decades That Founded the Field",
+      "excerpt": "From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN \u2014 twenty founding papers and milestones in eight themes, explained with animations, plus a runnable A* search lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "50 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83d\udcdf",
+      "featured": true
+    },
+    {
       "slug": "ai-research-1980-2000-papers",
       "title": "AI Research in 1980\u20132000: The Two Decades That Invented Modern AI's Core Ideas",
       "excerpt": "Twenty papers and milestones from 1980\u20132000 in eight themes \u2014 Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning, TD-Gammon, SVMs, AdaBoost, Bayesian networks, HMMs, expert systems and Deep Blue \u2014 each explained in plain English with an animation, plus a runnable backpropagation lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udcfc",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2001-2010-papers",
