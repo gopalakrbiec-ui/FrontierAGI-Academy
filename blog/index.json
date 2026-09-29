@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "open-problems-in-rsi",
+      "title": "Open Problems in Recursive Self-Improvement: A Research Map",
+      "excerpt": "Sixteen open problems blocking genuine recursive self-improvement in five clusters \u2014 measurement, evaluation, research capability, dynamics and bottlenecks, safety and governance \u2014 each with its question, best evidence, status and references, plus an interactive map, a dependency graph and a runnable feedback-loop model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "40 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udde9",
+      "featured": true
+    },
+    {
       "slug": "automated-rd-to-effective-rsi",
       "title": "From Automated R&D to Effective RSI: Frontier, Evidence and Open Problems",
       "excerpt": "What is already real in AI R&D, the difference between structural and effective recursion, the first experiments built to test it (AIDE\u00b2, AI4AI-Bench, PAST-Bench), a runnable power analysis of why a few generations can't prove compounding, and the twelve open problems still blocking genuine RSI.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83d\udcc8",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "self-improving-agentic-systems",
