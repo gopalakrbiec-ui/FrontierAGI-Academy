@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-research-2001-2010-papers",
+      "title": "AI Research in 2001\u20132010: The Decade That Set the Stage for Deep Learning",
+      "excerpt": "Eighteen papers and milestones from 2001\u20132010 in eight themes \u2014 deep belief nets, neural language models, ImageNet, GPUs, Viola\u2013Jones, SIFT, HOG, random forests, LDA, CRFs, CTC, UCT, Stanley and the Netflix Prize \u2014 each explained in plain English with an animation, plus a runnable matrix-factorisation lab.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-29",
+      "readTime": "45 min",
+      "tags": [
+        "AI Research",
+        "Explainer"
+      ],
+      "emoji": "\ud83e\udded",
+      "featured": true
+    },
+    {
       "slug": "ai-research-2011-papers",
       "title": "AI Research in 2011: The Year Before the Breakthrough",
       "excerpt": "Thirteen 2011 papers and systems in eight themes \u2014 ReLU, AdaGrad, GPU CNNs beating humans on traffic signs, Hogwild!, deep speech, NLP from scratch, text-generating RNNs, IBM Watson, Kinect, scikit-learn and TPE \u2014 each explained in plain English with an animation, plus a runnable AdaGrad lab.",
@@ -13,7 +28,7 @@
         "Explainer"
       ],
       "emoji": "\ud83c\udf05",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-2012-papers",
