@@ -51,25 +51,32 @@
     .lu-race-ctrl strong { min-width: 70px; font-size: 1rem; }
     .lu-two { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
 
-    .lu-filters { position: sticky; top: 94px; z-index: 5; background: rgba(255, 255, 255, .96); backdrop-filter: blur(6px); border-bottom: 1px solid #e5e7eb; padding: 10px 0; margin-bottom: 8px; }
-    .lu-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
-    .lu-chips button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; border: 1.5px solid #e5e7eb; background: #fff; font: inherit; font-size: .76rem; font-weight: 600; cursor: pointer; color: #374151; }
-    .lu-chips button i { width: 18px; height: 18px; border-radius: 5px; display: grid; place-items: center; font-style: normal; font-size: .58rem; font-weight: 800; color: #fff; background: var(--lc, #6b7280); }
-    .lu-chips button small { color: #9ca3af; }
-    .lu-chips button.on { border-color: var(--lc, #4f46e5); background: #eef2ff; color: #111827; }
-    .lu-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    .lu-row input[type=search] { flex: 1; min-width: 180px; padding: 8px 12px; border-radius: 10px; border: 1.5px solid #e5e7eb; font: inherit; font-size: .86rem; }
-    .lu-row select, .lu-tog { padding: 7px 11px; border-radius: 10px; border: 1.5px solid #e5e7eb; background: #fff; font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; }
+    .lu-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: start; }
+    .lu-filters { position: sticky; top: 108px; max-height: calc(100vh - 124px); overflow-y: auto; border: 1.5px solid #e5e7eb; border-radius: 16px; padding: 14px; background: #fff; }
+    .lu-filters summary { list-style: none; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-weight: 800; font-size: .95rem; margin-bottom: 10px; cursor: default; }
+    .lu-filters summary::-webkit-details-marker { display: none; }
+    .lu-filters h3 { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #6b7280; margin: 12px 0 4px; }
+    .lu-filters input[type=search], .lu-filters select { width: 100%; box-sizing: border-box; padding: 8px 10px; border-radius: 10px; border: 1.5px solid #e5e7eb; font: inherit; font-size: .86rem; }
+    .lu-count { font-size: .74rem; font-weight: 600; color: #6b7280; }
+    .lu-chips { display: flex; flex-direction: column; gap: 2px; }
+    .lu-chips button { display: flex; align-items: center; gap: 9px; width: 100%; padding: 4px 8px; border-radius: 8px; border: 0; background: none; font: inherit; font-size: .84rem; color: #374151; cursor: pointer; text-align: left; }
+    .lu-chips button:hover { background: #f3f4f6; }
+    .lu-chips button i { flex: none; width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; font-style: normal; font-size: .6rem; font-weight: 800; color: #fff; background: var(--lc, #6b7280); }
+    .lu-chips button small { margin-left: auto; font-size: .74rem; color: #9ca3af; font-variant-numeric: tabular-nums; }
+    .lu-chips button.on { background: #eef2ff; color: #111827; font-weight: 700; box-shadow: inset 3px 0 0 var(--lc, #4f46e5); }
+    #luTypes { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 4px; }
+    #luTypes button:first-child { grid-column: 1 / -1; }
+    #luTypes button { font-size: .78rem; gap: 5px; padding: 4px 6px; }
+    .lu-tog { width: 100%; margin-top: 8px; padding: 8px 10px; border-radius: 10px; border: 1.5px solid #e5e7eb; background: #fff; font: inherit; font-size: .84rem; font-weight: 600; cursor: pointer; text-align: left; }
     .lu-tog.on { border-color: #f59e0b; background: #fffbeb; }
-    .lu-count { font-size: .8rem; color: #6b7280; margin-left: auto; }
-
+    .lu-clear { width: 100%; margin-top: 12px; padding: 7px; border-radius: 10px; border: 1.5px dashed #d1d5db; background: none; font: inherit; font-size: .8rem; color: #4b5563; cursor: pointer; }
     .lu-timeline { position: relative; padding-left: 26px; }
     .lu-timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(#4f46e5, #c7d2fe); border-radius: 2px; }
-    .lu-month { margin: 18px 0 8px; }
+    .lu-month { margin: 0 0 18px; }
     .lu-month-hd { position: relative; font-size: .95rem; font-weight: 800; color: #1f2937; margin: 0 0 10px; }
     .lu-month-hd::before { content: ""; position: absolute; left: -24px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 3px solid #4f46e5; }
     .lu-cards { display: grid; gap: 10px; }
-    .lu-card { display: grid; grid-template-columns: 92px 1fr; border-radius: 14px; border: 1.5px solid #e5e7eb; background: #fff; overflow: hidden; scroll-margin-top: 230px; transition: box-shadow .2s, transform .2s, opacity .4s; }
+    .lu-card { display: grid; grid-template-columns: 92px 1fr; border-radius: 14px; border: 1.5px solid #e5e7eb; background: #fff; overflow: hidden; scroll-margin-top: 110px; transition: box-shadow .2s, transform .2s, opacity .4s; }
     .lu-card:hover { box-shadow: 0 10px 26px rgba(15, 23, 42, .08); transform: translateY(-1px); }
     .lu-card.is-flag { border-color: var(--lc); }
     .lu-card.pre { opacity: 0; transform: translateY(14px); }
@@ -93,15 +100,16 @@
     .lu-card[hidden], .lu-month[hidden] { display: none; }
     .lu-empty { display: none; padding: 30px; text-align: center; color: #6b7280; }
 
-    @media (max-width: 900px) { .lu-two { grid-template-columns: 1fr; } .lu-heat { grid-template-columns: 90px repeat(24, minmax(0, 1fr)); } }
+    @media (max-width: 900px) { .lu-two { grid-template-columns: 1fr; } .lu-layout { grid-template-columns: 220px minmax(0, 1fr); } .lu-heat { grid-template-columns: 90px repeat(24, minmax(0, 1fr)); } }
     @media (max-width: 768px) {
       .lu-wrap { padding: 24px 16px 60px; } .lu-hero h1 { font-size: 1.6rem; }
       .lu-card { grid-template-columns: 58px 1fr; } .lu-mono { font-size: 1rem; }
       .lu-heat { grid-template-columns: 60px repeat(24, minmax(0, 1fr)); font-size: .6rem; }
       .lu-race-row { grid-template-columns: 90px 1fr 30px; font-size: .72rem; }
-      .lu-filters { position: static; }
-      .lu-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
-      .lu-chips button { flex: none; }
+      .lu-layout { grid-template-columns: 1fr; gap: 14px; }
+      .lu-filters { position: static; max-height: none; }
+      .lu-filters summary { cursor: pointer; margin-bottom: 0; }
+      .lu-filters[open] summary { margin-bottom: 10px; }
       .lu-heat .mo { white-space: nowrap; overflow: visible; font-size: .5rem; }
     }
     @media (prefers-reduced-motion: reduce) { .lu-orbit i, .lu-latest i, .lu-card.is-flag .lu-art::after { animation: none; } .lu-card.pre { opacity: 1; transform: none; } }
@@ -226,21 +234,25 @@
         <h2>🏁 Flagship model race</h2>
         <div class="sub">Cumulative releases marked ⭐ Flagship on this page, per lab, quarter by quarter. Press play to watch it unfold.</div>
         <div class="lu-race" id="luRace"></div>
-        <div class="lu-race-ctrl"><button type="button" class="lu-tog" id="luRacePlay">▶ Play</button><strong id="luRaceQ"></strong></div>
+        <div class="lu-race-ctrl"><button type="button" class="lu-tog" id="luRacePlay" style="width:auto;margin:0">▶ Play</button><strong id="luRaceQ"></strong></div>
       </div>
     </div>
 
-    <div class="lu-filters" id="luFilters">
+    <div class="lu-layout">
+    <details class="lu-filters" id="luFilters" open>
+      <summary>🔎 Filters <span class="lu-count" id="luCount"></span></summary>
+      <input type="search" id="luQ" placeholder="Search, e.g. GPT-5, open weights…" aria-label="Search updates" />
+      <h3>When</h3>
+      <select id="luRange" aria-label="Date range"><option value="all">All 24 months</option><option value="30">Last 30 days</option><option value="90">Last 3 months</option><option value="182">Last 6 months</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">Oct–Dec 2024</option></select>
+      <button type="button" class="lu-tog" id="luFlag" aria-pressed="false">⭐ Flagship models only</button>
+      <h3>Lab</h3>
       <div class="lu-chips" id="luLabs" aria-label="Filter by lab"></div>
+      <h3>Type</h3>
       <div class="lu-chips" id="luTypes" aria-label="Filter by type"></div>
-      <div class="lu-row">
-        <input type="search" id="luQ" placeholder="Search, e.g. GPT-5, Claude, open weights, pricing…" aria-label="Search updates" />
-        <select id="luRange" aria-label="Date range"><option value="all">All 24 months</option><option value="30">Last 30 days</option><option value="90">Last 3 months</option><option value="182">Last 6 months</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">Oct–Dec 2024</option></select>
-        <button type="button" class="lu-tog" id="luFlag" aria-pressed="false">⭐ Flagship models only</button>
-        <span class="lu-count" id="luCount"></span>
-      </div>
-    </div>
+      <button type="button" class="lu-clear" id="luClear">↺ Clear all filters</button>
+    </details>
 
+    <div class="lu-main">
     <div class="lu-timeline" id="luTimeline">
     <!-- LABITEMS:START (generated by scripts/build.py) -->
     <section class="lu-month" data-month="2026-09"><h3 class="lu-month-hd">Sep 2026</h3><div class="lu-cards">
@@ -465,6 +477,8 @@
     <!-- LABITEMS:END -->
     </div>
     <div class="lu-empty" id="luEmpty">No updates match these filters.</div>
+    </div>
+    </div>
 
     <div class="caveat-box" style="margin-top:28px;">
       <strong>How this list is made:</strong> each item was checked against the lab's own announcement or a reputable report, and links to it. Dates are announcement or release dates; where only the month could be confirmed, the card shows the month. Benchmark and price figures are as the lab announced them. Coverage is deepest for labs whose announcements we could check directly, so a lab with fewer cards has not necessarily shipped less. Spot a missing or wrong item? Every entry lives in one file, <code>data/lab-updates.json</code>.
@@ -507,7 +521,7 @@
     $('luHeat').addEventListener('click', function (e) {
       var b = e.target.closest('button[data-m], .lab'); if (!b) return;
       st.labs = new Set([b.dataset.lab]); st.month = b.dataset.m || ''; st.range = 'all'; $('luRange').value = 'all';
-      syncChips(); apply(); $('luFilters').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' });
+      syncChips(); apply(); $('luTimeline').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' });
     });
 
     /* flagship race by quarter */
@@ -541,6 +555,9 @@
     $('luQ').addEventListener('input', function () { st.q = this.value.trim().toLowerCase(); apply(); });
     $('luRange').addEventListener('change', function () { st.range = this.value; st.month = ''; syncChips(); apply(); });
     $('luFlag').onclick = function () { st.flag = !st.flag; syncChips(); apply(); };
+    $('luClear').onclick = function () { st.labs.clear(); st.types.clear(); st.flag = false; st.q = ''; st.month = ''; st.range = 'all'; $('luQ').value = ''; $('luRange').value = 'all'; syncChips(); apply(); };
+    if (window.matchMedia('(max-width: 768px)').matches) $('luFilters').open = false;
+    $('luFilters').querySelector('summary').addEventListener('click', function (e) { if (!window.matchMedia('(max-width: 768px)').matches) e.preventDefault(); });
 
     /* URL state: ?lab=openai,anthropic&type=model&flag=1 */
     var P = new URLSearchParams(location.search);
