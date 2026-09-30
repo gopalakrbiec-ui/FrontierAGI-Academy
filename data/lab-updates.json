@@ -1629,6 +1629,20 @@
    "flagship": false
   },
   {
+   "id": "microsoft-20250519-build-2025-github-copilot-coding-agent-and-mcp",
+   "date": "2025-05-19",
+   "lab": "microsoft",
+   "type": "product",
+   "title": "Build 2025: GitHub Copilot coding agent and MCP",
+   "summary": "A GitHub Copilot agent that works on issues in the background, broad Model Context Protocol support across Microsoft, and NLWeb for conversational websites.",
+   "facts": [
+    "MCP support",
+    "NLWeb (open project)"
+   ],
+   "source": "https://blogs.microsoft.com/blog/2025/05/19/microsoft-build-2025-the-age-of-ai-agents-and-building-the-open-agentic-web/",
+   "flagship": false
+  },
+  {
    "id": "openai-20250516-codex-cloud-coding-agent",
    "date": "2025-05-16",
    "lab": "openai",
@@ -1785,6 +1799,19 @@
    ],
    "source": "https://hidekazu-konishi.com/entry/google_gemini_model_release_timeline.html",
    "flagship": true
+  },
+  {
+   "id": "nvidia-20250318-gtc-2025-blackwell-ultra-dynamo-isaac-gr00t-n1",
+   "date": "2025-03-18",
+   "lab": "nvidia",
+   "type": "product",
+   "title": "GTC 2025: Blackwell Ultra, Dynamo, Isaac GR00T N1",
+   "summary": "Blackwell Ultra chips and a roadmap to Vera Rubin and Feynman, the Dynamo inference software, and GR00T N1 — an open foundation model for humanoid robots.",
+   "facts": [
+    "GR00T N1: open humanoid robot model"
+   ],
+   "source": "https://siliconangle.com/2025/03/18/key-takeaways-nvidia-ceo-jensen-huangs-gtc-keynote/",
+   "flagship": false
   },
   {
    "id": "google-20250312-gemma-3-open-models",
@@ -2182,6 +2209,19 @@
    "flagship": false
   },
   {
+   "id": "openai-20241001-devday-2024-realtime-api-prompt-caching-distilla",
+   "date": "2024-10-01",
+   "lab": "openai",
+   "type": "api",
+   "title": "DevDay 2024: Realtime API, prompt caching, distillation",
+   "summary": "A low-latency voice Realtime API, automatic prompt caching with a 50% input discount, vision fine-tuning for GPT-4o, and model distillation.",
+   "facts": [
+    "Prompt caching: 50% off repeated input"
+   ],
+   "source": "https://openai.com/devday/2024/",
+   "flagship": false
+  },
+  {
    "id": "meta-20240925-llama-3-2",
    "date": "2024-09-25",
    "lab": "meta",
@@ -2404,6 +2444,33 @@
    "summary": "An interpretability demo: amplifying one learned feature makes Claude obsessed with the Golden Gate Bridge.",
    "facts": [],
    "source": "https://www.anthropic.com/news/golden-gate-claude",
+   "flagship": false
+  },
+  {
+   "id": "microsoft-20240521-build-2024-phi-silica-and-copilot-pcs",
+   "date": "2024-05-21",
+   "lab": "microsoft",
+   "type": "model",
+   "title": "Build 2024: Phi-Silica and Copilot+ PCs",
+   "summary": "A small language model built into every Copilot+ PC, running locally on the laptop's NPU, plus Phi-3-vision.",
+   "facts": [
+    "Runs on-device"
+   ],
+   "source": "https://blogs.windows.com/windowsdeveloper/2024/05/21/unlock-a-new-era-of-innovation-with-windows-copilot-runtime-and-copilot-pcs/",
+   "flagship": false
+  },
+  {
+   "id": "google-20240514-google-i-o-2024-gemini-1-5-flash-project-astra-v",
+   "date": "2024-05-14",
+   "lab": "google",
+   "type": "product",
+   "title": "Google I/O 2024: Gemini 1.5 Flash, Project Astra, Veo, Imagen 3",
+   "summary": "A fast Gemini 1.5 Flash, a 2M-token context for 1.5 Pro, the Project Astra universal-assistant prototype, the Veo video model and Imagen 3.",
+   "facts": [
+    "1.5 Pro: 2M-token context (waitlist)",
+    "Veo: 1080p text-to-video"
+   ],
+   "source": "https://blog.google/innovation-and-ai/products/google-io-2024-100-announcements/",
    "flagship": false
   },
   {
@@ -2635,11 +2702,11 @@
    "flagship": true
   },
   {
-   "id": "amazon-20231128-amazon-q",
+   "id": "amazon-20231128-amazon-q-re-invent-2023",
    "date": "2023-11-28",
    "lab": "amazon",
    "type": "product",
-   "title": "Amazon Q",
+   "title": "Amazon Q (re:Invent 2023)",
    "summary": "A generative-AI assistant for work that can be tailored to a business.",
    "facts": [],
    "source": "https://techcrunch.com/2023/11/28/amazon-unveils-q-an-ai-powered-chatbot-for-businesses/",
@@ -2862,6 +2929,17 @@
    ],
    "source": "https://www.anthropic.com/news/claude-2",
    "flagship": true
+  },
+  {
+   "id": "microsoft-20230523-build-2023-windows-copilot-and-plugins",
+   "date": "2023-05-23",
+   "lab": "microsoft",
+   "type": "product",
+   "title": "Build 2023: Windows Copilot and plugins",
+   "summary": "Copilot comes to Windows, and Microsoft and OpenAI back a shared plugin standard across ChatGPT and Microsoft 365 Copilot.",
+   "facts": [],
+   "source": "https://www.microsoft.com/en-us/microsoft-365/blog/2023/05/23/empowering-every-developer-with-plugins-for-microsoft-365-copilot/",
+   "flagship": false
   },
   {
    "id": "anthropic-20230511-100k-token-context-window",
