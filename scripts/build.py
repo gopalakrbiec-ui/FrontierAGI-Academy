@@ -364,7 +364,7 @@ def render_lab_blocks(data):
         for it in data["items"][:6])
     latest = (f'{LABLATEST_START}\n<div class="home-section lablatest" id="grp-labs">\n  <div class="container">\n'
               f'    <div class="home-section-hd">\n      <div class="eyebrow">Frontier Lab Updates</div>\n'
-              f'      <h2>Latest from the Labs</h2>\n      <p>Every release and announcement from {len(labs)} frontier labs over the last two years — models, products, APIs, pricing and research — newest first, each linked to its source.</p>\n    </div>\n'
+              f'      <h2>Latest from the Labs</h2>\n      <p>Every release and announcement from {len(labs)} frontier labs over the last five years — models, products, APIs, pricing and research — newest first, each linked to its source.</p>\n    </div>\n'
               f'    <div class="lablatest-grid">{cards}\n    </div>\n'
               f'    <a href="pages/lab-updates.html" class="lablatest-all">See all {len(data["items"])} updates, filter by lab →</a>\n  </div>\n</div>\n{LABLATEST_END}')
     return strip, latest

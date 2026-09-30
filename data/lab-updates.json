@@ -1,7 +1,7 @@
 {
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
-  "2024-10-01",
+  "2021-10-01",
   "2026-09-30"
  ],
  "labs": [
@@ -2166,6 +2166,1035 @@
    "summary": "A major revision of the risk-governance framework Anthropic uses to decide what safeguards each model needs.",
    "facts": [],
    "source": "https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy",
+   "flagship": false
+  },
+  {
+   "id": "meta-20240925-llama-3-2",
+   "date": "2024-09-25",
+   "lab": "meta",
+   "type": "model",
+   "title": "Llama 3.2",
+   "summary": "Small models for phones and the first multimodal (vision) Llama models.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+   "flagship": false
+  },
+  {
+   "id": "qwen-20240919-qwen2-5",
+   "date": "2024-09-19",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen2.5",
+   "summary": "A large open release spanning general, coding and maths models.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Qwen",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20240919-contextual-retrieval",
+   "date": "2024-09-19",
+   "lab": "anthropic",
+   "type": "research",
+   "title": "Contextual Retrieval",
+   "summary": "A retrieval technique that cuts failed retrievals by adding context to each chunk.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/contextual-retrieval",
+   "flagship": false
+  },
+  {
+   "id": "openai-20240912-o1-preview-and-o1-mini",
+   "date": "2024-09-12",
+   "lab": "openai",
+   "type": "model",
+   "title": "o1-preview and o1-mini",
+   "summary": "OpenAI's first reasoning models, which think step by step before answering.",
+   "facts": [
+    "Reasoning model"
+   ],
+   "source": "https://en.wikipedia.org/wiki/OpenAI_o1",
+   "flagship": true
+  },
+  {
+   "id": "deepseek-20240906-deepseek-v2-5",
+   "date": "2024-09-06",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek-V2.5",
+   "summary": "Merges the chat and coder models into one that beats both.",
+   "facts": [],
+   "source": "https://www.techtarget.com/whatis/feature/DeepSeek-explained-Everything-you-need-to-know",
+   "flagship": false
+  },
+  {
+   "id": "mistral-202409-pixtral-12b",
+   "date": "2024-09",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Pixtral 12B",
+   "summary": "Mistral's first multimodal model, open under Apache 2.0.",
+   "facts": [
+    "Vision input"
+   ],
+   "source": "https://mistral.ai/news/pixtral-12b/",
+   "flagship": false
+  },
+  {
+   "id": "xai-202408-grok-2",
+   "date": "2024-08",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok-2",
+   "summary": "A new model with better reasoning, plus image generation in Grok.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/XAI_(company)",
+   "flagship": true
+  },
+  {
+   "id": "google-20240725-alphaproof-and-alphageometry-2-imo-silver",
+   "date": "2024-07-25",
+   "lab": "google",
+   "type": "research",
+   "title": "AlphaProof and AlphaGeometry 2: IMO silver",
+   "summary": "Solve four of six International Mathematical Olympiad problems — silver-medal standard.",
+   "facts": [
+    "4 of 6 problems"
+   ],
+   "source": "https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20240724-mistral-large-2",
+   "date": "2024-07-24",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mistral Large 2",
+   "summary": "A 123B model designed to run on a single node with long context.",
+   "facts": [
+    "123B parameters"
+   ],
+   "source": "https://mistral.ai/news/mistral-large-2407/",
+   "flagship": false
+  },
+  {
+   "id": "meta-20240723-llama-3-1-405b",
+   "date": "2024-07-23",
+   "lab": "meta",
+   "type": "model",
+   "title": "Llama 3.1 405B",
+   "summary": "The first frontier-scale open-weight model, with 128K context.",
+   "facts": [
+    "405B parameters",
+    "128K context"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+   "flagship": true
+  },
+  {
+   "id": "openai-20240718-gpt-4o-mini",
+   "date": "2024-07-18",
+   "lab": "openai",
+   "type": "pricing",
+   "title": "GPT-4o mini",
+   "summary": "A small, cheap model that replaces GPT-3.5 Turbo for most uses.",
+   "facts": [],
+   "source": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20240625-projects-in-claude",
+   "date": "2024-06-25",
+   "lab": "anthropic",
+   "type": "product",
+   "title": "Projects in Claude",
+   "summary": "Pro and Team users can organise chats with shared knowledge into Projects.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/projects",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20240621-claude-3-5-sonnet-and-artifacts",
+   "date": "2024-06-21",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude 3.5 Sonnet and Artifacts",
+   "summary": "A mid-size model that beat Claude 3 Opus, launched with Artifacts for building content alongside the chat.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/claude-3-5-sonnet",
+   "flagship": true
+  },
+  {
+   "id": "deepseek-20240617-deepseek-coder-v2",
+   "date": "2024-06-17",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek-Coder-V2",
+   "summary": "An open coding model built on the V2 architecture.",
+   "facts": [],
+   "source": "https://www.techtarget.com/whatis/feature/DeepSeek-explained-Everything-you-need-to-know",
+   "flagship": false
+  },
+  {
+   "id": "nvidia-20240614-nemotron-4-340b",
+   "date": "2024-06-14",
+   "lab": "nvidia",
+   "type": "model",
+   "title": "Nemotron-4 340B",
+   "summary": "Open base, instruct and reward models built for generating synthetic training data.",
+   "facts": [
+    "Open model licence"
+   ],
+   "source": "https://blogs.nvidia.com/blog/nemotron-4-synthetic-data-generation-llm-training/",
+   "flagship": false
+  },
+  {
+   "id": "qwen-202406-qwen2",
+   "date": "2024-06",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen2",
+   "summary": "A new open family with stronger coding, maths and multilingual ability.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Qwen",
+   "flagship": true
+  },
+  {
+   "id": "mistral-20240529-codestral",
+   "date": "2024-05-29",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Codestral",
+   "summary": "Mistral's first coding model, fluent in 80+ programming languages.",
+   "facts": [],
+   "source": "https://simonwillison.net/2024/May/30/codestral/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20240523-golden-gate-claude",
+   "date": "2024-05-23",
+   "lab": "anthropic",
+   "type": "research",
+   "title": "Golden Gate Claude",
+   "summary": "An interpretability demo: amplifying one learned feature makes Claude obsessed with the Golden Gate Bridge.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/golden-gate-claude",
+   "flagship": false
+  },
+  {
+   "id": "openai-20240513-gpt-4o",
+   "date": "2024-05-13",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-4o",
+   "summary": "An \"omni\" model handling text, audio and vision in real time, made available to free users.",
+   "facts": [
+    "Real-time voice",
+    "Free tier access"
+   ],
+   "source": "https://en.wikipedia.org/wiki/GPT-4o",
+   "flagship": true
+  },
+  {
+   "id": "google-20240508-alphafold-3",
+   "date": "2024-05-08",
+   "lab": "google",
+   "type": "research",
+   "title": "AlphaFold 3",
+   "summary": "Predicts the structure and interactions of proteins, DNA, RNA and small molecules (with Isomorphic Labs).",
+   "facts": [],
+   "source": "https://www.nature.com/articles/d41586-024-01385-x",
+   "flagship": false
+  },
+  {
+   "id": "deepseek-202405-deepseek-v2-sparks-a-price-war",
+   "date": "2024-05",
+   "lab": "deepseek",
+   "type": "pricing",
+   "title": "DeepSeek-V2 sparks a price war",
+   "summary": "A strong, cheap mixture-of-experts model whose low API price pushed ByteDance, Tencent and Baidu to cut theirs.",
+   "facts": [],
+   "source": "https://www.techtarget.com/whatis/feature/DeepSeek-explained-Everything-you-need-to-know",
+   "flagship": true
+  },
+  {
+   "id": "microsoft-20240423-phi-3",
+   "date": "2024-04-23",
+   "lab": "microsoft",
+   "type": "model",
+   "title": "Phi-3",
+   "summary": "Small open models, including one that runs on a phone.",
+   "facts": [
+    "Open weights"
+   ],
+   "source": "https://www.scriptbyai.com/microsoft-ai-timeline/",
+   "flagship": false
+  },
+  {
+   "id": "meta-20240418-llama-3",
+   "date": "2024-04-18",
+   "lab": "meta",
+   "type": "model",
+   "title": "Llama 3",
+   "summary": "8B and 70B open models, described by Meta as the most capable openly available LLMs.",
+   "facts": [],
+   "source": "https://ai.meta.com/blog/meta-llama-3/",
+   "flagship": true
+  },
+  {
+   "id": "nvidia-20240318-blackwell-platform-gtc-2024",
+   "date": "2024-03-18",
+   "lab": "nvidia",
+   "type": "product",
+   "title": "Blackwell platform (GTC 2024)",
+   "summary": "NVIDIA's next GPU architecture for trillion-parameter models, claimed up to 25x lower cost and energy than its predecessor for inference.",
+   "facts": [],
+   "source": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20240304-claude-3-family-opus-sonnet-haiku",
+   "date": "2024-03-04",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude 3 family (Opus, Sonnet, Haiku)",
+   "summary": "Three models with vision; Opus set new marks on many benchmarks.",
+   "facts": [
+    "Vision input",
+    "200K context"
+   ],
+   "source": "https://www.anthropic.com/news/claude-3-family",
+   "flagship": true
+  },
+  {
+   "id": "xai-202403-grok-1-open-weights",
+   "date": "2024-03",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok-1 open weights",
+   "summary": "xAI publishes the weights of its 314B-parameter Grok-1 model.",
+   "facts": [
+    "314B parameters"
+   ],
+   "source": "https://en.wikipedia.org/wiki/XAI_(company)",
+   "flagship": false
+  },
+  {
+   "id": "moonshot-202403-kimi-2-million-character-context",
+   "date": "2024-03",
+   "lab": "moonshot",
+   "type": "product",
+   "title": "Kimi 2-million-character context",
+   "summary": "Moonshot begins testing a Kimi version with a 2-million-character context window.",
+   "facts": [],
+   "source": "https://www.chinadaily.com.cn/a/202403/22/WS65fce476a31082fc043be1b1.html",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20240226-mistral-large-and-le-chat",
+   "date": "2024-02-26",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mistral Large and Le Chat",
+   "summary": "A flagship model to rival GPT-4, a chat assistant, and a partnership with Microsoft Azure.",
+   "facts": [],
+   "source": "https://techcrunch.com/2024/02/26/mistral-ai-releases-new-model-to-rival-gpt-4-and-its-own-chat-assistant/",
+   "flagship": false
+  },
+  {
+   "id": "google-20240221-gemma-open-models",
+   "date": "2024-02-21",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemma (open models)",
+   "summary": "Google's first open-weight family of lightweight language models.",
+   "facts": [
+    "Open weights"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Gemma_(language_model)",
+   "flagship": false
+  },
+  {
+   "id": "openai-20240215-sora-preview",
+   "date": "2024-02-15",
+   "lab": "openai",
+   "type": "research",
+   "title": "Sora preview",
+   "summary": "OpenAI previews a video model that turns text into clips up to a minute long.",
+   "facts": [],
+   "source": "https://techcrunch.com/2024/02/15/openais-newest-model-can-generate-videos-and-they-look-decent/",
+   "flagship": false
+  },
+  {
+   "id": "google-20240215-gemini-1-5",
+   "date": "2024-02-15",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 1.5",
+   "summary": "A model with a context window of up to 1 million tokens.",
+   "facts": [
+    "1M-token context"
+   ],
+   "source": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+   "flagship": true
+  },
+  {
+   "id": "qwen-20240205-qwen1-5",
+   "date": "2024-02-05",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen1.5",
+   "summary": "An open family in sizes from small to 72B parameters.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Qwen",
+   "flagship": false
+  },
+  {
+   "id": "zhipu-20240116-glm-4",
+   "date": "2024-01-16",
+   "lab": "zhipu",
+   "type": "model",
+   "title": "GLM-4",
+   "summary": "Zhipu's new model, claimed to approach GPT-4, with longer context and multimodal features.",
+   "facts": [],
+   "source": "https://www.maginative.com/article/zhipu-ai-unveils-next-gen-foundation-model-glm-4-claims-performance-comparable-to-gpt-4/",
+   "flagship": true
+  },
+  {
+   "id": "openai-20240110-gpt-store",
+   "date": "2024-01-10",
+   "lab": "openai",
+   "type": "product",
+   "title": "GPT Store",
+   "summary": "A store for custom GPTs opens to paid ChatGPT users; over 3 million had been created.",
+   "facts": [],
+   "source": "https://openai.com/index/introducing-the-gpt-store/",
+   "flagship": false
+  },
+  {
+   "id": "microsoft-20231212-phi-2",
+   "date": "2023-12-12",
+   "lab": "microsoft",
+   "type": "model",
+   "title": "Phi-2",
+   "summary": "A 2.7B small language model that rivals much larger models.",
+   "facts": [],
+   "source": "https://www.scriptbyai.com/microsoft-ai-timeline/",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20231208-mixtral-8x7b",
+   "date": "2023-12-08",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mixtral 8x7B",
+   "summary": "An open sparse mixture-of-experts model that outperforms Llama 2 70B on most benchmarks.",
+   "facts": [
+    "Mixture-of-experts",
+    "32K context"
+   ],
+   "source": "https://arxiv.org/pdf/2401.04088",
+   "flagship": true
+  },
+  {
+   "id": "google-20231206-gemini-1-0",
+   "date": "2023-12-06",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 1.0",
+   "summary": "Google's first natively multimodal model family: Ultra, Pro and Nano.",
+   "facts": [
+    "Ultra, Pro, Nano"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Gemini_(language_model)",
+   "flagship": true
+  },
+  {
+   "id": "amazon-20231128-amazon-q",
+   "date": "2023-11-28",
+   "lab": "amazon",
+   "type": "product",
+   "title": "Amazon Q",
+   "summary": "A generative-AI assistant for work that can be tailored to a business.",
+   "facts": [],
+   "source": "https://techcrunch.com/2023/11/28/amazon-unveils-q-an-ai-powered-chatbot-for-businesses/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20231121-claude-2-1",
+   "date": "2023-11-21",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude 2.1",
+   "summary": "A 200K-token context window, fewer hallucinations and tool use in beta.",
+   "facts": [
+    "200K context"
+   ],
+   "source": "https://www.anthropic.com/news/claude-2-1",
+   "flagship": false
+  },
+  {
+   "id": "openai-20231117-board-removes-sam-altman",
+   "date": "2023-11-17",
+   "lab": "openai",
+   "type": "company",
+   "title": "Board removes Sam Altman",
+   "summary": "OpenAI's board ousts its CEO; he is reinstated on 22 November after employee and investor pressure.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI",
+   "flagship": false
+  },
+  {
+   "id": "microsoft-20231115-bing-chat-becomes-copilot",
+   "date": "2023-11-15",
+   "lab": "microsoft",
+   "type": "product",
+   "title": "Bing Chat becomes Copilot",
+   "summary": "Microsoft unifies its assistants under the Copilot name.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Microsoft_Copilot",
+   "flagship": false
+  },
+  {
+   "id": "openai-20231106-devday-2023-gpt-4-turbo-assistants-api-gpts",
+   "date": "2023-11-06",
+   "lab": "openai",
+   "type": "api",
+   "title": "DevDay 2023: GPT-4 Turbo, Assistants API, GPTs",
+   "summary": "A cheaper GPT-4 Turbo with 128K context, the Assistants API, DALL·E 3 and text-to-speech in the API, and custom GPTs.",
+   "facts": [
+    "128K context"
+   ],
+   "source": "https://en.wikipedia.org/wiki/GPT-4",
+   "flagship": false
+  },
+  {
+   "id": "xai-20231104-grok-beta",
+   "date": "2023-11-04",
+   "lab": "xai",
+   "type": "product",
+   "title": "Grok (beta)",
+   "summary": "xAI's first chatbot launches in beta for X Premium subscribers.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/XAI_(company)",
+   "flagship": true
+  },
+  {
+   "id": "deepseek-202311-deepseek-coder",
+   "date": "2023-11",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek Coder",
+   "summary": "DeepSeek's first open model, built for coding.",
+   "facts": [
+    "Open weights"
+   ],
+   "source": "https://www.techtarget.com/whatis/feature/DeepSeek-explained-Everything-you-need-to-know",
+   "flagship": false
+  },
+  {
+   "id": "moonshot-20231009-kimi-chatbot",
+   "date": "2023-10-09",
+   "lab": "moonshot",
+   "type": "product",
+   "title": "Kimi chatbot",
+   "summary": "Moonshot's assistant launches, able to read inputs of up to 200,000 Chinese characters.",
+   "facts": [
+    "200K-character context"
+   ],
+   "source": "https://baike.baidu.com/en/item/Kimi/1529756",
+   "flagship": true
+  },
+  {
+   "id": "amazon-20230928-bedrock-generally-available",
+   "date": "2023-09-28",
+   "lab": "amazon",
+   "type": "api",
+   "title": "Bedrock generally available",
+   "summary": "Amazon Bedrock opens to all customers.",
+   "facts": [],
+   "source": "https://techcrunch.com/2023/09/28/amazon-launches-its-bedrock-generative-ai-service-in-general-availability/",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20230927-mistral-7b",
+   "date": "2023-09-27",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mistral 7B",
+   "summary": "Mistral's first model: a 7B open model under Apache 2.0 that beat larger models.",
+   "facts": [
+    "Apache 2.0"
+   ],
+   "source": "https://techcrunch.com/2023/09/27/mistral-ai-makes-its-first-large-language-model-free-for-everyone/",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230925-amazon-invests-up-to-4b",
+   "date": "2023-09-25",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Amazon invests up to $4B",
+   "summary": "Amazon becomes Anthropic's primary cloud provider with an investment of up to $4 billion.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/anthropic-amazon",
+   "flagship": false
+  },
+  {
+   "id": "openai-20230920-dall-e-3",
+   "date": "2023-09-20",
+   "lab": "openai",
+   "type": "model",
+   "title": "DALL·E 3",
+   "summary": "A new image model built into ChatGPT, much better at following detailed prompts.",
+   "facts": [],
+   "source": "https://openai.com/index/dall-e-3/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20230919-responsible-scaling-policy",
+   "date": "2023-09-19",
+   "lab": "anthropic",
+   "type": "research",
+   "title": "Responsible Scaling Policy",
+   "summary": "Anthropic's framework of AI Safety Levels (ASL) that tie safeguards to model capabilities.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20230907-claude-pro",
+   "date": "2023-09-07",
+   "lab": "anthropic",
+   "type": "product",
+   "title": "Claude Pro",
+   "summary": "A paid plan with 5x more usage and priority access.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/claude-pro",
+   "flagship": false
+  },
+  {
+   "id": "qwen-20230803-qwen-7b-open-source",
+   "date": "2023-08-03",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen-7B (open source)",
+   "summary": "Alibaba's first open-weight Qwen models.",
+   "facts": [
+    "Open weights"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Qwen",
+   "flagship": false
+  },
+  {
+   "id": "meta-202308-code-llama",
+   "date": "2023-08",
+   "lab": "meta",
+   "type": "model",
+   "title": "Code Llama",
+   "summary": "Llama 2 models specialised for code.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+   "flagship": false
+  },
+  {
+   "id": "meta-20230718-llama-2",
+   "date": "2023-07-18",
+   "lab": "meta",
+   "type": "model",
+   "title": "Llama 2",
+   "summary": "Open models licensed for commercial use, released with Microsoft.",
+   "facts": [
+    "Commercial use allowed"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230711-claude-2-and-claude-ai",
+   "date": "2023-07-11",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude 2 and claude.ai",
+   "summary": "Better performance, a 100K context window and a public chat website in the US and UK.",
+   "facts": [
+    "100K context"
+   ],
+   "source": "https://www.anthropic.com/news/claude-2",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230511-100k-token-context-window",
+   "date": "2023-05-11",
+   "lab": "anthropic",
+   "type": "api",
+   "title": "100K-token context window",
+   "summary": "Claude's context window grows from 9K to 100K tokens — about 75,000 words.",
+   "facts": [
+    "9K → 100K tokens"
+   ],
+   "source": "https://www.anthropic.com/news/100k-context-windows",
+   "flagship": false
+  },
+  {
+   "id": "google-20230510-palm-2-i-o-2023",
+   "date": "2023-05-10",
+   "lab": "google",
+   "type": "model",
+   "title": "PaLM 2 (I/O 2023)",
+   "summary": "A new language model with better multilingual, reasoning and coding skills, powering 25 Google products.",
+   "facts": [],
+   "source": "https://blog.google/technology/ai/google-palm-2-ai-large-language-model/",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230509-claude-s-constitution",
+   "date": "2023-05-09",
+   "lab": "anthropic",
+   "type": "research",
+   "title": "Claude's constitution",
+   "summary": "How Claude's explicit written principles guide its behaviour through Constitutional AI.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/claudes-constitution",
+   "flagship": false
+  },
+  {
+   "id": "google-20230420-google-deepmind-formed",
+   "date": "2023-04-20",
+   "lab": "google",
+   "type": "company",
+   "title": "Google DeepMind formed",
+   "summary": "DeepMind and Google Brain merge into a single unit, Google DeepMind.",
+   "facts": [],
+   "source": "https://techcrunch.com/2023/04/20/google-consolidates-ai-research-divisions-into-google-deepmind/",
+   "flagship": false
+  },
+  {
+   "id": "amazon-20230413-amazon-bedrock-and-titan",
+   "date": "2023-04-13",
+   "lab": "amazon",
+   "type": "api",
+   "title": "Amazon Bedrock and Titan",
+   "summary": "A managed service for building with foundation models from AI21, Anthropic, Stability AI and Amazon's own Titan.",
+   "facts": [],
+   "source": "https://techcrunch.com/2023/04/13/with-bedrock-amazon-enters-the-generative-ai-race/",
+   "flagship": true
+  },
+  {
+   "id": "qwen-20230411-tongyi-qianwen",
+   "date": "2023-04-11",
+   "lab": "qwen",
+   "type": "product",
+   "title": "Tongyi Qianwen",
+   "summary": "Alibaba unveils its large language model and chatbot.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Qwen",
+   "flagship": false
+  },
+  {
+   "id": "meta-202304-segment-anything-sam",
+   "date": "2023-04",
+   "lab": "meta",
+   "type": "model",
+   "title": "Segment Anything (SAM)",
+   "summary": "A promptable model that can cut out any object in any image.",
+   "facts": [],
+   "source": "https://www.scriptbyai.com/timeline-meta-ai/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20230323-chatgpt-plugins",
+   "date": "2023-03-23",
+   "lab": "openai",
+   "type": "product",
+   "title": "ChatGPT plugins",
+   "summary": "ChatGPT gains plugins, including web browsing and code execution.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/GPT-4",
+   "flagship": false
+  },
+  {
+   "id": "microsoft-20230316-microsoft-365-copilot",
+   "date": "2023-03-16",
+   "lab": "microsoft",
+   "type": "product",
+   "title": "Microsoft 365 Copilot",
+   "summary": "An AI assistant built into Word, Excel, PowerPoint, Outlook and Teams.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Microsoft_Copilot",
+   "flagship": false
+  },
+  {
+   "id": "openai-20230314-gpt-4",
+   "date": "2023-03-14",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-4",
+   "summary": "A large multimodal model accepting text and images, a big step in reasoning and exam performance.",
+   "facts": [
+    "Image input"
+   ],
+   "source": "https://en.wikipedia.org/wiki/GPT-4",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230314-claude-first-public-release",
+   "date": "2023-03-14",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude (first public release)",
+   "summary": "Claude and the faster Claude Instant become available through a chat interface and the API.",
+   "facts": [
+    "Early partners included Notion, Quora and DuckDuckGo"
+   ],
+   "source": "https://www.anthropic.com/news/introducing-claude",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20230308-core-views-on-ai-safety",
+   "date": "2023-03-08",
+   "lab": "anthropic",
+   "type": "research",
+   "title": "Core views on AI safety",
+   "summary": "Anthropic sets out why it thinks transformative AI may arrive within a decade and how it approaches safety research.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/core-views-on-ai-safety",
+   "flagship": false
+  },
+  {
+   "id": "openai-20230301-chatgpt-api-gpt-3-5-turbo",
+   "date": "2023-03-01",
+   "lab": "openai",
+   "type": "pricing",
+   "title": "ChatGPT API (gpt-3.5-turbo)",
+   "summary": "The ChatGPT model opens to developers at $0.002 per 1,000 tokens — ten times cheaper than earlier GPT-3.5 models.",
+   "facts": [
+    "$0.002 per 1K tokens"
+   ],
+   "source": "https://the-decoder.com/openai-api-for-chatgpt-pricing/",
+   "flagship": false
+  },
+  {
+   "id": "zhipu-202303-chatglm-6b",
+   "date": "2023-03",
+   "lab": "zhipu",
+   "type": "model",
+   "title": "ChatGLM-6B",
+   "summary": "An open bilingual chat model that developers could fine-tune and run locally.",
+   "facts": [
+    "Open weights"
+   ],
+   "source": "https://en.wikipedia.org/wiki/GLM_(AI)",
+   "flagship": false
+  },
+  {
+   "id": "meta-20230224-llama",
+   "date": "2023-02-24",
+   "lab": "meta",
+   "type": "model",
+   "title": "LLaMA",
+   "summary": "A family of efficient models released to researchers; its weights soon leaked, kick-starting open-model development.",
+   "facts": [
+    "7B to 65B parameters"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
+   "flagship": true
+  },
+  {
+   "id": "microsoft-20230207-bing-chat",
+   "date": "2023-02-07",
+   "lab": "microsoft",
+   "type": "product",
+   "title": "Bing Chat",
+   "summary": "A GPT-4-powered chat mode in Bing search.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Microsoft_Copilot",
+   "flagship": true
+  },
+  {
+   "id": "google-20230206-bard",
+   "date": "2023-02-06",
+   "lab": "google",
+   "type": "product",
+   "title": "Bard",
+   "summary": "Google announces its conversational AI chatbot.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/2023_in_artificial_intelligence",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20230203-google-cloud-partnership",
+   "date": "2023-02-03",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Google Cloud partnership",
+   "summary": "Anthropic picks Google Cloud as a preferred cloud provider for training and serving its models.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/anthropic-partners-with-google-cloud",
+   "flagship": false
+  },
+  {
+   "id": "openai-20221130-chatgpt",
+   "date": "2022-11-30",
+   "lab": "openai",
+   "type": "product",
+   "title": "ChatGPT",
+   "summary": "A free chat interface to a conversational GPT-3.5 model — the fastest-growing consumer app of its time.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/ChatGPT",
+   "flagship": true
+  },
+  {
+   "id": "meta-202211-galactica",
+   "date": "2022-11",
+   "lab": "meta",
+   "type": "model",
+   "title": "Galactica",
+   "summary": "A science-focused language model whose public demo was pulled within days over fabricated answers.",
+   "facts": [],
+   "source": "https://www.scriptbyai.com/timeline-meta-ai/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20220921-whisper",
+   "date": "2022-09-21",
+   "lab": "openai",
+   "type": "model",
+   "title": "Whisper",
+   "summary": "An open-source multilingual speech-recognition and translation model.",
+   "facts": [
+    "Open source"
+   ],
+   "source": "https://openai.com/index/whisper/",
+   "flagship": false
+  },
+  {
+   "id": "google-20220523-imagen",
+   "date": "2022-05-23",
+   "lab": "google",
+   "type": "model",
+   "title": "Imagen",
+   "summary": "A text-to-image diffusion model pairing strong language understanding with photorealism.",
+   "facts": [],
+   "source": "https://9to5google.com/2022/05/23/google-ai-imagen-generator/",
+   "flagship": false
+  },
+  {
+   "id": "google-20220512-gato",
+   "date": "2022-05-12",
+   "lab": "google",
+   "type": "research",
+   "title": "Gato",
+   "summary": "A single \"generalist agent\" transformer that performs about 600 tasks, from captioning to controlling a robot arm.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Gato_(DeepMind)",
+   "flagship": false
+  },
+  {
+   "id": "meta-20220503-opt-175b",
+   "date": "2022-05-03",
+   "lab": "meta",
+   "type": "model",
+   "title": "OPT-175B",
+   "summary": "Meta releases a 175B-parameter language model, with weights shared with researchers.",
+   "facts": [
+    "175B parameters"
+   ],
+   "source": "https://hidekazu-konishi.com/entry/open_weights_llm_release_history_and_timeline.html",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20220429-series-b-580m",
+   "date": "2022-04-29",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Series B: $580M",
+   "summary": "Anthropic raises $580 million to build infrastructure for studying and improving AI safety.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/anthropic-raises-series-b-to-build-safe-reliable-ai",
+   "flagship": false
+  },
+  {
+   "id": "openai-20220406-dall-e-2",
+   "date": "2022-04-06",
+   "lab": "openai",
+   "type": "model",
+   "title": "DALL·E 2",
+   "summary": "A text-to-image model producing far more realistic, higher-resolution images than the original DALL·E.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/DALL-E",
+   "flagship": false
+  },
+  {
+   "id": "google-20220404-palm",
+   "date": "2022-04-04",
+   "lab": "google",
+   "type": "model",
+   "title": "PaLM",
+   "summary": "A 540-billion-parameter language model trained on Google's Pathways system.",
+   "facts": [
+    "540B parameters"
+   ],
+   "source": "https://en.wikipedia.org/wiki/2022_in_artificial_intelligence",
+   "flagship": true
+  },
+  {
+   "id": "google-20220329-chinchilla",
+   "date": "2022-03-29",
+   "lab": "google",
+   "type": "research",
+   "title": "Chinchilla",
+   "summary": "Shows models were undertrained: a 70B model on 4x more data beats the 280B Gopher — compute-optimal scaling.",
+   "facts": [
+    "70B params, 1.4T tokens"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Chinchilla_(language_model)",
+   "flagship": false
+  },
+  {
+   "id": "google-20220202-alphacode",
+   "date": "2022-02-02",
+   "lab": "google",
+   "type": "research",
+   "title": "AlphaCode",
+   "summary": "An AI system that writes competition code at roughly the level of a median human competitor.",
+   "facts": [],
+   "source": "https://deepmind.google/blog/competitive-programming-with-alphacode/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20220127-instructgpt",
+   "date": "2022-01-27",
+   "lab": "openai",
+   "type": "research",
+   "title": "InstructGPT",
+   "summary": "GPT-3 models fine-tuned with human feedback to follow instructions become the default in the API — the recipe behind ChatGPT.",
+   "facts": [
+    "RLHF"
+   ],
+   "source": "https://openai.com/index/instruction-following/",
+   "flagship": false
+  },
+  {
+   "id": "google-20211208-gopher",
+   "date": "2021-12-08",
+   "lab": "google",
+   "type": "research",
+   "title": "Gopher",
+   "summary": "A 280-billion-parameter language model, with studies of scaling, ethics and retrieval.",
+   "facts": [
+    "280B parameters"
+   ],
+   "source": "https://deepmind.google/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20211118-gpt-3-api-opens-without-a-waitlist",
+   "date": "2021-11-18",
+   "lab": "openai",
+   "type": "api",
+   "title": "GPT-3 API opens without a waitlist",
+   "summary": "Developers in supported countries can sign up for the OpenAI API immediately.",
+   "facts": [],
+   "source": "https://openai.com/index/api-no-waitlist/",
    "flagship": false
   }
  ]
