@@ -297,6 +297,14 @@
     }
     .home-rsi-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.35; position: relative; color: #111; }
     .home-rsi-desc { font-size: 0.87rem; color: #4b5563; line-height: 1.6; margin-bottom: 20px; max-width: 720px; position: relative; }
+    .home-rsimap { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; padding: 18px 22px; border-radius: 14px; background: linear-gradient(135deg, #fff1f2, #eef2ff); border: 1px solid #fecdd3; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+    .home-rsimap:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(190,18,60,.12); }
+    .home-rsimap-emoji { font-size: 2rem; }
+    .home-rsimap-body { flex: 1 1 320px; min-width: 0; }
+    .home-rsimap-tag { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #be123c; margin-bottom: 4px; }
+    .home-rsimap-title { font-size: 1.05rem; font-weight: 800; color: #111; margin-bottom: 4px; }
+    .home-rsimap-desc { font-size: .85rem; color: #4b5563; line-height: 1.5; }
+    .home-rsimap-cta { font-size: .85rem; font-weight: 700; color: #fff; background: #be123c; padding: 9px 16px; border-radius: 999px; white-space: nowrap; }
     .home-rsi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; position: relative; }
     .home-rsi-card {
       display: block; text-decoration: none; color: #111; background: #f9fafb;
@@ -651,6 +659,16 @@
       <h2>Where AGI Research Is Heading</h2>
       <p>Long-form, fully sourced series on recursive self-improvement and the capabilities that still separate today’s models from AGI.</p>
     </div>
+
+    <a href="pages/rsi-evolution.html" class="home-rsimap">
+      <span class="home-rsimap-emoji">♻️</span>
+      <div class="home-rsimap-body">
+        <span class="home-rsimap-tag">New · Interactive map</span>
+        <div class="home-rsimap-title">RSI Evolution Map: 522 papers by autonomy level</div>
+        <div class="home-rsimap-desc">See how AI self-improvement research climbed from executing human-designed procedures (L1) to improving its own improvement mechanism (L5), what each paper rewrites, and what organisations say they have done in practice. Built on the CC0 Awesome-RSI catalog.</div>
+      </div>
+      <span class="home-rsimap-cta">Open the map →</span>
+    </a>
 
     <div class="home-rsi-spotlight" id="sec-rsi">
       <span class="home-rsi-tag">✅ Complete · 7 of 7 Parts + 1 Bonus Report + 3 Research Updates</span>
