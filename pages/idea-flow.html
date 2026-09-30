@@ -113,11 +113,17 @@
     .if-list li { margin: 3px 0; break-inside: avoid; }
 
     .if-embedbar { display: none; }
-    body.if-embed .navbar, body.if-embed .nav-panel-wrap, body.if-embed .nav-backdrop, body.if-embed .if-hero, body.if-embed .if-bar, body.if-embed .if-eras, body.if-embed .if-legend, body.if-embed .if-hint, body.if-embed .if-caveat, body.if-embed .if-list, body.if-embed .if-note { display: none !important; }
+    body.if-embed .navbar, body.if-embed .nav-panel-wrap, body.if-embed .nav-backdrop, body.if-embed .if-hero, body.if-embed .if-eras, body.if-embed .if-legend, body.if-embed .if-hint, body.if-embed .if-caveat, body.if-embed .if-list, body.if-embed .if-note { display: none !important; }
     body.if-embed main { padding-top: 0 !important; }
-    body.if-embed .if-wrap { max-width: none; padding: 8px 10px 10px; }
+    body.if-embed .if-wrap { max-width: none; padding: 6px 8px 8px; }
     body.if-embed .if-map { border-radius: 12px; }
-    body.if-embed .if-embedbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; font-size: .84rem; }
+    body.if-embed .if-bar { margin: 0 0 6px; gap: 6px; } body.if-embed .if-bar #ifConv, body.if-embed .if-bar #ifClear, body.if-embed .if-bar a.if-btn { display: none; }
+    body.if-embed .if-bar input[type=search] { min-width: 0; max-width: none; padding: 5px 9px; font-size: .78rem; } body.if-embed .if-seg button { padding: 5px 9px; font-size: .74rem; }
+    body.if-embed .st .lab { font-size: 9.5px; stroke-width: 2.8px; } body.if-embed .st.big .lab { font-size: 10.5px; }
+    body.if-embed .if-head div { padding: 4px 4px; font-size: .68rem; } body.if-embed .if-head div small { display: none; }
+    body.if-embed .era-hd { font-size: 10px; } body.if-embed .yr { font-size: 10px; }
+    @media (max-width: 768px) { body.if-embed .if-bar input[type=search] { display: none; } body.if-embed .if-bar { justify-content: flex-end; } body.if-embed .st.big .lab { font-size: 9px; } body.if-embed .st .lab { font-size: 9px; } }
+    body.if-embed .if-embedbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-size: .8rem; }
     body.if-embed .if-embedbar a { font-weight: 700; color: #4338ca; text-decoration: none; }
     body.if-embed .if-lsel { margin-bottom: 6px; } body.if-embed .if-lsel .lchip, body.if-embed .if-preset { font-size: .7rem; padding: 3px 8px; }
     body.if-embed .if-main { display: block; }
@@ -249,7 +255,7 @@
     <div class="if-bar">
       <input type="search" id="ifSearch" list="ifNames" placeholder="Find an idea, e.g. Transformer, LSTM, AlphaGo…" aria-label="Find an idea" />
       <datalist id="ifNames"></datalist>
-      <span class="if-seg" role="group" aria-label="How many ideas"><button type="button" id="ifCurated" class="on">⭐ Key ideas</button><button type="button" id="ifAll">All ideas</button></span>
+      <span class="if-seg" role="group" aria-label="How many ideas"><button type="button" id="ifCurated">⭐ Key ideas</button><button type="button" id="ifAll" class="on">All ideas</button></span>
       <button type="button" class="if-btn" id="ifConv" aria-pressed="false">✦ Highlight merges</button>
       <button type="button" class="if-btn" id="ifClear">✕ Clear</button>
       <a class="if-btn" href="idea-map.html">🌌 See it in 3D</a>
@@ -303,7 +309,7 @@
   var isNarrow = function () { return window.matchMedia('(max-width: 1000px)').matches; };
   var EMBED = new URLSearchParams(location.search).has('embed'), TOP = EMBED ? ' target="_top"' : '';
   if (EMBED) document.body.classList.add('if-embed');
-  var st = { curated: true, sel: null, conv: false, hist: [], lanes: new Set(ORDER) };
+  var st = { curated: false, sel: null, conv: false, hist: [], lanes: new Set(ORDER) };
 
   /* ── data ── */
   function init(g) {
@@ -332,7 +338,7 @@
     var ok = new Set(nodes.map(function (n) { return n.id; }));
     return { nodes: nodes, links: links.filter(function (l) { return ok.has(l[0]) && ok.has(l[1]); }) };
   }
-  var radius = function (n) { return Math.min(24, 4.5 + kidCount[n.id] * 2.1); };
+  var radius = function (n) { return Math.min(24, 4.5 + kidCount[n.id] * 2.1) * (EMBED ? 0.74 : 1); };
   var tier = function (n) { var k = kidCount[n.id]; return k >= 5 ? 'big' : k >= 2 ? 'mid' : 'sm'; };
   var eraOf = function (y) { for (var i = 0; i < ERAS.length; i++) if (y >= ERAS[i][0] && y <= ERAS[i][1]) return i; return ERAS.length - 1; };
 
@@ -344,17 +350,17 @@
     V.links.forEach(function (l) { V.par[l[1]].push(l[0]); V.kid[l[0]].push(l[1]); });
     V.lanes = ORDER.filter(function (a) { return st.lanes.has(a); });
     var n = V.lanes.length, W = $('ifMap').clientWidth - 3;
-    V.RAIL = isPhone() ? 44 : 64;
-    V.COLW = Math.max(n <= 3 ? 66 : 96, Math.min(190, (W - V.RAIL) / n));
+    V.RAIL = isPhone() ? 40 : EMBED ? 52 : 64;
+    V.COLW = Math.max(n <= 3 ? 66 : EMBED ? 84 : 96, Math.min(EMBED ? 130 : 190, (W - V.RAIL) / n));
     V.W = V.RAIL + n * V.COLW;
     var years = Array.from(new Set(V.nodes.map(function (x) { return x.y; }))).sort(function (a, b) { return b - a; });
     var y = 4, prevEra = -1, rows = []; V.bands = [];
     years.forEach(function (yr) {
-      var e = eraOf(yr); if (e !== prevEra) { V.bands.push({ e: e, y0: y }); y += 30; prevEra = e; }
+      var e = eraOf(yr); if (e !== prevEra) { V.bands.push({ e: e, y0: y }); y += EMBED ? 24 : 30; prevEra = e; }
       var groups = {}; V.nodes.filter(function (x) { return x.y === yr; }).sort(function (p, q) { return p._i - q._i; }).forEach(function (x) { (groups[x.a] = groups[x.a] || []).push(x); });
-      var maxH = 44;
+      var maxH = EMBED ? 34 : 44;
       Object.keys(groups).forEach(function (a) {
-        var acc = 8; groups[a].forEach(function (x) { var r = radius(x); x.r = r; x.cx = V.RAIL + V.lanes.indexOf(a) * V.COLW + V.COLW / 2; x.cy = y + acc + r + 4; acc += 2 * r + 38; });
+        var acc = 8; groups[a].forEach(function (x) { var r = radius(x); x.r = r; x.cx = V.RAIL + V.lanes.indexOf(a) * V.COLW + V.COLW / 2; x.cy = y + acc + r + 4; acc += 2 * r + (EMBED ? 27 : 38); });
         maxH = Math.max(maxH, acc + 2);
       });
       rows.push({ yr: yr, y0: y, h: maxH }); y += maxH;
@@ -410,9 +416,9 @@
       if (tr === 'big' && !RM) { var pl = el('circle', { r: n.r + 3, class: 'pulse' }, g); pl.style.animationDelay = (-(cnt++ % 7) * 0.4) + 's'; }
       if (n.conv) el('circle', { r: n.r + 4.5, class: 'ring' }, g);
       var core = el('circle', { r: n.r, class: 'bub core' }, g); if (tr === 'mid') core.style.animationDelay = (-(cnt++ % 9) * 0.5) + 's';
-      if (n.r >= 11) { var em = el('text', { class: 'em', 'font-size': Math.round(n.r * 0.95) }, g); em.textContent = n.e; }
-      var lines = wrap((n.p ? '★ ' : '') + n.t), t = el('text', { class: 'lab', y: n.r + 15 }, g);
-      lines.forEach(function (ln, i) { var ts = el('tspan', { x: 0, dy: i ? 11.5 : 0 }, t); ts.textContent = ln; });
+      if (n.r >= (EMBED ? 9 : 11)) { var em = el('text', { class: 'em', 'font-size': Math.round(n.r * 0.95) }, g); em.textContent = n.e; }
+      var lines = wrap((n.p ? '★ ' : '') + n.t), t = el('text', { class: 'lab', y: n.r + (EMBED ? 12 : 15) }, g);
+      lines.forEach(function (ln, i) { var ts = el('tspan', { x: 0, dy: i ? (EMBED ? 10.5 : 11.5) : 0 }, t); ts.textContent = ln; });
       var ti = el('title', {}, g); ti.textContent = n.t + ' (' + n.y + ') — ' + kidCount[n.id] + ' ideas built directly on it. ' + n.d;
       V.els[n.id] = g;
     });
