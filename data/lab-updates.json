@@ -1198,6 +1198,19 @@
    "flagship": true
   },
   {
+   "id": "meta-20250917-meta-connect-2025-meta-ray-ban-display",
+   "date": "2025-09-17",
+   "lab": "meta",
+   "type": "product",
+   "title": "Meta Connect 2025: Meta Ray-Ban Display",
+   "summary": "Meta unveils AI glasses with a built-in display — a new category of wearable for its assistant.",
+   "facts": [
+    "AI glasses with a display"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Ray-Ban_Meta",
+   "flagship": false
+  },
+  {
    "id": "google-20250917-gold-at-the-icpc-world-finals",
    "date": "2025-09-17",
    "lab": "google",
@@ -2180,6 +2193,20 @@
    "flagship": false
   },
   {
+   "id": "meta-20240925-meta-connect-2024-orion-ar-glasses-and-voice-for",
+   "date": "2024-09-25",
+   "lab": "meta",
+   "type": "product",
+   "title": "Meta Connect 2024: Orion AR glasses and voice for Meta AI",
+   "summary": "Meta shows its Orion holographic AR glasses prototype and gives Meta AI a voice and the ability to understand photos across its apps, alongside Llama 3.2.",
+   "facts": [
+    "Orion AR glasses prototype",
+    "Voice and vision in Meta AI"
+   ],
+   "source": "https://techcrunch.com/2024/09/25/meta-connect-2024-quest-3s-headset-meta-ai-upgrades-ray-ban-meta-real-time-video-and-more-revealed",
+   "flagship": false
+  },
+  {
    "id": "qwen-20240919-qwen2-5",
    "date": "2024-09-19",
    "lab": "qwen",
@@ -2725,6 +2752,21 @@
     "Apache 2.0"
    ],
    "source": "https://techcrunch.com/2023/09/27/mistral-ai-makes-its-first-large-language-model-free-for-everyone/",
+   "flagship": true
+  },
+  {
+   "id": "meta-20230927-meta-connect-2023-meta-ai-assistant-and-emu",
+   "date": "2023-09-27",
+   "lab": "meta",
+   "type": "product",
+   "title": "Meta Connect 2023: Meta AI assistant and Emu",
+   "summary": "Meta launches its Meta AI assistant (with real-time Bing search), AI characters based on public figures, the Emu image generator, and new Ray-Ban Meta smart glasses.",
+   "facts": [
+    "Meta AI assistant",
+    "Emu image model",
+    "Ray-Ban Meta glasses"
+   ],
+   "source": "https://techcrunch.com/2023/09/27/from-ai-assistant-to-image-restyler-metas-new-ai-features",
    "flagship": true
   },
   {
