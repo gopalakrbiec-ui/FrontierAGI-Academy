@@ -279,7 +279,7 @@
         <button type="button" role="tab" data-view="map">🧩 What gets rewritten</button>
         <button type="button" role="tab" data-view="ind">🏭 Research vs industry</button>
       </div>
-      <span class="rs-seg" id="rsScope" role="group" aria-label="Which papers"><button type="button" data-scope="feat" class="on">⭐ Featured 33</button><button type="button" data-scope="all">All 522</button></span>
+      <span class="rs-seg" id="rsScope" role="group" aria-label="Which papers"><button type="button" data-scope="feat">⭐ Featured 33</button><button type="button" data-scope="all" class="on">All 522</button></span>
       <input type="search" id="rsSearch" list="rsNames" placeholder="Find a paper, e.g. Voyager, STaR…" aria-label="Find a paper" />
       <datalist id="rsNames"></datalist>
       <button type="button" class="rs-btn" id="rsMerge" aria-pressed="false" title="Dim everything except papers that touch two or more families">✦ Highlight multi-family</button>
@@ -325,7 +325,7 @@
   var isPhone = function () { return window.matchMedia('(max-width: 768px)').matches; };
   var isNarrow = function () { return window.matchMedia('(max-width: 1000px)').matches; };
   var D, LV = {}, FM = {}, P = [], byId = {}, firstOf = {};
-  var st = { view: 'stair', scope: 'feat', fams: new Set(), sel: null, merge: false, lvl: 1 };
+  var st = { view: 'stair', scope: 'all', fams: new Set(), sel: null, merge: false, lvl: 1 };
   var famOrder = [];
 
   /* ── loop explorer ── */
