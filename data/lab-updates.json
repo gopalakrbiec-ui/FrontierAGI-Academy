@@ -118,6 +118,17 @@
  ],
  "items": [
   {
+   "id": "openai-20260929-gpt-6-1-sol",
+   "date": "2026-09-29",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-6.1 Sol",
+   "summary": "Announced at DevDay: close to GPT-6 Astra at about a fifth of its token prices, with a 1.05M-token context window.",
+   "facts": [],
+   "source": "https://www.cnbc.com/2026/09/29/openai-devday-2026-live-updates.html",
+   "flagship": true
+  },
+  {
    "id": "openai-20260929-devday-2026",
    "date": "2026-09-29",
    "lab": "openai",
@@ -129,6 +140,17 @@
    ],
    "source": "https://www.cnbc.com/2026/09/29/openai-devday-2026-live-updates.html",
    "flagship": false
+  },
+  {
+   "id": "anthropic-20260928-claude-sonnet-5-5",
+   "date": "2026-09-28",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude Sonnet 5.5",
+   "summary": "Generates output over 30% faster than Sonnet 5 at the same API prices.",
+   "facts": [],
+   "source": "https://www.anthropic.com/claude-sonnet-5-5",
+   "flagship": true
   },
   {
    "id": "anthropic-20260923-claude-finds-a-novel-enzyme-system",
@@ -153,6 +175,39 @@
    "flagship": true
   },
   {
+   "id": "anthropic-20260922-claude-opus-5-5",
+   "date": "2026-09-22",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude Opus 5.5",
+   "summary": "A flagship that matches Fable 5.1 on most work, with a 1M-token context window and a reported 40% lower running cost than Opus 5.",
+   "facts": [],
+   "source": "https://www.anthropic.com/claude-opus-5-5",
+   "flagship": true
+  },
+  {
+   "id": "xai-20260921-grok-4-7",
+   "date": "2026-09-21",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok 4.7",
+   "summary": "A larger base model than Grok 4.6, trained with a longer reinforcement-learning run.",
+   "facts": [],
+   "source": "https://evolink.ai/blog/grok-4-7-release-date",
+   "flagship": true
+  },
+  {
+   "id": "deepseek-20260910-deepseek-v4-1-flash",
+   "date": "2026-09-10",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek V4.1 Flash",
+   "summary": "Multimodal model under the MIT licence that surpasses V4 Pro on cost and speed.",
+   "facts": [],
+   "source": "https://www.activepieces.com/blog/deepseek-v41-flash-launch-whats-new-in-2026",
+   "flagship": true
+  },
+  {
    "id": "openai-20260904-gpt-6-astra",
    "date": "2026-09-04",
    "lab": "openai",
@@ -161,6 +216,39 @@
    "summary": "The first GPT-6 generation model opens to the public.",
    "facts": [],
    "source": "https://openai.com/index/gpt-6-astra/",
+   "flagship": true
+  },
+  {
+   "id": "meta-20260902-muse-spark-1-3",
+   "date": "2026-09-02",
+   "lab": "meta",
+   "type": "model",
+   "title": "Muse Spark 1.3",
+   "summary": "A more capable Muse Spark release aimed at coding and agentic work.",
+   "facts": [],
+   "source": "https://www.bloomberg.com/news/articles/2026-09-02/meta-releases-more-powerful-ai-model-edging-closer-to-rivals",
+   "flagship": false
+  },
+  {
+   "id": "google-20260902-gemini-3-8-flash",
+   "date": "2026-09-02",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 3.8 Flash",
+   "summary": "The third Flash release in six weeks.",
+   "facts": [],
+   "source": "https://emergent.sh/news/google-launches-gemini-3-8-flash-third-flash",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+   "date": "2026-09-01",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude Fable 5.1 and Claude Mythos 5.1",
+   "summary": "The same model with different safeguards: Fable 5.1 is generally available, Mythos 5.1 only through trusted-access programmes.",
+   "facts": [],
+   "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
    "flagship": true
   },
   {
@@ -197,6 +285,17 @@
    "flagship": false
   },
   {
+   "id": "qwen-20260814-qwen3-8-27b",
+   "date": "2026-08-14",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3.8-27B",
+   "summary": "A dense open model accepting text, images and video, under Apache 2.0.",
+   "facts": [],
+   "source": "https://datanorth.ai/news/alibaba-releases-qwen3-8-27b",
+   "flagship": false
+  },
+  {
    "id": "anthropic-20260814-claude-text-watermarking",
    "date": "2026-08-14",
    "lab": "anthropic",
@@ -205,6 +304,28 @@
    "summary": "Future Claude models will watermark generated text to comply with the EU AI Act.",
    "facts": [],
    "source": "https://www.anthropic.com/news/claude-text-watermark",
+   "flagship": false
+  },
+  {
+   "id": "google-20260813-gemini-3-7-flash",
+   "date": "2026-08-13",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 3.7 Flash",
+   "summary": "A refinement of 3.6 Flash with gains in coding, agent workflows and document comprehension.",
+   "facts": [],
+   "source": "https://evolink.ai/blog/gemini-3-7-flash-release-date",
+   "flagship": false
+  },
+  {
+   "id": "deepseek-20260813-deepseek-v4-pro-0813",
+   "date": "2026-08-13",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek-V4-Pro-0813",
+   "summary": "A dated update of V4-Pro.",
+   "facts": [],
+   "source": "https://aireleasetracker.com/company/deepseek",
    "flagship": false
   },
   {
@@ -219,6 +340,61 @@
    "flagship": false
   },
   {
+   "id": "qwen-20260812-qwen3-8-max-open-weights",
+   "date": "2026-08-12",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3.8-Max open weights",
+   "summary": "Text-only open weights under a custom licence with a revenue-share clause for large commercial users.",
+   "facts": [],
+   "source": "https://www.explainx.ai/blog/qwen3-8-max-open-weights-live-hugging-face-august-2026",
+   "flagship": false
+  },
+  {
+   "id": "nvidia-20260811-nemotron-3-5-lightning",
+   "date": "2026-08-11",
+   "lab": "nvidia",
+   "type": "model",
+   "title": "Nemotron 3.5 Lightning",
+   "summary": "A lightweight open model for agents that runs on a single GPU.",
+   "facts": [],
+   "source": "https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html",
+   "flagship": false
+  },
+  {
+   "id": "meta-20260805-muse-spark-1-2-and-muse-code",
+   "date": "2026-08-05",
+   "lab": "meta",
+   "type": "model",
+   "title": "Muse Spark 1.2 and Muse Code",
+   "summary": "Muse Spark 1.2 shipped with Muse Code, a terminal coding agent.",
+   "facts": [],
+   "source": "https://www.developersdigest.tech/blog/meta-muse-code-spark-1-2-release",
+   "flagship": false
+  },
+  {
+   "id": "qwen-20260803-qwen3-8-max",
+   "date": "2026-08-03",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3.8-Max",
+   "summary": "A 2.4T-parameter mixture-of-experts model, previewed on 2026-07-19 and generally available through Alibaba Cloud APIs.",
+   "facts": [],
+   "source": "https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/",
+   "flagship": true
+  },
+  {
+   "id": "deepseek-20260731-deepseek-v4-flash-0731",
+   "date": "2026-07-31",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek-V4-Flash-0731",
+   "summary": "A dated update of V4-Flash.",
+   "facts": [],
+   "source": "https://aireleasetracker.com/company/deepseek",
+   "flagship": false
+  },
+  {
    "id": "anthropic-20260724-claude-opus-5",
    "date": "2026-07-24",
    "lab": "anthropic",
@@ -230,6 +406,17 @@
    ],
    "source": "https://www.anthropic.com/news/claude-opus-5",
    "flagship": true
+  },
+  {
+   "id": "google-20260721-gemini-3-6-flash",
+   "date": "2026-07-21",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 3.6 Flash",
+   "summary": "A 1M-context workhorse model, successor to Gemini 3.5 Flash.",
+   "facts": [],
+   "source": "https://datanorth.ai/news/google-releases-gemini-3-6-flash",
+   "flagship": false
   },
   {
    "id": "google-20260721-gemini-3-5-flash-lite",
@@ -287,6 +474,28 @@
    "flagship": false
   },
   {
+   "id": "xai-20260708-grok-4-5",
+   "date": "2026-07-08",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok 4.5",
+   "summary": "Interim flagship on the xAI API, in Grok Build and in Cursor.",
+   "facts": [],
+   "source": "https://codersera.com/blog/grok-4-5-launch-guide-2026/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20260630-fable-5-redeployed",
+   "date": "2026-06-30",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Fable 5 redeployed",
+   "summary": "Fable 5 returns from July 1 with updated cyber safeguards and a new jailbreak framework.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/redeploying-fable-5",
+   "flagship": false
+  },
+  {
    "id": "anthropic-20260630-claude-sonnet-5",
    "date": "2026-06-30",
    "lab": "anthropic",
@@ -308,17 +517,6 @@
    "summary": "An AI workbench for scientists with auditable outputs and flexible computing.",
    "facts": [],
    "source": "https://www.anthropic.com/news/claude-science-ai-workbench",
-   "flagship": false
-  },
-  {
-   "id": "anthropic-20260630-fable-5-redeployed",
-   "date": "2026-06-30",
-   "lab": "anthropic",
-   "type": "company",
-   "title": "Fable 5 redeployed",
-   "summary": "Fable 5 returns from July 1 with updated cyber safeguards and a new jailbreak framework.",
-   "facts": [],
-   "source": "https://www.anthropic.com/news/redeploying-fable-5",
    "flagship": false
   },
   {
@@ -379,6 +577,28 @@
    "flagship": true
   },
   {
+   "id": "google-20260603-gemma-4-12b-unified",
+   "date": "2026-06-03",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemma 4 12B Unified",
+   "summary": "A 12B open multimodal addition to the Gemma 4 family.",
+   "facts": [],
+   "source": "https://www.analyticsvidhya.com/blog/2026/06/google-gemma-4-12b/",
+   "flagship": false
+  },
+  {
+   "id": "qwen-202606-qwen3-7-plus",
+   "date": "2026-06",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3.7-Plus",
+   "summary": "Proprietary Qwen3.7 Plus tier.",
+   "facts": [],
+   "source": "https://codersera.com/blog/qwen-3-5-complete-guide-2026/",
+   "flagship": false
+  },
+  {
    "id": "microsoft-202606-mai-thinking-1-and-mai-code-1-build-2026",
    "date": "2026-06",
    "lab": "microsoft",
@@ -387,6 +607,17 @@
    "summary": "In-house reasoning and coding models announced at Microsoft Build.",
    "facts": [],
    "source": "https://www.neowin.net/news/microsoft-unveils-mai-thinking-1-reasoning-and-mai-code-1-coding-models/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20260528-series-h-at-965b",
+   "date": "2026-05-28",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Series H at $965B",
+   "summary": "Anthropic raises $65 billion in a round led by Altimeter, Dragoneer, Greenoaks and Sequoia.",
+   "facts": [],
+   "source": "https://www.anthropic.com/news/series-h",
    "flagship": false
   },
   {
@@ -400,17 +631,6 @@
     "$5 / $25 per 1M tokens"
    ],
    "source": "https://www.anthropic.com/news/claude-opus-4-8",
-   "flagship": false
-  },
-  {
-   "id": "anthropic-20260528-series-h-at-965b",
-   "date": "2026-05-28",
-   "lab": "anthropic",
-   "type": "company",
-   "title": "Series H at $965B",
-   "summary": "Anthropic raises $65 billion in a round led by Altimeter, Dragoneer, Greenoaks and Sequoia.",
-   "facts": [],
-   "source": "https://www.anthropic.com/news/series-h",
    "flagship": false
   },
   {
@@ -446,6 +666,17 @@
    "summary": "Becomes ChatGPT's default model, replacing GPT-5.3 Instant.",
    "facts": [],
    "source": "https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt/",
+   "flagship": false
+  },
+  {
+   "id": "qwen-202605-qwen3-7-max",
+   "date": "2026-05",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3.7-Max",
+   "summary": "Proprietary Qwen3.7 release; the generation stayed closed.",
+   "facts": [],
+   "source": "https://codersera.com/blog/qwen-3-5-complete-guide-2026/",
    "flagship": false
   },
   {
@@ -543,6 +774,17 @@
    ],
    "source": "https://www.anthropic.com/project/glasswing",
    "flagship": true
+  },
+  {
+   "id": "google-20260402-gemma-4",
+   "date": "2026-04-02",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemma 4",
+   "summary": "Open-weight family in four sizes (E2B, E4B, 26B, 31B) under Apache 2.0.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Gemma_(language_model)",
+   "flagship": false
   },
   {
    "id": "qwen-202604-qwen3-6",
@@ -982,17 +1224,6 @@
    "flagship": false
   },
   {
-   "id": "google-20251118-gemini-3-pro",
-   "date": "2025-11-18",
-   "lab": "google",
-   "type": "model",
-   "title": "Gemini 3 Pro",
-   "summary": "Google's new flagship for reasoning and multimodal understanding, launched with generative UI features.",
-   "facts": [],
-   "source": "https://www.constellationr.com/blog-news/insights/google-launches-gemini-3-google-antigravity-generative-ui-features",
-   "flagship": true
-  },
-  {
    "id": "google-20251118-google-antigravity",
    "date": "2025-11-18",
    "lab": "google",
@@ -1004,6 +1235,17 @@
    ],
    "source": "https://en.wikipedia.org/wiki/Google_Antigravity",
    "flagship": false
+  },
+  {
+   "id": "google-20251118-gemini-3-pro",
+   "date": "2025-11-18",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 3 Pro",
+   "summary": "Google's new flagship for reasoning and multimodal understanding, launched with generative UI features.",
+   "facts": [],
+   "source": "https://www.constellationr.com/blog-news/insights/google-launches-gemini-3-google-antigravity-generative-ui-features",
+   "flagship": true
   },
   {
    "id": "xai-20251117-grok-4-1",
@@ -1174,6 +1416,17 @@
    "flagship": false
   },
   {
+   "id": "deepseek-20250929-deepseek-v3-2-exp",
+   "date": "2025-09-29",
+   "lab": "deepseek",
+   "type": "model",
+   "title": "DeepSeek-V3.2-Exp",
+   "summary": "Experimental open model introducing DeepSeek Sparse Attention; API prices cut by more than half.",
+   "facts": [],
+   "source": "https://api-docs.deepseek.com/news/news250929/",
+   "flagship": false
+  },
+  {
    "id": "anthropic-20250929-claude-sonnet-4-5",
    "date": "2025-09-29",
    "lab": "anthropic",
@@ -1196,6 +1449,17 @@
    "facts": [],
    "source": "https://en.wikipedia.org/wiki/Qwen",
    "flagship": true
+  },
+  {
+   "id": "xai-20250919-grok-4-fast",
+   "date": "2025-09-19",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok 4 Fast",
+   "summary": "A cheaper, faster Grok 4 with a 2M-token context window.",
+   "facts": [],
+   "source": "https://simonwillison.net/2025/Sep/20/grok-4-fast/",
+   "flagship": false
   },
   {
    "id": "meta-20250917-meta-connect-2025-meta-ray-ban-display",
@@ -1263,6 +1527,28 @@
    "summary": "An update to GLM-4.5 focused on coding and agent tasks.",
    "facts": [],
    "source": "https://en.wikipedia.org/wiki/Z.ai",
+   "flagship": false
+  },
+  {
+   "id": "qwen-202509-qwen3-next",
+   "date": "2025-09",
+   "lab": "qwen",
+   "type": "model",
+   "title": "Qwen3-Next",
+   "summary": "New ultra-efficient architecture: an 80B model that activates 3B parameters, with 256K native context.",
+   "facts": [],
+   "source": "https://www.alibabacloud.com/blog/602536",
+   "flagship": false
+  },
+  {
+   "id": "openai-202509-gpt-5-codex",
+   "date": "2025-09",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-5-Codex",
+   "summary": "A model built and optimised for the Codex CLI.",
+   "facts": [],
+   "source": "https://help.openai.com/en/articles/9624314-model-release-notes",
    "flagship": false
   },
   {
@@ -1555,6 +1841,28 @@
    "flagship": false
   },
   {
+   "id": "google-20250617-gemini-2-5-flash",
+   "date": "2025-06-17",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 2.5 Flash",
+   "summary": "Generally available release of Gemini 2.5 Flash.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Google_Gemini",
+   "flagship": false
+  },
+  {
+   "id": "openai-20250610-o3-pro",
+   "date": "2025-06-10",
+   "lab": "openai",
+   "type": "model",
+   "title": "o3-pro",
+   "summary": "Available to Pro users in ChatGPT and in the API.",
+   "facts": [],
+   "source": "https://help.openai.com/en/articles/9624314-model-release-notes",
+   "flagship": false
+  },
+  {
    "id": "openai-20250610-o3-price-cut-80-o3-pro-in-the-api",
    "date": "2025-06-10",
    "lab": "openai",
@@ -1718,6 +2026,17 @@
    ],
    "source": "https://en.wikipedia.org/wiki/OpenAI_o3",
    "flagship": true
+  },
+  {
+   "id": "openai-20250414-gpt-4-1-gpt-4-1-mini-and-gpt-4-1-nano",
+   "date": "2025-04-14",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-4.1, GPT-4.1 mini and GPT-4.1 nano",
+   "summary": "Three models released together.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/GPT-4.1",
+   "flagship": false
   },
   {
    "id": "openai-20250414-gpt-4-1-family-in-the-api",
@@ -2222,17 +2541,6 @@
    "flagship": false
   },
   {
-   "id": "meta-20240925-llama-3-2",
-   "date": "2024-09-25",
-   "lab": "meta",
-   "type": "model",
-   "title": "Llama 3.2",
-   "summary": "Small models for phones and the first multimodal (vision) Llama models.",
-   "facts": [],
-   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
-   "flagship": false
-  },
-  {
    "id": "meta-20240925-meta-connect-2024-orion-ar-glasses-and-voice-for",
    "date": "2024-09-25",
    "lab": "meta",
@@ -2244,6 +2552,17 @@
     "Voice and vision in Meta AI"
    ],
    "source": "https://techcrunch.com/2024/09/25/meta-connect-2024-quest-3s-headset-meta-ai-upgrades-ray-ban-meta-real-time-video-and-more-revealed",
+   "flagship": false
+  },
+  {
+   "id": "meta-20240925-llama-3-2",
+   "date": "2024-09-25",
+   "lab": "meta",
+   "type": "model",
+   "title": "Llama 3.2",
+   "summary": "Small models for phones and the first multimodal (vision) Llama models.",
+   "facts": [],
+   "source": "https://en.wikipedia.org/wiki/Llama_(language_model)",
    "flagship": false
   },
   {

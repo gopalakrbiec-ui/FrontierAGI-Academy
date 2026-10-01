@@ -237,7 +237,7 @@
     </div>
   </div>
   <div class="mx-bar">
-    <div class="mx-seg" id="mrScope"><button data-s="flag" class="on">⭐ Flagships</button><button data-s="all">All releases</button></div>
+    <div class="mx-seg" id="mrScope"><button data-s="flag">⭐ Flagships</button><button data-s="all" class="on">All releases</button></div>
     <div class="mx-seg" id="mrOpen"><button data-o="all" class="on">All</button><button data-o="open">Open weights</button><button data-o="closed">Closed</button></div>
     <input type="search" id="mrSearch" placeholder="Find a model, e.g. Veo, Llama, Whisper…" list="mrList" />
     <datalist id="mrList"></datalist>
@@ -256,7 +256,7 @@
     <h2>How to read this, and what it does not cover</h2>
     <ul>
       <li><b>Dates</b> are each source's announcement or first public availability. Month-only dates are kept as months. A research preview that was never released (Voicebox, Movie Gen) is shown faded.</li>
-      <li><b>Foundation models</b> cover 13 labs and reuse the verified entries on the <a href="lab-updates.html">Frontier Lab Updates</a> page. <b>Image, video and speech</b> add specialist labs, but the list is a selection, not every release, and speech and video are thinner than the rest.</li>
+      <li><b>Foundation models</b> cover 13 labs, are filled in through 30 Sep 2026, and reuse the entries on the <a href="lab-updates.html">Frontier Lab Updates</a> page. <b>Image, video and speech</b> add specialist labs, but the list is a selection, not every release, and speech and video are thinner than the rest.</li>
       <li><b>Sources:</b> entries marked “secondary source” rest on press or reference pages, not the lab's own announcement. Treat them as less certain.</li>
       <li><b>Open</b> means the weights are public, not that the licence is permissive; “not recorded” means this dataset has not checked the licence.</li>
       <li><b>Open vs closed</b> compares the first release at each capability <i>within this dataset</i>. An earlier model outside it would change the lag.</li>
@@ -272,7 +272,7 @@
 (function () {
   var EMBED = new URLSearchParams(location.search).has('embed');
   if (EMBED) document.body.classList.add('mx-embed');
-  var D, S = { mod: 'llm', view: 'lanes', scope: 'flag', open: 'all', q: '', sel: null, labs: null };
+  var D, S = { mod: 'llm', view: 'lanes', scope: 'all', open: 'all', q: '', sel: null, labs: null };
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

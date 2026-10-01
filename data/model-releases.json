@@ -412,6 +412,40 @@
 ],
 "items": [
 {
+"id": "openai-20260929-gpt-6-1-sol",
+"ref": "openai-20260929-gpt-6-1-sol",
+"date": "2026-09-29",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-6.1 Sol",
+"full": "GPT-6.1 Sol",
+"src": "https://www.cnbc.com/2026/09/29/openai-devday-2026-live-updates.html",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "anthropic-20260928-claude-sonnet-5-5",
+"ref": "anthropic-20260928-claude-sonnet-5-5",
+"date": "2026-09-28",
+"lab": "anthropic",
+"mod": [
+"llm"
+],
+"fam": "claude",
+"name": "Claude Sonnet 5.5",
+"full": "Claude Sonnet 5.5",
+"src": "https://www.anthropic.com/claude-sonnet-5-5",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
 "id": "google-20260923-gemini-3-8-flash-tts",
 "date": "2026-09-23",
 "lab": "google",
@@ -445,6 +479,40 @@
 "sec": 0
 },
 {
+"id": "anthropic-20260922-claude-opus-5-5",
+"ref": "anthropic-20260922-claude-opus-5-5",
+"date": "2026-09-22",
+"lab": "anthropic",
+"mod": [
+"llm"
+],
+"fam": "claude",
+"name": "Claude Opus 5.5",
+"full": "Claude Opus 5.5",
+"src": "https://www.anthropic.com/claude-opus-5-5",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "xai-20260921-grok-4-7",
+"ref": "xai-20260921-grok-4-7",
+"date": "2026-09-21",
+"lab": "xai",
+"mod": [
+"llm"
+],
+"fam": "grok",
+"name": "Grok 4.7",
+"full": "Grok 4.7",
+"src": "https://evolink.ai/blog/grok-4-7-release-date",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "qwen-20260921-qwen-image-2-1",
 "date": "2026-09-21",
 "lab": "qwen",
@@ -456,6 +524,23 @@
 "full": "Qwen-Image-2.1: 7B open-weight image generation and editing",
 "src": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/",
 "flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "deepseek-20260910-deepseek-v4-1-flash",
+"ref": "deepseek-20260910-deepseek-v4-1-flash",
+"date": "2026-09-10",
+"lab": "deepseek",
+"mod": [
+"llm"
+],
+"fam": "deepseek",
+"name": "DeepSeek V4.1 Flash",
+"full": "DeepSeek V4.1 Flash",
+"src": "https://www.activepieces.com/blog/deepseek-v41-flash-launch-whats-new-in-2026",
+"flag": 1,
 "open": 1,
 "st": "ga",
 "sec": 1
@@ -478,6 +563,57 @@
 "sec": 0
 },
 {
+"id": "meta-20260902-muse-spark-1-3",
+"ref": "meta-20260902-muse-spark-1-3",
+"date": "2026-09-02",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "muse",
+"name": "Muse Spark 1.3",
+"full": "Muse Spark 1.3",
+"src": "https://www.bloomberg.com/news/articles/2026-09-02/meta-releases-more-powerful-ai-model-edging-closer-to-rivals",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "google-20260902-gemini-3-8-flash",
+"ref": "google-20260902-gemini-3-8-flash",
+"date": "2026-09-02",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 3.8 Flash",
+"full": "Gemini 3.8 Flash",
+"src": "https://emergent.sh/news/google-launches-gemini-3-8-flash-third-flash",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+"ref": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+"date": "2026-09-01",
+"lab": "anthropic",
+"mod": [
+"llm"
+],
+"fam": "claude",
+"name": "Claude Fable 5.1 / Mythos 5.1",
+"full": "Claude Fable 5.1 and Claude Mythos 5.1",
+"src": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
 "id": "zhipu-20260814-glm-5-3",
 "ref": "zhipu-20260814-glm-5-3",
 "date": "2026-08-14",
@@ -495,6 +631,57 @@
 "sec": 0
 },
 {
+"id": "qwen-20260814-qwen3-8-27b",
+"ref": "qwen-20260814-qwen3-8-27b",
+"date": "2026-08-14",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3.8-27B",
+"full": "Qwen3.8-27B",
+"src": "https://datanorth.ai/news/alibaba-releases-qwen3-8-27b",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "google-20260813-gemini-3-7-flash",
+"ref": "google-20260813-gemini-3-7-flash",
+"date": "2026-08-13",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 3.7 Flash",
+"full": "Gemini 3.7 Flash",
+"src": "https://evolink.ai/blog/gemini-3-7-flash-release-date",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "deepseek-20260813-deepseek-v4-pro-0813",
+"ref": "deepseek-20260813-deepseek-v4-pro-0813",
+"date": "2026-08-13",
+"lab": "deepseek",
+"mod": [
+"llm"
+],
+"fam": "deepseek",
+"name": "DeepSeek-V4-Pro-0813",
+"full": "DeepSeek-V4-Pro-0813",
+"src": "https://aireleasetracker.com/company/deepseek",
+"flag": 0,
+"open": null,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "xai-20260812-grok-4-6",
 "ref": "xai-20260812-grok-4-6",
 "date": "2026-08-12",
@@ -510,6 +697,91 @@
 "st": "ga",
 "full": "Grok 4.6",
 "sec": 0
+},
+{
+"id": "qwen-20260812-qwen3-8-max-open-weights",
+"ref": "qwen-20260812-qwen3-8-max-open-weights",
+"date": "2026-08-12",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3.8-Max (open weights)",
+"full": "Qwen3.8-Max open weights",
+"src": "https://www.explainx.ai/blog/qwen3-8-max-open-weights-live-hugging-face-august-2026",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "nvidia-20260811-nemotron-3-5-lightning",
+"ref": "nvidia-20260811-nemotron-3-5-lightning",
+"date": "2026-08-11",
+"lab": "nvidia",
+"mod": [
+"llm"
+],
+"fam": "nemotron",
+"name": "Nemotron 3.5 Lightning",
+"full": "Nemotron 3.5 Lightning",
+"src": "https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "meta-20260805-muse-spark-1-2-and-muse-code",
+"ref": "meta-20260805-muse-spark-1-2-and-muse-code",
+"date": "2026-08-05",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "muse",
+"name": "Muse Spark 1.2",
+"full": "Muse Spark 1.2 and Muse Code",
+"src": "https://www.developersdigest.tech/blog/meta-muse-code-spark-1-2-release",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "qwen-20260803-qwen3-8-max",
+"ref": "qwen-20260803-qwen3-8-max",
+"date": "2026-08-03",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3.8-Max",
+"full": "Qwen3.8-Max",
+"src": "https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "deepseek-20260731-deepseek-v4-flash-0731",
+"ref": "deepseek-20260731-deepseek-v4-flash-0731",
+"date": "2026-07-31",
+"lab": "deepseek",
+"mod": [
+"llm"
+],
+"fam": "deepseek",
+"name": "DeepSeek-V4-Flash-0731",
+"full": "DeepSeek-V4-Flash-0731",
+"src": "https://aireleasetracker.com/company/deepseek",
+"flag": 0,
+"open": null,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "midjourney-20260724-v8-2",
@@ -543,6 +815,23 @@
 "st": "ga",
 "full": "Claude Opus 5",
 "sec": 0
+},
+{
+"id": "google-20260721-gemini-3-6-flash",
+"ref": "google-20260721-gemini-3-6-flash",
+"date": "2026-07-21",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 3.6 Flash",
+"full": "Gemini 3.6 Flash",
+"src": "https://datanorth.ai/news/google-releases-gemini-3-6-flash",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "google-20260721-gemini-3-5-flash-lite",
@@ -594,6 +883,23 @@
 "st": "ga",
 "full": "Muse Spark 1.1",
 "sec": 0
+},
+{
+"id": "xai-20260708-grok-4-5",
+"ref": "xai-20260708-grok-4-5",
+"date": "2026-07-08",
+"lab": "xai",
+"mod": [
+"llm"
+],
+"fam": "grok",
+"name": "Grok 4.5",
+"full": "Grok 4.5",
+"src": "https://codersera.com/blog/grok-4-5-launch-guide-2026/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "bytedance-202607-seedance-2-5",
@@ -663,6 +969,23 @@
 "sec": 0
 },
 {
+"id": "google-20260603-gemma-4-12b-unified",
+"ref": "google-20260603-gemma-4-12b-unified",
+"date": "2026-06-03",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemma",
+"name": "Gemma 4 12B",
+"full": "Gemma 4 12B Unified",
+"src": "https://www.analyticsvidhya.com/blog/2026/06/google-gemma-4-12b/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "microsoft-20260602-mai-voice-2",
 "date": "2026-06-02",
 "lab": "microsoft",
@@ -677,6 +1000,23 @@
 "open": 0,
 "st": "ga",
 "sec": 0
+},
+{
+"id": "qwen-202606-qwen3-7-plus",
+"ref": "qwen-202606-qwen3-7-plus",
+"date": "2026-06",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3.7-Plus",
+"full": "Qwen3.7-Plus",
+"src": "https://codersera.com/blog/qwen-3-5-complete-guide-2026/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "microsoft-202606-mai-thinking-1-and-mai-code-1-build-2026",
@@ -762,6 +1102,23 @@
 "st": "ga",
 "full": "GPT-5.5 Instant",
 "sec": 0
+},
+{
+"id": "qwen-202605-qwen3-7-max",
+"ref": "qwen-202605-qwen3-7-max",
+"date": "2026-05",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3.7-Max",
+"full": "Qwen3.7-Max",
+"src": "https://codersera.com/blog/qwen-3-5-complete-guide-2026/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "mistral-20260428-mistral-medium-3-5",
@@ -880,6 +1237,23 @@
 "st": "preview",
 "full": "Claude Mythos Preview and Project Glasswing",
 "sec": 0
+},
+{
+"id": "google-20260402-gemma-4",
+"ref": "google-20260402-gemma-4",
+"date": "2026-04-02",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemma",
+"name": "Gemma 4",
+"full": "Gemma 4",
+"src": "https://en.wikipedia.org/wiki/Gemma_(language_model)",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "qwen-202604-wan-2-7",
@@ -1523,6 +1897,23 @@
 "end": "2026-04-26"
 },
 {
+"id": "deepseek-20250929-deepseek-v3-2-exp",
+"ref": "deepseek-20250929-deepseek-v3-2-exp",
+"date": "2025-09-29",
+"lab": "deepseek",
+"mod": [
+"llm"
+],
+"fam": "deepseek",
+"name": "DeepSeek-V3.2-Exp",
+"full": "DeepSeek-V3.2-Exp",
+"src": "https://api-docs.deepseek.com/news/news250929/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
 "id": "anthropic-20250929-claude-sonnet-4-5",
 "ref": "anthropic-20250929-claude-sonnet-4-5",
 "date": "2025-09-29",
@@ -1557,6 +1948,23 @@
 "sec": 0
 },
 {
+"id": "xai-20250919-grok-4-fast",
+"ref": "xai-20250919-grok-4-fast",
+"date": "2025-09-19",
+"lab": "xai",
+"mod": [
+"llm"
+],
+"fam": "grok",
+"name": "Grok 4 Fast",
+"full": "Grok 4 Fast",
+"src": "https://simonwillison.net/2025/Sep/20/grok-4-fast/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "zhipu-202509-glm-4-6",
 "ref": "zhipu-202509-glm-4-6",
 "date": "2025-09",
@@ -1571,6 +1979,40 @@
 "open": null,
 "st": "ga",
 "full": "GLM-4.6",
+"sec": 0
+},
+{
+"id": "qwen-202509-qwen3-next",
+"ref": "qwen-202509-qwen3-next",
+"date": "2025-09",
+"lab": "qwen",
+"mod": [
+"llm"
+],
+"fam": "qwen",
+"name": "Qwen3-Next",
+"full": "Qwen3-Next",
+"src": "https://www.alibabacloud.com/blog/602536",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "openai-202509-gpt-5-codex",
+"ref": "openai-202509-gpt-5-codex",
+"date": "2025-09",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-5-Codex",
+"full": "GPT-5-Codex",
+"src": "https://help.openai.com/en/articles/9624314-model-release-notes",
+"flag": 0,
+"open": 0,
+"st": "ga",
 "sec": 0
 },
 {
@@ -1813,6 +2255,40 @@
 "sec": 0
 },
 {
+"id": "google-20250617-gemini-2-5-flash",
+"ref": "google-20250617-gemini-2-5-flash",
+"date": "2025-06-17",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 2.5 Flash",
+"full": "Gemini 2.5 Flash",
+"src": "https://en.wikipedia.org/wiki/Google_Gemini",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "openai-20250610-o3-pro",
+"ref": "openai-20250610-o3-pro",
+"date": "2025-06-10",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "o3-pro",
+"full": "o3-pro",
+"src": "https://help.openai.com/en/articles/9624314-model-release-notes",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
 "id": "mistral-20250610-magistral",
 "ref": "mistral-20250610-magistral",
 "date": "2025-06-10",
@@ -1996,6 +2472,23 @@
 "st": "ga",
 "full": "o3 and o4-mini",
 "sec": 0
+},
+{
+"id": "openai-20250414-gpt-4-1-gpt-4-1-mini-and-gpt-4-1-nano",
+"ref": "openai-20250414-gpt-4-1-gpt-4-1-mini-and-gpt-4-1-nano",
+"date": "2025-04-14",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-4.1",
+"full": "GPT-4.1, GPT-4.1 mini and GPT-4.1 nano",
+"src": "https://en.wikipedia.org/wiki/GPT-4.1",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "meta-20250405-llama-4-scout-and-maverick",
