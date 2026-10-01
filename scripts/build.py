@@ -446,6 +446,40 @@ def validate_rsi():
     return problems
 
 
+def validate_models():
+    """data/model-releases.json: structural checks for pages/model-releases.html."""
+    path = ROOT / "data/model-releases.json"
+    if not path.exists():
+        return []
+    d = json.loads(path.read_text(encoding="utf-8"))
+    lu = {i["id"] for i in json.loads((ROOT / "data/lab-updates.json").read_text(encoding="utf-8"))["items"]}
+    labs, fams = {l[0] for l in d["labs"]}, {f[0] for f in d["families"]}
+    mods, tiers = {m[0] for m in d["modalities"]}, {t[0]: t[1] for t in d["tiers"]}
+    problems, seen = [], set()
+    for i in d["items"]:
+        w = f"data/model-releases.json: {i.get('id', '?')}"
+        if i["id"] in seen:
+            problems.append(f"{w}: duplicate id")
+        seen.add(i["id"])
+        if not re.fullmatch(r"20\d\d-\d\d(-\d\d)?", i["date"]) or not "2022-04" <= i["date"][:7] <= date.today().strftime("%Y-%m"):
+            problems.append(f"{w}: date {i['date']} is invalid or out of range")
+        if i["lab"] not in labs or i["fam"] not in fams:
+            problems.append(f"{w}: unknown lab or family")
+        if not i["mod"] or any(m not in mods for m in i["mod"]):
+            problems.append(f"{w}: unknown modality")
+        if i["st"] not in ("ga", "preview", "research") or i["open"] not in (0, 1, 2, None):
+            problems.append(f"{w}: bad status or open value")
+        if not i["src"].startswith("https://"):
+            problems.append(f"{w}: source must be https")
+        if i.get("ref") and i["ref"] not in lu:
+            problems.append(f"{w}: ref {i['ref']} is not in data/lab-updates.json")
+        if i.get("t") and (i["t"] not in tiers or tiers[i["t"]] not in i["mod"]):
+            problems.append(f"{w}: tier {i['t']} unknown or not in this item's modalities")
+        if i.get("end") and not re.fullmatch(r"20\d\d-\d\d-\d\d", i["end"]):
+            problems.append(f"{w}: bad end date")
+    return problems
+
+
 def render_idea_graph():
     """Merge data/idea-map.json (areas, lineage links, tours) with every paper card in the
     "AI Research in YEAR" articles into blog/idea-graph.json for pages/idea-map.html.
@@ -528,7 +562,7 @@ def main():
         stale = [p for p in stale if p.name != "sitemap.xml"]
         readme = subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py"), "--check"])
         problems = [f"stale: {p.relative_to(ROOT)} (run python3 scripts/build.py)" for p in stale]
-        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi()
+        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_models()
         if readme.returncode:
             problems.append("stale: README.md (run python3 scripts/build.py)")
         for line in problems:
@@ -538,7 +572,7 @@ def main():
     for p in stale:
         p.write_text(outputs[p], encoding="utf-8")
     subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py")], check=True)
-    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi()
+    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_models()
     print(f"build: {len(stale)} file(s) updated, {len(files)} pages checked, {len(problems)} broken link(s)")
     for line in problems:
         print("  " + line)
