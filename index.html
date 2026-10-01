@@ -361,6 +361,11 @@
     .home-idea-embed { margin: 4px 0 18px; }
     .home-idea-embed iframe { display: block; width: 100%; height: 560px; border: 0; border-radius: 16px; background: #0a0f26; box-shadow: 0 12px 34px rgba(15, 23, 42, .18); }
     .home-idea-embed-link { display: inline-block; margin-top: 8px; font-size: .86rem; font-weight: 700; color: var(--sp-accent, #1d4ed8); text-decoration: none; }
+    .home-model-embed { margin: 20px 0; padding: 16px; border-radius: 16px; background: linear-gradient(135deg, #eff6ff, #ecfeff); border: 1px solid #bfdbfe; }
+    .home-model-embed-hd { margin-bottom: 10px; }
+    .home-model-embed .home-rsimap-tag { color: #1d4ed8; }
+    .home-model-embed iframe { height: 600px; background: #fff; box-shadow: 0 6px 20px rgba(15, 23, 42, .1); }
+    @media (max-width: 768px) { .home-model-embed iframe { height: 560px; } }
     .home-idea-embed-link:hover { text-decoration: underline; }
     @media (max-width: 768px) { .home-idea-embed iframe { height: 520px; } }
     .home-series-card {
@@ -1091,15 +1096,11 @@
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-12', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
 
-    <a href="pages/model-releases.html" class="home-rsimap is-models is-gap">
-      <span class="home-rsimap-emoji">🧭</span>
-      <div class="home-rsimap-body">
-        <span class="home-rsimap-tag">New · Interactive map</span>
-        <div class="home-rsimap-title">Model Release Map: foundation, image, video and speech models</div>
-        <div class="home-rsimap-desc">See which lab shipped which model and when, how each model line evolved, and how long open-weight models took to catch up with closed ones, across four modalities.</div>
-      </div>
-      <span class="home-rsimap-cta">Open the map →</span>
-    </a>
+    <div class="home-idea-embed home-model-embed">
+      <div class="home-model-embed-hd"><span class="home-rsimap-tag">New · Interactive map</span><div class="home-rsimap-title">Model Release Map: foundation, image, video and speech models</div><div class="home-rsimap-desc">Which lab shipped which model and when, how each model line evolved, and how long open-weight models took to catch up with closed ones.</div></div>
+      <iframe src="pages/model-releases.html?embed=1&v=1" title="Model Release Map: lab lanes of foundation, image, video and speech model releases from 2022 to 2026" loading="lazy"></iframe>
+      <a href="pages/model-releases.html" class="home-idea-embed-link">🧭 Open the full Model Release Map: every view, filter and source →</a>
+    </div>
 
     <div class="home-lineage-spotlight" id="sec-lineage">
       <span class="home-lineage-tag">✅ Complete · 8 Labs, Fully Cross-Referenced</span>

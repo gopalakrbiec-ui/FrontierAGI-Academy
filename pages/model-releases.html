@@ -86,6 +86,23 @@
     .mx-caveat { font-size: .84rem; line-height: 1.6; color: #374151; }
     .mx-caveat ul { margin: 6px 0 0 18px; padding: 0; }
     .mx-caveat a { color: #1d4ed8; }
+    .mx-embedbar { display: none; }
+    body.mx-embed .navbar, body.mx-embed .nav-panel-wrap, body.mx-embed .nav-backdrop, body.mx-embed .mx-hero, body.mx-embed .mx-caveat, body.mx-embed .mx-legend, body.mx-embed #mrNote { display: none !important; }
+    body.mx-embed main { padding-top: 0 !important; }
+    body.mx-embed .mx-wrap { max-width: none; padding: 8px 10px 10px; }
+    body.mx-embed .mx-bar { gap: 6px; margin-bottom: 6px; }
+    body.mx-embed .mx-seg button { padding: 6px 10px; font-size: .76rem; }
+    body.mx-embed .mx-bar input[type=search], body.mx-embed #mrScope, body.mx-embed #mrOpen { display: none; }
+    body.mx-embed .mx-labs { margin-bottom: 6px; } @media (min-width: 641px) { body.mx-embed .mx-labs { display: none; } }
+    @media (max-width: 640px) { body.mx-embed .mx-views, body.mx-embed .mx-embedbar b { display: none; } body.mx-embed .mx-seg button { padding: 6px 4px; font-size: .68rem; flex: 1; } body.mx-embed #mrMods { width: 100%; } body.mx-embed .mx-embedbar { justify-content: flex-end; } }
+    body.mx-embed .mx-embedbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-size: .82rem; }
+    body.mx-embed .mx-embedbar a { font-weight: 700; color: #1d4ed8; text-decoration: none; }
+    body.mx-embed .mx-gridwrap { overflow-x: auto; }
+    body.mx-embed .mx-hd { top: 0; }
+    body.mx-embed .mx-layout { grid-template-columns: 1fr; }
+    body.mx-embed .mx-panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 48%; border-radius: 14px 14px 0 0; z-index: 60; box-shadow: 0 -10px 40px rgba(0,0,0,.25); display: none; }
+    body.mx-embed .mx-panel.show { display: block; }
+    body.mx-embed .mx-x { display: block; }
     @media (max-width: 1280px) {
       .mx-gridwrap { overflow-x: auto; }
       .mx-hd { top: 0; }
@@ -204,6 +221,7 @@
 
 <main style="padding-top: 94px;">
 <div class="mx-wrap">
+  <div class="mx-embedbar"><b>🧭 Model Release Map · 2026 → 2022</b><a href="model-releases.html" target="_top">Open the full page ↗</a></div>
   <div class="mx-hero">
     <span class="mx-badge">Interactive map · Apr 2022 → Sep 2026</span>
     <h1>Model Release Map</h1>
@@ -252,6 +270,8 @@
 <script src="../app.js"></script>
 <script>
 (function () {
+  var EMBED = new URLSearchParams(location.search).has('embed');
+  if (EMBED) document.body.classList.add('mx-embed');
   var D, S = { mod: 'llm', view: 'lanes', scope: 'flag', open: 'all', q: '', sel: null, labs: null };
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -399,7 +419,7 @@
     p.innerHTML = '<button class="mx-x" id="mrX">×</button><span class="tag" style="background:' + lab[3] + ';color:#fff">' + esc(lab[1]) + '</span><h3>' + esc(i.name) + '</h3><p style="margin:0;color:#6b7280">' + fmt(i.date) + (i.end ? ' · retired ' + fmt(i.end) : '') + '</p>' +
       '<div style="margin-top:8px">' + i.mod.map(function (m) { return '<span class="tag">' + m + '</span>'; }).join('') + '<span class="tag">' + stLabel(i.st) + '</span><span class="tag">' + openLabel(i.open) + '</span>' + (i.flag ? '<span class="tag">⭐ flagship</span>' : '') + '</div>' +
       '<p>' + esc(i.full) + '</p><div class="nb">' + nb(n[0], '← Before:') + nb(n[1], 'After: →') + '</div>' +
-      '<a class="lk p" href=\x22' + i.src + '\x22 target="_blank" rel="noopener">Source ↗' + (i.sec ? ' (secondary source)' : '') + '</a>' + (i.ref ? '<a class="lk" href=\x22lab-updates.html#' + i.ref + '\x22>See it on Lab Updates</a>' : '');
+      '<a class="lk p" href=\x22' + i.src + '\x22 target="_blank" rel="noopener">Source ↗' + (i.sec ? ' (secondary source)' : '') + '</a>' + (i.ref ? '<a class="lk"' + (EMBED ? ' target=\x22_top\x22' : '') + ' href=\x22lab-updates.html#' + i.ref + '\x22>See it on Lab Updates</a>' : '');
     p.classList.add('show');
     var x = $('mrX'); if (x) x.onclick = function () { S.sel = null; p.classList.remove('show'); render(); };
   }
