@@ -299,6 +299,11 @@
     .home-rsi-desc { font-size: 0.87rem; color: #4b5563; line-height: 1.6; margin-bottom: 20px; max-width: 720px; position: relative; }
     .home-rsimap { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; padding: 18px 22px; border-radius: 14px; background: linear-gradient(135deg, #fff1f2, #eef2ff); border: 1px solid #fecdd3; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
     .home-rsimap:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(190,18,60,.12); }
+    .home-rsimap.is-models { background: linear-gradient(135deg, #eff6ff, #ecfeff); border-color: #bfdbfe; }
+    .home-rsimap.is-models:hover { box-shadow: 0 8px 24px rgba(29,78,216,.12); }
+    .home-rsimap.is-models .home-rsimap-tag { color: #1d4ed8; }
+    .home-rsimap.is-models .home-rsimap-cta { background: #1d4ed8; }
+    .home-rsimap.is-gap { margin-top: 20px; }
     .home-rsimap-emoji { font-size: 2rem; }
     .home-rsimap-body { flex: 1 1 320px; min-width: 0; }
     .home-rsimap-tag { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #be123c; margin-bottom: 4px; }
@@ -1085,6 +1090,16 @@
       </div>
       <button type="button" class="home-grid-toggle" onclick="toggleHomeGrid('grid-12', this)" data-more="Show all articles ↓" data-less="Show fewer ↑">Show all articles ↓</button>
     </div>
+
+    <a href="pages/model-releases.html" class="home-rsimap is-models is-gap">
+      <span class="home-rsimap-emoji">🧭</span>
+      <div class="home-rsimap-body">
+        <span class="home-rsimap-tag">New · Interactive map</span>
+        <div class="home-rsimap-title">Model Release Map: foundation, image, video and speech models</div>
+        <div class="home-rsimap-desc">See which lab shipped which model and when, how each model line evolved, and how long open-weight models took to catch up with closed ones, across four modalities.</div>
+      </div>
+      <span class="home-rsimap-cta">Open the map →</span>
+    </a>
 
     <div class="home-lineage-spotlight" id="sec-lineage">
       <span class="home-lineage-tag">✅ Complete · 8 Labs, Fully Cross-Referenced</span>
