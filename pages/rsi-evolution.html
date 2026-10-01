@@ -124,6 +124,18 @@
     .rs-list ul { columns: 2; column-gap: 26px; margin: 0 0 8px; padding-left: 18px; font-size: .82rem; } .rs-list li { margin: 3px 0; break-inside: avoid; }
     .rs-rel { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: .8rem; margin-top: 8px; } .rs-rel a { color: #9f1239; font-weight: 600; }
 
+    .rs-embedbar { display: none; }
+    body.rs-embed .navbar, body.rs-embed .nav-panel-wrap, body.rs-embed .nav-backdrop, body.rs-embed .rs-hero, body.rs-embed section.rs-card, body.rs-embed .rs-caveat, body.rs-embed .rs-list, body.rs-embed .rs-fams, body.rs-embed #rsSearch, body.rs-embed #rsMerge { display: none !important; }
+    body.rs-embed main { padding-top: 0 !important; }
+    body.rs-embed .rs-wrap { max-width: none; padding: 8px 10px 10px; }
+    body.rs-embed .rs-embedbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-size: .82rem; }
+    body.rs-embed .rs-embedbar a { font-weight: 700; color: #9f1239; text-decoration: none; }
+    body.rs-embed .rs-bar { margin-bottom: 6px; gap: 6px; }
+    body.rs-embed .rs-main { display: block; }
+    body.rs-embed .rs-panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 55%; border-radius: 14px 14px 0 0; transform: translateY(105%); transition: transform .28s; z-index: 950; box-shadow: 0 -12px 34px rgba(15, 23, 42, .28); }
+    body.rs-embed .rs-panel.open { transform: none; } body.rs-embed .rs-close { display: block; }
+    body.rs-embed .rs-tabs button { padding: 6px 9px; font-size: .74rem; }
+    @media (max-width: 640px) { body.rs-embed .rs-embedbar b { display: none; } body.rs-embed .rs-embedbar { justify-content: flex-end; } }
     @media (max-width: 1000px) {
       .rs-loopgrid { grid-template-columns: 1fr; } .rs-main { display: block; }
       .rs-panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 62vh; border-radius: 18px 18px 0 0; transform: translateY(105%); transition: transform .28s; z-index: 950; box-shadow: 0 -12px 34px rgba(15, 23, 42, .28); }
@@ -240,6 +252,7 @@
 
 <main style="padding-top: 94px;">
   <div class="rs-wrap">
+    <div class="rs-embedbar"><b>♻️ RSI Evolution Map · autonomy L1 → L5</b><a href="rsi-evolution.html" target="_top">Open the full page ↗</a></div>
 
     <div class="rs-hero">
       <span class="rs-badge">🔁 RSI Evolution Map</span>
@@ -303,6 +316,7 @@
 <script>
 (function () {
   'use strict';
+  if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('rs-embed');
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
