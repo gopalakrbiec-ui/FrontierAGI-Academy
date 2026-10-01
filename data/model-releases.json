@@ -170,6 +170,24 @@
 "Sesame",
 "Se",
 "#a16207"
+],
+[
+"bigscience",
+"BigScience",
+"BS",
+"#f59e0b"
+],
+[
+"minimax",
+"MiniMax",
+"Mm",
+"#e11d48"
+],
+[
+"ideogram",
+"Ideogram",
+"Id",
+"#0d9488"
 ]
 ],
 "families": [
@@ -364,6 +382,94 @@
 [
 "geminitts",
 "Gemini TTS"
+],
+[
+"bert",
+"Transformer / BERT / T5"
+],
+[
+"roberta",
+"RoBERTa"
+],
+[
+"mtnlg",
+"Turing-NLG / Megatron / MT-NLG"
+],
+[
+"gopher",
+"Gopher / Chinchilla"
+],
+[
+"bloom",
+"BLOOM"
+],
+[
+"vit",
+"Vision Transformer"
+],
+[
+"wav2vec",
+"wav2vec / HuBERT"
+],
+[
+"audiolm",
+"AudioLM"
+],
+[
+"vall-e",
+"VALL-E"
+],
+[
+"sd3",
+"Stable Diffusion 3"
+],
+[
+"ideogram",
+"Ideogram"
+],
+[
+"mjvideo",
+"Midjourney Video"
+],
+[
+"ray",
+"Luma Ray"
+],
+[
+"hailuo",
+"Hailuo"
+],
+[
+"gen4",
+"Runway Gen-4"
+],
+[
+"otts",
+"OpenAI audio"
+],
+[
+"novasonic",
+"Nova Sonic"
+],
+[
+"voxtral-stt",
+"Voxtral"
+],
+[
+"qwen-omni",
+"Qwen-Omni"
+],
+[
+"qwentts",
+"Qwen3-TTS"
+],
+[
+"personaplex",
+"PersonaPlex"
+],
+[
+"geminilive",
+"Gemini Live"
 ]
 ],
 "tiers": [
@@ -423,6 +529,22 @@
 "name": "GPT-6.1 Sol",
 "full": "GPT-6.1 Sol",
 "src": "https://www.cnbc.com/2026/09/29/openai-devday-2026-live-updates.html",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "elevenlabs-20260928-eleven-v4",
+"date": "2026-09-28",
+"lab": "elevenlabs",
+"mod": [
+"speech"
+],
+"fam": "eleven",
+"name": "Eleven v4",
+"full": "Eleven v4 and v4 Turbo: 90 languages, with a low-latency variant for voice agents",
+"src": "https://elevenlabs.io/blog/eleven-v4",
 "flag": 1,
 "open": 0,
 "st": "ga",
@@ -529,6 +651,22 @@
 "sec": 1
 },
 {
+"id": "google-20260915-gemini-3-8-live",
+"date": "2026-09-15",
+"lab": "google",
+"mod": [
+"speech"
+],
+"fam": "geminilive",
+"name": "Gemini 3.8 Live",
+"full": "Gemini 3.8 Live and Live Extended Thinking: real-time voice-to-voice models",
+"src": "https://www.unite.ai/google-launches-gemini-3-8-live-and-extended-thinking-voice-models/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "deepseek-20260910-deepseek-v4-1-flash",
 "ref": "deepseek-20260910-deepseek-v4-1-flash",
 "date": "2026-09-10",
@@ -542,6 +680,22 @@
 "src": "https://www.activepieces.com/blog/deepseek-v41-flash-launch-whats-new-in-2026",
 "flag": 1,
 "open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "openai-20260908-gpt-image-2-5",
+"date": "2026-09-08",
+"lab": "openai",
+"mod": [
+"image"
+],
+"fam": "gptimage",
+"name": "GPT Image 2.5",
+"full": "ChatGPT Images 2.5, with two API models",
+"src": "https://datanorth.ai/news/openai-launches-chatgpt-images-2-5",
+"flag": 1,
+"open": 0,
 "st": "ga",
 "sec": 1
 },
@@ -767,6 +921,22 @@
 "sec": 1
 },
 {
+"id": "minimax-20260731-hailuo-3",
+"date": "2026-07-31",
+"lab": "minimax",
+"mod": [
+"video"
+],
+"fam": "hailuo",
+"name": "Hailuo 3.0 (H3)",
+"full": "Hailuo 3.0 (H3)",
+"src": "https://ocdevel.com/mlg/mla-26",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "deepseek-20260731-deepseek-v4-flash-0731",
 "ref": "deepseek-20260731-deepseek-v4-flash-0731",
 "date": "2026-07-31",
@@ -967,6 +1137,22 @@
 "st": "ga",
 "full": "Claude Fable 5 and Claude Mythos 5",
 "sec": 0
+},
+{
+"id": "ideogram-20260603-ideogram-4",
+"date": "2026-06-03",
+"lab": "ideogram",
+"mod": [
+"image"
+],
+"fam": "ideogram",
+"name": "Ideogram 4.0",
+"full": "Ideogram 4.0",
+"src": "https://www.provimedia.de/en/blog/ai-image-generation-2026-best-tools",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "google-20260603-gemma-4-12b-unified",
@@ -1290,18 +1476,18 @@
 "sec": 0
 },
 {
-"id": "mistral-20260326-voxtral-tts",
-"date": "2026-03-26",
-"lab": "mistral",
+"id": "midjourney-202604-v8-1",
+"date": "2026-04",
+"lab": "midjourney",
 "mod": [
-"speech"
+"image"
 ],
-"fam": "voxtral",
-"name": "Voxtral TTS",
-"full": "Mistral Voxtral TTS, open source",
-"src": "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/",
+"fam": "midjourney",
+"name": "Midjourney V8.1 (alpha)",
+"full": "Midjourney V8.1: alpha in April 2026, default from June 2026",
+"src": "https://en.wikipedia.org/wiki/Midjourney",
 "flag": 0,
-"open": 1,
+"open": 0,
 "st": "ga",
 "sec": 1
 },
@@ -1405,6 +1591,22 @@
 "st": "ga",
 "full": "Nemotron 3 family (GTC 2026)",
 "sec": 0
+},
+{
+"id": "mistral-20260326-voxtral-tts",
+"date": "2026-03",
+"lab": "mistral",
+"mod": [
+"speech"
+],
+"fam": "voxtral",
+"name": "Voxtral TTS",
+"full": "Mistral Voxtral TTS, open source (sources differ on the day, 23 or 26 March)",
+"src": "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "google-20260226-nano-banana-2",
@@ -1558,6 +1760,70 @@
 "sec": 0
 },
 {
+"id": "luma-20260126-ray3-14",
+"date": "2026-01-26",
+"lab": "luma",
+"mod": [
+"video"
+],
+"fam": "ray",
+"name": "Ray3.14",
+"full": "Ray3.14",
+"src": "https://ray3.co/ray314",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "qwen-20260122-qwen3-tts",
+"date": "2026-01-22",
+"lab": "qwen",
+"mod": [
+"speech"
+],
+"fam": "qwentts",
+"name": "Qwen3-TTS",
+"full": "Qwen3-TTS",
+"src": "https://pinggy.io/blog/best_open_source_self_hosted_text_to_speech_models/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "bfl-20260115-flux-2-klein",
+"date": "2026-01-15",
+"lab": "bfl",
+"mod": [
+"image"
+],
+"fam": "flux",
+"name": "FLUX.2 [klein]",
+"full": "FLUX.2 [klein]",
+"src": "https://www.provimedia.de/en/blog/ai-image-generation-2026-best-tools",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "nvidia-202601-personaplex",
+"date": "2026-01",
+"lab": "nvidia",
+"mod": [
+"speech"
+],
+"fam": "personaplex",
+"name": "PersonaPlex-7B",
+"full": "PersonaPlex-7B",
+"src": "https://pinggy.io/blog/best_open_source_self_hosted_text_to_speech_models/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "moonshot-202601-kimi-k2-5",
 "ref": "moonshot-202601-kimi-k2-5",
 "date": "2026-01",
@@ -1676,6 +1942,22 @@
 "sec": 0
 },
 {
+"id": "runway-20251201-gen-4-5",
+"date": "2025-12-01",
+"lab": "runway",
+"mod": [
+"video"
+],
+"fam": "gen4",
+"name": "Gen-4.5",
+"full": "Gen-4.5 (API access followed in February 2026)",
+"src": "https://ocdevel.com/mlg/mla-26",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "deepseek-20251201-deepseek-v3-2-and-v3-2-speciale",
 "ref": "deepseek-20251201-deepseek-v3-2-and-v3-2-speciale",
 "date": "2025-12-01",
@@ -1705,6 +1987,22 @@
 "src": "https://en.wikipedia.org/wiki/Seedance",
 "flag": 0,
 "open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "bfl-20251125-flux-2",
+"date": "2025-11-25",
+"lab": "bfl",
+"mod": [
+"image"
+],
+"fam": "flux",
+"name": "FLUX.2",
+"full": "FLUX.2",
+"src": "https://en.wikipedia.org/wiki/Flux_(text-to-image_model)",
+"flag": 1,
+"open": null,
 "st": "ga",
 "sec": 1
 },
@@ -1965,6 +2263,22 @@
 "sec": 1
 },
 {
+"id": "luma-20250918-ray3",
+"date": "2025-09-18",
+"lab": "luma",
+"mod": [
+"video"
+],
+"fam": "ray",
+"name": "Ray3",
+"full": "Ray3: described by Luma as a reasoning video model with 16-bit HDR",
+"src": "https://lumalabs.ai/news/ray3",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
 "id": "zhipu-202509-glm-4-6",
 "ref": "zhipu-202509-glm-4-6",
 "date": "2025-09",
@@ -1979,6 +2293,23 @@
 "open": null,
 "st": "ga",
 "full": "GLM-4.6",
+"sec": 0
+},
+{
+"id": "qwen-202509-qwen3-omni",
+"date": "2025-09",
+"lab": "qwen",
+"mod": [
+"speech",
+"llm"
+],
+"fam": "qwen-omni",
+"name": "Qwen3-Omni",
+"full": "Qwen3-Omni: open omni-modal model taking text, image, audio and video, with real-time speech output (Apache 2.0)",
+"src": "https://arxiv.org/abs/2509.17765",
+"flag": 1,
+"open": 1,
+"st": "ga",
 "sec": 0
 },
 {
@@ -2221,6 +2552,22 @@
 "sec": 0
 },
 {
+"id": "mistral-20250715-voxtral",
+"date": "2025-07-15",
+"lab": "mistral",
+"mod": [
+"speech"
+],
+"fam": "voxtral-stt",
+"name": "Voxtral",
+"full": "Voxtral 24B and 3B: open speech-understanding models under Apache 2.0",
+"src": "https://simonwillison.net/2025/Jul/16/voxtral/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "moonshot-20250711-kimi-k2",
 "ref": "moonshot-20250711-kimi-k2",
 "date": "2025-07-11",
@@ -2253,6 +2600,38 @@
 "st": "ga",
 "full": "Grok 4 and Grok 4 Heavy",
 "sec": 0
+},
+{
+"id": "minimax-20250618-hailuo-02",
+"date": "2025-06-18",
+"lab": "minimax",
+"mod": [
+"video"
+],
+"fam": "hailuo",
+"name": "Hailuo 02",
+"full": "Hailuo 02",
+"src": "https://www.aibase.com/news/19068",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "midjourney-20250618-video-v1",
+"date": "2025-06-18",
+"lab": "midjourney",
+"mod": [
+"video"
+],
+"fam": "mjvideo",
+"name": "Midjourney Video V1",
+"full": "Midjourney Video V1",
+"src": "https://venturebeat.com/business/surpassing-all-my-expectations-midjourney-releases-first-ai-video-model-amid-disney-universal-lawsuit",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "google-20250617-gemini-2-5-flash",
@@ -2491,6 +2870,22 @@
 "sec": 1
 },
 {
+"id": "amazon-20250408-nova-sonic",
+"date": "2025-04-08",
+"lab": "amazon",
+"mod": [
+"speech"
+],
+"fam": "novasonic",
+"name": "Nova Sonic",
+"full": "Nova Sonic: speech understanding and generation in one real-time model on Bedrock",
+"src": "https://techcrunch.com/2025/04/08/amazon-unveils-a-new-ai-voice-model-nova-sonic/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "meta-20250405-llama-4-scout-and-maverick",
 "ref": "meta-20250405-llama-4-scout-and-maverick",
 "date": "2025-04-05",
@@ -2574,6 +2969,22 @@
 "sec": 0
 },
 {
+"id": "runway-20250331-gen-4",
+"date": "2025-03-31",
+"lab": "runway",
+"mod": [
+"video"
+],
+"fam": "gen4",
+"name": "Gen-4",
+"full": "Gen-4",
+"src": "https://techcrunch.com/2025/03/31/runway-releases-an-impressive-new-video-generating-ai-model/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "openai-20250325-4o-image-generation-in-chatgpt",
 "ref": "openai-20250325-4o-image-generation-in-chatgpt",
 "date": "2025-03-25",
@@ -2606,6 +3017,22 @@
 "open": 0,
 "st": "ga",
 "full": "Gemini 2.5 Pro",
+"sec": 0
+},
+{
+"id": "openai-20250320-gpt-4o-transcribe",
+"date": "2025-03-20",
+"lab": "openai",
+"mod": [
+"speech"
+],
+"fam": "otts",
+"name": "gpt-4o-transcribe and mini-tts",
+"full": "gpt-4o-transcribe, gpt-4o-mini-transcribe and gpt-4o-mini-tts in the API",
+"src": "https://openai.com/index/introducing-our-next-generation-audio-models/",
+"flag": 1,
+"open": 0,
+"st": "ga",
 "sec": 0
 },
 {
@@ -2829,6 +3256,22 @@
 "t": "reason"
 },
 {
+"id": "luma-20250116-ray2",
+"date": "2025-01-16",
+"lab": "luma",
+"mod": [
+"video"
+],
+"fam": "ray",
+"name": "Ray2",
+"full": "Ray2",
+"src": "https://aws.amazon.com/blogs/aws/luma-ai-ray-2-video-model-is-now-available-in-amazon-bedrock/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "deepseek-20241226-deepseek-v3",
 "ref": "deepseek-20241226-deepseek-v3",
 "date": "2024-12-26",
@@ -2982,6 +3425,22 @@
 "st": "ga",
 "full": "Phi-4",
 "sec": 0
+},
+{
+"id": "stability-20241022-sd-3-5",
+"date": "2024-10-22",
+"lab": "stability",
+"mod": [
+"image"
+],
+"fam": "sd3",
+"name": "Stable Diffusion 3.5",
+"full": "Stable Diffusion 3.5 Large and Large Turbo (Medium followed on 2024-10-29)",
+"src": "https://siliconangle.com/2024/10/22/stable-ai-releases-next-gen-open-source-stable-diffusion-3-5-text-image-ai-model-family/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
 },
 {
 "id": "anthropic-20241022-claude-3-5-sonnet-new-3-5-haiku-and-computer-use",
@@ -3252,6 +3711,22 @@
 "open": null,
 "st": "ga",
 "full": "Nemotron-4 340B",
+"sec": 0
+},
+{
+"id": "stability-20240612-sd3-medium",
+"date": "2024-06-12",
+"lab": "stability",
+"mod": [
+"image"
+],
+"fam": "sd3",
+"name": "Stable Diffusion 3 Medium",
+"full": "Stable Diffusion 3 Medium open weights",
+"src": "https://stability.ai/news-updates/stable-diffusion-3-medium",
+"flag": 1,
+"open": 1,
+"st": "ga",
 "sec": 0
 },
 {
@@ -3560,6 +4035,22 @@
 "sec": 0
 },
 {
+"id": "midjourney-202312-v6",
+"date": "2023-12",
+"lab": "midjourney",
+"mod": [
+"image"
+],
+"fam": "midjourney",
+"name": "Midjourney V6",
+"full": "Midjourney V6",
+"src": "https://en.wikipedia.org/wiki/Midjourney",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "anthropic-20231121-claude-2-1",
 "ref": "anthropic-20231121-claude-2-1",
 "date": "2023-11-21",
@@ -3574,6 +4065,22 @@
 "open": 0,
 "st": "ga",
 "full": "Claude 2.1",
+"sec": 0
+},
+{
+"id": "openai-20231106-tts-1",
+"date": "2023-11-06",
+"lab": "openai",
+"mod": [
+"speech"
+],
+"fam": "otts",
+"name": "OpenAI TTS",
+"full": "tts-1 text-to-speech models in the API, announced at DevDay 2023",
+"src": "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
+"flag": 0,
+"open": 0,
+"st": "ga",
 "sec": 0
 },
 {
@@ -3813,6 +4320,22 @@
 "sec": 0
 },
 {
+"id": "midjourney-202303-v5",
+"date": "2023-03",
+"lab": "midjourney",
+"mod": [
+"image"
+],
+"fam": "midjourney",
+"name": "Midjourney V5",
+"full": "Midjourney V5",
+"src": "https://en.wikipedia.org/wiki/Midjourney",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
 "id": "meta-20230224-llama",
 "ref": "meta-20230224-llama",
 "date": "2023-02-24",
@@ -3827,6 +4350,86 @@
 "open": 2,
 "st": "ga",
 "full": "LLaMA",
+"sec": 0
+},
+{
+"id": "microsoft-202301-vall-e",
+"date": "2023-01",
+"lab": "microsoft",
+"mod": [
+"speech"
+],
+"fam": "vall-e",
+"name": "VALL-E",
+"full": "VALL-E: speech in a given voice from a 3-second sample; not released",
+"src": "https://arxiv.org/abs/2301.02111",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "openai-20221130-chatgpt",
+"date": "2022-11-30",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "ChatGPT",
+"full": "ChatGPT: a conversational model fine-tuned from the GPT-3.5 series",
+"src": "https://openai.com/index/chatgpt/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "google-20221005-imagen-video",
+"date": "2022-10-05",
+"lab": "google",
+"mod": [
+"video"
+],
+"fam": "veo",
+"name": "Imagen Video",
+"full": "Imagen Video: text-to-video research, not released",
+"src": "https://arxiv.org/abs/2210.02303",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-202210-phenaki",
+"date": "2022-10",
+"lab": "google",
+"mod": [
+"video"
+],
+"fam": "veo",
+"name": "Phenaki",
+"full": "Phenaki: long-form video from text, research only",
+"src": "https://arxiv.org/abs/2210.02399",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "meta-20220929-make-a-video",
+"date": "2022-09-29",
+"lab": "meta",
+"mod": [
+"video"
+],
+"fam": "moviegen",
+"name": "Make-A-Video",
+"full": "Make-A-Video: text-to-video research, not released",
+"src": "https://arxiv.org/abs/2209.14792",
+"flag": 1,
+"open": 0,
+"st": "research",
 "sec": 0
 },
 {
@@ -3846,6 +4449,22 @@
 "full": "Whisper",
 "sec": 0,
 "t": "asr"
+},
+{
+"id": "google-202209-audiolm",
+"date": "2022-09",
+"lab": "google",
+"mod": [
+"speech"
+],
+"fam": "audiolm",
+"name": "AudioLM",
+"full": "AudioLM: audio generation as language modelling over discrete tokens",
+"src": "https://arxiv.org/abs/2209.03143",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
 },
 {
 "id": "stability-20220822-stable-diffusion",
@@ -3879,6 +4498,38 @@
 "open": 0,
 "st": "preview",
 "sec": 1
+},
+{
+"id": "bigscience-20220712-bloom",
+"date": "2022-07-12",
+"lab": "bigscience",
+"mod": [
+"llm"
+],
+"fam": "bloom",
+"name": "BLOOM",
+"full": "BLOOM: a 176B open-access multilingual model from the BigScience collaboration",
+"src": "https://www.technologyreview.com/2022/07/12/1055817/inside-a-radical-new-project-to-democratize-ai/",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "google-202206-parti",
+"date": "2022-06",
+"lab": "google",
+"mod": [
+"image"
+],
+"fam": "imagen",
+"name": "Parti",
+"full": "Parti: autoregressive Transformer text-to-image model, research only",
+"src": "https://arxiv.org/abs/2206.10789",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
 },
 {
 "id": "google-20220523-imagen",
@@ -3947,6 +4598,342 @@
 "open": 0,
 "st": "ga",
 "full": "PaLM",
+"sec": 0
+},
+{
+"id": "google-202203-chinchilla",
+"date": "2022-03",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gopher",
+"name": "Chinchilla",
+"full": "Chinchilla: compute-optimal training of a 70B model",
+"src": "https://arxiv.org/abs/2203.15556",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "openai-202201-instructgpt",
+"date": "2022-01",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "InstructGPT",
+"full": "InstructGPT: language models trained to follow instructions with human feedback",
+"src": "https://openai.com/index/instruction-following/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "google-20211208-gopher",
+"date": "2021-12-08",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gopher",
+"name": "Gopher (DeepMind)",
+"full": "Gopher: a 280B-parameter language model from DeepMind",
+"src": "https://arxiv.org/abs/2112.11446",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "openai-202112-glide",
+"date": "2021-12",
+"lab": "openai",
+"mod": [
+"image"
+],
+"fam": "dalle",
+"name": "GLIDE",
+"full": "GLIDE: a 3.5B diffusion text-to-image model; a smaller version was open-sourced",
+"src": "https://arxiv.org/abs/2112.10741",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "microsoft-20211011-mt-nlg",
+"date": "2021-10-11",
+"lab": "microsoft",
+"mod": [
+"llm"
+],
+"fam": "mtnlg",
+"name": "Megatron-Turing NLG 530B",
+"full": "MT-NLG: 530B parameters, trained by Microsoft and NVIDIA",
+"src": "https://voicebot.ai/2021/10/11/24114/",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 1
+},
+{
+"id": "openai-202108-codex",
+"date": "2021-08",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "Codex",
+"full": "Codex: the model behind GitHub Copilot",
+"src": "https://openai.com/index/openai-codex/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "meta-202106-hubert",
+"date": "2021-06",
+"lab": "meta",
+"mod": [
+"speech"
+],
+"fam": "wav2vec",
+"name": "HuBERT",
+"full": "HuBERT",
+"src": "https://arxiv.org/abs/2106.07447",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "google-20210518-lamda",
+"date": "2021-05-18",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "LaMDA",
+"full": "LaMDA: a dialogue model shown at Google I/O 2021",
+"src": "https://blog.google/technology/ai/lamda/",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "openai-20210105-dall-e-clip",
+"date": "2021-01-05",
+"lab": "openai",
+"mod": [
+"image"
+],
+"fam": "dalle",
+"name": "DALL·E and CLIP",
+"full": "DALL·E (12B Transformer text-to-image, announced) with CLIP; DALL·E was not released as a product",
+"src": "https://openai.com/index/dall-e/",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-202010-vit",
+"date": "2020-10",
+"lab": "google",
+"mod": [
+"image"
+],
+"fam": "vit",
+"name": "Vision Transformer (ViT)",
+"full": "ViT: the Transformer applied to image patches",
+"src": "https://arxiv.org/abs/2010.11929",
+"flag": 1,
+"open": 1,
+"st": "research",
+"sec": 0
+},
+{
+"id": "meta-202006-wav2vec-2-0",
+"date": "2020-06",
+"lab": "meta",
+"mod": [
+"speech"
+],
+"fam": "wav2vec",
+"name": "wav2vec 2.0",
+"full": "wav2vec 2.0: self-supervised speech representations",
+"src": "https://arxiv.org/abs/2006.11477",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "openai-202005-gpt-3",
+"date": "2020-05",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-3",
+"full": "GPT-3 (175B parameters): paper in May 2020; API beta from 2020-06-11",
+"src": "https://arxiv.org/abs/2005.14165",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "microsoft-20200213-turing-nlg",
+"date": "2020-02-13",
+"lab": "microsoft",
+"mod": [
+"llm"
+],
+"fam": "mtnlg",
+"name": "Turing-NLG",
+"full": "Turing-NLG: a 17B-parameter language model, the largest published at the time",
+"src": "https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-202001-meena",
+"date": "2020-01",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Meena",
+"full": "Meena: a 2.6B-parameter open-domain chatbot; the model was not released",
+"src": "https://arxiv.org/abs/2001.09977",
+"flag": 0,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-201910-t5",
+"date": "2019-10",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "bert",
+"name": "T5",
+"full": "T5: every NLP task framed as text-to-text",
+"src": "https://arxiv.org/abs/1910.10683",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "nvidia-201908-megatron-lm",
+"date": "2019-08",
+"lab": "nvidia",
+"mod": [
+"llm"
+],
+"fam": "mtnlg",
+"name": "Megatron-LM",
+"full": "Megatron-LM: an 8.3B-parameter Transformer trained with GPU model parallelism",
+"src": "https://nv-adlr.github.io/MegatronLM",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "meta-201907-roberta",
+"date": "2019-07",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "roberta",
+"name": "RoBERTa",
+"full": "RoBERTa",
+"src": "https://arxiv.org/abs/1907.11692",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "openai-20190214-gpt-2",
+"date": "2019-02-14",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-2",
+"full": "GPT-2: announced 2019-02-14 with only a small model released at first; the full 1.5B model followed later in 2019",
+"src": "https://openai.com/index/better-language-models/",
+"flag": 1,
+"open": 2,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "google-201810-bert",
+"date": "2018-10",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "bert",
+"name": "BERT",
+"full": "BERT: bidirectional pre-training; code and models open-sourced in October 2018",
+"src": "https://arxiv.org/abs/1810.04805",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "openai-20180611-gpt-1",
+"date": "2018-06-11",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-1",
+"full": "GPT-1: generative pre-training of a Transformer language model (117M parameters)",
+"src": "https://openai.com/index/language-unsupervised/",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-20170612-transformer",
+"date": "2017-06-12",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "bert",
+"name": "Transformer (\"Attention Is All You Need\")",
+"full": "The Transformer architecture paper; no model released, shown as the origin of the line",
+"src": "https://arxiv.org/abs/1706.03762",
+"flag": 1,
+"open": 2,
+"st": "research",
 "sec": 0
 }
 ]

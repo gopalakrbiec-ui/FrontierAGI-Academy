@@ -461,7 +461,7 @@ def validate_models():
         if i["id"] in seen:
             problems.append(f"{w}: duplicate id")
         seen.add(i["id"])
-        if not re.fullmatch(r"20\d\d-\d\d(-\d\d)?", i["date"]) or not "2022-04" <= i["date"][:7] <= date.today().strftime("%Y-%m"):
+        if not re.fullmatch(r"20\d\d-\d\d(-\d\d)?", i["date"]) or not "2017-06" <= i["date"][:7] <= date.today().strftime("%Y-%m"):
             problems.append(f"{w}: date {i['date']} is invalid or out of range")
         if i["lab"] not in labs or i["fam"] not in fams:
             problems.append(f"{w}: unknown lab or family")

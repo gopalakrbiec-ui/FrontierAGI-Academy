@@ -73,7 +73,8 @@
     .mx-dot { position: absolute; bottom: -9px; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; border: 3px solid #111827; background: #fff; }
     .mx-dot.o { border-color: #16a34a; background: #16a34a; }
     .mx-dot.c { border-color: #1d4ed8; background: #1d4ed8; }
-    .mx-tl { display: flex; justify-content: space-between; font-size: .66rem; color: #9ca3af; margin: 8px 8px 8px; }
+    .mx-tl { position: relative; height: 16px; font-size: .66rem; color: #9ca3af; margin: 8px 8px 8px; }
+    .mx-tl span { position: absolute; transform: translateX(-50%); }
     .mx-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .mx-two button { text-align: left; border: 1.5px solid #e5e7eb; border-radius: 10px; background: #fff; padding: 8px 10px; font: inherit; font-size: .82rem; cursor: pointer; }
     .mx-two small { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #6b7280; }
@@ -221,9 +222,9 @@
 
 <main style="padding-top: 94px;">
 <div class="mx-wrap">
-  <div class="mx-embedbar"><b>🧭 Model Release Map · 2026 → 2022</b><a href="model-releases.html" target="_top">Open the full page ↗</a></div>
+  <div class="mx-embedbar"><b>🧭 Model Release Map · 2026 → 2017</b><a href="model-releases.html" target="_top">Open the full page ↗</a></div>
   <div class="mx-hero">
-    <span class="mx-badge">Interactive map · Apr 2022 → Sep 2026</span>
+    <span class="mx-badge">Interactive map · Jun 2017 → Sep 2026</span>
     <h1>Model Release Map</h1>
     <p>Who shipped which foundation, image, video and speech model, and when. Each lane is a lab, each line joins a model to its successor, and dashed outlines mark open-weight releases, so you can see how fast the labs move and how long open models take to catch up.</p>
   </div>
@@ -255,7 +256,7 @@
   <div class="mx-card mx-caveat" style="margin-top:22px">
     <h2>How to read this, and what it does not cover</h2>
     <ul>
-      <li><b>Dates</b> are each source's announcement or first public availability. Month-only dates are kept as months. A research preview that was never released (Voicebox, Movie Gen) is shown faded.</li>
+      <li><b>Dates</b> are each source's announcement or first public availability. Month-only dates are kept as months. Research models that were announced but never released (Transformer, Meena, Make-A-Video, Movie Gen, Voicebox) are shown faded. Before 2022 the date is the paper's or the lab's own announcement.</li>
       <li><b>Foundation models</b> cover 13 labs, are filled in through 30 Sep 2026, and reuse the entries on the <a href="lab-updates.html">Frontier Lab Updates</a> page. <b>Image, video and speech</b> add specialist labs, but the list is a selection, not every release, and speech and video are thinner than the rest.</li>
       <li><b>Sources:</b> entries marked “secondary source” rest on press or reference pages, not the lab's own announcement. Treat them as less certain.</li>
       <li><b>Open</b> means the weights are public, not that the licence is permissive; “not recorded” means this dataset has not checked the licence.</li>
@@ -377,14 +378,14 @@
     renderLabs([]);
     var ts = D.tiers.filter(function (t) { return t[1] === S.mod; });
     if (!ts.length) return '<div class="mx-card"><h2>No tiers defined for this modality yet</h2><p class="mx-note">Open-vs-closed milestones are defined for foundation models, image, video and speech where there are clear, checkable first releases. This modality has none yet.</p></div>';
-    var T0 = 2022 * 12 + 3, T1 = 2026 * 12 + 9;
+    var T0 = 2017 * 12 + 5, T1 = 2026 * 12 + 9;
     var h = '<p class="mx-note">For each capability, the first closed and the first open-weight release recorded in this dataset. Negative lag means the open model came first.</p>';
     ts.forEach(function (t) {
       var its = D.items.filter(function (i) { return i.t === t[0]; }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
       var c = its.filter(function (i) { return i.open === 0; })[0], o = its.filter(function (i) { return i.open === 1; })[0];
       function pos(i) { var p = i.date.split('-'); return Math.max(0, Math.min(100, ((+p[0] * 12 + +p[1] - 1 - T0 + 1) / (T1 - T0 + 1)) * 100)); }
       function btn(i, k) { return i ? '<button data-id="' + i.id + '"><small>' + k + '</small><b>' + esc(i.name) + '</b> · ' + esc(labOf[i.lab][1].split(' (')[0]) + ' · ' + fmt(i.date) + '</button>' : '<button disabled><small>' + k + '</small>None recorded in this dataset</button>'; }
-      h += '<div class="mx-tier"><h3>' + esc(t[2]) + '</h3><p class="mx-note" style="margin:0">' + esc(t[3]) + '</p><div class="mx-track">' + (c ? '<span class="mx-dot c" style="left:' + pos(c) + '%" title="Closed"></span>' : '') + (o ? '<span class="mx-dot o" style="left:' + pos(o) + '%" title="Open"></span>' : '') + '</div><div class="mx-tl"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div><div class="mx-two">' + btn(c, '● First closed') + btn(o, '● First open weights') + '</div>' + (c && o ? '<div class="mx-lag">' + (function () { var m = lagText(c, o); return m === 0 ? 'Same month.' : m > 0 ? 'Open weights followed about ' + m + ' month' + (m === 1 ? '' : 's') + ' later.' : 'Open weights came about ' + (-m) + ' month' + (m === -1 ? '' : 's') + ' first.'; })() + '</div>' : '') + '</div>';
+      h += '<div class="mx-tier"><h3>' + esc(t[2]) + '</h3><p class="mx-note" style="margin:0">' + esc(t[3]) + '</p><div class="mx-track">' + (c ? '<span class="mx-dot c" style="left:' + pos(c) + '%" title="Closed"></span>' : '') + (o ? '<span class="mx-dot o" style="left:' + pos(o) + '%" title="Open"></span>' : '') + '</div><div class="mx-tl">' + [2017, 2019, 2021, 2023, 2025].map(function (y) { return '<span style=\x22left:' + Math.max(0, ((y * 12 - T0) / (T1 - T0 + 1)) * 100) + '%\x22>' + y + '</span>'; }).join('') + '</div><div class="mx-two">' + btn(c, '● First closed') + btn(o, '● First open weights') + '</div>' + (c && o ? '<div class="mx-lag">' + (function () { var m = lagText(c, o); return m === 0 ? 'Same month.' : m > 0 ? 'Open weights followed about ' + m + ' month' + (m === 1 ? '' : 's') + ' later.' : 'Open weights came about ' + (-m) + ' month' + (m === -1 ? '' : 's') + ' first.'; })() + '</div>' : '') + '</div>';
     });
     return h;
   }
@@ -392,7 +393,7 @@
     renderLabs([]);
     var items = D.items.filter(function (i) { return i.mod.indexOf(S.mod) >= 0 && (S.scope === 'all' || i.flag); });
     var labs = labsFor(S.mod), halves = [];
-    for (var y = 2022; y <= 2026; y++) { halves.push(y + 'H1'); halves.push(y + 'H2'); }
+    for (var y = 2017; y <= 2026; y++) { halves.push(y + 'H1'); halves.push(y + 'H2'); }
     function hk(i) { return i.date.slice(0, 4) + (+i.date.slice(5, 7) <= 6 ? 'H1' : 'H2'); }
     var max = 1, cnt = {};
     items.forEach(function (i) { var k = i.lab + hk(i); cnt[k] = (cnt[k] || 0) + 1; if (cnt[k] > max) max = cnt[k]; });
