@@ -52,6 +52,8 @@
     .mx-chip.open { border-style: dashed; background: #fff; color: #111827; box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px var(--c); }
     .mx-chip.res { opacity: .55; border-style: dotted; }
     .mx-chip.gone { text-decoration: line-through; opacity: .6; }
+    .mx-b { display: inline-block; border-radius: 50%; background: currentColor; margin-right: 5px; vertical-align: -1px; flex: none; }
+    .mx-chip:not(.flag) .mx-b { background: var(--c); } .mx-chip.flag .mx-b { background: #fff; filter: drop-shadow(0 0 3px #fff); }
     .mx-chip.sel { outline: 3px solid #111827; outline-offset: 1px; }
     .mx-chip.dim { opacity: .18; }
     .mx-chip em { font-style: normal; font-size: .6rem; opacity: .8; }
@@ -278,7 +280,8 @@
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var PHONE = function () { return window.innerWidth <= 640; };
-  var labOf = {}, famName = {}, byId = {};
+  var labOf = {}, famName = {}, byId = {}, imp = {};
+  function bubble(i, c) { if (i.flag) c = '#fff'; var n = imp[i.id] || 0, r = 7 + Math.min(10, Math.sqrt(n) * 2.2), g = Math.min(16, 2 + Math.sqrt(n) * 2.4); return '<i class=\x22mx-b\x22 style=\x22width:' + r + 'px;height:' + r + 'px;box-shadow:0 0 ' + g.toFixed(1) + 'px ' + (g / 3).toFixed(1) + 'px ' + c + '\x22></i>'; }
 
   function fmt(d) { var p = d.split('-'); return p.length === 3 ? MON[+p[1] - 1] + ' ' + (+p[2]) + ', ' + p[0] : MON[+p[1] - 1] + ' ' + p[0]; }
   function openLabel(o) { return o === 1 ? 'Open weights' : o === 2 ? 'Research / limited access' : o === 0 ? 'Closed' : 'Licence not recorded'; }
@@ -329,7 +332,7 @@
     var months = {}; items.forEach(function (i) { var m = i.date.slice(0, 7); (months[m] = months[m] || []).push(i); });
     var keys = Object.keys(months).sort().reverse();
     if (!keys.length) return '<div class="mx-card">No releases match these filters.</div>';
-    var h = '<div class="mx-legend"><span><b style="background:#1d4ed8"></b>Flagship</span><span><b style="background:#fff;border-style:dashed"></b>Open weights</span><span><b style="background:#fff;border-style:dotted;opacity:.55"></b>Announced, not released</span><span><s>Retired</s></span><span>Lines join a model to the next release in its family</span></div>';
+    var h = '<div class="mx-legend"><span><b style="background:#1d4ed8"></b>Flagship</span><span><b style="background:#fff;border-style:dashed"></b>Open weights</span><span><b style="background:#fff;border-style:dotted;opacity:.55"></b>Announced, not released</span><span><s>Retired</s></span><span>Lines join a model to the next release in its family</span><span>Bubble size and glow = how many later releases continue its family (within this dataset)</span></div>';
     h += '<div class="mx-gridwrap"><div class="mx-grid" id="mrGrid" style="grid-template-columns:62px repeat(' + labs.length + ', minmax(' + (PHONE() ? 110 : 72) + 'px, 1fr))">';
     h += '<div class="mx-hd"></div>' + labs.map(function (l) { return '<div class="mx-hd" style="--c:' + l[3] + '">' + esc(l[1].split(' (')[0]) + '<small>' + items.filter(function (i) { return i.lab === l[0]; }).length + '</small></div>'; }).join('');
     var yr = '';
@@ -348,7 +351,7 @@
   function chip(i, l) {
     var cls = 'mx-chip' + (i.flag ? ' flag' : '') + (i.open === 1 ? ' open' : '') + (i.st === 'research' ? ' res' : '') + (i.end ? ' gone' : '') + (S.sel === i.id ? ' sel' : '');
     var other = i.mod.filter(function (m) { return m !== S.mod; });
-    return '<button class="' + cls + '" data-id="' + i.id + '" data-fam="' + i.fam + '" style="--c:' + l[3] + '" title="' + esc(i.full) + '">' + esc(i.name) + (other.length ? ' <em>+' + other.join('+') + '</em>' : '') + '</button>';
+    return '<button class="' + cls + '" data-id="' + i.id + '" data-fam="' + i.fam + '" style="--c:' + l[3] + '" title="' + esc(i.full) + ' · ' + (imp[i.id] || 0) + ' later releases in its family">' + bubble(i, l[3]) + esc(i.name) + (other.length ? ' <em>+' + other.join('+') + '</em>' : '') + '</button>';
   }
   function drawLines() {
     var g = $('mrGrid'), svg = $('mrLines'); if (!g || !svg) return;
@@ -466,6 +469,7 @@
 
   fetch('../data/model-releases.json?v=1').then(function (r) { return r.json(); }).then(function (d) {
     D = d; d.labs.forEach(function (l) { labOf[l[0]] = l; }); d.families.forEach(function (f) { famName[f[0]] = f[1]; }); d.items.forEach(function (i) { byId[i.id] = i; });
+    d.items.forEach(function (i) { imp[i.id] = d.items.filter(function (x) { return x.fam === i.fam && x.id !== i.id && (x.date + x.id) > (i.date + i.id); }).length; });
     $('mrList').innerHTML = d.items.map(function (i) { return '<option value="' + esc(i.name) + '">'; }).join('');
     var m = location.hash.match(/m=([\w-]+)/);
     if (m && byId[m[1]]) { S.sel = m[1]; S.mod = byId[m[1]].mod[0]; if (!byId[m[1]].flag) S.scope = 'all'; }

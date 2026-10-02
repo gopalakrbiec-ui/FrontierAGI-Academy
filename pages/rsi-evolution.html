@@ -324,7 +324,8 @@
   var NS = 'http://www.w3.org/2000/svg', MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var isPhone = function () { return window.matchMedia('(max-width: 768px)').matches; };
   var isNarrow = function () { return window.matchMedia('(max-width: 1000px)').matches; };
-  var D, LV = {}, FM = {}, P = [], byId = {}, firstOf = {};
+  var D, LV = {}, FM = {}, P = [], byId = {}, firstOf = {}, imp = {};
+  function glow(id, small) { var n = imp[id] || 0, g = Math.min(small ? 7 : 16, 1.5 + Math.sqrt(n) * (small ? 1.1 : 2.4)); if (small) return ';box-shadow:0 0 ' + g.toFixed(1) + 'px ' + (g / 5).toFixed(1) + 'px color-mix(in srgb, var(--c) 55%, transparent)'; return ';--g:' + g.toFixed(1) + 'px;box-shadow:0 0 ' + g.toFixed(1) + 'px ' + (g / 3).toFixed(1) + 'px color-mix(in srgb, var(--c) 60%, transparent)'; }
   var st = { view: 'stair', scope: 'all', fams: new Set(), sel: null, merge: false, lvl: 1 };
   var famOrder = [];
 
@@ -370,8 +371,8 @@
   var col = function (p) { return FM[p.f][2]; };
   var mLabel = function (m) { return MON[+m.slice(5) - 1]; };
   function scopeList() { return st.scope === 'feat' ? P.filter(function (p) { return p.star; }) : P; }
-  function chipHtml(p, size) { return '<button type="button" class="chip' + (firstOf[p.l] === p.id ? ' first-l' : '') + '" data-id="' + p.id + '" style="--c:' + col(p) + '" title="' + esc(p.t) + ' (' + p.d + ')"><i style="width:' + size + 'px;height:' + size + 'px"></i><span>' + esc(p.s) + '</span>' + (firstOf[p.l] === p.id ? '<b class="first" title="First paper at this level in the catalog">①</b>' : '') + '</button>'; }
-  function dotHtml(p, d) { return '<i class="dot' + (p.o.length > 1 ? ' multi' : '') + '" data-id="' + p.id + '" style="--c:' + col(p) + ';width:' + d + 'px;height:' + d + 'px" title="' + esc(p.s) + ' (' + p.d + ', ' + LV[p.l][1] + ')"></i>'; }
+  function chipHtml(p, size) { return '<button type="button" class="chip' + (firstOf[p.l] === p.id ? ' first-l' : '') + '" data-id="' + p.id + '" style="--c:' + col(p) + '" title="' + esc(p.t) + ' (' + p.d + ') · ' + (imp[p.id] || 0) + ' later papers build on its family and level"><i style="width:' + size + 'px;height:' + size + 'px' + glow(p.id) + '"></i><span>' + esc(p.s) + '</span>' + (firstOf[p.l] === p.id ? '<b class="first" title="First paper at this level in the catalog">①</b>' : '') + '</button>'; }
+  function dotHtml(p, d) { return '<i class="dot' + (p.o.length > 1 ? ' multi' : '') + '" data-id="' + p.id + '" style="--c:' + col(p) + ';width:' + d + 'px;height:' + d + 'px' + glow(p.id, true) + '" title="' + esc(p.s) + ' (' + p.d + ', ' + LV[p.l][1] + ')"></i>'; }
   var famActive = function (p) { return st.fams.has(p.f); };
 
   /* ── view 1 & 2: month rows × columns ── */
@@ -471,7 +472,7 @@
   function clearSel() { st.sel = null; applyState(); panelIntro(); $('rsPanel').classList.remove('open'); try { history.replaceState(null, '', location.pathname); } catch (e) {} }
 
   /* ── controls ── */
-  var BLURB = { stair: 'Each dot is a paper. Columns are autonomy levels, L1 (AI runs a human-designed loop) to L5 (AI improves the improvement mechanism); rows are months, newest first. Colour shows what it rewrites. Labelled chips are the catalog\'s featured papers; ① marks the first paper at each level.', map: 'Columns are the ten kinds of thing an AI can rewrite. Dot size grows with autonomy level; a ring means the paper updates two or more families. Select a ringed paper to see the other families it reaches.', ind: 'Left: how many catalog papers appeared each month, stacked by level. Right: publicly disclosed cases where AI takes part in its own organisation\'s AI R&D. These are organisation-reported and each comes with the catalog\'s note on what it does not show.' };
+  var BLURB = { stair: 'Each dot is a paper; the glow grows with how many later papers continue its family at the same or a higher level (counted within this catalog, not citations). Columns are autonomy levels, L1 (AI runs a human-designed loop) to L5 (AI improves the improvement mechanism); rows are months, newest first. Colour shows what it rewrites. Labelled chips are the catalog\'s featured papers; ① marks the first paper at each level.', map: 'Columns are the ten kinds of thing an AI can rewrite. Dot size grows with autonomy level; a ring means the paper updates two or more families. Select a ringed paper to see the other families it reaches.', ind: 'Left: how many catalog papers appeared each month, stacked by level. Right: publicly disclosed cases where AI takes part in its own organisation\'s AI R&D. These are organisation-reported and each comes with the catalog\'s note on what it does not show.' };
   function syncScope() { [].forEach.call($('rsScope').children, function (b) { b.classList.toggle('on', b.dataset.scope === st.scope); }); }
   function buildFams() {
     $('rsFams').innerHTML = '<span class="lbl">' + (st.view === 'map' && isPhone() ? 'Families (pick up to 4):' : st.view === 'map' ? 'Families shown:' : 'Highlight by family:') + '</span>' + famOrder.map(function (c) { return '<button type="button" data-f="' + c + '" class="' + (st.fams.has(c) ? '' : 'off') + '" style="--c:' + FM[c][2] + '" aria-pressed="' + st.fams.has(c) + '"><i></i>' + esc(FM[c][1]) + '</button>'; }).join('') + '<button type="button" class="rs-btn" data-allfam style="padding:3px 9px;font-size:.72rem">All</button>';
@@ -512,7 +513,7 @@
   }
 
   fetch('../data/rsi-papers.json?v=1').then(function (r) { return r.json(); }).then(function (d) {
-    D = d; P = d.papers; d.levels.forEach(function (l) { LV[l[0]] = l; }); d.families.forEach(function (f) { FM[f[0]] = f; famOrder.push(f[0]); });
+    D = d; P = d.papers; P.forEach(function (p) { imp[p.id] = P.filter(function (q) { return q.f === p.f && q.l >= p.l && (q.d + q.id) > (p.d + p.id); }).length; }); d.levels.forEach(function (l) { LV[l[0]] = l; }); d.families.forEach(function (f) { FM[f[0]] = f; famOrder.push(f[0]); });
     P.forEach(function (p) { byId[p.id] = p; byCount[p.f] = (byCount[p.f] || 0) + 1; }); [1, 2, 3, 4, 5].forEach(function (l) { var f = P.filter(function (p) { return p.l === l; }).sort(function (a, b) { return a.id < b.id ? -1 : 1; })[0]; if (f) firstOf[l] = f.id; });
     st.fams = new Set(famOrder);
     $('rsScope').children[0].textContent = '⭐ Featured ' + P.filter(function (p) { return p.star; }).length; $('rsScope').children[1].textContent = 'All ' + P.length;
