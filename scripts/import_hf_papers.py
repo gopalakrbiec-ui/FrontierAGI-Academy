@@ -39,7 +39,9 @@ THEMES = [
     ["safe", "Safety & alignment", "#be123c", ["safety", "alignment", "jailbreak", "hallucination", "trustworthy", "red teaming", "interpretability", "bias"]],
     ["embody", "Robotics & embodied AI", "#0d9488", ["robot", "embodied", "vision-language-action", "vla", "manipulation", "navigation", "autonomous driving"]],
     ["sci", "Science & domain models", "#8b5cf6", ["protein", "biology", "chemistry", "medical", "clinical", "scientific", "physics", "finance", "legal", "code generation", "geospatial"]],
-    ["arch", "Architectures & training", "#0ea5e9", ["architecture", "transformer", "state space", "mamba", "attention", "pre-training", "pretraining", "scaling law", "optimizer", "tokenizer", "language model"]],
+    ["arch", "Architectures & training", "#0ea5e9", ["architecture", "transformer", "state space", "mamba", "attention", "pre-training", "pretraining", "scaling law", "optimizer", "tokenizer", "instruction tuning", "fine-tun", "lora", "model merging", "imitation"]],
+    ["vision", "3D & vision tasks", "#d946ef", ["3d", "gaussian splatting", "radiance field", "nerf", "segmentation", "depth estimation", "object detection", "avatar", "novel-view", "tracking", "image restoration"]],
+    ["rag", "Retrieval & RAG", "#f43f5e", ["retrieval", "rag", "recommend", "question answering", "document"]],
     ["other", "Other", "#94a3b8", []],
 ]
 
@@ -112,7 +114,7 @@ def fetch_day(d, tries=6):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--from", dest="start", default="2023-05")
-    ap.add_argument("--to", default=date.today().strftime("%Y-%m"))
+    ap.add_argument("--to", default=(date.today().replace(day=1) - timedelta(days=1)).strftime("%Y-%m"), help="last month to fetch (default: last complete month)")
     ap.add_argument("--top", type=int, default=50)
     ap.add_argument("--dump-dir")
     ap.add_argument("--relabel", action="store_true")
