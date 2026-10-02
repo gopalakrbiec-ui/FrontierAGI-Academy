@@ -62,6 +62,18 @@
     .hf-empty { border: 2px dashed #fcd34d; background: #fffbeb; border-radius: 16px; padding: 24px; text-align: center; color: #78350f; line-height: 1.6; }
     .hf-empty code { background: #fef3c7; padding: 2px 6px; border-radius: 6px; font-size: .84rem; }
     .hf-caveat { font-size: .84rem; line-height: 1.6; color: #374151; margin-top: 22px; } .hf-caveat ul { margin: 6px 0 0 18px; padding: 0; } .hf-caveat a { color: #b45309; }
+    .hf-embedbar { display: none; }
+    body.hf-embed .navbar, body.hf-embed .nav-panel-wrap, body.hf-embed .nav-backdrop, body.hf-embed .hf-hero, body.hf-embed .hf-caveat, body.hf-embed #hfNote { display: none !important; }
+    body.hf-embed main { padding-top: 0 !important; }
+    body.hf-embed .hf-wrap { max-width: none; padding: 8px 10px 10px; }
+    body.hf-embed .hf-embedbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-size: .82rem; }
+    body.hf-embed .hf-embedbar a { font-weight: 700; color: #b45309; text-decoration: none; }
+    body.hf-embed .hf-bar { gap: 6px; margin-bottom: 6px; } body.hf-embed .hf-seg button { padding: 6px 10px; font-size: .76rem; }
+    body.hf-embed .hf-themes { margin-bottom: 6px; gap: 4px; } body.hf-embed .hf-themes button { padding: 3px 8px; font-size: .7rem; }
+    body.hf-embed .hf-layout { grid-template-columns: 1fr; }
+    body.hf-embed .hf-panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 55%; border-radius: 14px 14px 0 0; z-index: 60; box-shadow: 0 -10px 40px rgba(0,0,0,.25); display: none; }
+    body.hf-embed .hf-panel.show { display: block; } body.hf-embed .hf-x { display: block; }
+    @media (max-width: 640px) { body.hf-embed .hf-embedbar b, body.hf-embed .hf-themes { display: none; } body.hf-embed .hf-embedbar { justify-content: flex-end; } }
     @media (max-width: 1000px) {
       .hf-layout { grid-template-columns: 1fr; }
       .hf-panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 58vh; border-radius: 18px 18px 0 0; z-index: 60; box-shadow: 0 -10px 40px rgba(0,0,0,.25); display: none; }
@@ -172,6 +184,7 @@
 
 <main style="padding-top: 94px;">
 <div class="hf-wrap">
+  <div class="hf-embedbar"><b>📈 HF Paper Themes · May 2023 → today</b><a href="hf-paper-themes.html" target="_top">Open the full page ↗</a></div>
   <div class="hf-hero">
     <span class="hf-badge">Community-voted · month by month</span>
     <h1>What the Community Reads: Hugging Face Paper Themes</h1>
@@ -213,6 +226,7 @@
 <script src="../app.js"></script>
 <script>
 (function () {
+  if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('hf-embed');
   var D, M = [], TH = {}, S = { v: 'stream', m: 'share', month: null, theme: null, sel: null };
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
