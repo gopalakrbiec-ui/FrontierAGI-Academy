@@ -13,6 +13,10 @@ on:
       top:
         description: "Papers kept per month"
         default: "50"
+      include_current:
+        description: "Also fetch the current month, shown as in progress"
+        type: boolean
+        default: false
   schedule:
     - cron: "17 5 2 * *"
 
@@ -33,7 +37,7 @@ jobs:
         continue-on-error: true
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: python3 scripts/import_hf_papers.py --resume --from "${{ inputs.from || '2023-05' }}" --top "${{ inputs.top || '50' }}"
+        run: python3 scripts/import_hf_papers.py --resume --from "${{ inputs.from || '2023-05' }}" --top "${{ inputs.top || '50' }}" ${{ inputs.include_current && '--include-current' || '' }}
       - name: Rebuild generated files and validate
         run: |
           python3 scripts/build.py

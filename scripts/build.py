@@ -491,6 +491,8 @@ def validate_hf():
     for k in ("name", "url"):
         if not d.get("source", {}).get(k):
             problems.append(f"data/hf-papers.json: source.{k} is required (attribution)")
+    if any(m not in d["months"] for m in d.get("partial", [])):
+        problems.append("data/hf-papers.json: partial lists a month that has no data")
     for ym, ps in d["months"].items():
         if not re.fullmatch(r"20\d\d-\d\d", ym) or not "2023-01" <= ym <= now:
             problems.append(f"data/hf-papers.json: month {ym} is invalid or out of range")

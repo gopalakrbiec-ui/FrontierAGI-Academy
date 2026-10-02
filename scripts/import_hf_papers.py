@@ -118,9 +118,13 @@ def main():
     ap.add_argument("--top", type=int, default=50)
     ap.add_argument("--dump-dir")
     ap.add_argument("--relabel", action="store_true")
+    ap.add_argument("--include-current", action="store_true", help="also fetch the current, incomplete month and flag it as partial (in progress) in the data")
     ap.add_argument("--resume", action="store_true", help="keep months already in the file (except the newest, which may be partial) and fetch only the rest")
     ap.add_argument("--pause", type=float, default=1.2, help="seconds between requests")
     a = ap.parse_args()
+    cur = date.today().strftime("%Y-%m")
+    if a.include_current and a.to < cur:
+        a.to = cur
 
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else None
     if a.relabel:
@@ -134,9 +138,9 @@ def main():
         months, bad_total, incomplete = {}, 0, []
         kept = {}
         if a.resume and old:
-            ks = sorted(old["months"])
-            kept = {m: old["months"][m] for m in ks[:-1] if a.start <= m <= a.to}
-            print(f"resuming: keeping {len(kept)} saved months, refetching from {ks[-1] if ks else a.start}")
+            stale = set(old.get("partial", []))
+            kept = {m: v for m, v in old["months"].items() if m not in stale and a.start <= m <= a.to}
+            print(f"resuming: keeping {len(kept)} saved months, refetching the rest" + (f" (including in-progress {', '.join(sorted(stale))})" if stale else ""))
         for ym in months_between(a.start, a.to):
             if ym in kept:
                 months[ym] = kept[ym]
@@ -182,6 +186,12 @@ def main():
         "themes": [[t[0], t[1], t[2]] for t in THEMES],
         "months": dict(sorted(months.items())),
     }
+    if not a.relabel:
+        part = [cur] if (a.include_current and cur in months) else []
+    else:
+        part = [m for m in (old or {}).get("partial", []) if m in months]
+    if part:
+        data["partial"] = part
     OUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     n = sum(len(v) for v in months.values())
     other = sum(1 for v in months.values() for p in v if p["th"] == "other")
