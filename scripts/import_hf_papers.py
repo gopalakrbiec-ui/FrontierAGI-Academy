@@ -14,9 +14,11 @@ https://huggingface.co/api/daily_papers?date=YYYY-MM-DD
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from datetime import date, timedelta
 from pathlib import Path
@@ -90,9 +92,21 @@ def months_between(a, b):
             y, m = y + 1, 1
 
 
-def fetch_day(d):
-    req = urllib.request.Request(API.format(d=d.isoformat()), headers={"User-Agent": "FrontierAGI-Academy importer"})
-    return json.loads(urllib.request.urlopen(req, timeout=60).read().decode("utf-8"))
+def fetch_day(d, tries=6):
+    """One day of Daily Papers. Retries 429/5xx with backoff (honours Retry-After); raises if it still fails."""
+    headers = {"User-Agent": "FrontierAGI-Academy importer"}
+    if os.environ.get("HF_TOKEN"):
+        headers["Authorization"] = "Bearer " + os.environ["HF_TOKEN"]
+    for n in range(tries):
+        try:
+            req = urllib.request.Request(API.format(d=d.isoformat()), headers=headers)
+            return json.loads(urllib.request.urlopen(req, timeout=60).read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 504) or n == tries - 1:
+                raise
+            wait = int(e.headers.get("Retry-After") or 0) or 15 * 2 ** n
+            print(f"  {d}: HTTP {e.code}, waiting {wait}s (try {n + 1}/{tries})", file=sys.stderr)
+            time.sleep(min(wait, 300))
 
 
 def main():
@@ -102,6 +116,8 @@ def main():
     ap.add_argument("--top", type=int, default=50)
     ap.add_argument("--dump-dir")
     ap.add_argument("--relabel", action="store_true")
+    ap.add_argument("--resume", action="store_true", help="keep months already in the file (except the newest, which may be partial) and fetch only the rest")
+    ap.add_argument("--pause", type=float, default=1.2, help="seconds between requests")
     a = ap.parse_args()
 
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else None
@@ -113,9 +129,17 @@ def main():
                 p["th"], p["tg"] = label(p["ti"], p.get("kw", []))
         months = old["months"]
     else:
-        months, bad_total = {}, 0
+        months, bad_total, incomplete = {}, 0, []
+        kept = {}
+        if a.resume and old:
+            ks = sorted(old["months"])
+            kept = {m: old["months"][m] for m in ks[:-1] if a.start <= m <= a.to}
+            print(f"resuming: keeping {len(kept)} saved months, refetching from {ks[-1] if ks else a.start}")
         for ym in months_between(a.start, a.to):
-            seen = {}
+            if ym in kept:
+                months[ym] = kept[ym]
+                continue
+            seen, failed = {}, 0
             for d in month_days(ym):
                 try:
                     if a.dump_dir:
@@ -125,15 +149,20 @@ def main():
                         payload = json.loads(f.read_text(encoding="utf-8"))
                     else:
                         payload = fetch_day(d)
-                        time.sleep(0.3)
+                        time.sleep(a.pause)
                 except Exception as e:
-                    print(f"skip {d}: {e}", file=sys.stderr)
+                    print(f"FAILED {d}: {e}", file=sys.stderr)
+                    failed += 1
                     continue
                 rows, bad = rows_from(payload)
                 bad_total += bad
                 for r in rows:
                     if r["id"] not in seen or r["u"] > seen[r["id"]]["u"]:
                         seen[r["id"]] = r
+            if failed:
+                incomplete.append(ym)
+                print(f"{ym}: {failed} day(s) failed, month NOT saved (a partial month would skew the charts)", file=sys.stderr)
+                continue
             top = sorted(seen.values(), key=lambda r: (-r["u"], r["id"]))[: a.top]
             for r in top:
                 r["th"], r["tg"] = label(r["ti"], r["kw"])
@@ -155,6 +184,9 @@ def main():
     n = sum(len(v) for v in months.values())
     other = sum(1 for v in months.values() for p in v if p["th"] == "other")
     print(f"wrote {OUT.name}: {n} papers over {len(months)} months; 'Other' = {other} ({100 * other // max(n, 1)}%)")
+    if not a.relabel and incomplete:
+        print(f"INCOMPLETE months not saved: {', '.join(incomplete)}. Re-run with --resume (add HF_TOKEN to raise rate limits).", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":

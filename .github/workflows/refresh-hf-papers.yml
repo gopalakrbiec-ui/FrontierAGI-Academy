@@ -29,7 +29,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Fetch papers
-        run: python3 scripts/import_hf_papers.py --from "${{ inputs.from || '2023-05' }}" --top "${{ inputs.top || '50' }}"
+        id: fetch
+        continue-on-error: true
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python3 scripts/import_hf_papers.py --resume --from "${{ inputs.from || '2023-05' }}" --top "${{ inputs.top || '50' }}"
       - name: Rebuild generated files and validate
         run: |
           python3 scripts/build.py
@@ -45,3 +49,8 @@ jobs:
             git commit -m "Refresh Hugging Face papers data"
             git push
           fi
+      - name: Fail if the fetch was incomplete
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "Some months could not be fetched (rate limiting?). Completed months were committed; run this workflow again to resume."
+          exit 1
