@@ -51,6 +51,15 @@
     .hf-bub.pulse::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--c); pointer-events: none; animation: hfPulse 2.8s ease-out infinite; animation-delay: var(--pd, 0s); }
     @keyframes hfPulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.8); opacity: 0; } }
     @media (prefers-reduced-motion: reduce) { .hf-bub.pulse::after { animation: none; opacity: 0; } }
+    .hf-sgw { max-height: 74vh; overflow: auto; border-radius: 10px; }
+    .hf-sg { display: grid; min-width: 100%; }
+    .hf-sh { position: sticky; top: 0; z-index: 3; background: #fff; border-bottom: 3px solid var(--c, #e5e7eb); padding: 6px 3px; font-size: .64rem; font-weight: 800; text-align: center; line-height: 1.25; }
+    .hf-sh small { display: block; font-weight: 600; color: #6b7280; }
+    .hf-sm { font-size: .68rem; font-weight: 700; color: #6b7280; padding: 8px 6px; border-bottom: 1px solid #f3f4f6; position: sticky; left: 0; background: #fff; z-index: 2; }
+    .hf-sm.hatch { background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(180,83,9,.14) 4px 6px); }
+    .hf-sc { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; align-content: center; justify-content: center; padding: 5px 3px; border-bottom: 1px solid #f3f4f6; border-left: 1px solid #f3f4f6; min-height: 44px; }
+    .hf-sc.dim .hf-bub { opacity: .15; }
+    .hf-sy { grid-column: 1 / -1; background: #f3f4f6; font-size: .72rem; font-weight: 800; color: #374151; padding: 4px 10px; position: sticky; left: 0; z-index: 1; }
     .hf-panel { position: sticky; top: 110px; border: 1.5px solid #e5e7eb; border-radius: 16px; background: #fff; padding: 16px; max-height: calc(100vh - 130px); overflow: auto; }
     .hf-panel h3 { margin: 6px 0; font-size: 1.05rem; line-height: 1.3; }
     .hf-panel p { font-size: .84rem; line-height: 1.55; color: #374151; margin: 8px 0; }
@@ -227,7 +236,7 @@
 <script>
 (function () {
   if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('hf-embed');
-  var D, M = [], TH = {}, S = { v: 'stream', m: 'share', month: null, theme: null, sel: null };
+  var D, M = [], TH = {}, S = { embed: document.body.classList.contains('hf-embed'), v: 'stream', m: 'share', month: null, theme: null, sel: null };
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -244,21 +253,25 @@
   }
 
   function stream() {
-    var W = 960, H = 340, L = 30, R = 30, T = 14, B = 26, n = M.length, th = order();
-    var x = function (i) { return L + (n === 1 ? (W - L - R) / 2 : i * (W - L - R) / (n - 1)); };
-    var share = M.map(function (m) { var t = tot(m) || 1; return th.map(function (c) { return tot(m, c) / t; }); });
-    // symmetric baseline, thickest at the middle
-    var y0 = share.map(function (row) { var s = row.reduce(function (a, b) { return a + b; }, 0); return (1 - s) / 2; });
-    var area = th.map(function (c, k) {
-      var up = [], dn = [];
-      M.forEach(function (m, i) { var base = y0[i] + share[i].slice(0, k).reduce(function (a, b) { return a + b; }, 0); up.push([x(i), T + (1 - base - share[i][k]) * (H - T - B)]); dn.push([x(i), T + (1 - base) * (H - T - B)]); });
-      var d = 'M' + up.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L') + ' L' + dn.reverse().map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L') + 'Z';
-      return '<path class="hf-band' + (S.theme && S.theme !== c ? ' dim' : '') + '" data-t="' + c + '" d="' + d + '" fill="' + TH[c][2] + '" stroke="#fff" stroke-width="1"><title>' + esc(TH[c][1]) + '</title></path>';
-    }).join('');
-    var step = Math.max(1, Math.ceil(n / 14)), ax = M.map(function (m, i) { return i % step && i !== n - 1 ? '' : '<text x="' + x(i) + '" y="' + (H - 8) + '" font-size="10" fill="#6b7280" text-anchor="middle">' + mlabel(m).replace(' 20', ' ’') + (isP(m) ? '*' : '') + '</text>'; }).join('');
-    var pm = '';
-    M.forEach(function (m, i) { if (isP(m) && i > 0) pm += '<rect x="' + x(i - 1) + '" y="' + T + '" width="' + (x(i) - x(i - 1)) + '" height="' + (H - T - B) + '" fill="#fff" opacity=".55"/><line x1="' + x(i) + '" x2="' + x(i) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="#111827" stroke-dasharray="4 3"/><text x="' + (x(i) - 6) + '" y="' + (T + 12) + '" font-size="10" font-weight="700" fill="#111827" text-anchor="end">in progress →</text>'; });
-    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Stacked streams of theme share by month">' + area + pm + ax + '</svg>';
+    var th = order(), maxU = 1, n = th.length;
+    M.forEach(function (m) { D.months[m].forEach(function (p) { if (p.u > maxU) maxU = p.u; }); });
+    var cnt = {}; th.forEach(function (c) { cnt[c] = 0; });
+    M.forEach(function (m) { D.months[m].forEach(function (p) { cnt[p.th]++; }); });
+    var h = '<div class="hf-sgw"><div class="hf-sg" style="grid-template-columns:64px repeat(' + n + ', minmax(' + (S.embed ? 84 : 92) + 'px, 1fr))"><div class="hf-sh"></div>' + th.map(function (c) { return '<div class="hf-sh" style="--c:' + TH[c][2] + '">' + esc(TH[c][1]) + '<small>' + cnt[c] + ' papers</small></div>'; }).join('');
+    var yr = '';
+    M.slice().reverse().forEach(function (m) {
+      var y = m.slice(0, 4); if (y !== yr) { yr = y; h += '<div class="hf-sy">' + y + '</div>'; }
+      var ps = D.months[m], top3 = ps.slice().sort(function (a, b) { return b.u - a.u; }).slice(0, 3).map(function (p) { return p.id; });
+      h += '<div class="hf-sm' + (isP(m) ? ' hatch' : '') + '" title="' + (isP(m) ? 'In progress: upvotes are still growing' : '') + '">' + MON[+m.slice(5) - 1] + (isP(m) ? '*' : '') + '</div>';
+      th.forEach(function (c) {
+        var list = ps.filter(function (p) { return p.th === c; }).sort(function (a, b) { return b.u - a.u; });
+        h += '<div class="hf-sc' + (S.theme && S.theme !== c ? ' dim' : '') + '" data-t="' + c + '">' + list.map(function (p) {
+          var d = Math.round(7 + 28 * Math.sqrt(p.u / maxU)), k = top3.indexOf(p.id);
+          return '<button class="hf-bub' + (k >= 0 ? ' pulse' : '') + (S.sel === p.id ? ' sel' : '') + '" data-id="' + p.id + '" style="--c:' + TH[c][2] + ';width:' + d + 'px;height:' + d + 'px;' + (k >= 0 ? '--pd:' + (-k * 0.7) + 's' : '') + '" title="' + esc(p.ti) + ' · ' + p.u + ' upvotes"></button>';
+        }).join('') + '</div>';
+      });
+    });
+    return h + '</div></div>';
   }
 
   function heat() {
@@ -303,7 +316,7 @@
       el.innerHTML = '<span class="tag" style="--c:' + TH[S.theme][2] + '">' + esc(TH[S.theme][1]) + '</span><h3>' + rows.length + ' papers across ' + Object.keys(D.months).length + ' months</h3><p>Most upvoted:</p>' + list(rows.slice(0, 12));
       el.classList.remove('show');
     } else {
-      el.innerHTML = '<span class="tag" style="--c:#b45309">How to use</span><h3>Pick a theme or a paper</h3><p><b>Streams:</b> band thickness is a theme\'s share each month. <b>Month × theme:</b> darker cells hold more. <b>Bubbles:</b> one month, bubble size = upvotes, pulsing rings = the month\'s top three.</p><p>Click a theme to list its most upvoted papers.</p>';
+      el.innerHTML = '<span class="tag" style="--c:#b45309">How to use</span><h3>Pick a theme or a paper</h3><p><b>Streams:</b> one bubble per paper, sized by upvotes, in its month row and theme column. <b>Month × theme:</b> darker cells hold more. <b>Bubbles:</b> one month, bubble size = upvotes, pulsing rings = the month\'s top three.</p><p>Click a theme to list its most upvoted papers.</p>';
       el.classList.remove('show');
     }
   }
@@ -312,9 +325,10 @@
     Array.prototype.forEach.call($('hfViews').children, function (b) { b.classList.toggle('on', b.dataset.v === S.v); });
     Array.prototype.forEach.call($('hfMetric').children, function (b) { b.classList.toggle('on', b.dataset.m === S.m); });
     $('hfMonth').style.display = S.v === 'bub' ? '' : 'none';
+    $('hfMetric').style.display = S.v === 'heat' ? '' : 'none';
     themeBar();
     $('hfBody').innerHTML = S.v === 'stream' ? stream() : S.v === 'heat' ? heat() : bubbles();
-    $('hfNote').textContent = S.v === 'stream' ? 'Each band is a theme; thickness is its share of that month\'s ' + (S.m === 'share' ? 'upvotes' : 'papers') + '. Click a band to list its top papers.' : S.v === 'heat' ? 'Cells show ' + (S.m === 'share' ? 'total upvotes' : 'paper count') + ' per theme and month. Click a cell or theme to list its papers.' : ml(S.month) + ': ' + D.months[S.month].length + ' papers, grouped by theme.' + (isP(S.month) ? ' The month is not over, so upvotes are still growing.' : '');
+    $('hfNote').textContent = S.v === 'stream' ? 'Each column is a theme and each row a month (newest first). Every bubble is a paper, sized by upvotes on one shared scale; pulsing rings mark each month\'s top three. Click a bubble or a theme.' : S.v === 'heat' ? 'Cells show ' + (S.m === 'share' ? 'total upvotes' : 'paper count') + ' per theme and month. Click a cell or theme to list its papers.' : ml(S.month) + ': ' + D.months[S.month].length + ' papers, grouped by theme.' + (isP(S.month) ? ' The month is not over, so upvotes are still growing.' : '');
     panel();
   }
 
