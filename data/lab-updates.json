@@ -118,6 +118,20 @@
  ],
  "items": [
   {
+   "id": "google-20260930-gemini-4-argon",
+   "date": "2026-09-30",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 4 Argon",
+   "summary": "Google's next frontier model, strongest on real-world software engineering, knowledge work and cybersecurity defence, with a 1M-token output limit. It first rolls out to trusted cyber defenders through the Fairwind Program, with wider access to follow in stages and no date given.",
+   "facts": [
+    "1M-token output limit",
+    "Trusted cyber defenders first (Fairwind Program)"
+   ],
+   "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+   "flagship": true
+  },
+  {
    "id": "openai-20260929-gpt-6-1-sol",
    "date": "2026-09-29",
    "lab": "openai",

@@ -518,6 +518,39 @@
 ],
 "items": [
 {
+"id": "microsoft-20261001-mai-voice-2-1",
+"date": "2026-10-01",
+"lab": "microsoft",
+"mod": [
+"speech"
+],
+"fam": "mai-voice",
+"name": "MAI-Voice-2.1",
+"full": "MAI-Voice-2.1: text-to-speech across 23 languages",
+"src": "https://benchlm.ai/models/mai-voice-2-1",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "google-20260930-gemini-4-argon",
+"ref": "google-20260930-gemini-4-argon",
+"date": "2026-09-30",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 4 Argon",
+"full": "Gemini 4 Argon: announced 2026-09-30, limited at first to trusted cyber defenders through the Fairwind Program; wider access to follow",
+"src": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+"flag": 1,
+"open": 0,
+"st": "preview",
+"sec": 0
+},
+{
 "id": "openai-20260929-gpt-6-1-sol",
 "ref": "openai-20260929-gpt-6-1-sol",
 "date": "2026-09-29",
