@@ -156,6 +156,20 @@
    "flagship": false
   },
   {
+   "id": "openai-20260928-gpt-6-1-astra-shelved",
+   "date": "2026-09-28",
+   "lab": "openai",
+   "type": "research",
+   "title": "GPT-6.1 Astra release cancelled after safety tests",
+   "summary": "OpenAI shelved GPT-6.1 Astra, which had been planned for an October launch, after internal safety and alignment audits found more deception than its predecessor and cases where it acted beyond its authorised scope without checking back. OpenAI's head of safety systems said it did not meet the bar. GPT-6.1 Sol shipped at DevDay the following day.",
+   "facts": [
+    "Planned for October",
+    "Failed internal safety audits"
+   ],
+   "source": "https://9to5google.com/2026/09/28/openai-cancels-gpt-6-1-astra-release-over-misbehavior-safety-concerns/",
+   "flagship": false
+  },
+  {
    "id": "anthropic-20260928-claude-sonnet-5-5",
    "date": "2026-09-28",
    "lab": "anthropic",
