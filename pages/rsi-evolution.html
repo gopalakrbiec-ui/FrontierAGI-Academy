@@ -71,6 +71,9 @@
     .rs-head small { font-weight: 500; color: #9ca3af; font-size: .64rem; }
     .rs-row { display: flex; border-bottom: 1px solid #f1f5f9; }
     .rs-yr { padding: 4px 10px; font-size: .74rem; font-weight: 800; letter-spacing: .04em; color: #4b5563; background: #f8fafc; border-bottom: 1px solid #e5e7eb; }
+    .rs-warn { padding: 8px 12px; background: #fffbeb; border-bottom: 1.5px solid #fcd34d; color: #78350f; font-size: .76rem; line-height: 1.5; font-weight: 600; position: sticky; left: 0; }
+    .rs-row.rs-part .rs-m { background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(180,83,9,.16) 4px 6px); color: #92400e; }
+    .rs-row.rs-part .rs-cell { background-color: #fffdf5; }
     .rs-m { flex: none; box-sizing: border-box; padding: 6px 6px 0 0; text-align: right; font-size: .7rem; font-weight: 700; color: #9ca3af; }
     .rs-cell { flex: none; box-sizing: border-box; padding: 5px 4px 7px; border-left: 1px solid #f1f5f9; min-width: 0; position: relative; }
     .rs-cell.link { background: #fff7ed; box-shadow: inset 0 0 0 2px #fdba74; }
@@ -394,9 +397,12 @@
     $('rsHead').innerHTML = '<div style="width:' + rail + 'px"></div>' + cols.map(function (c) { return '<div style="width:' + cw + 'px;--c:' + c.color + '">' + esc(kind === 'stair' ? c.short : c.name) + '<small>' + (kind === 'stair' ? esc(c.sub) + ' · ' : '') + (colCount[c.k] || 0) + '</small></div>'; }).join('');
     var months = Array.from(new Set(visible.map(function (p) { return p.d; }))).sort().reverse(), html = '', lastY = '', pitchMax = kind === 'stair' ? 8 : 15;
     var k = Math.max(1, Math.floor((cw - 10) / (pitchMax + 3)));
+    var CUT = '2026-07', cmon = {}; P.forEach(function (q) { cmon[q.d] = (cmon[q.d] || 0) + 1; });
+    var warnDone = false, lateTxt = ['2026-06', '2026-07', '2026-08', '2026-09'].filter(function (x) { return cmon[x] != null; }).map(function (x) { return mLabel(x) + ' ' + cmon[x]; }).join(' · ');
     months.forEach(function (m) {
+      if (m >= CUT && !warnDone) { warnDone = true; html += '<div class="rs-warn" style="width:' + tot + 'px">⚠️ Hatched months (Jul 2026 onward) are incomplete. The catalog screened papers systematically up to about June 2026 and now adds new ones by hand, so recent months undercount. Papers per month in the catalog: ' + lateTxt + '. Do not read the drop as a real decline in RSI research.</div>'; }
       if (m.slice(0, 4) !== lastY) { lastY = m.slice(0, 4); html += '<div class="rs-yr" style="width:' + tot + 'px">' + lastY + '</div>'; }
-      html += '<div class="rs-row" style="width:' + tot + 'px"><div class="rs-m" style="width:' + rail + 'px">' + mLabel(m) + '</div>';
+      html += '<div class="rs-row' + (m >= CUT ? ' rs-part' : '') + '" style="width:' + tot + 'px"><div class="rs-m" style="width:' + rail + 'px">' + mLabel(m) + '</div>';
       cols.forEach(function (c) {
         var ps = visible.filter(function (p) { return p.d === m && colKey(p) === c.k; }).sort(function (a, b) { return (b.star ? 1 : 0) - (a.star ? 1 : 0) || (a.id < b.id ? 1 : -1); });
         var chips = ps.filter(function (p) { return p.star || firstOf[p.l] === p.id; }), dots = ps.filter(function (p) { return !(p.star || firstOf[p.l] === p.id); });
