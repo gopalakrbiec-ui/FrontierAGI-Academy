@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "forward-deployed-engineers-great-role-merge",
+      "title": "Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge",
+      "excerpt": "OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. What the forward deployed role is, whether it is consulting with a better title, and what the data says about software roles merging \u2014 with interactive charts and every number sourced.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-13",
+      "readTime": "15 min",
+      "tags": [
+        "Explainer",
+        "Careers"
+      ],
+      "emoji": "\ud83e\uddd1\u200d\ud83d\udd27",
+      "featured": false
+    },
+    {
       "slug": "ai-research-1950-1980-papers",
       "title": "AI Research in 1950\u20131980: The Three Decades That Founded the Field",
       "excerpt": "From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN \u2014 twenty founding papers and milestones in eight themes, explained with animations, plus a runnable A* search lab.",
