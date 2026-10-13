@@ -518,6 +518,90 @@
 ],
 "items": [
 {
+"id": "meta-20261012-muse-wonder-1-0",
+"date": "2026-10-12",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "muse",
+"name": "Muse Wonder 1.0",
+"full": "Muse Wonder 1.0 and Wonder Full: closed models; benchmark claims are mainly Meta's own",
+"src": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1,
+"ref": "meta-20261012-muse-wonder-1-0"
+},
+{
+"id": "qwen-20261009-qwen-image-2-1-turbo",
+"date": "2026-10-09",
+"lab": "qwen",
+"mod": [
+"image"
+],
+"fam": "qwenimage",
+"name": "Qwen-Image-2.1-Turbo",
+"full": "Qwen-Image-2.1-Turbo: 8-step 7B image model; weights under the Qwen Research License (secondary sources)",
+"src": "https://www.marktechpost.com/2026/10/09/alibaba-qwen-releases-qwen-image-2-1-turbo-an-8-step-7b-image-model/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "anthropic-20261007-claude-haiku-5-5",
+"date": "2026-10-07",
+"lab": "anthropic",
+"mod": [
+"llm"
+],
+"fam": "claude",
+"name": "Claude Haiku 5.5",
+"full": "Claude Haiku 5.5: small, fast model; details from press coverage of the launch",
+"src": "https://www.anthropic.com/claude/haiku",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 0,
+"ref": "anthropic-20261007-claude-haiku-5-5"
+},
+{
+"id": "mistral-20261006-mistral-large-4-preview",
+"date": "2026-10-06",
+"lab": "mistral",
+"mod": [
+"llm"
+],
+"fam": "mistral",
+"name": "Mistral Large 4 (preview)",
+"full": "Mistral Large 4: public preview on the API; open weights promised by end of October, licence not yet stated",
+"src": "https://www.marktechpost.com/2026/10/06/mistral-ai-releases-mistral-large-4-le-chonk-a-1-05t-parameter-open-weight-multimodal-moe/",
+"flag": 1,
+"open": 0,
+"st": "preview",
+"sec": 1,
+"ref": "mistral-20261006-mistral-large-4-preview"
+},
+{
+"id": "google-20261006-nano-banana-2-1",
+"date": "2026-10-06",
+"lab": "google",
+"mod": [
+"image"
+],
+"fam": "nanobanana",
+"name": "Nano Banana 2.1",
+"full": "Nano Banana 2.1: image generation and editing, generally available (press sources)",
+"src": "https://www.unite.ai/nano-banana-2-1-debuts-at-half-the-image-cost-of-its-predecessor/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1,
+"ref": "google-20261006-nano-banana-2-1"
+},
+{
 "id": "microsoft-20261001-mai-voice-2-1",
 "date": "2026-10-01",
 "lab": "microsoft",
@@ -528,6 +612,23 @@
 "name": "MAI-Voice-2.1",
 "full": "MAI-Voice-2.1: text-to-speech across 23 languages",
 "src": "https://benchlm.ai/models/mai-voice-2-1",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1,
+"ref": "microsoft-20261001-mai-voice-2-1"
+},
+{
+"id": "xai-202610-grok-imagine-video-1-5-lite",
+"date": "2026-10",
+"lab": "xai",
+"mod": [
+"video"
+],
+"fam": "grokimagine",
+"name": "Grok Imagine Video 1.5 Lite",
+"full": "Grok Imagine Video 1.5 Lite: cheaper video model; xAI gave no official date, sources say 1 or 6 October",
+"src": "https://openrouter.ai/x-ai/grok-imagine-video-1.5-lite",
 "flag": 0,
 "open": 0,
 "st": "ga",

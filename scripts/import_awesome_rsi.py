@@ -112,6 +112,7 @@ def main():
     ap.add_argument("--file")
     args = ap.parse_args()
     text = Path(args.file).read_text(encoding="utf-8") if args.file else urllib.request.urlopen(RAW, timeout=60).read().decode("utf-8")
+    text = text.replace("\r\n", "\n")
     papers, industry = parse(text)
     if len(papers) < 400:
         sys.exit(f"parsed only {len(papers)} papers; the catalog format may have changed or the download failed; nothing written")

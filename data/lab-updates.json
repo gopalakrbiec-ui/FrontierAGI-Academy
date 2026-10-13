@@ -2,7 +2,7 @@
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
   "2021-10-01",
-  "2026-09-30"
+  "2026-10-13"
  ],
  "labs": [
   [
@@ -117,6 +117,103 @@
   ]
  ],
  "items": [
+  {
+   "id": "meta-20261012-muse-wonder-1-0",
+   "date": "2026-10-12",
+   "lab": "meta",
+   "type": "model",
+   "title": "Muse Wonder 1.0 and Muse Wonder Full",
+   "summary": "Meta's first model it describes as frontier-class, taking text, image, audio and video input with a roughly one-million-token context window. Muse Wonder 1.0 is on Meta's API from $4 per million input tokens; the larger Muse Wonder Full is limited to Muse Code subscribers. Neither has public weights. Performance claims come mainly from Meta's own testing, and an independent write-up disputes the benchmark picture.",
+   "facts": [
+    "No public weights",
+    "Wonder Full for Muse Code subscribers"
+   ],
+   "source": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+   "flagship": true
+  },
+  {
+   "id": "openai-20261007-gpt-6-and-intelligent-ui-for-everyone",
+   "date": "2026-10-07",
+   "lab": "openai",
+   "type": "product",
+   "title": "GPT-6 and Intelligent UI come to ChatGPT",
+   "summary": "ChatGPT can now answer with interactive interfaces such as charts, forms and small tools, and the GPT-6 models reach more users: paid plans use GPT-6 Sol and Free and Go use GPT-6 Luna. Rollout began 7 October for paid tiers, with Free and Go the next day; the Pro reasoning option still uses GPT-6 Astra.",
+   "facts": [
+    "Intelligent UI",
+    "GPT-6 Sol and Luna in ChatGPT"
+   ],
+   "source": "https://openai.com/index/gpt-6-for-everyone/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20261007-claude-haiku-5-5",
+   "date": "2026-10-07",
+   "lab": "anthropic",
+   "type": "model",
+   "title": "Claude Haiku 5.5",
+   "summary": "Anthropic's small, fast model for high-volume work such as summarising and classification, and as a sub-agent alongside Sonnet 5.5 and Opus 5.5. Anthropic says running costs are about 75% lower than Haiku 4.5; coverage reports pricing from $0.10 per million input tokens and notes tiered pricing and higher token use.",
+   "facts": [
+    "API model claude-haiku-5-5",
+    "Text output, effort setting"
+   ],
+   "source": "https://www.anthropic.com/claude/haiku",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20261006-mistral-large-4-preview",
+   "date": "2026-10-06",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mistral Large 4 (public preview)",
+   "summary": "A 1.05-trillion-parameter mixture-of-experts model with about 49B active parameters and a vision encoder, released as a preview through Mistral Studio and the API. Mistral has committed to releasing open weights by the end of October; the licence and exact date were not confirmed.",
+   "facts": [
+    "1.05T parameters, ~49B active",
+    "Open weights promised by end of October"
+   ],
+   "source": "https://www.marktechpost.com/2026/10/06/mistral-ai-releases-mistral-large-4-le-chonk-a-1-05t-parameter-open-weight-multimodal-moe/",
+   "flagship": true
+  },
+  {
+   "id": "google-20261006-nano-banana-2-1",
+   "date": "2026-10-06",
+   "lab": "google",
+   "type": "model",
+   "title": "Nano Banana 2.1",
+   "summary": "Google's updated image generation and editing model, built on Gemini 3.6 Flash and generally available in the Gemini app, AI Studio and API. It adds mask-based editing, better text rendering and up to 14 reference images, at about half the per-token image price of its predecessor.",
+   "facts": [
+    "GA",
+    "Up to 14 reference images"
+   ],
+   "source": "https://www.unite.ai/nano-banana-2-1-debuts-at-half-the-image-cost-of-its-predecessor/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20261002-claude-frontier-academy",
+   "date": "2026-10-02",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Claude Frontier Academy",
+   "summary": "Anthropic committed $100 million to train 10,000 'Frontier Deployed Engineers' by the end of 2027 through a multi-day in-person phase and a 12-week residency, with first cohorts from firms including Accenture, Bain, Deloitte and McKinsey.",
+   "facts": [
+    "$100M",
+    "10,000 engineers by end of 2027"
+   ],
+   "source": "https://www.anthropic.com/news/claude-frontier-academy",
+   "flagship": false
+  },
+  {
+   "id": "microsoft-20261001-mai-voice-2-1",
+   "date": "2026-10-01",
+   "lab": "microsoft",
+   "type": "model",
+   "title": "MAI-Voice-2.1",
+   "summary": "Microsoft AI's text-to-speech model, described as its highest-fidelity and most expressive, covering 23 languages. Microsoft also released a streaming transcription model the same week.",
+   "facts": [
+    "23 languages"
+   ],
+   "source": "https://benchlm.ai/models/mai-voice-2-1",
+   "flagship": false
+  },
   {
    "id": "google-20260930-gemini-4-argon",
    "date": "2026-09-30",
