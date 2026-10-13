@@ -1,0 +1,237 @@
+{
+ "about": "Site-added papers that are NOT part of the Awesome-RSI catalog. The catalog's systematic screening thins after June 2026, so these were found by keyword-matching Hugging Face Daily Papers for Jul-Oct 2026 and classified provisionally from each paper's title and listing, without reading the papers in full. Levels L1-L5 and families follow the catalog's taxonomy but are this site's judgement and may be wrong. Remove an entry once the catalog covers it.",
+ "retrieved": "2026-10-13",
+ "papers": [
+  {
+   "id": "2607.28568",
+   "t": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+   "l": 5,
+   "f": "5",
+   "o": [
+    "5",
+    "6"
+   ],
+   "why": "The title describes training an AI model for machine-learning research with recursive self-improvement as the goal, which points to improving the research process itself."
+  },
+  {
+   "id": "2607.21461",
+   "t": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
+   "l": 5,
+   "f": "3",
+   "o": [
+    "3",
+    "4"
+   ],
+   "why": "The title describes a recursively self-improving deep-research agent, i.e. an agent that improves its own research workflow."
+  },
+  {
+   "id": "2609.38288",
+   "t": "AREX-2: Advancing Self-Improving Agents through Long-Horizon Reflective Tasks",
+   "l": 4,
+   "f": "3",
+   "o": [
+    "3",
+    "2"
+   ],
+   "why": "Self-improving agents trained on long-horizon reflective tasks: the agent keeps what it learns for later behaviour, inside a fixed procedure."
+  },
+  {
+   "id": "2609.24972",
+   "t": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+   "l": 5,
+   "f": "3",
+   "o": [
+    "3",
+    "7"
+   ],
+   "why": "Regularised recursive self-improvement of agent harnesses: the harness-improvement procedure itself is being improved and constrained."
+  },
+  {
+   "id": "2609.14857",
+   "t": "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement",
+   "l": 5,
+   "f": "3",
+   "o": [
+    "3"
+   ],
+   "why": "A modular, generalisable recursive self-improvement method for agent harnesses; the title points to improving the improvement loop."
+  },
+  {
+   "id": "2609.08183",
+   "t": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness",
+   "l": 2,
+   "f": "6",
+   "o": [
+    "6",
+    "3"
+   ],
+   "why": "Agentic post-training with a routing harness aimed at recursive self-improvement: the system chooses how to train, while the objective stays external."
+  },
+  {
+   "id": "2609.01437",
+   "t": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
+   "l": 2,
+   "f": "3",
+   "o": [
+    "3"
+   ],
+   "why": "Asks whether LLMs can create and evolve their own agent harness, so the AI picks the improvement, with acceptance still set outside."
+  },
+  {
+   "id": "2608.07545",
+   "t": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
+   "l": 2,
+   "f": "3",
+   "o": [
+    "3"
+   ],
+   "why": "Evolves agent harnesses by natural selection: the search strategy is the AI's, while the selection criterion is external."
+  },
+  {
+   "id": "2609.39045",
+   "t": "RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement",
+   "l": 2,
+   "f": "9",
+   "o": [
+    "9",
+    "3"
+   ],
+   "why": "Autonomous agentic game development with recursive self-improvement; the artifact being improved is a game built by the agent."
+  },
+  {
+   "id": "2608.12564",
+   "t": "Scaling Automatic Research Agents via World Models",
+   "l": 5,
+   "f": "3",
+   "o": [
+    "3",
+    "7"
+   ],
+   "why": "Scaling automatic research agents with world models: improving the research process rather than a single task."
+  },
+  {
+   "id": "2609.39102",
+   "t": "False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents",
+   "l": 3,
+   "f": "7",
+   "o": [
+    "7"
+   ],
+   "why": "Studies \"co-cheating\" in self-evolving search agents, i.e. how the learner and its feedback interact, which shapes what it learns next."
+  },
+  {
+   "id": "2610.12374",
+   "t": "AgentGarten: Code Worlds for Evolving Agents",
+   "l": 3,
+   "f": "8",
+   "o": [
+    "8"
+   ],
+   "why": "Code worlds for evolving agents: the environment the learner trains in shapes its future experience."
+  },
+  {
+   "id": "2607.17250",
+   "t": "EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World",
+   "l": 3,
+   "f": "8",
+   "o": [
+    "8",
+    "10"
+   ],
+   "why": "Co-evolves role-play agents and a world model, so the learner and its environment shape each other."
+  },
+  {
+   "id": "2608.16590",
+   "t": "Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
+   "l": 4,
+   "f": "3",
+   "o": [
+    "3",
+    "2"
+   ],
+   "why": "A closed-loop embodied harness for self-evolving physical intelligence: the deployed system adapts its own components over time."
+  },
+  {
+   "id": "2608.09819",
+   "t": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
+   "l": 4,
+   "f": "5",
+   "o": [
+    "5",
+    "6"
+   ],
+   "why": "Open continual learning with self-improvement and mixture-of-LoRA: the deployed model keeps adapting inside a fixed training process."
+  },
+  {
+   "id": "2609.15779",
+   "t": "EvoOntology: A Self-Evolving Ontology Layer for Data Agents",
+   "l": 4,
+   "f": "2",
+   "o": [
+    "2"
+   ],
+   "why": "A self-evolving ontology layer for data agents, i.e. retained knowledge that changes later behaviour."
+  },
+  {
+   "id": "2607.14777",
+   "t": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
+   "l": 1,
+   "f": "6",
+   "o": [
+    "6"
+   ],
+   "why": "Self-evolving on-policy distillation for agentic reinforcement learning: a fixed training procedure the model runs on itself."
+  },
+  {
+   "id": "2608.05987",
+   "t": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
+   "l": 1,
+   "f": "6",
+   "o": [
+    "6"
+   ],
+   "why": "Recursive self-distillation for agentic reinforcement learning, run under a fixed, human-designed procedure."
+  },
+  {
+   "id": "2608.06296",
+   "t": "On-Policy Self-Distillation without Any Supervision",
+   "l": 1,
+   "f": "6",
+   "o": [
+    "6"
+   ],
+   "why": "On-policy self-distillation without supervision: the model improves from its own outputs under a fixed method."
+  },
+  {
+   "id": "2609.38721",
+   "t": "UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement",
+   "l": 1,
+   "f": "6",
+   "o": [
+    "6",
+    "5"
+   ],
+   "why": "An on-policy self-distillation recipe for multimodal self-improvement, a fixed human-designed training procedure."
+  },
+  {
+   "id": "2610.02826",
+   "t": "Scaling Trajectories for Complex Tasks through Recursive Self-Rewrite",
+   "l": 1,
+   "f": "8",
+   "o": [
+    "8"
+   ],
+   "why": "Scales training trajectories through recursive self-rewrite: model-generated data under a fixed generation procedure."
+  },
+  {
+   "id": "2608.05466",
+   "t": "Recursive Synthesis for Long-Horizon Terminal Tasks",
+   "l": 1,
+   "f": "8",
+   "o": [
+    "8"
+   ],
+   "why": "Recursive synthesis of long-horizon terminal tasks: self-generated training data under a fixed procedure."
+  }
+ ]
+}

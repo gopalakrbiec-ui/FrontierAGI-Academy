@@ -446,6 +446,30 @@ def validate_rsi():
     return problems
 
 
+def validate_rsi_supplement():
+    """data/rsi-supplement.json: site-added papers (provisional classification) shown on pages/rsi-evolution.html.
+    Duplicates of catalog ids are allowed: the page ignores a supplement entry once the catalog covers it."""
+    path = ROOT / "data/rsi-supplement.json"
+    if not path.exists():
+        return []
+    sup = json.loads(path.read_text(encoding="utf-8"))
+    base = json.loads((ROOT / "data/rsi-papers.json").read_text(encoding="utf-8"))
+    fams, lvls = {f[0] for f in base["families"]}, {l[0] for l in base["levels"]}
+    problems, seen, now = [], set(), date.today().strftime("%Y-%m")
+    for p in sup["papers"]:
+        w = f"data/rsi-supplement.json: {p.get('id', '?')}"
+        if not re.fullmatch(r"\d{4}\.\d{4,5}", p["id"]) or p["id"] in seen:
+            problems.append(f"{w}: bad or duplicate arXiv id")
+        seen.add(p["id"])
+        if p["l"] not in lvls or p["f"] not in fams or p["f"] not in p["o"] or any(c not in fams for c in p["o"]):
+            problems.append(f"{w}: unknown level or family, or primary family missing from o")
+        if not p.get("t") or not p.get("why"):
+            problems.append(f"{w}: needs a title and a provisional rationale (why)")
+        if not "2023-01" <= "20" + p["id"][:2] + "-" + p["id"][2:4] <= now:
+            problems.append(f"{w}: arXiv id date is out of range")
+    return problems
+
+
 def validate_models():
     """data/model-releases.json: structural checks for pages/model-releases.html."""
     path = ROOT / "data/model-releases.json"
@@ -591,7 +615,7 @@ def main():
         stale = [p for p in stale if p.name != "sitemap.xml"]
         readme = subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py"), "--check"])
         problems = [f"stale: {p.relative_to(ROOT)} (run python3 scripts/build.py)" for p in stale]
-        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_models() + validate_hf()
+        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_models() + validate_hf()
         if readme.returncode:
             problems.append("stale: README.md (run python3 scripts/build.py)")
         for line in problems:
@@ -601,7 +625,7 @@ def main():
     for p in stale:
         p.write_text(outputs[p], encoding="utf-8")
     subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py")], check=True)
-    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_models() + validate_hf()
+    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_models() + validate_hf()
     print(f"build: {len(stale)} file(s) updated, {len(files)} pages checked, {len(problems)} broken link(s)")
     for line in problems:
         print("  " + line)

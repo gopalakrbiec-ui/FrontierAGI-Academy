@@ -71,6 +71,8 @@
     .rs-head small { font-weight: 500; color: #9ca3af; font-size: .64rem; }
     .rs-row { display: flex; border-bottom: 1px solid #f1f5f9; }
     .rs-yr { padding: 4px 10px; font-size: .74rem; font-weight: 800; letter-spacing: .04em; color: #4b5563; background: #f8fafc; border-bottom: 1px solid #e5e7eb; }
+    .dot.sup { background: transparent !important; border: 2px dashed var(--c); box-sizing: border-box; }
+    .rs-supbox { background: #faf5ff; border: 1.5px dashed #a855f7; color: #581c87; border-radius: 10px; padding: 8px 12px; font-size: .78rem; line-height: 1.5; margin: 8px 0; }
     .rs-warn { padding: 8px 12px; background: #fffbeb; border-bottom: 1.5px solid #fcd34d; color: #78350f; font-size: .76rem; line-height: 1.5; font-weight: 600; position: sticky; left: 0; }
     .rs-row.rs-part .rs-m { background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(180,83,9,.16) 4px 6px); color: #92400e; }
     .rs-row.rs-part .rs-cell { background-color: #fffdf5; }
@@ -132,7 +134,7 @@
     .rs-rel { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: .8rem; margin-top: 8px; } .rs-rel a { color: #9f1239; font-weight: 600; }
 
     .rs-embedbar { display: none; }
-    body.rs-embed .navbar, body.rs-embed .nav-panel-wrap, body.rs-embed .nav-backdrop, body.rs-embed .rs-hero, body.rs-embed .rs-caveat, body.rs-embed .rs-list, body.rs-embed .rs-fams, body.rs-embed #rsSearch, body.rs-embed #rsMerge { display: none !important; }
+    body.rs-embed .navbar, body.rs-embed .nav-panel-wrap, body.rs-embed .nav-backdrop, body.rs-embed .rs-hero, body.rs-embed .rs-caveat, body.rs-embed .rs-list, body.rs-embed .rs-fams, body.rs-embed #rsSearch, body.rs-embed #rsMerge, body.rs-embed #rsSup { display: none !important; }
     body.rs-embed main { padding-top: 0 !important; }
     body.rs-embed section.rs-card { padding: 12px; margin-bottom: 10px; } body.rs-embed section.rs-card h2 { font-size: 1rem; } body.rs-embed section.rs-card .rs-sub { display: none; }
     body.rs-embed .rs-wrap { max-width: none; padding: 8px 10px 10px; }
@@ -291,6 +293,7 @@
       <input type="search" id="rsSearch" list="rsNames" placeholder="Find a paper, e.g. Voyager, STaR…" aria-label="Find a paper" />
       <datalist id="rsNames"></datalist>
       <button type="button" class="rs-btn" id="rsMerge" aria-pressed="false" title="Dim everything except papers that touch two or more families">✦ Highlight multi-family</button>
+      <button type="button" class="rs-btn" id="rsSup" aria-pressed="true" title="Papers found by this site for months the catalog covers only thinly. Dashed outline = provisional classification, not part of the catalog."></button>
     </div>
     <div class="rs-fams" id="rsFams"></div>
     <p class="rs-blurb" id="rsBlurb"></p>
@@ -335,7 +338,7 @@
   var D, LV = {}, FM = {}, P = [], byId = {}, firstOf = {}, imp = {}, hot = {};
   function pcls(id) { return hot[id] ? ' pulse' : ''; }
   function psty(id) { return hot[id] ? ';--pd:' + (-(hot[id] % 7) * 0.4) + 's' : ''; }
-  var st = { view: 'stair', scope: 'all', fams: new Set(), sel: null, merge: false, lvl: 1 };
+  var st = { view: 'stair', scope: 'all', sup: true, fams: new Set(), sel: null, merge: false, lvl: 1 };
   var famOrder = [];
 
   /* ── loop explorer ── */
@@ -379,9 +382,9 @@
   /* ── helpers ── */
   var col = function (p) { return FM[p.f][2]; };
   var mLabel = function (m) { return MON[+m.slice(5) - 1]; };
-  function scopeList() { return st.scope === 'feat' ? P.filter(function (p) { return p.star; }) : P; }
+  function scopeList() { return P.filter(function (p) { return (st.sup || !p.sup) && (st.scope !== 'feat' || p.star); }); }
   function chipHtml(p, size) { return '<button type="button" class="chip' + (firstOf[p.l] === p.id ? ' first-l' : '') + pcls(p.id) + '" data-id="' + p.id + '" style="--c:' + col(p) + psty(p.id) + '" title="' + esc(p.t) + ' (' + p.d + ')"><i style="width:' + size + 'px;height:' + size + 'px"></i><span>' + esc(p.s) + '</span>' + (firstOf[p.l] === p.id ? '<b class="first" title="First paper at this level in the catalog">①</b>' : '') + '</button>'; }
-  function dotHtml(p, d) { return '<i class="dot' + (p.o.length > 1 ? ' multi' : '') + pcls(p.id) + '" data-id="' + p.id + '" style="--c:' + col(p) + psty(p.id) + ';width:' + d + 'px;height:' + d + 'px" title="' + esc(p.s) + ' (' + p.d + ', ' + LV[p.l][1] + ')"></i>'; }
+  function dotHtml(p, d) { return '<i class="dot' + (p.o.length > 1 ? ' multi' : '') + (p.sup ? ' sup' : '') + pcls(p.id) + '" data-id="' + p.id + '" style="--c:' + col(p) + psty(p.id) + ';width:' + d + 'px;height:' + d + 'px" title="' + esc(p.s) + ' (' + p.d + ', ' + LV[p.l][1] + ')' + (p.sup ? ' · site addition, provisional' : '') + '"></i>'; }
   var famActive = function (p) { return st.fams.has(p.f); };
 
   /* ── view 1 & 2: month rows × columns ── */
@@ -397,10 +400,10 @@
     $('rsHead').innerHTML = '<div style="width:' + rail + 'px"></div>' + cols.map(function (c) { return '<div style="width:' + cw + 'px;--c:' + c.color + '">' + esc(kind === 'stair' ? c.short : c.name) + '<small>' + (kind === 'stair' ? esc(c.sub) + ' · ' : '') + (colCount[c.k] || 0) + '</small></div>'; }).join('');
     var months = Array.from(new Set(visible.map(function (p) { return p.d; }))).sort().reverse(), html = '', lastY = '', pitchMax = kind === 'stair' ? 8 : 15;
     var k = Math.max(1, Math.floor((cw - 10) / (pitchMax + 3)));
-    var CUT = '2026-07', cmon = {}; P.forEach(function (q) { cmon[q.d] = (cmon[q.d] || 0) + 1; });
+    var CUT = '2026-07', cmon = {}; var nsup = 0; P.forEach(function (q) { if (q.sup) { nsup++; return; } cmon[q.d] = (cmon[q.d] || 0) + 1; });
     var warnDone = false, lateTxt = ['2026-06', '2026-07', '2026-08', '2026-09'].filter(function (x) { return cmon[x] != null; }).map(function (x) { return mLabel(x) + ' ' + cmon[x]; }).join(' · ');
     months.forEach(function (m) {
-      if (m >= CUT && !warnDone) { warnDone = true; html += '<div class="rs-warn" style="width:' + tot + 'px">⚠️ Hatched months (Jul 2026 onward) are incomplete. The catalog screened papers systematically up to about June 2026 and now adds new ones by hand, so recent months undercount. Papers per month in the catalog: ' + lateTxt + '. Do not read the drop as a real decline in RSI research.</div>'; }
+      if (m >= CUT && !warnDone) { warnDone = true; html += '<div class="rs-warn" style="width:' + tot + 'px">⚠️ Hatched months (Jul 2026 onward) are incomplete. The catalog screened papers systematically up to about June 2026 and now adds new ones by hand, so recent months undercount. Papers per month in the catalog: ' + lateTxt + '.' + (st.sup && nsup ? ' Dashed dots are ' + nsup + ' provisional additions found by this site, not part of the catalog.' : '') + ' Do not read the drop as a real decline in RSI research.</div>'; }
       if (m.slice(0, 4) !== lastY) { lastY = m.slice(0, 4); html += '<div class="rs-yr" style="width:' + tot + 'px">' + lastY + '</div>'; }
       html += '<div class="rs-row' + (m >= CUT ? ' rs-part' : '') + '" style="width:' + tot + 'px"><div class="rs-m" style="width:' + rail + 'px">' + mLabel(m) + '</div>';
       cols.forEach(function (c) {
@@ -441,7 +444,7 @@
   /* ── view 3: research vs industry ── */
   function renderInd() {
     var months = []; for (var y = 2026, m = 9; y > 2025 || (y === 2025 && m >= 5); m--) { if (m < 1) { m = 12; y--; } months.push(y + '-' + (m < 10 ? '0' : '') + m); }
-    var cnt = {}; P.forEach(function (p) { (cnt[p.d] = cnt[p.d] || [0, 0, 0, 0, 0, 0])[p.l]++; });
+    var cnt = {}; P.filter(function (p) { return !p.sup; }).forEach(function (p) { (cnt[p.d] = cnt[p.d] || [0, 0, 0, 0, 0, 0])[p.l]++; });
     var mx = Math.max.apply(null, months.map(function (m) { return cnt[m] ? cnt[m].slice(1).reduce(function (a, b) { return a + b; }, 0) : 0; }));
     var byM = {}; D.industry.forEach(function (i) { var k = i.date.slice(0, 7); (byM[k] = byM[k] || []).push(i); });
     var clean = function (s) { return s.replace(/\*\*/g, ''); }, cut = function (s, n) { return s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : s; };
@@ -463,13 +466,13 @@
     $('rsPanel').innerHTML = '<button type="button" class="rs-close" data-close aria-label="Close">✕</button><span class="rs-pill" style="--c:#be123c">How to use</span><h2>Click any paper</h2><ul><li><b>Staircase:</b> columns are autonomy levels (L1 → L5); rows are months, newest first. Colour shows what the paper updates.</li><li><b>What gets rewritten:</b> columns are the ten kinds of thing an AI can update. Bigger dots are higher levels; ringed dots touch two or more families.</li><li><b>Research vs industry:</b> monthly paper counts beside what organisations have said publicly.</li></ul><p style="font-size:.78rem;color:#6b7280">Try: <a href="#" data-go="2305.16291">Voyager</a> · <a href="#" data-go="2505.22954">Darwin Gödel Machine</a> · <a href="#" data-go="2203.14465">STaR</a></p>';
   }
   function panelPaper(p) {
-    var l = LV[p.l], objs = p.u.split(/;\s*/).filter(Boolean);
+    var l = LV[p.l], objs = (p.u || '').split(/;\s*/).filter(Boolean);
     var same = P.filter(function (q) { return q.f === p.f && q.l === p.l && q.id !== p.id; }).sort(function (a, b) { return Math.abs(+a.id.slice(0, 4) - +p.id.slice(0, 4)) - Math.abs(+b.id.slice(0, 4) - +p.id.slice(0, 4)); }).slice(0, 5);
     $('rsPanel').innerHTML = '<button type="button" class="rs-close" data-close aria-label="Close">✕</button><span class="rs-pill" style="--c:' + l[4] + '">' + l[1] + ' · ' + esc(l[2]) + '</span><h2>' + esc(p.t) + '</h2><div style="font-size:.76rem;color:#6b7280">arXiv:' + p.id + ' · ' + mLabel(p.d) + ' ' + p.d.slice(0, 4) + (firstOf[p.l] === p.id ? ' · <b style="color:#b45309">first ' + l[1] + ' paper in the catalog</b>' : '') + '</div>' +
       '<h3>What it updates</h3><div>' + p.o.map(function (c) { return '<span class="rs-tag" style="--c:' + FM[c][2] + '"><i></i>' + esc(FM[c][1]) + (c === p.f ? ' (primary)' : '') + '</span>'; }).join('') + '</div><ul>' + objs.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul>' +
-      (p.m ? '<h3>Mechanism (catalog\'s note)</h3><p>' + esc(p.m) + '</p>' : '') + (p.r ? '<h3>Why this level (catalog\'s rationale)</h3><p>' + esc(p.r) + '</p>' : '') +
+      (p.m ? '<h3>Mechanism (catalog\'s note)</h3><p>' + esc(p.m) + '</p>' : '') + (p.sup ? '<div class="rs-supbox"><b>Site addition, provisional.</b> Not part of the Awesome-RSI catalog. The level and families below are this site\'s judgement from the paper\'s title and its Hugging Face listing, without reading the paper in full, and may be wrong.</div>' : '') + (p.r ? '<h3>' + (p.sup ? 'Why this level (provisional reasoning)' : 'Why this level (catalog\'s rationale)') + '</h3><p>' + esc(p.r) + '</p>' : '') +
       '<h3>What ' + l[1] + ' means</h3><p>' + esc(l[3]) + '</p>' + (same.length ? '<h3>Nearby in the same family and level</h3><div class="rs-nb">' + same.map(function (q) { return '<button type="button" data-id="' + q.id + '" style="--c:' + FM[q.f][2] + '" title="' + esc(q.t) + '">' + esc(q.s) + ' · ' + q.d.slice(0, 4) + '</button>'; }).join('') + '</div>' : '') +
-      '<div class="rs-links"><a class="p" href="https://arxiv.org/abs/' + p.id + '" target="_blank" rel="noopener">Read on arXiv ↗</a><a href=\x22' + D.source.repo + '" target="_blank" rel="noopener">Awesome-RSI catalog ↗</a></div>';
+      '<div class="rs-links"><a class="p" href="https://arxiv.org/abs/' + p.id + '" target="_blank" rel="noopener">Read on arXiv ↗</a>' + (p.sup ? '' : '<a href=\x22' + D.source.repo + '" target="_blank" rel="noopener">Awesome-RSI catalog ↗</a>') + '</div>';
   }
   function select(id, opt) {
     var p = byId[id]; if (!p) return; opt = opt || {};
@@ -524,11 +527,13 @@
     $('rsListBody').innerHTML = D.levels.map(function (l) { var fs = P.filter(function (p) { return p.l === l[0] && p.star; }); return '<h4 style="color:' + l[4] + '">' + l[1] + ' · ' + esc(l[2]) + ' (' + P.filter(function (p) { return p.l === l[0]; }).length + ' papers)</h4><ul>' + fs.map(function (p) { return '<li><a href="https://arxiv.org/abs/' + p.id + '" target="_blank" rel="noopener">' + esc(p.s) + '</a> (' + p.d.slice(0, 4) + '): ' + esc(p.m || p.t) + '</li>'; }).join('') + '</ul>'; }).join('') + '<h4>Industry disclosures</h4><ul>' + D.industry.map(function (i) { return '<li>' + esc(i.date) + ' <a href=\x22' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(i.org) + '</a>: ' + esc(i.title) + '</li>'; }).join('') + '</ul>';
   }
 
-  fetch('../data/rsi-papers.json?v=1').then(function (r) { return r.json(); }).then(function (d) {
-    D = d; P = d.papers; P.forEach(function (p) { imp[p.id] = P.filter(function (q) { return q.f === p.f && q.l >= p.l && (q.d + q.id) > (p.d + p.id); }).length; }); (function () { var v = P.map(function (p) { return imp[p.id]; }).sort(function (a, b) { return b - a; }), th = Math.max(1, v[Math.floor(P.length * 0.05)]); P.forEach(function (p, k) { if (imp[p.id] >= th) hot[p.id] = k + 1; }); })(); d.levels.forEach(function (l) { LV[l[0]] = l; }); d.families.forEach(function (f) { FM[f[0]] = f; famOrder.push(f[0]); });
-    P.forEach(function (p) { byId[p.id] = p; byCount[p.f] = (byCount[p.f] || 0) + 1; }); [1, 2, 3, 4, 5].forEach(function (l) { var f = P.filter(function (p) { return p.l === l; }).sort(function (a, b) { return a.id < b.id ? -1 : 1; })[0]; if (f) firstOf[l] = f.id; });
+  Promise.all([fetch('../data/rsi-papers.json?v=1').then(function (r) { return r.json(); }), fetch('../data/rsi-supplement.json?v=1').then(function (r) { return r.ok ? r.json() : { papers: [] }; }).catch(function () { return { papers: [] }; })]).then(function (both) {
+    var d = both[0], sup = both[1], C = d.papers, have = {}; C.forEach(function (q) { have[q.id] = 1; });
+    var extra = (sup.papers || []).filter(function (q) { return !have[q.id]; }).map(function (q) { var h = q.t.split(':')[0]; return { id: q.id, d: '20' + q.id.slice(0, 2) + '-' + q.id.slice(2, 4), t: q.t, s: (h.length <= 34 ? h : q.t.slice(0, 32).trim() + '…'), l: q.l, f: q.f, o: q.o, u: '', r: q.why, sup: 1 }; });
+    D = d; P = C.concat(extra); P.supN = extra.length; C.forEach(function (p) { imp[p.id] = C.filter(function (q) { return q.f === p.f && q.l >= p.l && (q.d + q.id) > (p.d + p.id); }).length; }); (function () { var v = C.map(function (p) { return imp[p.id]; }).sort(function (a, b) { return b - a; }), th = Math.max(1, v[Math.floor(C.length * 0.05)]); C.forEach(function (p, k) { if (imp[p.id] >= th) hot[p.id] = k + 1; }); })(); d.levels.forEach(function (l) { LV[l[0]] = l; }); d.families.forEach(function (f) { FM[f[0]] = f; famOrder.push(f[0]); });
+    P.forEach(function (p) { byId[p.id] = p; byCount[p.f] = (byCount[p.f] || 0) + 1; }); [1, 2, 3, 4, 5].forEach(function (l) { var f = C.filter(function (p) { return p.l === l; }).sort(function (a, b) { return a.id < b.id ? -1 : 1; })[0]; if (f) firstOf[l] = f.id; });
     st.fams = new Set(famOrder);
-    $('rsScope').children[0].textContent = '⭐ Featured ' + P.filter(function (p) { return p.star; }).length; $('rsScope').children[1].textContent = 'All ' + P.length;
+    $('rsScope').children[0].textContent = '⭐ Featured ' + P.filter(function (p) { return p.star; }).length; $('rsScope').children[1].textContent = 'All ' + C.length; $('rsSup').textContent = '◌ Site additions (' + P.supN + ')'; $('rsSup').style.display = P.supN ? '' : 'none'; $('rsSup').addEventListener('click', function () { st.sup = !st.sup; this.setAttribute('aria-pressed', st.sup); this.classList.toggle('on', st.sup); render(); }); $('rsSup').classList.add('on');
     buildLoop(); wire(); listView(); panelIntro(); setView('stair');
     var m = /paper=([^&]+)/.exec(location.hash); if (m && byId[decodeURIComponent(m[1])]) select(decodeURIComponent(m[1]));
   }).catch(function () { $('rsPanel').innerHTML = '<p>Could not load the RSI data.</p>'; });
