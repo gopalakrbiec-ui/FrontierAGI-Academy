@@ -470,6 +470,29 @@ def validate_rsi_supplement():
     return problems
 
 
+def validate_discovery():
+    """data/paper-impact.json (OpenAlex citations) and data/rsi-candidates.json (arXiv discovery): structural checks."""
+    problems = []
+    imp = ROOT / "data/paper-impact.json"
+    if imp.exists():
+        d = json.loads(imp.read_text(encoding="utf-8"))
+        for k in ("source", "asof", "papers"):
+            if k not in d:
+                problems.append(f"data/paper-impact.json: missing {k}")
+        for i, c in d.get("papers", {}).items():
+            if not re.fullmatch(r"\d{4}\.\d{4,5}", i) or not isinstance(c, int) or c < 0:
+                problems.append(f"data/paper-impact.json: bad entry {i}")
+    cand = ROOT / "data/rsi-candidates.json"
+    if cand.exists():
+        d = json.loads(cand.read_text(encoding="utf-8"))
+        seen = set()
+        for p in d.get("papers", []):
+            if not re.fullmatch(r"\d{4}\.\d{4,5}", p.get("id", "")) or p["id"] in seen or not p.get("title"):
+                problems.append(f"data/rsi-candidates.json: bad or duplicate entry {p.get('id', '?')}")
+            seen.add(p.get("id"))
+    return problems
+
+
 def validate_models():
     """data/model-releases.json: structural checks for pages/model-releases.html."""
     path = ROOT / "data/model-releases.json"
@@ -615,7 +638,7 @@ def main():
         stale = [p for p in stale if p.name != "sitemap.xml"]
         readme = subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py"), "--check"])
         problems = [f"stale: {p.relative_to(ROOT)} (run python3 scripts/build.py)" for p in stale]
-        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_models() + validate_hf()
+        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_hf()
         if readme.returncode:
             problems.append("stale: README.md (run python3 scripts/build.py)")
         for line in problems:
@@ -625,7 +648,7 @@ def main():
     for p in stale:
         p.write_text(outputs[p], encoding="utf-8")
     subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py")], check=True)
-    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_models() + validate_hf()
+    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_hf()
     print(f"build: {len(stale)} file(s) updated, {len(files)} pages checked, {len(problems)} broken link(s)")
     for line in problems:
         print("  " + line)
