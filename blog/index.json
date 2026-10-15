@@ -1,9 +1,24 @@
 {
   "posts": [
     {
+      "slug": "sakana-ai-primer",
+      "title": "Sakana AI: A Primer on Tokyo's Nature-Inspired Frontier Lab",
+      "excerpt": "Who founded Sakana AI, how it grew from a 2023 seed round to a unicorn, what it has shipped, and which papers matter, from model merging to the AI Scientist and the RSI Lab. Interactive timeline and evidence ladder, with disputed numbers shown side by side.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-15",
+      "readTime": "16 min",
+      "tags": [
+        "Explainer",
+        "Company"
+      ],
+      "emoji": "🐟",
+      "featured": false
+    },
+    {
       "slug": "forward-deployed-engineers-great-role-merge",
       "title": "Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge",
-      "excerpt": "OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. What the forward deployed role is, whether it is consulting with a better title, and what the data says about software roles merging \u2014 with interactive charts and every number sourced.",
+      "excerpt": "OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. What the forward deployed role is, whether it is consulting with a better title, and what the data says about software roles merging — with interactive charts and every number sourced.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-10-13",
@@ -12,13 +27,13 @@
         "Explainer",
         "Careers"
       ],
-      "emoji": "\ud83e\uddd1\u200d\ud83d\udd27",
+      "emoji": "🧑‍🔧",
       "featured": false
     },
     {
       "slug": "ai-research-1950-1980-papers",
-      "title": "AI Research in 1950\u20131980: The Three Decades That Founded the Field",
-      "excerpt": "From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN \u2014 twenty founding papers and milestones in eight themes, explained with animations, plus a runnable A* search lab.",
+      "title": "AI Research in 1950–1980: The Three Decades That Founded the Field",
+      "excerpt": "From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN — twenty founding papers and milestones in eight themes, explained with animations, plus a runnable A* search lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -27,13 +42,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcdf",
+      "emoji": "📟",
       "featured": true
     },
     {
       "slug": "ai-research-1980-2000-papers",
-      "title": "AI Research in 1980\u20132000: The Two Decades That Invented Modern AI's Core Ideas",
-      "excerpt": "Twenty papers and milestones from 1980\u20132000 in eight themes \u2014 Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning, TD-Gammon, SVMs, AdaBoost, Bayesian networks, HMMs, expert systems and Deep Blue \u2014 each explained in plain English with an animation, plus a runnable backpropagation lab.",
+      "title": "AI Research in 1980–2000: The Two Decades That Invented Modern AI's Core Ideas",
+      "excerpt": "Twenty papers and milestones from 1980–2000 in eight themes — Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning, TD-Gammon, SVMs, AdaBoost, Bayesian networks, HMMs, expert systems and Deep Blue — each explained in plain English with an animation, plus a runnable backpropagation lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -42,13 +57,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcfc",
+      "emoji": "📼",
       "featured": false
     },
     {
       "slug": "ai-research-2001-2010-papers",
-      "title": "AI Research in 2001\u20132010: The Decade That Set the Stage for Deep Learning",
-      "excerpt": "Eighteen papers and milestones from 2001\u20132010 in eight themes \u2014 deep belief nets, neural language models, ImageNet, GPUs, Viola\u2013Jones, SIFT, HOG, random forests, LDA, CRFs, CTC, UCT, Stanley and the Netflix Prize \u2014 each explained in plain English with an animation, plus a runnable matrix-factorisation lab.",
+      "title": "AI Research in 2001–2010: The Decade That Set the Stage for Deep Learning",
+      "excerpt": "Eighteen papers and milestones from 2001–2010 in eight themes — deep belief nets, neural language models, ImageNet, GPUs, Viola–Jones, SIFT, HOG, random forests, LDA, CRFs, CTC, UCT, Stanley and the Netflix Prize — each explained in plain English with an animation, plus a runnable matrix-factorisation lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -57,13 +72,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "ai-research-2011-papers",
       "title": "AI Research in 2011: The Year Before the Breakthrough",
-      "excerpt": "Thirteen 2011 papers and systems in eight themes \u2014 ReLU, AdaGrad, GPU CNNs beating humans on traffic signs, Hogwild!, deep speech, NLP from scratch, text-generating RNNs, IBM Watson, Kinect, scikit-learn and TPE \u2014 each explained in plain English with an animation, plus a runnable AdaGrad lab.",
+      "excerpt": "Thirteen 2011 papers and systems in eight themes — ReLU, AdaGrad, GPU CNNs beating humans on traffic signs, Hogwild!, deep speech, NLP from scratch, text-generating RNNs, IBM Watson, Kinect, scikit-learn and TPE — each explained in plain English with an animation, plus a runnable AdaGrad lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -72,13 +87,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udf05",
+      "emoji": "🌅",
       "featured": false
     },
     {
       "slug": "ai-research-2012-papers",
       "title": "AI Research in 2012: The Year Deep Learning Broke Through",
-      "excerpt": "Eight 2012 papers in eight themes \u2014 AlexNet, DistBelief, the cat-neuron experiment, deep networks for speech, dropout, multi-column CNNs, random search and Bayesian optimisation \u2014 each explained in plain English with an animation, plus a runnable random-vs-grid-search lab.",
+      "excerpt": "Eight 2012 papers in eight themes — AlexNet, DistBelief, the cat-neuron experiment, deep networks for speech, dropout, multi-column CNNs, random search and Bayesian optimisation — each explained in plain English with an animation, plus a runnable random-vs-grid-search lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -87,13 +102,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udca5",
+      "emoji": "💥",
       "featured": false
     },
     {
       "slug": "ai-research-2013-papers",
       "title": "AI Research in 2013: The Year Representation Learning Became the Language of AI",
-      "excerpt": "Twelve 2013 papers in eight themes \u2014 word2vec, the Atari DQN, the VAE, deep LSTMs, DeViSE, Network In Network, OverFeat, Zeiler & Fergus and the first adversarial examples \u2014 each explained in plain English with an animation, plus a runnable reparameterisation-trick lab.",
+      "excerpt": "Twelve 2013 papers in eight themes — word2vec, the Atari DQN, the VAE, deep LSTMs, DeViSE, Network In Network, OverFeat, Zeiler & Fergus and the first adversarial examples — each explained in plain English with an animation, plus a runnable reparameterisation-trick lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -102,13 +117,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcd0",
+      "emoji": "📐",
       "featured": false
     },
     {
       "slug": "ai-research-2014-papers",
       "title": "AI Research in 2014: The Year Deep Learning Learned to Generate, Translate and Remember",
-      "excerpt": "Twelve 2014 papers in eight themes \u2014 GANs, Seq2Seq, GRU, attention, Neural Turing Machines, VGG, GoogLeNet, R-CNN, DeepFace, adversarial examples, dropout and GloVe \u2014 each explained in plain English with an animation, plus a runnable adversarial-examples lab.",
+      "excerpt": "Twelve 2014 papers in eight themes — GANs, Seq2Seq, GRU, attention, Neural Turing Machines, VGG, GoogLeNet, R-CNN, DeepFace, adversarial examples, dropout and GloVe — each explained in plain English with an animation, plus a runnable adversarial-examples lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -117,13 +132,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfad",
+      "emoji": "🎭",
       "featured": false
     },
     {
       "slug": "ai-research-2015-papers",
       "title": "AI Research in 2015: The Year Deep Learning Became Trainable, Attentive and Interactive",
-      "excerpt": "Twelve 2015 papers in eight themes \u2014 BatchNorm, Adam, DQN, attention, Show Attend and Tell, Faster R-CNN, U-Net, spatial transformers, distillation, DRAW, Pointer Networks and ResNet \u2014 each explained in plain English with an animation, plus a runnable Adam and BatchNorm lab.",
+      "excerpt": "Twelve 2015 papers in eight themes — BatchNorm, Adam, DQN, attention, Show Attend and Tell, Faster R-CNN, U-Net, spatial transformers, distillation, DRAW, Pointer Networks and ResNet — each explained in plain English with an animation, plus a runnable Adam and BatchNorm lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -132,13 +147,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd27",
+      "emoji": "🔧",
       "featured": false
     },
     {
       "slug": "ai-research-2016-papers",
       "title": "AI Research in 2016: The Year Deep Learning Became a General-Purpose Engine",
-      "excerpt": "Twelve 2016 papers in eight themes \u2014 ResNet, AlphaGo, A3C, the Differentiable Neural Computer, learned optimisers, GNMT, BPE, Deep Speech 2, YOLO, WaveNet, PixelRNN and InfoGAN \u2014 each explained in plain English with an animation, plus a runnable residual-gradient lab.",
+      "excerpt": "Twelve 2016 papers in eight themes — ResNet, AlphaGo, A3C, the Differentiable Neural Computer, learned optimisers, GNMT, BPE, Deep Speech 2, YOLO, WaveNet, PixelRNN and InfoGAN — each explained in plain English with an animation, plus a runnable residual-gradient lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -147,13 +162,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\u2699\ufe0f",
+      "emoji": "⚙️",
       "featured": false
     },
     {
       "slug": "ai-research-2017-papers",
       "title": "AI Research in 2017: The Year the Modern AI Architecture Was Born",
-      "excerpt": "Eleven 2017 papers in eight themes \u2014 the Transformer, AlphaGo Zero, RL from human preferences, PPO, neural architecture search, population-based training, sparse experts, pix2pix, CycleGAN, WGAN and capsules \u2014 each explained in plain English with an animation, plus a runnable self-attention lab.",
+      "excerpt": "Eleven 2017 papers in eight themes — the Transformer, AlphaGo Zero, RL from human preferences, PPO, neural architecture search, population-based training, sparse experts, pix2pix, CycleGAN, WGAN and capsules — each explained in plain English with an animation, plus a runnable self-attention lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -162,13 +177,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "featured": false
     },
     {
       "slug": "ai-research-2018-papers",
       "title": "AI Research in 2018: The Year Pretraining Changed Everything",
-      "excerpt": "Fourteen 2018 papers in eight themes \u2014 ELMo, ULMFiT, GPT-1, BERT, GLUE, World Models, AlphaZero, OpenAI Five, Dactyl, graph networks, Neural ODEs and BigGAN \u2014 each explained in plain English with an animation, plus a runnable Neural ODE lab.",
+      "excerpt": "Fourteen 2018 papers in eight themes — ELMo, ULMFiT, GPT-1, BERT, GLUE, World Models, AlphaZero, OpenAI Five, Dactyl, graph networks, Neural ODEs and BigGAN — each explained in plain English with an animation, plus a runnable Neural ODE lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -177,13 +192,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd13",
+      "emoji": "🔓",
       "featured": false
     },
     {
       "slug": "ai-research-2019-papers",
       "title": "AI Research in 2019: The Year Pretraining Became the Default",
-      "excerpt": "Sixteen 2019 papers in eight themes \u2014 GPT-2, XLNet, RoBERTa, BART, Transformer-XL, Megatron-LM, ALBERT, EfficientNet, StyleGAN, AlphaStar, MuZero, SuperGLUE and more \u2014 each explained in plain English with an animation, plus a runnable model-parallelism lab.",
+      "excerpt": "Sixteen 2019 papers in eight themes — GPT-2, XLNet, RoBERTa, BART, Transformer-XL, Megatron-LM, ALBERT, EfficientNet, StyleGAN, AlphaStar, MuZero, SuperGLUE and more — each explained in plain English with an animation, plus a runnable model-parallelism lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -192,13 +207,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfd7\ufe0f",
+      "emoji": "🏗️",
       "featured": false
     },
     {
       "slug": "ai-research-2020-papers",
       "title": "AI Research in 2020: The Year Scaling Became the AI Strategy",
-      "excerpt": "Twelve 2020 papers in eight themes \u2014 scaling laws, GPT-3, T5, RAG, learning from human feedback, ViT, DETR, SimCLR, wav2vec 2.0, DDPM, NeRF and GShard \u2014 each explained in plain English with an animation, plus a runnable scaling-laws lab.",
+      "excerpt": "Twelve 2020 papers in eight themes — scaling laws, GPT-3, T5, RAG, learning from human feedback, ViT, DETR, SimCLR, wav2vec 2.0, DDPM, NeRF and GShard — each explained in plain English with an animation, plus a runnable scaling-laws lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -207,13 +222,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcd0",
+      "emoji": "📐",
       "featured": false
     },
     {
       "slug": "ai-research-2021-papers",
       "title": "AI Research in 2021: The Year the Foundation-Model Stack Emerged",
-      "excerpt": "Fourteen 2021 papers in eight themes \u2014 Switch Transformer, the Foundation Models report, LoRA, CLIP, Codex, RETRO, WebGPT, diffusion beating GANs and AlphaFold 2 \u2014 each explained in plain English with an animation, plus a runnable LoRA lab.",
+      "excerpt": "Fourteen 2021 papers in eight themes — Switch Transformer, the Foundation Models report, LoRA, CLIP, Codex, RETRO, WebGPT, diffusion beating GANs and AlphaFold 2 — each explained in plain English with an animation, plus a runnable LoRA lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -222,13 +237,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\uddf1",
+      "emoji": "🧱",
       "featured": false
     },
     {
       "slug": "ai-research-2022-papers",
       "title": "AI Research in 2022: The Year Reasoning, Alignment and Generative AI Converged",
-      "excerpt": "Seventeen 2022 papers in eight themes \u2014 Chinchilla, InstructGPT, chain-of-thought, ReAct, latent diffusion, Flamingo, FlashAttention and more \u2014 each explained in plain English with an animation, plus a runnable Chinchilla scaling lab.",
+      "excerpt": "Seventeen 2022 papers in eight themes — Chinchilla, InstructGPT, chain-of-thought, ReAct, latent diffusion, Flamingo, FlashAttention and more — each explained in plain English with an animation, plus a runnable Chinchilla scaling lab.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -237,13 +252,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udf31",
+      "emoji": "🌱",
       "featured": false
     },
     {
       "slug": "ai-research-2023-papers",
       "title": "AI Research in 2023: The Year Foundation Models Became Platforms",
-      "excerpt": "Seventeen papers that turned foundation models into platforms \u2014 GPT-4, LLaMA, Llama 2, QLoRA, DPO, Tree of Thoughts, Toolformer, Reflexion, Generative Agents, Voyager, SAM, LLaVA, RT-2, AlphaDev, the emergence 'mirage', data-constrained scaling and DecodingTrust \u2014 each explained in plain English with animations and sources.",
+      "excerpt": "Seventeen papers that turned foundation models into platforms — GPT-4, LLaMA, Llama 2, QLoRA, DPO, Tree of Thoughts, Toolformer, Reflexion, Generative Agents, Voyager, SAM, LLaVA, RT-2, AlphaDev, the emergence 'mirage', data-constrained scaling and DecodingTrust — each explained in plain English with animations and sources.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -252,13 +267,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfd7\ufe0f",
+      "emoji": "🏗️",
       "featured": false
     },
     {
       "slug": "ai-research-2024-papers",
       "title": "AI Research in 2024: The Year Context, Agents and World Models Took Shape",
-      "excerpt": "Twenty-one papers that prepared the ground for reasoning models and agentic AI \u2014 Gemini 1.5, Llama 3, LongRoPE, Quiet-STaR, Self-Rewarding LMs, test-time compute scaling, SWE-agent, Mamba-2, BitNet, VAR, rectified flow, Genie, debate, model stealing, PRISM, AlphaFold 3, ViT registers and more \u2014 each explained in plain English with animations and sources.",
+      "excerpt": "Twenty-one papers that prepared the ground for reasoning models and agentic AI — Gemini 1.5, Llama 3, LongRoPE, Quiet-STaR, Self-Rewarding LMs, test-time compute scaling, SWE-agent, Mamba-2, BitNet, VAR, rectified flow, Genie, debate, model stealing, PRISM, AlphaFold 3, ViT registers and more — each explained in plain English with animations and sources.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -267,13 +282,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "ai-research-2025-papers",
       "title": "AI Research in 2025: The Year Reasoning, Agents and Test-Time Compute Broke Out",
-      "excerpt": "Eighteen papers that set up the 2026 self-improving-agent era \u2014 DeepSeek-R1, s1, Absolute Zero, the Darwin G\u00f6del Machine, CollabLLM, gated attention, AlphaEdit, masked-diffusion ordering, shallow safety alignment, The Illusion of Thinking, Artificial Hivemind, AlphaEvolve and more \u2014 grouped by research direction, each explained in plain English with animations and sources.",
+      "excerpt": "Eighteen papers that set up the 2026 self-improving-agent era — DeepSeek-R1, s1, Absolute Zero, the Darwin Gödel Machine, CollabLLM, gated attention, AlphaEdit, masked-diffusion ordering, shallow safety alignment, The Illusion of Thinking, Artificial Hivemind, AlphaEvolve and more — grouped by research direction, each explained in plain English with animations and sources.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -282,13 +297,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\ude80",
+      "emoji": "🚀",
       "featured": false
     },
     {
       "slug": "ai-research-2026-papers",
       "title": "AI Research in 2026: The Papers and Ideas Reshaping the Field",
-      "excerpt": "Fourteen of 2026's most-awarded and most-discussed AI papers from ICLR and ICML \u2014 Transformer succinctness, memorisation capacity, reasoning without answer keys, self-improving agents, the diffusion 'flexibility trap', deception detectors, multi-turn failures, AI-scientist benchmarks and more \u2014 each explained in plain English with animations and sources.",
+      "excerpt": "Fourteen of 2026's most-awarded and most-discussed AI papers from ICLR and ICML — Transformer succinctness, memorisation capacity, reasoning without answer keys, self-improving agents, the diffusion 'flexibility trap', deception detectors, multi-turn failures, AI-scientist benchmarks and more — each explained in plain English with animations and sources.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -297,13 +312,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcc5",
+      "emoji": "📅",
       "featured": false
     },
     {
       "slug": "open-problems-in-rsi",
       "title": "Open Problems in Recursive Self-Improvement: A Research Map",
-      "excerpt": "Sixteen open problems blocking genuine recursive self-improvement in five clusters \u2014 measurement, evaluation, research capability, dynamics and bottlenecks, safety and governance \u2014 each with its question, best evidence, status and references, plus an interactive map, a dependency graph and a runnable feedback-loop model.",
+      "excerpt": "Sixteen open problems blocking genuine recursive self-improvement in five clusters — measurement, evaluation, research capability, dynamics and bottlenecks, safety and governance — each with its question, best evidence, status and references, plus an interactive map, a dependency graph and a runnable feedback-loop model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",
@@ -312,13 +327,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
       "slug": "automated-rd-to-effective-rsi",
       "title": "From Automated R&D to Effective RSI: Frontier, Evidence and Open Problems",
-      "excerpt": "What is already real in AI R&D, the difference between structural and effective recursion, the first experiments built to test it (AIDE\u00b2, AI4AI-Bench, PAST-Bench), a runnable power analysis of why a few generations can't prove compounding, and the twelve open problems still blocking genuine RSI.",
+      "excerpt": "What is already real in AI R&D, the difference between structural and effective recursion, the first experiments built to test it (AIDE², AI4AI-Bench, PAST-Bench), a runnable power analysis of why a few generations can't prove compounding, and the twelve open problems still blocking genuine RSI.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-28",
@@ -327,13 +342,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcc8",
+      "emoji": "📈",
       "featured": false
     },
     {
       "slug": "self-improving-agentic-systems",
       "title": "How Self-Improving Agentic Systems Actually Work: Mechanisms, Architecture and the Path to Verified Persistent Improvement",
-      "excerpt": "A field map of self-improving AI: five levels, the closed improvement loop across model, harness, evaluator, research-process and data substrates, the improvement router, eight mechanisms from Reflexion to the Darwin G\u00f6del Machine, the fast/slow flywheel (with a runnable model), the verification hierarchy, safe inheritance and five tests for real improvement.",
+      "excerpt": "A field map of self-improving AI: five levels, the closed improvement loop across model, harness, evaluator, research-process and data substrates, the improvement router, eight mechanisms from Reflexion to the Darwin Gödel Machine, the fast/slow flywheel (with a runnable model), the verification hierarchy, safe inheritance and five tests for real improvement.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-28",
@@ -342,13 +357,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\uddec",
+      "emoji": "🧬",
       "featured": false
     },
     {
       "slug": "ai-doing-rd",
       "title": "AI Doing R&D: From Research Assistant to Autonomous Research Organization",
-      "excerpt": "Where AI already does science: Co-Scientist, ERA, AlphaEvolve, Robin, The AI Scientist-v2, OpenAI's research intern and Navier\u2013Stokes claim, Anthropic's automated alignment researchers \u2014 the research cycle, an R0\u2013R7 autonomy ladder, the architecture of an AI research organisation, and a runnable model of why taste and verification are the bottleneck.",
+      "excerpt": "Where AI already does science: Co-Scientist, ERA, AlphaEvolve, Robin, The AI Scientist-v2, OpenAI's research intern and Navier–Stokes claim, Anthropic's automated alignment researchers — the research cycle, an R0–R7 autonomy ladder, the architecture of an AI research organisation, and a runnable model of why taste and verification are the bottleneck.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -357,13 +372,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "featured": false
     },
     {
       "slug": "are-we-approaching-rsi",
-      "title": "Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025\u20132026",
-      "excerpt": "An evidence review of the path to recursive self-improvement: OpenAI's automated research intern, Claude leading 26% of Anthropic's AI R&D, Google's 75% AI-written code, distillation, the 2026 sandbox-escape incidents, and the steps no lab has shown \u2014 with timelines, attack-path replays and a runnable containment model.",
+      "title": "Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025–2026",
+      "excerpt": "An evidence review of the path to recursive self-improvement: OpenAI's automated research intern, Claude leading 26% of Anthropic's AI R&D, Google's 75% AI-written code, distillation, the 2026 sandbox-escape incidents, and the steps no lab has shown — with timelines, attack-path replays and a runnable containment model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -372,13 +387,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "recursive-harness-self-improvement",
       "title": "Recursive Harness Self-Improvement: How Agents Are Starting to Improve the Systems That Run Them",
-      "excerpt": "The recursive self-improvement arriving in 2026 is harness-first: agents evolve their own prompts, tools, context and policies behind a release gate. Inner and outer loops, the lineage from Self-Refine to RHI, HELIX, ModularRSI, RRSI and RegenHarness, the model\u2013harness flywheel, failure modes \u2014 and a runnable model of why the gate matters.",
+      "excerpt": "The recursive self-improvement arriving in 2026 is harness-first: agents evolve their own prompts, tools, context and policies behind a release gate. Inner and outer loops, the lineage from Self-Refine to RHI, HELIX, ModularRSI, RRSI and RegenHarness, the model–harness flywheel, failure modes — and a runnable model of why the gate matters.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -387,13 +402,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\u267b\ufe0f",
+      "emoji": "♻️",
       "featured": false
     },
     {
       "slug": "harness-across-real-world-contexts",
       "title": "Harness Engineering Across Real-World Contexts: One Pattern, Nine Domains",
-      "excerpt": "The same agent harness runs code, contact centres, sales, legal, finance, healthcare, construction, factories and research. What changes is context, tools, verification and approvals \u2014 with a domain explorer, real incidents mapped to missing layers, the regulation that now requires some of them, and a runnable autonomy-vs-risk model.",
+      "excerpt": "The same agent harness runs code, contact centres, sales, legal, finance, healthcare, construction, factories and research. What changes is context, tools, verification and approvals — with a domain explorer, real incidents mapped to missing layers, the regulation that now requires some of them, and a runnable autonomy-vs-risk model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -402,13 +417,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udf10",
+      "emoji": "🌐",
       "featured": false
     },
     {
       "slug": "agentic-developer-workbenches",
       "title": "Agentic Developer Workbenches: Cursor, GitHub Copilot, Google Antigravity 2.0 and Devin Desktop Compared",
-      "excerpt": "How four agentic coding workbenches are built, layer by layer: surfaces, harnesses, models, local vs cloud agents, parallelism, SDKs and protocols (JSON-RPC, ACP) \u2014 with an 11-layer explorer, protocol animations and a simulator showing why review, not agent count, caps throughput.",
+      "excerpt": "How four agentic coding workbenches are built, layer by layer: surfaces, harnesses, models, local vs cloud agents, parallelism, SDKs and protocols (JSON-RPC, ACP) — with an 11-layer explorer, protocol animations and a simulator showing why review, not agent count, caps throughput.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -417,13 +432,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udee0\ufe0f",
+      "emoji": "🛠️",
       "featured": false
     },
     {
       "slug": "harness-architecture-comparison",
       "title": "Harness Product Architecture Comparison: Foundry, ADK, LangChain, CrewAI, Temporal, E2B, Browserbase and AgentCore",
-      "excerpt": "Eight more agent platforms, architecture only: what each manages and leaves to you, how Microsoft Foundry, Google ADK and Agent Runtime, LangChain, CrewAI, Temporal, E2B, Browserbase and AWS AgentCore harness compose \u2014 with a coverage map, lifecycle animations, a stack composer and a runnable set-cover model.",
+      "excerpt": "Eight more agent platforms, architecture only: what each manages and leaves to you, how Microsoft Foundry, Google ADK and Agent Runtime, LangChain, CrewAI, Temporal, E2B, Browserbase and AWS AgentCore harness compose — with a coverage map, lifecycle animations, a stack composer and a runnable set-cover model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -432,13 +447,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfdb\ufe0f",
+      "emoji": "🏛️",
       "featured": false
     },
     {
       "slug": "deepseek-harness-dsh",
       "title": "DeepSeek Harness (dsh): an Open-Source, Plugin-Composed Agent Runtime",
-      "excerpt": "Product case study #3: DeepSeek's MIT-licensed agent harness, taken apart from its repository \u2014 Cordis plugins with reversible effects, profiles and bundles, turns and steps, the event-sourced session log, capability seams, the tool runtime and opt-in MCP \u2014 with interactive diagrams and a runnable miniature of its core ideas.",
+      "excerpt": "Product case study #3: DeepSeek's MIT-licensed agent harness, taken apart from its repository — Cordis plugins with reversible effects, profiles and bundles, turns and steps, the event-sourced session log, capability seams, the tool runtime and opt-in MCP — with interactive diagrams and a runnable miniature of its core ideas.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -447,13 +462,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udc0b",
+      "emoji": "🐋",
       "featured": false
     },
     {
       "slug": "claude-agent-sdk-managed-agents",
       "title": "Claude Agent SDK and Managed Agents: the Claude Code Harness in Production",
-      "excerpt": "Product case study #2: Anthropic's Claude Agent SDK and Claude Managed Agents, taken apart from documentation and engineering posts \u2014 boundary, session/harness/sandbox, the agent loop, compaction, tools, subagents and hooks, the documented permission chain, brain-vs-hands architecture and recovery \u2014 with interactive diagrams and a runnable permission engine.",
+      "excerpt": "Product case study #2: Anthropic's Claude Agent SDK and Claude Managed Agents, taken apart from documentation and engineering posts — boundary, session/harness/sandbox, the agent loop, compaction, tools, subagents and hooks, the documented permission chain, brain-vs-hands architecture and recovery — with interactive diagrams and a runnable permission engine.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -462,13 +477,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udde0",
+      "emoji": "🧠",
       "featured": false
     },
     {
       "slug": "openai-agents-api-codex-harness",
       "title": "OpenAI Agents API: the Codex Harness as a Managed Production Runtime",
-      "excerpt": "Product case study #1: OpenAI's public-beta Agents API, taken apart from its documentation \u2014 the OpenAI/developer boundary, agents, environments, sessions and events, the managed loop, automatic compaction, tools and MCP, hosted, partner and self-hosted execution, subagents and recovery \u2014 with interactive diagrams and a runnable session-cost model.",
+      "excerpt": "Product case study #1: OpenAI's public-beta Agents API, taken apart from its documentation — the OpenAI/developer boundary, agents, environments, sessions and events, the managed loop, automatic compaction, tools and MCP, hosted, partner and self-hosted execution, subagents and recovery — with interactive diagrams and a runnable session-cost model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -477,13 +492,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
       "slug": "harness-case-studies",
       "title": "Harness Case Studies: OpenAI Codex, Claude Code Auto Mode and Gemini Deep Research",
-      "excerpt": "Three real agent harnesses taken apart from public documentation: Codex's parallel worktrees and sandbox policies, Claude Code auto mode's sandbox and two-stage classifier with published error rates, and Gemini Deep Research's iterative cited research \u2014 with interactive diagrams and a runnable approval-fatigue simulation.",
+      "excerpt": "Three real agent harnesses taken apart from public documentation: Codex's parallel worktrees and sandbox policies, Claude Code auto mode's sandbox and two-stage classifier with published error rates, and Gemini Deep Research's iterative cited research — with interactive diagrams and a runnable approval-fatigue simulation.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-27",
@@ -492,13 +507,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd0d",
+      "emoji": "🔍",
       "featured": false
     },
     {
       "slug": "harness-market-landscape",
       "title": "The Harness Market Landscape: Who Builds the Infrastructure Around Frontier Models",
-      "excerpt": "The agent-infrastructure market as of September 2026: frameworks at 1.0, the MCP ecosystem and registry, retrieval, memory, browsers, sandboxes, durable workflows, observability, gateways, guardrails and managed platforms \u2014 with 2025\u201326 deals, an interactive stack builder and a runnable availability model.",
+      "excerpt": "The agent-infrastructure market as of September 2026: frameworks at 1.0, the MCP ecosystem and registry, retrieval, memory, browsers, sandboxes, durable workflows, observability, gateways, guardrails and managed platforms — with 2025–26 deals, an interactive stack builder and a runnable availability model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -507,13 +522,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "harness-production-engineering",
       "title": "Harness Production Engineering: Running Agents Reliably at Scale",
-      "excerpt": "The production side of agent harnesses: durable runtimes, async long-running jobs, context lifecycles, state stores, tool execution gates, MCP's 2026 stateless spec, sandboxes, guardrails and approvals, orchestration, tracing, reliability patterns and deployment architecture \u2014 with interactive diagrams and a runnable crash-and-idempotency simulation.",
+      "excerpt": "The production side of agent harnesses: durable runtimes, async long-running jobs, context lifecycles, state stores, tool execution gates, MCP's 2026 stateless spec, sandboxes, guardrails and approvals, orchestration, tracing, reliability patterns and deployment architecture — with interactive diagrams and a runnable crash-and-idempotency simulation.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -522,13 +537,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfd7\ufe0f",
+      "emoji": "🏗️",
       "featured": false
     },
     {
       "slug": "harness-scaffolding-research-and-innovation",
       "title": "Harness & Scaffolding Research and Innovation: What's Changing Around the Models",
-      "excerpt": "The research frontier of agent harnesses in 2026: context engineering, compaction, structured and prospective memory, planning and replanning, subagents, dynamic tool loading, sandboxes, verifiers in the loop and adaptive harnesses \u2014 with interactive diagrams, a compaction simulator and the 2026 benchmarks that show where agents still fail.",
+      "excerpt": "The research frontier of agent harnesses in 2026: context engineering, compaction, structured and prospective memory, planning and replanning, subagents, dynamic tool loading, sandboxes, verifiers in the loop and adaptive harnesses — with interactive diagrams, a compaction simulator and the 2026 benchmarks that show where agents still fail.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -537,13 +552,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\uddf0",
+      "emoji": "🧰",
       "featured": false
     },
     {
       "slug": "frontier-model-case-studies",
-      "title": "Frontier Model Case Studies: DeepSeek-V3 \u2192 R1, Llama 4 and Qwen3 / Qwen3-Next",
-      "excerpt": "Three open model families taken apart: DeepSeek's efficient MoE and RL-trained reasoning, Llama 4's early-fusion multimodality and sparse layouts, and Qwen's hybrid thinking and hybrid linear attention \u2014 with interactive diagrams and a calculator built from their published configurations.",
+      "title": "Frontier Model Case Studies: DeepSeek-V3 → R1, Llama 4 and Qwen3 / Qwen3-Next",
+      "excerpt": "Three open model families taken apart: DeepSeek's efficient MoE and RL-trained reasoning, Llama 4's early-fusion multimodality and sparse layouts, and Qwen's hybrid thinking and hybrid linear attention — with interactive diagrams and a calculator built from their published configurations.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -552,13 +567,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "featured": false
     },
     {
       "slug": "frontier-model-market-landscape",
       "title": "The Frontier Model Market Landscape: Who Builds, Trains, Serves and Sells the Models",
-      "excerpt": "The model-side market as of September 2026: closed labs and their line-ups and prices, the open-weight ecosystem, training and serving software, hubs, chips and clouds, build vs buy, and where value is concentrating \u2014 with an interactive cost calculator and break-even model.",
+      "excerpt": "The model-side market as of September 2026: closed labs and their line-ups and prices, the open-weight ecosystem, training and serving software, hubs, chips and clouds, build vs buy, and where value is concentrating — with an interactive cost calculator and break-even model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -567,13 +582,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\uddfa\ufe0f",
+      "emoji": "🗺️",
       "featured": false
     },
     {
       "slug": "frontier-model-production-engineering",
       "title": "Frontier Model Production Engineering: Training, Serving and Operating Models at Scale",
-      "excerpt": "How frontier models are trained across thousands of GPUs and served to millions: parallelism, ZeRO, MoE all-to-all, failure-proof checkpointing, continuous batching, prefill vs decode, disaggregation, paged KV cache, speculative decoding, kernels, quantization and deployment \u2014 with interactive diagrams and a runnable serving simulator.",
+      "excerpt": "How frontier models are trained across thousands of GPUs and served to millions: parallelism, ZeRO, MoE all-to-all, failure-proof checkpointing, continuous batching, prefill vs decode, disaggregation, paged KV cache, speculative decoding, kernels, quantization and deployment — with interactive diagrams and a runnable serving simulator.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -582,13 +597,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfed",
+      "emoji": "🏭",
       "featured": false
     },
     {
       "slug": "frontier-model-research-and-innovation",
       "title": "Frontier Model Research & Innovation: What's Changing Inside the Models",
-      "excerpt": "Mixture-of-experts, compressed sparse attention for million-token context, RL and test-time reasoning, controllable thinking, native multimodality, embodied reasoning and distillation \u2014 explained with interactive diagrams and grounded in documented 2026 models.",
+      "excerpt": "Mixture-of-experts, compressed sparse attention for million-token context, RL and test-time reasoning, controllable thinking, native multimodality, embodied reasoning and distillation — explained with interactive diagrams and grounded in documented 2026 models.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -597,13 +612,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\uddec",
+      "emoji": "🧬",
       "featured": false
     },
     {
       "slug": "llm-harness-engineering",
       "title": "LLM Harness Engineering: Engineering the System Around the Model",
-      "excerpt": "What harness engineering is, and why the same model can fail or succeed depending on the system around it: context, tools, environment, verification, guardrails and feedback loops \u2014 with a same-model ablation across five harnesses.",
+      "excerpt": "What harness engineering is, and why the same model can fail or succeed depending on the system around it: context, tools, environment, verification, guardrails and feedback loops — with a same-model ablation across five harnesses.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -612,7 +627,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\uddf0",
+      "emoji": "🧰",
       "featured": false
     },
     {
@@ -627,13 +642,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\uddfa\ufe0f",
+      "emoji": "🗺️",
       "featured": false
     },
     {
       "slug": "evaluating-agents",
       "title": "Evaluating Agents: Measuring Success, Safety and Reliability",
-      "excerpt": "How to evaluate agents, not just answers: outcome, trajectory and system levels, automated checks, environment signals, LLM judges and human review, pass^k reliability, adversarial scenarios and release gates \u2014 with a harness that catches an agent that looks better but is unsafe.",
+      "excerpt": "How to evaluate agents, not just answers: outcome, trajectory and system levels, automated checks, environment signals, LLM judges and human review, pass^k reliability, adversarial scenarios and release gates — with a harness that catches an agent that looks better but is unsafe.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -642,13 +657,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udccf",
+      "emoji": "📏",
       "featured": false
     },
     {
       "slug": "production-agent-architecture",
       "title": "Production Agent Architecture: End-to-End System Design",
-      "excerpt": "The capstone: control plane vs execution plane, core platform components, and the infrastructure that makes agents production-grade \u2014 durable execution with idempotent side effects, model routing, tracing, scaling limits and circuit breakers, each measured.",
+      "excerpt": "The capstone: control plane vs execution plane, core platform components, and the infrastructure that makes agents production-grade — durable execution with idempotent side effects, model routing, tracing, scaling limits and circuit breakers, each measured.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -657,13 +672,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfdb\ufe0f",
+      "emoji": "🏛️",
       "featured": false
     },
     {
       "slug": "mcp-model-context-protocol",
       "title": "MCP and Tool Ecosystems: How Agents Discover, Connect to and Use External Capabilities",
-      "excerpt": "The Model Context Protocol as it works on the wire: hosts, clients and servers; tools, resources and prompts; discovery, invocation, transports, OAuth 2.1, errors and security \u2014 with an MCP server written from the spec and verified against the official SDK.",
+      "excerpt": "The Model Context Protocol as it works on the wire: hosts, clients and servers; tools, resources and prompts; discovery, invocation, transports, OAuth 2.1, errors and security — with an MCP server written from the spec and verified against the official SDK.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -672,13 +687,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd0c",
+      "emoji": "🔌",
       "featured": false
     },
     {
       "slug": "agent-memory-and-planning-patterns",
       "title": "Agent Memory and Planning Patterns: How Agents Remember, Plan, Reflect and Keep Going",
-      "excerpt": "Memory types and architecture, planning patterns, task state and checkpoints, memory write policies, reflection and long-running persistence \u2014 with experiments on crash recovery, learning from experience, what to store, and replanning.",
+      "excerpt": "Memory types and architecture, planning patterns, task state and checkpoints, memory write policies, reflection and long-running persistence — with experiments on crash recovery, learning from experience, what to store, and replanning.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -687,13 +702,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
       "slug": "multi-agent-systems-architecture",
       "title": "Multi-Agent Systems: End-to-End Architecture",
-      "excerpt": "Supervisors, specialists and reviewers: roles, routing, coordination patterns, shared state, parallel execution, failure handling and cost \u2014 with experiments showing when cross-checking actually reduces errors and what sharing everything costs.",
+      "excerpt": "Supervisors, specialists and reviewers: roles, routing, coordination patterns, shared state, parallel execution, failure handling and cost — with experiments showing when cross-checking actually reduces errors and what sharing everything costs.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -702,13 +717,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udc65",
+      "emoji": "👥",
       "featured": false
     },
     {
       "slug": "agentic-systems-multi-step-goals",
       "title": "Agentic Systems: From Single Tool Calls to Multi-Step Goal Completion",
-      "excerpt": "The agent loop \u2014 plan, act, observe, update state, reflect, replan, stop \u2014 and everything around it: components, memory, human approval, failure recovery, subagents and termination, with a runnable agent and the arithmetic of why long runs fail.",
+      "excerpt": "The agent loop — plan, act, observe, update state, reflect, replan, stop — and everything around it: components, memory, human approval, failure recovery, subagents and termination, with a runnable agent and the arithmetic of why long runs fail.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -717,13 +732,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udd16",
+      "emoji": "🤖",
       "featured": false
     },
     {
       "slug": "tool-and-function-calling",
       "title": "Tool and Function Calling: How an LLM Goes from Answering to Acting",
-      "excerpt": "How models call tools: schemas, the call loop, read vs action tools, orchestration, sequential and parallel calls, validation, permissions and confirmation, errors and retries, prompt-injection defence and observability \u2014 with a runnable orchestrator.",
+      "excerpt": "How models call tools: schemas, the call loop, read vs action tools, orchestration, sequential and parallel calls, validation, permissions and confirmation, errors and retries, prompt-injection defence and observability — with a runnable orchestrator.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -732,13 +747,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udee0\ufe0f",
+      "emoji": "🛠️",
       "featured": false
     },
     {
       "slug": "rag-retrieval-augmented-generation",
       "title": "RAG: Retrieval-Augmented Generation, End to End",
-      "excerpt": "The full RAG system \u2014 ingestion, chunking, embeddings, vector search, hybrid retrieval, reranking, cited generation and evaluation \u2014 with a pipeline measured on 622 real documents and 30 labelled questions, including where it fails.",
+      "excerpt": "The full RAG system — ingestion, chunking, embeddings, vector search, hybrid retrieval, reranking, cited generation and evaluation — with a pipeline measured on 622 real documents and 30 labelled questions, including where it fails.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -747,13 +762,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udd0e",
+      "emoji": "🔎",
       "featured": false
     },
     {
       "slug": "context-engineering-and-memory",
       "title": "Context Engineering and Memory Architecture for LLMs",
-      "excerpt": "What goes into a model's context window and how it's chosen: history management, working vs persistent memory, write and retrieval pipelines, compaction, token budgets, prompt caching and agent memory \u2014 with five memory strategies measured on the same 100-turn conversation.",
+      "excerpt": "What goes into a model's context window and how it's chosen: history management, working vs persistent memory, write and retrieval pipelines, compaction, token budgets, prompt caching and agent memory — with five memory strategies measured on the same 100-turn conversation.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -762,13 +777,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
       "slug": "production-llm-system-design",
       "title": "Production LLM System Design: Anatomy of a ChatGPT- or Claude-Style Assistant",
-      "excerpt": "The full system around the model: gateway, conversation state and memory, retrieval, a context builder working to a token budget, layered safety including prompt-injection defence, tool orchestration, serving, streaming and caching \u2014 with a runnable mini runtime that implements every piece.",
+      "excerpt": "The full system around the model: gateway, conversation state and memory, retrieval, a context builder working to a token budget, layered safety including prompt-injection defence, tool orchestration, serving, streaming and caching — with a runnable mini runtime that implements every piece.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-26",
@@ -777,13 +792,13 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfd7\ufe0f",
+      "emoji": "🏗️",
       "featured": false
     },
     {
       "slug": "how-llm-scaling-and-distributed-training-works",
       "title": "Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built",
-      "excerpt": "Scaling laws and compute-optimal training, how GPUs turn matrix multiplies into FLOPs, and how data, tensor, pipeline and expert parallelism split one model across thousands of GPUs \u2014 with a runnable mini scaling study, a roofline benchmark and a data-parallel all-reduce check.",
+      "excerpt": "Scaling laws and compute-optimal training, how GPUs turn matrix multiplies into FLOPs, and how data, tensor, pipeline and expert parallelism split one model across thousands of GPUs — with a runnable mini scaling study, a roofline benchmark and a data-parallel all-reduce check.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-25",
@@ -792,7 +807,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83d\udcc8",
+      "emoji": "📈",
       "featured": false
     },
     {
@@ -807,7 +822,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\u26a1",
+      "emoji": "⚡",
       "featured": false
     },
     {
@@ -822,7 +837,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
@@ -837,7 +852,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfaf",
+      "emoji": "🎯",
       "featured": false
     },
     {
@@ -852,7 +867,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\ud83c\udfed",
+      "emoji": "🏭",
       "featured": false
     },
     {
@@ -867,7 +882,7 @@
         "AI Research",
         "Explainer"
       ],
-      "emoji": "\u2699\ufe0f",
+      "emoji": "⚙️",
       "featured": false
     },
     {
@@ -882,7 +897,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udda5\ufe0f",
+      "emoji": "🖥️",
       "featured": false
     },
     {
@@ -897,7 +912,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddee",
+      "emoji": "🧮",
       "featured": false
     },
     {
@@ -912,7 +927,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
@@ -927,7 +942,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd21",
+      "emoji": "🔡",
       "featured": false
     },
     {
@@ -942,7 +957,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddf1",
+      "emoji": "🧱",
       "featured": false
     },
     {
@@ -957,7 +972,7 @@
         "Career",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf93",
+      "emoji": "🎓",
       "featured": false
     },
     {
@@ -972,7 +987,7 @@
         "Career",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
@@ -987,7 +1002,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udccf",
+      "emoji": "📏",
       "featured": false
     },
     {
@@ -1002,7 +1017,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd0d",
+      "emoji": "🔍",
       "featured": false
     },
     {
@@ -1017,7 +1032,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfcb\ufe0f",
+      "emoji": "🏋️",
       "featured": false
     },
     {
@@ -1032,7 +1047,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf33",
+      "emoji": "🌳",
       "featured": false
     },
     {
@@ -1047,7 +1062,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd01",
+      "emoji": "🔁",
       "featured": false
     },
     {
@@ -1062,7 +1077,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcd8",
+      "emoji": "📘",
       "featured": false
     },
     {
@@ -1077,7 +1092,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\u2699\ufe0f",
+      "emoji": "⚙️",
       "featured": false
     },
     {
@@ -1092,13 +1107,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "rsi-2026-breakthroughs",
       "title": "2026 in RSI Research: New Breakthroughs and Papers",
-      "excerpt": "A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only advancement timeline, and lab-reported self-improvement in production \u2014 plus researcher and practitioner direction at the end.",
+      "excerpt": "A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only advancement timeline, and lab-reported self-improvement in production — plus researcher and practitioner direction at the end.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-22",
@@ -1107,13 +1122,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddec",
+      "emoji": "🧬",
       "featured": false
     },
     {
       "slug": "rsi-literature-survey",
       "title": "Recursive Self-Improvement: A Literature Survey",
-      "excerpt": "An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically, and a focused look at AI-automating-AI-research papers \u2014 each with summary, reference link, and video where verifiable.",
+      "excerpt": "An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically, and a focused look at AI-automating-AI-research papers — each with summary, reference link, and video where verifiable.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-22",
@@ -1122,7 +1137,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcda",
+      "emoji": "📚",
       "featured": false
     },
     {
@@ -1137,7 +1152,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd73\ufe0f",
+      "emoji": "🕳️",
       "featured": false
     },
     {
@@ -1152,7 +1167,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
@@ -1167,7 +1182,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\u23f3",
+      "emoji": "⏳",
       "featured": false
     },
     {
@@ -1182,7 +1197,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udd16",
+      "emoji": "🤖",
       "featured": false
     },
     {
@@ -1197,7 +1212,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcca",
+      "emoji": "📊",
       "featured": false
     },
     {
@@ -1212,7 +1227,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfdb\ufe0f",
+      "emoji": "🏛️",
       "featured": false
     },
     {
@@ -1227,13 +1242,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfaf",
+      "emoji": "🎯",
       "featured": false
     },
     {
       "slug": "rsi-ai-automating-ai-research",
       "title": "AI Automating AI Research: RSI's Testing Ground",
-      "excerpt": "Part 4 of the RSI series. Covers three real, September 2026 systems \u2014 Dream-RSI, ModularRSI, and ScienceBuddy \u2014 that improve AI agents' research effectiveness without touching the underlying model's weights, a Dwarkesh Patel roundtable with John Schulman on objective specification, distillation, and autonomy timelines, Sakana AI's 'AI CUDA Engineer' and its benchmark-gaming retraction alongside DeepMind's verified AlphaEvolve kernel results, Vals AI's real-world-reliability evaluation approach, Ryan Greenblatt's verifiable-task-transfer argument, and an explicit correction of a fabricated 'joint conversation' claim involving four separate researchers.",
+      "excerpt": "Part 4 of the RSI series. Covers three real, September 2026 systems — Dream-RSI, ModularRSI, and ScienceBuddy — that improve AI agents' research effectiveness without touching the underlying model's weights, a Dwarkesh Patel roundtable with John Schulman on objective specification, distillation, and autonomy timelines, Sakana AI's 'AI CUDA Engineer' and its benchmark-gaming retraction alongside DeepMind's verified AlphaEvolve kernel results, Vals AI's real-world-reliability evaluation approach, Ryan Greenblatt's verifiable-task-transfer argument, and an explicit correction of a fabricated 'joint conversation' claim involving four separate researchers.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-21",
@@ -1242,13 +1257,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddea",
+      "emoji": "🧪",
       "featured": false
     },
     {
       "slug": "recursive-self-improvement-primer",
       "title": "Recursive Self-Improvement: A Primer",
-      "excerpt": "The opening piece in a planned seven-part series on recursive self-improvement (RSI). Traces the idea from I.J. Good's 1965 'intelligence explosion' essay through Yudkowsky's naming of RSI, distinguishes it from ordinary capability scaling, covers genuine (if narrow) real-world progress \u2014 METR's RE-Bench, OpenAI's MLE-bench, DeepMind's AlphaEvolve \u2014 documents the notable 2026 convergence of Anthropic, OpenAI, and Google DeepMind all naming 'AI automating AI research' as an explicit safety-framework risk threshold, surveys the hard-takeoff-vs-soft-takeoff debate, and treats 2026's wave of self-reported lab 'steps toward RSI' claims with explicit skepticism.",
+      "excerpt": "The opening piece in a planned seven-part series on recursive self-improvement (RSI). Traces the idea from I.J. Good's 1965 'intelligence explosion' essay through Yudkowsky's naming of RSI, distinguishes it from ordinary capability scaling, covers genuine (if narrow) real-world progress — METR's RE-Bench, OpenAI's MLE-bench, DeepMind's AlphaEvolve — documents the notable 2026 convergence of Anthropic, OpenAI, and Google DeepMind all naming 'AI automating AI research' as an explicit safety-framework risk threshold, surveys the hard-takeoff-vs-soft-takeoff debate, and treats 2026's wave of self-reported lab 'steps toward RSI' claims with explicit skepticism.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-21",
@@ -1257,13 +1272,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd01",
+      "emoji": "🔁",
       "featured": false
     },
     {
       "slug": "qwen-lineage-consolidated-comparison",
       "title": "The Qwen Lineage: A Consolidated Comparison",
-      "excerpt": "An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model in August 2023 to an eight-size family spanning 0.5B to 480B parameters, backed by a $50B+ cloud infrastructure pledge. Covers Qwen3's abandoned hybrid-reasoning toggle (split apart within three months of launch), a Meta-style MAU-gated license for flagship models despite Apache 2.0 openness at smaller sizes, documented political-content refusal behavior consistent with China's regulatory environment, contested Hugging Face download-count claims, and the UAE's Qwen-derived K2 Think as a genuine sovereign-AI deployment \u2014 closing with the first eight-way comparison across every lab this site has documented.",
+      "excerpt": "An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model in August 2023 to an eight-size family spanning 0.5B to 480B parameters, backed by a $50B+ cloud infrastructure pledge. Covers Qwen3's abandoned hybrid-reasoning toggle (split apart within three months of launch), a Meta-style MAU-gated license for flagship models despite Apache 2.0 openness at smaller sizes, documented political-content refusal behavior consistent with China's regulatory environment, contested Hugging Face download-count claims, and the UAE's Qwen-derived K2 Think as a genuine sovereign-AI deployment — closing with the first eight-way comparison across every lab this site has documented.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-20",
@@ -1272,13 +1287,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udc09",
+      "emoji": "🐉",
       "featured": false
     },
     {
       "slug": "ai-researcher-atlas",
       "title": "The AI Researcher Atlas: 50 People Who Built the Field",
-      "excerpt": "A tiered survey of roughly fifty ML/DL/AI/AGI researchers behind the labs this site covers \u2014 foundational figures (Hinton, Bengio, LeCun, Sutskever, Hassabis, Legg, the Amodeis, Mensch, Fei-Fei Li, Andrew Ng), the Transformer paper's eight authors and where each ended up, the architects of scaling laws, RLHF, and GANs, safety and alignment researchers, and a wave of interpretability, robotics, and international specialists. Documents an unusually volatile 2025-2026 for AI talent, with every recent employer claim confidence-flagged as Confirmed or Unverified rather than stated as settled fact.",
+      "excerpt": "A tiered survey of roughly fifty ML/DL/AI/AGI researchers behind the labs this site covers — foundational figures (Hinton, Bengio, LeCun, Sutskever, Hassabis, Legg, the Amodeis, Mensch, Fei-Fei Li, Andrew Ng), the Transformer paper's eight authors and where each ended up, the architects of scaling laws, RLHF, and GANs, safety and alignment researchers, and a wave of interpretability, robotics, and international specialists. Documents an unusually volatile 2025-2026 for AI talent, with every recent employer claim confidence-flagged as Confirmed or Unverified rather than stated as settled fact.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-19",
@@ -1287,7 +1302,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddd1\u200d\ud83d\udd2c",
+      "emoji": "🧑‍🔬",
       "featured": false
     },
     {
@@ -1302,7 +1317,7 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcc8",
+      "emoji": "📈",
       "featured": false
     },
     {
@@ -1317,13 +1332,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udded",
+      "emoji": "🧭",
       "featured": false
     },
     {
       "slug": "frontier-ai-benchmark-landscape",
       "title": "The Frontier AI Benchmark Landscape: How Every Capability Gets Measured",
-      "excerpt": "A reference article mapping the fragmented world of AI benchmarking: how MMLU became saturated and what replaced it, the FrontierMath\u2013OpenAI access controversy, the SWE-bench Verified contamination concern, the Arena (formerly LMArena) vote-rigging vulnerability, METR's long-horizon autonomy research and its widely-cited task-doubling trend, and why safety evaluation still has no shared cross-lab leaderboard the way capability benchmarks do \u2014 covering reasoning, math, coding, agentic tool-use, computer use, long context, multimodal, preference, safety, and multilingual categories in one place.",
+      "excerpt": "A reference article mapping the fragmented world of AI benchmarking: how MMLU became saturated and what replaced it, the FrontierMath–OpenAI access controversy, the SWE-bench Verified contamination concern, the Arena (formerly LMArena) vote-rigging vulnerability, METR's long-horizon autonomy research and its widely-cited task-doubling trend, and why safety evaluation still has no shared cross-lab leaderboard the way capability benchmarks do — covering reasoning, math, coding, agentic tool-use, computer use, long context, multimodal, preference, safety, and multilingual categories in one place.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-17",
@@ -1332,13 +1347,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcca",
+      "emoji": "📊",
       "featured": false
     },
     {
       "slug": "mistral-lineage-consolidated-comparison",
       "title": "The Mistral AI Lineage: A Consolidated Comparison",
-      "excerpt": "A seventh lab, and the first case study centered on a country as much as a company: Mistral's rise from a reputation-only $113M seed round in Paris to a ~$24B valuation after its September 2026 Samsung-led round \u2014 Mistral 7B's genuinely open Apache 2.0 debut, Mixtral's first prominent open-weight Mixture-of-Experts model, the controversial pivot to closed flagships alongside a Microsoft investment, a licensing philosophy that reverses direction more than once, the ASML strategic stake, and the EU AI Act contrast with Meta's refusal to sign \u2014 closing with the first seven-way comparison across every lab this site has documented.",
+      "excerpt": "A seventh lab, and the first case study centered on a country as much as a company: Mistral's rise from a reputation-only $113M seed round in Paris to a ~$24B valuation after its September 2026 Samsung-led round — Mistral 7B's genuinely open Apache 2.0 debut, Mixtral's first prominent open-weight Mixture-of-Experts model, the controversial pivot to closed flagships alongside a Microsoft investment, a licensing philosophy that reverses direction more than once, the ASML strategic stake, and the EU AI Act contrast with Meta's refusal to sign — closing with the first seven-way comparison across every lab this site has documented.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1347,13 +1362,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf2c\ufe0f",
+      "emoji": "🌬️",
       "featured": false
     },
     {
       "slug": "meta-llama-lineage-consolidated-comparison",
       "title": "The Meta AI (Llama) Lineage: A Consolidated Comparison",
-      "excerpt": "A sixth lab, and the first defined by a distribution strategy rather than a single model: Meta's four-generation open-weight bet from Llama 1's leak through Llama 3.1's 405B model, followed by 2025's reckoning \u2014 the LMArena benchmark-gaming scandal, Behemoth's stalled release, the Kadrey v. Meta copyright case over LibGen training data, Meta's refusal to sign the EU AI Act's Code of Practice, and the August 2025 reorganization into Meta Superintelligence Labs that pushed Yann LeCun out the door \u2014 closing with the first six-way comparison across every lab this site has documented.",
+      "excerpt": "A sixth lab, and the first defined by a distribution strategy rather than a single model: Meta's four-generation open-weight bet from Llama 1's leak through Llama 3.1's 405B model, followed by 2025's reckoning — the LMArena benchmark-gaming scandal, Behemoth's stalled release, the Kadrey v. Meta copyright case over LibGen training data, Meta's refusal to sign the EU AI Act's Code of Practice, and the August 2025 reorganization into Meta Superintelligence Labs that pushed Yann LeCun out the door — closing with the first six-way comparison across every lab this site has documented.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1362,13 +1377,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udd99",
+      "emoji": "🦙",
       "featured": false
     },
     {
       "slug": "deepseek-lineage-consolidated-comparison",
       "title": "The DeepSeek Lineage: A Consolidated Comparison",
-      "excerpt": "A fifth lab, and the one whose release moved markets: Liang Wenfeng's High-Flyer-funded lab, DeepSeek-V3's genuinely disclosed Mixture-of-Experts and Multi-head Latent Attention architecture, R1's pure-RL reasoning breakthrough via GRPO and its distillation into open Qwen/Llama-based models, three disputed training-cost figures ($5.6M, ~$1.6B, $294K) presented side by side rather than resolved, the $600B single-day Nvidia shock dubbed \"AI's Sputnik Moment,\" China's state-mandated content-restriction framework treated as categorically distinct from voluntary safety frameworks, and the resulting Italy and Australia government bans \u2014 closing with the first five-way comparison across OpenAI, Anthropic, Google DeepMind, xAI, and DeepSeek.",
+      "excerpt": "A fifth lab, and the one whose release moved markets: Liang Wenfeng's High-Flyer-funded lab, DeepSeek-V3's genuinely disclosed Mixture-of-Experts and Multi-head Latent Attention architecture, R1's pure-RL reasoning breakthrough via GRPO and its distillation into open Qwen/Llama-based models, three disputed training-cost figures ($5.6M, ~$1.6B, $294K) presented side by side rather than resolved, the $600B single-day Nvidia shock dubbed \"AI's Sputnik Moment,\" China's state-mandated content-restriction framework treated as categorically distinct from voluntary safety frameworks, and the resulting Italy and Australia government bans — closing with the first five-way comparison across OpenAI, Anthropic, Google DeepMind, xAI, and DeepSeek.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1377,13 +1392,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udc0b",
+      "emoji": "🐋",
       "featured": false
     },
     {
       "slug": "grok-lineage-consolidated-comparison",
       "title": "The Grok Lineage: A Consolidated Comparison",
-      "excerpt": "A fourth lab, a genuinely different story: xAI's founding-to-launch speed (8 months), the Colossus supercomputer built in 122 days, Grok-1's rare return to GPT-1-style open weights, Grok-3/4's real benchmark wins and a public OpenAI benchmark dispute, the July 2025 \"MechaHitler\" incident \u2014 a real, live 16-hour public safety failure unlike any other lab's disclosed findings \u2014 a Risk Management Framework outside researchers called inadequate, and the February 2026 absorption into SpaceX, closing with the first four-way comparison across OpenAI, Anthropic, Google DeepMind, and xAI.",
+      "excerpt": "A fourth lab, a genuinely different story: xAI's founding-to-launch speed (8 months), the Colossus supercomputer built in 122 days, Grok-1's rare return to GPT-1-style open weights, Grok-3/4's real benchmark wins and a public OpenAI benchmark dispute, the July 2025 \"MechaHitler\" incident — a real, live 16-hour public safety failure unlike any other lab's disclosed findings — a Risk Management Framework outside researchers called inadequate, and the February 2026 absorption into SpaceX, closing with the first four-way comparison across OpenAI, Anthropic, Google DeepMind, and xAI.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1392,13 +1407,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\ude80",
+      "emoji": "🚀",
       "featured": false
     },
     {
       "slug": "gemini-lineage-consolidated-comparison",
       "title": "The Gemini Lineage: A Consolidated Comparison",
-      "excerpt": "A consolidated synthesis of the entire Gemini lineage since the DeepMind\u2013Google Brain merger \u2014 Gemini 1.0's native multimodality, 1.5's confirmed Mixture-of-Experts architecture and million-token context, 2.0's \"agentic era\" pivot, 2.5's built-in reasoning, and the 3.x frontier \u2014 alongside the Frontier Safety Framework's Critical Capability Levels (none reached yet, per Google's own report), closing with a first-ever direct three-way comparison across OpenAI, Anthropic, and Google DeepMind's disclosure philosophies and safety-framework activation histories.",
+      "excerpt": "A consolidated synthesis of the entire Gemini lineage since the DeepMind–Google Brain merger — Gemini 1.0's native multimodality, 1.5's confirmed Mixture-of-Experts architecture and million-token context, 2.0's \"agentic era\" pivot, 2.5's built-in reasoning, and the 3.x frontier — alongside the Frontier Safety Framework's Critical Capability Levels (none reached yet, per Google's own report), closing with a first-ever direct three-way comparison across OpenAI, Anthropic, and Google DeepMind's disclosure philosophies and safety-framework activation histories.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1407,13 +1422,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
       "slug": "deepmind-founding-merger-how-it-was-built",
       "title": "Google DeepMind: How the Lab Behind Gemini Was Actually Formed",
-      "excerpt": "Google DeepMind Case Study, Article 1 \u2014 the April 20, 2023 merger of DeepMind and Google Brain into a single unit, triggered directly by Google's internal \"code red\" response to ChatGPT: Demis Hassabis and Jeff Dean's combined leadership structure, the two labs' separate pre-merger lineages (AlphaGo and AlphaFold vs. LaMDA and PaLM), pooled compute as the concrete structural change, and the \"bold and responsible development of general AI\" framing that preceded the later Frontier Safety Framework by over a year.",
+      "excerpt": "Google DeepMind Case Study, Article 1 — the April 20, 2023 merger of DeepMind and Google Brain into a single unit, triggered directly by Google's internal \"code red\" response to ChatGPT: Demis Hassabis and Jeff Dean's combined leadership structure, the two labs' separate pre-merger lineages (AlphaGo and AlphaFold vs. LaMDA and PaLM), pooled compute as the concrete structural change, and the \"bold and responsible development of general AI\" framing that preceded the later Frontier Safety Framework by over a year.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1422,13 +1437,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udd1d",
+      "emoji": "🤝",
       "featured": false
     },
     {
       "slug": "claude-lineage-consolidated-comparison",
       "title": "The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1",
-      "excerpt": "A side-by-side synthesis of the entire Anthropic model lineage \u2014 Claude 1 and 2's full case studies plus bridge-depth coverage of Claude 2.1, the Claude 3 family, Claude 3.5, Claude 3.7's hybrid reasoning, the Claude 4 family's first-ever ASL-3 activation, the 4.x point releases, and the new Mythos-class Fable/Mythos tier with its twin-model safety-redirect architecture \u2014 closing with a direct comparison to the GPT lineage: two labs, two opposite disclosure philosophies, arriving at strikingly similar safety milestones from opposite directions.",
+      "excerpt": "A side-by-side synthesis of the entire Anthropic model lineage — Claude 1 and 2's full case studies plus bridge-depth coverage of Claude 2.1, the Claude 3 family, Claude 3.5, Claude 3.7's hybrid reasoning, the Claude 4 family's first-ever ASL-3 activation, the 4.x point releases, and the new Mythos-class Fable/Mythos tier with its twin-model safety-redirect architecture — closing with a direct comparison to the GPT lineage: two labs, two opposite disclosure philosophies, arriving at strikingly similar safety milestones from opposite directions.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1437,13 +1452,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
       "slug": "claude-2-how-it-was-built",
       "title": "Claude 2: How Anthropic's First Public Product Was Actually Built",
-      "excerpt": "Anthropic Model Case Study, Article 2 \u2014 the July 11, 2023 release that gave Anthropic its first direct consumer product: the claude.ai public beta (US and UK only at launch), real measured gains (76.5% on the Bar exam, 90th+ percentile GRE reading/writing, 71.2% on Codex HumanEval), a 100K-token shipped context window trained up to 200K, and an honest model card documenting remaining flaws \u2014 all shipped two releases before Anthropic's Responsible Scaling Policy even existed.",
+      "excerpt": "Anthropic Model Case Study, Article 2 — the July 11, 2023 release that gave Anthropic its first direct consumer product: the claude.ai public beta (US and UK only at launch), real measured gains (76.5% on the Bar exam, 90th+ percentile GRE reading/writing, 71.2% on Codex HumanEval), a 100K-token shipped context window trained up to 200K, and an honest model card documenting remaining flaws — all shipped two releases before Anthropic's Responsible Scaling Policy even existed.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1452,13 +1467,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcac",
+      "emoji": "💬",
       "featured": false
     },
     {
       "slug": "claude-1-how-it-was-built",
       "title": "Claude 1: How Anthropic's First Model Was Actually Built",
-      "excerpt": "Anthropic Model Case Study, Article 1 \u2014 the founding bet behind Claude: eight ex-OpenAI researchers (including GPT-3 lead author Tom Brown) leaving over a safety-pace disagreement, the Constitutional AI technique for reducing human exposure to harmful training content, closed architecture from the very first release (never opened, unlike GPT's early transparency), and an API-first, partner-distributed launch on March 14, 2023 \u2014 the same week as GPT-4.",
+      "excerpt": "Anthropic Model Case Study, Article 1 — the founding bet behind Claude: eight ex-OpenAI researchers (including GPT-3 lead author Tom Brown) leaving over a safety-pace disagreement, the Constitutional AI technique for reducing human exposure to harmful training content, closed architecture from the very first release (never opened, unlike GPT's early transparency), and an API-first, partner-distributed launch on March 14, 2023 — the same week as GPT-4.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1467,13 +1482,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfdb\ufe0f",
+      "emoji": "🏛️",
       "featured": false
     },
     {
       "slug": "gpt-lineage-consolidated-comparison",
       "title": "The GPT Lineage: A Consolidated Comparison, GPT-1 to GPT-6 Astra",
-      "excerpt": "A side-by-side synthesis of all six Model Case Studies plus the eight interim releases between them (GPT-3.5, GPT-4 Turbo, GPT-4o, o1, GPT-4.5, and the GPT-5.1 through 5.6 point releases) \u2014 one master table across seven dimensions (research trigger, data, architecture, learning technique & scaffolding, training technique, compute, influence on next generation), revealing three trend lines no single case study could show alone: shrinking data transparency, scaffolding doing more of the real work, and compute disclosure moving inversely to compute scale.",
+      "excerpt": "A side-by-side synthesis of all six Model Case Studies plus the eight interim releases between them (GPT-3.5, GPT-4 Turbo, GPT-4o, o1, GPT-4.5, and the GPT-5.1 through 5.6 point releases) — one master table across seven dimensions (research trigger, data, architecture, learning technique & scaffolding, training technique, compute, influence on next generation), revealing three trend lines no single case study could show alone: shrinking data transparency, scaffolding doing more of the real work, and compute disclosure moving inversely to compute scale.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-16",
@@ -1482,13 +1497,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
       "slug": "gpt-6-how-it-was-built",
       "title": "GPT-6 Astra: How the Sixth GPT Was Actually Built",
-      "excerpt": "Model Case Study, Article 6 \u2014 the September 2026 release shaped by a real security incident: the July 2026 Hugging Face containment breach, genuine long-horizon computer-use capability, benchmark saturation on FrontierMath and ARC-AGI-3, the first-ever \"Critical\" cybersecurity classification under OpenAI's Preparedness Framework, an honestly-reported drop in chain-of-thought monitorability, and the most cautiously staged release in the entire GPT lineage.",
+      "excerpt": "Model Case Study, Article 6 — the September 2026 release shaped by a real security incident: the July 2026 Hugging Face containment breach, genuine long-horizon computer-use capability, benchmark saturation on FrontierMath and ARC-AGI-3, the first-ever \"Critical\" cybersecurity classification under OpenAI's Preparedness Framework, an honestly-reported drop in chain-of-thought monitorability, and the most cautiously staged release in the entire GPT lineage.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1497,13 +1512,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf0c",
+      "emoji": "🌌",
       "featured": false
     },
     {
       "slug": "gpt-5-how-it-was-built",
       "title": "GPT-5: How the Fifth GPT Was Actually Built",
-      "excerpt": "Model Case Study, Article 5 \u2014 the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and a deep-reasoning model behind one product, a \"safe completions\" safety-training approach replacing binary refuse-or-comply behavior, continued architectural opacity in the GPT-4 mold, and the honest caveat that this is the most recency-limited entry in the entire series.",
+      "excerpt": "Model Case Study, Article 5 — the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and a deep-reasoning model behind one product, a \"safe completions\" safety-training approach replacing binary refuse-or-comply behavior, continued architectural opacity in the GPT-4 mold, and the honest caveat that this is the most recency-limited entry in the entire series.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1512,13 +1527,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udea6",
+      "emoji": "🚦",
       "featured": false
     },
     {
       "slug": "gpt-4-how-it-was-built",
       "title": "GPT-4: How the Fourth GPT Was Actually Built",
-      "excerpt": "Model Case Study, Article 4 \u2014 the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or training compute, replaced by a contributor list too large to credit as clean authorship, a genuine predictable-scaling methodology, professional-exam and adversarial red-teaming evaluation, and a dedicated System Card that became the template every major frontier release has followed since.",
+      "excerpt": "Model Case Study, Article 4 — the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or training compute, replaced by a contributor list too large to credit as clean authorship, a genuine predictable-scaling methodology, professional-exam and adversarial red-teaming evaluation, and a dedicated System Card that became the template every major frontier release has followed since.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1527,13 +1542,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd12",
+      "emoji": "🔒",
       "featured": false
     },
     {
       "slug": "gpt-3-how-it-was-built",
       "title": "GPT-3: How the Third GPT Was Actually Built",
-      "excerpt": "Model Case Study, Article 3 \u2014 GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person credited team, alternating dense/sparse attention, a filtered and weighted Common Crawl + WebText2 + Books + Wikipedia data mixture, a disclosed 3.14\u00d710\u00b2\u00b3 FLOP training run, emergent few-shot arithmetic, and the field's first fully closed, API-only frontier model release.",
+      "excerpt": "Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person credited team, alternating dense/sparse attention, a filtered and weighted Common Crawl + WebText2 + Books + Wikipedia data mixture, a disclosed 3.14×10²³ FLOP training run, emergent few-shot arithmetic, and the field's first fully closed, API-only frontier model release.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1542,13 +1557,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\udde0",
+      "emoji": "🧠",
       "featured": false
     },
     {
       "slug": "gpt-2-how-it-was-built",
       "title": "GPT-2: How the Second GPT Was Actually Built",
-      "excerpt": "Model Case Study, Article 2 \u2014 GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team, the WebText dataset scraped via Reddit karma as a quality proxy, four model sizes up to 1.5 billion parameters, honestly mixed zero-shot evaluation results, and the field's first major staged-release debate \u2014 a nine-month rollout that made capability release itself a real research question.",
+      "excerpt": "Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team, the WebText dataset scraped via Reddit karma as a quality proxy, four model sizes up to 1.5 billion parameters, honestly mixed zero-shot evaluation results, and the field's first major staged-release debate — a nine-month rollout that made capability release itself a real research question.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1557,13 +1572,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf10",
+      "emoji": "🌐",
       "featured": false
     },
     {
       "slug": "gpt-1-how-it-was-built",
       "title": "GPT-1: How the First GPT Was Actually Built",
-      "excerpt": "A Model Case Study \u2014 the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person credited team, the choice of a decoder-only Transformer, the BooksCorpus data collection, the 117M-parameter architecture, a month on 8 GPUs, the 12-task fine-tuning recipe, honest evaluation, and the paper-plus-code release \u2014 read through both this site's researcher lens (Foundations series) and practitioner lens (Engineering Practicum).",
+      "excerpt": "A Model Case Study — the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person credited team, the choice of a decoder-only Transformer, the BooksCorpus data collection, the 117M-parameter architecture, a month on 8 GPUs, the 12-task fine-tuning recipe, honest evaluation, and the paper-plus-code release — read through both this site's researcher lens (Foundations series) and practitioner lens (Engineering Practicum).",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1572,13 +1587,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcc4",
+      "emoji": "📄",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-week-in-the-life",
       "title": "Capstone: A Week in the Life of a Research Engineer",
-      "excerpt": "The ninth and final article in Frontier Lab Engineering Practicum \u2014 a realistic Monday-through-Friday tying together all eight prior articles: an on-call handover, a cross-team PR review, a won't-start debugging detour, a compute budget conversation, a page mitigated first, a profiled decision not to write a custom kernel, a blameless postmortem, and one experiment shipped from idea to merged PR.",
+      "excerpt": "The ninth and final article in Frontier Lab Engineering Practicum — a realistic Monday-through-Friday tying together all eight prior articles: an on-call handover, a cross-team PR review, a won't-start debugging detour, a compute budget conversation, a page mitigated first, a profiled decision not to write a custom kernel, a blameless postmortem, and one experiment shipped from idea to merged PR.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1587,13 +1602,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddd3\ufe0f",
+      "emoji": "🗓️",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-idea-to-merged-pr",
       "title": "Shipping an Experiment From Idea to Merged PR",
-      "excerpt": "The eighth article in Frontier Lab Engineering Practicum \u2014 a single realistic experiment walked end to end, showing exactly where every prior article's concept shows up: a falsifiable hypothesis validated cheaply, a config-only diff on the shared training loop, a right-sized spot compute request, a won't-start debugging detour, a low-MFU discovery, calibrated monitoring during the full run, and a cross-team-aware review before it merges.",
+      "excerpt": "The eighth article in Frontier Lab Engineering Practicum — a single realistic experiment walked end to end, showing exactly where every prior article's concept shows up: a falsifiable hypothesis validated cheaply, a config-only diff on the shared training loop, a right-sized spot compute request, a won't-start debugging detour, a low-MFU discovery, calibrated monitoring during the full run, and a cross-team-aware review before it merges.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1602,13 +1617,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd00",
+      "emoji": "🔀",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-other-teams-code",
       "title": "Working With (and Around) Other Teams' Code",
-      "excerpt": "The seventh article in Frontier Lab Engineering Practicum \u2014 why organizational structure mirrors code structure per Conway's Law, how ownership is actually enforced in a monorepo via owners files (Potvin & Levenberg), the etiquette of changing code you don't own, Sculley et al.'s glue-code and dependency-debt patterns, and Team Topologies' three interaction modes for naming how two teams actually work together.",
+      "excerpt": "The seventh article in Frontier Lab Engineering Practicum — why organizational structure mirrors code structure per Conway's Law, how ownership is actually enforced in a monorepo via owners files (Potvin & Levenberg), the etiquette of changing code you don't own, Sculley et al.'s glue-code and dependency-debt patterns, and Team Topologies' three interaction modes for naming how two teams actually work together.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1617,13 +1632,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-oncall-reality",
       "title": "The On-Call Reality: Monitoring, Alerts, and 2am Incidents",
-      "excerpt": "The sixth article in Frontier Lab Engineering Practicum \u2014 what happens when a system fails unattended: the four golden signals and why monitoring must go beyond \"is it running,\" Google SRE's alert-design discipline and the alert-fatigue trap, the mitigate-first shape of real incident response, John Allspaw's blameless-postmortem culture, and why on-call load itself is a reliability metric worth escalating.",
+      "excerpt": "The sixth article in Frontier Lab Engineering Practicum — what happens when a system fails unattended: the four golden signals and why monitoring must go beyond \"is it running,\" Google SRE's alert-design discipline and the alert-fatigue trap, the mitigate-first shape of real incident response, John Allspaw's blameless-postmortem culture, and why on-call load itself is a reliability metric worth escalating.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1632,13 +1647,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcdf",
+      "emoji": "📟",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-custom-kernels",
       "title": "Writing Custom Kernels and Why You Occasionally Have To",
-      "excerpt": "The fifth article in Frontier Lab Engineering Practicum \u2014 when PyTorch's built-in operators genuinely aren't fast enough: the compute-bound vs. memory-bound distinction from Horace He's \"Making Deep Learning Go Brrrr\" framework, why profiling always comes before optimizing, Triton as the practical entry point over raw CUDA, FlashAttention as the canonical real-world case study, and the maintenance costs that make a custom kernel a decision, not a default.",
+      "excerpt": "The fifth article in Frontier Lab Engineering Practicum — when PyTorch's built-in operators genuinely aren't fast enough: the compute-bound vs. memory-bound distinction from Horace He's \"Making Deep Learning Go Brrrr\" framework, why profiling always comes before optimizing, Triton as the practical entry point over raw CUDA, FlashAttention as the canonical real-world case study, and the maintenance costs that make a custom kernel a decision, not a default.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1647,13 +1662,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddf5",
+      "emoji": "🧵",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-compute-economics",
       "title": "Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour",
-      "excerpt": "The fourth article in Frontier Lab Engineering Practicum \u2014 how compute is actually requested and scheduled at a frontier lab (priority, quota, and preemption via Google's Borg paper), spot vs. reserved capacity tradeoffs, what \"utilization\" really means once you understand Model FLOPs Utilization (MFU), queue etiquette that keeps you in good standing with your team, and the real financial and carbon cost of a wasted GPU-hour.",
+      "excerpt": "The fourth article in Frontier Lab Engineering Practicum — how compute is actually requested and scheduled at a frontier lab (priority, quota, and preemption via Google's Borg paper), spot vs. reserved capacity tradeoffs, what \"utilization\" really means once you understand Model FLOPs Utilization (MFU), queue etiquette that keeps you in good standing with your team, and the real financial and carbon cost of a wasted GPU-hour.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1662,13 +1677,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcb3",
+      "emoji": "💳",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-debugging-distributed-jobs",
       "title": "Debugging a Distributed Job That Won't Converge (Or Won't Start)",
-      "excerpt": "The third article in Frontier Lab Engineering Practicum \u2014 a practical triage framework splitting distributed training failures into two categories with almost entirely different causes: won't start (environment, scheduling, NCCL hangs, checkpoint mismatches) and won't converge (exploding gradients, data bugs, and silent distributed-specific failures like every GPU seeing duplicated data), with the OPT-175B logbook's ~35 restarts recategorized through this exact lens.",
+      "excerpt": "The third article in Frontier Lab Engineering Practicum — a practical triage framework splitting distributed training failures into two categories with almost entirely different causes: won't start (environment, scheduling, NCCL hangs, checkpoint mismatches) and won't converge (exploding gradients, data bugs, and silent distributed-specific failures like every GPU seeing duplicated data), with the OPT-175B logbook's ~35 restarts recategorized through this exact lens.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1677,13 +1692,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddef",
+      "emoji": "🧯",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-production-training-code",
       "title": "Reading and Writing Production Training Code",
-      "excerpt": "The second article in Frontier Lab Engineering Practicum \u2014 how real teams run hundreds of experiment variants off one shared training loop: configuration composition (Hydra-style base configs and overrides), launchers that decouple what a job does from where it runs, experiment naming conventions that stay useful weeks later, and why the training loop itself must never fork, tying directly to Sculley et al.'s 'Hidden Technical Debt in Machine Learning Systems.'",
+      "excerpt": "The second article in Frontier Lab Engineering Practicum — how real teams run hundreds of experiment variants off one shared training loop: configuration composition (Hydra-style base configs and overrides), launchers that decouple what a job does from where it runs, experiment naming conventions that stay useful weeks later, and why the training loop itself must never fork, tying directly to Sculley et al.'s 'Hidden Technical Debt in Machine Learning Systems.'",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-15",
@@ -1692,13 +1707,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcdc",
+      "emoji": "📜",
       "featured": false
     },
     {
       "slug": "frontier-lab-engineering-day-one-onboarding",
       "title": "Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down",
-      "excerpt": "The first article in a new companion series, Frontier Lab Engineering Practicum \u2014 a practitioner's guide to what the job actually feels like: monorepo vs. multi-repo culture, why code review scrutiny tracks blast radius rather than line count, why your first real ticket is probably a data-pipeline bug rather than a new model, the daily tool stack (schedulers, experiment tracking, monitoring), and a realistic day-by-day first week, illustrated throughout with original diagrams.",
+      "excerpt": "The first article in a new companion series, Frontier Lab Engineering Practicum — a practitioner's guide to what the job actually feels like: monorepo vs. multi-repo culture, why code review scrutiny tracks blast radius rather than line count, why your first real ticket is probably a data-pipeline bug rather than a new model, the daily tool stack (schedulers, experiment tracking, monitoring), and a realistic day-by-day first week, illustrated throughout with original diagrams.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1707,13 +1722,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddd1\u200d\ud83d\udcbb",
+      "emoji": "🧑‍💻",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-capstone",
       "title": "AGI Researcher Foundations: The Capstone",
-      "excerpt": "The eleventh and final article in the AGI Researcher Foundations series \u2014 ties all ten prior articles into one unified dependency map (stack \u2192 math \u2192 architecture \u2192 generalization theory \u2192 RL & interpretability \u2192 alignment \u2192 world models, all running on systems), surfaces the cross-cutting patterns that ran through the whole series, distills research-methodology habits already taught piece by piece, and gives a concrete next step for wherever you are in the journey.",
+      "excerpt": "The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map (stack → math → architecture → generalization theory → RL & interpretability → alignment → world models, all running on systems), surfaces the cross-cutting patterns that ran through the whole series, distills research-methodology habits already taught piece by piece, and gives a concrete next step for wherever you are in the journey.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1723,13 +1738,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\uddfa\ufe0f",
+      "emoji": "🗺️",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-systems",
       "title": "AGI Researcher Foundations: Systems",
-      "excerpt": "The tenth article in the AGI Researcher Foundations series \u2014 the distributed-systems mechanics underneath every model in this series: ring-allreduce for data parallelism, ZeRO's three stages for the real memory bottleneck, Megatron-LM's tensor parallelism, GPipe's pipeline parallelism and the bubble problem, how real frontier runs combine all three (PTD-P), vLLM's PagedAttention for serving, and a mechanical re-read of the OPT-175B logbook's ~35 manual restarts.",
+      "excerpt": "The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series: ring-allreduce for data parallelism, ZeRO's three stages for the real memory bottleneck, Megatron-LM's tensor parallelism, GPipe's pipeline parallelism and the bubble problem, how real frontier runs combine all three (PTD-P), vLLM's PagedAttention for serving, and a mechanical re-read of the OPT-175B logbook's ~35 manual restarts.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1739,13 +1754,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udda7",
+      "emoji": "🖧",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-world-models",
       "title": "AGI Researcher Foundations: World Models",
-      "excerpt": "The ninth article in the AGI Researcher Foundations series \u2014 the real technical lineage behind the new-architecture camp's central bet from 'The AGI Debate': Ha & Schmidhuber's original World Models paper, MuZero mastering games without being told the rules, DreamerV3 training entirely inside imagined rollouts, and LeCun's JEPA proposal for predicting in latent space instead of pixels, with a direct look at how a genuine world model would change Article 8's alignment challenges.",
+      "excerpt": "The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from 'The AGI Debate': Ha & Schmidhuber's original World Models paper, MuZero mastering games without being told the rules, DreamerV3 training entirely inside imagined rollouts, and LeCun's JEPA proposal for predicting in latent space instead of pixels, with a direct look at how a genuine world model would change Article 8's alignment challenges.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1755,13 +1770,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-alignment",
       "title": "AGI Researcher Foundations: Alignment",
-      "excerpt": "The eighth article in the AGI Researcher Foundations series \u2014 the outer vs. inner alignment split, real documented specification-gaming failures (DeepMind's catalogue), mesa-optimization and deceptive alignment (Hubinger et al., Anthropic's Sleeper Agents), and scalable oversight approaches (AI Safety via Debate, weak-to-strong generalization), with reward hacking from Article 6 and interpretability tools from Article 7 tied together as two halves of the same underlying problem.",
+      "excerpt": "The eighth article in the AGI Researcher Foundations series — the outer vs. inner alignment split, real documented specification-gaming failures (DeepMind's catalogue), mesa-optimization and deceptive alignment (Hubinger et al., Anthropic's Sleeper Agents), and scalable oversight approaches (AI Safety via Debate, weak-to-strong generalization), with reward hacking from Article 6 and interpretability tools from Article 7 tied together as two halves of the same underlying problem.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1771,13 +1786,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfaf",
+      "emoji": "🎯",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-interpretability",
       "title": "AGI Researcher Foundations: Interpretability",
-      "excerpt": "The seventh article in the AGI Researcher Foundations series \u2014 the technical toolkit for looking inside a trained model: early correlational methods (saliency maps, feature visualization, probing), mechanistic interpretability and circuits (induction heads), why superposition means one neuron can hold many concepts, sparse autoencoders, and causal tracing/model editing via the ROME paper, with reward hacking from Article 6 revisited as a debuggable, not just describable, problem.",
+      "excerpt": "The seventh article in the AGI Researcher Foundations series — the technical toolkit for looking inside a trained model: early correlational methods (saliency maps, feature visualization, probing), mechanistic interpretability and circuits (induction heads), why superposition means one neuron can hold many concepts, sparse autoencoders, and causal tracing/model editing via the ROME paper, with reward hacking from Article 6 revisited as a debuggable, not just describable, problem.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1787,13 +1802,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-rl-foundations",
       "title": "AGI Researcher Foundations: Reinforcement Learning Foundations",
-      "excerpt": "The sixth article in the AGI Researcher Foundations series \u2014 the RL theory underneath RLHF: the state/action/reward/policy framework, Bellman's value-function equation, the exploration-exploitation tradeoff, and policy gradients up through PPO (the literal algorithm inside InstructGPT), with a direct mapping showing RLHF as decades-old RL machinery applied to a new problem, plus reward hacking explained as a precise, named RL failure mode rather than a vague AI quirk.",
+      "excerpt": "The sixth article in the AGI Researcher Foundations series — the RL theory underneath RLHF: the state/action/reward/policy framework, Bellman's value-function equation, the exploration-exploitation tradeoff, and policy gradients up through PPO (the literal algorithm inside InstructGPT), with a direct mapping showing RLHF as decades-old RL machinery applied to a new problem, plus reward hacking explained as a precise, named RL failure mode rather than a vague AI quirk.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1803,13 +1818,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83c\udfae",
+      "emoji": "🎮",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-generalization-learning-theory",
       "title": "AGI Researcher Foundations: Generalization & Learning Theory",
-      "excerpt": "The fifth article in the AGI Researcher Foundations series \u2014 the classical story (PAC learning, VC dimension, the bias-variance tradeoff) and the specific, well-documented ways modern deep learning breaks it: Zhang et al.'s random-label memorization result, the Neural Tangent Kernel, and a formal return to Article 4's deep-double-descent puzzle, with honest acknowledgment of what remains genuinely unsolved in generalization theory as of 2026.",
+      "excerpt": "The fifth article in the AGI Researcher Foundations series — the classical story (PAC learning, VC dimension, the bias-variance tradeoff) and the specific, well-documented ways modern deep learning breaks it: Zhang et al.'s random-label memorization result, the Neural Tangent Kernel, and a formal return to Article 4's deep-double-descent puzzle, with honest acknowledgment of what remains genuinely unsolved in generalization theory as of 2026.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1819,13 +1834,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcca",
+      "emoji": "📊",
       "featured": false
     },
     {
       "slug": "how-each-architecture-actually-learned",
       "title": "How Each Network Architecture Actually Learned",
-      "excerpt": "The sixth in the Evolution / After Transformers arc \u2014 the deepest mechanics dive yet: nine architecture eras (Perceptron through reasoning models), each broken into Training Mechanics (what was literally happening step by step), The Limitation (the specific mechanical wall), and The Fix (which lane \u2014 architecture, learning technique, or scaffolding \u2014 solved it), ending with clearly-caveated speculation on what training itself might need to look like for the next real breakthrough.",
+      "excerpt": "The sixth in the Evolution / After Transformers arc — the deepest mechanics dive yet: nine architecture eras (Perceptron through reasoning models), each broken into Training Mechanics (what was literally happening step by step), The Limitation (the specific mechanical wall), and The Fix (which lane — architecture, learning technique, or scaffolding — solved it), ending with clearly-caveated speculation on what training itself might need to look like for the next real breakthrough.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-14",
@@ -1834,13 +1849,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\u2699\ufe0f",
+      "emoji": "⚙️",
       "featured": false
     },
     {
       "slug": "two-threads-architecture-vs-learning-technique",
       "title": "Two Threads, One Chain: Architecture vs. Learning Technique",
-      "excerpt": "The fifth in the Evolution / After Transformers arc \u2014 pulls the merged history apart into two lineages (the network's structure vs. how it improves) plus a connecting scaffolding thread (normalization, initialization), traces each separately from 1943 to today, builds a direct sync-vs-lag comparison table, and shows precisely how the visible gap since 2017 \u2014 three learning-technique leaps on an unchanged architecture \u2014 produced today's scaling-vs-new-architecture fork.",
+      "excerpt": "The fifth in the Evolution / After Transformers arc — pulls the merged history apart into two lineages (the network's structure vs. how it improves) plus a connecting scaffolding thread (normalization, initialization), traces each separately from 1943 to today, builds a direct sync-vs-lag comparison table, and shows precisely how the visible gap since 2017 — three learning-technique leaps on an unchanged architecture — produced today's scaling-vs-new-architecture fork.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-13",
@@ -1849,13 +1864,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddf5",
+      "emoji": "🧵",
       "featured": false
     },
     {
       "slug": "agi-debate-scaling-vs-new-architectures",
       "title": "The AGI Debate: Scaling vs. New Architectures",
-      "excerpt": "The fourth in the Evolution / After Transformers arc \u2014 a full steelman of both sides of AI's most consequential live disagreement: the scaling camp's unbroken empirical track record and Sutton's 'Bitter Lesson,' the new-architecture camp's case (LeCun's world-model argument, Sutskever's own reassessment per the SSI investigation), where both camps actually agree, and what it would take to prove either one right, without declaring a premature winner.",
+      "excerpt": "The fourth in the Evolution / After Transformers arc — a full steelman of both sides of AI's most consequential live disagreement: the scaling camp's unbroken empirical track record and Sutton's 'Bitter Lesson,' the new-architecture camp's case (LeCun's world-model argument, Sutskever's own reassessment per the SSI investigation), where both camps actually agree, and what it would take to prove either one right, without declaring a premature winner.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1864,13 +1879,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\u2696\ufe0f",
+      "emoji": "⚖️",
       "featured": false
     },
     {
       "slug": "how-to-read-a-paper-like-a-researcher",
       "title": "How to Read a Paper Like a Researcher",
-      "excerpt": "The practical companion to After Transformers' six-question framework \u2014 three fully worked examples showing exactly how to apply it: Chinchilla (a clean pass), InstructGPT/RLHF (strong impact, honest falsifiability weakness), and a live, still-unsettled reasoning-model paper, plus a reading-order guide, common failure modes, and an unanswered exercise to practice the skill yourself.",
+      "excerpt": "The practical companion to After Transformers' six-question framework — three fully worked examples showing exactly how to apply it: Chinchilla (a clean pass), InstructGPT/RLHF (strong impact, honest falsifiability weakness), and a live, still-unsettled reasoning-model paper, plus a reading-order guide, common failure modes, and an unanswered exercise to practice the skill yourself.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1879,13 +1894,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd0e",
+      "emoji": "🔎",
       "featured": false
     },
     {
       "slug": "after-transformers-current-methods-and-dead-ends",
       "title": "After Transformers: What's Working, What's a Dead End, What's Next",
-      "excerpt": "The sequel to The Evolution of Neural Networks \u2014 a live status report on today's dominant methods and their real limitations (Transformers' quadratic attention, RLHF's reward hacking, MoE routing instability, RAG's retrieval ceiling, reasoning models' cost), honest dead ends (Neural Turing Machines, Capsule Networks), where research is actively betting (world models, interpretability, continual learning, long-horizon agents), and a concrete framework for judging any new idea yourself.",
+      "excerpt": "The sequel to The Evolution of Neural Networks — a live status report on today's dominant methods and their real limitations (Transformers' quadratic attention, RLHF's reward hacking, MoE routing instability, RAG's retrieval ceiling, reasoning models' cost), honest dead ends (Neural Turing Machines, Capsule Networks), where research is actively betting (world models, interpretability, continual learning, long-horizon agents), and a concrete framework for judging any new idea yourself.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1894,13 +1909,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83d\udd2d",
+      "emoji": "🔭",
       "featured": false
     },
     {
       "slug": "evolution-of-neural-networks",
       "title": "The Evolution of Neural Networks: From a 1943 Toy Model to Transformers",
-      "excerpt": "A layman-friendly, chronological walk through 83 years of neural network history \u2014 from McCulloch & Pitts' 1943 artificial neuron through the Perceptron, the First AI Winter, backpropagation, CNNs, LSTMs, AlexNet, attention, the 2017 Transformer, and RLHF to today \u2014 with a hand-drawn diagram for every era and a repeating pattern: a real limitation, math that already existed, and the compute or data that finally arrived to unlock it.",
+      "excerpt": "A layman-friendly, chronological walk through 83 years of neural network history — from McCulloch & Pitts' 1943 artificial neuron through the Perceptron, the First AI Winter, backpropagation, CNNs, LSTMs, AlexNet, attention, the 2017 Transformer, and RLHF to today — with a hand-drawn diagram for every era and a repeating pattern: a real limitation, math that already existed, and the compute or data that finally arrived to unlock it.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1909,13 +1924,13 @@
         "Deep Research",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddec",
+      "emoji": "🧬",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-core-deep-learning-concepts",
       "title": "AGI Researcher Foundations: Core Deep Learning Concepts",
-      "excerpt": "The fourth article in the AGI Researcher Foundations series \u2014 the architectural and training-dynamics concepts built on top of the math from Article 3: what came before the Transformer (LSTMs) and why it changed, normalization and initialization (BatchNorm, LayerNorm, RMSNorm, He init), generalization and deep double descent, and regularization, each tied to real scenarios like why LLaMA uses RMSNorm.",
+      "excerpt": "The fourth article in the AGI Researcher Foundations series — the architectural and training-dynamics concepts built on top of the math from Article 3: what came before the Transformer (LSTMs) and why it changed, normalization and initialization (BatchNorm, LayerNorm, RMSNorm, He init), generalization and deep double descent, and regularization, each tied to real scenarios like why LLaMA uses RMSNorm.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1925,13 +1940,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\udde0",
+      "emoji": "🧠",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-mathematical-foundations",
       "title": "AGI Researcher Foundations: The Mathematical Foundations",
-      "excerpt": "The third article in the AGI Researcher Foundations series \u2014 scopes the math that actually matters for AI research: linear algebra, probability and statistics, calculus and optimization, and information theory, each split explicitly into what's used daily (matrix rank in LoRA, KL divergence in RLHF, the chain rule in backprop, entropy in perplexity) versus what's genuinely textbook-only.",
+      "excerpt": "The third article in the AGI Researcher Foundations series — scopes the math that actually matters for AI research: linear algebra, probability and statistics, calculus and optimization, and information theory, each split explicitly into what's used daily (matrix rank in LoRA, KL divergence in RLHF, the chain rule in backprop, entropy in perplexity) versus what's genuinely textbook-only.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1941,13 +1956,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83d\udcd0",
+      "emoji": "📐",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-self-assessment-deep-dive",
       "title": "AGI Researcher Foundations: The Self-Assessment Deep Dive",
-      "excerpt": "The second article in the AGI Researcher Foundations series \u2014 opens up all eight items from Article 1's Self-Assessment Checklist, one by one: why each is a real signal frontier and research labs actually care about, a concrete how-to path with sourced tutorials and repos (nanoGPT, the Annotated Transformer, Megatron-LM, Chinchilla, and more), and videos to work through for each.",
+      "excerpt": "The second article in the AGI Researcher Foundations series — opens up all eight items from Article 1's Self-Assessment Checklist, one by one: why each is a real signal frontier and research labs actually care about, a concrete how-to path with sourced tutorials and repos (nanoGPT, the Annotated Transformer, Megatron-LM, Chinchilla, and more), and videos to work through for each.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1957,13 +1972,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\u2705",
+      "emoji": "✅",
       "featured": false
     },
     {
       "slug": "agi-researcher-foundations-technical-stack",
       "title": "AGI Researcher Foundations: The Technical Stack",
-      "excerpt": "The first article in a new deep-dive series \u2014 the end-to-end technical stack every AGI researcher needs before touching a paper: programming and Linux fluency, PyTorch vs JAX, the research-engineering toolchain (DeepSpeed, Megatron-LM, FSDP2, vLLM), compute options and real 2026 pricing, evaluation tooling, 10 key papers, 8 real courses to complete, and four real-world scenarios from reproducing nanoGPT to debugging distributed training failures.",
+      "excerpt": "The first article in a new deep-dive series — the end-to-end technical stack every AGI researcher needs before touching a paper: programming and Linux fluency, PyTorch vs JAX, the research-engineering toolchain (DeepSpeed, Megatron-LM, FSDP2, vLLM), compute options and real 2026 pricing, evaluation tooling, 10 key papers, 8 real courses to complete, and four real-world scenarios from reproducing nanoGPT to debugging distributed training failures.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-12",
@@ -1973,13 +1988,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83e\uddf0",
+      "emoji": "🧰",
       "featured": false
     },
     {
       "slug": "agi-researcher-day-in-life",
       "title": "A Day in the Life of an AGI Researcher: The Complete Operating Manual",
-      "excerpt": "The practical follow-up to the Field Guide \u2014 an hour-by-hour walkthrough of a real research day, daily reading sources and tool stack, a sample experiment from hypothesis to write-up, weekly rhythms, interview questions to prepare at each stage, success criteria by career level, core concepts every researcher should know, a research-conference calendar, and an honest, sourced look at burnout and sustainability.",
+      "excerpt": "The practical follow-up to the Field Guide — an hour-by-hour walkthrough of a real research day, daily reading sources and tool stack, a sample experiment from hypothesis to write-up, weekly rhythms, interview questions to prepare at each stage, success criteria by career level, core concepts every researcher should know, a research-conference calendar, and an honest, sourced look at burnout and sustainability.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-11",
@@ -1989,13 +2004,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\u2600\ufe0f",
+      "emoji": "☀️",
       "featured": false
     },
     {
       "slug": "ai-researcher-field-guide",
       "title": "The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired",
-      "excerpt": "A companion to the Research Frontier Map \u2014 core papers, survey papers, and top university labs for 7 research directions (foundations, generalization, interpretability, world models, alignment, domain science, human-AI interaction), real career-path profiles of researchers like Sutskever, Neel Nanda, Yann LeCun, Jan Leike, and John Jumper, and how frontier labs actually recruit and interview.",
+      "excerpt": "A companion to the Research Frontier Map — core papers, survey papers, and top university labs for 7 research directions (foundations, generalization, interpretability, world models, alignment, domain science, human-AI interaction), real career-path profiles of researchers like Sutskever, Neel Nanda, Yann LeCun, Jan Leike, and John Jumper, and how frontier labs actually recruit and interview.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-11",
@@ -2005,13 +2020,13 @@
         "Careers",
         "AI Research"
       ],
-      "emoji": "\ud83c\udf93",
+      "emoji": "🎓",
       "featured": false
     },
     {
       "slug": "ai-research-frontier-map-labs-compared",
       "title": "The Research Frontier Map: What Every Major AI Lab Is Actually Betting On",
-      "excerpt": "A comparative study of where SSI, Thinking Machines, Goodfire, Periodic Labs, and Ricursive Intelligence are actually spending their research time \u2014 set against the broader portfolios of Anthropic, Google DeepMind, Mistral, and Reflection AI \u2014 mapping what's being pursued, what's quietly avoided, genuine unclaimed research territory, and where the field's convergent signals point next.",
+      "excerpt": "A comparative study of where SSI, Thinking Machines, Goodfire, Periodic Labs, and Ricursive Intelligence are actually spending their research time — set against the broader portfolios of Anthropic, Google DeepMind, Mistral, and Reflection AI — mapping what's being pursued, what's quietly avoided, genuine unclaimed research territory, and where the field's convergent signals point next.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-11",
@@ -2021,13 +2036,13 @@
         "AI Labs",
         "Research Strategy"
       ],
-      "emoji": "\ud83d\uddfa\ufe0f",
+      "emoji": "🗺️",
       "featured": false
     },
     {
       "slug": "ssi-complete-investigation",
       "title": "Safe Superintelligence: The Complete Investigation",
-      "excerpt": "Every publicly available clue about the most secretive, best-funded, least-shipping company in AI \u2014 founding story, full funding timeline, every known hire and departure, the Nvidia compute deal (with primary-source citations), \"jagged intelligence,\" the Sutskever-vs-LeCun architecture debate, SSI's alignment philosophy, a 3-stage research-strategy model, a structured evidence-vs-speculation table, a full visual timeline, and a heavily-hedged forecast of what SSI is building.",
+      "excerpt": "Every publicly available clue about the most secretive, best-funded, least-shipping company in AI — founding story, full funding timeline, every known hire and departure, the Nvidia compute deal (with primary-source citations), \"jagged intelligence,\" the Sutskever-vs-LeCun architecture debate, SSI's alignment philosophy, a 3-stage research-strategy model, a structured evidence-vs-speculation table, a full visual timeline, and a heavily-hedged forecast of what SSI is building.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-11",
@@ -2037,13 +2052,13 @@
         "AGI Safety",
         "Deep Research"
       ],
-      "emoji": "\ud83d\udd75\ufe0f",
+      "emoji": "🕵️",
       "featured": false
     },
     {
       "slug": "inside-agi-team-lane3-narrow-research-bet",
       "title": "Inside an AGI Startup Team: The Narrow Research Bet",
-      "excerpt": "An end-to-end deep dive into how the smallest, most senior team in AI actually works \u2014 structure, experience profiles, skills matrix, coordination, cadence, a research-result delivery walk-through, sourced 2026 compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and how researchers use AI research agents like Goodfire's Silico daily \u2014 anchored by SSI's flat, secretive ~50-person structure and Goodfire's research-plus-product model.",
+      "excerpt": "An end-to-end deep dive into how the smallest, most senior team in AI actually works — structure, experience profiles, skills matrix, coordination, cadence, a research-result delivery walk-through, sourced 2026 compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and how researchers use AI research agents like Goodfire's Silico daily — anchored by SSI's flat, secretive ~50-person structure and Goodfire's research-plus-product model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-10",
@@ -2053,13 +2068,13 @@
         "Team Building",
         "AGI Safety"
       ],
-      "emoji": "\ud83d\udfe2",
+      "emoji": "🟢",
       "featured": false
     },
     {
       "slug": "inside-agi-team-lane1-frontier-scale",
       "title": "Inside an AGI Startup Team: Frontier Scale-First",
-      "excerpt": "An end-to-end deep dive into how a Lane 1 team actually works \u2014 structure, experience profiles, skills matrix, cross-team coordination, training-run-driven cadence, a model-shipping walk-through, sourced 2026 compensation by role, the distributed-training tool & hardware stack, culture & hierarchy, founder involvement, upskilling, and how researchers use AI tools daily \u2014 anchored by a detailed look at Reflection AI and Mistral's real team dynamics.",
+      "excerpt": "An end-to-end deep dive into how a Lane 1 team actually works — structure, experience profiles, skills matrix, cross-team coordination, training-run-driven cadence, a model-shipping walk-through, sourced 2026 compensation by role, the distributed-training tool & hardware stack, culture & hierarchy, founder involvement, upskilling, and how researchers use AI tools daily — anchored by a detailed look at Reflection AI and Mistral's real team dynamics.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-10",
@@ -2069,13 +2084,13 @@
         "Team Building",
         "Frontier Labs"
       ],
-      "emoji": "\ud83d\udd34",
+      "emoji": "🔴",
       "featured": false
     },
     {
       "slug": "inside-agi-team-lane2-applied-agentic",
       "title": "Inside an AGI Startup Team: The Applied & Agentic Layer",
-      "excerpt": "An end-to-end deep dive into how a Lane 2 team actually works \u2014 structure, experience profiles, skills matrix, cross-team coordination, daily/weekly/monthly/release cadence, a feature-shipping walk-through, compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and exactly how the team uses Claude Code and other AI tools daily \u2014 anchored by a detailed look at Cursor/Anysphere's real team dynamics.",
+      "excerpt": "An end-to-end deep dive into how a Lane 2 team actually works — structure, experience profiles, skills matrix, cross-team coordination, daily/weekly/monthly/release cadence, a feature-shipping walk-through, compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and exactly how the team uses Claude Code and other AI tools daily — anchored by a detailed look at Cursor/Anysphere's real team dynamics.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-10",
@@ -2085,13 +2100,13 @@
         "Team Building",
         "Culture"
       ],
-      "emoji": "\ud83d\udd35",
+      "emoji": "🔵",
       "featured": false
     },
     {
       "slug": "building-agi-startup-team-profiles-resumes",
       "title": "Building an AGI Startup: Who You'd Actually Hire",
-      "excerpt": "Sample team profiles and detailed composite resumes for every key role across all three lanes \u2014 Applied & Agentic, Frontier Scale-First, and Narrow Research Bet \u2014 each paired with a real, named, sourced example (Cursor, Mistral, Reflection AI, SSI, Goodfire, Thinking Machines) plus a cross-lane hiring comparison table.",
+      "excerpt": "Sample team profiles and detailed composite resumes for every key role across all three lanes — Applied & Agentic, Frontier Scale-First, and Narrow Research Bet — each paired with a real, named, sourced example (Cursor, Mistral, Reflection AI, SSI, Goodfire, Thinking Machines) plus a cross-lane hiring comparison table.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-10",
@@ -2101,13 +2116,13 @@
         "Hiring",
         "Team Building"
       ],
-      "emoji": "\ud83e\uddd1\u200d\ud83d\udcbc",
+      "emoji": "🧑‍💼",
       "featured": false
     },
     {
       "slug": "building-agi-startup-lane3-narrow-research-bet",
       "title": "Building an AGI Startup: The Narrow Research Bet",
-      "excerpt": "A standalone deep dive into Lane 3 \u2014 no product, no revenue plan, just a small team betting on one research thesis. Covers the 2026 neolab landscape (SSI, Goodfire, Thinking Machines, Periodic Labs), whitespace ideas, and a detailed operating rhythm (thesis formation to eventual productization), anchored by an in-depth Safe Superintelligence case study ($32B valuation, zero shipped products) with sourced videos and links.",
+      "excerpt": "A standalone deep dive into Lane 3 — no product, no revenue plan, just a small team betting on one research thesis. Covers the 2026 neolab landscape (SSI, Goodfire, Thinking Machines, Periodic Labs), whitespace ideas, and a detailed operating rhythm (thesis formation to eventual productization), anchored by an in-depth Safe Superintelligence case study ($32B valuation, zero shipped products) with sourced videos and links.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2117,13 +2132,13 @@
         "Research",
         "AGI Safety"
       ],
-      "emoji": "\ud83d\udfe2",
+      "emoji": "🟢",
       "featured": false
     },
     {
       "slug": "building-agi-startup-lane1-frontier-scale",
       "title": "Building an AGI Startup: Frontier Scale-First",
-      "excerpt": "A standalone deep dive into Lane 1 \u2014 the frontier scale-first market (Mistral, Reflection AI, DeepSeek, Moonshot), whitespace ideas, and a detailed training pipeline (data curation to eval/safety, roles, tools, milestone-gated PM), anchored by an in-depth Reflection AI case study ($2.5B raise, $1B Nebius compute deal) with sourced videos and links.",
+      "excerpt": "A standalone deep dive into Lane 1 — the frontier scale-first market (Mistral, Reflection AI, DeepSeek, Moonshot), whitespace ideas, and a detailed training pipeline (data curation to eval/safety, roles, tools, milestone-gated PM), anchored by an in-depth Reflection AI case study ($2.5B raise, $1B Nebius compute deal) with sourced videos and links.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2133,13 +2148,13 @@
         "Frontier Labs",
         "Deep Research"
       ],
-      "emoji": "\ud83d\udd34",
+      "emoji": "🔴",
       "featured": false
     },
     {
       "slug": "building-agi-startup-lane2-applied-agentic",
       "title": "Building an AGI Startup: The Applied & Agentic Layer",
-      "excerpt": "A standalone deep dive into Lane 2 \u2014 the current market landscape, named players, whitespace ideas, and a detailed real-world build pipeline (roles, tools, eval-driven PM, weekly rhythm), anchored by an in-depth Anysphere/Cursor case study with sourced videos and links.",
+      "excerpt": "A standalone deep dive into Lane 2 — the current market landscape, named players, whitespace ideas, and a detailed real-world build pipeline (roles, tools, eval-driven PM, weekly rhythm), anchored by an in-depth Anysphere/Cursor case study with sourced videos and links.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2149,13 +2164,13 @@
         "Product",
         "Applied AI"
       ],
-      "emoji": "\ud83d\udd35",
+      "emoji": "🔵",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-series",
       "title": "Founding an AGI Startup: The Complete 12-Part Series",
-      "excerpt": "The full index for the standalone founder-playbook simulation \u2014 idea to legal structure, team, capital, infrastructure, product, research, marketing, sales, scaling, survival, and financial modeling, every step run three-lanes-deep.",
+      "excerpt": "The full index for the standalone founder-playbook simulation — idea to legal structure, team, capital, infrastructure, product, research, marketing, sales, scaling, survival, and financial modeling, every step run three-lanes-deep.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2165,13 +2180,13 @@
         "Series Index",
         "Simulation"
       ],
-      "emoji": "\ud83d\uddc2\ufe0f",
+      "emoji": "🗂️",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-12-financial-modeling",
       "title": "Founding an AGI Startup, Part 12 (Bonus): Financial Modeling",
-      "excerpt": "Balance sheets, real pricing decisions, and 1/3/5-year forecasts by lane \u2014 with real 2026 unit-economics data (inference now eats ~23% of revenue, AI gross margins run 50-60% vs. traditional SaaS\u2019s 80-90%) and a case study reverse-engineering Anysphere/Cursor\u2019s real trajectory.",
+      "excerpt": "Balance sheets, real pricing decisions, and 1/3/5-year forecasts by lane — with real 2026 unit-economics data (inference now eats ~23% of revenue, AI gross margins run 50-60% vs. traditional SaaS’s 80-90%) and a case study reverse-engineering Anysphere/Cursor’s real trajectory.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2181,7 +2196,7 @@
         "Financial Modeling",
         "Simulation"
       ],
-      "emoji": "\ud83e\uddee",
+      "emoji": "🧮",
       "featured": false
     },
     {
@@ -2197,7 +2212,7 @@
         "Risk",
         "Simulation Finale"
       ],
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "featured": false
     },
     {
@@ -2213,7 +2228,7 @@
         "Growth Metrics",
         "Simulation"
       ],
-      "emoji": "\ud83d\udcc8",
+      "emoji": "📈",
       "featured": false
     },
     {
@@ -2229,13 +2244,13 @@
         "Sales",
         "Simulation"
       ],
-      "emoji": "\ud83e\udd1d",
+      "emoji": "🤝",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-08-gtm-marketing",
       "title": "Founding an AGI Startup, Part 8: Go-to-Market & Marketing",
-      "excerpt": "Positioning in a crowded field, run three-lanes-deep \u2014 with a Perplexity case study on the multi-channel growth engine (viral loops, borrowed distribution via SoftBank/Samsung/Motorola, and an API channel) that took it from 10M to 159M monthly users.",
+      "excerpt": "Positioning in a crowded field, run three-lanes-deep — with a Perplexity case study on the multi-channel growth engine (viral loops, borrowed distribution via SoftBank/Samsung/Motorola, and an API channel) that took it from 10M to 159M monthly users.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2245,13 +2260,13 @@
         "Marketing",
         "Simulation"
       ],
-      "emoji": "\ud83d\udce3",
+      "emoji": "📣",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-07-research-function",
       "title": "Founding an AGI Startup, Part 7: The Research Function",
-      "excerpt": "Building an R&D culture on a startup budget, run three-lanes-deep \u2014 with a DeepSeek case study on how a ~160-person team produced frontier-competitive research output at roughly a twelfth of an incumbent lab's headcount.",
+      "excerpt": "Building an R&D culture on a startup budget, run three-lanes-deep — with a DeepSeek case study on how a ~160-person team produced frontier-competitive research output at roughly a twelfth of an incumbent lab's headcount.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2261,13 +2276,13 @@
         "R&D Culture",
         "Simulation"
       ],
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-06-building-product",
       "title": "Founding an AGI Startup, Part 6: Building the Product",
-      "excerpt": "The implementation roadmap, run three-lanes-deep \u2014 the prompt-then-RAG-then-fine-tune-then-distill escalation ladder, real 2026 MVP cost benchmarks ($15K-$60K), and why RAG alone solves 80-90% of what founders assume needs a custom model.",
+      "excerpt": "The implementation roadmap, run three-lanes-deep — the prompt-then-RAG-then-fine-tune-then-distill escalation ladder, real 2026 MVP cost benchmarks ($15K-$60K), and why RAG alone solves 80-90% of what founders assume needs a custom model.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2277,13 +2292,13 @@
         "Product",
         "Simulation"
       ],
-      "emoji": "\ud83c\udfd7\ufe0f",
+      "emoji": "🏗️",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-05-office-ops-infrastructure",
       "title": "Founding an AGI Startup, Part 5: Office, Ops & Infrastructure",
-      "excerpt": "Compute procurement, startup credit programs, tooling, and the remote-vs-in-person question, run three-lanes-deep \u2014 with real September 2026 GPU pricing (a ~10x spread across providers for identical hardware) and a case study on why that spread matters.",
+      "excerpt": "Compute procurement, startup credit programs, tooling, and the remote-vs-in-person question, run three-lanes-deep — with real September 2026 GPU pricing (a ~10x spread across providers for identical hardware) and a case study on why that spread matters.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2293,13 +2308,13 @@
         "Infrastructure",
         "Simulation"
       ],
-      "emoji": "\ud83d\udda5\ufe0f",
+      "emoji": "🖥️",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-04-seed-capital",
       "title": "Founding an AGI Startup, Part 4: Seed Capital",
-      "excerpt": "Pitching, valuation, and term sheets, run three-lanes-deep with real 2026 fundraising data (median seed valuations, SAFE terms, AI premium) \u2014 plus a Thinking Machines Lab case study on the largest seed round in startup history.",
+      "excerpt": "Pitching, valuation, and term sheets, run three-lanes-deep with real 2026 fundraising data (median seed valuations, SAFE terms, AI premium) — plus a Thinking Machines Lab case study on the largest seed round in startup history.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2309,13 +2324,13 @@
         "Fundraising",
         "Simulation"
       ],
-      "emoji": "\ud83d\udcb0",
+      "emoji": "💰",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-03-founding-team",
       "title": "Founding an AGI Startup, Part 3: The Founding Team",
-      "excerpt": "Co-founder selection, early hires, equity splits, and a full role-by-role team structure table for each lane \u2014 plus the Anthropic seven-founder equity case study and guidance on whether you need a board or advisors this early.",
+      "excerpt": "Co-founder selection, early hires, equity splits, and a full role-by-role team structure table for each lane — plus the Anthropic seven-founder equity case study and guidance on whether you need a board or advisors this early.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2325,13 +2340,13 @@
         "Team Building",
         "Simulation"
       ],
-      "emoji": "\ud83d\udc65",
+      "emoji": "👥",
       "featured": false
     },
     {
       "slug": "founding-agi-startup-02-legal-foundations",
       "title": "Founding an AGI Startup, Part 2: Legal Foundations",
-      "excerpt": "Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep \u2014 plus an India-specific path, and a reality check on whether you need any of this before raising money, with Zoho, Zerodha, and Mailchimp as real bootstrapped counter-examples.",
+      "excerpt": "Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep — plus an India-specific path, and a reality check on whether you need any of this before raising money, with Zoho, Zerodha, and Mailchimp as real bootstrapped counter-examples.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
@@ -2341,7 +2356,7 @@
         "Legal",
         "Simulation"
       ],
-      "emoji": "\ud83d\udcdc",
+      "emoji": "📜",
       "featured": false
     },
     {
@@ -2357,7 +2372,7 @@
         "Founder Playbook",
         "Simulation"
       ],
-      "emoji": "\ud83d\udca1",
+      "emoji": "💡",
       "featured": false
     },
     {
@@ -2373,13 +2388,13 @@
         "Energy",
         "AGI"
       ],
-      "emoji": "\ud83d\udd0c",
+      "emoji": "🔌",
       "featured": false
     },
     {
       "slug": "interpretability-gap-reading-model-minds",
       "title": "The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore",
-      "excerpt": "Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained \u2014 what mechanistic interpretability has actually achieved, and why the GPT-6 Astra safety dissent shows the problem is outrunning the fix.",
+      "excerpt": "Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained — what mechanistic interpretability has actually achieved, and why the GPT-6 Astra safety dissent shows the problem is outrunning the fix.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2389,7 +2404,7 @@
         "AI Safety",
         "AGI"
       ],
-      "emoji": "\ud83d\udd0d",
+      "emoji": "🔍",
       "featured": false
     },
     {
@@ -2405,13 +2420,13 @@
         "Memory",
         "AGI"
       ],
-      "emoji": "\ud83d\udcbe",
+      "emoji": "💾",
       "featured": false
     },
     {
       "slug": "agi-startups-to-watch",
       "title": "AGI Startups to Watch: Who's Actually Building in the Open Lanes",
-      "excerpt": "Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes \u2014 Mistral, Thinking Machines, Cursor, Cognition, SSI, Goodfire \u2014 plus how the incumbent labs are betting on the same levers internally.",
+      "excerpt": "Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes — Mistral, Thinking Machines, Cursor, Cognition, SSI, Goodfire — plus how the incumbent labs are betting on the same levers internally.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2421,7 +2436,7 @@
         "Venture",
         "AGI"
       ],
-      "emoji": "\ud83d\udd2d",
+      "emoji": "🔭",
       "featured": false
     },
     {
@@ -2437,13 +2452,13 @@
         "Startups",
         "AGI"
       ],
-      "emoji": "\ud83d\udeaa",
+      "emoji": "🚪",
       "featured": false
     },
     {
       "slug": "grok-deepseek-qwen-agi-stack-timeline",
       "title": "Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race",
-      "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed \u2014 mapped against the same AGI stack, closing with a six-lab comparison.",
+      "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed — mapped against the same AGI stack, closing with a six-lab comparison.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2453,13 +2468,13 @@
         "Open-Weight AI",
         "AGI"
       ],
-      "emoji": "\u26a1",
+      "emoji": "⚡",
       "featured": false
     },
     {
       "slug": "gemini-series-agi-stack-timeline",
       "title": "The Gemini Series on the AGI Stack: Google DeepMind's Long Game",
-      "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack \u2014 context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
+      "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack — context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2469,13 +2484,13 @@
         "Model History",
         "AGI"
       ],
-      "emoji": "\ud83d\udd35",
+      "emoji": "🔵",
       "featured": false
     },
     {
       "slug": "claude-series-agi-stack-timeline",
       "title": "The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently",
-      "excerpt": "Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack \u2014 where its safety-first founding bet shows up as real sequencing differences from OpenAI, and where the two labs converge anyway.",
+      "excerpt": "Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack — where its safety-first founding bet shows up as real sequencing differences from OpenAI, and where the two labs converge anyway.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2485,13 +2500,13 @@
         "Model History",
         "AGI"
       ],
-      "emoji": "\ud83d\udfe3",
+      "emoji": "🟣",
       "featured": false
     },
     {
       "slug": "gpt-series-agi-stack-timeline",
       "title": "The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next",
-      "excerpt": "GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack \u2014 the actual sequence of levers OpenAI reached for as each prior one ran into diminishing returns.",
+      "excerpt": "GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack — the actual sequence of levers OpenAI reached for as each prior one ran into diminishing returns.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2501,13 +2516,13 @@
         "Model History",
         "AGI"
       ],
-      "emoji": "\ud83d\udcdc",
+      "emoji": "📜",
       "featured": false
     },
     {
       "slug": "agi-capability-stack-mapped",
       "title": "The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap",
-      "excerpt": "Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term, hard problem, and open research \u2014 plus the path forward for researchers, builders, and capital.",
+      "excerpt": "Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term, hard problem, and open research — plus the path forward for researchers, builders, and capital.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
@@ -2517,13 +2532,13 @@
         "Roadmap",
         "Strategy"
       ],
-      "emoji": "\ud83d\uddfa\ufe0f",
+      "emoji": "🗺️",
       "featured": false
     },
     {
       "slug": "frontier-innovation-levers",
       "title": "Beyond More Data: The Six Real Levers of Frontier AI's Next Advances",
-      "excerpt": "More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A research-grounded look at what actually drives each 'generational leap' \u2014 and what's next.",
+      "excerpt": "More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A research-grounded look at what actually drives each 'generational leap' — and what's next.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
@@ -2533,13 +2548,13 @@
         "Scaling",
         "Analysis"
       ],
-      "emoji": "\ud83d\udee0\ufe0f",
+      "emoji": "🛠️",
       "featured": false
     },
     {
       "slug": "agi-models-astra-claude-gemini",
       "title": "Astra, Claude & Gemini: Naming Names on the AGI Capability Stack",
-      "excerpt": "GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis \u2014 a single model scoring 62.7% and 99.9%+ on the same benchmark. Real research, named models, sourced claims.",
+      "excerpt": "GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis — a single model scoring 62.7% and 99.9%+ on the same benchmark. Real research, named models, sourced claims.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
@@ -2549,13 +2564,13 @@
         "News Analysis",
         "Model Comparison"
       ],
-      "emoji": "\ud83d\udd2c",
+      "emoji": "🔬",
       "featured": false
     },
     {
       "slug": "agi-threshold-capability-stack",
       "title": "The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?",
-      "excerpt": "AGI isn't a model that gets announced \u2014 it's a capability stack filled in unevenly. A 15-part analytical framework mapping reasoning, memory, planning, and safe autonomy against the frontier.",
+      "excerpt": "AGI isn't a model that gets announced — it's a capability stack filled in unevenly. A 15-part analytical framework mapping reasoning, memory, planning, and safe autonomy against the frontier.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
@@ -2565,13 +2580,13 @@
         "Research",
         "Analysis"
       ],
-      "emoji": "\ud83e\udde9",
+      "emoji": "🧩",
       "featured": false
     },
     {
       "slug": "ai-productivity-paradox-civilization",
       "title": "The AI Productivity Paradox: When Economic Growth Stops Needing Humans",
-      "excerpt": "We are entering one of the strangest transitions in history \u2014 economies that keep growing while needing fewer humans. A civilizational dilemma, not just an economic one.",
+      "excerpt": "We are entering one of the strangest transitions in history — economies that keep growing while needing fewer humans. A civilizational dilemma, not just an economic one.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-04",
@@ -2581,7 +2596,7 @@
         "Economics",
         "Philosophy"
       ],
-      "emoji": "\ud83c\udf10",
+      "emoji": "🌐",
       "featured": false
     },
     {
@@ -2597,7 +2612,7 @@
         "Labor Market",
         "Deep Dive"
       ],
-      "emoji": "\u2696\ufe0f",
+      "emoji": "⚖️",
       "featured": false
     },
     {
@@ -2612,13 +2627,13 @@
         "News",
         "Monthly Digest"
       ],
-      "emoji": "\ud83d\udcc5",
+      "emoji": "📅",
       "featured": false
     },
     {
       "slug": "world-models",
       "title": "World Models: Teaching AI to Understand Reality",
-      "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet \u2014 a model that learns a compressed, predictive representation of physical reality.",
+      "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet — a model that learns a compressed, predictive representation of physical reality.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-24",
@@ -2628,13 +2643,13 @@
         "Research",
         "Architecture"
       ],
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "featured": false
     },
     {
       "slug": "rag-retrieval-knowledge-stack",
       "title": "Retrieval, Knowledge & the RAG Stack",
-      "excerpt": "How models ground answers beyond training data and context windows \u2014 embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
+      "excerpt": "How models ground answers beyond training data and context windows — embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-21",
@@ -2644,13 +2659,13 @@
         "Retrieval",
         "Deep Dive"
       ],
-      "emoji": "\ud83d\udd0d",
+      "emoji": "🔍",
       "featured": false
     },
     {
       "slug": "ai-agents-enterprise-economy",
       "title": "AI Agents & the Enterprise Agent Economy",
-      "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems \u2014 orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
+      "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems — orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-18",
@@ -2660,13 +2675,13 @@
         "Enterprise",
         "Deep Dive"
       ],
-      "emoji": "\ud83e\udd1d",
+      "emoji": "🤝",
       "featured": false
     },
     {
       "slug": "ai-safety-alignment-interpretability",
       "title": "AI Safety, Alignment & Interpretability: Building Trust Into the Machine",
-      "excerpt": "The counterweight to nine posts of pure capability \u2014 RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
+      "excerpt": "The counterweight to nine posts of pure capability — RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-15",
@@ -2676,13 +2691,13 @@
         "Alignment",
         "Research"
       ],
-      "emoji": "\ud83d\udee1\ufe0f",
+      "emoji": "🛡️",
       "featured": false
     },
     {
       "slug": "reasoning-models-test-time-compute",
       "title": "Reasoning Models & Test-Time Compute: The Second Scaling Law",
-      "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law \u2014 o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
+      "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law — o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-12",
@@ -2692,13 +2707,13 @@
         "Architecture",
         "Research"
       ],
-      "emoji": "\ud83e\udde0",
+      "emoji": "🧠",
       "featured": false
     },
     {
       "slug": "ai-chips-compute-infrastructure",
       "title": "AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence",
-      "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power \u2014 GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
+      "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power — GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-09",
@@ -2708,13 +2723,13 @@
         "Infrastructure",
         "Deep Dive"
       ],
-      "emoji": "\ud83d\udd0c",
+      "emoji": "🔌",
       "featured": false
     },
     {
       "slug": "physical-intelligence",
       "title": "Physical Intelligence: Teaching AI to Act in the Real World",
-      "excerpt": "Why action is the final modality \u2014 VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
+      "excerpt": "Why action is the final modality — VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-06",
@@ -2724,13 +2739,13 @@
         "Embodied AI",
         "Research"
       ],
-      "emoji": "\ud83e\uddbe",
+      "emoji": "🦾",
       "featured": false
     },
     {
       "slug": "multimodal-consolidation",
       "title": "Multimodality & The Great Consolidation",
-      "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models \u2014 architecture taxonomy, the frontier lab race, and open research frontiers.",
+      "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models — architecture taxonomy, the frontier lab race, and open research frontiers.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-07-03",
@@ -2740,7 +2755,7 @@
         "Architecture",
         "Research"
       ],
-      "emoji": "\ud83e\uddec",
+      "emoji": "🧬",
       "featured": false
     },
     {
@@ -2756,7 +2771,7 @@
         "Audio",
         "Deep Dive"
       ],
-      "emoji": "\ud83c\udf99\ufe0f",
+      "emoji": "🎙️",
       "featured": false
     },
     {
@@ -2772,13 +2787,13 @@
         "Computer Vision",
         "Deep Dive"
       ],
-      "emoji": "\ud83c\udfa8",
+      "emoji": "🎨",
       "featured": false
     },
     {
       "slug": "filmmaking-encyclopedia",
       "title": "The Complete Filmmaking Encyclopedia",
-      "excerpt": "Every phase, role, and activity in the filmmaking pipeline \u2014 from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
+      "excerpt": "Every phase, role, and activity in the filmmaking pipeline — from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-06-27",
@@ -2788,7 +2803,7 @@
         "Creative Industry",
         "Encyclopedia"
       ],
-      "emoji": "\ud83c\udfac",
+      "emoji": "🎬",
       "featured": false
     },
     {
@@ -2804,13 +2819,13 @@
         "Business",
         "Research"
       ],
-      "emoji": "\ud83d\udcb0",
+      "emoji": "💰",
       "featured": false
     },
     {
       "slug": "ai-news-june-22-2026",
-      "title": "AI News Digest \u2014 June 22, 2026",
-      "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future \u2014 11 categories, real sources, curated in 5 bullets each.",
+      "title": "AI News Digest — June 22, 2026",
+      "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future — 11 categories, real sources, curated in 5 bullets each.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-06-22",
@@ -2819,13 +2834,13 @@
         "News",
         "Weekly Digest"
       ],
-      "emoji": "\ud83d\udcf0",
+      "emoji": "📰",
       "featured": false
     },
     {
       "slug": "agentic-loop-explained",
       "title": "Loop Engineering: The New Meta for AI Agents",
-      "excerpt": "The shift from prompt engineering to loop engineering \u2014 how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm for building AI systems in 2026.",
+      "excerpt": "The shift from prompt engineering to loop engineering — how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm for building AI systems in 2026.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-06-22",
@@ -2834,7 +2849,7 @@
         "Agentic AI",
         "Research"
       ],
-      "emoji": "\u26a1",
+      "emoji": "⚡",
       "featured": false
     }
   ]

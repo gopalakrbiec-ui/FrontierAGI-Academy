@@ -158,6 +158,7 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
+        "sakana-ai-primer",
         "forward-deployed-engineers-great-role-merge",
         "typesafe-jev-system-one-models-explained",
         "world-models",

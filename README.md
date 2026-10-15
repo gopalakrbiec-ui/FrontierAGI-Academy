@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🐟 [Sakana AI: A Primer on Tokyo's Nature-Inspired Frontier Lab](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sakana-ai-primer.html) | Who founded Sakana AI, how it grew from a 2023 seed round to a unicorn, what it has shipped, and which papers matter, from model merging to… | 2026-10-15 |
 | 🧑‍🔧 [Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/forward-deployed-engineers-great-role-merge.html) | OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. | 2026-10-13 |
 | 📟 [AI Research in 1950–1980: The Three Decades That Founded the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1950-1980-papers.html) ⭐ | From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN — twenty founding papers and milestones in… | 2026-09-29 |
 | 📼 [AI Research in 1980–2000: The Two Decades That Invented Modern AI's Core Ideas](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1980-2000-papers.html) | Twenty papers and milestones from 1980–2000 in eight themes — Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning,… | 2026-09-29 |
