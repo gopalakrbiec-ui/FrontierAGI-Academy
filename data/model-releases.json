@@ -2,7 +2,7 @@
 "about": "Hand-curated model releases, by modality. LLM-modality rows reference verified items in data/lab-updates.json (ref). open: 1 open weights, 2 research/limited access, 0 closed, null licence not recorded. st: ga available, preview limited or alpha, research announced but not released. sec: 1 means the source is secondary (press or reference site). t marks the first-at-tier milestone items. end: date the product was retired.",
 "range": [
 "2022-04",
-"2026-09"
+"2026-10"
 ],
 "modalities": [
 [
@@ -470,6 +470,10 @@
 [
 "geminilive",
 "Gemini Live"
+],
+[
+"grokvoice",
+"Grok Voice"
 ]
 ],
 "tiers": [
@@ -5069,6 +5073,74 @@
 "open": 2,
 "st": "research",
 "sec": 0
+},
+{
+"id": "meta-20261015-muse-spark-open",
+"date": "2026-10-15",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "muse",
+"name": "Muse Spark Open",
+"full": "Muse Spark Open: open-weight Muse model; specs from secondary coverage",
+"src": "https://macrumors.com/2026/10/15/meta-muse-spark-open-mac-studio",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 1,
+"ref": "meta-20261015-muse-spark-open"
+},
+{
+"id": "nvidia-20261015-nemotron-3-5-super-vl",
+"date": "2026-10-15",
+"lab": "nvidia",
+"mod": [
+"llm"
+],
+"fam": "nemotron",
+"name": "Nemotron 3.5 Super VL",
+"full": "Nemotron 3.5 Super VL: open-weight vision-language agent model; specs from a model listing",
+"src": "https://www.llmreference.com/model/nemotron-3.5-super-vl",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1,
+"ref": "nvidia-20261015-nemotron-3-5-super-vl"
+},
+{
+"id": "xai-20261014-grok-voice-3-0",
+"date": "2026-10-14",
+"lab": "xai",
+"mod": [
+"speech"
+],
+"fam": "grokvoice",
+"name": "Grok Voice 3.0",
+"full": "Grok Voice 3.0: speech-to-speech model for voice agents; benchmark claims are xAI's own",
+"src": "https://techenclave.com/news/items/xai-releases-grok-voice-3-and-upgrades-the-latest-api-alias",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1,
+"ref": "xai-20261014-grok-voice-3-0"
+},
+{
+"id": "openai-20261015-gpt-live-1-1",
+"date": "2026-10-15",
+"lab": "openai",
+"mod": [
+"speech"
+],
+"fam": "realtime",
+"name": "GPT-Live-1.1",
+"full": "GPT-Live-1.1: updated voice model in ChatGPT Voice; API coming soon",
+"src": "https://aiweekly.co/alerts/openai-rolls-out-gpt-live-11-to-all-users-with-13-new-voices-across-six-non",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1,
+"ref": "openai-20261015-gpt-live-1-1"
 }
 ]
 }

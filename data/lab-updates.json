@@ -2,7 +2,7 @@
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
   "2021-10-01",
-  "2026-10-13"
+  "2026-10-20"
  ],
  "labs": [
   [
@@ -3759,6 +3759,90 @@
    "summary": "Developers in supported countries can sign up for the OpenAI API immediately.",
    "facts": [],
    "source": "https://openai.com/index/api-no-waitlist/",
+   "flagship": false
+  },
+  {
+   "id": "meta-20261015-muse-spark-open",
+   "date": "2026-10-15",
+   "lab": "meta",
+   "type": "model",
+   "title": "Muse Spark Open",
+   "summary": "Meta's open-weight model, released with weights on Hugging Face and described by Meta as the most capable US open-weight model. Reported as a mixture-of-experts with about 816B total and 42B active parameters and a 1M-token context, under the Muse Model License with limited commercial terms. Specs and the Apple Mac Studio demos come from secondary coverage and Meta's own claims.",
+   "facts": [
+    "Open weights",
+    "~816B total / 42B active (reported)",
+    "Muse Model License"
+   ],
+   "source": "https://macrumors.com/2026/10/15/meta-muse-spark-open-mac-studio",
+   "flagship": true
+  },
+  {
+   "id": "xai-20261014-grok-voice-3-0",
+   "date": "2026-10-14",
+   "lab": "xai",
+   "type": "model",
+   "title": "Grok Voice 3.0",
+   "summary": "xAI's speech-to-speech model for voice agents, priced at the same $0.08 per minute as Grok Voice 2.0, with the latest API alias upgraded automatically. xAI says it tops an Artificial Analysis speech index and powers Tesla and Starlink voice; those figures are self-reported and come to us through secondary coverage.",
+   "facts": [
+    "$0.08/min (reported)",
+    "Alias auto-upgraded"
+   ],
+   "source": "https://techenclave.com/news/items/xai-releases-grok-voice-3-and-upgrades-the-latest-api-alias",
+   "flagship": false
+  },
+  {
+   "id": "nvidia-20261015-nemotron-3-5-super-vl",
+   "date": "2026-10-15",
+   "lab": "nvidia",
+   "type": "model",
+   "title": "Nemotron 3.5 Super VL",
+   "summary": "An open-weight vision-language agent model listed at about 120B parameters with roughly 12B active and a 1M-token context, under a commercial-use licence. NVIDIA calls it the fastest open agentic model in its class; independent benchmarks were not yet available and the specs come from a model listing.",
+   "facts": [
+    "Open weights",
+    "~120B / 12B active (reported)"
+   ],
+   "source": "https://www.llmreference.com/model/nemotron-3.5-super-vl",
+   "flagship": false
+  },
+  {
+   "id": "openai-20261015-gpt-live-1-1",
+   "date": "2026-10-15",
+   "lab": "openai",
+   "type": "product",
+   "title": "GPT-Live-1.1 in ChatGPT Voice",
+   "summary": "A voice-model update rolled out to all ChatGPT Voice, Codex and dots users, adding 13 new voices across six non-English languages. OpenAI says API access is coming soon with no date; users reported voice-selection glitches on mobile.",
+   "facts": [
+    "13 new voices",
+    "API: coming soon"
+   ],
+   "source": "https://aiweekly.co/alerts/openai-rolls-out-gpt-live-11-to-all-users-with-13-new-voices-across-six-non",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20261015-claude-code-review-ga",
+   "date": "2026-10-15",
+   "lab": "anthropic",
+   "type": "product",
+   "title": "Claude Code Review generally available",
+   "summary": "Anthropic moved Claude Code Review out of research preview for Team and Enterprise customers, with Quick, Standard and Deep review levels per repository. Reported from a third-party write-up rather than an Anthropic post we could open.",
+   "facts": [
+    "Team and Enterprise"
+   ],
+   "source": "https://www.digitalapplied.com/blog/claude-code-review-generally-available-levels-cost",
+   "flagship": false
+  },
+  {
+   "id": "google-20261006-embeddinggemma-2",
+   "date": "2026-10-06",
+   "lab": "google",
+   "type": "model",
+   "title": "EmbeddingGemma 2",
+   "summary": "An open, lightweight multimodal embedding model that maps text and code, images, video and audio into one vector space; about 740M parameters, Apache 2.0, weights on Hugging Face and Kaggle. Added late: it was missing from earlier updates.",
+   "facts": [
+    "Apache 2.0",
+    "~740M parameters (reported)"
+   ],
+   "source": "https://letsdatascience.com/news/deepmind-releases-embeddinggemma-2-for-edge-search-fbcc7c51",
    "flagship": false
   }
  ]
