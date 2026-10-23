@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| ⛓️ [The Chokepoint: How One Supply Chain Decides How Much AI the World Gets](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chip-supply-chain.html) | Follow one AI chip from design to data centre: ASML's EUV monopoly, TSMC's fabs, sold-out CoWoS packaging and HBM, the T-glass shortage,… | 2026-10-23 |
 | 🕸️ [The Interconnect Wars: How 100,000 Chips Become One Computer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/interconnect-wars.html) | Why the network now decides AI performance: NVLink vs UALink and Ethernet inside the rack, InfiniBand vs Ultra Ethernet across the hall,… | 2026-10-23 |
 | 📉 [The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/token-price-collapse.html) | GPT-3-level answers went from $60 to $0.06 per million tokens in three years, yet AI bills keep rising. | 2026-10-23 |
 | 🔩 [Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/custom-silicon-vs-nvidia.html) | Nvidia earns a 75% gross margin and every big customer now designs its own AI chips. | 2026-10-23 |

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-chip-supply-chain",
+      "title": "The Chokepoint: How One Supply Chain Decides How Much AI the World Gets",
+      "excerpt": "Follow one AI chip from design to data centre: ASML's EUV monopoly, TSMC's fabs, sold-out CoWoS packaging and HBM, the T-glass shortage, the Samsung, Intel and Rapidus challengers, tariffs and Taiwan risk, with a GPU supply calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "27 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "⛓️",
+      "featured": false
+    },
+    {
       "slug": "interconnect-wars",
       "title": "The Interconnect Wars: How 100,000 Chips Become One Computer",
       "excerpt": "Why the network now decides AI performance: NVLink vs UALink and Ethernet inside the rack, InfiniBand vs Ultra Ethernet across the hall, Google's mirror switches, co-packaged optics and multi-site training, with interactive simulators.",
