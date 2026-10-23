@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-factories-vs-supercomputers",
+      "title": "AI Factories vs Supercomputers: Same Chips, Different Machines",
+      "excerpt": "HPC, supercomputers and AI factories explained: the FP64 vs FP8/FP4 precision divide, a side-by-side comparison, El Capitan's 30 MW vs Colossus 2's ~946 MW, the June 2026 TOP500 (LineShine at No. 1) and how science and AI hardware are converging.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "24 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "🏛️",
+      "featured": false
+    },
+    {
       "slug": "ai-at-the-edge",
       "title": "AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference",
       "excerpt": "Phones and laptops now run small AI models locally: what an NPU is, why memory not TOPS decides what runs, the 2026 chips and small models, hybrid device-plus-cloud AI, and how the HBM boom is making AI devices dearer, with a will-it-run calculator.",
