@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "who-pays-for-ai-buildout",
+      "title": "Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine",
+      "excerpt": "Roughly 00 billion of 2026 data-centre spending, followed layer by layer: hyperscaler cash flow, the bond wave, Meta's off-balance-sheet Hyperion deal, CoreWeave's GPU-backed debt, circular chip deals, the revenue gap and the depreciation fight, with interactive models.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "28 min",
+      "tags": [
+        "Explainer",
+        "Economics"
+      ],
+      "emoji": "💸",
+      "featured": false
+    },
+    {
       "slug": "ai-chip-supply-chain",
       "title": "The Chokepoint: How One Supply Chain Decides How Much AI the World Gets",
       "excerpt": "Follow one AI chip from design to data centre: ASML's EUV monopoly, TSMC's fabs, sold-out CoWoS packaging and HBM, the T-glass shortage, the Samsung, Intel and Rapidus challengers, tariffs and Taiwan risk, with a GPU supply calculator.",
