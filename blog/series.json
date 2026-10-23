@@ -158,6 +158,7 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
+        "inside-the-ai-factory",
         "data-centers-in-space",
         "sandboxing-ai-agents",
         "sakana-ai-primer",

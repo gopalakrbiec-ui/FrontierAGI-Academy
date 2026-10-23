@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "inside-the-ai-factory",
+      "title": "Inside the AI Factory: How Electricity Becomes Intelligence",
+      "excerpt": "What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest sites, what it all costs and why neighbours are pushing back. Interactive production line, campus plan and a break-even token calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "30 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "🏭",
+      "featured": false
+    },
+    {
       "slug": "data-centers-in-space",
       "title": "Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question",
       "excerpt": "SpaceX filed for a million computing satellites, Google put TPUs in orbit and Starcloud trained a model in space. What has actually flown, the physics that makes orbit hard, and the launch price at which it beats the ground. Interactive timeline, spacecraft anatomy and a break-even calculator.",
