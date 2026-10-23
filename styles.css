@@ -6671,6 +6671,8 @@ body {
 }
 
 .blog-article-main { flex: 1; min-width: 0; }
+/* give articles with a sidebar room so the text column keeps its normal reading width */
+@media (min-width: 1100px) { .blog-post-wrap:has(.blog-article-layout) { max-width: 1040px; } }
 
 @media (max-width: 900px) {
   .blog-article-layout { display: block; }

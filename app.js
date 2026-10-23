@@ -495,7 +495,33 @@ async function loadBlogNavPosts() {
 
 /* ── Article on-page nav: convert the horizontal pill bar into a left sidebar ── */
 function initArticleSidebarNav() {
-  const secNav = document.querySelector('.agi-section-nav');
+  // Every in-article section nav: the shared .agi-section-nav plus the per-article variants
+  // (xx-section-nav, fde-nav, sk-nav, sb-nav, phase-nav, fr-toc).
+  // Articles without a section nav: build one from their headings (h2[id], or h2 inside section[id])
+  const wrap0 = document.querySelector('.blog-post-wrap');
+  if (wrap0 && !wrap0.querySelector('.agi-section-nav, [class$="-section-nav"], .fde-nav, .sk-nav, .sb-nav, .phase-nav, .fr-toc')) {
+    const heads = Array.from(wrap0.querySelectorAll('h2')).map(h => {
+      let id = h.id || (h.closest('section[id]') || {}).id;
+      if (!id) {
+        id = 'sec-' + h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
+        if (!id || document.getElementById(id)) return null;
+        h.id = id; h.style.scrollMarginTop = '110px';
+      }
+      return [id, h.textContent.trim()];
+    }).filter(Boolean).filter((x, i, arr) => arr.findIndex(y => y[0] === x[0]) === i);
+    if (heads.length >= 4) {
+      const first = document.getElementById(heads[0][0]);
+      let anchor = first;
+      while (anchor && anchor.parentNode !== wrap0) anchor = anchor.parentNode;
+      if (anchor) {
+        const auto = document.createElement('div');
+        auto.className = 'agi-section-nav';
+        heads.forEach(([id, t]) => { const l = document.createElement('a'); l.href = '#' + id; l.textContent = t; auto.appendChild(l); });
+        wrap0.insertBefore(auto, anchor);
+      }
+    }
+  }
+  const secNav = document.querySelector('.blog-post-wrap .agi-section-nav, .blog-post-wrap [class$="-section-nav"], .blog-post-wrap .fde-nav, .blog-post-wrap .sk-nav, .blog-post-wrap .sb-nav, .blog-post-wrap .phase-nav, .blog-post-wrap .fr-toc');
   const wrap = document.querySelector('.blog-post-wrap');
   if (!secNav || !wrap) return;
 
@@ -523,7 +549,7 @@ function initArticleSidebarNav() {
   links.forEach(a => {
     const link = document.createElement('a');
     link.href = a.getAttribute('href');
-    link.textContent = a.textContent.trim();
+    link.textContent = Array.from(a.childNodes).map(n => n.textContent.trim()).filter(Boolean).join(' ');
     navEl.appendChild(link);
   });
 

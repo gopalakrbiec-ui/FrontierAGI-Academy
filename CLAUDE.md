@@ -92,6 +92,9 @@ Backdrop (`#navBackdrop`) closes panels on click.
 ```
 Only one post should have `"featured": true` at a time.
 
+### Article sidebar ("On this page")
+`initArticleSidebarNav()` in `app.js` turns an article's section nav (`.agi-section-nav`, any `*-section-nav`, `.fde-nav`, `.sk-nav`, `.sb-nav`, `.phase-nav`, `.fr-toc`) into a sticky left sidebar with active-section highlight; articles with none get one built from 4+ `h2` headings. The wrap widens to 1040px on wide screens so the text column keeps its width. Keep a section-nav row near the top of new articles.
+
 ## CSS Conventions
 - All CSS in `styles.css` — append new sections at the bottom with a banner comment
 - CSS variables in `:root`: `--accent`, `--accent2`, `--accent3`, `--text`, `--border`, `--bg-card`, etc.

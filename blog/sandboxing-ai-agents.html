@@ -27,15 +27,8 @@
     .sb-hero h1 { font-size: 2.05rem; font-weight: 800; margin: 0 0 14px; line-height: 1.25; }
     .sb-hero p { font-size: 1.05rem; color: rgba(255,255,255,.78); max-width: 780px; margin: 0 auto; line-height: 1.65; }
     .sb-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 34px; padding: 10px 0; border-bottom: 2px solid #f3f4f6; }
-    .sb-nav .sb-navhd { display: none; }
     .sb-nav a { padding: 5px 11px; border: 1.5px solid #e5e7eb; border-radius: 18px; font-size: .7rem; font-weight: 600; color: #6b7280; text-decoration: none; white-space: nowrap; }
     .sb-nav a:hover { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-    @media (min-width: 1200px) {
-      .sb-nav { position: fixed; top: 118px; left: max(16px, calc(50% - 610px)); width: 210px; max-height: calc(100vh - 140px); overflow-y: auto; flex-direction: column; flex-wrap: nowrap; gap: 2px; margin: 0; padding: 0 0 0 12px; border: 0; border-left: 2px solid #e5e7eb; z-index: 5; }
-      .sb-nav .sb-navhd { display: block; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #94a3b8; margin: 0 0 6px; }
-      .sb-nav a { border: 0; border-radius: 8px; padding: 6px 10px; font-size: .78rem; white-space: normal; line-height: 1.3; margin-left: -14px; border-left: 2px solid transparent; border-radius: 0 8px 8px 0; }
-      .sb-nav a.on { color: #047857; background: #ecfdf5; border-left-color: #047857; font-weight: 800; }
-    }
     .sb-sec { scroll-margin-top: 160px; }
     .sb-box { border-radius: 12px; padding: 14px 18px; margin: 16px 0; font-size: .88rem; line-height: 1.7; }
     .sb-box b.l { display: block; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
@@ -272,7 +265,7 @@
       Everything here comes from web searches run up to 23 October 2026. Official documentation (Anthropic, OpenAI, Docker, AWS), arXiv papers and conference proceedings were preferred, but many performance and pricing figures exist only in vendor blogs and comparison sites, and several papers could be read only through their abstracts or third-party summaries. Each claim says where it comes from, and the section <a href="#numbers">Reading the numbers</a> lists the figures that conflict or could not be checked. The coverage tables and the "which layer stops what" matrix are this site's own analysis, not a published result.
     </div>
 
-    <nav class="sb-nav" aria-label="On this page"><div class="sb-navhd">On this page</div>
+    <nav class="sb-nav" aria-label="On this page">
       <a href="#why">Why now</a>
       <a href="#trifecta">Lethal trifecta</a>
       <a href="#threats">Two threat models</a>
@@ -582,14 +575,6 @@
     set(on);
   }
 
-
-  /* ---------- side nav highlight ---------- */
-  (function () {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.sb-nav a'));
-    var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
-    function upd() { var y = window.scrollY + 180, cur = secs[0]; secs.forEach(function (s) { if (s.getBoundingClientRect().top + window.scrollY <= y) cur = s; }); links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + cur.id); }); }
-    window.addEventListener('scroll', upd, { passive: true }); upd();
-  })();
 
   /* ---------- trifecta ---------- */
   var LEG = [
