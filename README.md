@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🧱 [Sandboxing AI Agents: How to Let an Agent Act Without Letting It Escape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sandboxing-ai-agents.html) | From kernel flags on a laptop to microVMs in the cloud: how agent sandboxes work, what each layer stops, how often frontier models escape… | 2026-10-23 |
 | 🐟 [Sakana AI: A Primer on Tokyo's Nature-Inspired Frontier Lab](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sakana-ai-primer.html) | Who founded Sakana AI, how it grew from a 2023 seed round to a unicorn, what it has shipped, and which papers matter, from model merging to… | 2026-10-15 |
 | 🧑‍🔧 [Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/forward-deployed-engineers-great-role-merge.html) | OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. | 2026-10-13 |
 | 📟 [AI Research in 1950–1980: The Three Decades That Founded the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1950-1980-papers.html) ⭐ | From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN — twenty founding papers and milestones in… | 2026-09-29 |
