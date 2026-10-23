@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "memory-wall-hbm",
+      "title": "The Memory Wall: Why HBM Decides Who Wins AI",
+      "excerpt": "Chips learned to calculate far faster than memory can feed them, and LLM inference turned that gap into AI's defining limit. How the memory wall works, what HBM is, the three companies that make it, why it raised PC prices, China's HBM gap and the fixes. Interactive roofline, speed-limit calculator and HBM cross-section.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "28 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "💾",
+      "featured": false
+    },
+    {
       "slug": "inside-the-ai-factory",
       "title": "Inside the AI Factory: How Electricity Becomes Intelligence",
       "excerpt": "What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest sites, what it all costs and why neighbours are pushing back. Interactive production line, campus plan and a break-even token calculator.",

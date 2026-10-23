@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 💾 [The Memory Wall: Why HBM Decides Who Wins AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-wall-hbm.html) | Chips learned to calculate far faster than memory can feed them, and LLM inference turned that gap into AI's defining limit. | 2026-10-23 |
 | 🏭 [Inside the AI Factory: How Electricity Becomes Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-the-ai-factory.html) | What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest… | 2026-10-23 |
 | 🛰️ [Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-centers-in-space.html) | SpaceX filed for a million computing satellites, Google put TPUs in orbit and Starcloud trained a model in space. | 2026-10-23 |
 | 🧱 [Sandboxing AI Agents: How to Let an Agent Act Without Letting It Escape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sandboxing-ai-agents.html) | From kernel flags on a laptop to microVMs in the cloud: how agent sandboxes work, what each layer stops, how often frontier models escape… | 2026-10-23 |

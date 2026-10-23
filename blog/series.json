@@ -29,6 +29,20 @@
       ]
     },
     {
+      "id": "sec-compute",
+      "title": "The AI Compute Stack: From Electrons to Tokens",
+      "short": "The AI Compute Stack",
+      "icon": "🖥️",
+      "slugs": [
+        "power-bottleneck-ai-infrastructure-race",
+        "inside-the-ai-factory",
+        "ai-chips-compute-infrastructure",
+        "memory-wall-hbm",
+        "data-centers-in-space",
+        "frontier-model-pricing"
+      ]
+    },
+    {
       "id": "sec-rsi",
       "title": "The Recursive Self-Improvement Series",
       "short": "The Recursive Self-Improvement Series",
@@ -64,8 +78,7 @@
         "agi-lever-gaps-new-entrants",
         "agi-startups-to-watch",
         "memory-continual-learning-agi-race",
-        "interpretability-gap-reading-model-minds",
-        "power-bottleneck-ai-infrastructure-race"
+        "interpretability-gap-reading-model-minds"
       ]
     },
     {
@@ -158,8 +171,6 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
-        "inside-the-ai-factory",
-        "data-centers-in-space",
         "sandboxing-ai-agents",
         "sakana-ai-primer",
         "forward-deployed-engineers-great-role-merge",
@@ -170,12 +181,10 @@
         "voice-ai-models",
         "image-video-ai-models",
         "reasoning-models-test-time-compute",
-        "ai-chips-compute-infrastructure",
         "rag-retrieval-knowledge-stack",
         "ai-agents-enterprise-economy",
         "ai-safety-alignment-interpretability",
         "agentic-loop-explained",
-        "frontier-model-pricing",
         "filmmaking-encyclopedia"
       ]
     },
