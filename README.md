@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🔩 [Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/custom-silicon-vs-nvidia.html) | Nvidia earns a 75% gross margin and every big customer now designs its own AI chips. | 2026-10-23 |
 | 💾 [The Memory Wall: Why HBM Decides Who Wins AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-wall-hbm.html) | Chips learned to calculate far faster than memory can feed them, and LLM inference turned that gap into AI's defining limit. | 2026-10-23 |
 | 🏭 [Inside the AI Factory: How Electricity Becomes Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-the-ai-factory.html) | What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest… | 2026-10-23 |
 | 🛰️ [Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-centers-in-space.html) | SpaceX filed for a million computing satellites, Google put TPUs in orbit and Starcloud trained a model in space. | 2026-10-23 |
