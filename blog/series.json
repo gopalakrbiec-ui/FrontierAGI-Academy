@@ -158,6 +158,7 @@
       "short": "Topic Explainers",
       "icon": "🔍",
       "slugs": [
+        "data-centers-in-space",
         "sandboxing-ai-agents",
         "sakana-ai-primer",
         "forward-deployed-engineers-great-role-merge",

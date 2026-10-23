@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-centers-in-space",
+      "title": "Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question",
+      "excerpt": "SpaceX filed for a million computing satellites, Google put TPUs in orbit and Starcloud trained a model in space. What has actually flown, the physics that makes orbit hard, and the launch price at which it beats the ground. Interactive timeline, spacecraft anatomy and a break-even calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "28 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "🛰️",
+      "featured": false
+    },
+    {
       "slug": "sandboxing-ai-agents",
       "title": "Sandboxing AI Agents: How to Let an Agent Act Without Letting It Escape",
       "excerpt": "From kernel flags on a laptop to microVMs in the cloud: how agent sandboxes work, what each layer stops, how often frontier models escape in controlled tests, and why a sandbox alone does not defeat prompt injection. Interactive isolation ladder, action simulator, coverage matrix and 15 linked papers.",
