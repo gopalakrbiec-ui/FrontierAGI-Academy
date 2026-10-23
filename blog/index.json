@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "energy-beyond-the-grid",
+      "title": "Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power",
+      "excerpt": "With grid queues stretching for years and PJM capacity prices up more than tenfold, AI builders are bringing their own power: 101 GW of announced on-site gas, xAI's turbines, three nuclear restarts, SMR deals and fuel cells, with an option comparer and a power-plan simulator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "27 min",
+      "tags": [
+        "Explainer",
+        "Energy"
+      ],
+      "emoji": "🔥",
+      "featured": false
+    },
+    {
       "slug": "china-chip-stack",
       "title": "China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance",
       "excerpt": "How China is building a parallel AI compute stack under US export controls: SMIC without EUV, Huawei's Ascend roadmap and 8,192-chip SuperPoDs, the HBM bottleneck, Cambricon and the GPU IPOs, smuggling, and whether the controls are working.",
