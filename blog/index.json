@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "token-price-collapse",
+      "title": "The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It",
+      "excerpt": "GPT-3-level answers went from $60 to $0.06 per million tokens in three years, yet AI bills keep rising. The three prices of AI, four estimates of the decline, where the savings come from, the Jevons paradox, a cost-per-task calculator and who pays.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "27 min",
+      "tags": [
+        "Explainer",
+        "Economics"
+      ],
+      "emoji": "📉",
+      "featured": false
+    },
+    {
       "slug": "custom-silicon-vs-nvidia",
       "title": "Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?",
       "excerpt": "Nvidia earns a 75% gross margin and every big customer now designs its own AI chips. GPUs vs ASICs, every challenger from TPU to Trainium, Maia, MTIA and OpenAI's first chip, the Broadcom money trail, where the CUDA moat holds, and an interactive build-vs-buy calculator.",

@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📉 [The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/token-price-collapse.html) | GPT-3-level answers went from $60 to $0.06 per million tokens in three years, yet AI bills keep rising. | 2026-10-23 |
 | 🔩 [Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/custom-silicon-vs-nvidia.html) | Nvidia earns a 75% gross margin and every big customer now designs its own AI chips. | 2026-10-23 |
 | 💾 [The Memory Wall: Why HBM Decides Who Wins AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-wall-hbm.html) | Chips learned to calculate far faster than memory can feed them, and LLM inference turned that gap into AI's defining limit. | 2026-10-23 |
 | 🏭 [Inside the AI Factory: How Electricity Becomes Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-the-ai-factory.html) | What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest… | 2026-10-23 |
