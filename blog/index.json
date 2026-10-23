@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-at-the-edge",
+      "title": "AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference",
+      "excerpt": "Phones and laptops now run small AI models locally: what an NPU is, why memory not TOPS decides what runs, the 2026 chips and small models, hybrid device-plus-cloud AI, and how the HBM boom is making AI devices dearer, with a will-it-run calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "24 min",
+      "tags": [
+        "Explainer",
+        "Hardware"
+      ],
+      "emoji": "📱",
+      "featured": false
+    },
+    {
       "slug": "heat-and-water-cooling",
       "title": "Heat and Water: How AI Data Centres Keep Cool, and What It Costs",
       "excerpt": "As AI racks climb from 40 kW to a planned 600 kW, air cooling fails and data centres are rebuilt around liquid. The cooling chain, five methods compared, how much water AI really uses, heat reuse, the local backlash and new state water laws, with a water-vs-energy calculator.",

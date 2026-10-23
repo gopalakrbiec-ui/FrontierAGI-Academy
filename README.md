@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📱 [AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-at-the-edge.html) | Phones and laptops now run small AI models locally: what an NPU is, why memory not TOPS decides what runs, the 2026 chips and small models,… | 2026-10-23 |
 | 💧 [Heat and Water: How AI Data Centres Keep Cool, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/heat-and-water-cooling.html) | As AI racks climb from 40 kW to a planned 600 kW, air cooling fails and data centres are rebuilt around liquid. | 2026-10-23 |
 | 🔥 [Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/energy-beyond-the-grid.html) | With grid queues stretching for years and PJM capacity prices up more than tenfold, AI builders are bringing their own power: 101 GW of… | 2026-10-23 |
 | 🇨🇳 [China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-chip-stack.html) | How China is building a parallel AI compute stack under US export controls: SMIC without EUV, Huawei's Ascend roadmap and 8,192-chip… | 2026-10-23 |
