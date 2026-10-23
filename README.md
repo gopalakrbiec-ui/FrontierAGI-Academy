@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🧱 [The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-software-stack.html) | Part 1 of Producing Intelligence: every software layer between a researcher's Python and 16,384 GPUs, from drivers, CUDA and NCCL to… | 2026-10-23 |
 | 🏛️ [AI Factories vs Supercomputers: Same Chips, Different Machines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-vs-supercomputers.html) | HPC, supercomputers and AI factories explained: the FP64 vs FP8/FP4 precision divide, a side-by-side comparison, El Capitan's 30 MW vs… | 2026-10-23 |
 | 📱 [AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-at-the-edge.html) | Phones and laptops now run small AI models locally: what an NPU is, why memory not TOPS decides what runs, the 2026 chips and small models,… | 2026-10-23 |
 | 💧 [Heat and Water: How AI Data Centres Keep Cool, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/heat-and-water-cooling.html) | As AI racks climb from 40 kW to a planned 600 kW, air cooling fails and data centres are rebuilt around liquid. | 2026-10-23 |

@@ -54,6 +54,15 @@
       ]
     },
     {
+      "id": "sec-production",
+      "title": "Producing Intelligence: From AI Factory to Frontier Model",
+      "short": "Producing Intelligence",
+      "icon": "🏭",
+      "slugs": [
+        "ai-factory-software-stack"
+      ]
+    },
+    {
       "id": "sec-rsi",
       "title": "The Recursive Self-Improvement Series",
       "short": "The Recursive Self-Improvement Series",

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-software-stack",
+      "title": "The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run",
+      "excerpt": "Part 1 of Producing Intelligence: every software layer between a researcher's Python and 16,384 GPUs, from drivers, CUDA and NCCL to PyTorch, compilers, Megatron and TorchTitan, schedulers and storage, with Meta's Llama 3 405B as the running case study.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "26 min",
+      "tags": [
+        "Explainer",
+        "Engineering"
+      ],
+      "emoji": "🧱",
+      "featured": false
+    },
+    {
       "slug": "ai-factories-vs-supercomputers",
       "title": "AI Factories vs Supercomputers: Same Chips, Different Machines",
       "excerpt": "HPC, supercomputers and AI factories explained: the FP64 vs FP8/FP4 precision divide, a side-by-side comparison, El Capitan's 30 MW vs Colossus 2's ~946 MW, the June 2026 TOP500 (LineShine at No. 1) and how science and AI hardware are converging.",
