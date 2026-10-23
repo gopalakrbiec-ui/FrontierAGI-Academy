@@ -41,6 +41,7 @@
         "interconnect-wars",
         "memory-wall-hbm",
         "custom-silicon-vs-nvidia",
+        "training-vs-inference",
         "token-price-collapse",
         "who-pays-for-ai-buildout",
         "data-centers-in-space",

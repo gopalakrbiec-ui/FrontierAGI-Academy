@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "training-vs-inference",
+      "title": "The Great Flip: Why AI Compute Is Shifting from Training to Inference",
+      "excerpt": "Inference is now forecast at about two-thirds of AI compute. Why reasoning models and agents flipped the balance, what happens inside a request (prefill vs decode), disaggregated serving, Groq, Cerebras and inference chips, with interactive simulators.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "26 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "🔄",
+      "featured": false
+    },
+    {
       "slug": "who-pays-for-ai-buildout",
       "title": "Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine",
       "excerpt": "Roughly 00 billion of 2026 data-centre spending, followed layer by layer: hyperscaler cash flow, the bond wave, Meta's off-balance-sheet Hyperion deal, CoreWeave's GPU-backed debt, circular chip deals, the revenue gap and the depreciation fight, with interactive models.",
