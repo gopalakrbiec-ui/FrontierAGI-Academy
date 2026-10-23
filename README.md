@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🇨🇳 [China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-chip-stack.html) | How China is building a parallel AI compute stack under US export controls: SMIC without EUV, Huawei's Ascend roadmap and 8,192-chip… | 2026-10-23 |
 | 🔄 [The Great Flip: Why AI Compute Is Shifting from Training to Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/training-vs-inference.html) | Inference is now forecast at about two-thirds of AI compute. | 2026-10-23 |
 | 💸 [Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/who-pays-for-ai-buildout.html) | Roughly 00 billion of 2026 data-centre spending, followed layer by layer: hyperscaler cash flow, the bond wave, Meta's off-balance-sheet… | 2026-10-23 |
 | ⛓️ [The Chokepoint: How One Supply Chain Decides How Much AI the World Gets](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chip-supply-chain.html) | Follow one AI chip from design to data centre: ASML's EUV monopoly, TSMC's fabs, sold-out CoWoS packaging and HBM, the T-glass shortage,… | 2026-10-23 |

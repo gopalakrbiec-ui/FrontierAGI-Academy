@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "china-chip-stack",
+      "title": "China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance",
+      "excerpt": "How China is building a parallel AI compute stack under US export controls: SMIC without EUV, Huawei's Ascend roadmap and 8,192-chip SuperPoDs, the HBM bottleneck, Cambricon and the GPU IPOs, smuggling, and whether the controls are working.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "28 min",
+      "tags": [
+        "Explainer",
+        "Geopolitics"
+      ],
+      "emoji": "🇨🇳",
+      "featured": false
+    },
+    {
       "slug": "training-vs-inference",
       "title": "The Great Flip: Why AI Compute Is Shifting from Training to Inference",
       "excerpt": "Inference is now forecast at about two-thirds of AI compute. Why reasoning models and agents flipped the balance, what happens inside a request (prefill vs decode), disaggregated serving, Groq, Cerebras and inference chips, with interactive simulators.",
