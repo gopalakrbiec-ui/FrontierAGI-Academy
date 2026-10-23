@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "interconnect-wars",
+      "title": "The Interconnect Wars: How 100,000 Chips Become One Computer",
+      "excerpt": "Why the network now decides AI performance: NVLink vs UALink and Ethernet inside the rack, InfiniBand vs Ultra Ethernet across the hall, Google's mirror switches, co-packaged optics and multi-site training, with interactive simulators.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "26 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "🕸️",
+      "featured": false
+    },
+    {
       "slug": "token-price-collapse",
       "title": "The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It",
       "excerpt": "GPT-3-level answers went from $60 to $0.06 per million tokens in three years, yet AI bills keep rising. The three prices of AI, four estimates of the decline, where the savings come from, the Jevons paradox, a cost-per-task calculator and who pays.",
