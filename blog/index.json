@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "heat-and-water-cooling",
+      "title": "Heat and Water: How AI Data Centres Keep Cool, and What It Costs",
+      "excerpt": "As AI racks climb from 40 kW to a planned 600 kW, air cooling fails and data centres are rebuilt around liquid. The cooling chain, five methods compared, how much water AI really uses, heat reuse, the local backlash and new state water laws, with a water-vs-energy calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-23",
+      "readTime": "26 min",
+      "tags": [
+        "Explainer",
+        "Infrastructure"
+      ],
+      "emoji": "💧",
+      "featured": false
+    },
+    {
       "slug": "energy-beyond-the-grid",
       "title": "Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power",
       "excerpt": "With grid queues stretching for years and PJM capacity prices up more than tenfold, AI builders are bringing their own power: 101 GW of announced on-site gas, xAI's turbines, three nuclear restarts, SMR deals and fuel cells, with an option comparer and a power-plan simulator.",
