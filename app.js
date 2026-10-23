@@ -588,7 +588,65 @@ function initArticleSidebarNav() {
 }
 
 /* ── Init ── */
+
+/* ── Reading history + "Latest from the Academy" personal panel ──────────────
+   Stored only in this browser (localStorage); everything degrades silently. */
+const FA_READ = 'fa-read', FA_KNOWN = 'fa-known', FA_NEW = 'fa-new';
+function faGet(store, k, d) { try { const v = store.getItem(k); return v ? JSON.parse(v) : d; } catch (_) { return d; } }
+function faSet(store, k, v) { try { store.setItem(k, JSON.stringify(v)); } catch (_) {} }
+function faReadList() { return faGet(localStorage, FA_READ, []); }
+
+function recordArticleVisit() {
+  const m = window.location.pathname.match(/\/blog\/([^\/]+)\.html$/);
+  if (!m || m[1].startsWith('_')) return;
+  const list = faReadList().filter(x => x.s !== m[1]);
+  list.unshift({ s: m[1], t: Date.now() });
+  faSet(localStorage, FA_READ, list.slice(0, 60));
+}
+
+async function initLatestThreads() {
+  const root = document.getElementById('latestThreads');
+  if (!root) return;
+  const read = faReadList(), readSet = new Set(read.map(x => x.s));
+  root.querySelectorAll('.lt-dot').forEach(d => { if (readSet.has(d.dataset.slug)) d.classList.add('is-read'); });
+  let posts, series;
+  try {
+    const [a, b] = await Promise.all([fetch('blog/index.json'), fetch('blog/series.json')]);
+    posts = (await a.json()).posts || []; series = (await b.json()).series || [];
+  } catch (_) { return; }
+  const bySlug = {}; posts.forEach(p => { bySlug[p.slug] = p; });
+  // "New since your last visit": compare with the posts this browser saw last time (kept for the session)
+  let fresh = faGet(sessionStorage, FA_NEW, null);
+  if (!fresh) {
+    const known = faGet(localStorage, FA_KNOWN, null);
+    fresh = known ? posts.map(p => p.slug).filter(s => !known.includes(s)) : [];
+    faSet(sessionStorage, FA_NEW, fresh);
+    faSet(localStorage, FA_KNOWN, posts.map(p => p.slug));
+  }
+  root.querySelectorAll('.lt-card').forEach(c => {
+    if (fresh.includes(c.dataset.slug) && !readSet.has(c.dataset.slug)) { c.classList.add('is-new'); const b = c.querySelector('.lt-new'); if (b) b.hidden = false; }
+  });
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const link = (slug, text) => '<a href=\x22blog/' + slug + '.html\x22>' + esc(text) + '</a>';
+  const boxes = [];
+  const unreadNew = fresh.filter(s => bySlug[s] && !readSet.has(s));
+  if (unreadNew.length) boxes.push('<div class="lt-pbox"><b class="h">🆕 ' + unreadNew.length + ' new since your last visit</b>' + unreadNew.slice(0, 4).map(s => '<div>' + link(s, bySlug[s].title) + '</div>').join('') + '</div>');
+  // Continue your thread: the most recently read post whose series still has an unread next part
+  for (const r of read) {
+    const ser = series.find(x => x.slugs.includes(r.s));
+    if (!ser) continue;
+    const next = ser.slugs.slice(ser.slugs.indexOf(r.s) + 1).find(s => bySlug[s] && !readSet.has(s));
+    if (next) { boxes.push('<div class="lt-pbox"><b class="h">▶ Continue your thread · ' + esc(ser.icon + ' ' + ser.short) + '</b>Next: ' + link(next, bySlug[next].title) + '<div style="font-size:.74rem;color:#64748b;margin-top:4px">You read ' + ser.slugs.filter(s => readSet.has(s)).length + ' of ' + ser.slugs.length + ' in this series.</div></div>'); break; }
+  }
+  const trail = read.filter(r => bySlug[r.s]).slice(0, 6);
+  if (trail.length) boxes.push('<div class="lt-pbox"><b class="h">👣 Your reading trail</b><div class="lt-chips">' + trail.map((r, i) => (i ? '<i>←</i>' : '') + link(r.s, bySlug[r.s].title)).join('') + '</div></div>');
+  const panel = document.getElementById('ltPersonal');
+  if (panel && boxes.length) { panel.innerHTML = boxes.join(''); panel.hidden = false; }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  recordArticleVisit();
+  initLatestThreads();
   createStars();
   initNeuralCanvas();
   initScrollReveal();
