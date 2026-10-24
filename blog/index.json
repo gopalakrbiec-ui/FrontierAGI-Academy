@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-operations",
+      "title": "Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3",
+      "excerpt": "Part 9 of Producing Intelligence: how Meta keeps the 24,000-GPU clusters behind Llama 3 productive, from health checks and lemon-node detection to stragglers, rolling maintenance, goodput and silent data corruption.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "22 min",
+      "tags": [
+        "Operations",
+        "Llama 3",
+        "Reliability",
+        "AI Infrastructure"
+      ],
+      "emoji": "🛠️",
+      "featured": false
+    },
+    {
       "slug": "llama-3-serving",
       "title": "From Checkpoint to Endpoint: How Llama 3 405B Is Served",
       "excerpt": "Part 8 of Producing Intelligence: why the BF16 405B model needs two servers, how micro-batching, a careful FP8 recipe and KV-cache management let it run on one, and what continuous batching and batch size mean for cost per token.",

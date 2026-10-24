@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🛠️ [Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-operations.html) | Part 9 of Producing Intelligence: how Meta keeps the 24,000-GPU clusters behind Llama 3 productive, from health checks and lemon-node… | 2026-10-24 |
 | 🚀 [From Checkpoint to Endpoint: How Llama 3 405B Is Served](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-serving.html) | Part 8 of Producing Intelligence: why the BF16 405B model needs two servers, how micro-batching, a careful FP8 recipe and KV-cache… | 2026-10-24 |
 | 🧪 [Is It Ready? How Meta Tested Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-evaluation.html) | Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift… | 2026-10-24 |
 | 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a… | 2026-10-24 |
