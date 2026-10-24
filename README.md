@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🧪 [Is It Ready? How Meta Tested Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-evaluation.html) | Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift… | 2026-10-24 |
 | 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a… | 2026-10-24 |
 | ⏱️ [Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-running-the-run.html) | Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation… | 2026-10-24 |
 | 🧩 [Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-4d-parallelism.html) | Part 4 of Producing Intelligence: why a 405B model needs 4D parallelism, Meta's exact tensor/context/pipeline/data layouts (43% MFU on… | 2026-10-24 |

@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "llama-3-evaluation",
+      "title": "Is It Ready? How Meta Tested Llama 3 405B",
+      "excerpt": "Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift studies behind the release of Llama 3.1 405B, and how to read each kind of score.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "22 min",
+      "tags": [
+        "Evaluation",
+        "Llama 3",
+        "Benchmarks",
+        "Red Teaming"
+      ],
+      "emoji": "🧪",
+      "featured": false
+    },
+    {
       "slug": "llama-3-post-training",
       "title": "Post-Training: How Llama 3 405B Became an Assistant",
       "excerpt": "Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a reward model, rejection sampling, SFT and DPO, plus model averaging and Llama Guard 3.",
