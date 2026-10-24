@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "future-of-ai-compute",
+      "title": "Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU",
+      "excerpt": "Part 18 of the AI Compute Stack: a reality check on what comes after today's GPUs, from 3D silicon and co-packaged optics to photonic, quantum, neuromorphic, thermodynamic and reversible computing and data centres in orbit, with a scorecard and timeline.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "26 min",
+      "tags": [
+        "AI Compute",
+        "Quantum",
+        "Photonics",
+        "Future"
+      ],
+      "emoji": "🔭",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-operations",
       "title": "Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3",
       "excerpt": "Part 9 of Producing Intelligence: how Meta keeps the 24,000-GPU clusters behind Llama 3 productive, from health checks and lemon-node detection to stragglers, rolling maintenance, goodput and silent data corruption.",
