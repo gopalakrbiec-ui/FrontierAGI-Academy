@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "llama-3-running-the-run",
+      "title": "Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B",
+      "excerpt": "Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation to every cause of 419 unexpected interruptions, heat and megawatt power swings, the six-stage long-context extension, annealing and checkpoint averaging.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "25 min",
+      "tags": [
+        "Explainer",
+        "Engineering"
+      ],
+      "emoji": "⏱️",
+      "featured": false
+    },
+    {
       "slug": "llama-3-4d-parallelism",
       "title": "Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs",
       "excerpt": "Part 4 of Producing Intelligence: why a 405B model needs 4D parallelism, Meta's exact tensor/context/pipeline/data layouts (43% MFU on 8,192 GPUs, 41% on 16,384, ~38% at 131K context), how the split maps to the network, the memory budget and pipeline bubbles, with interactive simulators.",

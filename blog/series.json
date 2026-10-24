@@ -62,7 +62,8 @@
         "ai-factory-software-stack",
         "llama-3-data-refinery",
         "llama-3-planning-the-run",
-        "llama-3-4d-parallelism"
+        "llama-3-4d-parallelism",
+        "llama-3-running-the-run"
       ]
     },
     {
