@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "brain-computer-interfaces",
+      "title": "Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It",
+      "excerpt": "How brain–computer interfaces actually work in 2026: electrodes, the tiny implant chip and its heat and power limits, the AI decoders behind 62-words-per-minute speech, Neuralink, Synchron, Precision and China's first approval, and the neural-privacy rules catching up.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "24 min",
+      "tags": [
+        "BCI",
+        "Neurotechnology",
+        "Neuralink",
+        "Explainer"
+      ],
+      "emoji": "🧠",
+      "featured": false
+    },
+    {
       "slug": "future-of-ai-compute",
       "title": "Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU",
       "excerpt": "Part 18 of the AI Compute Stack: a reality check on what comes after today's GPUs, from 3D silicon and co-packaged optics to photonic, quantum, neuromorphic, thermodynamic and reversible computing and data centres in orbit, with a scorecard and timeline.",
