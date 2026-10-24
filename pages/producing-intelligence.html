@@ -323,7 +323,7 @@
     $('piStack').innerHTML = h;
     var p = P[sel], c = G[p[4]][1];
     $('piPanel').style.setProperty('--g', c);
-    $('piPanel').innerHTML = '<h3>' + p[2] + ' Part ' + p[1] + ': ' + esc(p[3]) + '</h3><div class="big">' + p[5] + '</div><div class="lbl">' + p[6] + '</div><dl><dt>Decision</dt><dd>' + p[7] + '</dd><dt>Main risk</dt><dd>' + p[8] + '</dd><dt>Tools</dt><dd>' + p[9] + '</dd></dl><a class="go" href="' + B + p[0] + '.html">Read Part ' + p[1] + ' →</a>';
+    $('piPanel').innerHTML = '<h3>' + p[2] + ' Part ' + p[1] + ': ' + esc(p[3]) + '</h3><div class="big">' + p[5] + '</div><div class="lbl">' + p[6] + '</div><dl><dt>Decision</dt><dd>' + p[7] + '</dd><dt>Main risk</dt><dd>' + p[8] + '</dd><dt>Tools</dt><dd>' + p[9] + '</dd></dl><a class="go" href=\x22' + B + p[0] + '.html\x22>Read Part ' + p[1] + ' →</a>';
   }
   $('piStack').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { sel = +b.dataset.i; stack(); } });
   $('piLegend').innerHTML = Object.keys(G).map(function (k) { return '<span style="--g:' + G[k][1] + '">' + G[k][0] + '</span>'; }).join('');
@@ -341,7 +341,7 @@
     ['23 Jul 2024', '#0f766e', 'Llama 3.1 405B released with an official FP8 version, Llama Guard 3 and a licence allowing outputs to train other models; vLLM supports it on day one.', 'llama-3-serving'],
     ['31 Jul 2024', '#475569', 'The Llama 3 paper is published on arXiv (2407.21783).', 'ai-factory-software-stack']
   ];
-  $('piTl').innerHTML = TL.map(function (t) { return '<div style="--c:' + t[1] + '"><b>' + (t[0] || '→') + '</b> ' + t[2] + ' <a href="' + B + t[3] + '.html">Read</a></div>'; }).join('');
+  $('piTl').innerHTML = TL.map(function (t) { return '<div style="--c:' + t[1] + '"><b>' + (t[0] || '→') + '</b> ' + t[2] + ' <a href=\x22' + B + t[3] + '.html\x22>Read</a></div>'; }).join('');
 
   /* compute */
   var CB = [['Llama 3.1 family, total', 39.3, '#475569'], ['405B pre-training', 30.84, '#0369a1'], ['Post-training', null, '#7c3aed'], ['Evaluation', null, '#b45309'], ['Serving since release', null, '#0f766e']];
@@ -359,7 +359,7 @@
     ['Serving precision', 'FP8, FFN only', 'Full-model FP8 or lower', 'Negligible quality impact; fits one node', 'llama-3-serving'],
     ['Maintenance', 'Rolling, mixed versions', 'Scheduled fleet downtime', 'Capacity is too valuable to take offline', 'ai-factory-operations']
   ];
-  $('piDec').innerHTML = '<tr><th>Stage</th><th>Meta chose</th><th>Alternative</th><th>Why</th></tr>' + D.map(function (d) { return '<tr data-s="' + d[4] + '"><td><a href="' + B + d[4] + '.html">' + d[0] + '</a></td><td><b>' + d[1] + '</b></td><td>' + d[2] + '</td><td>' + d[3] + '</td></tr>'; }).join('');
+  $('piDec').innerHTML = '<tr><th>Stage</th><th>Meta chose</th><th>Alternative</th><th>Why</th></tr>' + D.map(function (d) { return '<tr data-s="' + d[4] + '"><td><a href=\x22' + B + d[4] + '.html\x22>' + d[0] + '</a></td><td><b>' + d[1] + '</b></td><td>' + d[2] + '</td><td>' + d[3] + '</td></tr>'; }).join('');
   $('piDec').addEventListener('click', function (e) { var r = e.target.closest('tr[data-s]'); if (r && !e.target.closest('a')) location.href = B + r.dataset.s + '.html'; });
 
   /* one GPU-hour */
@@ -377,7 +377,7 @@
   function hour() {
     Array.prototype.forEach.call($('piSteps').children, function (b, i) { b.classList.toggle('on', i === hs); });
     $('piProg').style.width = ((hs + 1) / H.length * 100) + '%';
-    $('piTok').innerHTML = '<div class="em">' + H[hs][0] + '</div><div><h4>' + (hs + 1) + '. ' + H[hs][1] + '</h4>' + H[hs][2] + ' <a href="' + B + H[hs][3] + '.html">Read more →</a></div>';
+    $('piTok').innerHTML = '<div class="em">' + H[hs][0] + '</div><div><h4>' + (hs + 1) + '. ' + H[hs][1] + '</h4>' + H[hs][2] + ' <a href=\x22' + B + H[hs][3] + '.html\x22>Read more →</a></div>';
   }
   $('piSteps').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { hs = +b.dataset.i; hour(); } });
   $('piPrev').addEventListener('click', function () { hs = (hs + H.length - 1) % H.length; hour(); });
@@ -385,11 +385,11 @@
   hour();
 
   /* wall */
-  $('piWall').innerHTML = P.map(function (p) { return '<a href="' + B + p[0] + '.html" style="--g:' + G[p[4]][1] + '"><b>' + p[5] + '</b><span>' + p[6] + '</span><span>Part ' + p[1] + ' · ' + esc(p[3]) + '</span></a>'; }).join('');
+  $('piWall').innerHTML = P.map(function (p) { return '<a href=\x22' + B + p[0] + '.html\x22 style="--g:' + G[p[4]][1] + '"><b>' + p[5] + '</b><span>' + p[6] + '</span><span>Part ' + p[1] + ' · ' + esc(p[3]) + '</span></a>'; }).join('');
 
   /* tracks */
   var TR = [['🧑‍💻 For engineers', '#0369a1', 'Infrastructure, parallelism and operations.', [1, 4, 5, 8, 9]], ['📊 For data and ML', '#7c3aed', 'What goes in and how quality is judged.', [2, 3, 6, 7]], ['⚡ Quick tour', '#0f766e', 'Three parts that tell most of the story.', [3, 5, 6]]];
-  $('piTracks').innerHTML = TR.map(function (t) { return '<div class="pi-trk" style="--g:' + t[1] + '"><h4>' + t[0] + '</h4><p>' + t[2] + '</p><ol>' + t[3].map(function (n) { var p = P[n - 1]; return '<li><a href="' + B + p[0] + '.html">' + p[2] + ' ' + esc(p[3]) + '</a></li>'; }).join('') + '</ol></div>'; }).join('');
+  $('piTracks').innerHTML = TR.map(function (t) { return '<div class="pi-trk" style="--g:' + t[1] + '"><h4>' + t[0] + '</h4><p>' + t[2] + '</p><ol>' + t[3].map(function (n) { var p = P[n - 1]; return '<li><a href=\x22' + B + p[0] + '.html\x22>' + p[2] + ' ' + esc(p[3]) + '</a></li>'; }).join('') + '</ol></div>'; }).join('');
 
   /* glossary */
   var GL = [
@@ -401,7 +401,7 @@
   ];
   function gl() {
     var q = $('piGlQ').value.toLowerCase();
-    $('piGl').innerHTML = GL.filter(function (g) { return !q || (g[0] + ' ' + g[1]).toLowerCase().indexOf(q) >= 0; }).map(function (g) { var p = P[g[2] - 1]; return '<div><b>' + esc(g[0]) + '</b>' + esc(g[1]) + '<br><a href="' + B + p[0] + '.html">Part ' + p[1] + ' →</a></div>'; }).join('') || '<div>No matching terms.</div>';
+    $('piGl').innerHTML = GL.filter(function (g) { return !q || (g[0] + ' ' + g[1]).toLowerCase().indexOf(q) >= 0; }).map(function (g) { var p = P[g[2] - 1]; return '<div><b>' + esc(g[0]) + '</b>' + esc(g[1]) + '<br><a href=\x22' + B + p[0] + '.html\x22>Part ' + p[1] + ' →</a></div>'; }).join('') || '<div>No matching terms.</div>';
   }
   $('piGlQ').addEventListener('input', gl); gl();
 })();

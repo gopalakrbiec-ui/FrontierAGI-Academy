@@ -212,6 +212,7 @@
     .home-section-hd .eyebrow { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
     .home-section-hd h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
     .home-section-hd p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+    .home-subhd { margin: 46px auto 24px; scroll-margin-top: 110px; } .home-subhd h3 { font-size: clamp(1.2rem, 2.4vw, 1.5rem); font-weight: 800; margin-bottom: 8px; }
 
 
     .home-lane-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
@@ -698,180 +699,11 @@
   </div>
 </div>
 
-<!-- ═══════════════════════ THE AI COMPUTE STACK (series) ═══════════════════════ -->
-<div class="home-section" id="grp-compute">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">The Physical Layer</div>
-      <h2>The AI Compute Stack: From Electrons to Tokens</h2>
-      <p>What it physically takes to run AI: power, factories, chips, memory and the economics that tie them together. Read in order, from the grid up to the price of a token.</p>
-    </div>
-    <div class="home-series-spotlight" id="sec-compute" style="--sp-accent:#c2410c;--sp-tag-bg:#fff7ed;">
-      <span class="home-series-tag">🖥️ AI Compute Stack · 17 Articles</span>
-      <div class="home-series-title">The AI Compute Stack: From Electrons to Tokens</div>
-      <div class="home-series-desc">Power → private energy → factories → vs supercomputers → cooling & water → chips → supply chain → networks → memory → custom silicon → inference → edge devices → token prices → financing → China → frontier sites → economics. Each part stands alone; together they explain why AI is now an energy and hardware story as much as a software one.</div>
-      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/compute-stack.html" style="color:#c2410c">🗺️ See the whole stack on one page: key numbers, bottlenecks and reading tracks →</a></p>
-      <div class="home-series-grid" id="grid-compute">
-        <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔌</span>
-          <div class="home-series-card-title" title="The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race">The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/energy-beyond-the-grid.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔥</span>
-          <div class="home-series-card-title" title="Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power">Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/inside-the-ai-factory.html" class="home-series-card">
-          <span class="home-series-card-emoji">🏭</span>
-          <div class="home-series-card-title" title="Inside the AI Factory: How Electricity Becomes Intelligence">Inside the AI Factory: How Electricity Becomes Intelligence</div>
-          <div class="home-series-card-meta">30 min</div>
-        </a>
-        <a href="blog/ai-factories-vs-supercomputers.html" class="home-series-card">
-          <span class="home-series-card-emoji">🏛️</span>
-          <div class="home-series-card-title" title="AI Factories vs Supercomputers: Same Chips, Different Machines">AI Factories vs Supercomputers: Same Chips, Different Machines</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/heat-and-water-cooling.html" class="home-series-card">
-          <span class="home-series-card-emoji">💧</span>
-          <div class="home-series-card-title" title="Heat and Water: How AI Data Centres Keep Cool, and What It Costs">Heat and Water: How AI Data Centres Keep Cool, and What It Costs</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/ai-chips-compute-infrastructure.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔌</span>
-          <div class="home-series-card-title" title="AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence">AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/ai-chip-supply-chain.html" class="home-series-card">
-          <span class="home-series-card-emoji">⛓️</span>
-          <div class="home-series-card-title" title="The Chokepoint: How One Supply Chain Decides How Much AI the World Gets">The Chokepoint: How One Supply Chain Decides How Much AI the World Gets</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/interconnect-wars.html" class="home-series-card">
-          <span class="home-series-card-emoji">🕸️</span>
-          <div class="home-series-card-title" title="The Interconnect Wars: How 100,000 Chips Become One Computer">The Interconnect Wars: How 100,000 Chips Become One Computer</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/memory-wall-hbm.html" class="home-series-card">
-          <span class="home-series-card-emoji">💾</span>
-          <div class="home-series-card-title" title="The Memory Wall: Why HBM Decides Who Wins AI">The Memory Wall: Why HBM Decides Who Wins AI</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/custom-silicon-vs-nvidia.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔩</span>
-          <div class="home-series-card-title" title="Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?">Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?</div>
-          <div class="home-series-card-meta">30 min</div>
-        </a>
-        <a href="blog/training-vs-inference.html" class="home-series-card">
-          <span class="home-series-card-emoji">🔄</span>
-          <div class="home-series-card-title" title="The Great Flip: Why AI Compute Is Shifting from Training to Inference">The Great Flip: Why AI Compute Is Shifting from Training to Inference</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/ai-at-the-edge.html" class="home-series-card">
-          <span class="home-series-card-emoji">📱</span>
-          <div class="home-series-card-title" title="AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference">AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/token-price-collapse.html" class="home-series-card">
-          <span class="home-series-card-emoji">📉</span>
-          <div class="home-series-card-title" title="The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It">The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It</div>
-          <div class="home-series-card-meta">27 min</div>
-        </a>
-        <a href="blog/who-pays-for-ai-buildout.html" class="home-series-card">
-          <span class="home-series-card-emoji">💸</span>
-          <div class="home-series-card-title" title="Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine">Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/china-chip-stack.html" class="home-series-card">
-          <span class="home-series-card-emoji">🇨🇳</span>
-          <div class="home-series-card-title" title="China&#x27;s Chip Stack: Export Controls, Huawei and the Race for Self-Reliance">China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/data-centers-in-space.html" class="home-series-card">
-          <span class="home-series-card-emoji">🛰️</span>
-          <div class="home-series-card-title" title="Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question">Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question</div>
-          <div class="home-series-card-meta">28 min</div>
-        </a>
-        <a href="blog/frontier-model-pricing.html" class="home-series-card">
-          <span class="home-series-card-emoji">💰</span>
-          <div class="home-series-card-title" title="Frontier Model Pricing: The Complete Guide">Frontier Model Pricing: The Complete Guide</div>
-          <div class="home-series-card-meta">20 min</div>
-        </a>
-      </div>
-    </div>
-    <p class="compute-related" style="text-align:center;font-size:.85rem;color:#6b7280;margin-top:16px">Related in other series: <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/compute-frontier-ai-infrastructure-explainer.html">The Compute Frontier, Explained</a> · <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/frontier-lab-engineering-compute-economics.html">Frontier Lab Compute Economics</a></p>
-  </div>
-</div>
-
-<!-- ═══════════════════════ PRODUCING INTELLIGENCE ═══════════════════════ -->
-<div class="home-section" id="grp-production">
-  <div class="container">
-    <div class="home-section-hd">
-      <div class="eyebrow">The Production Layer</div>
-      <h2>Producing Intelligence: From AI Factory to Frontier Model</h2>
-      <p>The next layer up from the AI Compute Stack: how a frontier model is actually produced inside an AI factory, end to end. One model, Meta's Llama 3 405B, followed from software stack and data through pre-training, post-training and evaluation to serving.</p>
-    </div>
-    <div class="home-series-spotlight" id="sec-production" style="--sp-accent:#6d28d9;--sp-tag-bg:#f5f3ff;">
-      <span class="home-series-tag">🏭 Producing Intelligence · 9 Articles</span>
-      <div class="home-series-title">Producing Intelligence: From AI Factory to Frontier Model</div>
-      <div class="home-series-desc">Software stack → data → planning the run → parallelism → running the run → post-training → evaluation → serving → operations. Nine parts, each with a running Llama 3 case file.</div>
-      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/producing-intelligence.html" style="color:#6d28d9">🗺️ See the whole pipeline on one page: stages, decisions, key numbers and reading tracks →</a></p>
-      <div class="home-series-grid" id="grid-production">
-        <a href="blog/ai-factory-software-stack.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧱</span>
-          <div class="home-series-card-title" title="The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run">The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run</div>
-          <div class="home-series-card-meta">26 min</div>
-        </a>
-        <a href="blog/llama-3-data-refinery.html" class="home-series-card">
-          <span class="home-series-card-emoji">🛢️</span>
-          <div class="home-series-card-title" title="The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3">The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/llama-3-planning-the-run.html" class="home-series-card">
-          <span class="home-series-card-emoji">📐</span>
-          <div class="home-series-card-title" title="Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget">Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/llama-3-4d-parallelism.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧩</span>
-          <div class="home-series-card-title" title="Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs">Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/llama-3-running-the-run.html" class="home-series-card">
-          <span class="home-series-card-emoji">⏱️</span>
-          <div class="home-series-card-title" title="Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B">Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B</div>
-          <div class="home-series-card-meta">25 min</div>
-        </a>
-        <a href="blog/llama-3-post-training.html" class="home-series-card">
-          <span class="home-series-card-emoji">🎓</span>
-          <div class="home-series-card-title" title="Post-Training: How Llama 3 405B Became an Assistant">Post-Training: How Llama 3 405B Became an Assistant</div>
-          <div class="home-series-card-meta">22 min</div>
-        </a>
-        <a href="blog/llama-3-evaluation.html" class="home-series-card">
-          <span class="home-series-card-emoji">🧪</span>
-          <div class="home-series-card-title" title="Is It Ready? How Meta Tested Llama 3 405B">Is It Ready? How Meta Tested Llama 3 405B</div>
-          <div class="home-series-card-meta">22 min</div>
-        </a>
-        <a href="blog/llama-3-serving.html" class="home-series-card">
-          <span class="home-series-card-emoji">🚀</span>
-          <div class="home-series-card-title" title="From Checkpoint to Endpoint: How Llama 3 405B Is Served">From Checkpoint to Endpoint: How Llama 3 405B Is Served</div>
-          <div class="home-series-card-meta">24 min</div>
-        </a>
-        <a href="blog/ai-factory-operations.html" class="home-series-card">
-          <span class="home-series-card-emoji">🛠️</span>
-          <div class="home-series-card-title" title="Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3">Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3</div>
-          <div class="home-series-card-meta">22 min</div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ 01 · FRONTIER ═══════════════════════ -->
+<!-- ═══════════════════════ 00 · FRONTIER ═══════════════════════ -->
 <div class="home-section" id="grp-frontier">
   <div class="container">
     <div class="home-section-hd">
-      <div class="eyebrow">01 · Follow the Frontier</div>
+      <div class="eyebrow">00 · Follow the Frontier</div>
       <h2>Where AGI Research Is Heading</h2>
       <p>Long-form, fully sourced series on recursive self-improvement and the capabilities that still separate today’s models from AGI.</p>
     </div>
@@ -1024,17 +856,189 @@
   </div>
 </div>
 
+<!-- ═══════════════════════ 01 · BUILD THE MACHINE ═══════════════════════ -->
+<div class="home-section" id="grp-build">
+  <div class="container">
+    <div class="home-section-hd">
+      <div class="eyebrow">01 · Build the Machine</div>
+      <h2>From Electrons to Frontier Models</h2>
+      <p>Two series, one stack: the physical machinery of AI (power, chips, memory, networks and money), then how a frontier model is produced on top of it, followed end to end with Llama 3 405B.</p>
+    </div>
+    <!-- The Physical Layer -->
+    <div class="home-section-hd home-subhd" id="grp-compute">
+      <div class="eyebrow">The Physical Layer</div>
+      <h3>The AI Compute Stack: From Electrons to Tokens</h3>
+      <p>What it physically takes to run AI: power, factories, chips, memory and the economics that tie them together. Read in order, from the grid up to the price of a token.</p>
+    </div>
+    <div class="home-series-spotlight" id="sec-compute" style="--sp-accent:#c2410c;--sp-tag-bg:#fff7ed;">
+      <span class="home-series-tag">🖥️ AI Compute Stack · 17 Articles</span>
+      <div class="home-series-title">The AI Compute Stack: From Electrons to Tokens</div>
+      <div class="home-series-desc">Power → private energy → factories → vs supercomputers → cooling & water → chips → supply chain → networks → memory → custom silicon → inference → edge devices → token prices → financing → China → frontier sites → economics. Each part stands alone; together they explain why AI is now an energy and hardware story as much as a software one.</div>
+      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/compute-stack.html" style="color:#c2410c">🗺️ See the whole stack on one page: key numbers, bottlenecks and reading tracks →</a></p>
+      <div class="home-series-grid" id="grid-compute">
+        <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title" title="The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race">The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/energy-beyond-the-grid.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔥</span>
+          <div class="home-series-card-title" title="Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power">Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/inside-the-ai-factory.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏭</span>
+          <div class="home-series-card-title" title="Inside the AI Factory: How Electricity Becomes Intelligence">Inside the AI Factory: How Electricity Becomes Intelligence</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+        <a href="blog/ai-factories-vs-supercomputers.html" class="home-series-card">
+          <span class="home-series-card-emoji">🏛️</span>
+          <div class="home-series-card-title" title="AI Factories vs Supercomputers: Same Chips, Different Machines">AI Factories vs Supercomputers: Same Chips, Different Machines</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/heat-and-water-cooling.html" class="home-series-card">
+          <span class="home-series-card-emoji">💧</span>
+          <div class="home-series-card-title" title="Heat and Water: How AI Data Centres Keep Cool, and What It Costs">Heat and Water: How AI Data Centres Keep Cool, and What It Costs</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/ai-chips-compute-infrastructure.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔌</span>
+          <div class="home-series-card-title" title="AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence">AI Chips &amp; Compute Infrastructure: The Physical Foundation of Intelligence</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/ai-chip-supply-chain.html" class="home-series-card">
+          <span class="home-series-card-emoji">⛓️</span>
+          <div class="home-series-card-title" title="The Chokepoint: How One Supply Chain Decides How Much AI the World Gets">The Chokepoint: How One Supply Chain Decides How Much AI the World Gets</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/interconnect-wars.html" class="home-series-card">
+          <span class="home-series-card-emoji">🕸️</span>
+          <div class="home-series-card-title" title="The Interconnect Wars: How 100,000 Chips Become One Computer">The Interconnect Wars: How 100,000 Chips Become One Computer</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/memory-wall-hbm.html" class="home-series-card">
+          <span class="home-series-card-emoji">💾</span>
+          <div class="home-series-card-title" title="The Memory Wall: Why HBM Decides Who Wins AI">The Memory Wall: Why HBM Decides Who Wins AI</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/custom-silicon-vs-nvidia.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔩</span>
+          <div class="home-series-card-title" title="Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?">Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?</div>
+          <div class="home-series-card-meta">30 min</div>
+        </a>
+        <a href="blog/training-vs-inference.html" class="home-series-card">
+          <span class="home-series-card-emoji">🔄</span>
+          <div class="home-series-card-title" title="The Great Flip: Why AI Compute Is Shifting from Training to Inference">The Great Flip: Why AI Compute Is Shifting from Training to Inference</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/ai-at-the-edge.html" class="home-series-card">
+          <span class="home-series-card-emoji">📱</span>
+          <div class="home-series-card-title" title="AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference">AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/token-price-collapse.html" class="home-series-card">
+          <span class="home-series-card-emoji">📉</span>
+          <div class="home-series-card-title" title="The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It">The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It</div>
+          <div class="home-series-card-meta">27 min</div>
+        </a>
+        <a href="blog/who-pays-for-ai-buildout.html" class="home-series-card">
+          <span class="home-series-card-emoji">💸</span>
+          <div class="home-series-card-title" title="Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine">Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/china-chip-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🇨🇳</span>
+          <div class="home-series-card-title" title="China&#x27;s Chip Stack: Export Controls, Huawei and the Race for Self-Reliance">China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/data-centers-in-space.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛰️</span>
+          <div class="home-series-card-title" title="Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question">Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question</div>
+          <div class="home-series-card-meta">28 min</div>
+        </a>
+        <a href="blog/frontier-model-pricing.html" class="home-series-card">
+          <span class="home-series-card-emoji">💰</span>
+          <div class="home-series-card-title" title="Frontier Model Pricing: The Complete Guide">Frontier Model Pricing: The Complete Guide</div>
+          <div class="home-series-card-meta">20 min</div>
+        </a>
+      </div>
+    </div>
+    <p class="compute-related" style="text-align:center;font-size:.85rem;color:#6b7280;margin-top:16px">Related in other series: <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/compute-frontier-ai-infrastructure-explainer.html">The Compute Frontier, Explained</a> · <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/frontier-lab-engineering-compute-economics.html">Frontier Lab Compute Economics</a></p>
+
+    <!-- The Production Layer -->
+    <div class="home-section-hd home-subhd" id="grp-production">
+      <div class="eyebrow">The Production Layer</div>
+      <h3>Producing Intelligence: From AI Factory to Frontier Model</h3>
+      <p>The next layer up from the AI Compute Stack: how a frontier model is actually produced inside an AI factory, end to end. One model, Meta's Llama 3 405B, followed from software stack and data through pre-training, post-training and evaluation to serving.</p>
+    </div>
+    <div class="home-series-spotlight" id="sec-production" style="--sp-accent:#6d28d9;--sp-tag-bg:#f5f3ff;">
+      <span class="home-series-tag">🏭 Producing Intelligence · 9 Articles</span>
+      <div class="home-series-title">Producing Intelligence: From AI Factory to Frontier Model</div>
+      <div class="home-series-desc">Software stack → data → planning the run → parallelism → running the run → post-training → evaluation → serving → operations. Nine parts, each with a running Llama 3 case file.</div>
+      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/producing-intelligence.html" style="color:#6d28d9">🗺️ See the whole pipeline on one page: stages, decisions, key numbers and reading tracks →</a></p>
+      <div class="home-series-grid" id="grid-production">
+        <a href="blog/ai-factory-software-stack.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧱</span>
+          <div class="home-series-card-title" title="The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run">The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run</div>
+          <div class="home-series-card-meta">26 min</div>
+        </a>
+        <a href="blog/llama-3-data-refinery.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛢️</span>
+          <div class="home-series-card-title" title="The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3">The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/llama-3-planning-the-run.html" class="home-series-card">
+          <span class="home-series-card-emoji">📐</span>
+          <div class="home-series-card-title" title="Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget">Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/llama-3-4d-parallelism.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧩</span>
+          <div class="home-series-card-title" title="Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs">Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/llama-3-running-the-run.html" class="home-series-card">
+          <span class="home-series-card-emoji">⏱️</span>
+          <div class="home-series-card-title" title="Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B">Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B</div>
+          <div class="home-series-card-meta">25 min</div>
+        </a>
+        <a href="blog/llama-3-post-training.html" class="home-series-card">
+          <span class="home-series-card-emoji">🎓</span>
+          <div class="home-series-card-title" title="Post-Training: How Llama 3 405B Became an Assistant">Post-Training: How Llama 3 405B Became an Assistant</div>
+          <div class="home-series-card-meta">22 min</div>
+        </a>
+        <a href="blog/llama-3-evaluation.html" class="home-series-card">
+          <span class="home-series-card-emoji">🧪</span>
+          <div class="home-series-card-title" title="Is It Ready? How Meta Tested Llama 3 405B">Is It Ready? How Meta Tested Llama 3 405B</div>
+          <div class="home-series-card-meta">22 min</div>
+        </a>
+        <a href="blog/llama-3-serving.html" class="home-series-card">
+          <span class="home-series-card-emoji">🚀</span>
+          <div class="home-series-card-title" title="From Checkpoint to Endpoint: How Llama 3 405B Is Served">From Checkpoint to Endpoint: How Llama 3 405B Is Served</div>
+          <div class="home-series-card-meta">24 min</div>
+        </a>
+        <a href="blog/ai-factory-operations.html" class="home-series-card">
+          <span class="home-series-card-emoji">🛠️</span>
+          <div class="home-series-card-title" title="Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3">Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3</div>
+          <div class="home-series-card-meta">22 min</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════ JUMP NAV + SEARCH (SIDE PANEL) ═══════════════════════ -->
 <button type="button" class="home-jump-toggle" id="homeJumpToggle" onclick="toggleJumpPanel()" aria-label="Toggle article search and section jump menu">🔍</button>
 <div class="home-jumpbar-wrap" id="homeJumpPanel">
   <input type="text" id="articleSearch" class="home-search-input" placeholder="Search articles…" oninput="filterHomeArticles(this.value)">
   <div class="home-jumpnav" id="homeJumpNav">
     <a href="#grp-progress" class="jn-group">AI Research Progress</a>
-    <a href="#grp-compute" class="jn-group">AI Compute Stack</a>
-    <a href="#grp-production" class="jn-group">Producing Intelligence</a>
-    <a href="#grp-frontier" class="jn-group">01 · Frontier</a>
+    <a href="#grp-frontier" class="jn-group">00 · Frontier</a>
     <a href="#sec-rsi">Recursive Self-Improvement</a>
     <a href="#sec-capstack">Capability Stack</a>
+    <a href="#grp-build" class="jn-group">01 · Build the Machine</a>
+    <a href="#grp-compute">AI Compute Stack</a>
+    <a href="#grp-production">Producing Intelligence</a>
     <a href="#sec-llm-lifecycle" class="jn-group">02 · How LLMs Are Built</a>
     <a href="#sec-frontier-arch">Frontier Architecture &amp; Reasoning</a>
     <a href="#sec-harness">Harness Engineering</a>
