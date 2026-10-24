@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "llama-3-planning-the-run",
+      "title": "Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget",
+      "excerpt": "Part 3 of Producing Intelligence: the compute equation, IsoFLOP scaling laws that pointed to ~402B parameters on ~16.55T tokens, forecasting benchmark scores before training, why small models are overtrained, the architecture and recipe, and the bill of 30.84M H100-hours.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "24 min",
+      "tags": [
+        "Explainer",
+        "Engineering"
+      ],
+      "emoji": "📐",
+      "featured": false
+    },
+    {
       "slug": "llama-3-data-refinery",
       "title": "The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3",
       "excerpt": "Part 2 of Producing Intelligence: the data pipeline behind Llama 3's ~15T tokens, from extraction, safety filters and three levels of deduplication to Llama 2-trained quality classifiers, the 50/25/17/8 mix, annealing and tokenization, with interactive demos.",
