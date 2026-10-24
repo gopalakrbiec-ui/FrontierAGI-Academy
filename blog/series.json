@@ -65,7 +65,8 @@
         "llama-3-4d-parallelism",
         "llama-3-running-the-run",
         "llama-3-post-training",
-        "llama-3-evaluation"
+        "llama-3-evaluation",
+        "llama-3-serving"
       ]
     },
     {

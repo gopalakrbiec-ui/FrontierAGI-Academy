@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🚀 [From Checkpoint to Endpoint: How Llama 3 405B Is Served](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-serving.html) | Part 8 of Producing Intelligence: why the BF16 405B model needs two servers, how micro-batching, a careful FP8 recipe and KV-cache… | 2026-10-24 |
 | 🧪 [Is It Ready? How Meta Tested Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-evaluation.html) | Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift… | 2026-10-24 |
 | 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a… | 2026-10-24 |
 | ⏱️ [Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-running-the-run.html) | Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation… | 2026-10-24 |

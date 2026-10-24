@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "llama-3-serving",
+      "title": "From Checkpoint to Endpoint: How Llama 3 405B Is Served",
+      "excerpt": "Part 8 of Producing Intelligence: why the BF16 405B model needs two servers, how micro-batching, a careful FP8 recipe and KV-cache management let it run on one, and what continuous batching and batch size mean for cost per token.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "24 min",
+      "tags": [
+        "Inference",
+        "Llama 3",
+        "FP8",
+        "Serving"
+      ],
+      "emoji": "🚀",
+      "featured": false
+    },
+    {
       "slug": "llama-3-evaluation",
       "title": "Is It Ready? How Meta Tested Llama 3 405B",
       "excerpt": "Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift studies behind the release of Llama 3.1 405B, and how to read each kind of score.",
