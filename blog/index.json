@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "llama-3-4d-parallelism",
+      "title": "Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs",
+      "excerpt": "Part 4 of Producing Intelligence: why a 405B model needs 4D parallelism, Meta's exact tensor/context/pipeline/data layouts (43% MFU on 8,192 GPUs, 41% on 16,384, ~38% at 131K context), how the split maps to the network, the memory budget and pipeline bubbles, with interactive simulators.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "25 min",
+      "tags": [
+        "Explainer",
+        "Engineering"
+      ],
+      "emoji": "🧩",
+      "featured": false
+    },
+    {
       "slug": "llama-3-planning-the-run",
       "title": "Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget",
       "excerpt": "Part 3 of Producing Intelligence: the compute equation, IsoFLOP scaling laws that pointed to ~402B parameters on ~16.55T tokens, forecasting benchmark scores before training, why small models are overtrained, the architecture and recipe, and the bill of 30.84M H100-hours.",
