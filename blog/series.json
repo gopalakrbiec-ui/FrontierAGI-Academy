@@ -59,7 +59,8 @@
       "short": "Producing Intelligence",
       "icon": "🏭",
       "slugs": [
-        "ai-factory-software-stack"
+        "ai-factory-software-stack",
+        "llama-3-data-refinery"
       ]
     },
     {

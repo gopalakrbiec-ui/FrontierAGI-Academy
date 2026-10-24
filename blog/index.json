@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "llama-3-data-refinery",
+      "title": "The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3",
+      "excerpt": "Part 2 of Producing Intelligence: the data pipeline behind Llama 3's ~15T tokens, from extraction, safety filters and three levels of deduplication to Llama 2-trained quality classifiers, the 50/25/17/8 mix, annealing and tokenization, with interactive demos.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "25 min",
+      "tags": [
+        "Explainer",
+        "Engineering"
+      ],
+      "emoji": "🛢️",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-software-stack",
       "title": "The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run",
       "excerpt": "Part 1 of Producing Intelligence: every software layer between a researcher's Python and 16,384 GPUs, from drivers, CUDA and NCCL to PyTorch, compilers, Megatron and TorchTitan, schedulers and storage, with Meta's Llama 3 405B as the running case study.",
