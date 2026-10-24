@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a… | 2026-10-24 |
 | ⏱️ [Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-running-the-run.html) | Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation… | 2026-10-24 |
 | 🧩 [Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-4d-parallelism.html) | Part 4 of Producing Intelligence: why a 405B model needs 4D parallelism, Meta's exact tensor/context/pipeline/data layouts (43% MFU on… | 2026-10-24 |
 | 📐 [Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-planning-the-run.html) | Part 3 of Producing Intelligence: the compute equation, IsoFLOP scaling laws that pointed to ~402B parameters on ~16.55T tokens,… | 2026-10-24 |

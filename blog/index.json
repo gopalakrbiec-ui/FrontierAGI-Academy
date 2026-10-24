@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "llama-3-post-training",
+      "title": "Post-Training: How Llama 3 405B Became an Assistant",
+      "excerpt": "Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a reward model, rejection sampling, SFT and DPO, plus model averaging and Llama Guard 3.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-24",
+      "readTime": "22 min",
+      "tags": [
+        "Post-Training",
+        "Llama 3",
+        "DPO",
+        "RLHF"
+      ],
+      "emoji": "🎓",
+      "featured": false
+    },
+    {
       "slug": "llama-3-running-the-run",
       "title": "Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B",
       "excerpt": "Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation to every cause of 419 unexpected interruptions, heat and megawatt power swings, the six-stage long-context extension, annealing and checkpoint averaging.",
