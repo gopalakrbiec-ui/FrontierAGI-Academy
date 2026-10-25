@@ -584,7 +584,7 @@
     var ridge = PEAK / BW, d = '';
     for (var lv = -1; lv <= 3; lv += 0.02) { var v = Math.pow(10, lv), perf = Math.min(PEAK, BW * v); d += (lv > -1 ? 'L' : 'M') + X(v).toFixed(1) + ' ' + Y(perf).toFixed(1); }
     s += '<path d="' + d + '" fill="none" stroke="#0f172a" stroke-width="3"/>';
-    s += '<line x1="' + X(ridge) + '" y1="' + Y(PEAK) + '" x2="' + X(ridge) + '" y2="' + y0 + '" stroke="#cbd5e1" stroke-dasharray="4 4"/><text x="' + (X(ridge) + 4) + '" y="' + (y0 - 6) + '" font-size="9.5" fill="#64748b">ridge ≈ ' + Math.round(ridge) + ' FLOP/byte</text>';
+    s += '<line x1="' + X(ridge) + '" y1="' + Y(PEAK) + '" x2="' + X(ridge) + '" y2="' + y0 + '" stroke="#cbd5e1" stroke-dasharray="4 4"/><text x="' + (X(ridge) - 4) + '" y="' + (y0 - 6) + '" text-anchor="end" font-size="9.5" fill="#64748b">ridge ≈ ' + Math.round(ridge) + ' FLOP/byte</text>';
     var perf = Math.min(PEAK, BW * I);
     s += '<circle cx="' + X(I) + '" cy="' + Y(perf) + '" r="7" fill="#be123c"/><text x="' + (X(I) + 10) + '" y="' + (Y(perf) + 16) + '" font-size="11" font-weight="800" fill="#be123c">' + esc(k) + '</text>';
     s += '<text x="' + x0 + '" y="' + (y0 + 18) + '" font-size="10" fill="#64748b">0.1</text><text x="' + x1 + '" y="' + (y0 + 18) + '" text-anchor="end" font-size="10" fill="#64748b">1,000 FLOP/byte</text><text x="' + (x0 + 4) + '" y="' + (y1 + 4) + '" font-size="10" fill="#64748b">TFLOPs/s (log)</text><text x="' + (x1 - 4) + '" y="' + (Y(PEAK) - 6) + '" text-anchor="end" font-size="10" fill="#0f172a">compute roof ~990</text>';
