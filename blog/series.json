@@ -119,7 +119,8 @@
         "ai-factory-bring-up",
         "ai-factory-os-drivers-runtime",
         "ai-factory-networking",
-        "ai-factory-storage"
+        "ai-factory-storage",
+        "ai-factory-scheduling"
       ]
     },
     {

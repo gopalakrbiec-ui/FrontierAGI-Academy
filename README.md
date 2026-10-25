@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🗓️ [Who Gets the GPUs? The Engineers Who Schedule an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-scheduling.html) | Part 5 of Who Runs the AI Factory: the cluster platform engineers who decide which job gets which GPUs, from gang scheduling, preemption… | 2026-10-25 |
 | 💾 [Feeding the Beast: The Engineers Who Move Petabytes In and Terabytes Out of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-storage.html) | Part 4 of Who Runs the AI Factory: the storage engineers who keep GPUs fed, from training-data reads and multi-terabyte checkpoint storms… | 2026-10-25 |
 | 🕸️ [Making 100,000 GPUs Talk: The Engineers Who Run an AI Factory's Network](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-networking.html) | Part 3 of Who Runs the AI Factory: the fabric and collective-communication engineers who keep RDMA networks lossless and fast, from ECMP… | 2026-10-25 |
 | 🐧 [The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-os-drivers-runtime.html) | Part 2 of Who Runs the AI Factory: the systems software engineers who keep Linux kernels, NVIDIA drivers, CUDA and OS images consistent… | 2026-10-25 |
