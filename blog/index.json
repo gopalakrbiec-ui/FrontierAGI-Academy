@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-networking",
+      "title": "Making 100,000 GPUs Talk: The Engineers Who Run an AI Factory's Network",
+      "excerpt": "Part 3 of Who Runs the AI Factory: the fabric and collective-communication engineers who keep RDMA networks lossless and fast, from ECMP collisions and Meta's move away from DCQCN to receiver-driven admission, NCCLX and Ultra Ethernet.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "23 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Networking",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🕸️",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-os-drivers-runtime",
       "title": "The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step",
       "excerpt": "Part 2 of Who Runs the AI Factory: the systems software engineers who keep Linux kernels, NVIDIA drivers, CUDA and OS images consistent across a GPU fleet, from Meta's maintenance trains and container/host split to Xid triage and reprovisioning.",
