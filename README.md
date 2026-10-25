@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🐧 [The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-os-drivers-runtime.html) | Part 2 of Who Runs the AI Factory: the systems software engineers who keep Linux kernels, NVIDIA drivers, CUDA and OS images consistent… | 2026-10-25 |
 | 🔧 [Day Zero: The Engineers Who Turn 10,000 Boxes of GPUs into a Working AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-bring-up.html) | Part 1 of Who Runs the AI Factory: the deployment engineers who bring up racks of GPUs, from firmware and BMCs to burn-in, acceptance tests… | 2026-10-25 |
 | 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | How brain–computer interfaces actually work in 2026: electrodes, the tiny implant chip and its heat and power limits, the AI decoders… | 2026-10-24 |
 | 🔭 [Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/future-of-ai-compute.html) | Part 18 of the AI Compute Stack: a reality check on what comes after today's GPUs, from 3D silicon and co-packaged optics to photonic,… | 2026-10-24 |

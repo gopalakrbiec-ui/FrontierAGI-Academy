@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-os-drivers-runtime",
+      "title": "The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step",
+      "excerpt": "Part 2 of Who Runs the AI Factory: the systems software engineers who keep Linux kernels, NVIDIA drivers, CUDA and OS images consistent across a GPU fleet, from Meta's maintenance trains and container/host split to Xid triage and reprovisioning.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Linux",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🐧",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-bring-up",
       "title": "Day Zero: The Engineers Who Turn 10,000 Boxes of GPUs into a Working AI Factory",
       "excerpt": "Part 1 of Who Runs the AI Factory: the deployment engineers who bring up racks of GPUs, from firmware and BMCs to burn-in, acceptance tests and the GB200 NVL72 bring-up problems, and why weak nodes that slip through become months of failures.",

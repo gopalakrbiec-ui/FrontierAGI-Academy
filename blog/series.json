@@ -116,7 +116,8 @@
       "short": "Who Runs the AI Factory",
       "icon": "🧑‍🔧",
       "slugs": [
-        "ai-factory-bring-up"
+        "ai-factory-bring-up",
+        "ai-factory-os-drivers-runtime"
       ]
     },
     {
