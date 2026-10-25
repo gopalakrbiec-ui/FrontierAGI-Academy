@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-storage",
+      "title": "Feeding the Beast: The Engineers Who Move Petabytes In and Terabytes Out of an AI Factory",
+      "excerpt": "Part 4 of Who Runs the AI Factory: the storage engineers who keep GPUs fed, from training-data reads and multi-terabyte checkpoint storms to Meta's move from Tectonic to its 2026 AI storage blueprint, asynchronous checkpointing and tail-latency stalls.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Storage",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "💾",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-networking",
       "title": "Making 100,000 GPUs Talk: The Engineers Who Run an AI Factory's Network",
       "excerpt": "Part 3 of Who Runs the AI Factory: the fabric and collective-communication engineers who keep RDMA networks lossless and fast, from ECMP collisions and Meta's move away from DCQCN to receiver-driven admission, NCCLX and Ultra Ethernet.",

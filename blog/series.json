@@ -118,7 +118,8 @@
       "slugs": [
         "ai-factory-bring-up",
         "ai-factory-os-drivers-runtime",
-        "ai-factory-networking"
+        "ai-factory-networking",
+        "ai-factory-storage"
       ]
     },
     {
