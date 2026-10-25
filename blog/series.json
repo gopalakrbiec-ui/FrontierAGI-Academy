@@ -124,7 +124,8 @@
         "ai-factory-kernels-compilers",
         "ai-factory-training-frameworks",
         "ai-factory-data-platform",
-        "ai-factory-research-tooling"
+        "ai-factory-research-tooling",
+        "ai-factory-inference-platform"
       ]
     },
     {

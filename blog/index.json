@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-inference-platform",
+      "title": "Always On: The Inference Engineers Who Serve Models to Billions",
+      "excerpt": "Part 10 of Who Runs the AI Factory: the inference engineers who run models as a product, from SLOs and cost per token to disaggregated prefill/decode (NVIDIA Dynamo, Meta's production stack), cache-aware routing, canary rollouts and filling idle GPUs with batch and RL work.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Inference",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "⚡",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-research-tooling",
       "title": "The Research Accelerators: Engineers Who Build the Tools for Thousands of Experiments",
       "excerpt": "Part 9 of Who Runs the AI Factory: the research infrastructure engineers who make experiments fast to launch, easy to compare and hard to get wrong, from experiment tracking (Weights & Biases, now CoreWeave) and eval harnesses like UK AISI's Inspect to sweeps and leaderboards.",
