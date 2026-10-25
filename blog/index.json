@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-training-frameworks",
+      "title": "The Code That Trains the Model: ML Systems Engineers and the Frameworks Behind Frontier Training",
+      "excerpt": "Part 7 of Who Runs the AI Factory: the ML systems engineers who build training frameworks, from FSDP2, Megatron, DeepSpeed and JAX to Meta's TorchTitan (+30% at 405B scale), fault-tolerant training with torchft and the single-controller Monarch model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Distributed Training",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🧠",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-kernels-compilers",
       "title": "Making Every FLOP Count: The Kernel and Compiler Engineers of an AI Factory",
       "excerpt": "Part 6 of Who Runs the AI Factory: the kernel and compiler engineers who turn peak FLOPs into real throughput, from rooflines and fusion to FlashAttention-3's jump from 35% to 85% H100 utilisation, torch.compile, and AI agents like Meta's KernelEvolve writing kernels.",

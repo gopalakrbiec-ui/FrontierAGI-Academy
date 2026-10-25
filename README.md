@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🧠 [The Code That Trains the Model: ML Systems Engineers and the Frameworks Behind Frontier Training](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-training-frameworks.html) | Part 7 of Who Runs the AI Factory: the ML systems engineers who build training frameworks, from FSDP2, Megatron, DeepSpeed and JAX to… | 2026-10-25 |
 | ⚙️ [Making Every FLOP Count: The Kernel and Compiler Engineers of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-kernels-compilers.html) | Part 6 of Who Runs the AI Factory: the kernel and compiler engineers who turn peak FLOPs into real throughput, from rooflines and fusion to… | 2026-10-25 |
 | 🗓️ [Who Gets the GPUs? The Engineers Who Schedule an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-scheduling.html) | Part 5 of Who Runs the AI Factory: the cluster platform engineers who decide which job gets which GPUs, from gang scheduling, preemption… | 2026-10-25 |
 | 💾 [Feeding the Beast: The Engineers Who Move Petabytes In and Terabytes Out of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-storage.html) | Part 4 of Who Runs the AI Factory: the storage engineers who keep GPUs fed, from training-data reads and multi-terabyte checkpoint storms… | 2026-10-25 |
