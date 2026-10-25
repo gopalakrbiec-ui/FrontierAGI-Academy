@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-research-tooling",
+      "title": "The Research Accelerators: Engineers Who Build the Tools for Thousands of Experiments",
+      "excerpt": "Part 9 of Who Runs the AI Factory: the research infrastructure engineers who make experiments fast to launch, easy to compare and hard to get wrong, from experiment tracking (Weights & Biases, now CoreWeave) and eval harnesses like UK AISI's Inspect to sweeps and leaderboards.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "21 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Research Tooling",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🔬",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-data-platform",
       "title": "Refining the Internet: The Data Engineers Who Turn Petabytes of Web Pages into Training Tokens",
       "excerpt": "Part 8 of Who Runs the AI Factory: the data engineers and data-quality researchers who crawl, extract, filter, deduplicate and version trillions of tokens, with FineWeb and DCLM as open blueprints, GPU deduplication, model-based filtering and a web that is closing its doors.",
