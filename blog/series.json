@@ -126,7 +126,8 @@
         "ai-factory-data-platform",
         "ai-factory-research-tooling",
         "ai-factory-inference-platform",
-        "ai-factory-observability"
+        "ai-factory-observability",
+        "ai-factory-security"
       ]
     },
     {

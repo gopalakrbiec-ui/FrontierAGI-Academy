@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-security",
+      "title": "Guarding the Crown Jewels: The Engineers Who Protect Model Weights, Data and the AI Supply Chain",
+      "excerpt": "Part 12 of Who Runs the AI Factory: the security engineers who protect model weights, data and the supply chain, from RAND's 38 attack vectors and SL1–SL5 levels to Anthropic's ASL-3 controls, real incidents (LLaMA leak, torchtriton, malicious model files) and confidential computing.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Security",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🔐",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-observability",
       "title": "Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services",
       "excerpt": "Part 11 of Who Runs the AI Factory: the SREs who watch AI infrastructure, from GPU telemetry, flight recorders and error budgets to two public postmortems: OpenAI's December 2024 telemetry-triggered outage and Anthropic's 2025 quality-degrading infrastructure bugs.",
