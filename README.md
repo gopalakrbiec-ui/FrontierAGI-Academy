@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🔧 [Day Zero: The Engineers Who Turn 10,000 Boxes of GPUs into a Working AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-bring-up.html) | Part 1 of Who Runs the AI Factory: the deployment engineers who bring up racks of GPUs, from firmware and BMCs to burn-in, acceptance tests… | 2026-10-25 |
 | 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | How brain–computer interfaces actually work in 2026: electrodes, the tiny implant chip and its heat and power limits, the AI decoders… | 2026-10-24 |
 | 🔭 [Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/future-of-ai-compute.html) | Part 18 of the AI Compute Stack: a reality check on what comes after today's GPUs, from 3D silicon and co-packaged optics to photonic,… | 2026-10-24 |
 | 🛠️ [Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-operations.html) | Part 9 of Producing Intelligence: how Meta keeps the 24,000-GPU clusters behind Llama 3 productive, from health checks and lemon-node… | 2026-10-24 |

@@ -111,6 +111,15 @@
       ]
     },
     {
+      "id": "sec-whoruns",
+      "title": "Who Runs the AI Factory: The Software Stack, Role by Role",
+      "short": "Who Runs the AI Factory",
+      "icon": "🧑‍🔧",
+      "slugs": [
+        "ai-factory-bring-up"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
