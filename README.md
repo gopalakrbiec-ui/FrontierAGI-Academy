@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🚨 [Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-observability.html) | Part 11 of Who Runs the AI Factory: the SREs who watch AI infrastructure, from GPU telemetry, flight recorders and error budgets to two… | 2026-10-25 |
 | ⚡ [Always On: The Inference Engineers Who Serve Models to Billions](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-inference-platform.html) | Part 10 of Who Runs the AI Factory: the inference engineers who run models as a product, from SLOs and cost per token to disaggregated… | 2026-10-25 |
 | 🔬 [The Research Accelerators: Engineers Who Build the Tools for Thousands of Experiments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-research-tooling.html) | Part 9 of Who Runs the AI Factory: the research infrastructure engineers who make experiments fast to launch, easy to compare and hard to… | 2026-10-25 |
 | 🗃️ [Refining the Internet: The Data Engineers Who Turn Petabytes of Web Pages into Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-data-platform.html) | Part 8 of Who Runs the AI Factory: the data engineers and data-quality researchers who crawl, extract, filter, deduplicate and version… | 2026-10-25 |

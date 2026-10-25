@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-observability",
+      "title": "Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services",
+      "excerpt": "Part 11 of Who Runs the AI Factory: the SREs who watch AI infrastructure, from GPU telemetry, flight recorders and error budgets to two public postmortems: OpenAI's December 2024 telemetry-triggered outage and Anthropic's 2025 quality-degrading infrastructure bugs.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Reliability",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🚨",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-inference-platform",
       "title": "Always On: The Inference Engineers Who Serve Models to Billions",
       "excerpt": "Part 10 of Who Runs the AI Factory: the inference engineers who run models as a product, from SLOs and cost per token to disaggregated prefill/decode (NVIDIA Dynamo, Meta's production stack), cache-aware routing, canary rollouts and filling idle GPUs with batch and RL work.",

@@ -125,7 +125,8 @@
         "ai-factory-training-frameworks",
         "ai-factory-data-platform",
         "ai-factory-research-tooling",
-        "ai-factory-inference-platform"
+        "ai-factory-inference-platform",
+        "ai-factory-observability"
       ]
     },
     {
