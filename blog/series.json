@@ -122,7 +122,8 @@
         "ai-factory-storage",
         "ai-factory-scheduling",
         "ai-factory-kernels-compilers",
-        "ai-factory-training-frameworks"
+        "ai-factory-training-frameworks",
+        "ai-factory-data-platform"
       ]
     },
     {

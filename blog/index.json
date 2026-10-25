@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-data-platform",
+      "title": "Refining the Internet: The Data Engineers Who Turn Petabytes of Web Pages into Training Tokens",
+      "excerpt": "Part 8 of Who Runs the AI Factory: the data engineers and data-quality researchers who crawl, extract, filter, deduplicate and version trillions of tokens, with FineWeb and DCLM as open blueprints, GPU deduplication, model-based filtering and a web that is closing its doors.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-25",
+      "readTime": "22 min",
+      "tags": [
+        "AI Infrastructure",
+        "Careers",
+        "Data",
+        "Who Runs the AI Factory"
+      ],
+      "emoji": "🗃️",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-training-frameworks",
       "title": "The Code That Trains the Model: ML Systems Engineers and the Frameworks Behind Frontier Training",
       "excerpt": "Part 7 of Who Runs the AI Factory: the ML systems engineers who build training frameworks, from FSDP2, Megatron, DeepSpeed and JAX to Meta's TorchTitan (+30% at 405B scale), fault-tolerant training with torchft and the single-controller Monarch model.",
