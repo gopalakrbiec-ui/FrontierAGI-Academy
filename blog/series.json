@@ -120,7 +120,8 @@
         "ai-factory-os-drivers-runtime",
         "ai-factory-networking",
         "ai-factory-storage",
-        "ai-factory-scheduling"
+        "ai-factory-scheduling",
+        "ai-factory-kernels-compilers"
       ]
     },
     {
