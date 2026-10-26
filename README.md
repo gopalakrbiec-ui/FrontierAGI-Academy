@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🏳️ [Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sovereign-ai-factories.html) | Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate… | 2026-10-26 |
 | 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a… | 2026-10-26 |
 | ☁️ [The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/coreweave-neoclouds.html) | CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against… | 2026-10-26 |
 | 🟢 [The Fleet: How Google Built AI Factories a Decade Before Everyone Else](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/google-tpu-fleet.html) | Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across… | 2026-10-26 |

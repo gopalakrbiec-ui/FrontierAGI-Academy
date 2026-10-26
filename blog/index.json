@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "sovereign-ai-factories",
+      "title": "Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories",
+      "excerpt": "Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate Norway and IndiaAI. The ninth AI factory case study compares what was announced with what was delivered, and the dependence on US chips, labs and licences.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "Sovereign AI"
+      ],
+      "emoji": "🏳️",
+      "featured": false
+    },
+    {
       "slug": "china-ai-factories",
       "title": "Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips",
       "excerpt": "Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a state program of western data center hubs, and NVIDIA capacity rented abroad. The eighth AI factory case study.",
