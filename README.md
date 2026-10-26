@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 👥 [Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factory-customers.html) | Telcos turning into national AI clouds, Lilly and the Novo Nordisk Foundation training on proteins, Mayo Clinic speeding up pathology, BNY… | 2026-10-26 |
 | 🛒 [The Arms Dealers: How Dell, HPE, Lenovo and Supermicro Sell AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-hardware-vendors.html) | Dell has a $95B AI server backlog; HPE, Supermicro and Lenovo are racing too. | 2026-10-26 |
 | 🏛️ [The Blueprint Business: How NVIDIA Designs Other People's AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/nvidia-ai-factory-blueprint.html) | NVIDIA now publishes the design for an entire AI factory, from racks and networking to the building and a digital twin, lines up partners… | 2026-10-26 |
 | 📦 [The Cloud Comes to You: How AWS, Microsoft, Google and Oracle Put AI Factories Inside Customers' Buildings](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/hyperscaler-on-prem-ai-factories.html) | Every major cloud now runs a version of itself inside customers' buildings, some of it fully air-gapped with AI models included: AWS AI… | 2026-10-26 |

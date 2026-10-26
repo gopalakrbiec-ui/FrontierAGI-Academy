@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "managed-ai-factory-customers",
+      "title": "Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments",
+      "excerpt": "Telcos turning into national AI clouds, Lilly and the Novo Nordisk Foundation training on proteins, Mayo Clinic speeding up pathology, BNY keeping data in-house, the DOE's next supercomputer. Part 5 of AI Factory as a Service profiles the buyers and why they own instead of rent.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Managed Services"
+      ],
+      "emoji": "👥",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-hardware-vendors",
       "title": "The Arms Dealers: How Dell, HPE, Lenovo and Supermicro Sell AI Factories",
       "excerpt": "Dell has a $95B AI server backlog; HPE, Supermicro and Lenovo are racing too. Under one 'AI factory' label sit two businesses: a few giant rack-scale orders and thousands of enterprise packages. Part 4 of AI Factory as a Service follows the money, the margins and Supermicro's export case.",
