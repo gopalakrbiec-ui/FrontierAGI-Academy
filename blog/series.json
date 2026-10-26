@@ -154,7 +154,8 @@
       "short": "AI Factory as a Service",
       "icon": "🧰",
       "slugs": [
-        "managed-ai-factories-landscape"
+        "managed-ai-factories-landscape",
+        "hyperscaler-on-prem-ai-factories"
       ]
     },
     {
