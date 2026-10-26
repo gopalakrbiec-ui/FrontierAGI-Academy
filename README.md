@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🔥 [Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-prometheus-hyperion.html) | Meta stitched Prometheus together from traditional halls, AI-optimised buildings, quick-build structures and leased space, then planned… | 2026-10-26 |
 | ⛰️ [Project Rainier: The AI Factory Built Without NVIDIA](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/project-rainier.html) | Amazon filled farmland in New Carlisle, Indiana with nearly half a million of its own Trainium2 chips for Anthropic. | 2026-10-26 |
 | 🔗 [Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/microsoft-fairwater.html) | Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. | 2026-10-26 |
 | 🌵 [Stargate Abilene: The AI Factory Built on Other People's Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stargate-abilene.html) | OpenAI's flagship campus in Abilene, Texas was built by a chain of companies: Lancium, Crusoe, Blue Owl, Primary Digital, J.P. | 2026-10-26 |
