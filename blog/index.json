@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-frameworks-pytorch-jax",
+      "title": "Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory",
+      "excerpt": "Almost every frontier model is written in PyTorch or JAX. Part 2 of Inside the ML Layer compares eager and compiled execution, torch.compile and XLA, FSDP2 and JAX sharding, hardware reach and ecosystems, with a sharding playground and a framework chooser.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "26 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "🧱",
+      "featured": false
+    },
+    {
       "slug": "ml-layer-map",
       "title": "The ML Layer, Mapped: From PyTorch to Production in One Diagram",
       "excerpt": "Between a rack of GPUs and an agent answering a question sit about eight layers of software. Part 1 of Inside the ML Layer maps them all, shows what Meta, Google, DeepSeek, xAI, OpenAI and Anthropic use at each layer, and traces a training step and an agent request through the stack.",

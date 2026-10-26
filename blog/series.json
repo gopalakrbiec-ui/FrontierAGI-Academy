@@ -169,7 +169,8 @@
       "short": "Inside the ML Layer",
       "icon": "🧠",
       "slugs": [
-        "ml-layer-map"
+        "ml-layer-map",
+        "ml-frameworks-pytorch-jax"
       ]
     },
     {
