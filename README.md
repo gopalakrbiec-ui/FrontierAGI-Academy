@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🏛️ [The Blueprint Business: How NVIDIA Designs Other People's AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/nvidia-ai-factory-blueprint.html) | NVIDIA now publishes the design for an entire AI factory, from racks and networking to the building and a digital twin, lines up partners… | 2026-10-26 |
 | 📦 [The Cloud Comes to You: How AWS, Microsoft, Google and Oracle Put AI Factories Inside Customers' Buildings](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/hyperscaler-on-prem-ai-factories.html) | Every major cloud now runs a version of itself inside customers' buildings, some of it fully air-gapped with AI models included: AWS AI… | 2026-10-26 |
 | 🗺️ [Build, Install, Buy or Rent: The Four Ways to Get an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factories-landscape.html) | Only a handful of companies can build a Colossus. | 2026-10-26 |
 | 📊 [Nine AI Factories, One Map: Which Bets Are Winning?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-compared.html) | The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on… | 2026-10-26 |
