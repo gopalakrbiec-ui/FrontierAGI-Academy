@@ -212,6 +212,7 @@
     .home-section-hd .eyebrow { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
     .home-section-hd h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
     .home-section-hd p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+    .home-layer-anchor { position: relative; top: -110px; height: 0; } .home-layer-anchor + .home-series-spotlight { margin-top: 32px; } .home-layer-label { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--sp-accent, #4f46e5); margin-bottom: 8px; }
     .home-subhd { margin: 46px auto 24px; scroll-margin-top: 110px; } .home-subhd h3 { font-size: clamp(1.2rem, 2.4vw, 1.5rem); font-weight: 800; margin-bottom: 8px; }
 
 
@@ -868,15 +869,12 @@
       <p>Three series, one stack: the physical machinery of AI (power, chips, memory, networks and money), how a frontier model is produced on top of it (followed end to end with Llama 3 405B), and the people who run each layer of the factory's software.</p>
     </div>
     <!-- The Physical Layer -->
-    <div class="home-section-hd home-subhd" id="grp-compute">
-      <div class="eyebrow">The Physical Layer</div>
-      <h3>The AI Compute Stack: From Electrons to Tokens</h3>
-      <p>What it physically takes to run AI: power, factories, chips, memory and the economics that tie them together. Read in order, from the grid up to the price of a token.</p>
-    </div>
+    <div class="home-layer-anchor" id="grp-compute"></div>
     <div class="home-series-spotlight" id="sec-compute" style="--sp-accent:#c2410c;--sp-tag-bg:#fff7ed;">
+      <div class="home-layer-label">🧱 The Physical Layer</div>
       <span class="home-series-tag">🖥️ AI Compute Stack · 18 Articles</span>
       <div class="home-series-title">The AI Compute Stack: From Electrons to Tokens</div>
-      <div class="home-series-desc">Power → private energy → factories → vs supercomputers → cooling & water → chips → supply chain → networks → memory → custom silicon → inference → edge devices → token prices → financing → China → frontier sites → economics → the horizon. Each part stands alone; together they explain why AI is now an energy and hardware story as much as a software one.</div>
+      <div class="home-series-desc">What it physically takes to run AI: power, factories, chips, memory and the economics that tie them together. Power → private energy → factories → vs supercomputers → cooling & water → chips → supply chain → networks → memory → custom silicon → inference → edge devices → token prices → financing → China → frontier sites → economics → the horizon. Each part stands alone; together they explain why AI is now an energy and hardware story as much as a software one.</div>
       <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/compute-stack.html" style="color:#c2410c">🗺️ See the whole stack on one page: key numbers, bottlenecks and reading tracks →</a></p>
       <div class="home-series-grid" id="grid-compute">
         <a href="blog/power-bottleneck-ai-infrastructure-race.html" class="home-series-card">
@@ -974,15 +972,12 @@
     <p class="compute-related" style="text-align:center;font-size:.85rem;color:#6b7280;margin-top:16px">Related in other series: <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/compute-frontier-ai-infrastructure-explainer.html">The Compute Frontier, Explained</a> · <a style="color:#c2410c;font-weight:600;text-decoration:none" href="blog/frontier-lab-engineering-compute-economics.html">Frontier Lab Compute Economics</a></p>
 
     <!-- The Production Layer -->
-    <div class="home-section-hd home-subhd" id="grp-production">
-      <div class="eyebrow">The Production Layer</div>
-      <h3>Producing Intelligence: From AI Factory to Frontier Model</h3>
-      <p>The next layer up from the AI Compute Stack: how a frontier model is actually produced inside an AI factory, end to end. One model, Meta's Llama 3 405B, followed from software stack and data through pre-training, post-training and evaluation to serving.</p>
-    </div>
+    <div class="home-layer-anchor" id="grp-production"></div>
     <div class="home-series-spotlight" id="sec-production" style="--sp-accent:#6d28d9;--sp-tag-bg:#f5f3ff;">
+      <div class="home-layer-label">🏭 The Production Layer</div>
       <span class="home-series-tag">🏭 Producing Intelligence · 9 Articles</span>
       <div class="home-series-title">Producing Intelligence: From AI Factory to Frontier Model</div>
-      <div class="home-series-desc">Software stack → data → planning the run → parallelism → running the run → post-training → evaluation → serving → operations. Nine parts, each with a running Llama 3 case file.</div>
+      <div class="home-series-desc">The next layer up from the AI Compute Stack: how a frontier model is actually produced inside an AI factory, end to end. Software stack → data → planning the run → parallelism → running the run → post-training → evaluation → serving → operations. Nine parts, each with a running Llama 3 case file.</div>
       <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/producing-intelligence.html" style="color:#6d28d9">🗺️ See the whole pipeline on one page: stages, decisions, key numbers and reading tracks →</a></p>
       <div class="home-series-grid" id="grid-production">
         <a href="blog/ai-factory-software-stack.html" class="home-series-card">
@@ -1034,15 +1029,12 @@
     </div>
 
     <!-- The People Layer -->
-    <div class="home-section-hd home-subhd" id="grp-whoruns">
-      <div class="eyebrow">The People Layer</div>
-      <h3>Who Runs the AI Factory: The Software Stack, Role by Role</h3>
-      <p>The AI factory's software stack, one layer at a time, through the people who own it: what they run, the tools they use, what breaks and how they hand off to the next layer. Twelve parts, from hardware bring-up to security, all published.</p>
-    </div>
+    <div class="home-layer-anchor" id="grp-whoruns"></div>
     <div class="home-series-spotlight" id="sec-whoruns" style="--sp-accent:#0d9488;--sp-tag-bg:#f0fdfa;">
+      <div class="home-layer-label">🧑‍🔧 The People Layer</div>
       <span class="home-series-tag">🧑‍🔧 Who Runs the AI Factory · 12 Articles</span>
       <div class="home-series-title">Who Runs the AI Factory: The Software Stack, Role by Role</div>
-      <div class="home-series-desc">Bring-up & firmware → OS & runtime → networking → storage → scheduling → kernels & compilers → training frameworks → data platform → experiment tooling → inference → observability → security.</div>
+      <div class="home-series-desc">The AI factory's software stack, one layer at a time, through the people who own it: what they run, the tools they use, what breaks and how they hand off to the next layer. Bring-up & firmware → OS & runtime → networking → storage → scheduling → kernels & compilers → training frameworks → data platform → experiment tooling → inference → observability → security.</div>
       <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/who-runs-the-ai-factory.html" style="color:#0d9488">🗺️ See every role on one page: stack map, role finder, skills matrix and career paths →</a></p>
       <div class="home-series-grid" id="grid-whoruns">
         <a href="blog/ai-factory-bring-up.html" class="home-series-card">
@@ -1109,16 +1101,13 @@
     </div>
 
     <!-- Case Studies -->
-    <div class="home-section-hd home-subhd" id="grp-cases">
-      <div class="eyebrow">The Case Files</div>
-      <h3>Inside the Gigawatt Club: Case Studies of AI Factories</h3>
-      <p>The world's largest AI factories, one site at a time: how each was built, where its power comes from, how big it really is and what it cost its neighbours. Every case study has the same case file and build timeline so the sites can be compared.</p>
-    </div>
+    <div class="home-layer-anchor" id="grp-cases"></div>
     <div class="home-series-spotlight" id="sec-cases" style="--sp-accent:#c2410c;--sp-tag-bg:#fff7ed;">
+      <div class="home-layer-label">🗂️ The Case Files</div>
       <span class="home-series-tag">🏭 AI Factory Case Studies · 10 Articles</span>
       <div class="home-series-title">Inside the Gigawatt Club: Case Studies of AI Factories</div>
-      <p style="margin:0 0 10px;font-size:.88rem;font-weight:700"><a href="pages/ai-factories.html" style="color:#c2410c">🗺️ See every site on one page: map, comparison table, timelines and reading tracks →</a></p>
-      <div class="home-series-desc">xAI Colossus → Stargate Abilene → Microsoft Fairwater → Project Rainier → Meta Prometheus &amp; Hyperion → Google's TPU fleet → neoclouds → China → sovereign factories → the bets compared.</div>
+      <div class="home-series-desc">The world's largest AI factories, one site at a time: how each was built, where its power comes from, how big it really is and what it cost its neighbours. xAI Colossus → Stargate Abilene → Microsoft Fairwater → Project Rainier → Meta Prometheus &amp; Hyperion → Google's TPU fleet → neoclouds → China → sovereign factories → the bets compared.</div>
+      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/ai-factories.html" style="color:#c2410c">🗺️ See every site on one page: map, comparison table, timelines and reading tracks →</a></p>
       <div class="home-series-grid" id="grid-cases">
         <a href="blog/colossus-xai-memphis.html" class="home-series-card">
           <span class="home-series-card-emoji">🏭</span>
@@ -1174,16 +1163,13 @@
     </div>
 
     <!-- Managed AI factories -->
-    <div class="home-section-hd home-subhd" id="grp-managed">
-      <div class="eyebrow">The Market Layer</div>
-      <h3>AI Factory as a Service: Who Builds Them, Who Buys Them</h3>
-      <p>Not everyone can build a Colossus. Governments, banks, drug makers and telcos get AI factories by having a hyperscaler install one in their building, buying a vendor's ready-made stack, or renting capacity. This series maps the providers, their customers and the economics.</p>
-    </div>
+    <div class="home-layer-anchor" id="grp-managed"></div>
     <div class="home-series-spotlight" id="sec-managed" style="--sp-accent:#15803d;--sp-tag-bg:#f0fdf4;">
+      <div class="home-layer-label">🛒 The Market Layer</div>
       <span class="home-series-tag">🧰 AI Factory as a Service · 7 Articles</span>
       <div class="home-series-title">AI Factory as a Service: Who Builds Them, Who Buys Them</div>
-      <p style="margin:0 0 10px;font-size:.88rem;font-weight:700"><a href="pages/ai-factory-service.html" style="color:#15803d">🗺️ See the whole market on one page: routes, providers, customers and a break-even calculator →</a></p>
-      <div class="home-series-desc">The landscape → hyperscalers come to you → NVIDIA as the architect → the hardware vendors → the customers → the economics and the decision.</div>
+      <div class="home-series-desc">How governments, banks, drug makers and telcos get AI factories without building a Colossus: install, buy or rent. The landscape → hyperscalers come to you → NVIDIA as the architect → the hardware vendors → the customers → the economics and the decision.</div>
+      <p style="margin:-4px 0 14px;font-size:.88rem;font-weight:700"><a href="pages/ai-factory-service.html" style="color:#15803d">🗺️ See the whole market on one page: routes, providers, customers and a break-even calculator →</a></p>
       <div class="home-series-grid" id="grid-managed">
         <a href="blog/managed-ai-factories-landscape.html" class="home-series-card">
           <span class="home-series-card-emoji">🗺️</span>
