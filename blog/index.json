@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "project-rainier",
+      "title": "Project Rainier: The AI Factory Built Without NVIDIA",
+      "excerpt": "Amazon filled farmland in New Carlisle, Indiana with nearly half a million of its own Trainium2 chips for Anthropic. The fourth AI factory case study: owning every layer from chip to cloud, a utility created just for data centers, and the dry wells.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "Amazon"
+      ],
+      "emoji": "⛰️",
+      "featured": false
+    },
+    {
       "slug": "microsoft-fairwater",
       "title": "Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer",
       "excerpt": "Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. The third AI factory case study: two-storey halls, 140 kW racks, no on-site turbines, and who pays for the power.",

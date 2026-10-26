@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| ⛰️ [Project Rainier: The AI Factory Built Without NVIDIA](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/project-rainier.html) | Amazon filled farmland in New Carlisle, Indiana with nearly half a million of its own Trainium2 chips for Anthropic. | 2026-10-26 |
 | 🔗 [Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/microsoft-fairwater.html) | Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. | 2026-10-26 |
 | 🌵 [Stargate Abilene: The AI Factory Built on Other People's Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stargate-abilene.html) | OpenAI's flagship campus in Abilene, Texas was built by a chain of companies: Lancium, Crusoe, Blue Owl, Primary Digital, J.P. | 2026-10-26 |
 | 🏭 [Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/colossus-xai-memphis.html) | xAI turned an empty Memphis factory into a 100,000-GPU cluster in 122 days, then built Colossus 2 in phases of 91 and 64 days. | 2026-10-26 |
