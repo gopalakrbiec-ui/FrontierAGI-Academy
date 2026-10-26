@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-factory-economics",
+      "title": "Build, Install, Buy or Rent? The Economics of Getting an AI Factory",
+      "excerpt": "The price of a GPU-hour is the wrong number. Part 6 of AI Factory as a Service compares current rental prices with the full cost of owning, lets you build your own break-even model and re-weight a buyer's scorecard across the four routes.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "16 min",
+      "tags": [
+        "AI Factories",
+        "Managed Services"
+      ],
+      "emoji": "🧮",
+      "featured": false
+    },
+    {
       "slug": "managed-ai-factory-customers",
       "title": "Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments",
       "excerpt": "Telcos turning into national AI clouds, Lilly and the Novo Nordisk Foundation training on proteins, Mayo Clinic speeding up pathology, BNY keeping data in-house, the DOE's next supercomputer. Part 5 of AI Factory as a Service profiles the buyers and why they own instead of rent.",
