@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "frontier-lab-startup-playbook",
+      "title": "Starting a Frontier Lab in 2026: Compute, Cost and Capital, with a Bangalore Playbook",
+      "excerpt": "How much compute does a new frontier-model startup need to train, experiment, serve its model and run agents? Where do the GPUs come from, how much money is needed and who provides it? A bonus playbook with calculators, plus a detailed section for founders in Bangalore: IndiaAI compute, rupee GPU prices, India's funds and a realistic strategy.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "32 min",
+      "tags": [
+        "AI Factories",
+        "Startups",
+        "India"
+      ],
+      "emoji": "🚀",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-economics",
       "title": "Build, Install, Buy or Rent? The Economics of Getting an AI Factory",
       "excerpt": "The price of a GPU-hour is the wrong number. Part 6 of AI Factory as a Service compares current rental prices with the full cost of owning, lets you build your own break-even model and re-weight a buyer's scorecard across the four routes.",

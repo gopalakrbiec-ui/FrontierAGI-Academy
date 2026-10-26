@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🚀 [Starting a Frontier Lab in 2026: Compute, Cost and Capital, with a Bangalore Playbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-startup-playbook.html) | How much compute does a new frontier-model startup need to train, experiment, serve its model and run agents? Where do the GPUs come from,… | 2026-10-26 |
 | 🧮 [Build, Install, Buy or Rent? The Economics of Getting an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-economics.html) | The price of a GPU-hour is the wrong number. | 2026-10-26 |
 | 👥 [Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factory-customers.html) | Telcos turning into national AI clouds, Lilly and the Novo Nordisk Foundation training on proteins, Mayo Clinic speeding up pathology, BNY… | 2026-10-26 |
 | 🛒 [The Arms Dealers: How Dell, HPE, Lenovo and Supermicro Sell AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-hardware-vendors.html) | Dell has a $95B AI server backlog; HPE, Supermicro and Lenovo are racing too. | 2026-10-26 |
