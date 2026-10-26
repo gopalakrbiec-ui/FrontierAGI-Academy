@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "colossus-xai-memphis",
+      "title": "Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost",
+      "excerpt": "xAI turned an empty Memphis factory into a 100,000-GPU cluster in 122 days, then built Colossus 2 in phases of 91 and 64 days. The first AI factory case study: the speed bet, the gas turbines, the lawsuits and three ways to count a gigawatt.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "xAI"
+      ],
+      "emoji": "🏭",
+      "featured": false
+    },
+    {
       "slug": "ai-factory-security",
       "title": "Guarding the Crown Jewels: The Engineers Who Protect Model Weights, Data and the AI Supply Chain",
       "excerpt": "Part 12 of Who Runs the AI Factory: the security engineers who protect model weights, data and the supply chain, from RAND's 38 attack vectors and SL1–SL5 levels to Anthropic's ASL-3 controls, real incidents (LLaMA leak, torchtriton, malicious model files) and confidential computing.",

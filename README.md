@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🏭 [Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/colossus-xai-memphis.html) | xAI turned an empty Memphis factory into a 100,000-GPU cluster in 122 days, then built Colossus 2 in phases of 91 and 64 days. | 2026-10-26 |
 | 🔐 [Guarding the Crown Jewels: The Engineers Who Protect Model Weights, Data and the AI Supply Chain](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-security.html) | Part 12 of Who Runs the AI Factory: the security engineers who protect model weights, data and the supply chain, from RAND's 38 attack… | 2026-10-25 |
 | 🚨 [Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-observability.html) | Part 11 of Who Runs the AI Factory: the SREs who watch AI infrastructure, from GPU telemetry, flight recorders and error budgets to two… | 2026-10-25 |
 | ⚡ [Always On: The Inference Engineers Who Serve Models to Billions](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-inference-platform.html) | Part 10 of Who Runs the AI Factory: the inference engineers who run models as a product, from SLOs and cost per token to disaggregated… | 2026-10-25 |

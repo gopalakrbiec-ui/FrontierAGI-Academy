@@ -131,6 +131,15 @@
       ]
     },
     {
+      "id": "sec-cases",
+      "title": "Inside the Gigawatt Club: Case Studies of AI Factories",
+      "short": "Inside the Gigawatt Club",
+      "icon": "🏭",
+      "slugs": [
+        "colossus-xai-memphis"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
