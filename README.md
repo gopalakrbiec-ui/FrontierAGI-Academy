@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🟢 [The Fleet: How Google Built AI Factories a Decade Before Everyone Else](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/google-tpu-fleet.html) | Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across… | 2026-10-26 |
 | 🔥 [Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-prometheus-hyperion.html) | Meta stitched Prometheus together from traditional halls, AI-optimised buildings, quick-build structures and leased space, then planned… | 2026-10-26 |
 | ⛰️ [Project Rainier: The AI Factory Built Without NVIDIA](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/project-rainier.html) | Amazon filled farmland in New Carlisle, Indiana with nearly half a million of its own Trainium2 chips for Anthropic. | 2026-10-26 |
 | 🔗 [Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/microsoft-fairwater.html) | Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. | 2026-10-26 |

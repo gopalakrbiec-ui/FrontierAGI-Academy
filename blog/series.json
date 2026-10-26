@@ -140,7 +140,8 @@
         "stargate-abilene",
         "microsoft-fairwater",
         "project-rainier",
-        "meta-prometheus-hyperion"
+        "meta-prometheus-hyperion",
+        "google-tpu-fleet"
       ]
     },
     {

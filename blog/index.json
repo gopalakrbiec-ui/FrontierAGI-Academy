@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "google-tpu-fleet",
+      "title": "The Fleet: How Google Built AI Factories a Decade Before Everyone Else",
+      "excerpt": "Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across data centers and now rents TPUs to rivals. The sixth AI factory case study: a fleet, not a site.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "Google"
+      ],
+      "emoji": "🟢",
+      "featured": false
+    },
+    {
       "slug": "meta-prometheus-hyperion",
       "title": "Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City",
       "excerpt": "Meta stitched Prometheus together from traditional halls, AI-optimised buildings, quick-build structures and leased space, then planned Hyperion: a 5 GW campus owned 80% by investors and powered by up to ten gas plants. The fifth AI factory case study.",
