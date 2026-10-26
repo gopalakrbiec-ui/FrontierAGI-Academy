@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a… | 2026-10-26 |
 | ☁️ [The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/coreweave-neoclouds.html) | CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against… | 2026-10-26 |
 | 🟢 [The Fleet: How Google Built AI Factories a Decade Before Everyone Else](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/google-tpu-fleet.html) | Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across… | 2026-10-26 |
 | 🔥 [Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-prometheus-hyperion.html) | Meta stitched Prometheus together from traditional halls, AI-optimised buildings, quick-build structures and leased space, then planned… | 2026-10-26 |

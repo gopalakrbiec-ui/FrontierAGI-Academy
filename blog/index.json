@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "china-ai-factories",
+      "title": "Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips",
+      "excerpt": "Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a state program of western data center hubs, and NVIDIA capacity rented abroad. The eighth AI factory case study.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "China"
+      ],
+      "emoji": "🇨🇳",
+      "featured": false
+    },
+    {
       "slug": "coreweave-neoclouds",
       "title": "The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business",
       "excerpt": "CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against about $35B of debt. The seventh AI factory case study, with an interactive GPU loan model.",
