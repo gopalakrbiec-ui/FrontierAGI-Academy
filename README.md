@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📊 [Nine AI Factories, One Map: Which Bets Are Winning?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-compared.html) | The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on… | 2026-10-26 |
 | 🏳️ [Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sovereign-ai-factories.html) | Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate… | 2026-10-26 |
 | 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a… | 2026-10-26 |
 | ☁️ [The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/coreweave-neoclouds.html) | CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against… | 2026-10-26 |

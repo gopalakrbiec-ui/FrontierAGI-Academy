@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-factories-compared",
+      "title": "Nine AI Factories, One Map: Which Bets Are Winning?",
+      "excerpt": "The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on one timeline and one re-weightable scoreboard, and pulls out five patterns: power, gas, the gigawatt footnote, risk moving off balance sheets, and networks of sites.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "16 min",
+      "tags": [
+        "AI Factories",
+        "Case Study"
+      ],
+      "emoji": "📊",
+      "featured": false
+    },
+    {
       "slug": "sovereign-ai-factories",
       "title": "Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories",
       "excerpt": "Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate Norway and IndiaAI. The ninth AI factory case study compares what was announced with what was delivered, and the dependence on US chips, labs and licences.",
