@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "stargate-abilene",
+      "title": "Stargate Abilene: The AI Factory Built on Other People's Money",
+      "excerpt": "OpenAI's flagship campus in Abilene, Texas was built by a chain of companies: Lancium, Crusoe, Blue Owl, Primary Digital, J.P. Morgan-led lenders and Oracle, all betting on one customer. The second AI factory case study: the ownership chain, $15B of financing, eight buildings and a gas microgrid.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "OpenAI"
+      ],
+      "emoji": "🌵",
+      "featured": false
+    },
+    {
       "slug": "colossus-xai-memphis",
       "title": "Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost",
       "excerpt": "xAI turned an empty Memphis factory into a 100,000-GPU cluster in 122 days, then built Colossus 2 in phases of 91 and 64 days. The first AI factory case study: the speed bet, the gas turbines, the lawsuits and three ways to count a gigawatt.",
