@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "coreweave-neoclouds",
+      "title": "The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business",
+      "excerpt": "CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against about $35B of debt. The seventh AI factory case study, with an interactive GPU loan model.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "CoreWeave"
+      ],
+      "emoji": "☁️",
+      "featured": false
+    },
+    {
       "slug": "google-tpu-fleet",
       "title": "The Fleet: How Google Built AI Factories a Decade Before Everyone Else",
       "excerpt": "Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across data centers and now rents TPUs to rivals. The sixth AI factory case study: a fleet, not a site.",

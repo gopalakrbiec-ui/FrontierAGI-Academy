@@ -141,7 +141,8 @@
         "microsoft-fairwater",
         "project-rainier",
         "meta-prometheus-hyperion",
-        "google-tpu-fleet"
+        "google-tpu-fleet",
+        "coreweave-neoclouds"
       ]
     },
     {
