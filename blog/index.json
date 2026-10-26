@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "microsoft-fairwater",
+      "title": "Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer",
+      "excerpt": "Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. The third AI factory case study: two-storey halls, 140 kW racks, no on-site turbines, and who pays for the power.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Case Study",
+        "Microsoft"
+      ],
+      "emoji": "🔗",
+      "featured": false
+    },
+    {
       "slug": "stargate-abilene",
       "title": "Stargate Abilene: The AI Factory Built on Other People's Money",
       "excerpt": "OpenAI's flagship campus in Abilene, Texas was built by a chain of companies: Lancium, Crusoe, Blue Owl, Primary Digital, J.P. Morgan-led lenders and Oracle, all betting on one customer. The second AI factory case study: the ownership chain, $15B of financing, eight buildings and a gas microgrid.",
