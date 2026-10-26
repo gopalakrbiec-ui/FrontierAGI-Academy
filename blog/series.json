@@ -164,6 +164,15 @@
       ]
     },
     {
+      "id": "sec-mllayer",
+      "title": "Inside the ML Layer: The Software That Turns GPUs into Models",
+      "short": "Inside the ML Layer",
+      "icon": "🧠",
+      "slugs": [
+        "ml-layer-map"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
