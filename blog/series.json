@@ -149,6 +149,15 @@
       ]
     },
     {
+      "id": "sec-managed",
+      "title": "AI Factory as a Service: Who Builds Them, Who Buys Them",
+      "short": "AI Factory as a Service",
+      "icon": "🧰",
+      "slugs": [
+        "managed-ai-factories-landscape"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",

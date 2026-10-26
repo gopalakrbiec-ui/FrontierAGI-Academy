@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "managed-ai-factories-landscape",
+      "title": "Build, Install, Buy or Rent: The Four Ways to Get an AI Factory",
+      "excerpt": "Only a handful of companies can build a Colossus. Everyone else can have a hyperscaler install its cloud in their building, buy a vendor's ready-made AI factory, or rent capacity. Part 1 of AI Factory as a Service maps the four routes, who sells them and what drives the choice.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-26",
+      "readTime": "15 min",
+      "tags": [
+        "AI Factories",
+        "Managed Services"
+      ],
+      "emoji": "🗺️",
+      "featured": false
+    },
+    {
       "slug": "ai-factories-compared",
       "title": "Nine AI Factories, One Map: Which Bets Are Winning?",
       "excerpt": "The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on one timeline and one re-weightable scoreboard, and pulls out five patterns: power, gas, the gigawatt footnote, risk moving off balance sheets, and networks of sites.",

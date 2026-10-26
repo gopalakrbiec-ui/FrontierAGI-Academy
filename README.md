@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🗺️ [Build, Install, Buy or Rent: The Four Ways to Get an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factories-landscape.html) | Only a handful of companies can build a Colossus. | 2026-10-26 |
 | 📊 [Nine AI Factories, One Map: Which Bets Are Winning?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-compared.html) | The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on… | 2026-10-26 |
 | 🏳️ [Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sovereign-ai-factories.html) | Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate… | 2026-10-26 |
 | 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a… | 2026-10-26 |
