@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-layer-map",
+      "title": "The Data Layer, Mapped: From a Web Crawl to a Training Batch",
+      "excerpt": "Before a GPU starts training, petabytes of web pages, books, code, licensed archives, synthetic text and human examples must be found, cleaned, deduplicated, mixed and tokenised. Part 1 of Inside the Data Layer maps that supply chain, shows how little of the web survives, and follows the deals and lawsuits around it.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "20 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "🗃️",
+      "featured": false
+    },
+    {
       "slug": "ml-agent-runtimes",
       "title": "The Top of the Stack: Agent Runtimes, Tool Protocols and the Software That Lets Models Act",
       "excerpt": "The final part of Inside the ML Layer covers the top of the stack: the agent loop, tool calling, MCP and A2A, runtime patterns, the lab SDKs and frameworks, sandboxes, tracing and what agents cost, with an agent-loop animator, an MCP message trace and a map of the whole series.",

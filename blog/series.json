@@ -180,6 +180,15 @@
       ]
     },
     {
+      "id": "sec-datalayer",
+      "title": "Inside the Data Layer: How AI Factories Collect, Clean and Feed Data",
+      "short": "Inside the Data Layer",
+      "icon": "🗃️",
+      "slugs": [
+        "data-layer-map"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
