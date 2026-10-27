@@ -5141,6 +5141,90 @@
 "st": "ga",
 "sec": 1,
 "ref": "openai-20261015-gpt-live-1-1"
+},
+{
+"id": "nvidia-20261015-nemotron-3-5-bolt-74b-a9b",
+"date": "2026-10-15",
+"lab": "nvidia",
+"mod": [
+"llm"
+],
+"fam": "nemotron",
+"name": "Nemotron 3.5 Bolt 74B-A9B",
+"full": "Nemotron 3.5 Bolt 74B-A9B: 2-bit 24 GB open model for local agents",
+"src": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0,
+"ref": "nvidia-20261015-nemotron-3-5-bolt-74b-a9b"
+},
+{
+"id": "mistral-20261020-voxtral-3-and-voice-agent-sdk",
+"date": "2026-10-20",
+"lab": "mistral",
+"mod": [
+"speech"
+],
+"fam": "voxtral",
+"name": "Voxtral 3",
+"full": "Voxtral 3: transcription and TTS models with a voice agent SDK; weights not announced",
+"src": "https://www.testingcatalog.com/mistral-launches-voxtral-3-with-a-voice-agent-sdk/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "nvidia-20261023-nemotron-3-5-bolt-e4b-4gb",
+"date": "2026-10-23",
+"lab": "nvidia",
+"mod": [
+"llm"
+],
+"fam": "nemotron",
+"name": "Nemotron 3.5 Bolt E4B",
+"full": "Nemotron 3.5 Bolt E4B 4GB: small open model for local voice agents and robots",
+"src": "https://www.marktechpost.com/2026/10/23/nvidia-nemotron-3-5-bolt-e4b-4gb/",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 1,
+"ref": "nvidia-20261023-nemotron-3-5-bolt-e4b-4gb"
+},
+{
+"id": "moonshot-20261023-kimi-k3-1-pro",
+"date": "2026-10-23",
+"lab": "moonshot",
+"mod": [
+"llm"
+],
+"fam": "kimi",
+"name": "Kimi K3.1 Pro",
+"full": "Kimi K3.1 Pro: post-trained K3; weights promised by 4 Nov 2026",
+"src": "https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber",
+"flag": 1,
+"open": null,
+"st": "ga",
+"sec": 1,
+"ref": "moonshot-20261023-kimi-k3-1-pro"
+},
+{
+"id": "openai-20261026-gpt-6-1-terra",
+"date": "2026-10-26",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-6.1 Terra",
+"full": "GPT-6.1 Terra: mid-tier computer-use model, $1/$5; performance claims are OpenAI’s",
+"src": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0,
+"ref": "openai-20261026-gpt-6-1-terra"
 }
 ]
 }

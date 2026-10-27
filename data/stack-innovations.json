@@ -3718,6 +3718,21 @@
    "src": "https://arxiv.org/abs/2506.20920",
    "sec": 0,
    "art": "data-filtering-dedup"
+  },
+  {
+   "id": "agent-235",
+   "date": "2026-10",
+   "lane": "agent",
+   "title": "Agent Skills standard moves to AAIF",
+   "org": "Anthropic → Agentic AI Foundation",
+   "type": "s",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "Anthropic donated the Agent Skills standard (name, GitHub org, agentskills.io) to the Linux Foundation’s Agentic AI Foundation; Anthropic cites ~280M installs. (Claude helps write this site.)",
+   "src": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+   "sec": 0,
+   "art": "ml-agent-runtimes"
   }
  ],
  "enables": [
@@ -3924,6 +3939,10 @@
   [
    "power-060",
    "power-219"
+  ],
+  [
+   "agent-140",
+   "agent-235"
   ]
  ]
 }

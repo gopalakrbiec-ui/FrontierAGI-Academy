@@ -2,7 +2,7 @@
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
   "2021-10-01",
-  "2026-10-20"
+  "2026-10-27"
  ],
  "labs": [
   [
@@ -3844,6 +3844,131 @@
    ],
    "source": "https://letsdatascience.com/news/deepmind-releases-embeddinggemma-2-for-edge-search-fbcc7c51",
    "flagship": false
+  },
+  {
+   "id": "openai-20261016-gpt-6-pro-adds-parallel-agents-in-chatgp",
+   "date": "2026-10-16",
+   "lab": "openai",
+   "type": "product",
+   "title": "GPT-6 Pro adds parallel agents in ChatGPT",
+   "summary": "OpenAI upgraded GPT-6 Pro in ChatGPT so several agents can work on parts of one task at once, with faster responses and better tool use (OpenAI gave no figures). Rolling out to Pro users; no API change announced.",
+   "facts": [
+    "Pro users",
+    "Parallel agents"
+   ],
+   "source": "https://mixed-news.com/en/chatgpt-gpt-6-pro-parallel-agents-faster-responses/",
+   "flagship": false
+  },
+  {
+   "id": "nvidia-20261015-nemotron-3-5-bolt-74b-a9b",
+   "date": "2026-10-15",
+   "lab": "nvidia",
+   "type": "model",
+   "title": "Nemotron 3.5 Bolt 74B-A9B",
+   "summary": "An open model compressed from Nemotron 3.5 Super VL into a 2-bit 24 GB footprint for local agents on RTX and DGX Spark, with text, image and video input and up to 256K context. Speed figures are NVIDIA-reported.",
+   "facts": [
+    "Open weights (OpenMDW 1.1)",
+    "24 GB"
+   ],
+   "source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20261020-voxtral-3-and-voice-agent-sdk",
+   "date": "2026-10-20",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Voxtral 3 and voice agent SDK",
+   "summary": "A family of three transcription models and one text-to-speech model plus a real-time voice-agent SDK, covering 50+ languages for transcription and 35+ for speech. Mistral has not said whether weights will be released.",
+   "facts": [
+    "3 STT + 1 TTS",
+    "Voice agent SDK"
+   ],
+   "source": "https://www.testingcatalog.com/mistral-launches-voxtral-3-with-a-voice-agent-sdk/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20261021-claude-duet-research-preview",
+   "date": "2026-10-21",
+   "lab": "anthropic",
+   "type": "product",
+   "title": "Claude Duet (research preview)",
+   "summary": "A proactive agent app that runs on Claude Opus 5.5 in its own virtual machine, sends a daily rundown from connected apps, completes tasks and asks before sensitive actions. Waitlist for US Pro and Max users.",
+   "facts": [
+    "Research preview",
+    "US Pro and Max waitlist"
+   ],
+   "source": "https://betanews.com/article/proactive-ai-agent-claude-duet/",
+   "flagship": false
+  },
+  {
+   "id": "anthropic-20261022-agent-skills-donated-to-the-agentic-ai-f",
+   "date": "2026-10-22",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Agent Skills donated to the Agentic AI Foundation",
+   "summary": "Anthropic handed the Agent Skills standard (name, GitHub organisation and agentskills.io) to the Linux Foundation’s Agentic AI Foundation, following MCP. Anthropic cites about 280 million skill installs.",
+   "facts": [
+    "Open standard",
+    "Linux Foundation"
+   ],
+   "source": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+   "flagship": false
+  },
+  {
+   "id": "nvidia-20261023-nemotron-3-5-bolt-e4b-4gb",
+   "date": "2026-10-23",
+   "lab": "nvidia",
+   "type": "model",
+   "title": "Nemotron 3.5 Bolt E4B 4GB",
+   "summary": "A small open model post-trained with RL from Gemma 4 E4B for local voice agents, game characters and robots; runs on RTX, Jetson and DGX Spark. Benchmark wins are NVIDIA-measured.",
+   "facts": [
+    "Open weights",
+    "4 GB"
+   ],
+   "source": "https://www.marktechpost.com/2026/10/23/nvidia-nemotron-3-5-bolt-e4b-4gb/",
+   "flagship": false
+  },
+  {
+   "id": "moonshot-20261023-kimi-k3-1-pro",
+   "date": "2026-10-23",
+   "lab": "moonshot",
+   "type": "model",
+   "title": "Kimi K3.1 Pro",
+   "summary": "A post-trained Kimi K3 (reported 2.8T total / 104B active, 1M context) at $2/$10 per million tokens, about a third cheaper than K3, with a Highspeed variant. Moonshot promises full weights by 4 November and says it removed hacking-related training data; benchmarks are Moonshot-reported.",
+   "facts": [
+    "$2 / $10 per 1M tokens",
+    "Weights promised by 4 Nov"
+   ],
+   "source": "https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber",
+   "flagship": true
+  },
+  {
+   "id": "openai-20261026-gpt-6-1-terra",
+   "date": "2026-10-26",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-6.1 Terra",
+   "summary": "A mid-tier model aimed at computer use and everyday work, in ChatGPT Work, Codex and the API (gpt-6.1-terra). OpenAI claims it roughly matches GPT-6 Astra at about a tenth of the token price and runs tasks over 3x faster; Artificial Analysis scores it below GPT-6.1 Sol on coding.",
+   "facts": [
+    "$1 / $5 per 1M tokens",
+    "API: gpt-6.1-terra"
+   ],
+   "source": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+   "flagship": true
+  },
+  {
+   "id": "anthropic-20261026-anthropic-files-s-1-for-ipo",
+   "date": "2026-10-26",
+   "lab": "anthropic",
+   "type": "company",
+   "title": "Anthropic files S-1 for IPO",
+   "summary": "Anthropic publicly filed its S-1 with the SEC for a proposed Nasdaq listing under the ticker ANT; share count and price range not yet set. (Claude, made by Anthropic, helps write this site.)",
+   "facts": [
+    "Nasdaq: ANT (proposed)"
+   ],
+   "source": "https://www.anthropic.com/news/s1-sec",
+   "flagship": true
   }
  ]
 }
