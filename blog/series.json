@@ -189,7 +189,8 @@
         "data-crawling-sourcing",
         "data-filtering-dedup",
         "data-synthetic",
-        "data-human-labelling"
+        "data-human-labelling",
+        "data-mixtures"
       ]
     },
     {

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-mixtures",
+      "title": "The Secret Recipe: How Labs Mix, Weight and Schedule Training Data",
+      "excerpt": "Part 6 of Inside the Data Layer explains data mixtures: how labs split a token budget between web, code, maths, books and languages, how mixtures are searched (DoReMi, RegMix), why the best data is saved for annealing, how many times data can repeat, and temperature sampling for languages, with a mix builder and repetition calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "23 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "⚖️",
+      "featured": false
+    },
+    {
       "slug": "data-human-labelling",
       "title": "The Human Layer: Labellers, Experts and the Multibillion-Dollar Business of Teaching AI",
       "excerpt": "Part 5 of Inside the Data Layer covers human data: demonstrations, preferences, rubrics, red-teaming and expert tasks; how labels are quality-checked; the shift from crowd workers to experts; what it costs; and the industry of Scale AI, Surge AI and Mercor, with a labelling game and cost calculator.",
