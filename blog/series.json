@@ -186,7 +186,8 @@
       "icon": "🗃️",
       "slugs": [
         "data-layer-map",
-        "data-crawling-sourcing"
+        "data-crawling-sourcing",
+        "data-filtering-dedup"
       ]
     },
     {

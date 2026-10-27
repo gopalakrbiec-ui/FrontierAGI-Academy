@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-filtering-dedup",
+      "title": "Throwing Away 90% of the Web: How AI Labs Filter and Deduplicate Training Data",
+      "excerpt": "Part 3 of Inside the Data Layer opens the refinery that turns raw crawls into training data: Gopher-style rules, quality classifiers (FineWeb-Edu, DCLM, Nemotron-CC), exact, fuzzy and semantic deduplication and decontamination, with a working rule lab, MinHash calculator and LSH curve.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "26 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "🧹",
+      "featured": false
+    },
+    {
       "slug": "data-crawling-sourcing",
       "title": "Where the Tokens Come From: Crawlers, Licences and the Closing Web",
       "excerpt": "Part 2 of Inside the Data Layer explains how crawlers collect the web, what each source (web, code, books, papers, forums, licensed archives) is worth, how robots.txt, terms of service and Cloudflare are closing the web, and why labs now pay for data, with a crawler simulator and a robots.txt explorer.",
