@@ -186,7 +186,10 @@
   "lora": "Parameter-efficient fine-tuning",
   "scale": "Scaling laws",
   "mtia": "Meta MTIA",
-  "cer": "Cerebras wafer-scale"
+  "cer": "Cerebras wafer-scale",
+  "maia": "Microsoft Maia",
+  "ual": "UALink",
+  "cpo": "Co-packaged optics"
  },
  "items": [
   {
@@ -557,7 +560,7 @@
    "org": "Microsoft",
    "type": "p",
    "open": 0,
-   "fam": "",
+   "fam": "maia",
    "flag": 0,
    "sum": "Microsoft's first in-house AI accelerator.",
    "src": "https://en.wikipedia.org/wiki/Microsoft_Azure#Hardware",
@@ -917,7 +920,7 @@
    "org": "UALink",
    "type": "s",
    "open": 1,
-   "fam": "",
+   "fam": "ual",
    "flag": 0,
    "sum": "Open scale-up accelerator link backed by AMD, Intel, Google and others.",
    "src": "https://en.wikipedia.org/wiki/UALink",
@@ -3203,6 +3206,216 @@
    "src": "https://en.wikipedia.org/wiki/Open_Compute_Project",
    "sec": 1,
    "art": "inside-the-ai-factory"
+  },
+  {
+   "id": "gpu-201",
+   "date": "2026-01",
+   "lane": "gpu",
+   "title": "Rubin platform launched (CES 2026)",
+   "org": "NVIDIA",
+   "type": "p",
+   "open": 0,
+   "fam": "nvdc",
+   "flag": 1,
+   "sum": "Vera Rubin NVL72 rack (72 Rubin GPUs, 36 Vera CPUs; formerly called NVL144) launched; partner deliveries planned for H2 2026.",
+   "src": "https://www.servethehome.com/nvidia-launches-next-generation-rubin-ai-compute-platform-at-ces-2026/",
+   "sec": 1,
+   "art": "future-of-ai-compute"
+  },
+  {
+   "id": "gpu-202",
+   "date": "2026-07",
+   "lane": "gpu",
+   "title": "Instinct MI455X + Helios rack",
+   "org": "AMD",
+   "type": "p",
+   "open": 2,
+   "fam": "amd",
+   "flag": 1,
+   "sum": "432 GB HBM4 per GPU; Helios reference rack with 72 GPUs, EPYC Venice CPUs and Pensando networking. Shipments ramping from H2 2026 (vendor timing).",
+   "src": "https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html",
+   "sec": 0,
+   "art": "custom-silicon-vs-nvidia"
+  },
+  {
+   "id": "asic-203",
+   "date": "2025-12",
+   "lane": "asic",
+   "title": "Trainium3 UltraServers GA",
+   "org": "AWS",
+   "type": "p",
+   "open": 0,
+   "fam": "aws",
+   "flag": 0,
+   "sum": "Up to 144 Trainium3 chips per UltraServer; AWS claims 4.4x Trn2 performance. Trainium4 previewed.",
+   "src": "https://www.datacenterdynamics.com/en/news/aws-makes-trainium3-ultraservers-generally-available/",
+   "sec": 1,
+   "art": "project-rainier"
+  },
+  {
+   "id": "asic-204",
+   "date": "2026-01",
+   "lane": "asic",
+   "title": "Maia 200",
+   "org": "Microsoft",
+   "type": "p",
+   "open": 0,
+   "fam": "maia",
+   "flag": 0,
+   "sum": "Second-gen inference chip on TSMC 3nm with 216 GB HBM3e; Microsoft-reported >10 PFLOPS FP4.",
+   "src": "https://news.microsoft.com/source/emea/features/maia-200-microsoft-ai-accelerator-azure/",
+   "sec": 0,
+   "art": "custom-silicon-vs-nvidia"
+  },
+  {
+   "id": "asic-205",
+   "date": "2026-03",
+   "lane": "asic",
+   "title": "MTIA 300 / 400 / 450 / 500 roadmap",
+   "org": "Meta",
+   "type": "p",
+   "open": 0,
+   "fam": "mtia",
+   "flag": 0,
+   "sum": "Four chip generations unveiled; MTIA 300 reported in mass production, the rest due by 2027 (as reported).",
+   "src": "https://www.cnbc.com/2026/03/11/meta-ai-mtia-chip-data-center.html",
+   "sec": 1,
+   "art": "custom-silicon-vs-nvidia"
+  },
+  {
+   "id": "asic-206",
+   "date": "2026-04",
+   "lane": "asic",
+   "title": "TPU 8t (training) and TPU 8i (inference)",
+   "org": "Google",
+   "type": "p",
+   "open": 0,
+   "fam": "tpu",
+   "flag": 1,
+   "sum": "Eighth generation splits into separate training and inference chips; Google cites 121 FP4 exaflops per 8t superpod. GA expected later in 2026.",
+   "src": "https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26",
+   "sec": 0,
+   "art": "google-tpu-fleet"
+  },
+  {
+   "id": "mem-207",
+   "date": "2026-02",
+   "lane": "mem",
+   "title": "HBM4 in mass production",
+   "org": "Samsung, SK hynix",
+   "type": "p",
+   "open": 0,
+   "fam": "hbm",
+   "flag": 0,
+   "sum": "⚠️ Samsung reported to announce HBM4 mass production and shipments in Feb 2026; SK hynix volume in Q2 2026 (secondary reports).",
+   "src": "https://siliconanalysts.com/analysis/hbm4-market-share-race-2026",
+   "sec": 1,
+   "art": "memory-wall-hbm"
+  },
+  {
+   "id": "net-208",
+   "date": "2025-04",
+   "lane": "net",
+   "title": "UALink 200G 1.0 specification",
+   "org": "UALink Consortium",
+   "type": "s",
+   "open": 1,
+   "fam": "ual",
+   "flag": 0,
+   "sum": "Open scale-up interconnect spec for up to 1,024 accelerators per pod at 200G per lane.",
+   "src": "https://www.businesswire.com/news/home/20250408050548/en/UALink-Consortium-Releases-the-Ultra-Accelerator-Link-200G-1.0-Specification",
+   "sec": 0,
+   "art": "interconnect-wars"
+  },
+  {
+   "id": "net-209",
+   "date": "2025-03",
+   "lane": "net",
+   "title": "Spectrum-X / Quantum-X Photonics (CPO) announced",
+   "org": "NVIDIA",
+   "type": "p",
+   "open": 0,
+   "fam": "cpo",
+   "flag": 0,
+   "sum": "Co-packaged optics switches: optics moved onto the switch package to cut lasers and power.",
+   "src": "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories",
+   "sec": 0,
+   "art": "interconnect-wars"
+  },
+  {
+   "id": "net-210",
+   "date": "2026-06",
+   "lane": "net",
+   "title": "CPO switches begin shipping",
+   "org": "NVIDIA",
+   "type": "p",
+   "open": 0,
+   "fam": "cpo",
+   "flag": 1,
+   "sum": "Spectrum-X co-packaged optics switches shipping to select partners; volumes not disclosed.",
+   "src": "https://www.taipeitimes.com/News/biz/archives/2026/06/04/2003858481",
+   "sec": 1,
+   "art": "interconnect-wars"
+  },
+  {
+   "id": "power-211",
+   "date": "2026-03",
+   "lane": "power",
+   "title": "800 VDC power architecture",
+   "org": "NVIDIA, TI and partners",
+   "type": "s",
+   "open": 2,
+   "fam": "",
+   "flag": 0,
+   "sum": "Moving racks from AC to 800 V DC to cut conversion steps; TI released a full reference architecture. First racks targeted for H2 2026.",
+   "src": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-03-16-ti-unveils-complete-800-vdc-power-architecture-for-future-generation-ai-data-centers-with-nvidia.html",
+   "sec": 0,
+   "art": "energy-beyond-the-grid"
+  },
+  {
+   "id": "agent-212",
+   "date": "2026-07",
+   "lane": "agent",
+   "title": "MCP spec 2026-07-28 (stateless)",
+   "org": "MCP maintainers",
+   "type": "s",
+   "open": 1,
+   "fam": "mcp",
+   "flag": 1,
+   "sum": "Retires the session handshake; each request carries its own context. Adds caching, multi-round-trip requests and an extensions framework.",
+   "src": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+   "sec": 0,
+   "art": "ml-agent-runtimes"
+  },
+  {
+   "id": "fw-213",
+   "date": "2026-03",
+   "lane": "fw",
+   "title": "PyTorch 2.11",
+   "org": "PyTorch Foundation",
+   "type": "o",
+   "open": 1,
+   "fam": "pt",
+   "flag": 0,
+   "sum": "FlashAttention-4 backend for FlexAttention on Hopper/Blackwell, differentiable collectives, CUDA 13 default.",
+   "src": "https://pytorch.org/blog/pytorch-2-11-release-blog/",
+   "sec": 0,
+   "art": "ml-frameworks-pytorch-jax"
+  },
+  {
+   "id": "data-214",
+   "date": "2026-04",
+   "lane": "data",
+   "title": "Common Corpus (ICLR 2026)",
+   "org": "Pleias et al.",
+   "type": "o",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "About 2 trillion tokens of public-domain or openly licensed multilingual text and code.",
+   "src": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2b5c5689fae6fa9a4883e73e511d52c8-Abstract-Conference.html",
+   "sec": 0,
+   "art": "data-law-data-wall"
   }
  ],
  "enables": [
@@ -3353,6 +3566,26 @@
   [
    "post-174",
    "post-114"
+  ],
+  [
+   "mem-032",
+   "mem-207"
+  ],
+  [
+   "mem-207",
+   "gpu-202"
+  ],
+  [
+   "kern-081",
+   "fw-213"
+  ],
+  [
+   "agent-140",
+   "agent-212"
+  ],
+  [
+   "net-048",
+   "net-208"
   ]
  ]
 }
