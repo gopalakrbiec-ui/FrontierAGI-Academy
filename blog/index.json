@@ -1415,7 +1415,7 @@
     {
       "slug": "ai-research-2026-papers",
       "title": "AI Research in 2026: The Papers and Ideas Reshaping the Field",
-      "excerpt": "Fourteen of 2026's most-awarded and most-discussed AI papers from ICLR and ICML — Transformer succinctness, memorisation capacity, reasoning without answer keys, self-improving agents, the diffusion 'flexibility trap', deception detectors, multi-turn failures, AI-scientist benchmarks and more — each explained in plain English with animations and sources.",
+      "excerpt": "Twenty of 2026's most-awarded and most-discussed AI papers from ICLR, ICML, CVPR, ACL, RLC and COLM — Transformer succinctness, memorisation capacity, reasoning without answer keys, self-improving agents, the diffusion 'flexibility trap', deception detectors, multi-turn failures, AI-scientist benchmarks and more — each explained in plain English with animations and sources.",
       "author": "FrontierAGI Team",
       "authorInitials": "FL",
       "date": "2026-09-29",

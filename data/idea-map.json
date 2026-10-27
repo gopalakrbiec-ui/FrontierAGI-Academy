@@ -93,7 +93,13 @@
   "2026/p62": "Chain-of-Evidence",
   "2026/p81": "Motive (video attribution)",
   "2013/w2vp": "word2vec phrases",
-  "2019/adv": "Adversarial features"
+  "2019/adv": "Adversarial features",
+  "2026/p91": "D4RT (4D video reconstruction)",
+  "2026/p92": "NitroGen (gaming agents)",
+  "2026/p93": "Local attention expressivity",
+  "2026/p94": "Imperfective paradox",
+  "2026/p95": "Gradient iterated TD",
+  "2026/p96": "Message-passing reasoning"
  },
  "nodeArea": {
   "1950-1980/perc": "nn",
@@ -376,7 +382,13 @@
   "2025/sa": "sys",
   "2026/p51": "sys",
   "2026/p61": "sys",
-  "2026/p62": "sys"
+  "2026/p62": "sys",
+  "2026/p91": "vis",
+  "2026/p92": "rl",
+  "2026/p93": "nn",
+  "2026/p94": "lang",
+  "2026/p95": "rl",
+  "2026/p96": "lang"
  },
  "links": [
   [
@@ -1965,6 +1977,58 @@
   [
    "2021/dbg",
    "2025/dm"
+  ],
+  [
+   "2020/nerf",
+   "2026/p91"
+  ],
+  [
+   "2018/gqn",
+   "2026/p91"
+  ],
+  [
+   "2024/gn",
+   "2026/p92"
+  ],
+  [
+   "2023/vy",
+   "2026/p92"
+  ],
+  [
+   "2026/p11",
+   "2026/p93"
+  ],
+  [
+   "2019/spt",
+   "2026/p93"
+  ],
+  [
+   "2018/glue",
+   "2026/p94"
+  ],
+  [
+   "2022/cot",
+   "2026/p94"
+  ],
+  [
+   "1980-2000/td",
+   "2026/p95"
+  ],
+  [
+   "2015/dqn",
+   "2026/p95"
+  ],
+  [
+   "2022/cot",
+   "2026/p96"
+  ],
+  [
+   "2023/tot",
+   "2026/p96"
+  ],
+  [
+   "2024/sn",
+   "2026/p96"
   ]
  ],
  "tours": [
@@ -2177,6 +2241,8 @@
   "2025/asc",
   "2026/p21",
   "2026/p31",
-  "2026/p32"
+  "2026/p32",
+  "2026/p91",
+  "2026/p96"
  ]
 }
