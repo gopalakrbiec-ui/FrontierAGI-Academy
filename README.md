@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🎯 [After Pre-training: The Software That Turns a Base Model into a Reasoning Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-post-training-rl.html) | Post-training turns a base model into a reasoning assistant, and RL makes it a systems problem. | 2026-10-27 |
 | ⚙️ [The Kernels That Matter: FlashAttention, CUTLASS, Triton and the Code That Actually Runs on the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-kernels.html) | The arithmetic of every frontier model happens inside a few GPU kernels. | 2026-10-27 |
 | 🧩 [Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-parallelism-libraries.html) | No frontier model fits on one chip. | 2026-10-27 |
 | 🧱 [Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-frameworks-pytorch-jax.html) | Almost every frontier model is written in PyTorch or JAX. | 2026-10-26 |
