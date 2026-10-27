@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-crawling-sourcing",
+      "title": "Where the Tokens Come From: Crawlers, Licences and the Closing Web",
+      "excerpt": "Part 2 of Inside the Data Layer explains how crawlers collect the web, what each source (web, code, books, papers, forums, licensed archives) is worth, how robots.txt, terms of service and Cloudflare are closing the web, and why labs now pay for data, with a crawler simulator and a robots.txt explorer.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "24 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "🕷️",
+      "featured": false
+    },
+    {
       "slug": "data-layer-map",
       "title": "The Data Layer, Mapped: From a Web Crawl to a Training Batch",
       "excerpt": "Before a GPU starts training, petabytes of web pages, books, code, licensed archives, synthetic text and human examples must be found, cleaned, deduplicated, mixed and tokenised. Part 1 of Inside the Data Layer maps that supply chain, shows how little of the web survives, and follows the deals and lawsuits around it.",

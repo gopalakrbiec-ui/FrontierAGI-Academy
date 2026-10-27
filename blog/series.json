@@ -185,7 +185,8 @@
       "short": "Inside the Data Layer",
       "icon": "🗃️",
       "slugs": [
-        "data-layer-map"
+        "data-layer-map",
+        "data-crawling-sourcing"
       ]
     },
     {
