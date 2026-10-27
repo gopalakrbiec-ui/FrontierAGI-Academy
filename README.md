@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 👩‍🏫 [The Human Layer: Labellers, Experts and the Multibillion-Dollar Business of Teaching AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-human-labelling.html) | Part 5 of Inside the Data Layer covers human data: demonstrations, preferences, rubrics, red-teaming and expert tasks; how labels are… | 2026-10-27 |
 | ✨ [Models Teaching Models: How Synthetic Data Became the Fastest-Growing Source of Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-synthetic.html) | Part 4 of Inside the Data Layer explains how labs manufacture training data (rephrasing, generated textbooks, instruction data,… | 2026-10-27 |
 | 🧹 [Throwing Away 90% of the Web: How AI Labs Filter and Deduplicate Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-filtering-dedup.html) | Part 3 of Inside the Data Layer opens the refinery that turns raw crawls into training data: Gopher-style rules, quality classifiers… | 2026-10-27 |
 | 🕷️ [Where the Tokens Come From: Crawlers, Licences and the Closing Web](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-crawling-sourcing.html) | Part 2 of Inside the Data Layer explains how crawlers collect the web, what each source (web, code, books, papers, forums, licensed… | 2026-10-27 |

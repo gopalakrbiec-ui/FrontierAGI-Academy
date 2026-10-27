@@ -188,7 +188,8 @@
         "data-layer-map",
         "data-crawling-sourcing",
         "data-filtering-dedup",
-        "data-synthetic"
+        "data-synthetic",
+        "data-human-labelling"
       ]
     },
     {
