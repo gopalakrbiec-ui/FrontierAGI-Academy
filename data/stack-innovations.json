@@ -189,7 +189,9 @@
   "cer": "Cerebras wafer-scale",
   "maia": "Microsoft Maia",
   "ual": "UALink",
-  "cpo": "Co-packaged optics"
+  "cpo": "Co-packaged optics",
+  "cudav": "CUDA",
+  "nvlr": "NVLink racks"
  },
  "items": [
   {
@@ -980,7 +982,7 @@
    "org": "NVIDIA",
    "type": "p",
    "open": 0,
-   "fam": "",
+   "fam": "nvlr",
    "flag": 1,
    "sum": "72 GPUs in one NVLink domain, liquid-cooled, ~120 kW per rack.",
    "src": "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)",
@@ -1160,7 +1162,7 @@
    "org": "NVIDIA",
    "type": "p",
    "open": 0,
-   "fam": "",
+   "fam": "cudav",
    "flag": 1,
    "sum": "General-purpose GPU programming; the foundation of NVIDIA's moat.",
    "src": "https://en.wikipedia.org/wiki/CUDA",
@@ -3416,6 +3418,306 @@
    "src": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2b5c5689fae6fa9a4883e73e511d52c8-Abstract-Conference.html",
    "sec": 0,
    "art": "data-law-data-wall"
+  },
+  {
+   "id": "stor-215",
+   "date": "2019-08",
+   "lane": "stor",
+   "title": "GPUDirect Storage announced",
+   "org": "NVIDIA",
+   "type": "p",
+   "open": 0,
+   "fam": "",
+   "flag": 0,
+   "sum": "Direct DMA path between NVMe storage and GPU memory, bypassing the CPU bounce buffer.",
+   "src": "https://www.nextplatform.com/2019/08/08/nvidia-gpu-accelerators-get-a-direct-pipe-to-big-data/",
+   "sec": 1,
+   "art": "ai-factory-storage"
+  },
+  {
+   "id": "stor-216",
+   "date": "2025-02",
+   "lane": "stor",
+   "title": "3FS (Fire-Flyer File System)",
+   "org": "DeepSeek",
+   "type": "o",
+   "open": 1,
+   "fam": "dfs",
+   "flag": 1,
+   "sum": "Open-source parallel file system built for SSDs and RDMA; used for data loading, checkpoints and KV cache. DeepSeek reports 7.3 TB/s aggregate reads.",
+   "src": "https://github.com/deepseek-ai/3FS",
+   "sec": 0,
+   "art": "ai-factory-storage"
+  },
+  {
+   "id": "cool-217",
+   "date": "2025-09",
+   "lane": "cool",
+   "title": "In-chip microfluidic cooling (lab test)",
+   "org": "Microsoft",
+   "type": "r",
+   "open": 0,
+   "fam": "liq",
+   "flag": 0,
+   "sum": "Coolant flows through channels etched into the back of the silicon; Microsoft reports up to 3x the heat removal of cold plates. Prototype stage.",
+   "src": "https://www.techrepublic.com/article/news-microsoft-microfluidic-cooling-ai-data-centers/",
+   "sec": 1,
+   "art": "heat-and-water-cooling"
+  },
+  {
+   "id": "power-218",
+   "date": "2025-06",
+   "lane": "power",
+   "title": "Meta–Constellation Clinton nuclear PPA",
+   "org": "Meta, Constellation",
+   "type": "p",
+   "open": 0,
+   "fam": "nuc",
+   "flag": 0,
+   "sum": "20-year agreement for ~1.1 GW of output from the Clinton plant, starting June 2027.",
+   "src": "https://insideclimatenews.org/news/03062025/meta-constellation-nuclear-power-deal/",
+   "sec": 1,
+   "art": "energy-beyond-the-grid"
+  },
+  {
+   "id": "power-219",
+   "date": "2025-10",
+   "lane": "power",
+   "title": "Google–NextEra Duane Arnold restart",
+   "org": "Google, NextEra",
+   "type": "p",
+   "open": 0,
+   "fam": "nuc",
+   "flag": 0,
+   "sum": "25-year purchase agreement to restart a 615 MW Iowa nuclear plant, targeted for early 2029.",
+   "src": "https://www.ans.org/news/article-7501/nextera-and-google-ink-a-deal-to-restart-duane-arnold/",
+   "sec": 1,
+   "art": "energy-beyond-the-grid"
+  },
+  {
+   "id": "cuda-220",
+   "date": "2025-08",
+   "lane": "cuda",
+   "title": "CUDA 13.0",
+   "org": "NVIDIA",
+   "type": "p",
+   "open": 0,
+   "fam": "cudav",
+   "flag": 0,
+   "sum": "Major toolkit release; became the default CUDA for PyTorch 2.11.",
+   "src": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html",
+   "sec": 0,
+   "art": ""
+  },
+  {
+   "id": "net-221",
+   "date": "2024-02",
+   "lane": "net",
+   "title": "800 Gb/s Ethernet (IEEE 802.3df)",
+   "org": "IEEE",
+   "type": "s",
+   "open": 1,
+   "fam": "eth",
+   "flag": 0,
+   "sum": "Standard for 800G Ethernet MAC and 400G/800G physical layers, the backbone speed of AI back-end networks.",
+   "src": "https://ieee802.org/3/df/",
+   "sec": 0,
+   "art": "interconnect-wars"
+  },
+  {
+   "id": "rack-222",
+   "date": "2025-07",
+   "lane": "rack",
+   "title": "GB300 NVL72 first deliveries",
+   "org": "NVIDIA, Dell, CoreWeave",
+   "type": "p",
+   "open": 0,
+   "fam": "nvlr",
+   "flag": 0,
+   "sum": "Blackwell Ultra rack-scale systems begin shipping (Dell reported first deliveries).",
+   "src": "https://www.digitimes.com/news/a20250711PD211.html",
+   "sec": 1,
+   "art": "inside-the-ai-factory"
+  },
+  {
+   "id": "pkg-223",
+   "date": "2024-04",
+   "lane": "pkg",
+   "title": "TSMC A16 with backside power",
+   "org": "TSMC",
+   "type": "p",
+   "open": 0,
+   "fam": "node",
+   "flag": 0,
+   "sum": "1.6nm-class node with Super Power Rail backside power delivery, aimed at AI/HPC; production from H2 2026 (TSMC plan).",
+   "src": "https://www.anandtech.com/show/21369",
+   "sec": 1,
+   "art": "ai-chip-supply-chain"
+  },
+  {
+   "id": "kern-224",
+   "date": "2025-01",
+   "lane": "kern",
+   "title": "FlashInfer",
+   "org": "UW, CMU, NVIDIA et al.",
+   "type": "o",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "Customizable attention engine for serving (block-sparse KV formats, JIT templates); used inside vLLM and SGLang.",
+   "src": "https://arxiv.org/abs/2501.01005",
+   "sec": 0,
+   "art": "ml-kernels"
+  },
+  {
+   "id": "kern-225",
+   "date": "2024-10",
+   "lane": "kern",
+   "title": "Liger Kernel",
+   "org": "LinkedIn",
+   "type": "o",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "Fused Triton kernels for LLM training that cut memory and raise throughput.",
+   "src": "https://arxiv.org/abs/2410.10989",
+   "sec": 0,
+   "art": "ml-kernels"
+  },
+  {
+   "id": "inf-226",
+   "date": "2024-06",
+   "lane": "inf",
+   "title": "Mooncake (Kimi serving)",
+   "org": "Moonshot AI, Tsinghua",
+   "type": "r",
+   "open": 1,
+   "fam": "disagg",
+   "flag": 0,
+   "sum": "KV-cache-centric disaggregated serving using spare CPU, DRAM and SSD as a distributed cache.",
+   "src": "https://arxiv.org/abs/2407.00079",
+   "sec": 0,
+   "art": "ml-inference-engines"
+  },
+  {
+   "id": "par-227",
+   "date": "2023-11",
+   "lane": "par",
+   "title": "DiLoCo",
+   "org": "Google DeepMind",
+   "type": "r",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "Distributed low-communication training: islands of compute sync rarely, enabling training across poorly connected sites.",
+   "src": "https://arxiv.org/abs/2311.08105",
+   "sec": 0,
+   "art": "ml-parallelism-libraries"
+  },
+  {
+   "id": "post-228",
+   "date": "2025-03",
+   "lane": "post",
+   "title": "DAPO",
+   "org": "ByteDance Seed, Tsinghua",
+   "type": "o",
+   "open": 1,
+   "fam": "grpo",
+   "flag": 0,
+   "sum": "Open RL recipe (decoupled clipping, dynamic sampling) on verl; 50 on AIME 2024 with Qwen2.5-32B.",
+   "src": "https://arxiv.org/abs/2503.14476",
+   "sec": 0,
+   "art": "ml-post-training-rl"
+  },
+  {
+   "id": "eval-229",
+   "date": "2024-08",
+   "lane": "eval",
+   "title": "SWE-bench Verified",
+   "org": "OpenAI, SWE-bench authors",
+   "type": "o",
+   "open": 1,
+   "fam": "bench",
+   "flag": 0,
+   "sum": "500 human-validated SWE-bench tasks; became the standard coding-agent score.",
+   "src": "https://openai.com/index/introducing-swe-bench-verified/",
+   "sec": 0,
+   "art": "ml-evaluation-harnesses"
+  },
+  {
+   "id": "eval-230",
+   "date": "2025-03",
+   "lane": "eval",
+   "title": "ARC-AGI-2",
+   "org": "ARC Prize Foundation",
+   "type": "o",
+   "open": 1,
+   "fam": "bench",
+   "flag": 0,
+   "sum": "Harder abstract-reasoning benchmark launched with ARC Prize 2025.",
+   "src": "https://arcprize.org/arc-agi-2",
+   "sec": 0,
+   "art": "ml-evaluation-harnesses"
+  },
+  {
+   "id": "eval-231",
+   "date": "2025-03",
+   "lane": "eval",
+   "title": "METR time-horizon metric",
+   "org": "METR",
+   "type": "r",
+   "open": 1,
+   "fam": "",
+   "flag": 1,
+   "sum": "Measures the length of tasks (in human time) AI completes at 50% success; reports doubling roughly every 7 months since 2019.",
+   "src": "https://arxiv.org/abs/2503.14499",
+   "sec": 0,
+   "art": "ml-evaluation-harnesses"
+  },
+  {
+   "id": "agent-232",
+   "date": "2024-10",
+   "lane": "agent",
+   "title": "Computer use (Claude 3.5 Sonnet)",
+   "org": "Anthropic",
+   "type": "p",
+   "open": 0,
+   "fam": "",
+   "flag": 0,
+   "sum": "API agents operate a desktop via screenshots, mouse and keyboard. (Claude helps write this site.)",
+   "src": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+   "sec": 0,
+   "art": "ml-agent-runtimes"
+  },
+  {
+   "id": "data-233",
+   "date": "2025-06",
+   "lane": "data",
+   "title": "Common Pile v0.1",
+   "org": "EleutherAI, U. Toronto, Hugging Face et al.",
+   "type": "o",
+   "open": 1,
+   "fam": "",
+   "flag": 0,
+   "sum": "8 TB of public-domain and openly licensed text; 7B Comma models match similar-compute models trained on unlicensed data.",
+   "src": "https://arxiv.org/abs/2506.05209",
+   "sec": 0,
+   "art": "data-law-data-wall"
+  },
+  {
+   "id": "data-234",
+   "date": "2025-06",
+   "lane": "data",
+   "title": "FineWeb2",
+   "org": "Hugging Face, EPFL",
+   "type": "o",
+   "open": 1,
+   "fam": "webds",
+   "flag": 0,
+   "sum": "20 TB multilingual web corpus covering 1,868 language-script pairs with an auto-adapting pipeline.",
+   "src": "https://arxiv.org/abs/2506.20920",
+   "sec": 0,
+   "art": "data-filtering-dedup"
   }
  ],
  "enables": [
@@ -3586,6 +3888,42 @@
   [
    "net-048",
    "net-208"
+  ],
+  [
+   "cuda-220",
+   "fw-213"
+  ],
+  [
+   "post-112",
+   "post-228"
+  ],
+  [
+   "post-113",
+   "post-228"
+  ],
+  [
+   "inf-226",
+   "inf-132"
+  ],
+  [
+   "kern-224",
+   "inf-131"
+  ],
+  [
+   "eval-120",
+   "eval-229"
+  ],
+  [
+   "data-141",
+   "data-234"
+  ],
+  [
+   "net-039",
+   "stor-216"
+  ],
+  [
+   "power-060",
+   "power-219"
   ]
  ]
 }
