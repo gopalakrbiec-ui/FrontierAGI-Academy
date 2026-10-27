@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📜 [Who Owns the Training Data? Copyright, Consent and the Coming Data Wall](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-law-data-wall.html) | The final part of Inside the Data Layer maps the law and the limits: US fair-use rulings (Bartz v. | 2026-10-27 |
 | 🗄️ [Feeding the Furnace: Storage, Tokenisation and the Data Loaders Behind Every Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-infrastructure.html) | Part 7 of Inside the Data Layer covers the plumbing: petabyte storage and processing jobs, tokenisers and why vocabulary size matters,… | 2026-10-27 |
 | ⚖️ [The Secret Recipe: How Labs Mix, Weight and Schedule Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-mixtures.html) | Part 6 of Inside the Data Layer explains data mixtures: how labs split a token budget between web, code, maths, books and languages, how… | 2026-10-27 |
 | 👩‍🏫 [The Human Layer: Labellers, Experts and the Multibillion-Dollar Business of Teaching AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-human-labelling.html) | Part 5 of Inside the Data Layer covers human data: demonstrations, preferences, rubrics, red-teaming and expert tasks; how labels are… | 2026-10-27 |

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-law-data-wall",
+      "title": "Who Owns the Training Data? Copyright, Consent and the Coming Data Wall",
+      "excerpt": "The final part of Inside the Data Layer maps the law and the limits: US fair-use rulings (Bartz v. Anthropic, Kadrey v. Meta, Thomson Reuters v. Ross), Getty v. Stability AI in the UK, GEMA v. OpenAI in Germany, the EU AI Act's training-data summary, opt-out signals, and a model of when the data wall arrives.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "25 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "📜",
+      "featured": false
+    },
+    {
       "slug": "data-infrastructure",
       "title": "Feeding the Furnace: Storage, Tokenisation and the Data Loaders Behind Every Training Run",
       "excerpt": "Part 7 of Inside the Data Layer covers the plumbing: petabyte storage and processing jobs, tokenisers and why vocabulary size matters, packing documents into shards, how fast data must flow, deterministic and resumable data loaders, and lineage, with a live BPE demo, packing simulator and crash-and-resume loader.",
