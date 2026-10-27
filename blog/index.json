@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-agent-runtimes",
+      "title": "The Top of the Stack: Agent Runtimes, Tool Protocols and the Software That Lets Models Act",
+      "excerpt": "The final part of Inside the ML Layer covers the top of the stack: the agent loop, tool calling, MCP and A2A, runtime patterns, the lab SDKs and frameworks, sandboxes, tracing and what agents cost, with an agent-loop animator, an MCP message trace and a map of the whole series.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "28 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "🤖",
+      "featured": false
+    },
+    {
       "slug": "ml-inference-engines",
       "title": "Serving the Model: vLLM, SGLang, TensorRT-LLM and the Engines That Turn GPUs into Tokens",
       "excerpt": "Inference is where AI factories earn their money. Part 7 of Inside the ML Layer explains prefill and decode, the KV cache, PagedAttention, continuous batching, prefix caching, speculative decoding and disaggregated serving, and compares vLLM, SGLang, TensorRT-LLM with Dynamo and llama.cpp, with KV-cache and serving-cost calculators.",

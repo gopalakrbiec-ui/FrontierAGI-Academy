@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🤖 [The Top of the Stack: Agent Runtimes, Tool Protocols and the Software That Lets Models Act](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-agent-runtimes.html) | The final part of Inside the ML Layer covers the top of the stack: the agent loop, tool calling, MCP and A2A, runtime patterns, the lab… | 2026-10-27 |
 | ⚡ [Serving the Model: vLLM, SGLang, TensorRT-LLM and the Engines That Turn GPUs into Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-inference-engines.html) | Inference is where AI factories earn their money. | 2026-10-27 |
 | 📏 [Measuring the Machine: The Evaluation Harnesses That Decide What Ships](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-evaluation-harnesses.html) | Every release decision ends with a number from an evaluation harness. | 2026-10-27 |
 | 🎯 [After Pre-training: The Software That Turns a Base Model into a Reasoning Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-post-training-rl.html) | Post-training turns a base model into a reasoning assistant, and RL makes it a systems problem. | 2026-10-27 |
