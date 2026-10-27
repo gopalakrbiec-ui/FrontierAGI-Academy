@@ -173,7 +173,8 @@
         "ml-frameworks-pytorch-jax",
         "ml-parallelism-libraries",
         "ml-kernels",
-        "ml-post-training-rl"
+        "ml-post-training-rl",
+        "ml-evaluation-harnesses"
       ]
     },
     {

@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-evaluation-harnesses",
+      "title": "Measuring the Machine: The Evaluation Harnesses That Decide What Ships",
+      "excerpt": "Every release decision ends with a number from an evaluation harness. Part 6 of Inside the ML Layer explains how lm-eval-harness, HELM, Inspect and agent benchmarks work, why the same model gets different scores, how benchmarks saturate and how to read error bars and arenas, with a confidence-interval and pass@k calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "27 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "📏",
+      "featured": false
+    },
+    {
       "slug": "ml-post-training-rl",
       "title": "After Pre-training: The Software That Turns a Base Model into a Reasoning Assistant",
       "excerpt": "Post-training turns a base model into a reasoning assistant, and RL makes it a systems problem. Part 5 of Inside the ML Layer explains PPO, GRPO and DPO, colocated vs asynchronous designs and the open stacks (TRL, verl, OpenRLHF, NeMo RL, slime, AReaL, torchforge), with a GRPO calculator and GPU timelines.",
