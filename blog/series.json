@@ -187,7 +187,8 @@
       "slugs": [
         "data-layer-map",
         "data-crawling-sourcing",
-        "data-filtering-dedup"
+        "data-filtering-dedup",
+        "data-synthetic"
       ]
     },
     {

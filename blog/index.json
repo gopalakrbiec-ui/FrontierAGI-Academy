@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-synthetic",
+      "title": "Models Teaching Models: How Synthetic Data Became the Fastest-Growing Source of Training Tokens",
+      "excerpt": "Part 4 of Inside the Data Layer explains how labs manufacture training data (rephrasing, generated textbooks, instruction data, distillation, verified reasoning, agent trajectories), how it is filtered, what model collapse really shows and the disputes over distillation, with a working collapse simulator and a rejection-sampling cost calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "25 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "✨",
+      "featured": false
+    },
+    {
       "slug": "data-filtering-dedup",
       "title": "Throwing Away 90% of the Web: How AI Labs Filter and Deduplicate Training Data",
       "excerpt": "Part 3 of Inside the Data Layer opens the refinery that turns raw crawls into training data: Gopher-style rules, quality classifiers (FineWeb-Edu, DCLM, Nemotron-CC), exact, fuzzy and semantic deduplication and decontamination, with a working rule lab, MinHash calculator and LSH curve.",
