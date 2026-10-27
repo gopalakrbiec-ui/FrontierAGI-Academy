@@ -3579,7 +3579,7 @@
    "open": 1,
    "fam": "",
    "flag": 0,
-   "sum": "Fused Triton kernels for LLM training that cut memory and raise throughput.",
+   "sum": "Open-source fused Triton kernels for LLM training; LinkedIn reports ~20% higher throughput and ~60% less GPU memory than Hugging Face implementations.",
    "src": "https://arxiv.org/abs/2410.10989",
    "sec": 0,
    "art": "ml-kernels"
@@ -3609,7 +3609,7 @@
    "open": 1,
    "fam": "",
    "flag": 0,
-   "sum": "Distributed low-communication training: islands of compute sync rarely, enabling training across poorly connected sites.",
+   "sum": "Distributed low-communication training: 8 workers matched fully synchronous training on C4 while communicating ~500x less, enabling training across poorly connected sites.",
    "src": "https://arxiv.org/abs/2311.08105",
    "sec": 0,
    "art": "ml-parallelism-libraries"
@@ -3639,7 +3639,7 @@
    "open": 1,
    "fam": "bench",
    "flag": 0,
-   "sum": "500 human-validated SWE-bench tasks; became the standard coding-agent score.",
+   "sum": "500 SWE-bench tasks screened by 93 developers; superseded the original test set and became the standard coding-agent score.",
    "src": "https://openai.com/index/introducing-swe-bench-verified/",
    "sec": 0,
    "art": "ml-evaluation-harnesses"
@@ -3684,7 +3684,7 @@
    "open": 0,
    "fam": "",
    "flag": 0,
-   "sum": "API agents operate a desktop via screenshots, mouse and keyboard. (Claude helps write this site.)",
+   "sum": "Public-beta API capability (22 Oct 2024) for agents to view a screen, move the cursor, click and type. (Claude helps write this site.)",
    "src": "https://www.anthropic.com/news/3-5-models-and-computer-use",
    "sec": 0,
    "art": "ml-agent-runtimes"
