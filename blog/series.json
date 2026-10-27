@@ -171,7 +171,8 @@
       "slugs": [
         "ml-layer-map",
         "ml-frameworks-pytorch-jax",
-        "ml-parallelism-libraries"
+        "ml-parallelism-libraries",
+        "ml-kernels"
       ]
     },
     {

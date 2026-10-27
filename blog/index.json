@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-kernels",
+      "title": "The Kernels That Matter: FlashAttention, CUTLASS, Triton and the Code That Actually Runs on the GPU",
+      "excerpt": "The arithmetic of every frontier model happens inside a few GPU kernels. Part 4 of Inside the ML Layer explains the roofline, tiling, FlashAttention 1 to 4, fusion, Triton, CUTLASS and Pallas, low precision and whether AI can write kernels, with an interactive roofline and tiling animator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "28 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "⚙️",
+      "featured": false
+    },
+    {
       "slug": "ml-parallelism-libraries",
       "title": "Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs",
       "excerpt": "No frontier model fits on one chip. Part 3 of Inside the ML Layer explains the libraries that split models across thousands of GPUs (Megatron-Core, DeepSpeed, FSDP2 and TorchTitan, MaxText, DeepSeek's DualPipe and DeepEP) with a strategy builder, a pipeline-bubble animator and a mixture-of-experts routing demo.",
