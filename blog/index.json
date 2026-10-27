@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-inference-engines",
+      "title": "Serving the Model: vLLM, SGLang, TensorRT-LLM and the Engines That Turn GPUs into Tokens",
+      "excerpt": "Inference is where AI factories earn their money. Part 7 of Inside the ML Layer explains prefill and decode, the KV cache, PagedAttention, continuous batching, prefix caching, speculative decoding and disaggregated serving, and compares vLLM, SGLang, TensorRT-LLM with Dynamo and llama.cpp, with KV-cache and serving-cost calculators.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "29 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "⚡",
+      "featured": false
+    },
+    {
       "slug": "ml-evaluation-harnesses",
       "title": "Measuring the Machine: The Evaluation Harnesses That Decide What Ships",
       "excerpt": "Every release decision ends with a number from an evaluation harness. Part 6 of Inside the ML Layer explains how lm-eval-harness, HELM, Inspect and agent benchmarks work, why the same model gets different scores, how benchmarks saturate and how to read error bars and arenas, with a confidence-interval and pass@k calculator.",
