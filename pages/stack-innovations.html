@@ -294,8 +294,8 @@
     <div class="si-embedbar"><b>🧬 Stack Innovation Map</b><a href="stack-innovations.html" target="_top">Open full map →</a></div>
 
     <div class="fm-bar">
-      <div class="fm-seg" id="siView"><button type="button" class="on" data-v="lanes">🛤️ Lanes</button><button type="button" data-v="chains">🔗 Chains</button><button type="button" data-v="cadence">📊 Cadence</button><button type="button" data-v="open">🔓 Open vs closed</button></div>
-      <div class="fm-seg" id="siZoom"><button type="button" data-z="2001">2001–2026</button><button type="button" class="on" data-z="2015">2015–2026</button><button type="button" data-z="2021">2021–2026</button></div>
+      <div class="fm-seg" id="siView"><button type="button" data-v="lanes">🛤️ Lanes</button><button type="button" class="on" data-v="chains">🔗 Chains</button><button type="button" data-v="cadence">📊 Cadence</button><button type="button" data-v="open">🔓 Open vs closed</button></div>
+      <div class="fm-seg" id="siZoom"><button type="button" class="on" data-z="2001">2001–2026</button><button type="button" data-z="2015">2015–2026</button><button type="button" data-z="2021">2021–2026</button></div>
       <label class="si-chk"><input type="checkbox" id="siFlag"> Flagships only</label>
       <input type="search" id="siSearch" placeholder="Search: HBM, NVLink, vLLM…" aria-label="Search innovations">
     </div>
@@ -318,13 +318,12 @@
 (function () {
   var $ = function (id) { return document.getElementById(id); }, B = '../blog/';
   var EMBED = /[?&]embed=1/.test(location.search); if (EMBED) document.body.classList.add('si-embed');
-  var D, LANES, GRP, byId = {}, view = 'lanes', z0 = EMBED ? 2021 : 2015, exp = null, flagOnly = false, q = '', sel = null, gOff = {}, mobLanes = ['gpu', 'kern', 'inf'];
+  var D, LANES, GRP, byId = {}, view = 'chains', z0 = 2001, exp = null, flagOnly = false, q = '', sel = null, gOff = {}, mobLanes = ['gpu', 'kern', 'inf'];
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
   fetch('../data/stack-innovations.json').then(function (r) { return r.json(); }).then(function (d) { D = d; LANES = d.lanes; GRP = d.groups; d.items.forEach(function (i) { byId[i.id] = i; i.t = +i.date.slice(0, 4) + (+i.date.slice(5, 7) - 0.5) / 12; }); init(); });
 
   function init() {
     $('siFlag').checked = flagOnly;
-    if (EMBED) document.querySelectorAll('#siZoom button').forEach(function (o) { o.classList.toggle('on', o.getAttribute('data-z') === '2021'); });
     var yrs = {}; D.items.forEach(function (i) { yrs[i.date.slice(0, 4)] = 1; });
     $('siNums').innerHTML = [[D.items.length, 'milestones'], [LANES.length, 'layers'], [D.enables.length, 'cross-layer links'], [D.items.filter(function (i) { return i.flag; }).length, 'flagships']].map(function (n) { return '<div><b>' + n[0] + '</b><span>' + n[1] + '</span></div>'; }).join('');
     $('siGroups').innerHTML = GRP.map(function (g) { return '<button type="button" class="on" data-g="' + g[0] + '">' + g[1] + '</button>'; }).join('');
