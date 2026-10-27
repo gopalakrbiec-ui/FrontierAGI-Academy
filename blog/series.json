@@ -170,7 +170,8 @@
       "icon": "🧠",
       "slugs": [
         "ml-layer-map",
-        "ml-frameworks-pytorch-jax"
+        "ml-frameworks-pytorch-jax",
+        "ml-parallelism-libraries"
       ]
     },
     {

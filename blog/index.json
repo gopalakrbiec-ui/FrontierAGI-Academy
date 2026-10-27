@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ml-parallelism-libraries",
+      "title": "Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs",
+      "excerpt": "No frontier model fits on one chip. Part 3 of Inside the ML Layer explains the libraries that split models across thousands of GPUs (Megatron-Core, DeepSpeed, FSDP2 and TorchTitan, MaxText, DeepSeek's DualPipe and DeepEP) with a strategy builder, a pipeline-bubble animator and a mixture-of-experts routing demo.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "27 min",
+      "tags": [
+        "AI Factories",
+        "ML Layer"
+      ],
+      "emoji": "🧩",
+      "featured": false
+    },
+    {
       "slug": "ml-frameworks-pytorch-jax",
       "title": "Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory",
       "excerpt": "Almost every frontier model is written in PyTorch or JAX. Part 2 of Inside the ML Layer compares eager and compiled execution, torch.compile and XLA, FSDP2 and JAX sharding, hardware reach and ecosystems, with a sharding playground and a framework chooser.",

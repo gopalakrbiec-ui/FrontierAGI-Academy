@@ -51,6 +51,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🧩 [Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-parallelism-libraries.html) | No frontier model fits on one chip. | 2026-10-27 |
 | 🧱 [Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-frameworks-pytorch-jax.html) | Almost every frontier model is written in PyTorch or JAX. | 2026-10-26 |
 | 🗺️ [The ML Layer, Mapped: From PyTorch to Production in One Diagram](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-layer-map.html) | Between a rack of GPUs and an agent answering a question sit about eight layers of software. | 2026-10-26 |
 | 🚀 [Starting a Frontier Lab in 2026: Compute, Cost and Capital, with a Bangalore Playbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-startup-playbook.html) | How much compute does a new frontier-model startup need to train, experiment, serve its model and run agents? Where do the GPUs come from,… | 2026-10-26 |
