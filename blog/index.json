@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "data-infrastructure",
+      "title": "Feeding the Furnace: Storage, Tokenisation and the Data Loaders Behind Every Training Run",
+      "excerpt": "Part 7 of Inside the Data Layer covers the plumbing: petabyte storage and processing jobs, tokenisers and why vocabulary size matters, packing documents into shards, how fast data must flow, deterministic and resumable data loaders, and lineage, with a live BPE demo, packing simulator and crash-and-resume loader.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-27",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Data Layer"
+      ],
+      "emoji": "🗄️",
+      "featured": false
+    },
+    {
       "slug": "data-mixtures",
       "title": "The Secret Recipe: How Labs Mix, Weight and Schedule Training Data",
       "excerpt": "Part 6 of Inside the Data Layer explains data mixtures: how labs split a token budget between web, code, maths, books and languages, how mixtures are searched (DoReMi, RegMix), why the best data is saved for annealing, how many times data can repeat, and temperature sampling for languages, with a mix builder and repetition calculator.",

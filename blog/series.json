@@ -190,7 +190,8 @@
         "data-filtering-dedup",
         "data-synthetic",
         "data-human-labelling",
-        "data-mixtures"
+        "data-mixtures",
+        "data-infrastructure"
       ]
     },
     {
