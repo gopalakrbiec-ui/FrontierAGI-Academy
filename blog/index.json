@@ -1,6 +1,111 @@
 {
   "posts": [
     {
+      "slug": "eval-score-to-ship",
+      "title": "From Score to Ship: How Evaluation Results Become a Launch Decision",
+      "excerpt": "The final part of Inside the Evaluation Layer: how labs turn hundreds of evaluation results into a go or no-go, what goes into a system card, three real launches that tested the process (GPT-4o's sycophancy rollback, Gemini 2.5 Pro's late model card, Claude Opus 4 under ASL-3), the rules that now require it (EU AI Act Code of Practice, California SB 53), and a release-gate simulator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🚦",
+      "featured": false
+    },
+    {
+      "slug": "eval-safety-capability",
+      "title": "Testing for Danger: Dangerous-Capability Evals, Safety Thresholds and Models That Know They Are Being Tested",
+      "excerpt": "Part 6 of Inside the Evaluation Layer: how labs test for biological, cyber, autonomy and manipulation risks, how Anthropic, OpenAI and Google DeepMind turn results into thresholds (ASL-3, High, Critical Capability Levels), why Claude Opus 4 shipped under ASL-3 as a precaution, and the new problems of sandbagging and evaluation awareness.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "25 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🛡️",
+      "featured": false
+    },
+    {
+      "slug": "eval-agents-long-tasks",
+      "title": "Grading Agents: Long Tasks, Live Environments and Why Reliability Beats a Single Score",
+      "excerpt": "Part 5 of Inside the Evaluation Layer: how agents are tested in real environments (SWE-bench Verified, Terminal-Bench 2.0, OSWorld, τ-bench), why pass^k reliability tells a different story from pass@1, METR's task-length time horizons, the benchmark bugs that let an empty answer score 38%, and what agent evaluation costs.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "24 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🤖",
+      "featured": false
+    },
+    {
+      "slug": "eval-human-arenas",
+      "title": "Humans in the Loop: Arenas, Expert Graders and What a Vote Really Measures",
+      "excerpt": "Part 4 of Inside the Evaluation Layer: how Chatbot Arena turns millions of votes into a ranking, the Llama 4 leaderboard episode and the Leaderboard Illusion critique (27 private Meta variants), style control, expert-built tests like Humanity's Last Exam, OpenAI's GDPval comparisons against professionals, and a simulator of how private testing inflates scores.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "23 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🙋",
+      "featured": false
+    },
+    {
+      "slug": "eval-llm-judges",
+      "title": "Models Grading Models: LLM Judges, Reward Models and How They Get Fooled",
+      "excerpt": "Part 3 of Inside the Evaluation Layer: why labs let one model grade another, how well LLM judges agree with people (over 80% in the MT-Bench study), the position, length and self-preference biases, a null model that scored an 86.5% win rate by gaming judges, reward models and RewardBench, and the safeguards that keep automated grading honest.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "⚖️",
+      "featured": false
+    },
+    {
+      "slug": "eval-contamination-saturation",
+      "title": "Tests That Leak and Tests That Wear Out: Benchmark Contamination and Saturation",
+      "excerpt": "Part 2 of Inside the Evaluation Layer: how test questions leak into training data, how labs and researchers detect it (13-gram overlap, Min-K% probability, file-path probes), what GSM1k and the SWE-Bench Illusion revealed, why benchmarks saturate within a year or two, and the defences: private holdouts, live benchmarks and canaries.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🧪",
+      "featured": false
+    },
+    {
+      "slug": "eval-layer-map",
+      "title": "The Evaluation Layer, Mapped: Who Tests a Frontier Model, When, and What It Costs",
+      "excerpt": "Part 1 of Inside the Evaluation Layer maps every test a frontier model faces, from training checkpoints to government pre-deployment testing to public arenas: who runs each one, how fast benchmarks saturate, what a full evaluation costs and why evaluation has become an industry of its own.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "21 min",
+      "tags": [
+        "AI Factories",
+        "Evaluation Layer"
+      ],
+      "emoji": "🎯",
+      "featured": false
+    },
+    {
       "slug": "data-law-data-wall",
       "title": "Who Owns the Training Data? Copyright, Consent and the Coming Data Wall",
       "excerpt": "The final part of Inside the Data Layer maps the law and the limits: US fair-use rulings (Bartz v. Anthropic, Kadrey v. Meta, Thomson Reuters v. Ross), Getty v. Stability AI in the UK, GEMA v. OpenAI in Germany, the EU AI Act's training-data summary, opt-out signals, and a model of when the data wall arrives.",

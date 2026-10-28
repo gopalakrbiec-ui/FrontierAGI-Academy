@@ -196,6 +196,21 @@
       ]
     },
     {
+      "id": "sec-evallayer",
+      "title": "Inside the Evaluation Layer: How Frontier Models Are Tested Before and After They Ship",
+      "short": "Inside the Evaluation Layer",
+      "icon": "🎯",
+      "slugs": [
+        "eval-layer-map",
+        "eval-contamination-saturation",
+        "eval-llm-judges",
+        "eval-human-arenas",
+        "eval-agents-long-tasks",
+        "eval-safety-capability",
+        "eval-score-to-ship"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
