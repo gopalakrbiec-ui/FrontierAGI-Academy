@@ -1434,7 +1434,7 @@
       .ar-mo .grid { grid-template-columns: repeat(3, 1fr); } .ar-mt .m { max-width: 92%; }
     }
     /* ── AI research in 2025 (y5-*) ── */
-    .ar-b.best { background: #fef3c7; color: #92400e; } .ar-b.ru { background: #e0e7ff; color: #3730a3; } .ar-b.pre { background: #f1f5f9; color: #334155; } .ar-b.nat { background: #fee2e2; color: #991b1b; }
+    .ar-pk svg { width: 100%; height: auto; display: block; } .ar-b.best { background: #fef3c7; color: #92400e; } .ar-b.ru { background: #e0e7ff; color: #3730a3; } .ar-b.pre { background: #f1f5f9; color: #334155; } .ar-b.nat { background: #fee2e2; color: #991b1b; }
     #r1Canvas, #rgCanvas, #dmCanvas, #ilCanvas, #samCanvas, #tcCanvas, #dgmSvg { width: 100%; height: auto; background: #fafaff; border-radius: 10px; border: 1px solid #e2e8f0; margin-top: 8px; }
     .y5-s1 .think { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0; } .y5-s1 .think span { padding: 5px 9px; border-radius: 8px; background: #eef2ff; font-size: .78rem; animation: frPop .3s both; } .y5-s1 .w { background: #fef3c7 !important; font-weight: 800; } .y5-s1 .ans { background: #dcfce7 !important; font-weight: 800; }
     .y5-s1 .acc, .y5-kl .acc { display: grid; grid-template-columns: 1fr 2fr 60px; gap: 8px; align-items: center; font-size: .78rem; } .y5-s1 .acc > div, .y5-kl .acc > div { height: 14px; border-radius: 7px; background: #f1f5f9; overflow: hidden; } .y5-s1 .acc i, .y5-kl .acc i { display: block; height: 100%; background: #16a34a; transition: width .4s; }
@@ -1616,9 +1616,10 @@
       <a href="#t6"><b>08</b>AI doing R&amp;D</a>
       <a href="#t7"><b>09</b>RL beyond LLMs</a>
       <a href="#t8"><b>10</b>Multimodal foundation models</a>
-      <a href="#lab"><b>11</b>Test-time compute, simulated</a>
-      <a href="#transition"><b>12</b>The 2025 → 2026 transition</a>
-      <a href="#takeaways"><b>13</b>Key takeaways</a>
+      <a href="#t9"><b>11</b>Also awarded: CVPR, ACL, ICCV, NeurIPS</a>
+      <a href="#lab"><b>12</b>Test-time compute, simulated</a>
+      <a href="#transition"><b>13</b>The 2025 → 2026 transition</a>
+      <a href="#takeaways"><b>14</b>Key takeaways</a>
     </div>
 
     <!-- 01 -->
@@ -1630,12 +1631,15 @@
         <tr><td data-label="Conference"><strong>ICLR 2025</strong> (April, Singapore)</td><td data-label="Top">Safety Alignment Should Be Made More Than Just a Few Tokens Deep · Learning Dynamics of LLM Finetuning · AlphaEdit; Honorable Mention: SAM 2</td><td data-label="Other">Honorable Mentions: Data Shapley in One Training Run · Faster Cascades via Speculative Decoding</td></tr>
         <tr><td data-label="Conference"><strong>ICML 2025</strong> (July, Vancouver)</td><td data-label="Top">CollabLLM · Train for the Worst, Plan for the Best</td><td data-label="Other">Roll the Dice &amp; Look Before You Leap · Conformal Prediction as Bayesian Quadrature · Score Matching with Missing Data · The Value of Prediction in Identifying the Worst-Off</td></tr>
         <tr><td data-label="Conference"><strong>NeurIPS 2025</strong> (December, San Diego)</td><td data-label="Top">Gated Attention for LLMs · Why Diffusion Models Don't Memorize · 1000 Layer Networks for Self-Supervised RL · Artificial Hivemind (Datasets &amp; Benchmarks)</td><td data-label="Other">Runners-up include <em>Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?</em></td></tr>
+        <tr><td data-label="Conference"><strong>CVPR 2025</strong> (June, Nashville)</td><td data-label="Top">VGGT</td><td data-label="Other">Best Student Paper: Neural Inverse Rendering from Propagating Light</td></tr>
+        <tr><td data-label="Conference"><strong>ACL 2025</strong> (July, Vienna)</td><td data-label="Top">Native Sparse Attention (reported)</td><td data-label="Other">—</td></tr>
+        <tr><td data-label="Conference"><strong>ICCV 2025</strong> (October, Hawaiʻi)</td><td data-label="Top">BrickGPT (Marr Prize)</td><td data-label="Other">Honorable Mentions: Spatially-Varying Autofocus · RayZer</td></tr>
       </tbody>
     </table>
 
     <!-- 02 -->
     <h2 id="map" class="agi-section"><span class="fr-num">02</span> Paper Map</h2>
-    <p>Eighteen papers in eight research directions. Filter by award and click to jump:</p>
+    <p>Twenty-two papers in nine research directions. Filter by award and click to jump:</p>
     <div class="fr-widget" id="pmWidget">
       <div class="fr-w-hd">▶ 2025 paper map <span>Click to jump</span></div>
       <div class="fr-tabs" id="pmTabs"><button type="button" data-f="all" class="on">All</button><button type="button" data-f="award">🏆 Award winners</button><button type="button" data-f="other">Influential, no award</button></div>
@@ -1848,8 +1852,50 @@
       </ul></div>
     </div>
 
-    <!-- 11 -->
-    <h2 id="lab" class="agi-section"><span class="fr-num">11</span> Test-Time Compute, Simulated</h2>
+    <!-- t9 -->
+    <h2 id="t9" class="agi-section"><span class="fr-num">11</span> 🆕 Also Awarded in 2025: CVPR, ACL, ICCV and NeurIPS</h2>
+    <p class="ar-tsub">Added 28 October 2026: award winners this article originally missed.</p>
+    <div class="ar-card" id="vg">
+      <div class="ar-hd"><em>🧊</em><div><h3>VGGT: Visual Geometry Grounded Transformer</h3><small>Wang, Chen, Karaev, Vedaldi, Rupprecht &amp; Novotny (Oxford VGG, Meta AI) · CVPR 2025</small></div><div class="ar-bs"><span class="ar-b best">🏆 Best Paper</span></div></div>
+      <div class="ar-eli"><b>🧒 In plain English</b><p>Turning a pile of photos into a 3D model used to take a long, fiddly optimisation: guess where each camera was, match points between photos, refine, repeat. VGGT does it in <b>one pass</b>: show it one photo or hundreds, and a single Transformer returns the camera positions, a depth map for each photo and the 3D points, in about a second.</p></div>
+      <div class="ar-two"><div class="ar-found"><b>🔍 What they found</b><ul><li>A feed-forward network predicts camera parameters, point maps, depth maps and 3D point tracks from one to hundreds of views</li><li>Runs in under a second and needs no slow geometry post-processing for strong results</li><li>Code and models released (the original checkpoint is for non-commercial use)</li></ul></div><div class="ar-why"><b>💡 Why it matters</b><p>3D reconstruction becomes a foundation-model problem: one network, no hand-built pipeline. It sets up the 2026 CVPR winner D4RT, which does the same for moving scenes.</p></div></div>
+      <div class="op-refs"><b>🔗 References</b><ul>
+          <li><a href="https://arxiv.org/abs/2503.11651" target="_blank" rel="noopener">VGGT: Visual Geometry Grounded Transformer (arXiv 2503.11651)</a></li>
+          <li><a href="https://cvpr.thecvf.com/Conferences/2025/News/Awards_Press" target="_blank" rel="noopener">CVPR 2025 — Awards press release</a></li>
+      </ul></div>
+    </div>
+    <div class="ar-card" id="nsa">
+      <div class="ar-hd"><em>🧮</em><div><h3>Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention</h3><small>Yuan et al. (DeepSeek-AI, Peking University) · ACL 2025</small></div><div class="ar-bs"><span class="ar-b best">🏆 Best Paper (reported)</span></div></div>
+      <div class="ar-eli"><b>🧒 In plain English</b><p>Normal attention makes every word look at every earlier word, so long documents get very expensive. NSA reads a long text the way you skim a book: a <b>compressed summary</b> of everything, a few <b>chosen passages</b> in full detail, and the <b>nearby text</b> just before. Unlike earlier tricks bolted on after training, the model is trained this way from the start, and the design matches how GPUs actually move data.</p></div>
+      <div class="ar-two"><div class="ar-found"><b>🔍 What they found</b><ul><li>Three attention branches: coarse token compression, fine-grained token selection and a sliding window</li><li>Models pretrained with NSA match or beat full attention on general, long-context and reasoning benchmarks</li><li>Reported speed-ups over FlashAttention at 64K tokens of roughly 9× (forward), 6× (backward) and 11.6× (decoding), as cited in secondary summaries</li></ul></div><div class="ar-why"><b>💡 Why it matters</b><p>Long context gets cheaper without giving up quality, and sparse attention becomes something you design into pretraining rather than add later. It sits between 2019's Sparse Transformer and the 2026 proof of why local attention helps.</p></div></div>
+      <div class="op-refs"><b>🔗 References</b><ul>
+          <li><a href="https://arxiv.org/abs/2502.11089" target="_blank" rel="noopener">Native Sparse Attention (arXiv 2502.11089)</a></li>
+          <li><a href="https://news.aibase.com/news/20107" target="_blank" rel="noopener">AIBase — report of the ACL 2025 Best Paper award</a></li>
+      </ul></div>
+    </div>
+    <div class="ar-card" id="rlv">
+      <div class="ar-hd"><em>🔬</em><div><h3>Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?</h3><small>Yue et al. (Tsinghua LeapLab) · NeurIPS 2025</small></div><div class="ar-bs"><span class="ar-b ru">🥈 Best Paper Runner-up</span></div></div>
+      <div class="ar-eli"><b>🧒 In plain English</b><p>After DeepSeek-R1, it looked as if RL taught models new ways to reason. This paper checks by letting each model try a problem many times (<b>pass@k</b>: is <em>any</em> of k attempts right?). With one try, the RL-trained model wins. With hundreds of tries, the <b>original model solves more distinct problems</b>. RL mostly teaches the model to pick answers it could already find, faster, rather than to find new ones.</p></div>
+      <div class="fr-widget" id="pkWidget"><div class="fr-w-hd">▶ One try vs many tries <span>Illustrative curves, not the paper's data</span></div><div class="fr-controls"><label>Attempts per problem (k) <input type="range" id="pkK" min="0" max="8" value="0"><output id="pkKo"></output></label></div><div class="ar-pk" id="pkViz"></div><div class="fr-readout" id="pkOut"></div></div>
+      <div class="ar-two"><div class="ar-found"><b>🔍 What they found</b><ul><li>Across maths, coding and visual reasoning, RL with verifiable rewards raises pass@1, but at large k base models solve more unique problems</li><li>RL amplifies rewarded solution paths and narrows exploration, so it stays within the base model's limits</li><li>Distillation from a stronger model, by contrast, can add genuinely new reasoning patterns (as summarised in coverage of the paper)</li></ul></div><div class="ar-why"><b>💡 Why it matters</b><p>It reframes the R1 story: RL makes models more reliable, but pushing the frontier of what they can solve may need new data, distillation or better exploration.</p></div></div>
+      <div class="op-refs"><b>🔗 References</b><ul>
+          <li><a href="https://arxiv.org/abs/2504.13837" target="_blank" rel="noopener">Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? (arXiv 2504.13837)</a></li>
+          <li><a href="https://nips.cc/media/neurips-2025/Slides/119944.pdf" target="_blank" rel="noopener">NeurIPS 2025 — award presentation slides</a></li>
+      </ul></div>
+    </div>
+    <div class="ar-card" id="bg">
+      <div class="ar-hd"><em>🧱</em><div><h3>Generating Physically Stable and Buildable Brick Structures from Text (BrickGPT)</h3><small>Pun, Deng, Liu, Ramanan, Liu &amp; Zhu (Carnegie Mellon) · ICCV 2025</small></div><div class="ar-bs"><span class="ar-b best">🏆 Best Paper (Marr Prize)</span></div></div>
+      <div class="ar-eli"><b>🧒 In plain English</b><p>Ask for "a small red chair" and BrickGPT designs it brick by brick, like a language model writing word by word. The twist is physics: after each brick it checks whether the structure would <b>stand up</b>, and if not it rolls back and tries again. The results can be built by hand or by a robot arm.</p></div>
+      <div class="ar-two"><div class="ar-found"><b>🔍 What they found</b><ul><li>An autoregressive language model predicts the next brick; invalid or unstable steps are pruned with a validity check and physics-aware rollback</li><li>StableText2Brick dataset: over 47,000 stable brick structures of more than 28,000 objects, with captions</li><li>Designs were assembled by people and by robotic arms</li></ul></div><div class="ar-why"><b>💡 Why it matters</b><p>Generation that must obey the physical world, not just look right: a pattern that matters for robotics, design and manufacturing.</p></div></div>
+      <div class="op-refs"><b>🔗 References</b><ul>
+          <li><a href="https://arxiv.org/abs/2505.05469" target="_blank" rel="noopener">Generating Physically Stable and Buildable Brick Structures from Text (arXiv 2505.05469)</a></li>
+          <li><a href="https://icontrol.ri.cmu.edu/news/iccv25.html" target="_blank" rel="noopener">CMU — BrickGPT wins the ICCV 2025 Marr Prize</a></li>
+      </ul></div>
+    </div>
+    <p class="ar-tsub">Also from 2025, not yet confirmed on the conferences' own pages: RLC 2025 outstanding papers reportedly included <b>Deep RL with Gradient Eligibility Traces</b> (Elelimy et al., theory; the forerunner of 2026's Gradient Iterated TD) and <b>PufferLib 2.0</b> (RL at a million steps per second); COLM 2025 reportedly recognised <b>The Implicit Curriculum Hypothesis</b>.</p>
+
+    <!-- 12 -->
+    <h2 id="lab" class="agi-section"><span class="fr-num">12</span> Test-Time Compute, Simulated</h2>
     <p>Two 2025 papers pull in opposite directions. s1 says <em>more thinking helps</em>; The Illusion of Thinking says <em>reasoning collapses on hard enough problems</em>. A toy model shows both can be true at once. Extra "Wait" re-checks catch errors while the problem fits the thinking budget, and nothing helps once it doesn't:</p>
     <div class="fr-widget" id="tcWidget">
       <div class="fr-w-hd">▶ Accuracy vs problem length <span>Same model as the script below</span></div>
@@ -1910,7 +1956,7 @@ Accuracy as problems get longer (budget 160 step-tokens)
 Extra thinking fixes errors on problems that fit the budget; past it, accuracy collapses.</pre></div>
 
     <!-- 12 -->
-    <h2 id="transition" class="agi-section"><span class="fr-num">12</span> The 2025 → 2026 Transition</h2>
+    <h2 id="transition" class="agi-section"><span class="fr-num">13</span> The 2025 → 2026 Transition</h2>
     <p>From bigger models to self-improving systems. Press play to walk the timeline:</p>
     <div class="fr-widget" id="tlWidget">
       <div class="fr-w-hd">▶ Five eras in two years <span>Click a stage or press play</span></div>
@@ -1920,7 +1966,7 @@ Extra thinking fixes errors on problems that fit the budget; past it, accuracy c
     </div>
 
     <!-- 13 -->
-    <h2 id="takeaways" class="agi-section"><span class="fr-num">13</span> Key Takeaways from 2025</h2>
+    <h2 id="takeaways" class="agi-section"><span class="fr-num">14</span> Key Takeaways from 2025</h2>
     <div class="y5-tk">
       <div>✅ RL can produce strong reasoning behaviour.</div>
       <div>✅ Inference-time compute can be explicitly scaled.</div>
@@ -2001,8 +2047,8 @@ Extra thinking fixes errors on problems that fit the budget; past it, accuracy c
   const wait = ms => new Promise(r => setTimeout(r, RM ? Math.min(ms, 100) : ms));
   const cv = (id) => { const c = $(id), x = c.getContext('2d'); x.clearRect(0, 0, c.width, c.height); x.font = '11px system-ui'; return [x, c.width, c.height]; };
   const grid = (x, W, H, ys, fmt) => { x.strokeStyle = '#e2e8f0'; x.fillStyle = '#64748b'; ys.forEach(([v, py]) => { x.beginPath(); x.moveTo(44, py); x.lineTo(W - 12, py); x.stroke(); x.fillText(fmt(v), 4, py + 4); }); };
-  const P = [["r1", "t1", "🐋", "DeepSeek-R1", ["nat", "pre"]], ["s1", "t1", "⏱️", "s1", ["acc"]], ["az", "t1", "♾️", "Absolute Zero", ["acc"]], ["dgm", "t2", "🧬", "Darwin Gödel Machine", ["pre"]], ["cl", "t2", "💬", "CollabLLM", ["out"]], ["rg", "t2", "🔁", "RAGEN", ["pre"]], ["ga", "t3", "🚪", "Gated Attention for Large Language Models", ["best"]], ["ld", "t3", "🔍", "Learning Dynamics of LLM Finetuning", ["out"]], ["ae", "t3", "✏️", "AlphaEdit", ["out"]], ["tw", "t4", "🧩", "Train for the Worst, Plan for the Best", ["out"]], ["dm", "t4", "🖼️", "Why Diffusion Models Don't Memorize", ["best"]], ["sa", "t5", "🛡️", "Safety Alignment Should Be Made More Than Just a Few Tokens Deep", ["out"]], ["il", "t5", "🗼", "The Illusion of Thinking", ["acc"]], ["hv", "t5", "🐝", "Artificial Hivemind", ["best"]], ["aev", "t6", "🧪", "AlphaEvolve", ["pre"]], ["asc", "t6", "📄", "The AI Scientist-v2", ["pre"]], ["kl", "t7", "🦿", "1000 Layer Networks for Self-Supervised RL", ["best"]], ["sam", "t8", "🎯", "SAM 2", ["hm"]]];
-  const TH = { t1: '🧠 Reasoning', t2: '🤝 Agents', t3: '🧱 Architecture', t4: '🌫️ Diffusion', t5: '🛡️ Safety & eval', t6: '🔬 AI doing R&D', t7: '🤖 RL beyond LLMs', t8: '👁️ Multimodal' };
+  const P = [["r1", "t1", "🐋", "DeepSeek-R1", ["nat", "pre"]], ["s1", "t1", "⏱️", "s1", ["acc"]], ["az", "t1", "♾️", "Absolute Zero", ["acc"]], ["dgm", "t2", "🧬", "Darwin Gödel Machine", ["pre"]], ["cl", "t2", "💬", "CollabLLM", ["out"]], ["rg", "t2", "🔁", "RAGEN", ["pre"]], ["ga", "t3", "🚪", "Gated Attention for Large Language Models", ["best"]], ["ld", "t3", "🔍", "Learning Dynamics of LLM Finetuning", ["out"]], ["ae", "t3", "✏️", "AlphaEdit", ["out"]], ["tw", "t4", "🧩", "Train for the Worst, Plan for the Best", ["out"]], ["dm", "t4", "🖼️", "Why Diffusion Models Don't Memorize", ["best"]], ["sa", "t5", "🛡️", "Safety Alignment Should Be Made More Than Just a Few Tokens Deep", ["out"]], ["il", "t5", "🗼", "The Illusion of Thinking", ["acc"]], ["hv", "t5", "🐝", "Artificial Hivemind", ["best"]], ["aev", "t6", "🧪", "AlphaEvolve", ["pre"]], ["asc", "t6", "📄", "The AI Scientist-v2", ["pre"]], ["kl", "t7", "🦿", "1000 Layer Networks for Self-Supervised RL", ["best"]], ["sam", "t8", "🎯", "SAM 2", ["hm"]], ["vg", "t9", "🧊", "VGGT", ["best"]], ["nsa", "t9", "🧮", "Native Sparse Attention", ["best"]], ["rlv", "t9", "🔬", "Does RL Really Incentivize Reasoning?", ["ru"]], ["bg", "t9", "🧱", "BrickGPT", ["best"]]];
+  const TH = { t1: '🧠 Reasoning', t2: '🤝 Agents', t3: '🧱 Architecture', t4: '🌫️ Diffusion', t5: '🛡️ Safety & eval', t6: '🔬 AI doing R&D', t7: '🤖 RL beyond LLMs', t8: '👁️ Multimodal', t9: '🆕 Also awarded' };
   const BL = { best: '🏆', out: '🏆', hm: '🏅', ru: '🥈', acc: '📄', pre: '📝', nat: '📰' };
   const jump = id => { const el = $(id); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1500); } };
   document.addEventListener('click', e => { const a = e.target.closest('[data-j]'); if (a) { e.preventDefault(); jump(a.dataset.j); } });
@@ -2011,6 +2057,20 @@ Extra thinking fixes errors on problems that fit the budget; past it, accuracy c
   let pmF = 'all'; const aw = p => p[4].some(b => ['best', 'out', 'hm'].includes(b));
   const pmDraw = () => { $('pmViz').innerHTML = Object.entries(TH).map(([k, t]) => `<div class="col"><h4>${t}</h4>${P.filter(p => p[1] === k).map(p => { const s = pmF === 'all' || (pmF === 'award' ? aw(p) : !aw(p)); return `<button type="button" data-j="${p[0]}" class="${s ? '' : 'dim'}">${p[2]} ${p[3]}<span>${p[4].map(b => BL[b]).join(' ')}</span></button>`; }).join('')}</div>`).join(''); };
   tabs('pmTabs', b => { pmF = b.dataset.f; pmDraw(); }); pmDraw();
+
+  /* pass@k (illustrative) */
+  const PK = [1, 2, 4, 8, 16, 32, 64, 128, 256];
+  const pkBase = k => 0.88 * (1 - Math.pow(1 - 0.32, Math.pow(k, 0.6))), pkRL = k => 0.74 * (1 - Math.pow(1 - 0.62, Math.pow(k, 0.35)));
+  const pkDraw = () => { const i = +$('pkK').value, k = PK[i]; $('pkKo').textContent = k;
+    const W = 520, H = 190, X = j => 46 + j / 8 * (W - 70), Y = v => H - 30 - v * (H - 50);
+    let h = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Illustrative pass at k curves"><line x1="46" y1="${H - 30}" x2="${W - 24}" y2="${H - 30}" stroke="#94a3b8"/><line x1="46" y1="20" x2="46" y2="${H - 30}" stroke="#94a3b8"/>`;
+    PK.forEach((kk, j) => { if (j % 2 === 0) h += `<text x="${X(j)}" y="${H - 14}" font-size="10" fill="#64748b" text-anchor="middle">k=${kk}</text>`; });
+    h += `<text x="12" y="${H / 2}" font-size="11" fill="#64748b" transform="rotate(-90 12 ${H / 2})" text-anchor="middle">solved</text>`;
+    [[pkBase, '#2563eb', 'Base model'], [pkRL, '#dc2626', 'After RL']].forEach(([f, c, n]) => { h += `<path d="${PK.map((kk, j) => (j ? 'L' : 'M') + X(j).toFixed(1) + ' ' + Y(f(kk)).toFixed(1)).join('')}" fill="none" stroke="${c}" stroke-width="3"/><text x="${X(8) - 2}" y="${Y(f(256)) + (n === 'Base model' ? -6 : 14)}" font-size="11" font-weight="700" fill="${c}" text-anchor="end">${n}</text>`; });
+    h += `<line x1="${X(i)}" y1="20" x2="${X(i)}" y2="${H - 30}" stroke="#0f172a" stroke-dasharray="4 3"/></svg>`;
+    $('pkViz').innerHTML = h; const b = pkBase(k), r = pkRL(k);
+    $('pkOut').innerHTML = `With <b>${k}</b> attempt${k > 1 ? 's' : ''}: after RL ≈ <b>${Math.round(r * 100)}%</b> solved, base model ≈ <b>${Math.round(b * 100)}%</b>. ` + (r > b ? 'RL wins: it picks a right answer more often.' : 'The base model wins: given enough tries, it reaches problems the RL model no longer explores.') + ' <small>Shapes are illustrative only.</small>'; };
+  $('pkK').addEventListener('input', pkDraw); pkDraw();
 
   /* R1 */
   const r1Draw = f => { const [x, W, H] = cv('r1Canvas'), X = s => 44 + s * (W - 60), Y = v => H - 24 - v / 100 * (H - 36);

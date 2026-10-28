@@ -99,7 +99,11 @@
   "2026/p93": "Local attention expressivity",
   "2026/p94": "Imperfective paradox",
   "2026/p95": "Gradient iterated TD",
-  "2026/p96": "Message-passing reasoning"
+  "2026/p96": "Message-passing reasoning",
+  "2025/vg": "VGGT (one-pass 3D)",
+  "2025/nsa": "Native Sparse Attention",
+  "2025/rlv": "Limits of RL for reasoning",
+  "2025/bg": "BrickGPT"
  },
  "nodeArea": {
   "1950-1980/perc": "nn",
@@ -388,7 +392,11 @@
   "2026/p93": "nn",
   "2026/p94": "lang",
   "2026/p95": "rl",
-  "2026/p96": "lang"
+  "2026/p96": "lang",
+  "2025/vg": "vis",
+  "2025/nsa": "nn",
+  "2025/rlv": "rl",
+  "2025/bg": "gen"
  },
  "links": [
   [
@@ -2029,6 +2037,38 @@
   [
    "2024/sn",
    "2026/p96"
+  ],
+  [
+   "2020/nerf",
+   "2025/vg"
+  ],
+  [
+   "2017/tf",
+   "2025/vg"
+  ],
+  [
+   "2025/vg",
+   "2026/p91"
+  ],
+  [
+   "2019/spt",
+   "2025/nsa"
+  ],
+  [
+   "2025/nsa",
+   "2026/p93"
+  ],
+  [
+   "2025/r1",
+   "2025/rlv"
+  ],
+  [
+   "2025/rlv",
+   "2026/p21"
+  ],
+  [
+   "2019/g2",
+   "2025/bg"
   ]
  ],
  "tours": [
@@ -2243,6 +2283,8 @@
   "2026/p31",
   "2026/p32",
   "2026/p91",
-  "2026/p96"
+  "2026/p96",
+  "2025/vg",
+  "2025/rlv"
  ]
 }
