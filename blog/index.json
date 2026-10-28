@@ -1,6 +1,126 @@
 {
   "posts": [
     {
+      "slug": "agent-rl-environments",
+      "title": "Where Agents Learn: RL Environments as Infrastructure",
+      "excerpt": "Part 8 of Inside the Agent Layer: how labs train agents with reinforcement learning in simulated workplaces, what an RL environment contains, SWE-Gym and SWE-smith, the start-ups building environments, reward hacking, the rollout fleet that runs millions of sandboxed episodes, and a rollout-compute calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "🏋️",
+      "featured": false
+    },
+    {
+      "slug": "agent-observability-cost",
+      "title": "Seeing Inside Agent Runs: Observability, Tracing and Cost",
+      "excerpt": "Part 7 of Inside the Agent Layer: why agent failures are invisible to ordinary monitoring, traces and spans for model and tool calls, the OpenTelemetry GenAI conventions, finding where tokens go, runaway loops and budgets, and an agent unit-economics calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "20 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "📈",
+      "featured": false
+    },
+    {
+      "slug": "agent-memory-state",
+      "title": "What Agents Remember: Memory, State and the Context Window",
+      "excerpt": "Part 6 of Inside the Agent Layer: the four kinds of agent memory, why long runs exhaust the context window, context editing and compaction, memory stores such as Mem0, Letta and Zep and their disputed benchmarks, prompt caching as infrastructure, and a context-budget simulator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "21 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "🧩",
+      "featured": false
+    },
+    {
+      "slug": "agent-identity-permissions",
+      "title": "On Whose Behalf? Identity and Permissions for AI Agents",
+      "excerpt": "Part 5 of Inside the Agent Layer: why agents need their own identities, how OAuth on-behalf-of tokens carry both the user and the agent, MCP authorization and the confused-deputy problem, Microsoft Entra Agent ID and Okta Cross App Access, least privilege, and a permission builder.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "20 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "🪪",
+      "featured": false
+    },
+    {
+      "slug": "agent-tool-gateways",
+      "title": "How Agents Reach the World: Tool Gateways and MCP at Scale",
+      "excerpt": "Part 4 of Inside the Agent Layer: how agents call tools through the Model Context Protocol, why companies put a gateway between agents and thousands of MCP servers, tool poisoning and rug-pull attacks, the context cost of too many tools, and a tool-budget calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "21 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "🔌",
+      "featured": false
+    },
+    {
+      "slug": "agent-durable-execution",
+      "title": "Agents That Survive: Durable Execution for Long-Running Work",
+      "excerpt": "Part 3 of Inside the Agent Layer: why an agent that runs for hours must survive crashes, deploys and human pauses, how durable execution engines such as Temporal record every step and replay it, LangGraph checkpoints and interrupts, idempotent tools, and a crash-and-replay simulator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "20 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "⏳",
+      "featured": false
+    },
+    {
+      "slug": "agent-sandboxes",
+      "title": "Where Agents Act: Sandboxes, Micro-VMs and Cloud Browsers",
+      "excerpt": "Part 2 of Inside the Agent Layer: the isolated computers where agents run code and browse, from containers and gVisor to Firecracker micro-VMs that boot in about 125 ms, how OpenAI Codex and Claude Code sandbox their agents, network egress rules, and the fleet maths of running millions of short-lived machines.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "22 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "📦",
+      "featured": false
+    },
+    {
+      "slug": "agent-layer-map",
+      "title": "The Agent Layer, Mapped: What Runs Between a Request and the 400th Tool Call",
+      "excerpt": "Part 1 of Inside the Agent Layer maps the infrastructure that runs AI agents at scale: the loop, sandboxes, durable execution, tool gateways and MCP, identity, memory, observability and RL environments. One request traced end to end, why agents use about 4× the tokens of chat (15× for multi-agent systems), and who builds each piece.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-28",
+      "readTime": "21 min",
+      "tags": [
+        "AI Factories",
+        "Agent Layer"
+      ],
+      "emoji": "🤖",
+      "featured": false
+    },
+    {
       "slug": "eval-score-to-ship",
       "title": "From Score to Ship: How Evaluation Results Become a Launch Decision",
       "excerpt": "The final part of Inside the Evaluation Layer: how labs turn hundreds of evaluation results into a go or no-go, what goes into a system card, three real launches that tested the process (GPT-4o's sycophancy rollback, Gemini 2.5 Pro's late model card, Claude Opus 4 under ASL-3), the rules that now require it (EU AI Act Code of Practice, California SB 53), and a release-gate simulator.",

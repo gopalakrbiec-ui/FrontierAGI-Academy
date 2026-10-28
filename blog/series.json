@@ -211,6 +211,22 @@
       ]
     },
     {
+      "id": "sec-agentlayer",
+      "title": "Inside the Agent Layer: The Infrastructure That Runs AI Agents at Scale",
+      "short": "Inside the Agent Layer",
+      "icon": "🤖",
+      "slugs": [
+        "agent-layer-map",
+        "agent-sandboxes",
+        "agent-durable-execution",
+        "agent-tool-gateways",
+        "agent-identity-permissions",
+        "agent-memory-state",
+        "agent-observability-cost",
+        "agent-rl-environments"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",
