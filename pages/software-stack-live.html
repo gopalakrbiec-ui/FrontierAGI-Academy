@@ -331,7 +331,7 @@
 
     <div class="af-hero ss-hero ss-full">
       <span class="af-badge">🧬 Interactive architecture · 01 · Build the Machine</span>
-      <h1>The AI Software Stack, Live: Every Layer, Every Tool, Data in Motion</h1>
+      <h1>The AI Software Stack, Live: The Real Architecture, Every Tool, Data in Motion</h1>
       <p>The software of an AI factory drawn as one architecture: eleven layers from firmware to agents, 72 technologies as boxes, each carrying its own line of innovations, and the traffic between them animated as streams. Watch a training step, a user request, an agent task, a post-training loop, a failure and recovery and a new rack bring-up move through the stack at the same time. Turn up the load to find the bottlenecks, or drag the year back to 2012 and watch the stack disappear.</p>
       <div class="af-nums" id="ssNums"></div>
     </div>
@@ -341,6 +341,7 @@
     <div class="ss-embedbar"><b>🧬 The AI Software Stack, Live</b><a href="software-stack-live.html" target="_top">Open full map →</a></div>
     <div class="ss-jr" id="ssJr"></div>
     <div class="ss-bar">
+      <span class="ss-seg" id="ssLay"><button type="button" data-v="real" class="on">🧭 Realistic layout</button><button type="button" data-v="stack">📚 Simplified stack</button></span>
       <span class="ss-seg" id="ssView"><button type="button" data-v="arch" class="on">🏛️ Architecture</button><button type="button" data-v="open">🔓 Open vs closed</button><button type="button" data-v="who">🧑‍🔧 Who owns it</button></span>
       <label>Load <input type="range" id="ssLoad" min="10" max="100" value="55"> <b id="ssLoadV"></b></label>
       <label>Year <input type="range" id="ssYear" min="2012" max="2026" value="2026"> <b id="ssYearV"></b></label>
@@ -351,7 +352,8 @@
     <div class="ss-cap" id="ssCap"></div>
 
     <div class="ss-full">
-      <h2 class="af-sec" id="layers">The eleven layers</h2>
+      <h2 class="af-sec" id="layers">How the architecture is organised</h2>
+      <p class="af-lead">Only the bottom of the picture is a true stack: hardware → runtime → shared frameworks and kernels, where each layer calls the one below. Above it, data prep, pre-training, post-training, evaluation, serving and agents are <b>stages side by side</b>, all running on that same platform and passing datasets and checkpoints left to right. Scheduling is a <b>control plane</b> beside the stack, and observability and security cut across everything. <b>Simplified stack</b> shows the older one-layer-per-row teaching view.</p>
       <div class="af-fig"><div class="af-scroll"><table class="af-table" id="ssTbl" style="min-width:760px"></table></div></div>
       <p class="af-lead" style="margin-top:14px">Related: <a href="stack-innovations.html">Stack Innovation Map</a> (when each technology arrived) · <a href="ai-factory-3d.html">The AI Factory in 3D</a> (where it physically runs) · <a href="who-runs-the-ai-factory.html">Who Runs the AI Factory</a> (the people) · <a href="ml-layer.html">ML Layer</a>, <a href="data-layer.html">Data Layer</a>, <a href="eval-layer.html">Evaluation</a> and <a href="agent-layer.html">Agent Layer</a> hubs.</p>
     </div>
@@ -366,20 +368,21 @@
   var EMBED = /[?&]embed=1/.test(location.search); if (EMBED) document.body.classList.add('ss-embed');
   var KIND = { grad: ['#f97316', 'Training data & gradients'], tok: ['#38bdf8', 'Tokens & requests'], ctrl: ['#a78bfa', 'Agent & control calls'], tele: ['#f87171', 'Alerts & recovery'], obs: ['#94a3b8', 'Telemetry to observability'] };
   var MET = { xcut: ['spans/s', 210000, 1], agent: ['tool calls/s', 1800, 1], serve: ['tokens/s', 4200000, 1], post: ['rollouts/min', 900, 1], train: ['MFU %', 41, 0], kern: ['TFLOP/s/GPU', 620, 0], sched: ['jobs queued', 38, 1], data: ['GB/s read', 1700, 1], net: ['GB/s per node', 360, 1], os: ['GPU util %', 91, 0], fw: ['nodes healthy %', 99.6, 0] };
-  var D, GEN = {}, L = [], LB = {}, BX = [], BB = {}, JR = [], EDGES = {}, view = 'arch', load = 0.55, year = 2026, jsel = 'all', sel = null, q = '';
+  var lay = 'real', COLS = [], CB = {}, ZB = {}, HAND = [], HO = [], OBX = null, D, GEN = {}, L = [], LB = {}, BX = [], BB = {}, JR = [], EDGES = {}, view = 'arch', load = 0.55, year = 2026, jsel = 'all', sel = null, q = '';
   var svg = $('ssSvg'), cv = $('ssCv'), g = cv.getContext('2d'), W = 0, H = 0, DPR = 1, mobile = false;
 
   Promise.all([fetch('../data/software-stack.json').then(function (r) { return r.json(); }), fetch('../data/stack-innovations.json').then(function (r) { return r.json(); }).catch(function () { return { items: [] }; })]).then(function (a) { D = a[0]; a[1].items.forEach(function (i) { GEN[i.id] = i; }); init(); });
 
   function init() {
     D.layers.forEach(function (l) { var o = { id: l[0], name: l[1], emoji: l[2], c: l[3], role: l[4], job: l[5] }; L.push(o); LB[o.id] = o; });
-    D.boxes.forEach(function (b) { var o = { id: b[0], layer: b[1], name: b[2], org: b[3], open: b[4], since: b[5], gen: b[6], art: b[7], what: b[8] };
+    (D.columns || []).forEach(function (c) { var o = { id: c[0], name: c[1], emoji: c[2], c: c[3], role: c[4] }; COLS.push(o); CB[o.id] = o; }); (D.zones || []).forEach(function (z) { ZB[z[0]] = { id: z[0], name: z[1], emoji: z[2], c: z[3], role: z[4], job: z[5] }; }); HAND = D.handoffs || [];
+    D.boxes.forEach(function (b) { var o = { id: b[0], layer: b[1], name: b[2], org: b[3], open: b[4], since: b[5], gen: b[6], art: b[7], what: b[8], zone: b[9], col: b[10] };
       var ys = o.gen.map(function (x) { return GEN[x] ? +GEN[x].date.slice(0, 4) : 9999; }); if (o.since) ys.push(o.since); o.avail = ys.length ? Math.min.apply(null, ys) : null; o.v = MET[o.layer][1] * (0.7 + Math.random() * 0.6); BX.push(o); BB[o.id] = o; });
     D.journeys.forEach(function (j) { var o = { id: j[0], name: j[1], kind: j[2], path: j[3], hot: j[4], desc: j[5] }; o.avail = Math.max.apply(null, o.path.map(function (x) { return BB[x].avail || 0; })); JR.push(o);
       for (var i = 1; i < o.path.length; i++) { var a = o.path[i - 1], b = o.path[i]; if (a === b) continue; var k = a < b ? a + '|' + b : b + '|' + a; (EDGES[k] = EDGES[k] || { a: a < b ? a : b, b: a < b ? b : a, j: [] }).j.push(o.id); } });
     $('ssNums').innerHTML = [[L.length, 'layers'], [BX.length, 'technologies'], [JR.length, 'live flows'], [BX.reduce(function (s, b) { return s + b.gen.length; }, 0), 'linked innovations']].map(function (n) { return '<div><b>' + n[0] + '</b><span>' + n[1] + '</span></div>'; }).join('');
-    $('ssLeg').innerHTML = Object.keys(KIND).map(function (k) { return '<span><i style="--c:' + KIND[k][0] + '"></i>' + KIND[k][1] + '</span>'; }).join('') + '<span>🔴 pulsing border = bottleneck at high load · ⭕ ring = innovation in the last 12 months · dashed = not invented yet</span>';
-    $('ssTbl').innerHTML = '<tr><th>Layer</th><th>Job</th><th>Who owns it</th><th>Technologies</th></tr>' + L.map(function (l) { return '<tr><td><b>' + l.emoji + ' ' + l.name + '</b></td><td>' + l.job + '</td><td>' + l.role + '</td><td>' + BX.filter(function (b) { return b.layer === l.id; }).map(function (b) { return b.name; }).join(' · ') + '</td></tr>'; }).join('');
+    $('ssLeg').innerHTML = Object.keys(KIND).map(function (k) { return '<span><i style="--c:' + KIND[k][0] + '"></i>' + KIND[k][1] + '</span>'; }).join('') + '<span>🟨 dashed arcs = models handed between stages</span><span>🔴 pulsing border = bottleneck at high load · ⭕ ring = innovation in the last 12 months · dashed = not invented yet</span>';
+    $('ssTbl').innerHTML = '<tr><th>Part of the architecture</th><th>Job</th><th>Who owns it</th><th>Technologies</th></tr>' + COLS.map(function (c) { return '<tr><td><b>' + c.emoji + ' Stage: ' + c.name + '</b></td><td>Lifecycle stage on the shared platform</td><td>' + c.role + '</td><td>' + BX.filter(function (b) { return b.col === c.id; }).map(function (b) { return b.name; }).join(' · ') + '</td></tr>'; }).join('') + ['platform', 'runtime', 'infra', 'hw', 'ctrl', 'obs'].map(function (z) { var Z = ZB[z]; return '<tr><td><b>' + Z.emoji + ' ' + Z.name + '</b></td><td>' + Z.job + '</td><td>' + Z.role + '</td><td>' + BX.filter(function (b) { return b.zone === z; }).map(function (b) { return b.name; }).join(' · ') + '</td></tr>'; }).join('');
     drawJr(); controls(); layout(); window.addEventListener('resize', function () { clearTimeout(window.__ssr); window.__ssr = setTimeout(layout, 150); });
     requestAnimationFrame(frame); setInterval(tickCounters, 700); caption();
   }
@@ -387,24 +390,44 @@
   // ───── Layout
   function wrapTxt(s, max) { var w = s.split(' '), out = [], cur = ''; w.forEach(function (x) { if ((cur + ' ' + x).trim().length > max && cur) { out.push(cur); cur = x; } else cur = (cur + ' ' + x).trim(); }); if (cur) out.push(cur); if (out.length > 2) { out = out.slice(0, 2); out[1] = out[1].replace(/.{0,1}$/, '…'); } return out; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function isSide(b) { if (mobile) return false; return lay === 'real' ? (b.zone === 'ctrl' || b.zone === 'obs') : b.layer === 'xcut'; }
+  function colOf(b) { if (lay === 'stack') return LB[b.layer].c; if (b.zone === 'app') return CB[b.col].c; return ZB[b.zone].c; }
   function layout() {
-    W = $('ssWrap').clientWidth; mobile = W < 760; var gap = 8, bh = 60, lblW = mobile ? 0 : 158, obsW = mobile ? 0 : 168, x0 = 10 + lblW, x1 = W - 10 - obsW - (mobile ? 0 : 10), y = 12, minBW = mobile ? 108 : 122, rows = [];
-    var order = L.filter(function (l) { return mobile || l.id !== 'xcut'; });
-    order.forEach(function (l) { var bs = BX.filter(function (b) { return b.layer === l.id; }), avail = x1 - x0, k = Math.max(1, Math.min(bs.length, Math.floor((avail + gap) / (minBW + gap)))), lines = Math.ceil(bs.length / k), bw = (avail - gap * (k - 1)) / k, top = y + (mobile ? 24 : 10);
-      bs.forEach(function (b, i) { var r = Math.floor(i / k), c = i % k, inLine = Math.min(k, bs.length - r * k), off = (avail - (inLine * bw + (inLine - 1) * gap)) / 2; b.x = x0 + off + c * (bw + gap); b.y = top + r * (bh + gap); b.w = bw; b.h = bh; });
-      var h = (mobile ? 24 : 10) + lines * (bh + gap) - gap + 10; rows.push({ l: l, y: y, h: h }); y += h + 6; });
-    H = y + 6;
-    if (!mobile) { var obs = BX.filter(function (b) { return b.layer === 'xcut'; }), ox = W - 10 - obsW, step = (H - 24 - 40) / obs.length; obs.forEach(function (b, i) { b.x = ox + 8; b.w = obsW - 16; b.h = bh; b.y = 44 + i * step + (step - bh) / 2; }); }
-    var s = '<defs><linearGradient id="ssObsG" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/></linearGradient></defs>';
-    rows.forEach(function (r) { var l = r.l; s += '<rect x="6" y="' + r.y + '" width="' + (mobile ? W - 12 : W - 12 - obsW - 10) + '" height="' + r.h + '" rx="12" fill="' + l.c + '" fill-opacity=".13" stroke="' + l.c + '" stroke-opacity=".45"/>';
-      var lab = view === 'who' ? l.role : l.name; if (mobile) s += '<text x="16" y="' + (r.y + 17) + '" fill="#e2e8f0" font-size="12" font-weight="800">' + l.emoji + ' ' + esc(lab) + '</text>';
-      else { var ln = wrapTxt(lab, 18); s += '<text x="16" y="' + (r.y + r.h / 2 - (ln.length - 1) * 8 + 4) + '" fill="#e2e8f0" font-size="12.5" font-weight="800">' + '<tspan x="16" dy="0">' + l.emoji + ' ' + esc(ln[0]) + '</tspan>' + (ln[1] ? '<tspan x="34" dy="16">' + esc(ln[1]) + '</tspan>' : '') + '</text>'; } });
-    if (!mobile) { var ox2 = W - 10 - obsW; s += '<rect x="' + ox2 + '" y="12" width="' + obsW + '" height="' + (H - 24) + '" rx="12" fill="url(#ssObsG)" stroke="#475569"/><text x="' + (ox2 + obsW / 2) + '" y="32" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="800">🛡️ ' + (view === 'who' ? 'SREs & security' : 'Observability & security') + '</text>'; }
+    W = $('ssWrap').clientWidth; mobile = W < 760; var real = lay === 'real', gap = 8, bh = real ? 56 : 60, sideW = mobile ? 0 : (real ? 150 : 168), lblW = (!mobile && !real) ? 158 : 0;
+    var x0 = 10 + lblW + (real && !mobile ? sideW + 10 : 0), x1 = W - 10 - (mobile ? 0 : sideW + 10), y = 12, minBW = mobile ? 108 : 122, bands = [], s = '', extra = '';
+    HO = [];
+    function band(list, o) { var head = (!mobile && !real) ? 10 : 26, top = y + head, avail = x1 - x0, k = Math.max(1, Math.min(list.length, Math.floor((avail + gap) / (minBW + gap)))), lines = Math.ceil(list.length / k), bw = (avail - gap * (k - 1)) / k;
+      list.forEach(function (b, i) { var r = Math.floor(i / k), c = i % k, inLine = Math.min(k, list.length - r * k), off = (avail - (inLine * bw + (inLine - 1) * gap)) / 2; b.x = x0 + off + c * (bw + gap); b.y = top + r * (bh + gap); b.w = bw; b.h = bh; });
+      var h = head + lines * (bh + gap) - gap + 10; o.y = y; o.h = h; bands.push(o); y += h + 6; }
+    if (!real) L.filter(function (l) { return mobile || l.id !== 'xcut'; }).forEach(function (l) { band(BX.filter(function (b) { return b.layer === l.id; }), { c: l.c, label: l.emoji + ' ' + l.name, role: l.emoji + ' ' + l.role }); });
+    else {
+      if (!mobile) { // lifecycle columns side by side, models handed left → right
+        var cg = 14, cw = (x1 - x0 - cg * (COLS.length - 1)) / COLS.length, top = y + 26 + 24 + 28, maxN = 0;
+        COLS.forEach(function (c, ci) { var cx = x0 + ci * (cw + cg), list = BX.filter(function (b) { return b.col === c.id; }); maxN = Math.max(maxN, list.length); c.x = cx; c.w = cw; c.hy = y + 50;
+          list.forEach(function (b, i) { b.x = cx; b.y = top + i * (bh + gap); b.w = cw; b.h = bh; });
+          extra += '<rect x="' + cx + '" y="' + c.hy + '" width="' + cw + '" height="22" rx="7" fill="' + c.c + '" fill-opacity=".85"/><text x="' + (cx + cw / 2) + '" y="' + (c.hy + 15) + '" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="800">' + c.emoji + ' ' + esc(view === 'who' ? wrapTxt(c.role, Math.floor(cw / 6.5))[0] : c.name) + '</text>'; });
+        HAND.forEach(function (hd) { var a = CB[hd[0]], b = CB[hd[1]], ax = a.x + a.w / 2, bx = b.x + b.w / 2, yy = a.hy, pts = []; for (var i = 0; i <= 20; i++) { var t = i / 20; pts.push([ax + (bx - ax) * t, yy - Math.sin(Math.PI * t) * 16]); }
+          HO.push({ pts: pts, label: hd[2] }); extra += '<path d="M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L') + '" fill="none" stroke="#fde047" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="4 3"/><text x="' + ((ax + bx) / 2) + '" y="' + (yy - 19) + '" text-anchor="middle" fill="#fde68a" font-size="9.5" font-weight="700">' + esc(hd[2]) + ' →</text>'; });
+        var h = 26 + 24 + 28 + maxN * (bh + gap) - gap + 10; bands.push({ y: y, h: h, c: ZB.app.c, label: ZB.app.emoji + ' ' + ZB.app.name, role: ZB.app.emoji + ' ' + ZB.app.role }); y += h + 6;
+      } else COLS.forEach(function (c) { band(BX.filter(function (b) { return b.col === c.id; }), { c: c.c, label: c.emoji + ' ' + c.name, role: c.emoji + ' ' + c.role }); });
+      ['platform', 'runtime', 'infra', 'hw'].concat(mobile ? ['ctrl', 'obs'] : []).forEach(function (z) { var Z = ZB[z]; band(BX.filter(function (b) { return b.zone === z; }), { c: Z.c, label: Z.emoji + ' ' + Z.name, role: Z.emoji + ' ' + Z.role }); });
+    }
+    H = y + 6; OBX = null;
+    var sides = mobile ? [] : real ? [['ctrl', 10], ['obs', W - 10 - sideW]] : [['xcut', W - 10 - sideW]];
+    sides.forEach(function (sd) { var list = BX.filter(function (b) { return real ? b.zone === sd[0] : b.layer === 'xcut'; }), ox = sd[1], step = (H - 24 - 40) / list.length, Z = real ? ZB[sd[0]] : { emoji: '🛡️', name: 'Observability & security', role: 'SREs & security', c: '#475569' };
+      list.forEach(function (b, i) { b.x = ox + 8; b.w = sideW - 16; b.h = bh; b.y = 52 + i * step + (step - bh) / 2; });
+      if (sd[0] !== 'ctrl') OBX = ox;
+      extra += '<rect x="' + ox + '" y="12" width="' + sideW + '" height="' + (H - 24) + '" rx="12" fill="' + Z.c + '" fill-opacity=".2" stroke="' + Z.c + '"/><text x="' + (ox + sideW / 2) + '" y="30" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="800">' + wrapTxt(Z.emoji + ' ' + (view === 'who' ? Z.role : Z.name), 20).map(function (t, i) { return '<tspan x="' + (ox + sideW / 2) + '" dy="' + (i ? 13 : 0) + '">' + esc(t) + '</tspan>'; }).join('') + '</text>'; });
+    bands.forEach(function (r) { var bx0 = (!mobile && !real) ? 6 : x0 - 6, bw0 = (!mobile && !real) ? W - 12 - sideW - 10 : x1 - x0 + 12; s += '<rect x="' + bx0 + '" y="' + r.y + '" width="' + bw0 + '" height="' + r.h + '" rx="12" fill="' + r.c + '" fill-opacity=".13" stroke="' + r.c + '" stroke-opacity=".45"/>';
+      var lab = view === 'who' ? r.role : r.label;
+      if (!mobile && !real) { var ln = wrapTxt(lab, 20); s += '<text x="16" y="' + (r.y + r.h / 2 - (ln.length - 1) * 8 + 4) + '" fill="#e2e8f0" font-size="12.5" font-weight="800"><tspan x="16" dy="0">' + esc(ln[0]) + '</tspan>' + (ln[1] ? '<tspan x="34" dy="16">' + esc(ln[1]) + '</tspan>' : '') + '</text>'; }
+      else s += '<text x="' + (bx0 + 10) + '" y="' + (r.y + 17) + '" fill="#e2e8f0" font-size="12" font-weight="800">' + esc(lab) + '</text>'; });
+    s = '<defs></defs>' + extra + s;
     s += '<g id="ssEdges">'; Object.keys(EDGES).forEach(function (k) { var e = EDGES[k]; e.pts = curve(BB[e.a], BB[e.b]); s += '<path data-k="' + k + '" d="M' + e.pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L') + '" fill="none" stroke="#94a3b8" stroke-opacity=".22" stroke-width="1.4"/>'; }); s += '</g>';
-    BX.forEach(function (b) { var l = LB[b.layer], fill = view === 'open' ? ['#475569', '#16a34a', '#ca8a04'][b.open] : l.c, nm = wrapTxt(b.name, Math.max(9, Math.floor((b.w - 24) / 7.1)));
+    BX.forEach(function (b) { var fill = view === 'open' ? ['#475569', '#16a34a', '#ca8a04'][b.open] : colOf(b), nm = wrapTxt(b.name, Math.max(9, Math.floor((b.w - 24) / 7.1)));
       s += '<g class="ss-box" data-id="' + b.id + '" tabindex="0"><title>' + esc(b.name + ' — ' + b.what) + '</title><rect class="b" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="9" fill="' + fill + '" fill-opacity="' + (view === 'open' ? '.55' : '.28') + '" stroke="' + fill + '" stroke-width="1.5"/>';
       s += '<text x="' + (b.x + 8) + '" y="' + (b.y + 16) + '" fill="#f8fafc" font-size="11.5" font-weight="800">' + nm.map(function (t, i) { return '<tspan x="' + (b.x + 8) + '" dy="' + (i ? 13 : 0) + '">' + esc(t) + '</tspan>'; }).join('') + '</text>';
-      s += '<text x="' + (b.x + 8) + '" y="' + (b.y + b.h - 18) + '" fill="#cbd5e1" font-size="9.5">' + esc(wrapTxt(b.org, Math.max(8, Math.floor((b.w - 62) / 5.4)))[0]) + '</text>';
+      s += '<text x="' + (b.x + 8) + '" y="' + (b.y + b.h - 18) + '" fill="#cbd5e1" font-size="9.5">' + esc(wrapTxt(b.org, Math.max(6, Math.floor((b.w - 50) / 5.4)))[0]) + '</text>';
       s += '<text class="m" x="' + (b.x + 8) + '" y="' + (b.y + b.h - 6) + '" fill="#86efac" font-size="9.5" font-weight="700"></text>';
       s += '<circle class="nw" cx="' + (b.x + b.w - 9) + '" cy="' + (b.y + 9) + '" r="4" fill="#fde047" style="display:none"/><circle class="nw ss-new" cx="' + (b.x + b.w - 9) + '" cy="' + (b.y + 9) + '" r="4" fill="none" stroke="#fde047" stroke-width="2" style="display:none"/>';
       s += '<text class="yr" x="' + (b.x + b.w - 7) + '" y="' + (b.y + b.h - 18) + '" text-anchor="end" fill="#fde68a" font-size="9" font-weight="700"></text></g>'; });
@@ -415,7 +438,7 @@
     state(); tickCounters(); }
   function curve(A, B) { var ax = A.x + A.w / 2, ay = A.y + A.h / 2, bx = B.x + B.w / 2, by = B.y + B.h / 2, p0, p3, c1, c2;
     if (Math.abs(ay - by) < 4) { p0 = [ax, A.y]; p3 = [bx, B.y]; var lift = Math.min(60, 18 + Math.abs(bx - ax) * 0.12); c1 = [ax, A.y - lift]; c2 = [bx, B.y - lift]; }
-    else if (A.layer === 'xcut' || B.layer === 'xcut') { var X = A.layer === 'xcut' ? A : B, O = X === A ? B : A, side = X.x > O.x ? 1 : -1; var px = [X.x + (side > 0 ? 0 : X.w), X.y + X.h / 2], po = [O.x + (side > 0 ? O.w : 0), O.y + O.h / 2]; var dx = (px[0] - po[0]) * 0.5; if (X === A) { p0 = px; p3 = po; c1 = [px[0] - dx, px[1]]; c2 = [po[0] + dx, po[1]]; } else { p0 = po; p3 = px; c1 = [po[0] + dx, po[1]]; c2 = [px[0] - dx, px[1]]; } }
+    else if (isSide(A) !== isSide(B)) { var X = isSide(A) ? A : B, O = X === A ? B : A, side = X.x > O.x ? 1 : -1; var px = [X.x + (side > 0 ? 0 : X.w), X.y + X.h / 2], po = [O.x + (side > 0 ? O.w : 0), O.y + O.h / 2]; var dx = (px[0] - po[0]) * 0.5; if (X === A) { p0 = px; p3 = po; c1 = [px[0] - dx, px[1]]; c2 = [po[0] + dx, po[1]]; } else { p0 = po; p3 = px; c1 = [po[0] + dx, po[1]]; c2 = [px[0] - dx, px[1]]; } }
     else { var down = by > ay; p0 = [ax, down ? A.y + A.h : A.y]; p3 = [bx, down ? B.y : B.y + B.h]; var m = (p3[1] - p0[1]) * 0.5; c1 = [p0[0], p0[1] + m]; c2 = [p3[0], p3[1] - m]; }
     var out = []; for (var i = 0; i <= 24; i++) { var t = i / 24, u = 1 - t; out.push([u * u * u * p0[0] + 3 * u * u * t * c1[0] + 3 * u * t * t * c2[0] + t * t * t * p3[0], u * u * u * p0[1] + 3 * u * u * t * c1[1] + 3 * u * t * t * c2[1] + t * t * t * p3[1]]); } return out; }
 
@@ -454,7 +477,8 @@
         if (si !== lastStep) { lastStep = si; stepI = si; svg.querySelectorAll('.ss-box').forEach(function (el) { el.classList.toggle('step', el.getAttribute('data-id') === j.path[si] || el.getAttribute('data-id') === j.path[si - 1]); }); caption(); } } });
     if (!single && lastStep !== -2) { lastStep = -2; stepI = -1; svg.querySelectorAll('.ss-box.step').forEach(function (el) { el.classList.remove('step'); }); }
     // telemetry: every live box drifts a faint dot to the observability column
-    if (!mobile) { var ox = W - 10 - 168; g.fillStyle = KIND.obs[0]; g.shadowBlur = 0; BX.forEach(function (b, i) { if (b.layer === 'xcut' || !avail(b)) return; var u = ((t * 0.18 * (0.6 + load)) + i * 0.137) % 1, x = b.x + b.w + (ox - b.x - b.w) * u, y = b.y + b.h / 2 + Math.sin(u * 6 + i) * 3; g.globalAlpha = 0.28 * (1 - u * 0.5); g.beginPath(); g.arc(x, y, 1.6, 0, 7); g.fill(); }); }
+    if (OBX != null) { var ox = OBX; g.fillStyle = KIND.obs[0]; g.shadowBlur = 0; BX.forEach(function (b, i) { if (b.x >= ox || !avail(b)) return; var u = ((t * 0.18 * (0.6 + load)) + i * 0.137) % 1, x = b.x + b.w + (ox - b.x - b.w) * u, y = b.y + b.h / 2 + Math.sin(u * 6 + i) * 3; g.globalAlpha = 0.28 * (1 - u * 0.5); g.beginPath(); g.arc(x, y, 1.6, 0, 7); g.fill(); }); }
+    if (HO.length) { g.fillStyle = '#fde047'; g.shadowColor = '#fde047'; g.shadowBlur = 10; g.globalAlpha = 1; HO.forEach(function (h, i) { for (var k = 0; k < 2; k++) { var u = ((t * (0.25 + load * 0.35)) + k / 2 + i * 0.13) % 1, f = u * (h.pts.length - 1), a = h.pts[Math.floor(f)], b2 = h.pts[Math.min(h.pts.length - 1, Math.floor(f) + 1)], fr = f - Math.floor(f); g.fillRect(a[0] + (b2[0] - a[0]) * fr - 3.5, a[1] + (b2[1] - a[1]) * fr - 3.5, 7, 7); } }); }
     g.globalAlpha = 1; g.shadowBlur = 0; }
   function fmt(v) { return v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : v >= 1e4 ? (v / 1e3).toFixed(0) + 'k' : v >= 100 ? Math.round(v) : v.toFixed(1); }
   function tickCounters() { if (!W) return; svg.querySelectorAll('.ss-box').forEach(function (el) { var b = BB[el.getAttribute('data-id')], m = MET[b.layer]; if (!avail(b)) { el.querySelector('.m').textContent = ''; return; }
@@ -475,6 +499,7 @@
     sh.querySelectorAll('.ss-jb').forEach(function (bt) { bt.addEventListener('click', function () { jsel = bt.getAttribute('data-j'); state(); }); }); }
 
   function controls() {
+    document.querySelectorAll('#ssLay button').forEach(function (b) { b.addEventListener('click', function () { document.querySelectorAll('#ssLay button').forEach(function (o) { o.classList.toggle('on', o === b); }); lay = b.getAttribute('data-v'); layout(); }); });
     document.querySelectorAll('#ssView button').forEach(function (b) { b.addEventListener('click', function () { document.querySelectorAll('#ssView button').forEach(function (o) { o.classList.toggle('on', o === b); }); view = b.getAttribute('data-v'); layout(); }); });
     $('ssLoad').addEventListener('input', function () { load = this.value / 100; state(); });
     $('ssYear').addEventListener('input', function () { year = +this.value; state(); tickCounters(); });

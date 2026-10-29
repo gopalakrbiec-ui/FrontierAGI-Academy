@@ -629,6 +629,9 @@ def validate_software():
                 problems.append(f"{w}: innovation id {g} not in data/stack-innovations.json")
         if b[7] and not (ROOT / "blog" / f"{b[7]}.html").exists():
             problems.append(f"{w}: article {b[7]} not found")
+        zones, cols = {z[0] for z in d.get("zones", [])}, {c[0] for c in d.get("columns", [])}
+        if len(b) < 11 or b[9] not in zones or (b[9] == "app") != (b[10] in cols):
+            problems.append(f"{w}: needs a valid zone, and a lifecycle column only when zone is app")
     for j in d["journeys"]:
         for x in j[3] + [j[4]]:
             if x not in seen:

@@ -1,5 +1,5 @@
 {
- "note": "Hand-curated architecture of the AI factory software stack. 'gen' ids point to sourced items in data/stack-innovations.json; 'since' years are first public release. Counters on the page are simulated.",
+ "note": "Hand-curated architecture of the AI factory software stack. 'gen' ids point to sourced items in data/stack-innovations.json; 'since' years are first public release. Counters on the page are simulated. Realistic layout: boxes carry zone (app/platform/runtime/infra/hw/ctrl/obs) and, for app, a lifecycle column.",
  "layers": [
   [
    "xcut",
@@ -100,7 +100,9 @@
    2019,
    [],
    "agent-observability-cost",
-   "Open standard for traces, metrics and logs; GenAI conventions cover model and agent spans."
+   "Open standard for traces, metrics and logs; GenAI conventions cover model and agent spans.",
+   "obs",
+   null
   ],
   [
    "prom",
@@ -111,7 +113,9 @@
    2012,
    [],
    "ai-factory-observability",
-   "Time-series metrics and dashboards behind most on-call alerting."
+   "Time-series metrics and dashboards behind most on-call alerting.",
+   "obs",
+   null
   ],
   [
    "dcgm",
@@ -122,7 +126,9 @@
    null,
    [],
    "ai-factory-observability",
-   "GPU health, error counters and diagnostics used to catch failing nodes."
+   "GPU health, error counters and diagnostics used to catch failing nodes.",
+   "obs",
+   null
   ],
   [
    "trace",
@@ -133,7 +139,9 @@
    null,
    [],
    "agent-observability-cost",
-   "A trace per task, a span per model or tool call, with tokens and cost."
+   "A trace per task, a span per model or tool call, with tokens and cost.",
+   "obs",
+   null
   ],
   [
    "iam",
@@ -144,7 +152,9 @@
    null,
    [],
    "ai-factory-security",
-   "Who may touch which cluster, dataset or model; every action logged."
+   "Who may touch which cluster, dataset or model; every action logged.",
+   "obs",
+   null
   ],
   [
    "wsec",
@@ -155,7 +165,9 @@
    null,
    [],
    "ai-factory-security",
-   "Encryption, isolation and access controls around model weights."
+   "Encryption, isolation and access controls around model weights.",
+   "obs",
+   null
   ],
   [
    "loop",
@@ -170,7 +182,9 @@
     "agent-139"
    ],
    "agent-layer-map",
-   "The model-call → tool-call → result loop, packaged as SDKs."
+   "The model-call → tool-call → result loop, packaged as SDKs.",
+   "app",
+   "agents"
   ],
   [
    "mcp",
@@ -186,7 +200,9 @@
     "agent-212"
    ],
    "agent-tool-gateways",
-   "One protocol from agents to tools; gateways add policy, credentials and audit."
+   "One protocol from agents to tools; gateways add policy, credentials and audit.",
+   "app",
+   "agents"
   ],
   [
    "sbx",
@@ -197,7 +213,9 @@
    2018,
    [],
    "agent-sandboxes",
-   "A disposable, isolated computer per agent task."
+   "A disposable, isolated computer per agent task.",
+   "app",
+   "agents"
   ],
   [
    "dur",
@@ -208,7 +226,9 @@
    null,
    [],
    "agent-durable-execution",
-   "Records each step so long runs survive crashes and human pauses."
+   "Records each step so long runs survive crashes and human pauses.",
+   "app",
+   "agents"
   ],
   [
    "idn",
@@ -219,7 +239,9 @@
    null,
    [],
    "agent-identity-permissions",
-   "Short-lived tokens naming both the user and the agent."
+   "Short-lived tokens naming both the user and the agent.",
+   "app",
+   "agents"
   ],
   [
    "mem",
@@ -230,7 +252,9 @@
    null,
    [],
    "agent-memory-state",
-   "Context editing, compaction, memory stores and prompt caching."
+   "Context editing, compaction, memory stores and prompt caching.",
+   "app",
+   "agents"
   ],
   [
    "a2a",
@@ -243,7 +267,9 @@
     "agent-138"
    ],
    "agent-layer-map",
-   "A protocol for agents to discover and delegate to each other."
+   "A protocol for agents to discover and delegate to each other.",
+   "app",
+   "agents"
   ],
   [
    "cu",
@@ -256,7 +282,9 @@
     "agent-232"
    ],
    "agent-sandboxes",
-   "Agents operating a full desktop through screenshots and clicks."
+   "Agents operating a full desktop through screenshots and clicks.",
+   "app",
+   "agents"
   ],
   [
    "router",
@@ -267,7 +295,9 @@
    null,
    [],
    "ai-factory-inference-platform",
-   "Authenticates requests, routes them to model replicas and reuses cached prefixes."
+   "Authenticates requests, routes them to model replicas and reuses cached prefixes.",
+   "app",
+   "serve"
   ],
   [
    "vllm",
@@ -281,7 +311,9 @@
     "inf-131"
    ],
    "ml-inference-engines",
-   "Open serving engine built around PagedAttention."
+   "Open serving engine built around PagedAttention.",
+   "app",
+   "serve"
   ],
   [
    "sglang",
@@ -294,7 +326,9 @@
     "inf-129"
    ],
    "ml-inference-engines",
-   "Serving engine with RadixAttention prefix sharing."
+   "Serving engine with RadixAttention prefix sharing.",
+   "app",
+   "serve"
   ],
   [
    "trtllm",
@@ -308,7 +342,9 @@
     "inf-128"
    ],
    "ml-inference-engines",
-   "NVIDIA's optimised LLM inference library."
+   "NVIDIA's optimised LLM inference library.",
+   "app",
+   "serve"
   ],
   [
    "batch",
@@ -321,7 +357,9 @@
     "inf-124"
    ],
    "ml-inference-engines",
-   "Adds and removes requests every step to keep GPUs full."
+   "Adds and removes requests every step to keep GPUs full.",
+   "app",
+   "serve"
   ],
   [
    "spec",
@@ -336,7 +374,9 @@
     "inf-169"
    ],
    "ml-inference-engines",
-   "A small draft proposes tokens; the big model verifies several at once."
+   "A small draft proposes tokens; the big model verifies several at once.",
+   "app",
+   "serve"
   ],
   [
    "quant",
@@ -351,7 +391,9 @@
     "inf-167"
    ],
    "ml-inference-engines",
-   "Runs weights in 8 or 4 bits to save memory and bandwidth."
+   "Runs weights in 8 or 4 bits to save memory and bandwidth.",
+   "app",
+   "serve"
   ],
   [
    "disagg",
@@ -366,7 +408,9 @@
     "inf-132"
    ],
    "ml-inference-engines",
-   "Splits prompt processing from generation and moves KV caches between them."
+   "Splits prompt processing from generation and moves KV caches between them.",
+   "app",
+   "serve"
   ],
   [
    "rlhf",
@@ -381,7 +425,9 @@
     "post-108"
    ],
    "ml-post-training-rl",
-   "Reinforcement learning from human preference rewards."
+   "Reinforcement learning from human preference rewards.",
+   "app",
+   "posttrain"
   ],
   [
    "dpo",
@@ -395,7 +441,9 @@
     "post-175"
    ],
    "ml-post-training-rl",
-   "Learns from preference pairs without a separate RL loop."
+   "Learns from preference pairs without a separate RL loop.",
+   "app",
+   "posttrain"
   ],
   [
    "grpo",
@@ -410,7 +458,9 @@
     "post-228"
    ],
    "ml-post-training-rl",
-   "RL with verifiable rewards that taught models to reason at length."
+   "RL with verifiable rewards that taught models to reason at length.",
+   "app",
+   "posttrain"
   ],
   [
    "verl",
@@ -425,7 +475,9 @@
     "post-115"
    ],
    "ml-post-training-rl",
-   "Run rollouts, rewards and updates across GPU fleets."
+   "Run rollouts, rewards and updates across GPU fleets.",
+   "app",
+   "posttrain"
   ],
   [
    "lora",
@@ -439,7 +491,9 @@
     "post-172"
    ],
    "ml-post-training-rl",
-   "Fine-tune small adapter matrices instead of all weights."
+   "Fine-tune small adapter matrices instead of all weights.",
+   "app",
+   "posttrain"
   ],
   [
    "harness",
@@ -454,7 +508,9 @@
     "eval-121"
    ],
    "eval-layer-map",
-   "Run thousands of benchmark items reproducibly on each checkpoint."
+   "Run thousands of benchmark items reproducibly on each checkpoint.",
+   "app",
+   "eval"
   ],
   [
    "bench",
@@ -470,7 +526,9 @@
     "eval-122"
    ],
    "eval-agents-long-tasks",
-   "The tests themselves, from MMLU to SWE-bench and HLE."
+   "The tests themselves, from MMLU to SWE-bench and HLE.",
+   "app",
+   "eval"
   ],
   [
    "pt",
@@ -485,7 +543,9 @@
     "fw-213"
    ],
    "ml-frameworks-pytorch-jax",
-   "The dominant framework for training frontier models."
+   "The dominant framework for training frontier models.",
+   "platform",
+   null
   ],
   [
    "jax",
@@ -498,7 +558,9 @@
     "fw-087"
    ],
    "ml-frameworks-pytorch-jax",
-   "Functional framework compiled by XLA; Google's TPU workhorse."
+   "Functional framework compiled by XLA; Google's TPU workhorse.",
+   "platform",
+   null
   ],
   [
    "meg",
@@ -513,7 +575,9 @@
     "par-103"
    ],
    "ml-parallelism-libraries",
-   "Tensor, pipeline and sequence parallelism for very large models."
+   "Tensor, pipeline and sequence parallelism for very large models.",
+   "app",
+   "pretrain"
   ],
   [
    "dsp",
@@ -527,7 +591,9 @@
     "par-097"
    ],
    "ml-parallelism-libraries",
-   "Shards optimiser state, gradients and weights across GPUs."
+   "Shards optimiser state, gradients and weights across GPUs.",
+   "app",
+   "pretrain"
   ],
   [
    "fsdp",
@@ -542,7 +608,9 @@
     "par-105"
    ],
    "ml-parallelism-libraries",
-   "PyTorch-native sharded data parallelism and reference training stack."
+   "PyTorch-native sharded data parallelism and reference training stack.",
+   "app",
+   "pretrain"
   ],
   [
    "moe",
@@ -558,7 +626,9 @@
     "par-106"
    ],
    "ml-parallelism-libraries",
-   "Routes tokens to experts spread across GPUs."
+   "Routes tokens to experts spread across GPUs.",
+   "app",
+   "pretrain"
   ],
   [
    "ckpt",
@@ -571,7 +641,9 @@
     "par-154"
    ],
    "ai-factory-training-frameworks",
-   "Saves training state often so failures cost minutes, not days."
+   "Saves training state often so failures cost minutes, not days.",
+   "app",
+   "pretrain"
   ],
   [
    "cutlass",
@@ -585,7 +657,9 @@
     "comp-077"
    ],
    "ml-kernels",
-   "Templates and a Python DSL for fast matrix-multiply kernels."
+   "Templates and a Python DSL for fast matrix-multiply kernels.",
+   "platform",
+   null
   ],
   [
    "triton",
@@ -599,7 +673,9 @@
     "comp-073"
    ],
    "ml-kernels",
-   "Python-like language for writing GPU kernels."
+   "Python-like language for writing GPU kernels.",
+   "platform",
+   null
   ],
   [
    "flash",
@@ -615,7 +691,9 @@
     "kern-081"
    ],
    "ml-kernels",
-   "IO-aware attention that avoids writing the full attention matrix."
+   "IO-aware attention that avoids writing the full attention matrix.",
+   "platform",
+   null
   ],
   [
    "tcomp",
@@ -628,7 +706,9 @@
     "comp-074"
    ],
    "ai-factory-kernels-compilers",
-   "Captures PyTorch programs and generates fused kernels."
+   "Captures PyTorch programs and generates fused kernels.",
+   "platform",
+   null
   ],
   [
    "xla",
@@ -642,7 +722,9 @@
     "comp-195"
    ],
    "ai-factory-kernels-compilers",
-   "Whole-program compiler for JAX and TPUs; MLIR compiler infrastructure."
+   "Whole-program compiler for JAX and TPUs; MLIR compiler infrastructure.",
+   "platform",
+   null
   ],
   [
    "fp8",
@@ -658,7 +740,9 @@
     "kern-161"
    ],
    "ml-kernels",
-   "Mixed, 8-bit and microscaled number formats for faster maths."
+   "Mixed, 8-bit and microscaled number formats for faster maths.",
+   "platform",
+   null
   ],
   [
    "finfer",
@@ -672,7 +756,9 @@
     "kern-225"
    ],
    "ml-kernels",
-   "Serving attention kernels and fused training kernels."
+   "Serving attention kernels and fused training kernels.",
+   "platform",
+   null
   ],
   [
    "slurm",
@@ -683,7 +769,9 @@
    2002,
    [],
    "ai-factory-scheduling",
-   "Batch scheduler used for most large training runs."
+   "Batch scheduler used for most large training runs.",
+   "ctrl",
+   null
   ],
   [
    "k8s",
@@ -696,7 +784,9 @@
     "cuda-069"
    ],
    "ai-factory-scheduling",
-   "Container orchestration, increasingly used for training and serving."
+   "Container orchestration, increasingly used for training and serving.",
+   "ctrl",
+   null
   ],
   [
    "kueue",
@@ -707,7 +797,9 @@
    2022,
    [],
    "ai-factory-scheduling",
-   "Job queues and all-or-nothing placement for GPU jobs on Kubernetes."
+   "Job queues and all-or-nothing placement for GPU jobs on Kubernetes.",
+   "ctrl",
+   null
   ],
   [
    "health",
@@ -718,7 +810,9 @@
    null,
    [],
    "ai-factory-scheduling",
-   "Finds bad nodes and removes them before they crash a run."
+   "Finds bad nodes and removes them before they crash a run.",
+   "ctrl",
+   null
   ],
   [
    "ray",
@@ -731,7 +825,9 @@
     "cuda-196"
    ],
    "ai-factory-data-platform",
-   "Distributed Python for data processing, RL rollouts and serving."
+   "Distributed Python for data processing, RL rollouts and serving.",
+   "ctrl",
+   null
   ],
   [
    "ds",
@@ -747,7 +843,9 @@
     "data-234"
    ],
    "data-crawling-sourcing",
-   "Raw web, code and book data, and the cleaned corpora built from it."
+   "Raw web, code and book data, and the cleaned corpora built from it.",
+   "app",
+   "prep"
   ],
   [
    "dedup",
@@ -761,7 +859,9 @@
     "data-190"
    ],
    "data-filtering-dedup",
-   "Removes near-duplicates and low-quality text before training."
+   "Removes near-duplicates and low-quality text before training.",
+   "app",
+   "prep"
   ],
   [
    "spark",
@@ -772,7 +872,9 @@
    2010,
    [],
    "data-infrastructure",
-   "Large-scale jobs that tokenise, filter and shuffle the corpus."
+   "Large-scale jobs that tokenise, filter and shuffle the corpus.",
+   "app",
+   "prep"
   ],
   [
    "obj",
@@ -785,7 +887,9 @@
     "stor-055"
    ],
    "ai-factory-storage",
-   "Cheap, huge storage for raw data and archives."
+   "Cheap, huge storage for raw data and archives.",
+   "infra",
+   null
   ],
   [
    "pfs",
@@ -799,7 +903,9 @@
     "stor-057"
    ],
    "ai-factory-storage",
-   "High-bandwidth shared storage for training data and checkpoints."
+   "High-bandwidth shared storage for training data and checkpoints.",
+   "infra",
+   null
   ],
   [
    "gds",
@@ -812,7 +918,9 @@
     "stor-215"
    ],
    "ai-factory-storage",
-   "Lets storage feed GPU memory without a CPU copy."
+   "Lets storage feed GPU memory without a CPU copy.",
+   "infra",
+   null
   ],
   [
    "threefs",
@@ -825,7 +933,9 @@
     "stor-216"
    ],
    "ai-factory-storage",
-   "DeepSeek's open distributed file system for training and inference."
+   "DeepSeek's open distributed file system for training and inference.",
+   "infra",
+   null
   ],
   [
    "nccl",
@@ -838,7 +948,9 @@
     "cuda-067"
    ],
    "ai-factory-networking",
-   "All-reduce, all-gather and friends: how GPUs share gradients."
+   "All-reduce, all-gather and friends: how GPUs share gradients.",
+   "infra",
+   null
   ],
   [
    "rdma",
@@ -852,7 +964,9 @@
     "net-039"
    ],
    "ai-factory-networking",
-   "Direct memory access between machines, bypassing the CPU."
+   "Direct memory access between machines, bypassing the CPU.",
+   "infra",
+   null
   ],
   [
    "nvl",
@@ -867,7 +981,9 @@
     "net-044"
    ],
    "interconnect-wars",
-   "The scale-up fabric joining GPUs inside a rack."
+   "The scale-up fabric joining GPUs inside a rack.",
+   "infra",
+   null
   ],
   [
    "uec",
@@ -883,7 +999,9 @@
     "net-208"
    ],
    "interconnect-wars",
-   "Open standards for AI scale-out and scale-up networks."
+   "Open standards for AI scale-out and scale-up networks.",
+   "infra",
+   null
   ],
   [
    "deepep",
@@ -896,7 +1014,9 @@
     "kern-082"
    ],
    "ai-factory-networking",
-   "All-to-all communication kernels for mixture-of-experts."
+   "All-to-all communication kernels for mixture-of-experts.",
+   "infra",
+   null
   ],
   [
    "ntel",
@@ -907,7 +1027,9 @@
    null,
    [],
    "ai-factory-networking",
-   "Routing, congestion control and link health across the fabric."
+   "Routing, congestion control and link health across the fabric.",
+   "infra",
+   null
   ],
   [
    "linux",
@@ -918,7 +1040,9 @@
    1991,
    [],
    "ai-factory-os-drivers-runtime",
-   "The operating system on essentially every AI server."
+   "The operating system on essentially every AI server.",
+   "runtime",
+   null
   ],
   [
    "cuda",
@@ -932,7 +1056,9 @@
     "cuda-220"
    ],
    "ai-factory-os-drivers-runtime",
-   "The platform most AI software is written against."
+   "The platform most AI software is written against.",
+   "runtime",
+   null
   ],
   [
    "cudnn",
@@ -945,7 +1071,9 @@
     "cuda-065"
    ],
    "ai-factory-os-drivers-runtime",
-   "Tuned building blocks for neural-network operations."
+   "Tuned building blocks for neural-network operations.",
+   "runtime",
+   null
   ],
   [
    "rocm",
@@ -958,7 +1086,9 @@
     "cuda-066"
    ],
    "ai-factory-os-drivers-runtime",
-   "AMD's open GPU compute stack."
+   "AMD's open GPU compute stack.",
+   "runtime",
+   null
   ],
   [
    "neuron",
@@ -971,7 +1101,9 @@
     "cuda-068"
    ],
    "ai-factory-os-drivers-runtime",
-   "Software stacks for custom accelerators."
+   "Software stacks for custom accelerators.",
+   "runtime",
+   null
   ],
   [
    "ctr",
@@ -982,7 +1114,9 @@
    2013,
    [],
    "ai-factory-os-drivers-runtime",
-   "Package the software environment for every job."
+   "Package the software environment for every job.",
+   "runtime",
+   null
   ],
   [
    "bmc",
@@ -993,7 +1127,9 @@
    2015,
    [],
    "ai-factory-bring-up",
-   "Out-of-band management: power, sensors and firmware updates."
+   "Out-of-band management: power, sensors and firmware updates.",
+   "hw",
+   null
   ],
   [
    "gfw",
@@ -1004,7 +1140,9 @@
    null,
    [],
    "ai-factory-bring-up",
-   "Firmware versions that must match across thousands of devices."
+   "Firmware versions that must match across thousands of devices.",
+   "hw",
+   null
   ],
   [
    "prov",
@@ -1015,7 +1153,9 @@
    null,
    [],
    "ai-factory-bring-up",
-   "Installs the OS image on new machines automatically."
+   "Installs the OS image on new machines automatically.",
+   "hw",
+   null
   ],
   [
    "burn",
@@ -1026,7 +1166,9 @@
    null,
    [],
    "ai-factory-bring-up",
-   "Stress tests that find bad parts before a rack goes live."
+   "Stress tests that find bad parts before a rack goes live.",
+   "hw",
+   null
   ],
   [
    "inv",
@@ -1037,7 +1179,9 @@
    null,
    [],
    "ai-factory-bring-up",
-   "Which part is in which slot, and its power and temperature."
+   "Which part is in which slot, and its power and temperature.",
+   "hw",
+   null
   ]
  ],
  "journeys": [
@@ -1154,6 +1298,135 @@
    ],
    "burn",
    "A rack is powered up, flashed, imaged, burned in and tested, then handed to the scheduler."
+  ]
+ ],
+ "columns": [
+  [
+   "prep",
+   "Data prep",
+   "🗃️",
+   "#0d9488",
+   "Storage and data-platform engineers"
+  ],
+  [
+   "pretrain",
+   "Pre-training",
+   "🏋️",
+   "#ea580c",
+   "ML infrastructure and training engineers"
+  ],
+  [
+   "posttrain",
+   "Post-training",
+   "🎯",
+   "#db2777",
+   "Post-training researchers"
+  ],
+  [
+   "eval",
+   "Evaluation",
+   "📏",
+   "#be185d",
+   "Evaluation researchers"
+  ],
+  [
+   "serve",
+   "Serving",
+   "💬",
+   "#2563eb",
+   "Inference engineers"
+  ],
+  [
+   "agents",
+   "Agents",
+   "🤖",
+   "#7c3aed",
+   "Agent platform engineers"
+  ]
+ ],
+ "zones": [
+  [
+   "app",
+   "Applications by lifecycle stage",
+   "🔁",
+   "#334155",
+   "Teams per stage",
+   "Each stage runs its own tools on the shared platform below; models move left to right as datasets and checkpoints."
+  ],
+  [
+   "platform",
+   "Shared ML platform: frameworks & kernels",
+   "⚙️",
+   "#ca8a04",
+   "ML framework, kernel and compiler engineers",
+   "Used by every stage: the same PyTorch, JAX and kernels train and serve models."
+  ],
+  [
+   "runtime",
+   "Runtime: OS, drivers & accelerator platforms",
+   "🐧",
+   "#16a34a",
+   "Systems and kernel engineers",
+   "How software reaches the accelerators."
+  ],
+  [
+   "infra",
+   "Infrastructure: network & storage",
+   "🔗",
+   "#8b5cf6",
+   "Network and storage engineers",
+   "Shared fabric and storage that every stage reads, writes and communicates through."
+  ],
+  [
+   "hw",
+   "Hardware & firmware",
+   "🔌",
+   "#64748b",
+   "Hardware bring-up engineers",
+   "Racks, firmware and the tooling that brings them up."
+  ],
+  [
+   "ctrl",
+   "Control plane",
+   "📋",
+   "#0f766e",
+   "HPC and cluster engineers",
+   "Decides where every job and service runs, starts it, and drains broken nodes. Sits beside the stack, not inside it."
+  ],
+  [
+   "obs",
+   "Observability & security",
+   "🛡️",
+   "#475569",
+   "SREs, security engineers",
+   "Cuts across every layer and stage."
+  ]
+ ],
+ "handoffs": [
+  [
+   "prep",
+   "pretrain",
+   "datasets"
+  ],
+  [
+   "pretrain",
+   "posttrain",
+   "base checkpoint"
+  ],
+  [
+   "posttrain",
+   "eval",
+   "candidate model"
+  ],
+  [
+   "eval",
+   "serve",
+   "released weights"
+  ],
+  [
+   "serve",
+   "agents",
+   "model API"
   ]
  ]
 }
