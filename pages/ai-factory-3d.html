@@ -184,6 +184,9 @@
     .f3-seg button.on { background: #0f172a; color: #fff; }
     .f3-btn { border: 1.5px solid #cbd5e1; border-radius: 999px; } .f3-btn.on { background: #0f766e; border-color: #0f766e; color: #fff; }
     .f3-hint { position: absolute; left: 10px; right: 56px; bottom: 8px; width: fit-content; font-size: .72rem; color: #0f172a; background: rgba(255,255,255,.82); border-radius: 8px; padding: 4px 8px; pointer-events: none; }
+    .f3-walk { position: absolute; left: 50%; transform: translateX(-50%); top: 40px; width: min(600px, calc(100% - 20px)); background: rgba(15,23,42,.9); color: #fff; border-radius: 12px; padding: 8px 10px; display: flex; gap: 8px; align-items: center; font-size: .76rem; line-height: 1.45; z-index: 2; }
+    .f3-walk[hidden] { display: none; } .f3-view.walking .f3-legend { display: none; } @media (max-width: 600px) { .f3-view.walking .f3-hint { display: none; } } @media (max-width: 600px) { .f3-walk { top: 8px; font-size: .7rem; } .f3-wbtn button { width: 28px; height: 28px; } } .f3-wtxt { flex: 1; min-width: 0; } .f3-wtxt b { display: block; font-size: .84rem; } .f3-wtxt span { display: block; opacity: .85; }
+    .f3-wbtn { display: flex; gap: 4px; } .f3-wbtn button { width: 32px; height: 32px; border-radius: 8px; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: .95rem; cursor: pointer; }
     .f3-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 4px; }
     .f3-zoom button { width: 34px; height: 34px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: rgba(255,255,255,.92); font-size: 1.1rem; font-weight: 800; cursor: pointer; }
     .f3-legend { position: absolute; left: 10px; top: 10px; display: flex; flex-wrap: wrap; gap: 4px; max-width: 70%; pointer-events: none; }
@@ -350,6 +353,7 @@
     <div class="f3-bar">
       <span class="f3-seg" id="f3Lbl"><button type="button" data-v="hw">🔩 Hardware</button><button type="button" data-v="sw">💻 Software</button><button type="button" data-v="off" class="on">No labels</button></span>
       <span class="f3-seg" id="f3Cam"><button type="button" data-v="iso">Aerial</button><button type="button" data-v="top">Top-down</button><button type="button" data-v="street">Street</button><button type="button" data-v="hall" class="on">Inside hall</button></span>
+      <button type="button" class="f3-btn" id="f3WalkBtn">🚶 Street walk</button>
       <button type="button" class="f3-btn on" id="f3Roof">🏠 Roof off</button>
       <button type="button" class="f3-btn on" id="f3Flow">〰️ Flows</button>
       <button type="button" class="f3-btn on" id="f3Spin">🔄 Auto-rotate</button>
@@ -359,6 +363,7 @@
       <div class="f3-view">
         <canvas id="f3Cv" aria-label="3D model of an AI factory campus"></canvas>
         <div class="f3-legend"><span><i style="--c:#f59e0b"></i>Power</span><span><i style="--c:#3b82f6"></i>Cool supply</span><span><i style="--c:#ef4444"></i>Warm return</span><span><i style="--c:#22c55e"></i>Data</span></div>
+        <div class="f3-walk" id="f3Walk" hidden><div class="f3-wtxt"></div><div class="f3-wbtn"><button type="button" id="f3WB" title="Previous stop">⏮</button><button type="button" id="f3WP" title="Pause">⏸</button><button type="button" id="f3WN" title="Next stop">⏭</button><button type="button" id="f3WX" title="Exit street walk">✕</button></div></div>
         <div class="f3-hint" id="f3Hint">Drag to move · right-drag or Shift+drag to rotate and tilt · scroll or pinch to zoom · two fingers to rotate · tap a building</div>
         <div class="f3-zoom"><button type="button" id="f3N" aria-label="North up, top-down" title="North up, top-down"><span id="f3Cmp" style="display:inline-block">🧭</span></button><button type="button" id="f3RL" aria-label="Rotate left" title="Rotate left">⟲</button><button type="button" id="f3RR" aria-label="Rotate right" title="Rotate right">⟳</button><button type="button" id="f3TU" aria-label="Tilt to look down" title="Tilt up">⤒</button><button type="button" id="f3TD" aria-label="Tilt towards horizon" title="Tilt down">⤓</button><button type="button" id="f3In" aria-label="Zoom in">+</button><button type="button" id="f3Out" aria-label="Zoom out">−</button></div>
       </div>
@@ -426,7 +431,10 @@
   // ───────────── Geometry
   var BASE = [], ROOF = [], OPEN = [], FANS = [], LINES = [], LIGHTS = [], GROUND = [], T = BASE;
   function hex(h) { return [parseInt(h.substr(1, 2), 16), parseInt(h.substr(3, 2), 16), parseInt(h.substr(5, 2), 16)]; }
-  function face(pts, n, col, id, em) { T.push({ p: pts, n: n, c: hex(col), id: id, em: em }); }
+  function mid(a, b) { return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (a[2] + b[2]) / 2]; }
+  function face(pts, n, col, id, em) { if (pts.length === 4) { var A = pts[0], B2 = pts[1], C2 = pts[2], D = pts[3], la = Math.hypot(B2[0] - A[0], B2[1] - A[1], B2[2] - A[2]), lb = Math.hypot(C2[0] - B2[0], C2[1] - B2[1], C2[2] - B2[2]);
+      if (Math.max(la, lb) > 26) { if (la >= lb) { var m1 = mid(A, B2), m2 = mid(D, C2); face([A, m1, m2, D], n, col, id, em); face([m1, B2, C2, m2], n, col, id, em); } else { var m3 = mid(B2, C2), m4 = mid(A, D); face([A, B2, m3, m4], n, col, id, em); face([m4, m3, C2, D], n, col, id, em); } return; } }
+    T.push({ p: pts, n: n, c: hex(col), id: id, em: em }); }
   function box(x0, y0, z0, x1, y1, z1, col, id, top, em) {
     face([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], [0, 0, 1], top || col, id, em);
     face([[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1]], [0, -1, 0], col, id, em);
@@ -516,6 +524,75 @@
   // Trees
   seed = 11; for (var tr = 0; tr < 170; tr++) { var tx, ty, side = tr % 4; if (side === 0) { tx = -400 + rnd() * 800; ty = 285 + rnd() * 60; } else if (side === 1) { tx = -400 + rnd() * 800; ty = -290 - rnd() * 60; } else if (side === 2) { tx = 385 + rnd() * 60; ty = -280 + rnd() * 560; } else { tx = -390 - rnd() * 50; ty = -280 + rnd() * 400; } var hh = 7 + rnd() * 6; prism(tx, ty, 0, 0.4, 0.4, 2, 5, '#78350f', null); prism(tx, ty, 2, 2.6 + rnd(), 0, hh, 7, rnd() < 0.5 ? '#3f6212' : '#4d7c0f', null); }
 
+  // ───────────── Facade detail: louvres and doors (real-object feel)
+  [[40, 110], [-60, 10]].forEach(function (h) { var y0 = h[0], y1 = h[1];
+    box(-118, y0 - 0.35, 2.4, 78, y0, 4.6, '#64748b', null); box(-118, y1, 2.4, 78, y1 + 0.35, 4.6, '#64748b', null);
+    for (var dx2 = -110; dx2 < 80; dx2 += 38) { box(dx2, y0 - 0.4, 0, dx2 + 2.2, y0, 2.6, '#334155', null); box(dx2, y1, 0, dx2 + 2.2, y1 + 0.4, 2.6, '#334155', null); }
+    box(-132, y0 + 30, 0, -131.6, y0 + 33, 2.6, '#334155', null); box(-160.4, y0 + 30, 0, -160, y0 + 33, 2.6, '#334155', null); });
+  box(148, -270.6, 3.4, 166, -270, 5.8, '#0f172a', 'sec'); box(149, -270.4, 0, 149.5, -269.9, 3.4, '#475569', 'sec'); box(164.5, -270.4, 0, 165, -269.9, 3.4, '#475569', 'sec');
+
+  // ───────────── Signs painted on buildings and parts
+  var LEDS = [], SIGNS = [], FV = { S: [[0, -1, 0], [1, 0, 0], [0, 0, 1]], N: [[0, 1, 0], [-1, 0, 0], [0, 0, 1]], E: [[1, 0, 0], [0, 1, 0], [0, 0, 1]], W: [[-1, 0, 0], [0, -1, 0], [0, 0, 1]], T: [[0, 0, 1], [1, 0, 0], [0, 1, 0]] };
+  function findFace(S, n, pt) { for (var i = 0; i < S.length; i++) { var f = S[i]; if (f.n[0] * n[0] + f.n[1] * n[1] + f.n[2] * n[2] < 0.99) continue; var p0 = f.p[0]; if (Math.abs((pt[0] - p0[0]) * n[0] + (pt[1] - p0[1]) * n[1] + (pt[2] - p0[2]) * n[2]) > 0.25) continue;
+      var mn = [1e9, 1e9, 1e9], mx = [-1e9, -1e9, -1e9]; f.p.forEach(function (q) { for (var k = 0; k < 3; k++) { mn[k] = Math.min(mn[k], q[k]); mx[k] = Math.max(mx[k], q[k]); } });
+      if (pt[0] >= mn[0] - 0.6 && pt[0] <= mx[0] + 0.6 && pt[1] >= mn[1] - 0.6 && pt[1] <= mx[1] + 0.6 && pt[2] >= mn[2] - 0.6 && pt[2] <= mx[2] + 0.6) return f; } return null; }
+  function SG(sets, fc, x, y, z, h, txt, style) { var v = FV[fc], host = null; for (var i = 0; i < sets.length && !host; i++) host = findFace(sets[i], v[0], [x, y, z]);
+    SIGNS.push({ c: [x + v[0][0] * 0.06, y + v[0][1] * 0.06, z + v[0][2] * 0.06], n: v[0], r: v[1], u: v[2], h: h, t: txt, host: host, st: style || 'plate', open: sets.indexOf(OPEN) >= 0 && sets.length === 1 }); }
+  var BR = [BASE, ROOF], BO = [BASE, OPEN], AL = [BASE, ROOF, OPEN];
+  // Halls
+  [['A', 40, 'DATA HALL A · TRAINING'], ['B', -60, 'DATA HALL B · INFERENCE · AGENTS · EVALS']].forEach(function (h) { var y0 = h[1], y1 = y0 + 70, L = h[0];
+    SG(AL, 'S', -20, y0, 9, 2.4, h[2]); SG(AL, 'N', -20, y1, 9, 2.4, h[2]); SG(AL, 'E', 80, y0 + 35, 9, 2.2, 'HALL ' + L); SG(AL, 'W', -120, y0 + 35, 9, 2.2, 'HALL ' + L);
+    SG([ROOF], 'T', -20, y0 + 37.5, 14, 9, 'HALL ' + L, 'paint');
+    SG([OPEN], 'N', -60, y0 + 11, 3.6, 0.8, 'ELECTRICAL GALLERY · UPS · SWITCHGEAR'); SG([OPEN], 'S', -60, y1 - 11, 3.6, 0.8, 'ELECTRICAL GALLERY · UPS · SWITCHGEAR');
+    var pods = [-106, -44, 18], rn = 0;
+    pods.forEach(function (p, pi) { SIGNS.push({ c: [p + 20.6, y0 + 35, 5.2], n: [0, -1, 0], r: [1, 0, 0], u: [0, 0, 1], h: 0.9, t: 'POD ' + L + (pi + 1) + ' · ' + (L === 'A' ? 'NVL72 TRAINING' : 'INFERENCE'), host: null, st: 'hang', open: true });
+      for (var i = 0; i < 6; i++) { var rx2 = p + i * 8; rn++; var nm = L + (pi + 1) + '-' + (i + 1 < 10 ? '0' : '') + (i + 1);
+        SG([OPEN], 'S', rx2 + 0.6, y0 + 15, 1.7, 0.3, 'ROW ' + nm + 'a'); SG([OPEN], 'N', rx2 + 0.6, y1 - 15, 1.7, 0.3, 'ROW ' + nm + 'b');
+        SG([OPEN], 'N', rx2 + 0.6, y0 + 33, 1.7, 0.3, 'ROW ' + nm + 'a'); SG([OPEN], 'S', rx2 + 0.6, y1 - 33, 1.7, 0.3, 'ROW ' + nm + 'b');
+        [y0 + 15, y1 - 33].forEach(function (sy0) { for (var q = 0.6; q < 18; q += 0.6) { LINES.push({ p: [[rx2 - 0.02, sy0 + q, 0.05], [rx2 - 0.02, sy0 + q, 2.25]], c: '#475569', open: 1, near: 1 }); LINES.push({ p: [[rx2 + 1.22, sy0 + q, 0.05], [rx2 + 1.22, sy0 + q, 2.25]], c: '#475569', open: 1, near: 1 }); } LEDS.push([rx2 - 0.03, sy0 + 0.3, 1.9, sy0 + 17.7], [rx2 + 1.23, sy0 + 0.3, 1.9, sy0 + 17.7]); });
+        SG([OPEN], 'S', rx2 + 0.6, y0 + 13, 1.2, 0.28, 'CDU'); SG([OPEN], 'N', rx2 + 0.6, y1 - 13, 1.2, 0.28, 'CDU'); } }); });
+  // Electrical houses and their transformers
+  [['A', 40], ['B', -60]].forEach(function (h) { SG(BR, 'E', -132, h[1] + 35, 6, 1.2, 'ELEC HOUSE ' + h[0] + ' · MV SWITCHGEAR'); SG(BR, 'W', -160, h[1] + 35, 6, 1.2, 'ELEC HOUSE ' + h[0]); SG(BR, 'T', -146, h[1] + 35, 8, 3, 'ELEC ' + h[0], 'paint');
+    for (var t = 0; t < 4; t++) SG(BR, 'W', -168, h[1] + 9 + t * 17, 2.8, 0.6, 'TX-' + h[0] + (t + 1)); });
+  // Substation
+  [[-350, 1], [-318, 2], [-286, 3]].forEach(function (t) { SG(BR, 'S', t[0] + 7, 190, 4.6, 0.8, 'T' + t[1] + ' · 345/34.5 kV'); });
+  SG(BR, 'S', -281, 155, 3.6, 1, 'SUBSTATION CONTROL'); SG(BR, 'T', -281, 163.5, 5, 3, 'SUB', 'paint');
+  for (var cb = 0; cb < 6; cb++) SG(BR, 'S', -355 + cb * 16, 222, 2.8, 0.45, 'CB-' + (cb + 1));
+  SIGNS.push({ c: [-340, 146, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 3.6, t: 'SUBSTATION', host: null, st: 'paint' });
+  // Generation and batteries
+  var gnum = 0; for (var r2 = 0; r2 < 2; r2++) for (var gi2 = 0; gi2 < 7; gi2++) { gnum++; SG(BR, 'S', -366 + gi2 * 16 + 5, 30 + r2 * 50, 2.3, 0.8, 'GEN-' + (gnum < 10 ? '0' : '') + gnum); }
+  SG(BR, 'S', -348, 100, 6.5, 1.3, 'GAS TURBINE HALL'); SG(BR, 'T', -348, 114, 9, 4, 'POWER', 'paint');
+  for (var br2 = 0; br2 < 5; br2++) for (var bc2 = 0; bc2 < 11; bc2++) SG(BR, 'S', -366 + bc2 * 10.5 + 3.65, -88 + br2 * 13, 1.5, 0.5, 'BESS ' + 'ABCDE'[br2] + (bc2 + 1 < 10 ? '0' : '') + (bc2 + 1));
+  for (var iv2 = 0; iv2 < 5; iv2++) SG(BR, 'E', -247, -84 + iv2 * 13, 1.5, 0.4, 'PCS-' + (iv2 + 1));
+  SIGNS.push({ c: [-310, -100, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 3.4, t: 'BATTERY STORAGE', host: null, st: 'paint' });
+  // Dry coolers
+  [['A', 38, 112], ['B', -62, 12]].forEach(function (yd) { var k = 0; for (var cx2 = 0; cx2 < 4; cx2++) for (var cy2 = 0; cy2 < 20; cy2++) { var x0 = 98 + cx2 * 13.5, y0 = yd[1] + 2 + cy2 * 3.55; if (y0 + 2.6 > yd[2]) continue; k++; SG(BR, 'S', x0 + 6, y0, 1.4, 0.55, 'DC-' + yd[0] + (k < 10 ? '0' : '') + k); }
+    SIGNS.push({ c: [123, yd[1] - 2.5, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 2.2, t: 'DRY COOLER YARD ' + yd[0], host: null, st: 'paint' }); });
+  // Water, network, storage, buildings
+  SG(BR, 'S', 185, 95 - 10 * Math.cos(Math.PI / 18), 10, 1.4, 'TANK 1 · FILL WATER'); SG(BR, 'S', 210, 70 - 8 * Math.cos(Math.PI / 18), 8, 1.1, 'TANK 2 · THERMAL');
+  SG(BR, 'S', 201.5, 22, 5, 1.2, 'WATER TREATMENT'); SG(BR, 'W', 178, 34, 5, 1, 'WATER TREATMENT');
+  SG(BR, 'W', 178, -19, 7.5, 1.3, 'NETWORK CORE · MEET-ME ROOM'); SG(BR, 'S', 200, -40, 7.5, 1.2, 'NETWORK CORE'); SG(BR, 'T', 200, -19, 10, 4, 'NET', 'paint'); SG(BR, 'S', 186, -44, 2, 0.45, 'FIBRE ENTRY');
+  SG(BR, 'N', 208, -60, 9, 1.8, 'STORAGE HALL'); SG(BR, 'W', 178, -86, 9, 1.6, 'STORAGE HALL'); SG(BR, 'T', 208, -86, 12, 6, 'STORAGE', 'paint');
+  SG(BR, 'S', -70, -200.4, 11.4, 0.8, 'OFFICES & LABS'); SG(BR, 'N', -70, -152, 9, 1.6, 'OFFICES & LABS'); SG(BR, 'T', -70, -176, 12, 5, 'OFFICES', 'paint');
+  SG(BR, 'S', 15, -200.4, 7, 0.8, 'NOC · CONTROL ROOM'); SG(BR, 'T', 15, -180, 8, 4, 'NOC', 'paint');
+  SG(BR, 'S', 105, -200, 9, 1.6, 'LOADING DOCK · BURN-IN'); SG(BR, 'T', 105, -175, 12, 6, 'DOCK', 'paint');
+  for (var dd2 = 0; dd2 < 6; dd2++) SG(BR, 'S', 70 + dd2 * 14, -200.5, 5.8, 0.6, 'DOOR ' + (dd2 + 1));
+  SG(BR, 'S', 165, -262, 2.4, 0.5, 'SECURITY'); SG(BR, 'S', 157, -270.6, 4.6, 0.9, 'AI FACTORY · GATE 1');
+  SIGNS.push({ c: [310, -30, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 8, t: 'EXPANSION PAD · PHASE 2', host: null, st: 'paint' });
+  SIGNS.push({ c: [312, 210, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 5, t: 'STORMWATER POND', host: null, st: 'paint' });
+  SIGNS.push({ c: [-180, 240, 0.12], n: [0, 0, 1], r: [1, 0, 0], u: [0, 1, 0], h: 4, t: '345 kV LINE →', host: null, st: 'paint' });
+
+  function drawSign(S) { var K = 10, fs = S.h * K; g.font = '800 ' + fs + 'px system-ui, sans-serif'; var hw = (g.measureText(S.t).width / K) / 2 + S.h * 0.4, hh = S.h * 0.72;
+    for (var cI = 0; cI < 4; cI++) { var sx = cI & 1 ? hw : -hw, sy = cI & 2 ? hh : -hh; if (csp([S.c[0] + S.r[0] * sx + S.u[0] * sy, S.c[1] + S.r[1] * sx + S.u[1] * sy, S.c[2] + S.r[2] * sx + S.u[2] * sy])[2] < 3) return; }
+    if ((camPos[0] - S.c[0]) * S.n[0] + (camPos[1] - S.c[1]) * S.n[1] + (camPos[2] - S.c[2]) * S.n[2] <= 0) return;
+    var P0 = proj(S.c), Pr = proj([S.c[0] + S.r[0], S.c[1] + S.r[1], S.c[2] + S.r[2]]), Pu = proj([S.c[0] + S.u[0], S.c[1] + S.u[1], S.c[2] + S.u[2]]); if (!P0 || !Pr || !Pu) return;
+    var ax = Pr[0] - P0[0], ay = Pr[1] - P0[1], ux = Pu[0] - P0[0], uy = Pu[1] - P0[1], m = Math.min(Math.hypot(ax, ay), Math.hypot(ux, uy)) * S.h; if (m < 3.5 || m > 900) return;
+    g.setTransform(DPR * ax / K, DPR * ay / K, -DPR * ux / K, -DPR * uy / K, DPR * P0[0], DPR * P0[1]);
+    g.textAlign = 'center'; g.textBaseline = 'middle'; var tw = g.measureText(S.t).width;
+    if (S.st === 'plate' || S.st === 'hang') { var pad = fs * 0.4; g.fillStyle = S.st === 'hang' ? '#065f46' : '#0f172a'; g.fillRect(-tw / 2 - pad, -fs * 0.72, tw + pad * 2, fs * 1.44); g.fillStyle = night ? '#fde68a' : '#ffffff'; }
+    else g.fillStyle = night ? 'rgba(253,230,138,.85)' : 'rgba(255,255,255,.9)';
+    g.fillText(S.t, 0, 0); g.textAlign = 'start'; g.textBaseline = 'alphabetic'; g.setTransform(DPR, 0, 0, DPR, 0, 0); }
+
   // ───────────── Flow paths
   var PW = '#f59e0b', CS = '#3b82f6', WR = '#ef4444', DT = '#22c55e';
   var PATHS = [
@@ -546,11 +623,11 @@
   var cam = { t: [-20, 75, 0], yaw: -0.4, pitch: 0.75, d: 190 }, goal = null;
   var view = 'off', roof = false, flows = true, spin = true, night = true, sel = null, lastUser = 0;
   var cy0, sy0, cp0, sp0, Fc, camPos = [0, 0, 0];
-  function setupCam() { cy0 = Math.cos(cam.yaw); sy0 = Math.sin(cam.yaw); cp0 = Math.cos(cam.pitch); sp0 = Math.sin(cam.pitch); Fc = H * 1.15;
+  function setupCam() { cy0 = Math.cos(cam.yaw); sy0 = Math.sin(cam.yaw); cp0 = Math.cos(cam.pitch); sp0 = Math.sin(cam.pitch); Fc = H * (wk.on ? 0.72 : 1.15);
     var f = [cp0 * sy0, cp0 * cy0, -sp0]; camPos = [cam.t[0] - f[0] * cam.d, cam.t[1] - f[1] * cam.d, cam.t[2] - f[2] * cam.d]; }
   function proj(p) { var dx = p[0] - cam.t[0], dy = p[1] - cam.t[1], dz = p[2] - cam.t[2];
     var x1 = dx * cy0 - dy * sy0, y1 = dx * sy0 + dy * cy0, dep = y1 * cp0 - dz * sp0 + cam.d;
-    if (dep < 2) return null; var s = Fc / dep; return [W / 2 + x1 * s, H * 0.55 - (y1 * sp0 + dz * cp0) * s, dep]; }
+    if (dep < 0.5) return null; var s = Fc / dep; return [W / 2 + x1 * s, H * 0.55 - (y1 * sp0 + dz * cp0) * s, dep]; }
   var LD = (function () { var v = [-0.45, -0.55, 0.75], l = Math.hypot(v[0], v[1], v[2]); return [v[0] / l, v[1] / l, v[2] / l]; })();
   function shade(fc, sel1) { var c = fc.c, k = fc.n[2] > 0.9 ? 1.0 : 0.62 + 0.38 * Math.max(0, fc.n[0] * LD[0] + fc.n[1] * LD[1] + fc.n[2] * LD[2]);
     var r = c[0] * k, gg = c[1] * k, b = c[2] * k;
@@ -558,26 +635,73 @@
     if (sel1) { r = r * 0.55 + 20 * 0.45; gg = gg * 0.55 + 184 * 0.45; b = b * 0.55 + 166 * 0.45; }
     return 'rgb(' + (r | 0) + ',' + (gg | 0) + ',' + (b | 0) + ')'; }
   function resize() { DPR = Math.min(2, window.devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * DPR; cv.height = H * DPR; g.setTransform(DPR, 0, 0, DPR, 0, 0); }
-  var DRAWN = [], t0 = performance.now();
+  var DRAWN = [], t0 = performance.now(), FR = 0;
+  function csp(p) { var dx = p[0] - cam.t[0], dy = p[1] - cam.t[1], dz = p[2] - cam.t[2], x1 = dx * cy0 - dy * sy0, y1 = dx * sy0 + dy * cy0; return [x1, y1 * sp0 + dz * cp0, y1 * cp0 - dz * sp0 + cam.d]; }
+  function scr(c) { var s = Fc / c[2]; return [W / 2 + c[0] * s, H * 0.55 - c[1] * s, c[2]]; }
+  function clipP(pts) { var NR = 0.6, c = pts.map(csp), n = c.length, inn = 0; for (var i = 0; i < n; i++) if (c[i][2] >= NR) inn++; if (!inn) return null;
+    if (inn < n) { var o = []; for (var j = 0; j < n; j++) { var a = c[j], b = c[(j + 1) % n], ai = a[2] >= NR, bi = b[2] >= NR; if (ai) o.push(a); if (ai !== bi) { var t = (NR - a[2]) / (b[2] - a[2]); o.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, NR]); } } c = o; if (c.length < 3) return null; }
+    return c.map(scr); }
+
+  // ───────────── Street walk: a giant's-eye (~3.5 m) stroll past every component
+  var EYE = 3.5;
+  var WR = [
+    { p: [157, -340] }, { p: [157, -305], s: 'sec', l: [158, -266, 3.5] }, { p: [157, -230] }, { p: [135, -248], s: 'dock', l: [105, -200, 6] }, { p: [100, -240] },
+    { p: [15, -240], s: 'noc', l: [15, -200, 4.5] }, { p: [-70, -240], s: 'ofc', l: [-70, -200, 6] }, { p: [-174, -211] }, { p: [-174, -130] },
+    { p: [-205, -100], s: 'bess', l: [-300, -55, 1] }, { p: [-200, -95] }, { p: [-205, -88], s: 'elec', l: [-146, -25, 5] }, { p: [-215, 40], s: 'gen', l: [-320, 72, 3] }, { p: [-200, 140] },
+    { p: [-215, 178], s: 'sub', l: [-300, 197, 6] }, { p: [-220, 200], s: 'line', l: [-430, 245, 32] }, { p: [-174, 150] },
+    { p: [-20, 190], s: 'hallA', l: [-20, 110, 9] }, { p: [-60, 150] }, { p: [-60, 112] }, { p: [-60, 75] },
+    { p: [-100, 75], s: 'rack', l: [-88, 64, 1.2] }, { p: [-82, 75] }, { p: [-75, 98.6], s: 'cdu', l: [-81.4, 96, 1] }, { p: [-60, 75] }, { p: [-60, 37] },
+    { p: [100, 28], s: 'hallB', l: [-10, -15, 8] }, { p: [125, 25], s: 'dry', l: [122, 60, 1.5] }, { p: [168, 25] },
+    { p: [168, 52], s: 'tank', l: [195, 85, 8] }, { p: [168, -36] }, { p: [160, -78], s: 'net', l: [190, -22, 5] }, { p: [160, -82], s: 'stor', l: [208, -86, 6] },
+    { p: [245, -36] }, { p: [300, -36], s: 'fibre', l: [390, -36, 1] }, { p: [300, 40], s: 'exp', l: [315, 80, 0] }, { p: [300, 140], s: 'pond', l: [312, 210, 0] }
+  ];
+  WR.forEach(function (n, i) { if (i) n.len = Math.hypot(n.p[0] - WR[i - 1].p[0], n.p[1] - WR[i - 1].p[1]); });
+  var STOPS = []; WR.forEach(function (n, i) { if (n.s) STOPS.push(i); });
+  var wk = { on: false, i: 0, u: 0, hold: 0, paused: false, eye: [157, -330], last: 0 };
+  function inHall(x, y) { return x > -120 && x < 80 && ((y > 40 && y < 110) || (y > -60 && y < 10)); }
+  function walkStart(idx) { wk.on = true; wk.paused = false; wk.last = performance.now(); goal = null; spin = false; $('f3Spin').classList.remove('on');
+    wk.i = 0; wk.u = 0; wk.hold = 0;
+    $('f3WalkBtn').classList.add('on'); cv.parentNode.classList.add('walking'); $('f3Walk').hidden = false; walkCap(); if (idx != null) walkAt(idx); }
+  function walkStop() { wk.on = false; cv.parentNode.classList.remove('walking'); $('f3WalkBtn').classList.remove('on'); $('f3Walk').hidden = true; var c = CAMS.iso; goal = { t: c.t.slice(), yaw: c.yaw, pitch: c.pitch, d: c.d }; setRoof(true); }
+  function walkAt(idx) { wk.i = idx; wk.u = 0; wk.hold = 4.5; wk.paused = false; sel = WR[idx].s; panel(); walkCap(idx); }
+  function walkJump(dir) { var tgt = null; if (dir > 0) { for (var j = 0; j < STOPS.length; j++) if (STOPS[j] > wk.i) { tgt = STOPS[j]; break; } }
+    else { for (var j2 = 0; j2 < STOPS.length; j2++) if (STOPS[j2] < wk.i || (STOPS[j2] === wk.i && wk.hold <= 0)) tgt = STOPS[j2]; }
+    if (tgt != null) walkAt(tgt); }
+  function walkCap(stopIdx) { var box2 = $('f3Walk'); if (!box2) return; var n = stopIdx != null ? WR[stopIdx] : null, k = n ? STOPS.indexOf(stopIdx) + 1 : 0;
+    var body = n ? (function () { var c = byId[n.s]; return '<b>📍 Stop ' + k + ' of ' + STOPS.length + ': ' + c[2] + ' ' + c[1] + '</b><span>🔩 ' + c[5] + '</span><span>💻 ' + c[6] + '</span>'; })() : '<b>🚶 Walking at about ' + EYE + ' m eye height…</b><span>Next stop coming up. Names are painted on every building and part.</span>';
+    box2.querySelector('.f3-wtxt').innerHTML = body; box2.querySelector('#f3WP').textContent = wk.paused ? '▶' : '⏸'; }
+  function walkTick(now) { var dt = Math.min(0.1, (now - wk.last) / 1000); wk.last = now; var spd = 24; if (wk.paused) return;
+    if (!wk.paused) { if (wk.hold > 0) { wk.hold -= dt; if (wk.hold <= 0) walkCap(); }
+      else if (wk.i < WR.length - 1) { wk.u += spd * dt; var nx = WR[wk.i + 1]; if (wk.u >= nx.len) { wk.i++; wk.u = 0; if (nx.s) { wk.hold = 4.5; sel = nx.s; panel(); walkCap(wk.i); } } } }
+    var a = WR[wk.i], b = WR[Math.min(WR.length - 1, wk.i + 1)], f = b.len ? Math.min(1, wk.u / b.len) : 0, E = [a.p[0] + (b.p[0] - a.p[0]) * f, a.p[1] + (b.p[1] - a.p[1]) * f, EYE];
+    var L; if (wk.hold > 0 && a.s) L = a.l; else if (wk.i >= WR.length - 1) L = a.l || [E[0], E[1] + 30, 3]; else { var dx = b.p[0] - a.p[0], dy = b.p[1] - a.p[1], dl = Math.hypot(dx, dy) || 1; L = [E[0] + dx / dl * 30, E[1] + dy / dl * 30, EYE - 1]; }
+    var vx = L[0] - E[0], vy = L[1] - E[1], vz = L[2] - E[2], hz = Math.hypot(vx, vy) || 0.001, ty = Math.atan2(vx, vy), tp = Math.max(-0.7, Math.min(1.1, Math.atan2(-vz, hz)));
+    var dyaw = ty - cam.yaw; while (dyaw > Math.PI) dyaw -= 2 * Math.PI; while (dyaw < -Math.PI) dyaw += 2 * Math.PI; var k = Math.min(1, dt * 3.2);
+    cam.yaw += dyaw * k; cam.pitch += (tp - cam.pitch) * k; cam.d = 12;
+    var cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch); cam.t = [E[0] + cp * Math.sin(cam.yaw) * cam.d, E[1] + cp * Math.cos(cam.yaw) * cam.d, E[2] - sp * cam.d];
+    var ih = inHall(E[0], E[1]); if (ih === roof) setRoof(!ih);
+    if (wk.i >= WR.length - 1 && wk.hold <= 0 && !wk.done) { wk.done = true; $('f3Walk').querySelector('.f3-wtxt').innerHTML = '<b>🏁 Tour complete</b><span>Press ⏮ to walk back through the stops, or ✕ to fly up again.</span>'; } if (wk.i < WR.length - 1) wk.done = false; }
 
   function render(now) {
     var t = (now - t0) / 1000;
-    if (goal) { var k = 0.08; ['yaw', 'pitch', 'd'].forEach(function (q) { cam[q] += (goal[q] - cam[q]) * k; }); for (var i = 0; i < 3; i++) cam.t[i] += (goal.t[i] - cam.t[i]) * k; if (Math.abs(goal.d - cam.d) < 1 && Math.abs(goal.yaw - cam.yaw) < 0.002 && Math.abs(goal.pitch - cam.pitch) < 0.002) goal = null; }
-    else if (spin && now - lastUser > 2500) cam.yaw += 0.0011;
+    if (wk.on) walkTick(now); else if (goal) { var k = 0.08; ['yaw', 'pitch', 'd'].forEach(function (q) { cam[q] += (goal[q] - cam[q]) * k; }); for (var i = 0; i < 3; i++) cam.t[i] += (goal.t[i] - cam.t[i]) * k; if (Math.abs(goal.d - cam.d) < 1 && Math.abs(goal.yaw - cam.yaw) < 0.002 && Math.abs(goal.pitch - cam.pitch) < 0.002) goal = null; }
+    else if (spin && !wk.on && now - lastUser > 2500) cam.yaw += 0.0011;
     setupCam();
     var sky = g.createLinearGradient(0, 0, 0, H); if (night) { sky.addColorStop(0, '#020617'); sky.addColorStop(1, '#1e293b'); } else { sky.addColorStop(0, '#bfdbfe'); sky.addColorStop(1, '#eff6ff'); }
     g.fillStyle = sky; g.fillRect(0, 0, W, H);
+    var hy = H * 0.55 - Fc * Math.tan(cam.pitch); if (cam.pitch > -1.4 && hy < H) { g.fillStyle = night ? '#1a2416' : '#8fb47a'; g.fillRect(0, Math.max(0, hy), W, H); }
+    FR++;
     DRAWN = [];
     // Ground layer (in order)
-    GROUND.forEach(function (fc) { var q = fc.p.map(proj); if (q.some(function (v) { return !v; })) return; poly(q, shade(fc, sel && fc.id === sel), null); if (fc.id) DRAWN.push({ q: q, id: fc.id }); });
+    GROUND.forEach(function (fc) { var q = clipP(fc.p); if (!q) return; poly(q, shade(fc, sel && !wk.on && fc.id === sel), null); if (fc.id) DRAWN.push({ q: q, id: fc.id }); });
     // Sorted items
     var items = [], sets = [BASE, roof ? ROOF : OPEN];
     sets.forEach(function (S) { for (var i = 0; i < S.length; i++) { var fc = S[i], p0 = fc.p[0];
       if ((camPos[0] - p0[0]) * fc.n[0] + (camPos[1] - p0[1]) * fc.n[1] + (camPos[2] - p0[2]) * fc.n[2] <= 0) continue;
-      var q = [], dsum = 0, ok = true; for (var j = 0; j < fc.p.length; j++) { var v = proj(fc.p[j]); if (!v) { ok = false; break; } q.push(v); dsum += v[2]; }
-      if (!ok) continue; items.push({ d: dsum / q.length, q: q, f: fc }); } });
+      var q = clipP(fc.p); if (!q) continue; var dsum = 0; for (var j = 0; j < q.length; j++) dsum += q[j][2]; fc._f = FR; fc._d = dsum / q.length; items.push({ d: fc._d, q: q, f: fc }); } });
+    SIGNS.forEach(function (S) { if (S.open && roof) return; if (S.host) { if (S.host._f !== FR) return; items.push({ d: S.host._d - 0.02, sign: S }); } else { var c = proj(S.c); if (c) items.push({ d: c[2] - 0.05, sign: S }); } });
     FANS.forEach(function (fn) { var c = proj(fn); if (c) items.push({ d: c[2] - 0.5, fan: fn }); });
-    LINES.forEach(function (L) { if (L.flow && !flows) return; var q = L.p.map(proj); if (q.some(function (v) { return !v; })) return; var dd = 0; q.forEach(function (v) { dd += v[2]; }); items.push({ d: dd / q.length - (L.flow ? 30 : 0), line: L, q: q }); });
+    LINES.forEach(function (L) { if (L.flow && !flows) return; if (L.open && roof) return; if (L.near) { var c0 = csp(L.p[0]); if (c0[2] > 70 || c0[2] < 1) return; } var q = L.p.map(proj); if (q.some(function (v) { return !v; })) return; var dd = 0; q.forEach(function (v) { dd += v[2]; }); items.push({ d: dd / q.length - (L.flow ? 30 : 0), line: L, q: q }); });
     // trucks
     var TU = [((t * 0.018) % 1), ((t * 0.018 + 0.5) % 1)];
     TU.forEach(function (u) { var d = u * TRK.L, i = 0; while (i < TRK.seg.length - 1 && d > TRK.seg[i]) { d -= TRK.seg[i]; i++; } var a = TRK.p[i], b = TRK.p[i + 1], f = Math.min(1, d / TRK.seg[i]), x = a[0] + (b[0] - a[0]) * f, y = a[1] + (b[1] - a[1]) * f, ang = Math.atan2(b[1] - a[1], b[0] - a[0]), ca = Math.cos(ang), sa = Math.sin(ang);
@@ -588,10 +712,13 @@
     for (var m = 0; m < items.length; m++) { var it = items[m];
       if (it.fan) { var fn = it.fan, c = proj(fn); if (!c) continue; var rr = fn[3] * Fc / c[2]; if (rr < 0.6) continue; g.fillStyle = night ? '#0f172a' : '#334155'; g.beginPath(); g.ellipse(c[0], c[1], rr, rr * Math.max(0.15, sp0), 0, 0, 7); g.fill();
         if (rr > 2.2) { g.strokeStyle = night ? '#64748b' : '#cbd5e1'; g.lineWidth = 1; for (var bl = 0; bl < 3; bl++) { var ang2 = t * 9 + bl * 2.094 + fn[0]; g.beginPath(); g.moveTo(c[0], c[1]); g.lineTo(c[0] + Math.cos(ang2) * rr, c[1] + Math.sin(ang2) * rr * Math.max(0.15, sp0)); g.stroke(); } } continue; }
+      if (it.sign) { drawSign(it.sign); continue; }
       if (it.line) { g.strokeStyle = it.line.c; g.globalAlpha = it.line.flow ? 0.55 : 0.9; g.lineWidth = it.line.w || 1; g.beginPath(); it.q.forEach(function (v, i) { i ? g.lineTo(v[0], v[1]) : g.moveTo(v[0], v[1]); }); g.stroke(); g.globalAlpha = 1; continue; }
-      poly(it.q, shade(it.f, sel && it.f.id === sel), it.f.em && night ? null : 'rgba(15,23,42,.18)'); if (it.f.id) DRAWN.push({ q: it.q, id: it.f.id }); }
+      poly(it.q, shade(it.f, sel && !wk.on && it.f.id === sel), it.f.em && night ? null : 'rgba(15,23,42,.18)'); if (it.f.id) DRAWN.push({ q: it.q, id: it.f.id }); }
+    // Rack status LEDs
+    if (!roof) LEDS.forEach(function (Ld) { var c0 = csp([Ld[0], Ld[1], Ld[2]]); if (c0[2] > 60 || c0[2] < 1) return; for (var yy = Ld[1]; yy < Ld[3]; yy += 0.6) { var p = proj([Ld[0], yy, Ld[2]]); if (!p) continue; var on = Math.sin(t * 2 + yy * 3.1 + Ld[0]) > -0.6; g.fillStyle = on ? (Math.sin(yy * 7.3) > 0.92 ? '#f59e0b' : '#22c55e') : '#14532d'; g.fillRect(p[0] - 1, p[1] - 1, 2, 2); } });
     // Particles
-    if (flows) PATHS.forEach(function (P) { for (var i = 0; i < P.n; i++) { var u = (t * P.s * 600 / P.L + i / P.n) % 1, p = proj(along(P, u)); if (!p) continue; var r = Math.max(1.6, Math.min(4.5, 2.2 * Fc / p[2] * 1.2)); g.fillStyle = P.c; g.shadowColor = P.c; g.shadowBlur = night ? 10 : 4; g.beginPath(); g.arc(p[0], p[1], r, 0, 7); g.fill(); } }); g.shadowBlur = 0;
+    if (flows && !wk.on) PATHS.forEach(function (P) { for (var i = 0; i < P.n; i++) { var u = (t * P.s * 600 / P.L + i / P.n) % 1, p = proj(along(P, u)); if (!p) continue; var r = Math.max(1.6, Math.min(4.5, 2.2 * Fc / p[2] * 1.2)); g.fillStyle = P.c; g.shadowColor = P.c; g.shadowBlur = night ? 10 : 4; g.beginPath(); g.arc(p[0], p[1], r, 0, 7); g.fill(); } }); g.shadowBlur = 0;
     // Aviation lights
     if (Math.sin(t * 3) > 0.2) LIGHTS.forEach(function (L) { if (!L) return; var p = proj(L); if (!p) return; g.fillStyle = '#ef4444'; g.shadowColor = '#ef4444'; g.shadowBlur = 8; g.beginPath(); g.arc(p[0], p[1], 2.4, 0, 7); g.fill(); }); g.shadowBlur = 0;
     labels(); var cmp = $('f3Cmp'); if (cmp) cmp.style.transform = 'rotate(' + (cam.yaw * 180 / Math.PI) + 'deg)';
@@ -630,7 +757,7 @@
   function clampT() { cam.t[0] = Math.max(-1200, Math.min(1200, cam.t[0])); cam.t[1] = Math.max(-1000, Math.min(1000, cam.t[1])); }
   function touchUser() { goal = null; lastUser = performance.now(); }
   cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-  cv.addEventListener('pointerdown', function (e) { cv.setPointerCapture(e.pointerId); ptr[e.pointerId] = [e.clientX, e.clientY]; moved = 0; touchUser(); cv.classList.add('drag');
+  cv.addEventListener('pointerdown', function (e) { if (wk.on && !wk.paused) { wk.paused = true; $('f3WP').textContent = '▶'; } cv.setPointerCapture(e.pointerId); ptr[e.pointerId] = [e.clientX, e.clientY]; moved = 0; touchUser(); cv.classList.add('drag');
     var n = Object.keys(ptr).length; setupCam();
     if (n === 1) { mode = (e.button === 2 || e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) ? 'rot' : 'pan'; grab = ground(e.clientX, e.clientY); }
     else { mode = 'two'; last2 = null; } });
@@ -669,9 +796,10 @@
     if (fly && id) { var c = byId[id], a = c[4]; goal = { t: [a[0], a[1], 0], yaw: cam.yaw, pitch: Math.max(0.5, Math.min(0.9, cam.pitch)), d: id === 'rack' || id === 'cdu' ? 160 : id === 'line' ? 520 : 330 }; if ((id === 'rack' || id === 'cdu') && roof) setRoof(false); lastUser = performance.now(); } }
   function art(s) { return '<li><a href=\x22' + B + s + '.html\x22>' + (READ[s] ? '✓ ' : '') + (TITLES[s] || s.replace(/-/g, ' ')) + '</a></li>'; }
   function panel() { var P = $('f3Panel'); P.classList.toggle('open', !!sel);
-    if (!sel) { P.innerHTML = '<h3>🏗️ A 100 MW AI campus</h3><p>About <b>105 acres</b> (760 × 560 m): grid and on-site power, two liquid-cooled data halls of ~50 MW each, cooling yards, network core and storage.</p><p><b>Tap any building</b> or a label to see what is inside and which articles cover it. Use <b>Roof off</b> or <b>Inside hall</b> to see the rack rows.</p><dl><dt>Flows</dt><dd>🟠 power from substation, generators and batteries · 🔵 cool water to the halls · 🔴 warm water back to the dry coolers · 🟢 data from the fibre route to the network core, halls and storage.</dd></dl>'; return; }
-    var c = byId[sel]; P.innerHTML = '<h3>' + c[2] + ' ' + c[1] + '</h3><p>' + c[7] + '</p><dl><dt>Hardware</dt><dd>' + c[5] + '</dd><dt>Software</dt><dd>' + c[6] + '</dd>' + (c[8] ? '<dt>Figure</dt><dd>' + c[8] + '</dd>' : '') + '</dl>' + (c[9].length + c[10].length ? '<dt style="font-size:.68rem;font-weight:800;text-transform:uppercase;color:#64748b">Read more</dt><ul>' + c[9].concat(c[10].filter(function (s) { return c[9].indexOf(s) < 0; })).slice(0, 6).map(art).join('') + '</ul>' : '') + '<p style="margin:10px 0 0"><button type="button" class="f3-btn" id="f3Clr">✕ Close</button></p>';
-    $('f3Clr').addEventListener('click', function () { select(null); }); }
+    if (!sel) { P.innerHTML = '<h3>🏗️ A 100 MW AI campus</h3><p>About <b>105 acres</b> (760 × 560 m): grid and on-site power, two liquid-cooled data halls of ~50 MW each, cooling yards, network core and storage.</p><p><b>Tap any building</b> or a label to see what is inside and which articles cover it. Use <b>Roof off</b> or <b>Inside hall</b> to see the rack rows, or press <b>🚶 Street walk</b> to stroll past every building at a giant\x27s eye height (~3.5 m), with each name written on the building itself.</p><dl><dt>Flows</dt><dd>🟠 power from substation, generators and batteries · 🔵 cool water to the halls · 🔴 warm water back to the dry coolers · 🟢 data from the fibre route to the network core, halls and storage.</dd></dl>'; return; }
+    var c = byId[sel]; P.innerHTML = '<h3>' + c[2] + ' ' + c[1] + '</h3><p>' + c[7] + '</p><dl><dt>Hardware</dt><dd>' + c[5] + '</dd><dt>Software</dt><dd>' + c[6] + '</dd>' + (c[8] ? '<dt>Figure</dt><dd>' + c[8] + '</dd>' : '') + '</dl>' + (c[9].length + c[10].length ? '<dt style="font-size:.68rem;font-weight:800;text-transform:uppercase;color:#64748b">Read more</dt><ul>' + c[9].concat(c[10].filter(function (s) { return c[9].indexOf(s) < 0; })).slice(0, 6).map(art).join('') + '</ul>' : '') + '<p style="margin:10px 0 0;display:flex;gap:6px;flex-wrap:wrap">' + (stopOf(sel) != null ? '<button type="button" class="f3-btn" id="f3SV">🚶 Street view here</button>' : '') + '<button type="button" class="f3-btn" id="f3Clr">✕ Close</button></p>';
+    $('f3Clr').addEventListener('click', function () { select(null); }); if ($('f3SV')) $('f3SV').addEventListener('click', function () { var i = stopOf(sel); if (wk.on) walkAt(i); else walkStart(i); }); }
+  function stopOf(id) { for (var i = 0; i < WR.length; i++) if (WR[i].s === id) return i; return null; }
   $('f3List').innerHTML = C.map(function (c) { return '<button type="button" data-id="' + c[0] + '" style="--c:' + c[3] + '">' + c[2] + ' ' + c[1] + '</button>'; }).join('');
   document.querySelectorAll('#f3List button').forEach(function (b) { b.addEventListener('click', function () { select(b.getAttribute('data-id'), true); }); });
   function seg(id, fn) { document.querySelectorAll('#' + id + ' button').forEach(function (b) { b.addEventListener('click', function () { document.querySelectorAll('#' + id + ' button').forEach(function (o) { o.classList.toggle('on', o === b); }); fn(b.getAttribute('data-v')); }); }); }
@@ -681,6 +809,9 @@
   $('f3Roof').addEventListener('click', function () { setRoof(!roof); });
   $('f3Flow').addEventListener('click', function () { flows = !flows; this.classList.toggle('on', flows); });
   $('f3Spin').addEventListener('click', function () { spin = !spin; this.classList.toggle('on', spin); lastUser = 0; });
+  $('f3WalkBtn').addEventListener('click', function () { if (wk.on) walkStop(); else walkStart(null); });
+  $('f3WB').addEventListener('click', function () { walkJump(-1); }); $('f3WN').addEventListener('click', function () { walkJump(1); }); $('f3WX').addEventListener('click', walkStop);
+  $('f3WP').addEventListener('click', function () { wk.paused = !wk.paused; wk.last = performance.now(); this.textContent = wk.paused ? '▶' : '⏸'; });
   $('f3Night').addEventListener('click', function () { night = !night; this.classList.toggle('on', night); });
 
   // Guide table
