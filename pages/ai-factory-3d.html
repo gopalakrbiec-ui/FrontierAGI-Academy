@@ -348,12 +348,12 @@
     <h2 class="af-sec f3-full" id="model">1. The 3D campus</h2>
     <div class="f3-embedbar"><b>🏗️ The AI Factory in 3D</b><a href="ai-factory-3d.html" target="_top">Open full model →</a></div>
     <div class="f3-bar">
-      <span class="f3-seg" id="f3Lbl"><button type="button" data-v="hw" class="on">🔩 Hardware</button><button type="button" data-v="sw">💻 Software</button><button type="button" data-v="off">No labels</button></span>
-      <span class="f3-seg" id="f3Cam"><button type="button" data-v="iso" class="on">Aerial</button><button type="button" data-v="top">Top-down</button><button type="button" data-v="street">Street</button><button type="button" data-v="hall">Inside hall</button></span>
-      <button type="button" class="f3-btn" id="f3Roof">🏠 Roof off</button>
+      <span class="f3-seg" id="f3Lbl"><button type="button" data-v="hw">🔩 Hardware</button><button type="button" data-v="sw">💻 Software</button><button type="button" data-v="off" class="on">No labels</button></span>
+      <span class="f3-seg" id="f3Cam"><button type="button" data-v="iso">Aerial</button><button type="button" data-v="top">Top-down</button><button type="button" data-v="street">Street</button><button type="button" data-v="hall" class="on">Inside hall</button></span>
+      <button type="button" class="f3-btn on" id="f3Roof">🏠 Roof off</button>
       <button type="button" class="f3-btn on" id="f3Flow">〰️ Flows</button>
       <button type="button" class="f3-btn on" id="f3Spin">🔄 Auto-rotate</button>
-      <button type="button" class="f3-btn" id="f3Night">🌙 Night</button>
+      <button type="button" class="f3-btn on" id="f3Night">🌙 Night</button>
     </div>
     <div class="f3-stage">
       <div class="f3-view">
@@ -543,8 +543,8 @@
   // ───────────── Camera & render
   var cv = $('f3Cv'), g = cv.getContext('2d'), W = 0, H = 0, DPR = 1;
   var CAMS = { iso: { t: [0, -10, 0], yaw: -0.62, pitch: 0.62, d: 980 }, top: { t: [0, 0, 0], yaw: 0, pitch: 1.5, d: 1150 }, street: { t: [120, -200, 8], yaw: -0.25, pitch: 0.1, d: 300 }, hall: { t: [-20, 75, 0], yaw: -0.4, pitch: 0.75, d: 190 } };
-  var cam = { t: [0, -10, 0], yaw: -0.62, pitch: 0.62, d: 980 }, goal = null;
-  var view = EMBED ? 'hw' : 'hw', roof = true, flows = true, spin = true, night = false, sel = null, lastUser = 0;
+  var cam = { t: [-20, 75, 0], yaw: -0.4, pitch: 0.75, d: 190 }, goal = null;
+  var view = 'off', roof = false, flows = true, spin = true, night = true, sel = null, lastUser = 0;
   var cy0, sy0, cp0, sp0, Fc, camPos = [0, 0, 0];
   function setupCam() { cy0 = Math.cos(cam.yaw); sy0 = Math.sin(cam.yaw); cp0 = Math.cos(cam.pitch); sp0 = Math.sin(cam.pitch); Fc = H * 1.15;
     var f = [cp0 * sy0, cp0 * cy0, -sp0]; camPos = [cam.t[0] - f[0] * cam.d, cam.t[1] - f[1] * cam.d, cam.t[2] - f[2] * cam.d]; }
