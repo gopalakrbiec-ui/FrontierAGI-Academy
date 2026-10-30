@@ -1,5 +1,5 @@
 {
- "note": "Hand-curated architecture of the AI factory software stack. 'gen' ids point to sourced items in data/stack-innovations.json; 'since' years are first public release. Counters on the page are simulated. Realistic layout: boxes carry zone (app/platform/runtime/infra/hw/ctrl/obs) and, for app, a lifecycle column.",
+ "note": "Hand-curated architecture of the AI factory software stack. 'gen' ids point to sourced items in data/stack-innovations.json; 'since' years are first public release. Counters on the page are simulated. Realistic layout: boxes carry zone (app/platform/runtime/infra/hw/ctrl/obs) and, for app, a lifecycle column. Zone metal = bare metal & hardware (boxes[10] = core or support).",
  "layers": [
   [
    "xcut",
@@ -88,6 +88,14 @@
    "#64748b",
    "Hardware bring-up engineers",
    "Gets new racks from the loading dock to a healthy, schedulable state."
+  ],
+  [
+   "metal",
+   "Bare metal & hardware",
+   "🏗️",
+   "#b45309",
+   "Data-centre technicians, hardware and facilities engineers",
+   "The physical machines every layer above runs on, plus the power and cooling that keep them running."
   ]
  ],
  "boxes": [
@@ -971,17 +979,13 @@
   [
    "nvl",
    "net",
-   "NVLink & NVSwitch fabric",
+   "NVLink & NVSwitch management",
    "NVIDIA",
    0,
    null,
-   [
-    "net-040",
-    "net-041",
-    "net-044"
-   ],
+   [],
    "interconnect-wars",
-   "The scale-up fabric joining GPUs inside a rack.",
+   "Software that configures and monitors the NVLink domain inside each rack.",
    "infra",
    null
   ],
@@ -1182,6 +1186,243 @@
    "Which part is in which slot, and its power and temperature.",
    "hw",
    null
+  ],
+  [
+   "m_gpu",
+   "metal",
+   "NVIDIA GPUs",
+   "NVIDIA",
+   0,
+   null,
+   [
+    "gpu-000",
+    "gpu-002",
+    "gpu-003",
+    "gpu-004",
+    "gpu-005",
+    "gpu-006",
+    "gpu-007",
+    "gpu-008",
+    "gpu-201"
+   ],
+   "ai-chips-compute-infrastructure",
+   "The accelerators most frontier models are trained and served on.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_amd",
+   "metal",
+   "AMD Instinct GPUs",
+   "AMD",
+   0,
+   null,
+   [
+    "gpu-010",
+    "gpu-011",
+    "gpu-012",
+    "gpu-013",
+    "gpu-202"
+   ],
+   "ai-chips-compute-infrastructure",
+   "AMD's data-centre accelerators, programmed through ROCm.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_tpu",
+   "metal",
+   "Google TPUs",
+   "Google",
+   0,
+   null,
+   [
+    "asic-014",
+    "asic-015",
+    "asic-016",
+    "asic-017",
+    "asic-018",
+    "asic-019",
+    "asic-020",
+    "asic-206"
+   ],
+   "custom-silicon-vs-nvidia",
+   "Google's own AI chips, deployed in pods.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_custom",
+   "metal",
+   "Trainium, Maia, MTIA & wafer-scale",
+   "AWS · Microsoft · Meta · Cerebras",
+   0,
+   null,
+   [
+    "asic-022",
+    "asic-023",
+    "asic-203",
+    "asic-024",
+    "asic-204",
+    "asic-025",
+    "asic-197",
+    "asic-205",
+    "asic-026",
+    "asic-198"
+   ],
+   "custom-silicon-vs-nvidia",
+   "Custom accelerators built by clouds, labs and challengers.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_hbm",
+   "metal",
+   "HBM & CXL memory",
+   "JEDEC · SK hynix · Samsung · Micron",
+   2,
+   null,
+   [
+    "mem-027",
+    "mem-028",
+    "mem-029",
+    "mem-030",
+    "mem-031",
+    "mem-032",
+    "mem-207",
+    "mem-199"
+   ],
+   "memory-wall-hbm",
+   "Stacked high-bandwidth memory beside each chip; often the real limit on speed.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_pkg",
+   "metal",
+   "Advanced packaging & process",
+   "TSMC",
+   0,
+   null,
+   [
+    "pkg-033",
+    "pkg-034",
+    "pkg-035",
+    "pkg-036",
+    "pkg-037",
+    "pkg-223"
+   ],
+   "ai-chip-supply-chain",
+   "Leading-edge process nodes and CoWoS packaging that join chip and memory.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_nvl",
+   "metal",
+   "NVLink & NVSwitch hardware",
+   "NVIDIA",
+   0,
+   null,
+   [
+    "net-040",
+    "net-041",
+    "net-042",
+    "net-043",
+    "net-044"
+   ],
+   "interconnect-wars",
+   "The scale-up links and switch chips joining GPUs inside a rack.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_sw",
+   "metal",
+   "Switches & optics",
+   "NVIDIA · Broadcom · others",
+   2,
+   null,
+   [
+    "net-045",
+    "net-221",
+    "net-209",
+    "net-210"
+   ],
+   "interconnect-wars",
+   "InfiniBand and Ethernet switches, 800G optics and co-packaged optics.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_flash",
+   "metal",
+   "NVMe flash storage servers",
+   "Storage vendors",
+   2,
+   null,
+   [],
+   "ai-factory-storage",
+   "Flash-packed servers behind the parallel file systems.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_rack",
+   "metal",
+   "Rack-scale systems",
+   "NVIDIA · OCP · server makers",
+   2,
+   null,
+   [
+    "rack-200",
+    "rack-049",
+    "rack-050",
+    "rack-051",
+    "rack-052",
+    "rack-222"
+   ],
+   "inside-the-ai-factory",
+   "Whole racks sold as one computer, e.g. NVL72-class liquid-cooled racks.",
+   "metal",
+   "core"
+  ],
+  [
+   "m_power",
+   "metal",
+   "Power: grid, UPS, batteries, 800 V DC",
+   "Utilities · electrical vendors",
+   2,
+   null,
+   [
+    "power-060",
+    "power-061",
+    "power-062",
+    "power-218",
+    "power-219",
+    "power-211"
+   ],
+   "power-bottleneck-ai-infrastructure-race",
+   "Supporting infrastructure: energy supply and distribution to every rack.",
+   "metal",
+   "support"
+  ],
+  [
+   "m_cool",
+   "metal",
+   "Liquid cooling & CDUs",
+   "Cooling vendors · labs",
+   2,
+   null,
+   [
+    "cool-058",
+    "cool-059",
+    "cool-217"
+   ],
+   "heat-and-water-cooling",
+   "Supporting infrastructure: carries the heat out of the racks.",
+   "metal",
+   "support"
   ]
  ],
  "journeys": [
@@ -1202,9 +1443,12 @@
     "flash",
     "cutlass",
     "cuda",
+    "m_gpu",
+    "m_hbm",
+    "m_nvl",
     "nccl",
     "rdma",
-    "nvl",
+    "m_sw",
     "ckpt",
     "pfs"
    ],
@@ -1222,6 +1466,8 @@
     "disagg",
     "flash",
     "cuda",
+    "m_gpu",
+    "m_hbm",
     "spec",
     "router"
    ],
@@ -1270,6 +1516,7 @@
    "🚑 Failure & recovery",
    "tele",
    [
+    "m_gpu",
     "dcgm",
     "prom",
     "health",
@@ -1279,13 +1526,14 @@
     "meg"
    ],
    "health",
-   "A GPU starts throwing errors; telemetry alerts, the node is drained, and the job restarts from its last checkpoint."
+   "A GPU's memory starts throwing errors; DCGM reports it, alerts fire, the node is drained, and the job restarts from its last checkpoint."
   ],
   [
    "bring",
    "🔌 New rack bring-up",
    "ctrl",
    [
+    "m_rack",
     "bmc",
     "gfw",
     "prov",
@@ -1297,7 +1545,22 @@
     "k8s"
    ],
    "burn",
-   "A rack is powered up, flashed, imaged, burned in and tested, then handed to the scheduler."
+   "A new rack is powered up, its BMC and firmware are set, the OS image is installed, it is burned in and tested, then handed to the scheduler."
+  ],
+  [
+   "power",
+   "⚡ Power & cooling",
+   "pwr",
+   [
+    "m_power",
+    "m_rack",
+    "m_gpu",
+    "m_cool",
+    "m_rack",
+    "dcgm"
+   ],
+   "m_power",
+   "Power flows to every rack; liquid cooling carries the heat back out; sensors report both. At high load the power or cooling budget, not the chips, caps the cluster."
   ]
  ],
  "columns": [
@@ -1379,11 +1642,11 @@
   ],
   [
    "hw",
-   "Hardware & firmware",
+   "Firmware & bring-up",
    "🔌",
    "#64748b",
    "Hardware bring-up engineers",
-   "Racks, firmware and the tooling that brings them up."
+   "Software that brings bare metal to a healthy, schedulable state: BMC, firmware, provisioning, burn-in."
   ],
   [
    "ctrl",
@@ -1400,6 +1663,14 @@
    "#475569",
    "SREs, security engineers",
    "Cuts across every layer and stage."
+  ],
+  [
+   "metal",
+   "Bare metal & hardware",
+   "🏗️",
+   "#b45309",
+   "Data-centre technicians, hardware and facilities engineers",
+   "Chips, memory, fabrics, storage and racks, with power and cooling as supporting infrastructure. Everything above runs on it."
   ]
  ],
  "handoffs": [
