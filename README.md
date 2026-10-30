@@ -51,6 +51,9 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 💰 [The Maestro, Part 3: The Plan and the Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-plan-money.html) | Phase 0, founder hat. | 2026-10-30 |
+| 🧪 [The Maestro, Part 2: Proving It Small](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-proving-small.html) | Phase 0, researcher and ML-engineer hats. | 2026-10-30 |
+| 🧭 [The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-l4-moat.html) | Phase 0, researcher hat. | 2026-10-30 |
 | 🏋️ [Where Agents Learn: RL Environments as Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-rl-environments.html) | Part 8 of Inside the Agent Layer: how labs train agents with reinforcement learning in simulated workplaces, what an RL environment… | 2026-10-28 |
 | 📈 [Seeing Inside Agent Runs: Observability, Tracing and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-observability-cost.html) | Part 7 of Inside the Agent Layer: why agent failures are invisible to ordinary monitoring, traces and spans for model and tool calls, the… | 2026-10-28 |
 | 🧩 [What Agents Remember: Memory, State and the Context Window](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-memory-state.html) | Part 6 of Inside the Agent Layer: the four kinds of agent memory, why long runs exhaust the context window, context editing and compaction,… | 2026-10-28 |

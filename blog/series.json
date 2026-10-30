@@ -227,6 +227,17 @@
       ]
     },
     {
+      "id": "sec-maestro",
+      "title": "The Maestro: Building a Frontier AI Factory From Zero",
+      "short": "The Maestro",
+      "icon": "🎼",
+      "slugs": [
+        "maestro-l4-moat",
+        "maestro-proving-small",
+        "maestro-plan-money"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",

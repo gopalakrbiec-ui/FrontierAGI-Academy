@@ -1,6 +1,51 @@
 {
   "posts": [
     {
+      "slug": "maestro-plan-money",
+      "title": "The Maestro, Part 3: The Plan and the Money",
+      "excerpt": "Phase 0, founder hat. Gopala prices four ways to get a model (post-train an open 32B, or pre-train 8B dense, 32B dense or a 12B-active MoE from scratch) from first principles, chooses a hybrid plan, decides to rent rather than buy GPUs, builds an 18-month master plan and a cash model, and writes the one-page investor memo. Includes a runnable budget script and calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "42 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "💰",
+      "featured": false
+    },
+    {
+      "slug": "maestro-proving-small",
+      "title": "The Maestro, Part 2: Proving It Small",
+      "excerpt": "Phase 0, researcher and ML-engineer hats. Gopala builds a minimal GPT trainer, runs a four-size model ladder and fits a scaling law (real code, real output), then designs the real-model tests of the self-improvement idea: skill retrieval on an open model, LoRA fine-tuning on verified skills versus generic code, paired statistics and decision rules, all for a few thousand dollars of rented GPU time.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "45 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧪",
+      "featured": false
+    },
+    {
+      "slug": "maestro-l4-moat",
+      "title": "The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model",
+      "excerpt": "Phase 0, researcher hat. Gopala reads the self-improvement literature, places the idea on the L1–L5 ladder, chooses L4 (a model that keeps verified skills from deployment inside a fixed, human-approved process), writes falsifiable hypotheses, and runs a first experiment that fails before a second one works. Includes runnable code.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "40 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧭",
+      "featured": false
+    },
+    {
       "slug": "agent-rl-environments",
       "title": "Where Agents Learn: RL Environments as Infrastructure",
       "excerpt": "Part 8 of Inside the Agent Layer: how labs train agents with reinforcement learning in simulated workplaces, what an RL environment contains, SWE-Gym and SWE-smith, the start-ups building environments, reward hacking, the rollout fleet that runs millions of sandboxed episodes, and a rollout-compute calculator.",
