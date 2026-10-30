@@ -427,6 +427,7 @@
     ['pond', 'Stormwater pond', '🌊', '#38bdf8', [310, 210, 1], 'Stormwater detention pond', '—', 'Large roofs and paved yards shed a lot of rain; ponds hold it back. A routine part of any large site.', '', [], []],
     ['exp', 'Expansion pad', '🏗️', '#a8a29e', [310, 20, 1], 'Graded pad for the next hall', 'Capacity planning', 'Land held for the next phase. Large campuses are built in phases of one or two halls.', 'Hyperion is planned to grow in phases toward 5 GW.', ['meta-prometheus-hyperion', 'stargate-abilene'], []]
   ];
+  var SWB = { hallA: 'meg', hallB: 'vllm', rack: 'm_gpu', cdu: 'm_cool', dry: 'm_cool', tank: 'm_cool', net: 'nccl', fibre: 'm_sw', stor: 'pfs', noc: 'otel', sec: 'iam', elec: 'm_power', sub: 'm_power', gen: 'm_power', bess: 'm_power', line: 'm_power', dock: 'burn', ofc: 'trace' };
   var byId = {}; C.forEach(function (c) { byId[c[0]] = c; });
 
   // ───────────── Geometry
@@ -435,7 +436,8 @@
   function mid(a, b) { return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (a[2] + b[2]) / 2]; }
   function face(pts, n, col, id, em) { if (pts.length === 4) { var A = pts[0], B2 = pts[1], C2 = pts[2], D = pts[3], la = Math.hypot(B2[0] - A[0], B2[1] - A[1], B2[2] - A[2]), lb = Math.hypot(C2[0] - B2[0], C2[1] - B2[1], C2[2] - B2[2]);
       if (Math.max(la, lb) > 26) { if (la >= lb) { var m1 = mid(A, B2), m2 = mid(D, C2); face([A, m1, m2, D], n, col, id, em); face([m1, B2, C2, m2], n, col, id, em); } else { var m3 = mid(B2, C2), m4 = mid(A, D); face([A, B2, m3, m4], n, col, id, em); face([m4, m3, C2, D], n, col, id, em); } return; } }
-    T.push({ p: pts, n: n, c: hex(col), id: id, em: em }); }
+    T.push({ p: pts, n: n, c: hex(col), id: id, em: em, ru: RU }); }
+  var RU = 0;
   function box(x0, y0, z0, x1, y1, z1, col, id, top, em) {
     face([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], [0, 0, 1], top || col, id, em);
     face([[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1]], [0, -1, 0], col, id, em);
@@ -492,7 +494,7 @@
   function hall(y0, id, rackCol) {
     var x0 = -120, x1 = 80, y1 = y0 + 70, H = 14;
     T = ROOF; box(x0, y0, 0, x1, y1, H, '#cbd5e1', id, '#e2e8f0');
-    for (var rx = x0 + 8; rx < x1 - 8; rx += 16) for (var ry = y0 + 10; ry < y1 - 8; ry += 25) box(rx, ry, H, rx + 7, ry + 5, H + 2, '#94a3b8', id, '#cbd5e1');
+    RU = 1; for (var rx = x0 + 8; rx < x1 - 8; rx += 16) for (var ry = y0 + 10; ry < y1 - 8; ry += 25) box(rx, ry, H, rx + 7, ry + 5, H + 2, '#94a3b8', id, '#cbd5e1'); RU = 0;
     T = OPEN; box(x0, y0, 0, x1, y0 + 0.6, H, '#cbd5e1', id); box(x0, y1 - 0.6, 0, x1, y1, H, '#cbd5e1', id); box(x0, y0, 0, x0 + 0.6, y1, H, '#cbd5e1', id); box(x1 - 0.6, y0, 0, x1, y1, H, '#cbd5e1', id);
     rect(x0 + 0.6, y0 + 0.6, x1 - 0.6, y1 - 0.6, '#e5e7eb', id, 0.09);
     box(x0 + 1, y0 + 1, 0, x1 - 1, y0 + 11, 5, '#fcd34d', 'elec'); box(x0 + 1, y1 - 11, 0, x1 - 1, y1 - 1, 5, '#fcd34d', 'elec');
@@ -698,6 +700,7 @@
     // Sorted items
     var items = [], sets = [BASE, roof ? ROOF : OPEN];
     sets.forEach(function (S) { for (var i = 0; i < S.length; i++) { var fc = S[i], p0 = fc.p[0];
+      if (fc.ru && camPos[2] < 17) continue;
       if ((camPos[0] - p0[0]) * fc.n[0] + (camPos[1] - p0[1]) * fc.n[1] + (camPos[2] - p0[2]) * fc.n[2] <= 0) continue;
       var q = clipP(fc.p); if (!q) continue; var dsum = 0; for (var j = 0; j < q.length; j++) dsum += q[j][2]; fc._f = FR; fc._d = dsum / q.length; items.push({ d: fc._d, q: q, f: fc }); } });
     SIGNS.forEach(function (S) { if (S.open && roof) return; if (S.host) { if (S.host._f !== FR) return; items.push({ d: S.host._d - 0.02, sign: S }); } else { var c = proj(S.c); if (c) items.push({ d: c[2] - 0.05, sign: S }); } });
@@ -798,7 +801,7 @@
   function art(s) { return '<li><a href=\x22' + B + s + '.html\x22>' + (READ[s] ? '✓ ' : '') + (TITLES[s] || s.replace(/-/g, ' ')) + '</a></li>'; }
   function panel() { var P = $('f3Panel'); P.classList.toggle('open', !!sel);
     if (!sel) { P.innerHTML = '<h3>🏗️ A 100 MW AI campus</h3><p>About <b>105 acres</b> (760 × 560 m): grid and on-site power, two liquid-cooled data halls of ~50 MW each, cooling yards, network core and storage.</p><p><b>Tap any building</b> or a label to see what is inside and which articles cover it. Use <b>Roof off</b> or <b>Inside hall</b> to see the rack rows, or press <b>🚶 Street walk</b> to stroll past every building at a giant\x27s eye height (~3.5 m), with each name written on the building itself.</p><dl><dt>Flows</dt><dd>🟠 power from substation, generators and batteries · 🔵 cool water to the halls · 🔴 warm water back to the dry coolers · 🟢 data from the fibre route to the network core, halls and storage.</dd></dl>'; return; }
-    var c = byId[sel]; P.innerHTML = '<h3>' + c[2] + ' ' + c[1] + '</h3><p>' + c[7] + '</p><dl><dt>Hardware</dt><dd>' + c[5] + '</dd><dt>Software</dt><dd>' + c[6] + '</dd>' + (c[8] ? '<dt>Figure</dt><dd>' + c[8] + '</dd>' : '') + '</dl>' + (c[9].length + c[10].length ? '<dt style="font-size:.68rem;font-weight:800;text-transform:uppercase;color:#64748b">Read more</dt><ul>' + c[9].concat(c[10].filter(function (s) { return c[9].indexOf(s) < 0; })).slice(0, 6).map(art).join('') + '</ul>' : '') + '<p style="margin:10px 0 0;display:flex;gap:6px;flex-wrap:wrap">' + (stopOf(sel) != null ? '<button type="button" class="f3-btn" id="f3SV">🚶 Street view here</button>' : '') + '<button type="button" class="f3-btn" id="f3Clr">✕ Close</button></p>';
+    var c = byId[sel]; P.innerHTML = '<h3>' + c[2] + ' ' + c[1] + '</h3><p>' + c[7] + '</p><dl><dt>Hardware</dt><dd>' + c[5] + '</dd><dt>Software</dt><dd>' + c[6] + '</dd>' + (c[8] ? '<dt>Figure</dt><dd>' + c[8] + '</dd>' : '') + '</dl>' + (c[9].length + c[10].length ? '<dt style="font-size:.68rem;font-weight:800;text-transform:uppercase;color:#64748b">Read more</dt><ul>' + c[9].concat(c[10].filter(function (s) { return c[9].indexOf(s) < 0; })).slice(0, 6).map(art).join('') + '</ul>' : '') + '<p style="margin:10px 0 0;display:flex;gap:6px;flex-wrap:wrap">' + (stopOf(sel) != null ? '<button type="button" class="f3-btn" id="f3SV">🚶 Street view here</button>' : '') + (SWB[sel] ? '<a class="f3-btn" style="text-decoration:none" target="_top" href="software-stack-live.html?focus=' + SWB[sel] + '">🧬 Its software in the stack</a>' : '') + '<button type="button" class="f3-btn" id="f3Clr">✕ Close</button></p>';
     $('f3Clr').addEventListener('click', function () { select(null); }); if ($('f3SV')) $('f3SV').addEventListener('click', function () { var i = stopOf(sel); if (wk.on) walkAt(i); else walkStart(i); }); }
   function stopOf(id) { for (var i = 0; i < WR.length; i++) if (WR[i].s === id) return i; return null; }
   $('f3List').innerHTML = C.map(function (c) { return '<button type="button" data-id="' + c[0] + '" style="--c:' + c[3] + '">' + c[2] + ' ' + c[1] + '</button>'; }).join('');
@@ -823,6 +826,7 @@
 
   fetch('../blog/index.json').then(function (r) { return r.json(); }).then(function (j) { (j.posts || j).forEach(function (p) { TITLES[p.slug] = p.title; }); panel(); }).catch(function () {});
   window.addEventListener('resize', resize); resize(); panel(); requestAnimationFrame(render);
+  var FQ = (location.search.match(/[?&]focus=([a-zA-Z]+)/) || [])[1]; if (FQ && byId[FQ]) { setTimeout(function () { select(FQ, true); if (!EMBED) $('model').scrollIntoView({ block: 'start' }); }, 300); }
 
   // ───────────── Land at every scale (our model)
   var LV = [['1 MW', 1], ['10 MW', 10], ['100 MW', 100], ['500 MW', 500], ['1 GW', 1000], ['5 GW', 5000], ['10 GW', 1e4], ['100 GW', 1e5], ['500 GW', 5e5], ['1 TW', 1e6]];

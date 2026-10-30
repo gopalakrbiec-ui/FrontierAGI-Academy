@@ -385,6 +385,7 @@
     $('ssTbl').innerHTML = '<tr><th>Part of the architecture</th><th>Job</th><th>Who owns it</th><th>Technologies</th></tr>' + COLS.map(function (c) { return '<tr><td><b>' + c.emoji + ' Stage: ' + c.name + '</b></td><td>Lifecycle stage on the shared platform</td><td>' + c.role + '</td><td>' + BX.filter(function (b) { return b.col === c.id; }).map(function (b) { return b.name; }).join(' · ') + '</td></tr>'; }).join('') + ['platform', 'runtime', 'infra', 'hw', 'ctrl', 'obs'].map(function (z) { var Z = ZB[z]; return '<tr><td><b>' + Z.emoji + ' ' + Z.name + '</b></td><td>' + Z.job + '</td><td>' + Z.role + '</td><td>' + BX.filter(function (b) { return b.zone === z; }).map(function (b) { return b.name; }).join(' · ') + '</td></tr>'; }).join('');
     drawJr(); controls(); layout(); window.addEventListener('resize', function () { clearTimeout(window.__ssr); window.__ssr = setTimeout(layout, 150); });
     requestAnimationFrame(frame); setInterval(tickCounters, 700); caption();
+    var FQ = (location.search.match(/[?&]focus=([a-z_A-Z]+)/) || [])[1]; if (FQ && BB[FQ]) setTimeout(function () { open(FQ); var el = svg.querySelector('.ss-box[data-id="' + FQ + '"]'); if (el) el.scrollIntoView({ block: 'center' }); }, 300);
   }
 
   // ───── Layout
@@ -493,6 +494,11 @@
       var base = m[2] ? b.v * (0.25 + load) : b.v * (m[0].indexOf('healthy') >= 0 ? 1 : 0.8 + load * 0.25); base *= 0.96 + Math.random() * 0.08; if (m[0].indexOf('%') >= 0) base = Math.min(m[0].indexOf('healthy') >= 0 ? 99.9 : 99, base); b.cur = base;
       el.querySelector('.m').textContent = '● ' + fmt(base) + ' ' + m[0] + ' (sim)'; }); }
 
+  // ───── Link to the 3D factory
+  var W3N = { hallA: 'Data Hall A (training)', hallB: 'Data Hall B (inference, agents, evals)', rack: 'The rack rows', dry: 'The dry-cooler yards', net: 'The network core', stor: 'The storage hall', noc: 'The control room', sec: 'Security', elec: 'The electrical houses', dock: 'The loading dock & burn-in bays' };
+  function where3d(b) { var o = { m_sw: 'net', m_flash: 'stor', m_power: 'elec', m_cool: 'dry', iam: 'sec', wsec: 'sec', burn: 'dock', prov: 'dock', inv: 'dock', obj: 'stor', pfs: 'stor', gds: 'stor', threefs: 'stor', ds: 'stor', dedup: 'stor', spark: 'stor' }; if (o[b.id]) return o[b.id];
+    if (b.zone === 'metal' || b.zone === 'hw') return 'rack'; if (b.zone === 'infra') return 'net'; if (b.zone === 'ctrl' || b.zone === 'obs') return 'noc';
+    if (b.zone === 'app') return (b.col === 'serve' || b.col === 'agents' || b.col === 'eval') ? 'hallB' : 'hallA'; return 'hallA'; }
   // ───── Panel
   function open(id) { sel = id; state(); var b = BB[id], l = LB[b.layer], lt = latest(b), sh = $('ssSheet');
     var gens = b.gen.map(function (x) { return GEN[x]; }).filter(Boolean).sort(function (a, c) { return a.date < c.date ? -1 : 1; });
@@ -502,6 +508,7 @@
       + (b.cur != null ? '<dt>Live counter (simulated)</dt><dd>' + fmt(b.cur) + ' ' + MET[b.layer][0] + ' at ' + Math.round(load * 100) + '% load</dd>' : '')
       + (gens.length ? '<dt>Innovation line</dt><dd>' + gens.map(function (i) { var fut = +i.date.slice(0, 4) > year; return '<div class="ss-gen" style="--c:' + l.c + (fut ? ';opacity:.45' : '') + '"><b>' + esc(i.title) + '</b><small>' + i.date + ' · ' + esc(i.org) + (i.sec ? ' · secondary source ⚠️' : '') + (fut ? ' · after ' + year : '') + '</small><div>' + esc(i.sum) + ' <a href=\x22' + i.src + '\x22 target=\x22_blank\x22 rel=\x22noopener\x22>source</a></div></div>'; }).join('') + '</dd>' : '')
       + (js.length ? '<dt>Flows through it</dt><dd>' + js.map(function (j) { return '<button type="button" class="ss-jb" data-j="' + j.id + '" style="--c:' + KIND[j.kind][0] + '">' + j.name + '</button>'; }).join('') + '</dd>' : '')
+      + '<dt>Where it runs</dt><dd><a href=\x22ai-factory-3d.html?focus=' + where3d(b) + '\x22 target=\x22_top\x22>🏗️ ' + W3N[where3d(b)] + ' in the 3D factory →</a></dd>'
       + (b.art ? '<dt>Read more</dt><dd><a href=\x22../blog/' + b.art + '.html\x22>Our article on this layer →</a></dd>' : '') + '</dl>';
     sh.classList.add('open'); sh.querySelector('.x').addEventListener('click', function () { sh.classList.remove('open'); sel = null; state(); });
     sh.querySelectorAll('.ss-jb').forEach(function (bt) { bt.addEventListener('click', function () { jsel = bt.getAttribute('data-j'); state(); }); }); }
