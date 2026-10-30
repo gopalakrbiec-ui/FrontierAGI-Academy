@@ -852,7 +852,7 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">October 30, 2026 · 13 min read</div>
+          <div class="blog-post-date">October 30, 2026 · 22 min read</div>
         </div>
       </div>
     </div>
@@ -868,11 +868,20 @@
       <a href="#log">Mission log: weeks 15–20</a>
       <a href="#layer">What the cluster software has to do</a>
       <a href="#sched">Slurm or Kubernetes?</a>
+      <a href="#config">The Slurm configuration</a>
       <a href="#watch">The monitoring stack</a>
+      <a href="#xid">Which GPU errors mean what</a>
+      <a href="#alerts">Alert rules: who gets woken up</a>
       <a href="#health">A health check that drains bad nodes</a>
+      <a href="#runline">See a run unfold</a>
+      <a href="#sim">Replaying the run: spares and bad luck</a>
       <a href="#budget">How often will the main run break?</a>
+      <a href="#ckpt">Making checkpoints cheap</a>
+      <a href="#k8s">The serving cluster on Kubernetes</a>
       <a href="#drill">The fire drill</a>
+      <a href="#runbook">The runbook</a>
       <a href="#oncall">On call, with one person</a>
+      <a href="#mistakes">Seven cluster-software mistakes</a>
       <a href="#state">Everything in git</a>
       <a href="#deleg">Delegation box</a>
       <a href="#track">Budget and risk tracker</a>
@@ -882,11 +891,11 @@
 
     <h2 id="log" class="wr-sec">1. Mission log: weeks 15–20</h2>
     <div class="mo-log"><span class="d">Weeks 15–16 · Choosing</span><ul>
-      <li>Chooses Slurm for training and Kubernetes for serving (section 3). Takes the provider&#x27;s managed Slurm but keeps root to install his own checks.</li></ul></div>
+      <li>Chooses Slurm for training and Kubernetes for serving (section <a href="#sched">3</a>). Takes the provider&#x27;s managed Slurm but keeps root to install his own checks.</li></ul></div>
     <div class="mo-log"><span class="d">Weeks 17–18 · Watching</span><ul>
       <li>Installs DCGM, the DCGM exporter, Prometheus and Grafana; writes the node health check and the alert rules (sections 4–6).</li></ul></div>
     <div class="mo-log"><span class="d">Weeks 19–20 · Recovering</span><ul>
-      <li>Writes <code>failure_budget.py</code> and sets the checkpoint interval (section 7). Runs a fire drill: pulls a node in the middle of a Maestro-0 job and times the recovery (section 8).</li></ul></div>
+      <li>Writes <code>failure_budget.py</code> and sets the checkpoint interval (section <a href="#budget">11</a>). Runs a fire drill: pulls a node in the middle of a Maestro-0 job and times the recovery (section <a href="#drill">14</a>).</li></ul></div>
 
     <h2 id="layer" class="wr-sec">2. What the cluster software has to do</h2>
     <p>The layer between the hardware and the training code has five jobs:</p>
@@ -911,7 +920,39 @@
     <p>His choice: <b>Slurm for the training block</b>, because gang scheduling and simple failure handling matter most for a run on all 128 nodes, and <b>Kubernetes for the separate serving cluster</b>, where autoscaling and rolling updates matter. Projects such as SchedMD&#x27;s Slinky, which runs Slurm on Kubernetes, are an option for later; for now he keeps two simple systems rather than one complicated one.</p>
     <p>Three partitions on the training block: <code>main</code> (the big run, highest priority), <code>exp</code> (experiments, can be pre-empted) and <code>eval</code> (evaluation sweeps). Eight nodes are kept as <b>hot spares</b>: in service for pre-emptible jobs, available to the main run within minutes when a node is drained.</p>
 
-    <h2 id="watch" class="wr-sec">4. The monitoring stack</h2>
+    <h2 id="config" class="wr-sec">4. The Slurm configuration</h2>
+    <p>The provider runs the Slurm controller, but the parts that encode Gopala&#x27;s policy are his. The excerpt below is the version kept in git; it was written for this article and <b>not run</b> against a real controller, so treat it as a starting point and check every option against the Slurm documentation for your version.</p>
+    <div class="mo-code"><div class="h"><span>slurm.conf · Slurm configuration excerpt · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre># slurm.conf (excerpt) — the training block. Provider-managed controller,
+# Gopala's own partitions, health check and failure handling.
+ClusterName=maestro
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+GresTypes=gpu
+NodeName=node[001-136] Gres=gpu:h100:8 CPUs=112 RealMemory=2000000 State=UNKNOWN
+PartitionName=main Nodes=node[001-136] PriorityTier=10 PreemptMode=OFF MaxTime=INFINITE
+PartitionName=exp  Nodes=node[001-136] PriorityTier=1  PreemptMode=REQUEUE Default=YES
+PartitionName=eval Nodes=node[001-136] PriorityTier=5  PreemptMode=REQUEUE
+PreemptType=preempt/partition_prio
+# health: cheap check every 5 min on every node; drains, never reboots
+HealthCheckProgram=/etc/slurm/healthcheck.sh
+HealthCheckInterval=300
+HealthCheckNodeState=ANY
+# a dead node must not hold a 128-node job hostage for long
+SlurmdTimeout=120
+KillWait=30
+UnkillableStepTimeout=180
+# jobs that lose a node are requeued by the wrapper, not silently retried
+JobRequeue=0
+ReturnToService=1</pre></div>
+    <ul>
+      <li><b>136 nodes</b>: 128 for the main run plus 8 hot spares, all in every partition, so spares do useful pre-emptible work until they are needed.</li>
+      <li><b>Partition priority with requeue</b>: a <code>main</code> job pre-empts <code>exp</code> and <code>eval</code> jobs, which are requeued and resume from their own checkpoints.</li>
+      <li><b>Short timeouts</b>: a node that stops answering is declared down in about two minutes, not the much longer defaults some sites use, so a dead node cannot hold the whole job.</li>
+      <li><b>No automatic requeue of the main job</b>: the restart wrapper does it explicitly, excluding drained nodes, so a failing node cannot be handed straight back to the job that it just broke.</li>
+    </ul>
+    <div class="wr-box wr-note"><b class="l">Off-the-shelf health checks</b>Many sites use LBNL&#x27;s Node Health Check (NHC), an open-source framework that Slurm can run as its health-check program, instead of a hand-written script; GPU-specific checks are often added on top, as some GPU clouds document for their own clusters. Gopala starts with his short script because he can read every line of it, and plans to move to NHC when the checks grow.</div>
+
+    <h2 id="watch" class="wr-sec">5. The monitoring stack</h2>
     <p>Everything is open source and standard:</p>
     <ul>
       <li><b>NVIDIA DCGM</b> on every node reads GPU health and performance counters; the <b>DCGM exporter</b> publishes them as Prometheus metrics (for example <code>DCGM_FI_DEV_GPU_TEMP</code>, <code>DCGM_FI_DEV_XID_ERRORS</code>, <code>DCGM_FI_PROF_GR_ENGINE_ACTIVE</code>).</li>
@@ -921,7 +962,55 @@
     </ul>
     <p>Logs (kernel messages, Slurm, training) go to one searchable store with the node name on every line, so &quot;what happened on node 57 at 03:12&quot; is one query.</p>
 
-    <h2 id="health" class="wr-sec">5. A health check that drains bad nodes</h2>
+    <h2 id="xid" class="wr-sec">6. Which GPU errors mean what</h2>
+    <p>The driver reports GPU problems as numbered Xid events. Treating every Xid as &quot;bad GPU&quot; would drain healthy nodes; ignoring them would leave broken ones in the job. His handling table, built from NVIDIA&#x27;s Xid documentation and kept next to the health check:</p>
+    <div class="wr-scroll"><table class="wr-table">
+      <tr><th>Xid</th><th>Meaning (NVIDIA)</th><th>His action</th></tr>
+      <tr><td>13, 31, 43</td><td>Errors usually caused by the application (bad memory access, a kernel fault)</td><td>No drain; look at the job first</td></tr>
+      <tr><td>48</td><td>Double-bit ECC error</td><td>Drain; reset and run the diagnostic; RMA if repeated</td></tr>
+      <tr><td>63, 64</td><td>Memory row-remapping event / failure</td><td>Drain; a reset applies the remap; RMA on failure</td></tr>
+      <tr><td>74</td><td>NVLink error</td><td>Drain; run the single-node all-reduce from Part 6</td></tr>
+      <tr><td>79</td><td>GPU has fallen off the bus</td><td>Drain; power-cycle through the BMC; ticket</td></tr>
+      <tr><td>94, 95</td><td>Contained / uncontained ECC error</td><td>94: restart the job; 95: drain and reset</td></tr>
+    </table></div>
+    <p>The table is a living document: each new incident either confirms a row or changes it, and the change is a commit with the incident linked.</p>
+
+    <h2 id="alerts" class="wr-sec">7. Alert rules: who gets woken up</h2>
+    <p>Metrics are useless without rules that decide what deserves attention. The rules are short and split into two severities: <b>ticket</b> (handled in working hours, or by automation) and <b>page</b> (a human, now). Like the Slurm file, they were written for this article and <b>not run</b> against a live Prometheus; the metric names starting <code>DCGM_</code> come from NVIDIA&#x27;s exporter, the <code>train_</code> ones are what his training code exports.</p>
+    <div class="mo-code"><div class="h"><span>alerts.yml · Prometheus alert rules · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre># alerts.yml — Prometheus alert rules. Only "page" wakes a human.
+groups:
+- name: maestro-training
+  rules:
+  - alert: GpuXidError
+    expr: increase(DCGM_FI_DEV_XID_ERRORS[5m]) &gt; 0
+    labels: {severity: ticket}
+    annotations: {summary: "Xid {{ $value }} on {{ $labels.Hostname }} GPU {{ $labels.gpu }}"}
+  - alert: GpuHot
+    expr: DCGM_FI_DEV_GPU_TEMP &gt; 85
+    for: 10m
+    labels: {severity: ticket}
+  - alert: StepTimeSlow            # the whole job is slower than its own baseline
+    expr: train_step_seconds &gt; 1.2 * avg_over_time(train_step_seconds[6h])
+    for: 30m
+    labels: {severity: page}
+  - alert: StragglerRank           # one node much slower than the median
+    expr: max(train_rank_step_seconds) &gt; 1.05 * quantile(0.5, train_rank_step_seconds)
+    for: 15m
+    labels: {severity: ticket}
+  - alert: TwoRestartsInAnHour
+    expr: increase(train_restarts_total[1h]) &gt;= 2
+    labels: {severity: page}
+  - alert: NoHotSpare
+    expr: slurm_nodes_idle{partition="main"} &lt; 1
+    for: 30m
+    labels: {severity: page}
+  - alert: LossDiverging
+    expr: train_loss &gt; 1.5 * min_over_time(train_loss[2h])
+    for: 10m
+    labels: {severity: page}</pre></div>
+    <p>Only four conditions page: the whole job slowing down, two restarts in an hour, no spare left, and the loss diverging. Everything else is either handled by the drain-and-restart path or waits for the morning.</p>
+
+    <h2 id="health" class="wr-sec">8. A health check that drains bad nodes</h2>
     <p>Slurm can run a program on every node at a fixed interval and act on the result. Gopala&#x27;s check is cheap (seconds, not minutes), and it only <b>drains</b> a node: it marks it so no new job lands there and lets the scheduler and the restart logic handle the job. It never reboots anything on its own; a human or a separate, slower repair loop does that.</p>
     <div class="mo-code"><div class="h"><span>healthcheck.sh · Slurm HealthCheckProgram · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre>#!/bin/bash
 # healthcheck.sh — Slurm HealthCheckProgram, runs every 5 minutes on each node
@@ -942,7 +1031,83 @@ exit 0</pre></div>
     <p>The NVIDIA Xid codes it watches are documented error events from the GPU driver: for example, 48 (double-bit ECC error), 63 and 64 (memory row remapping events), 74 (NVLink error), 79 (GPU has fallen off the bus) and 94/95 (contained and uncontained ECC errors). Not every Xid means a bad GPU, so each code&#x27;s handling is in a table he reviews, and new codes are added only after looking at NVIDIA&#x27;s Xid documentation.</p>
     <p>Health checks catch failures. They do not catch <b>slow</b> nodes, which are just as harmful to a synchronised job. For that, the training code reports per-rank step time, and an alert fires when one node is consistently more than a few percent slower than the median; Gopala then tests it with Part 6&#x27;s burn-in.</p>
 
-    <h2 id="budget" class="wr-sec">6. How often will the main run break?</h2>
+    <h2 id="runline" class="wr-sec">9. See a run unfold</h2>
+    <div class="wr-fig">
+      <h3>A simulated 31-day run (our model)</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:13.5px">
+        <label>Cluster MTTF, hours <b id="rMv"></b><input id="rM" type="range" min="4" max="120" step="1" value="49" style="width:100%"></label>
+        <label>Hot spares <b id="rSv"></b><input id="rS" type="range" min="0" max="12" step="1" value="4" style="width:100%"></label>
+        <label>Checkpoint every (min) <b id="rCv"></b><input id="rC" type="range" min="10" max="240" step="5" value="60" style="width:100%"></label>
+      </div>
+      <button type="button" id="rGo" style="margin:8px 0;padding:5px 12px;border-radius:8px;border:1.5px solid #be123c;background:#fff;color:#be123c;font-weight:700;cursor:pointer">Run again</button>
+      <svg id="rSvg" viewBox="0 0 620 70" style="width:100%;height:auto;display:block"></svg>
+      <p id="rOut" style="font-size:13.5px"></p>
+    </div>
+
+    <h2 id="sim" class="wr-sec">10. Replaying the run: spares and bad luck</h2>
+    <p>The arithmetic above uses averages. Real failures cluster, spares run out, and the second failure in a day hurts more than the first. So Gopala replays the 31-day run thousands of times with random failures and a simple model of the restart path: with a free hot spare, recovery takes 10 minutes; without one, he waits four hours for the provider to swap a node; failed nodes come back after 48 hours.</p>
+    <div class="mo-code"><div class="h"><span>restart_sim.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""restart_sim.py — replay a 31-day run through the failure and restart logic.
+
+Monte Carlo: failures arrive at random (exponential gaps) at a given
+cluster MTTF. Each failure loses the work since the last checkpoint and
+costs a recovery time that depends on whether a hot spare is free;
+failed nodes come back after a repair time. Compares two failure rates:
+the one scaled from Llama 3 (Part 7, ~49 h) and the much worse 7.9 h
+reported for 1,024-GPU jobs in Meta's research clusters (A100s).
+All timings are our assumptions. Fixed seed, so the output is reproducible.
+"""
+import random
+
+DAYS, CKPT_H, SAVE_H = 31, 1.0, 30 / 3600
+RECOVER_SPARE_H, RECOVER_WAIT_H, REPAIR_H = 10 / 60, 4.0, 48.0
+
+def run(mttf_h, spares, seed):
+    rng = random.Random(seed)
+    t, lost, fails, waits, back = 0.0, 0.0, 0, 0, []
+    end = DAYS * 24
+    while True:
+        gap = rng.expovariate(1 / mttf_h)
+        if t + gap &gt;= end:
+            break
+        t += gap; fails += 1
+        back = [b for b in back if b &gt; t]            # repaired nodes rejoin the spare pool
+        lost += (t % CKPT_H)                           # work since last checkpoint
+        if len(back) &lt; spares:
+            rec = RECOVER_SPARE_H
+        else:
+            rec = RECOVER_WAIT_H; waits += 1           # wait for the provider to swap a node
+        back.append(t + REPAIR_H)
+        lost += rec; t += rec
+    saves = end / CKPT_H * SAVE_H
+    return fails, waits, 1 - (lost + saves) / end
+
+def main():
+    print(f"{'cluster MTTF':&gt;12s} {'spares':&gt;6s} {'failures':&gt;8s} {'no spare':&gt;8s} {'goodput':&gt;8s}")
+    for mttf in (49.0, 7.9):
+        for spares in (0, 4, 8):
+            res = [run(mttf, spares, s) for s in range(200)]
+            f = sum(r[0] for r in res) / len(res); w = sum(r[1] for r in res) / len(res)
+            g = sum(r[2] for r in res) / len(res)
+            print(f"{mttf:10.1f} h {spares:6d} {f:8.1f} {w:8.1f} {g:8.1%}")
+
+if __name__ == "__main__":
+    main()</pre></div>
+    <div class="mo-out">$ python3 restart_sim.py
+cluster MTTF spares failures no spare  goodput
+      49.0 h      0     13.7     13.7    90.9%
+      49.0 h      4     14.8      0.2    97.7%
+      49.0 h      8     14.8      0.0    97.8%
+       7.9 h      0     62.2     62.2    61.5%
+       7.9 h      4     70.0     46.5    69.0%
+       7.9 h      8     86.9     11.8    85.3%</div>
+    <p>Two findings shape the design:</p>
+    <ul>
+      <li><b>At the Llama 3-derived rate</b> (one failure about every 49 hours), four hot spares already capture almost all the benefit: goodput rises from about 91% with none to about 98%. Eight spares add almost nothing, so spares 5–8 are insurance, not throughput.</li>
+      <li><b>At the research-cluster rate</b> (MTTF of about 7.9 hours for 1,024-GPU jobs, reported by Meta&#x27;s FAIR team for A100 research clusters), even eight spares leave goodput near 85%, and with none the run would lose almost 40% of its time. In that world the bottleneck is how fast the provider repairs nodes, not how many spares he holds.</li>
+    </ul>
+    <p>The failures column grows with more spares at the high rate because less time is spent waiting, so more of the 31 days is exposed to failure; it is a sign the simulation is counting time correctly, not a paradox. Which world will he be in? He does not know until the main block runs, so the plan watches the first two weeks of experiments (Part 9) for the real failure rate and adjusts spares and the checkpoint interval before the main run starts.</p>
+
+    <h2 id="budget" class="wr-sec">11. How often will the main run break?</h2>
     <p>To set the checkpoint interval he needs a failure rate. The best public number is Meta&#x27;s: 419 unexpected interruptions in 54 days on 16,384 GPUs. Scaling it linearly by GPU count (a simplification: his hardware, provider and software differ) gives his expectation for a 31-day run on 1,024 GPUs. Then the script asks what each choice of checkpoint interval and recovery time costs.</p>
     <div class="mo-code"><div class="h"><span>failure_budget.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""failure_budget.py — how often will Maestro-1's run be interrupted?
 
@@ -991,11 +1156,32 @@ ckpt every  recover  lost h  goodput
     </ul>
     <p>Asynchronous checkpointing (saving in the background while training continues), now supported by the main training frameworks, cuts the save cost further; Part 10 uses it.</p>
 
-    <h2 id="drill" class="wr-sec">7. The fire drill</h2>
+    <h2 id="ckpt" class="wr-sec">12. Making checkpoints cheap</h2>
+    <p>The budget above assumes each save blocks training for 30 seconds. Whether that is realistic depends on the framework. PyTorch&#x27;s team, working with IBM, reported that distributed checkpointing cut checkpoint times from roughly half an hour to under five minutes, and that <b>asynchronous</b> checkpointing (copying state to CPU memory, then writing to storage in the background) brought the visible pause down to seconds: about 6–14 seconds for 7B–13B models in their tests. Later work in TorchTitan reported further reductions. Three implications for Gopala:</p>
+    <ul>
+      <li>With asynchronous saves, the best interval moves shorter, because saving is nearly free and lost work is what remains.</li>
+      <li>Node memory must hold a copy of the model and optimiser shards while they are written out.</li>
+      <li>A checkpoint is only useful if it can be read back: restart time is set by read bandwidth, which Part 6 tested.</li>
+    </ul>
+
+    <h2 id="k8s" class="wr-sec">13. The serving cluster on Kubernetes</h2>
+    <p>The 64 serving GPUs (Part 4) run a different stack. NVIDIA&#x27;s GPU Operator installs the driver, container toolkit, device plugin and DCGM exporter on every node, so GPUs appear to Kubernetes as schedulable resources and their metrics flow into the same Prometheus. Model servers (Part 15) run as deployments with rolling updates; an autoscaler adds replicas when queue length grows. The two clusters share monitoring, alert routing and the runbook, but not a scheduler, so a training emergency can never take the product down.</p>
+
+    <h2 id="drill" class="wr-sec">14. The fire drill</h2>
     <p>A recovery path that has never been tested does not exist. In week 20, during a 32-node Maestro-0 post-training job, Gopala marks one node as failed on purpose and watches the chain: health check drains the node → job fails → the restart wrapper requests a new allocation with a hot spare → training resumes from the last checkpoint → an alert summarises what happened.</p>
     <div class="wr-box wr-caveat"><b class="l">Scenario</b>The first drill takes 41 minutes end to end: the job waits 25 minutes for Slurm to give up on the dead node. Shortening the job&#x27;s timeout and having the wrapper exclude drained nodes explicitly brings the second drill down to 11 minutes. These timings are the story&#x27;s, not measurements.</div>
 
-    <h2 id="oncall" class="wr-sec">8. On call, with one person</h2>
+    <h2 id="runbook" class="wr-sec">15. The runbook</h2>
+    <p>Each paging alert has a page in the runbook with the same five headings: what it means, how to confirm it, the first safe action, when to escalate to the provider, and how to record it. Example, &quot;two restarts in an hour&quot;:</p>
+    <ol>
+      <li><b>Means:</b> the automatic path is failing, or one bad node keeps coming back.</li>
+      <li><b>Confirm:</b> list the nodes involved in both failures; check drain reasons and Xid codes.</li>
+      <li><b>First action:</b> exclude any node involved in both; restart from the last good checkpoint.</li>
+      <li><b>Escalate:</b> if a third restart follows within an hour, open a severity-1 ticket with the provider and stop the job.</li>
+      <li><b>Record:</b> incident note in git, Xid table updated if a new code appeared.</li>
+    </ol>
+
+    <h2 id="oncall" class="wr-sec">16. On call, with one person</h2>
     <p>Gopala cannot be awake for 31 days. The rules:</p>
     <ul>
       <li><b>Automate the common case.</b> A node failure that the health check catches and the restart wrapper handles does not page anyone; it is in the morning summary.</li>
@@ -1004,36 +1190,47 @@ ckpt every  recover  lost h  goodput
       <li><b>A second person for the main run.</b> A contractor shares the night shifts for the 31 days, with a written runbook.</li>
     </ul>
 
-    <h2 id="state" class="wr-sec">9. Everything in git</h2>
+    <h2 id="mistakes" class="wr-sec">17. Seven cluster-software mistakes</h2>
+    <ol>
+      <li>Letting the health check reboot nodes, so a flapping node keeps rejoining the job.</li>
+      <li>Watching GPU utilisation instead of step time; a straggler keeps every GPU &quot;busy&quot; waiting.</li>
+      <li>Paging on every Xid, until the on-call person stops reading pages.</li>
+      <li>Default timeouts that let a dead node hold a 128-node job for half an hour.</li>
+      <li>Never testing a restart until the main run needs one.</li>
+      <li>Checkpoints that are written but never test-read.</li>
+      <li>Changing configuration during the run without a commit.</li>
+    </ol>
+
+    <h2 id="state" class="wr-sec">18. Everything in git</h2>
     <p>The Slurm configuration, health check, alert rules, dashboards, the golden image definition (Part 6) and the restart wrapper live in one repository. Every change is a commit with a reason, and the main run freezes it the same way the facility is frozen (Part 5). When something breaks in month 10, the question &quot;what changed?&quot; has an answer.</p>
 
-    <h2 id="deleg" class="wr-sec">10. Delegation box</h2>
+    <h2 id="deleg" class="wr-sec">19. Delegation box</h2>
     <div class="mo-deleg">
       <div style="--c:#be123c"><b>🙋 Gopala himself</b><ul><li>The scheduler design and partitions</li><li>The health-check rules and paging rules</li><li>The fire drill</li></ul></div><div style="--c:#7c3aed"><b>🤖 AI agents</b><ul><li>First incident summaries from logs (read-only)</li><li>Drafting provider tickets</li><li>Writing dashboard queries and alert rules for review</li></ul></div><div style="--c:#0f766e"><b>🤝 Bought, rented or borrowed</b><ul><li>The provider&#x27;s managed Slurm and their on-site staff</li><li>Open-source tools: Slurm, Kubernetes, DCGM, Prometheus, Grafana</li><li>A contractor sharing nights during the main run</li></ul></div>
     </div>
 
-    <h2 id="track" class="wr-sec">11. Budget and risk tracker</h2>
+    <h2 id="track" class="wr-sec">20. Budget and risk tracker</h2>
     <div class="wr-scroll"><table class="mo-track">
       <tr><th>Item</th><th>Status after Part 7</th><th>Note</th></tr>
       <tr><td>Spend to date</td><td>~$1.1M (scenario)</td><td>Training block billing since acceptance, serving cluster from month 4</td></tr><tr><td>Cluster</td><td>128 nodes in service, 8 hot spares</td><td>Maestro-0 post-training running</td></tr><tr><td>Time</td><td>20 of ~78 weeks (month ~4.5)</td><td>Phase 1 complete</td></tr><tr><td><span class="mo-rag mo-g"></span>Recovery risk</td><td>Tested</td><td>Recovery in ~11 minutes in the drill (scenario)</td></tr><tr><td><span class="mo-rag mo-a"></span>Silent slowdown risk</td><td>Medium</td><td>Per-rank step-time alerts</td></tr><tr><td><span class="mo-rag mo-a"></span>Key-person risk</td><td>High</td><td>Runbook and a second on-call for the main run</td></tr>
     </table></div>
 
-    <h2 id="series" class="wr-sec">12. The series</h2>
+    <h2 id="series" class="wr-sec">21. The series</h2>
     <div class="wr-fig">
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
     <div class="wr-box wr-verdict"><b class="l">Verdict</b>Phase 1 ends with a machine that runs itself most of the time: Slurm for training, Kubernetes for serving, health checks that drain bad nodes, hot spares, hourly checkpoints and a tested 11-minute recovery. Phase 2 starts with what the machine eats: <b>Part 8, the data refinery</b>, coming next. Follow it on <a href="../pages/maestro.html">Maestro Mission Control</a>.</div>
 
-    <h2 id="numbers" class="wr-sec">13. Reading the numbers</h2>
+    <h2 id="numbers" class="wr-sec">22. Reading the numbers</h2>
     <dl class="wr-dl">
-      <dt>Primary / standard</dt><dd>Llama 3 405B: 419 unexpected interruptions in 54 days on 16,384 H100s; &gt;90% effective training time (Meta). Slurm HealthCheckProgram and node drain (SchedMD docs). Xid error meanings (NVIDIA Xid documentation). DCGM exporter metric names (NVIDIA). Kueue (Kubernetes SIG Scheduling).</dd>
+      <dt>Primary / standard</dt><dd>Llama 3 405B: 419 unexpected interruptions in 54 days on 16,384 H100s; &gt;90% effective training time (Meta). Slurm HealthCheckProgram and node drain (SchedMD docs). Xid error meanings (NVIDIA Xid documentation). DCGM exporter metric names (NVIDIA). Kueue (Kubernetes SIG Scheduling). 1,024-GPU job MTTF ~7.9 h in Meta research clusters (arXiv:2410.21680). Checkpoint times ~30 min → &lt;5 min with distributed checkpointing, ~6–14 s visible pause with async for 7B–13B models (PyTorch blog). LBNL NHC.</dd>
       <dt>Secondary ⚠️</dt><dd>None in this part.</dd>
-      <dt>Our assumptions</dt><dd>Linear scaling of failures with GPU count, 30-second blocking save, recovery times, the drill timings, partitions, spares and paging rules.</dd>
+      <dt>Our assumptions</dt><dd>Linear scaling of failures with GPU count, the simulation&#x27;s recovery (10 min with a spare, 4 h without) and 48 h repair times, 30-second blocking save, recovery times, the drill timings, partitions, spares and paging rules.</dd>
     </dl>
     <ul class="wr-refs">
       <li class="h">Sources</li>
-      <li><a href="https://slurm.schedmd.com/slurm.conf.html" target="_blank" rel="noopener">Slurm slurm.conf (HealthCheckProgram)</a> · <a href="https://kueue.sigs.k8s.io/" target="_blank" rel="noopener">Kueue</a> · <a href="https://github.com/SlinkyProject" target="_blank" rel="noopener">Slinky (Slurm on Kubernetes)</a></li><li><a href="https://docs.nvidia.com/deploy/xid-errors/index.html" target="_blank" rel="noopener">NVIDIA Xid errors</a> · <a href="https://github.com/NVIDIA/dcgm-exporter" target="_blank" rel="noopener">NVIDIA DCGM exporter</a> · <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html" target="_blank" rel="noopener">NVIDIA GPU Operator</a></li><li><a href="https://ai.meta.com/research/publications/the-llama-3-herd-of-models/" target="_blank" rel="noopener">Meta: The Llama 3 Herd of Models</a> · <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a></li>
+      <li><a href="https://slurm.schedmd.com/slurm.conf.html" target="_blank" rel="noopener">Slurm slurm.conf (HealthCheckProgram)</a> · <a href="https://kueue.sigs.k8s.io/" target="_blank" rel="noopener">Kueue</a> · <a href="https://github.com/SlinkyProject" target="_blank" rel="noopener">Slinky (Slurm on Kubernetes)</a></li><li><a href="https://docs.nvidia.com/deploy/xid-errors/index.html" target="_blank" rel="noopener">NVIDIA Xid errors</a> · <a href="https://github.com/NVIDIA/dcgm-exporter" target="_blank" rel="noopener">NVIDIA DCGM exporter</a> · <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html" target="_blank" rel="noopener">NVIDIA GPU Operator</a></li><li><a href="https://ai.meta.com/research/publications/the-llama-3-herd-of-models/" target="_blank" rel="noopener">Meta: The Llama 3 Herd of Models</a> · <a href="https://arxiv.org/abs/2410.21680" target="_blank" rel="noopener">Meta FAIR: Revisiting Reliability in Large-Scale ML Research Clusters</a> · <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a></li><li><a href="https://pytorch.org/blog/reducing-checkpointing-times/" target="_blank" rel="noopener">PyTorch: reducing checkpointing times</a> · <a href="https://github.com/mej/nhc" target="_blank" rel="noopener">LBNL Node Health Check (NHC)</a></li>
     </ul>
 
   </div>
@@ -1053,6 +1250,14 @@ ckpt every  recover  lost h  goodput
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   document.querySelectorAll('.mo-code .cp').forEach(function (b) { b.addEventListener('click', function () { var t = b.closest('.mo-code').querySelector('pre').innerText; if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); }); }); });
+  function rs() { var M = +$('rM').value, SP = +$('rS').value, C = +$('rC').value / 60, end = 744, t = 0, lost = 0, back = [], ev = [], f = 0, w = 0;
+    $('rMv').textContent = M; $('rSv').textContent = SP; $('rCv').textContent = Math.round(C * 60);
+    while (true) { var gap = -Math.log(1 - Math.random()) * M; if (t + gap >= end) break; t += gap; f++; back = back.filter(function (b) { return b > t; }); lost += t % C; var rec = back.length < SP ? 1 / 6 : 4; if (rec > 1) w++; back.push(t + 48); ev.push([t, rec]); lost += rec; t += rec; }
+    var g = 1 - (lost + end / C * 30 / 3600) / end, s = '<rect x="10" y="22" width="600" height="22" rx="4" fill="#dcfce7"/>';
+    ev.forEach(function (e) { var x = 10 + e[0] / end * 600; s += '<rect x="' + x.toFixed(1) + '" y="18" width="' + Math.max(2, e[1] / end * 600).toFixed(1) + '" height="30" fill="' + (e[1] > 1 ? '#dc2626' : '#d97706') + '"/>'; });
+    for (var d = 0; d <= 31; d += 7) s += '<text x="' + (10 + d / 31 * 600) + '" y="62" font-size="10" fill="#6b7280" text-anchor="middle">day ' + d + '</text>';
+    $('rSvg').innerHTML = s; $('rOut').innerHTML = '<b>' + f + '</b> failures, <b>' + w + '</b> with no spare free (red; amber = spare used). Goodput <b>' + (g * 100).toFixed(1) + '%</b>. Each click draws new random failures. <small>Our model, same assumptions as restart_sim.py.</small>'; }
+  ['rM', 'rS', 'rC'].forEach(function (id) { $(id).addEventListener('input', rs); }); $('rGo').addEventListener('click', rs); rs();
   var SLG = ['maestro-l4-moat', 'maestro-proving-small', 'maestro-plan-money', 'maestro-securing-compute', 'maestro-site-power-cooling', 'maestro-bring-up', 'maestro-cluster-software', 'maestro-data-refinery', 'maestro-architecture-parallelism', 'maestro-pretraining-run', 'maestro-post-training-rsi', 'maestro-evaluation', 'maestro-safety-layers', 'maestro-approvals', 'maestro-serving', 'maestro-agents-products', 'maestro-operations', 'maestro-scorecard'];
   var SN = ['🧭 The moat: an L4 idea', '🧪 Proving it small', '💰 The plan and the money', '🖥️ Securing compute', '⚡ Site, power and cooling', '🔧 Day zero: bring-up', '📋 The cluster software', '🗃️ The data refinery', '🏗️ Architecture and parallelism', '🏋️ The pre-training run', '🔁 Post-training and the RSI loop', '📏 The evaluation harness', '🛡️ Safety layers', '📜 Approvals and compliance', '💬 Serving at scale', '🤖 Agents and client products', '🔄 Operations and the flywheel', '📊 The scorecard'];
   var PH = [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4], PC = ['#be123c', '#ea580c', '#2563eb', '#7c3aed', '#16a34a'], HERE = 6, PUB = 7;

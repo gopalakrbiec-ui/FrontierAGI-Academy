@@ -850,7 +850,7 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAGI Team</div>
-          <div class="blog-post-date">October 30, 2026 · 14 min read</div>
+          <div class="blog-post-date">October 30, 2026 · 20 min read</div>
         </div>
       </div>
     </div>
@@ -866,11 +866,17 @@
       <a href="#log">Mission log: weeks 13–16</a>
       <a href="#why">Why a renter needs facilities knowledge</a>
       <a href="#size">Sizing Maestro-1 from first principles</a>
+      <a href="#calc">Try your own cluster</a>
       <a href="#cool">Air, liquid, or both</a>
       <a href="#powerpath">The power path, and where it fails</a>
+      <a href="#feeds">Checking the power cabling with a script</a>
+      <a href="#thermal">How cold is cold enough?</a>
       <a href="#energy">Training is a strange electrical load</a>
       <a href="#visit">The site-visit checklist</a>
       <a href="#windows">Maintenance windows and change freezes</a>
+      <a href="#future">If the next model needs liquid cooling</a>
+      <a href="#telemetry">Facility data a renter should ask for</a>
+      <a href="#mistakes">Five facility mistakes renters make</a>
       <a href="#sustain">The environmental footprint</a>
       <a href="#deleg">Delegation box</a>
       <a href="#track">Budget and risk tracker</a>
@@ -880,11 +886,11 @@
 
     <h2 id="log" class="wr-sec">1. Mission log: weeks 13–16</h2>
     <div class="mo-log"><span class="d">Week 13 · Sizing</span><ul>
-      <li>Writes <code>power_size.py</code> (section 3) so he can check providers&#x27; answers about power density before signing (Part 4).</li></ul></div>
+      <li>Writes <code>power_size.py</code> (section <a href="#size">3</a>) so he can check providers&#x27; answers about power density before signing (Part 4).</li></ul></div>
     <div class="mo-log"><span class="d">Week 15 · Site visit</span><ul>
-      <li>Visits the chosen provider&#x27;s data hall with the checklist in section 7. Photographs the power path and the cooling plant; meets the on-site team that will swap his failed nodes.</li></ul></div>
+      <li>Visits the chosen provider&#x27;s data hall with the <a href="#visit">checklist below</a>. Photographs the power path and the cooling plant; meets the on-site team that will swap his failed nodes.</li></ul></div>
     <div class="mo-log"><span class="d">Week 16 · Agreements</span><ul>
-      <li>Agrees the rack layout, power feeds and maintenance windows in writing (section 8), so a planned generator test cannot surprise his main run.</li></ul></div>
+      <li>Agrees the rack layout, power feeds and maintenance windows in writing (<a href="#windows">maintenance windows</a>), so a planned generator test cannot surprise his main run.</li></ul></div>
 
     <h2 id="why" class="wr-sec">2. Why a renter needs facilities knowledge</h2>
     <p>A 1,024-GPU cluster is small by frontier standards (Meta trained Llama 3 405B on 16,384 H100s), but it is a large customer for most data halls: well over a megawatt in a few dozen racks. The facility affects him in four ways:</p>
@@ -954,7 +960,20 @@ GPUs alone at 700 W TDP: 717 kW (55% of node max)</div>
       <li><b>GPUs are only about half of a node&#x27;s maximum power.</b> CPUs, memory, NICs, NVSwitches, fans and power-conversion losses take the rest. Quoting &quot;700 W × 1,024&quot; under-sizes by half.</li>
     </ul>
 
-    <h2 id="cool" class="wr-sec">4. Air, liquid, or both</h2>
+    <h2 id="calc" class="wr-sec">4. Try your own cluster</h2>
+    <div class="wr-fig">
+      <h3>Facility sizing calculator (our model)</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:13.5px">
+        <label>Nodes <b id="fNv"></b><input id="fN" type="range" min="8" max="2048" step="8" value="128" style="width:100%"></label>
+        <label>Max kW per node <b id="fKv"></b><input id="fK" type="range" min="5" max="15" step="0.1" value="10.2" style="width:100%"></label>
+        <label>Rack limit kW <b id="fRv"></b><input id="fR" type="range" min="10" max="140" step="5" value="40" style="width:100%"></label>
+        <label>PUE <b id="fPv"></b><input id="fP" type="range" min="1.05" max="2" step="0.01" value="1.25" style="width:100%"></label>
+        <label>$ per kWh <b id="fEv"></b><input id="fE" type="range" min="0.03" max="0.3" step="0.01" value="0.08" style="width:100%"></label>
+      </div>
+      <p id="fOut" style="margin-top:10px;font-size:14px"></p>
+    </div>
+
+    <h2 id="cool" class="wr-sec">5. Air, liquid, or both</h2>
     <p>Every watt that goes in comes out as heat. There are three common ways to remove it from an AI rack:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Approach</th><th>Typical rack</th><th>How it works</th><th>For Maestro-1</th></tr>
@@ -965,29 +984,85 @@ GPUs alone at 700 W TDP: 717 kW (55% of node max)</div>
     <p>H100 HGX nodes are sold in both air-cooled and liquid-cooled versions. Gopala&#x27;s provider offers air-cooled nodes in contained 40 kW racks, which is fine. If his plan later moves to Blackwell-generation rack-scale systems, liquid cooling is not optional, and only some halls have it. He writes that into the renewal options of the contract.</p>
     <div class="wr-box wr-note"><b class="l">The throttling check</b>He asks for the hall&#x27;s supply-air temperature history for last summer, and then watches GPU temperature and clock speed in his own telemetry (Part 7). A node that is 5–10 °C hotter than its neighbours under the same load is usually a rack airflow problem, not a GPU problem, and is cheap to fix if found early.</div>
 
-    <h2 id="powerpath" class="wr-sec">5. The power path, and where it fails</h2>
+    <h2 id="powerpath" class="wr-sec">6. The power path, and where it fails</h2>
     <p>Electricity reaches a GPU through a chain: utility feed → substation → medium-voltage switchgear → transformers → UPS (batteries that bridge until generators start) → power distribution units → rack power strips → the node&#x27;s power supplies. Each link has a redundancy design:</p>
     <ul>
       <li><b>N</b>: no spare. One failure stops the load.</li>
       <li><b>N+1</b>: one spare unit for a group.</li>
-      <li><b>2N</b>: two fully independent paths (A and B feeds), each able to carry the whole load.</li>
+      <li><b>2N</b>: two fully independent paths (A and B feeds), each able to carry the whole load. Common in enterprise halls, and, as the cabling check below shows, <b>not enough on its own</b> for a 6-PSU H100 node.</li>
     </ul>
-    <p>The node has its own redundancy too. NVIDIA&#x27;s DGX H100 has six 3.3 kW power supplies in a 4+2 arrangement, and NVIDIA&#x27;s design guide notes that at least four must be powered for the server to run. If A and B feeds are wired wrongly, losing one feed can drop a node below four supplies. So Gopala asks to see how the supplies are split across feeds, rack by rack.</p>
+    <p>The node has its own redundancy too. NVIDIA&#x27;s DGX H100 has six 3.3 kW power supplies in a 4+2 arrangement, and NVIDIA&#x27;s design guide notes that at least four must be powered for the server to run. That is why the same guide asks for <b>three</b> independent power sources per rack, each feeding two of the six supplies, so any one source can fail and four remain. Gopala checks the arithmetic with a script below and asks to see the cabling, rack by rack.</p>
     <p>AI training halls sometimes choose less redundancy than enterprise halls (for example, no UPS on some cooling loads), trading a small risk of a stop for lower cost, because a training job can restart from a checkpoint while a bank cannot. That trade-off is acceptable for him <b>only</b> if his checkpoint strategy (Part 7) makes a stop cost minutes, not days.</p>
 
-    <h2 id="energy" class="wr-sec">6. Training is a strange electrical load</h2>
+    <h2 id="feeds" class="wr-sec">7. Checking the power cabling with a script</h2>
+    <p>Here the research changed Gopala&#x27;s plan. His first checklist (and the first version of this article) asked for the usual enterprise A/B feeds. NVIDIA&#x27;s SuperPOD design guide for H100 says something stricter: because four of the six power supplies must be energised, each rack needs <b>three</b> independent power sources, each connected to two of every node&#x27;s six supplies, each from a separate upstream PDU, and each sized to carry half of the rack&#x27;s expected peak. The script checks why:</p>
+    <div class="mo-code"><div class="h"><span>psu_feeds.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""psu_feeds.py — does a node survive losing one power feed?
+
+A DGX H100 has six power supplies and needs at least four energised.
+NVIDIA's SuperPOD design guide therefore asks for THREE independent
+sources per rack, each feeding two of the six supplies. This checks
+every possible wiring with two and with three feeds.
+"""
+from itertools import product
+
+NEED = 4
+
+def survives(wiring, lost):
+    return sum(1 for f in wiring if f != lost) &gt;= NEED
+
+def ok_all(w, feeds):
+    return all(survives(w, f) for f in feeds)
+
+def main():
+    for feeds in ("AB", "ABC"):
+        ways = list(product(feeds, repeat=6))
+        good = [w for w in ways if ok_all(w, feeds)]
+        print(f"{len(feeds)} feeds: {len(good)} of {len(ways)} wirings survive any one feed failing")
+    cases = {"A/B, 3+3 (enterprise habit)": ("AAABBB", "AB"),
+             "A/B/C, 2+2+2 (NVIDIA design)": ("AABBCC", "ABC"),
+             "A/B/C, one cord on wrong strip": ("AAABCC", "ABC"),
+             "A/B/C, C strip never cabled": ("AAABBB", "ABC")}
+    for name, (w, feeds) in cases.items():
+        res = "  ".join(f"lose {f}: {'runs' if survives(w, f) else 'STOPS'}" for f in feeds)
+        print(f"  {name:32s} {res}")
+    print("lesson: with a 4-of-6 minimum, two feeds can never protect the node;")
+    print("        three feeds work only if every node is cabled 2+2+2 - check it rack by rack")
+
+if __name__ == "__main__":
+    main()</pre></div>
+    <div class="mo-out">$ python3 psu_feeds.py
+2 feeds: 0 of 64 wirings survive any one feed failing
+3 feeds: 90 of 729 wirings survive any one feed failing
+  A/B, 3+3 (enterprise habit)      lose A: STOPS  lose B: STOPS
+  A/B/C, 2+2+2 (NVIDIA design)     lose A: runs  lose B: runs  lose C: runs
+  A/B/C, one cord on wrong strip   lose A: STOPS  lose B: runs  lose C: runs
+  A/B/C, C strip never cabled      lose A: STOPS  lose B: STOPS  lose C: runs
+lesson: with a 4-of-6 minimum, two feeds can never protect the node;
+        three feeds work only if every node is cabled 2+2+2 - check it rack by rack</div>
+    <p>With two feeds, <b>no</b> wiring protects the node: one feed always ends up with three or fewer supplies. With three, only the balanced 2+2+2 pattern (and its relabellings) survives the loss of any feed, and a single cord on the wrong strip quietly removes that protection. So the site visit includes walking a sample of racks and reading power strip labels, and the provider&#x27;s power monitoring is asked to show per-outlet current, which reveals a mis-cabled supply as a strip carrying more than its share.</p>
+    <div class="wr-box wr-note"><b class="l">Why this matters for a renter</b>A data hall built for 2N enterprise loads can host H100 nodes, but only if the rack power design follows the three-feed pattern. It is a cheap thing to check before delivery and an expensive thing to discover during the main run, when a routine UPS maintenance on one feed would stop every node in the hall at once.</div>
+
+    <h2 id="thermal" class="wr-sec">8. How cold is cold enough?</h2>
+    <p>Two industry frameworks set the vocabulary for cooling conversations:</p>
+    <ul>
+      <li><b>Air:</b> ASHRAE&#x27;s thermal guidelines define recommended and allowable ranges for server inlet air. Halls run inside the recommended envelope for reliability and use the wider allowable envelope only for short periods. Gopala asks for the hall&#x27;s design inlet temperature and last summer&#x27;s worst week, rather than for a single number.</li>
+      <li><b>Liquid:</b> ASHRAE classifies liquid-cooled environments by the maximum temperature of the facility water supplied to the equipment. The fifth edition (2021) renamed the classes by that upper limit: W17, W27, W32, W40 (new), W45 and W+ (⚠️ via trade-press summaries). Warmer water means the facility can reject heat with dry coolers instead of chillers for more of the year, which lowers PUE and water use, but the equipment must be rated for it.</li>
+    </ul>
+    <p>For Maestro-1 on air-cooled H100s, the practical check is simpler: inside his own telemetry (Part 7), GPU temperatures under full load should be consistent across racks, and no GPU should report thermal slowdown. A rack row that runs several degrees hotter than the others is a facilities ticket, not a GPU ticket.</p>
+
+    <h2 id="energy" class="wr-sec">9. Training is a strange electrical load</h2>
     <p>A synchronised training job is not a steady load. Thousands of GPUs compute together, then wait together for communication, then compute again, so power can swing quickly by a large fraction across the whole cluster. Meta reported that power consumption across its Llama 3 training cluster fluctuated by tens of megawatts in step with the job, which stretches the limits of the power grid. At 1.5 MW Gopala will not trouble a grid, but the swings still matter to the provider&#x27;s UPS and generators. Two practical consequences:</p>
     <ul>
       <li>Tell the provider when a large job starts and stops; some ask for it.</li>
       <li>Do not restart all 1,024 GPUs at the same second after a failure if the provider asks for a ramp. Part 7&#x27;s restart logic can stagger it.</li>
     </ul>
 
-    <h2 id="visit" class="wr-sec">7. The site-visit checklist</h2>
+    <h2 id="visit" class="wr-sec">10. The site-visit checklist</h2>
     <p>A renter cannot design the building, but he can check it. Gopala&#x27;s checklist, used on the scenario visit:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Area</th><th>Question</th><th>Good answer</th></tr>
       <tr><td>Power</td><td>Rack power limit, and is it contracted per rack?</td><td>≥ 40 kW per rack for air-cooled H100, written into the order</td></tr>
-      <tr><td>Power</td><td>A/B feeds to every rack, and how are node PSUs split?</td><td>Both feeds, PSUs split so either feed can run the node</td></tr>
+      <tr><td>Power</td><td>How many independent feeds per rack, and how are the six node PSUs split?</td><td>Three feeds from separate upstream PDUs, each node cabled 2+2+2 (<a href="#feeds">the cabling check</a>)</td></tr>
       <tr><td>Power</td><td>UPS runtime and generator test schedule</td><td>Minutes of UPS, monthly generator tests announced in advance</td></tr>
       <tr><td>Cooling</td><td>Supply temperature and the worst week last summer</td><td>Within ASHRAE&#x27;s recommended range all year</td></tr>
       <tr><td>Cooling</td><td>Containment, and blanking panels in empty slots</td><td>Hot or cold aisle contained; no gaps</td></tr>
@@ -996,9 +1071,9 @@ GPUs alone at 700 W TDP: 717 kW (55% of node max)</div>
       <tr><td>Security</td><td>Who can enter the cage; how are failed drives handled?</td><td>Named access list, drives destroyed on site with a record</td></tr>
       <tr><td>Water</td><td>How the hall uses water for cooling</td><td>A stated water-use figure (WUE) and source</td></tr>
     </table></div>
-    <div class="wr-box wr-caveat"><b class="l">Scenario</b>On the visit, the hall meets every item except one: generator tests are monthly but not announced to tenants. Gopala gets a clause requiring 7 days&#x27; notice and agrees with the provider that tests will not be scheduled during the main run (section 8). The hall itself is not a real site.</div>
+    <div class="wr-box wr-caveat"><b class="l">Scenario</b>On the visit, the hall meets every item except one: generator tests are monthly but not announced to tenants. Gopala gets a clause requiring 7 days&#x27; notice and agrees with the provider that tests will not be scheduled during the main run (<a href="#windows">maintenance windows</a>). The hall itself is not a real site.</div>
 
-    <h2 id="windows" class="wr-sec">8. Maintenance windows and change freezes</h2>
+    <h2 id="windows" class="wr-sec">11. Maintenance windows and change freezes</h2>
     <p>Facilities have to be maintained: UPS batteries replaced, generators tested, switchgear inspected. Each event carries a small risk of a stop. The agreement Gopala signs:</p>
     <ul>
       <li>A 30-day <b>change freeze</b> on his racks&#x27; power and cooling during the main run (months 9–10.5), except for emergencies.</li>
@@ -1006,36 +1081,59 @@ GPUs alone at 700 W TDP: 717 kW (55% of node max)</div>
       <li>A shared calendar so the provider&#x27;s maintenance and his checkpoints line up: take a checkpoint before planned work, not after.</li>
     </ul>
 
-    <h2 id="sustain" class="wr-sec">9. The environmental footprint</h2>
+    <h2 id="future" class="wr-sec">12. If the next model needs liquid cooling</h2>
+    <p>Rack-scale systems such as NVIDIA&#x27;s GB200 NVL72 put 72 GPUs in one liquid-cooled rack drawing on the order of 120 kW or more (⚠️ exact figures vary by configuration), roughly ten times what the hall above was built for per rack. If Maestro-2 is trained on such systems, the facility question changes from &quot;does the hall have enough space?&quot; to &quot;does the hall have facility water at the rack, coolant distribution units and a floor that can take the weight?&quot;. Only a subset of halls do, and they are booked early. That is why Part 4&#x27;s contract includes an upgrade path, and why Gopala keeps a short list of providers with liquid-cooled capacity even though he does not need it yet. The site&#x27;s <a href="heat-and-water-cooling.html">cooling and water</a> article covers the engineering.</p>
+
+    <h2 id="telemetry" class="wr-sec">13. Facility data a renter should ask for</h2>
+    <div class="wr-scroll"><table class="wr-table">
+      <tr><th>Signal</th><th>Where it comes from</th><th>What he uses it for</th></tr>
+      <tr><td>Per-outlet power on rack PDUs</td><td>Intelligent rack PDUs</td><td>Spotting mis-cabled supplies; real power per node</td></tr>
+      <tr><td>Rack inlet temperature</td><td>Sensors at the cold aisle</td><td>Separating airflow problems from GPU problems</td></tr>
+      <tr><td>Planned maintenance calendar</td><td>Facilities team</td><td>Taking a checkpoint before work on a feed</td></tr>
+      <tr><td>Incident reports</td><td>Facilities team</td><td>Matching a job failure to a power or cooling event</td></tr>
+      <tr><td>Monthly energy and PUE</td><td>Building management system</td><td>Cost and emissions reporting</td></tr>
+    </table></div>
+    <p>Most providers can export some of this through an API or a portal. Getting it into the same dashboards as GPU metrics (Part 7) is what lets him answer the question &quot;was that us or the building?&quot; in minutes.</p>
+
+    <h2 id="mistakes" class="wr-sec">14. Five facility mistakes renters make</h2>
+    <ol>
+      <li>Sizing to GPU TDP (700 W × GPUs) instead of node maximum power, and running out of rack power.</li>
+      <li>Accepting 2N A/B feeds for 6-PSU nodes without checking the cabling (<a href="#feeds">the cabling check</a>).</li>
+      <li>Splitting the cluster across halls to fit low-density racks, then paying in cable lengths and extra switch layers.</li>
+      <li>Never asking about maintenance windows until a generator test lands in the middle of a run.</li>
+      <li>Treating hot nodes as bad GPUs and replacing hardware that was fine.</li>
+    </ol>
+
+    <h2 id="sustain" class="wr-sec">15. The environmental footprint</h2>
     <p>Investors and design partners now ask. From the script: about 1,070–1,320 MWh a month while the cluster runs hard, depending on the hall&#x27;s efficiency. Emissions depend entirely on the local grid mix, which differs by more than ten times between regions, so Gopala asks the provider for the grid&#x27;s carbon intensity and any renewable contracts that cover the hall, and reports the number in his model card later (Part 14) rather than making a claim he cannot back.</p>
 
-    <h2 id="deleg" class="wr-sec">10. Delegation box</h2>
+    <h2 id="deleg" class="wr-sec">16. Delegation box</h2>
     <div class="mo-deleg">
       <div style="--c:#be123c"><b>🙋 Gopala himself</b><ul><li>The sizing script and the requirements</li><li>The site visit and the checklist</li><li>The change-freeze agreement</li></ul></div><div style="--c:#7c3aed"><b>🤖 AI agents</b><ul><li>Reading the provider&#x27;s facility documents and summarising gaps</li><li>Pulling temperature history into a chart</li><li>Drafting the maintenance-window clause</li></ul></div><div style="--c:#0f766e"><b>🤝 Bought, rented or borrowed</b><ul><li>The provider&#x27;s facilities team (they run the building)</li><li>A facilities consultant for one day of the visit</li><li>The provider&#x27;s existing certifications (e.g. ISO 27001, SOC 2)</li></ul></div>
     </div>
 
-    <h2 id="track" class="wr-sec">11. Budget and risk tracker</h2>
+    <h2 id="track" class="wr-sec">17. Budget and risk tracker</h2>
     <div class="wr-scroll"><table class="mo-track">
       <tr><th>Item</th><th>Status after Part 5</th><th>Note</th></tr>
       <tr><td>Spend to date</td><td>~$45k (scenario)</td><td>Plus the visit and a consultant day</td></tr><tr><td>Facilities cost</td><td>Inside the GPU price</td><td>Power is passed through; efficiency matters at renewal</td></tr><tr><td>Time</td><td>16 of ~78 weeks</td><td>Delivery begins month 3</td></tr><tr><td><span class="mo-rag mo-g"></span>Power and cooling risk</td><td>Low for H100 air-cooled</td><td>Change freeze signed for the main run</td></tr><tr><td><span class="mo-rag mo-a"></span>Upgrade risk</td><td>Medium</td><td>Liquid cooling needed for future rack-scale systems</td></tr><tr><td><span class="mo-rag mo-a"></span>Throttling risk</td><td>Unknown</td><td>Watch GPU temperatures and clocks per node from day one</td></tr>
     </table></div>
 
-    <h2 id="series" class="wr-sec">12. The series</h2>
+    <h2 id="series" class="wr-sec">18. The series</h2>
     <div class="wr-fig">
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
     <div class="wr-box wr-verdict"><b class="l">Verdict</b>Renting the building does not remove the physics: Maestro-1 needs about 1.5 MW of IT capacity, dense racks, a power path that will not stop the job, and a change freeze during the main run. Next, <a href="maestro-bring-up.html">Part 6</a>: the cluster arrives, and nothing is trusted until it is tested.</div>
 
-    <h2 id="numbers" class="wr-sec">13. Reading the numbers</h2>
+    <h2 id="numbers" class="wr-sec">19. Reading the numbers</h2>
     <dl class="wr-dl">
-      <dt>Primary / standard</dt><dd>DGX H100: 6 × 3.3 kW PSUs, 4+2 redundancy, 10.2 kW maximum (NVIDIA user guide; at least four PSUs must be powered, NVIDIA SuperPOD design guide). H100 700 W TDP. Llama 3 trained on 16,384 H100s; power swings across the cluster (Meta).</dd>
-      <dt>Secondary ⚠️</dt><dd>Global average PUE ~1.54 in 2025 (Uptime Institute survey, as reported by secondary coverage); 1.52 capacity-weighted in Uptime&#x27;s 2026 survey. Typical rack densities by cooling type are industry ranges.</dd>
+      <dt>Primary / standard</dt><dd>DGX H100: 6 × 3.3 kW PSUs, 4+2 redundancy, 10.2 kW maximum (NVIDIA user guide); four of six must be energised, three power sources per rack each feeding two PSUs, each path sized for half the rack&#x27;s peak (NVIDIA SuperPOD H100 data-centre design guide). H100 700 W TDP. Llama 3 trained on 16,384 H100s; power swings across the cluster (Meta).</dd>
+      <dt>Secondary ⚠️</dt><dd>ASHRAE liquid-cooling classes W17–W45 and W+ (5th edition naming, via trade press). Global average PUE ~1.54 in 2025 (Uptime Institute survey, as reported by secondary coverage); 1.52 capacity-weighted in Uptime&#x27;s 2026 survey. Typical rack densities by cooling type are industry ranges.</dd>
       <dt>Our assumptions</dt><dd>Sustained draw at 80% of maximum, +12% for network and storage, PUE 1.25 for a modern hall, $0.08/kWh, the site visit and agreements.</dd>
     </dl>
     <ul class="wr-refs">
       <li class="h">Sources</li>
-      <li><a href="https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html" target="_blank" rel="noopener">NVIDIA DGX H100 user guide</a> · <a href="https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html" target="_blank" rel="noopener">NVIDIA SuperPOD electrical design</a></li><li><a href="https://intelligence.uptimeinstitute.com/resource/uptime-institute-global-data-center-survey-2025" target="_blank" rel="noopener">Uptime Institute survey 2025</a> · <a href="https://intelligence.uptimeinstitute.com/resource/growing-pue-advantage-larger-data-centers" target="_blank" rel="noopener">Uptime: PUE and larger data centres (2026)</a></li><li><a href="https://ai.meta.com/research/publications/the-llama-3-herd-of-models/" target="_blank" rel="noopener">Meta: The Llama 3 Herd of Models</a></li>
+      <li><a href="https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html" target="_blank" rel="noopener">NVIDIA DGX H100 user guide</a> · <a href="https://docs.nvidia.com/dgx-superpod/design-guides/dgx-superpod-data-center-design-h100/latest/electrical.html" target="_blank" rel="noopener">NVIDIA SuperPOD electrical design</a></li><li><a href="https://intelligence.uptimeinstitute.com/resource/uptime-institute-global-data-center-survey-2025" target="_blank" rel="noopener">Uptime Institute survey 2025</a> · <a href="https://intelligence.uptimeinstitute.com/resource/growing-pue-advantage-larger-data-centers" target="_blank" rel="noopener">Uptime: PUE and larger data centres (2026)</a></li><li><a href="https://ai.meta.com/research/publications/the-llama-3-herd-of-models/" target="_blank" rel="noopener">Meta: The Llama 3 Herd of Models</a> · <a href="https://www.upsite.com/blog/major-changes-to-ashraes-fifth-edition-of-thermal-guidelines-part-3-liquid-cooling-chapter-updates/" target="_blank" rel="noopener">ASHRAE 5th edition liquid classes (secondary)</a></li>
     </ul>
 
   </div>
@@ -1055,6 +1153,10 @@ GPUs alone at 700 W TDP: 717 kW (55% of node max)</div>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   document.querySelectorAll('.mo-code .cp').forEach(function (b) { b.addEventListener('click', function () { var t = b.closest('.mo-code').querySelector('pre').innerText; if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); }); }); });
+  function fz() { var N = +$('fN').value, K = +$('fK').value, R = +$('fR').value, P = +$('fP').value, E = +$('fE').value, it = N * K * 1.12, avg = it * 0.8, per = Math.floor(R / K), racks = per ? Math.ceil(N / per) : 0, mwh = avg * P * 730 / 1000;
+    $('fNv').textContent = N + ' (' + N * 8 + ' GPUs)'; $('fKv').textContent = K.toFixed(1); $('fRv').textContent = R; $('fPv').textContent = P.toFixed(2); $('fEv').textContent = '$' + E.toFixed(2);
+    $('fOut').innerHTML = 'Design IT load <b>' + (it / 1000).toFixed(2) + ' MW</b>, typical ' + (avg / 1000).toFixed(2) + ' MW. ' + (per ? '<b>' + racks + ' racks</b> at ' + per + ' nodes per rack. ' : '<b>A ' + R + ' kW rack cannot hold one node.</b> ') + 'Facility energy ~' + Math.round(mwh).toLocaleString() + ' MWh/month, about <b>$' + Math.round(mwh * E).toLocaleString() + 'k</b> per month. <small>Our model: +12% for network and storage, 80% sustained draw.</small>'; }
+  ['fN', 'fK', 'fR', 'fP', 'fE'].forEach(function (id) { $(id).addEventListener('input', fz); }); fz();
   var SLG = ['maestro-l4-moat', 'maestro-proving-small', 'maestro-plan-money', 'maestro-securing-compute', 'maestro-site-power-cooling', 'maestro-bring-up', 'maestro-cluster-software', 'maestro-data-refinery', 'maestro-architecture-parallelism', 'maestro-pretraining-run', 'maestro-post-training-rsi', 'maestro-evaluation', 'maestro-safety-layers', 'maestro-approvals', 'maestro-serving', 'maestro-agents-products', 'maestro-operations', 'maestro-scorecard'];
   var SN = ['🧭 The moat: an L4 idea', '🧪 Proving it small', '💰 The plan and the money', '🖥️ Securing compute', '⚡ Site, power and cooling', '🔧 Day zero: bring-up', '📋 The cluster software', '🗃️ The data refinery', '🏗️ Architecture and parallelism', '🏋️ The pre-training run', '🔁 Post-training and the RSI loop', '📏 The evaluation harness', '🛡️ Safety layers', '📜 Approvals and compliance', '💬 Serving at scale', '🤖 Agents and client products', '🔄 Operations and the flywheel', '📊 The scorecard'];
   var PH = [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4], PC = ['#be123c', '#ea580c', '#2563eb', '#7c3aed', '#16a34a'], HERE = 4, PUB = 7;
