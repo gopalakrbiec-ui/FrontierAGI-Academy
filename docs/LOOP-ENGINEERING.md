@@ -1,6 +1,6 @@
 # Loop engineering on this site: audit and backlog
 
-Status as of 30 Oct 2026. This note checks the site's own automation against the six-part loop framework from a LinkedIn post the owner shared (citing Addy Osmani's essay, Geoffrey Huntley's "Ralph" technique and a 36,710-repository study; figures in that post were not independently verified here). Nothing below is built yet unless marked ✅.
+Status as of 30 Oct 2026. This note checks the site's own automation against the six-part loop framework from a LinkedIn post the owner shared (citing Addy Osmani's essay, Geoffrey Huntley's "Ralph" technique and a 36,710-repository study; figures in that post were not independently verified here). Items marked ✅ ADOPTED were built on 30 Oct 2026; the rest remain backlog.
 
 ## The six parts, applied to our loops
 
@@ -40,25 +40,25 @@ None should rise until a verifier exists that would have caught every bad change
 
 Each item follows "design the verifier first": a loop satisfies the gate we write, not the goal behind it.
 
-1. **Independent content verifier** (gate for loops C and D). A separate check, default "no", that a page passes only if:
+1. ✅ ADOPTED (`validate_content()` in build.py; caught a missing disclosure on its first run) **Independent content verifier** (gate for loops C and D). A separate check, default "no", that a page passes only if:
    - every Maestro scenario section sits inside a scenario box;
    - every page that mentions Anthropic or Claude carries the disclosure;
    - every `.mo-out` output has its script in the repo;
    - every number tagged as sourced has a source link in the same section.
 
    Added to `build.py --check` as `validate_content()`.
-2. **Article-code harness** (`scripts/run_article_code.py`): keep article scripts under `data/code/<slug>/` and re-run every CPU-runnable one in CI. Fail if output drifts from the published `.mo-out`, which stops "green pipeline, stale article".
-3. **Loop config in git** (`loops/*.yml`): one file per loop, reviewed like code. Each file records:
+2. ✅ ADOPTED (`scripts/run_article_code.py`, code in `data/code/<slug>/`, runs in CI) **Article-code harness** (`scripts/run_article_code.py`): keep article scripts under `data/code/<slug>/` and re-run every CPU-runnable one in CI. Fail if output drifts from the published `.mo-out`, which stops "green pipeline, stale article".
+3. ✅ ADOPTED (`loops/*.yml`) **Loop config in git** (`loops/*.yml`): one file per loop, reviewed like code. Each file records:
    - the trigger;
    - the stop condition;
    - the state file path;
    - the verifier command;
    - limits: max run minutes or tokens, and a never-touch list (e.g. `pages/*.html` for the data loop, HF and RSI data for the Claude review);
    - the escalation path.
-4. **State files for the Claude loops:**
+4. ✅ ADOPTED (`loops/state/weekly-review.md`, `docs/LESSONS.md`; the weekly task now reads and appends its state) **State files for the Claude loops:**
    - loop C writes `loops/state/weekly-review.md` (searched, added, skipped and why, open doubts), and reads it first next week;
    - the authoring loop keeps `docs/LESSONS.md` (pitfalls and fixes, e.g. SVG label clipping, `\x22` quoting in inline JS, near-plane clipping, head/nav splicing for new pages).
-5. **Anti-gaming checks** (the "delete the flaky test" trap):
+5. ✅ PARTLY ADOPTED (`scripts/guard_validators.py` + `loops/required-validators.txt` in CI; label-removal detection still to do) **Anti-gaming checks** (the "delete the flaky test" trap):
    - the content verifier rejects diffs that delete validators, loosen a `validate_*` rule, remove ⚠️ or scenario labels, or drop sources;
    - CI fails if `scripts/build.py` validation is weakened without an explicit `ALLOW-VALIDATOR-CHANGE` note in the commit.
 6. **Visual regression:**
@@ -66,7 +66,7 @@ Each item follows "design the verifier first": a loop satisfies the gate we writ
    - flag large pixel diffs after CSS or layout changes;
    - report-only first.
 7. **Source monitor** (new weekly loop, report-only): check cited URLs still resolve, flag "as of" dates older than six months, open one issue with the list.
-8. **Escalation and limits for loop C:**
+8. ✅ ADOPTED in the task prompt (45-minute cap, never-touch list, issue after two bad runs, state-only PR when nothing qualifies) **Escalation and limits for loop C:**
    - after two consecutive runs with errors or no PR, open an issue instead of retrying;
    - cap research time per run in the prompt;
    - name the reader of each PR (the owner).

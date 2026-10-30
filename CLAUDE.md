@@ -145,6 +145,9 @@ python3 scripts/build.py --check  # what CI runs: fails if anything is stale or 
 - **Latest from the Academy** (homepage, right after the hero, `<!-- LATEST:START -->`): build.py renders the 8 newest posts from `blog/index.json` (by date, then manifest order), each with a dot trail of its series from `blog/series.json`. `app.js` records article visits in localStorage (`fa-read`) and fills the personal panel (new since last visit, continue your thread, reading trail) — browser-only, no server. `pages/threads.html` (Explore nav) shows every series as a metro line plus a month-by-month publishing history; note most posts are dated Sep 2026 (archive migration).
 - `pages/start-here.html`: hand-curated reading tracks (new to AI / research / building). Update when a better entry point is published.
 
+## Loops and verification
+See `docs/LOOP-ENGINEERING.md` and `loops/` (one config per loop: trigger, stop condition, state, verifier, limits, escalation). Read `docs/LESSONS.md` before building new pages. CI also runs `scripts/guard_validators.py` (required validators in `loops/required-validators.txt` must stay wired) and `scripts/run_article_code.py` (re-runs stdlib article code in `data/code/<slug>/` and fails if output drifts from the page). `validate_content()` in build.py rejects: Anthropic/Claude mentions without a disclosure in the agent/eval/Maestro series and hub pages; Maestro code blocks that differ from `data/code/<slug>/` or show no output without a "not executed" label; scenario sections without a scenario box. When a Maestro article's code changes, update the file in `data/code/<slug>/` and the page together.
+
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`
 Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierAGI-Academy`)

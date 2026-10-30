@@ -12,3 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Generated files up to date and no broken internal links
         run: python3 scripts/build.py --check
+      - name: Required validators still run (loop guard)
+        run: python3 scripts/guard_validators.py
+      - name: Published article code still produces the published output
+        run: python3 scripts/run_article_code.py
