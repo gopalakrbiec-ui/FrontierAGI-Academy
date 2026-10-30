@@ -51,6 +51,10 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📋 [The Maestro, Part 7: The Cluster Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-cluster-software.html) | Phase 1 ends. | 2026-10-30 |
+| 🔧 [The Maestro, Part 6: Day Zero — Bring-Up](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-bring-up.html) | Phase 1. | 2026-10-30 |
+| ⚡ [The Maestro, Part 5: Site, Power and Cooling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-site-power-cooling.html) | Phase 1. | 2026-10-30 |
+| 🖥️ [The Maestro, Part 4: Securing Compute](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-securing-compute.html) | Phase 1, infrastructure hat. | 2026-10-30 |
 | 💰 [The Maestro, Part 3: The Plan and the Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-plan-money.html) | Phase 0, founder hat. | 2026-10-30 |
 | 🧪 [The Maestro, Part 2: Proving It Small](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-proving-small.html) | Phase 0, researcher and ML-engineer hats. | 2026-10-30 |
 | 🧭 [The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-l4-moat.html) | Phase 0, researcher hat. | 2026-10-30 |

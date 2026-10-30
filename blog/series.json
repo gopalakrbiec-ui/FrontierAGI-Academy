@@ -234,7 +234,11 @@
       "slugs": [
         "maestro-l4-moat",
         "maestro-proving-small",
-        "maestro-plan-money"
+        "maestro-plan-money",
+        "maestro-securing-compute",
+        "maestro-site-power-cooling",
+        "maestro-bring-up",
+        "maestro-cluster-software"
       ]
     },
     {

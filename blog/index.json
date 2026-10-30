@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "maestro-cluster-software",
+      "title": "The Maestro, Part 7: The Cluster Software",
+      "excerpt": "Phase 1 ends. Slurm for training, Kubernetes for serving, DCGM and Prometheus monitoring, a health check that drains bad nodes, a checkpoint interval derived from Meta's Llama 3 failure record, a fire drill and one-person on-call rules.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "13 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📋",
+      "featured": false
+    },
+    {
+      "slug": "maestro-bring-up",
+      "title": "The Maestro, Part 6: Day Zero — Bring-Up",
+      "excerpt": "Phase 1. The 128 nodes arrive and nothing is trusted until tested: per-node burn-in with DCGM, pairwise and full-fabric NCCL tests, a parser that flags slow pairs, a golden image and the acceptance report that starts billing.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "13 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🔧",
+      "featured": false
+    },
+    {
+      "slug": "maestro-site-power-cooling",
+      "title": "The Maestro, Part 5: Site, Power and Cooling",
+      "excerpt": "Phase 1. Renting does not remove the physics: Gopala sizes Maestro-1 at about 1.5 MW of IT load with a small script, compares air and liquid cooling, checks the power path, and visits the hall with a renter's checklist.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "14 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "⚡",
+      "featured": false
+    },
+    {
+      "slug": "maestro-securing-compute",
+      "title": "The Maestro, Part 4: Securing Compute",
+      "excerpt": "Phase 1, infrastructure hat. Gopala reserves 1,024 H100-class GPUs: the market in late 2026, a quote template, a script that prices offers per useful GPU-hour, a two-node trial, the contract clauses that matter and an acceptance test that starts the bill.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-30",
+      "readTime": "16 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🖥️",
+      "featured": false
+    },
+    {
       "slug": "maestro-plan-money",
       "title": "The Maestro, Part 3: The Plan and the Money",
       "excerpt": "Phase 0, founder hat. Gopala prices four ways to get a model (post-train an open 32B, or pre-train 8B dense, 32B dense or a 12B-active MoE from scratch) from first principles, chooses a hybrid plan, decides to rent rather than buy GPUs, builds an 18-month master plan and a cash model, and writes the one-page investor memo. Includes a runnable budget script and calculator.",
