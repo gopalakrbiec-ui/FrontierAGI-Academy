@@ -51,6 +51,9 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📜 [The Maestro, Part 14: Approvals and Compliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-approvals.html) | Phase 3 ends. | 2026-10-31 |
+| 🛡️ [The Maestro, Part 13: Safety Layers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-safety-layers.html) | Defence in depth for an engineering agent: safety in training, classifiers, a tool guard the model cannot change (whose runnable code… | 2026-10-31 |
+| 📏 [The Maestro, Part 12: The Evaluation Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-evaluation.html) | Phase 3 begins. | 2026-10-31 |
 | 🔁 [The Maestro, Part 11: Post-Training and the RSI Loop](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-post-training-rsi.html) | Phase 2 ends. | 2026-10-31 |
 | 🏋️ [The Maestro, Part 10: The Pre-Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-pretraining-run.html) | 31 days on 1,024 GPUs: the go/no-go gate, a warmup-stable-decay learning-rate schedule, a loss-spike detector that tells a blip from a… | 2026-10-31 |
 | 🏗️ [The Maestro, Part 9: Architecture and Parallelism](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-architecture-parallelism.html) | Designing Maestro-1: a mixture-of-experts model with 65.2B total and 11.7B active parameters, a memory plan for 1,024 H100s, the four kinds… | 2026-10-31 |

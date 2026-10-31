@@ -242,7 +242,10 @@
         "maestro-data-refinery",
         "maestro-architecture-parallelism",
         "maestro-pretraining-run",
-        "maestro-post-training-rsi"
+        "maestro-post-training-rsi",
+        "maestro-evaluation",
+        "maestro-safety-layers",
+        "maestro-approvals"
       ]
     },
     {

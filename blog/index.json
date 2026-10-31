@@ -1,6 +1,51 @@
 {
   "posts": [
     {
+      "slug": "maestro-approvals",
+      "title": "The Maestro, Part 14: Approvals and Compliance",
+      "excerpt": "Phase 3 ends. Where Maestro-1 sits under the EU AI Act (7% of the 1e25 FLOP presumption), voluntary frameworks, the model card and evidence library, customer security reviews, contracts, and a release gate that says no-go before go.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📜",
+      "featured": false
+    },
+    {
+      "slug": "maestro-safety-layers",
+      "title": "The Maestro, Part 13: Safety Layers",
+      "excerpt": "Defence in depth for an engineering agent: safety in training, classifiers, a tool guard the model cannot change (whose runnable code honestly misses two cases), sandboxes, secrets and supply-chain controls, red-teaming with Wilson intervals, and incident response.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🛡️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-evaluation",
+      "title": "The Maestro, Part 12: The Evaluation Harness",
+      "excerpt": "Phase 3 begins. Gopala builds a harness that can say no: four task pools, unbiased pass@k, 13-gram contamination checks, paired bootstrap intervals that showed 500 tasks were too few, cost as a result, pilots after release and the report that feeds the release gate.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📏",
+      "featured": false
+    },
+    {
       "slug": "maestro-post-training-rsi",
       "title": "The Maestro, Part 11: Post-Training and the RSI Loop",
       "excerpt": "Phase 2 ends. SFT, preferences and RL with verifiable rewards turn the base model into Maestro-1; a runnable GRPO toy shows a weak verifier teaching the model to cheat; and the fixed, human-controlled gate is built in code.",
