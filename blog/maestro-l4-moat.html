@@ -1245,3 +1245,29 @@ format: round:solved-on-hidden-tests(skills in library)</div>
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(1, [
+ { place: 'ladder', scene: { t: 'Five levels of self-improvement', dur: 9000,
+   cap: 'From L1 (a person improves the system) to L5 (the system rewrites its own goals). Gopala aims for <b>L4</b>: the system improves its own weights from verified experience, but its goal, its checker and its gate stay fixed and human-controlled.',
+   render: function (p) { var L = [['L1', 'humans improve it'], ['L2', 'it suggests, humans apply'], ['L3', 'it improves its tools and memory'], ['L4', 'it improves its own weights, behind a fixed gate'], ['L5', 'it changes its own goals']], s = '', a = ease(p * 1.3);
+     L.forEach(function (l, j) { var on = a * 5 > j, y = 240 - j * 46, x = 40 + j * 40, me = j === 3; s += R(x, y, 260, 38, on ? (me ? '#be123c' : j === 4 ? '#94a3b8' : '#2563eb') : '#f1f5f9', { rx: 8 }) + T(x + 24, y + 25, l[0], { size: 14, w: 900, fill: on ? '#fff' : '#94a3b8' }) + T(x + 48, y + 25, l[1], { size: 11.5, a: 'start', fill: on ? '#fff' : '#94a3b8' }); });
+     return s + (a >= 1 ? T(420, 104, '← Maestro', { size: 13, w: 800, fill: '#be123c' }) : ''); } } },
+ { place: 'idea', scene: { t: 'The verified-skill flywheel', dur: 10000,
+   cap: 'A task is attempted (stored skills are looked up first), hidden tests verify the result, only good, general methods are kept as skills, a human-controlled gate decides, and only then are the model&#39;s weights updated. Then round again.',
+   render: function (p, S) { var St = [['🧩', 'Attempt'], ['✅', 'Verify'], ['📚', 'Curate'], ['🚦', 'Gate'], ['⚙️', 'Update']], s = '', cx = 240, cy = 150, r = 100, ang = S.now / 1500;
+     s += '<circle cx="240" cy="150" r="100" fill="none" stroke="#e2e8f0" stroke-width="16"/>';
+     St.forEach(function (st, j) { var t = j / 5 * Math.PI * 2 - Math.PI / 2, x = cx + r * Math.cos(t), y = cy + r * Math.sin(t), g = j === 3; s += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="27" fill="' + (g ? '#be123c' : '#fff') + '" stroke="#94a3b8" stroke-width="2"/>' + T(x, y + 6, st[0], { size: 18 }) + T(x, y + 44, st[1], { size: 12 }); });
+     var t2 = ang % (Math.PI * 2) - Math.PI / 2; return s + '<circle cx="' + (cx + r * Math.cos(t2)).toFixed(1) + '" cy="' + (cy + r * Math.sin(t2)).toFixed(1) + '" r="8" fill="#2563eb"/>' + T(240, 154, 'the loop', { size: 14, w: 800 }); } } },
+ { place: 'exp2', scene: { t: 'Hoarding skills hurts; curating helps', dur: 10000,
+   cap: 'A toy test with 40 tasks per round. With no skills the agent solves about 14. Saving every "skill" it ever used makes it <b>worse</b> (about 10.8): junk crowds out good advice. Keeping only verified, general skills raises it to about 20.8. From <code>l4_toy.py</code>.',
+   render: function (p) { var D = [['No skills', 14.0, '#94a3b8'], ['Hoard everything', 10.8, '#dc2626'], ['Curate verified skills', 20.8, '#16a34a']], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var x = 70 + j * 130, h = 200 * d[1] / 25 * a; s += R(x, 250 - h, 80, h, d[2], { rx: 6 }) + T(x + 40, 244 - h, (d[1] * a).toFixed(1), { size: 15, w: 800 }) + T(x + 40, 272, d[0], { size: 11.5 }); });
+     return s + T(240, 24, 'tasks solved out of 40 (average of 6 rounds)', { size: 12.5, w: 600 }); } } },
+ { place: 'gate', scene: { t: 'The gate: four checks, default no', dur: 9000,
+   cap: 'Before any update to the model&#39;s weights: hidden tests it never saw, no drop on old skills, a probe for gamed tests, and a named person&#39;s sign-off. One failed check and the answer is no.',
+   render: function (p) { var C = ['🙈 hidden tests', '↩️ no regression', '🔍 gaming probe', '🧑‍⚖️ human sign-off'], s = '', a = ease(p * 1.3);
+     C.forEach(function (c, j) { var on = a * 4 > j, y = 40 + j * 50; s += R(60, y, 260, 38, on ? '#dcfce7' : '#f1f5f9', { s: on ? '#16a34a' : '#cbd5e1' }) + T(76, y + 25, (on ? '✔ ' : '○ ') + c, { size: 13, a: 'start' }); });
+     return s + R(350, 100, 100, 100, a >= 1 ? '#16a34a' : '#be123c', { rx: 50 }) + T(400, 156, a >= 1 ? 'open' : 'closed', { size: 15, w: 800, fill: '#fff' }); } } }
+]); })();
+</script>

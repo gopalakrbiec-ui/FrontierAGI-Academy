@@ -1277,3 +1277,32 @@ ckpt every  recover  lost h  goodput
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(7, [
+ { place: 'layer', scene: { t: 'A GPU fails at 3 a.m. Nobody wakes up.', dur: 12000,
+   cap: 'A health check spots the failing server and takes it out of use. The training job stops, a restart script asks for a spare server, the spare joins, and training resumes from the last save. In the fire drill this took about 11 minutes (story timing).',
+   render: function (p, S) { var s = '', t = S.now / 500, ph = Math.min(4, Math.floor(p * 5)), bad = 57, spare = 127;
+     s += MoCluster(16, 34, 448, function (n) { if (n === bad && ph >= 1) return ph >= 1 ? '#dc2626' : '#16a34a'; if (n === spare) return ph >= 3 ? '#16a34a' : '#94a3b8'; if (ph === 2) return '#f59e0b'; return 'hsl(142,' + (55 + 15 * Math.sin(t + n * .3)) + '%,44%)'; }, { stroke: function (n) { return n === bad && ph >= 1 ? '#dc2626' : n === spare ? '#2563eb' : '#cbd5e1'; } });
+     var msg = ['training normally', '🩺 health check: server 58 failing → taken out', '⏸ job stops; restart script asks for a spare', '🆕 spare server joins the job', '▶ training resumes from the last save (~11 min)'][ph];
+     return s + T(240, 22, msg, { size: 13.5, w: 800 }) + T(240, 280, 'blue outline = hot spare', { size: 11.5, w: 500, fill: '#475569' }); } } },
+ { place: 'watch', scene: { t: 'How the cluster watches itself', dur: 9000,
+   cap: 'Every GPU reports its health and temperature, every server its links and disks, and the training job its speed. The numbers flow into one store, dashboards answer questions at a glance, and alert rules decide what deserves a human.',
+   render: function (p, S) { var s = '', t = S.now / 800;
+     s += R(20, 120, 110, 60, '#7c3aed', { rx: 10 }) + T(75, 146, '🖥️ 1,024 GPUs', { size: 12, fill: '#fff' }) + T(75, 166, 'health · temp', { size: 10.5, fill: '#fff' });
+     s += R(185, 120, 110, 60, '#ea580c', { rx: 10 }) + T(240, 146, '🗄️ metrics store', { size: 12, fill: '#fff' }) + T(240, 166, 'Prometheus', { size: 10.5, fill: '#fff' });
+     s += R(350, 60, 110, 60, '#2563eb', { rx: 10 }) + T(405, 96, '📊 dashboards', { size: 12, fill: '#fff' }) + R(350, 180, 110, 60, '#dc2626', { rx: 10 }) + T(405, 216, '🚨 alerts', { size: 12, fill: '#fff' });
+     for (var k = 0; k < 6; k++) { var u = (t + k / 6) % 1; s += '<circle cx="' + (130 + u * 55) + '" cy="150" r="4" fill="#0f172a"/>'; var v = (t * 0.8 + k / 6) % 1; s += '<circle cx="' + (295 + v * 55) + '" cy="' + (150 + (k % 2 ? -60 : 60) * v) + '" r="4" fill="#0f172a"/>'; }
+     return s; } } },
+ { place: 'budget', scene: { t: 'How often to save the model?', dur: 9000,
+   cap: 'About 15 interruptions are expected in a month. Save too often and time is lost saving; too rarely and work is redone after each failure. Saving about every hour keeps about 97.8% of time useful. From <code>failure_budget.py</code> (10-minute recovery).',
+   render: function (p) { var D = [['every 15 min', 96.1], ['every 30 min', 97.5], ['every 60 min', 97.8], ['every 3 hours', 96.4]], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var x = 50 + j * 105, h = (d[1] - 94) * 50 * a, best = j === 2; s += R(x, 250 - h, 70, h, best ? '#16a34a' : '#93c5fd', { rx: 6 }) + T(x + 35, 244 - h, (94 + (d[1] - 94) * a).toFixed(1) + '%', { size: 13, w: 800 }) + T(x + 35, 272, d[0], { size: 11.5 }); });
+     return s + T(240, 24, 'useful time (axis starts at 94%)', { size: 12.5, w: 600 }); } } },
+ { place: 'sim', scene: { t: 'How many spare servers to keep?', dur: 10000,
+   cap: 'At the failure rate expected from Llama 3&#39;s record, keeping no spares leaves about 91% of time useful; 4 spares lift it to about 98%, and 8 add almost nothing. If failures were as frequent as in Meta&#39;s research clusters, even 8 spares would leave about 85%. From <code>restart_sim.py</code>.',
+   render: function (p) { var D = [[0, 90.9, 61.5], [4, 97.7, 69.0], [8, 97.8, 85.3]], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var x = 60 + j * 140; [[d[1], '#16a34a', 'rare failures'], [d[2], '#dc2626', 'frequent failures']].forEach(function (b, i) { var h = (b[0] - 50) * 4 * a; s += R(x + i * 46, 250 - h, 40, h, b[1], { rx: 4 }) + T(x + i * 46 + 20, 244 - h, Math.round(50 + (b[0] - 50) * a) + '%', { size: 11.5, w: 800 }); }); s += T(x + 43, 272, d[0] + ' spares', { size: 12.5 }); });
+     return s + T(240, 24, 'green = failure every ~49 h · red = every ~8 h', { size: 12, w: 600 }); } } }
+]); })();
+</script>

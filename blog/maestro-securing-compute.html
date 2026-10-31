@@ -1270,3 +1270,28 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(4, [
+ { place: 'need', scene: { t: 'What "1,024 GPUs" really means', dur: 9000,
+   cap: 'GPUs alone are not a cluster. Around them you need one fast network joining all 128 servers, storage that can save the model in minutes, access to control every machine, and a delivery date. Each layer appears in turn.',
+   render: function (p) { var L = [['🖥️ 128 servers × 8 GPUs', '#7c3aed'], ['🕸️ one fast network', '#2563eb'], ['💾 fast shared storage', '#0d9488'], ['🔑 full access to every machine', '#ea580c'], ['📅 delivery from month 3', '#be123c']], s = '', a = ease(p * 1.3);
+     L.forEach(function (l, j) { var on = a * 5 > j, y = 240 - j * 46; s += R(60, y, 360, 38, on ? l[1] : '#f1f5f9', { rx: 8 }) + T(240, y + 25, l[0], { size: 13.5, fill: on ? '#fff' : '#94a3b8' }); });
+     return s; } } },
+ { place: 'score', scene: { t: 'List price vs price per useful hour', dur: 10000,
+   cap: 'You pay for every hour, but you only get hours when machines are up and doing useful training. Each offer&#39;s grey bar (list price) grows into its real cost per useful hour. The cheapest list price is not the cheapest useful hour. Illustrative offers from <code>provider_score.py</code>.',
+   render: function (p) { var D = [['P1 top-rated', 2.65, 2.88], ['P2 cheap', 2.10, 2.57], ['P3 hyperscaler', 3.40, 3.71], ['P4 broker', 1.95, 2.59]], s = '', a = ease(p * 1.6 - 0.4);
+     D.forEach(function (d, j) { var y = 34 + j * 60, v = d[1] + (d[2] - d[1]) * a; s += T(130, y + 22, d[0], { size: 12.5, a: 'end' }) + R(140, y + 4, 300 * v / 4, 28, '#7c3aed', { rx: 4 }) + R(140, y + 4, 300 * d[1] / 4, 28, '#94a3b8', { rx: 4 }) + T(146 + 300 * v / 4, y + 24, '$' + v.toFixed(2), { size: 12.5, a: 'start', w: 800 }); });
+     return s + T(240, 286, 'grey = list price · purple = cost per useful hour', { size: 11.5, w: 500, fill: '#64748b' }); } } },
+ { place: 'trial', scene: { t: 'Testing a provider before signing', dur: 9000,
+   cap: 'Every finalist gets the same questions, then a two-node trial with Gopala&#39;s own tests, then a fake fault reported at 2 a.m. to time the response. Only after that are offers scored and a contract signed.',
+   render: function (p) { var St = [['📝', 'Same questions'], ['🧪', '2-node trial'], ['🌙', '2 a.m. test ticket'], ['🔢', 'Score'], ['✍️', 'Contract']], s = '', k = Math.min(4, Math.floor(p * 5));
+     St.forEach(function (st, j) { var x = 18 + j * 92, on = j <= k; s += R(x, 90, 82, 90, on ? '#2563eb' : '#f1f5f9', { rx: 12 }) + T(x + 41, 128, st[0], { size: 24 }) + T(x + 41, 160, st[1], { size: 11, fill: on ? '#fff' : '#64748b' }); });
+     return s; } } },
+ { place: 'accept', scene: { t: 'Billing starts only when the cluster passes', dur: 10000,
+   cap: 'The contract&#39;s acceptance test runs on the whole cluster: each machine&#39;s diagnostics and 24-hour stress test, every network link, every pair of servers, storage speed, and a 72-hour run of Gopala&#39;s own training job. Pass, and the bill starts.',
+   render: function (p, S) { var s = '', t = S.now / 500, a = p;
+     s += MoCluster(16, 34, 448, function (n) { return n < a * 140 ? 'hsl(142,' + (55 + 15 * Math.sin(t + n * .3)) + '%,44%)' : '#cbd5e1'; });
+     return s + T(240, 22, Math.min(128, Math.round(a * 140)) + ' of 128 servers accepted', { size: 14, w: 800 }) + T(240, 278, a >= 0.92 ? '✅ all passed → billing starts' : 'testing…', { size: 14, w: 800, fill: a >= 0.92 ? '#15803d' : '#475569' }); } } }
+]); })();
+</script>

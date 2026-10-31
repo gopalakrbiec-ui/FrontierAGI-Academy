@@ -1178,3 +1178,27 @@ lesson: with a 4-of-6 minimum, two feeds can never protect the node;
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(5, [
+ { place: 'size', scene: { t: 'How much power 1,024 GPUs need', dur: 9000,
+   cap: 'Each 8-GPU server can draw up to 10.2 kW. Add networking and storage and the cluster needs about <b>1.46 MW</b> of capacity, roughly 1.17 MW in normal running. The GPUs themselves are only about 55% of that. From <code>power_size.py</code>.',
+   render: function (p) { var s = '', a = ease(p * 1.3);
+     [['GPUs only (700 W × 1,024)', 0.717, '#7c3aed'], ['typical draw', 1.17, '#2563eb'], ['design capacity', 1.46, '#be123c']].forEach(function (d, j) { var y = 50 + j * 70; s += T(30, y, d[0], { size: 13, a: 'start' }) + R(30, y + 10, 400 * d[1] / 1.6 * a, 34, d[2], { rx: 6 }) + T(36 + 400 * d[1] / 1.6 * a, y + 33, (d[1] * a).toFixed(2) + ' MW', { size: 13, a: 'start', w: 800 }); });
+     return s; } } },
+ { place: 'powerpath', scene: { t: 'Cut one power feed: what survives?', dur: 11000,
+   cap: 'A server has 6 power supplies and needs 4 running. With the usual two feeds wired 3 + 3, losing one feed leaves 3: the server stops. NVIDIA&#39;s design uses <b>three</b> feeds wired 2 + 2 + 2: lose any one and 4 remain. From <code>psu_feeds.py</code>.',
+   render: function (p) { var cut = p > 0.45, s = '';
+     function srv(x, feeds, wiring, title) { var out = '', alive = 0; out += T(x + 100, 30, title, { size: 13, w: 800 });
+       feeds.forEach(function (f, i) { var dead = cut && i === 0; out += R(x + i * (200 / feeds.length) + 10, 44, 200 / feeds.length - 20, 24, dead ? '#e2e8f0' : '#f59e0b', { rx: 4 }) + T(x + i * (200 / feeds.length) + 100 / feeds.length, 61, (dead ? '✂️ ' : '⚡ ') + f, { size: 12, fill: dead ? '#94a3b8' : '#fff' }); });
+       wiring.split('').forEach(function (w, i) { var on = !(cut && w === feeds[0]); if (on) alive++; out += R(x + 8 + i * 32, 110, 26, 40, on ? '#16a34a' : '#cbd5e1', { rx: 4 }) + T(x + 21 + i * 32, 136, w, { size: 12, fill: '#fff' }); });
+       var ok = alive >= 4; out += R(x + 20, 170, 160, 70, ok ? '#dcfce7' : '#fee2e2', { s: ok ? '#16a34a' : '#dc2626' }) + T(x + 100, 200, alive + ' of 6 supplies on', { size: 13 }) + T(x + 100, 224, ok ? 'server runs ✓' : 'server STOPS ✗', { size: 14, w: 800, fill: ok ? '#15803d' : '#b91c1c' }); return out; }
+     s += srv(20, ['A', 'B'], 'AAABBB', 'Two feeds (3 + 3)') + srv(250, ['A', 'B', 'C'], 'AABBCC', 'Three feeds (2 + 2 + 2)');
+     return s + T(240, 278, cut ? 'feed A has failed' : 'all feeds on', { size: 13, w: 700, fill: cut ? '#b91c1c' : '#15803d' }); } } },
+ { place: 'cool', scene: { t: 'How dense can a rack be?', dur: 9000,
+   cap: 'The same 128 servers need 128 racks in an old 15 kW hall, 43 racks in an air-cooled 40 kW hall, or just 11 racks with liquid cooling at 130 kW. Denser racks mean shorter cables and simpler networks. From <code>power_size.py</code>.',
+   render: function (p) { var D = [['15 kW (old hall)', 128, '#dc2626'], ['40 kW (air-cooled)', 43, '#f59e0b'], ['130 kW (liquid)', 11, '#16a34a']], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var y = 26 + j * 88, n = Math.round(d[1] * a); s += T(30, y + 10, d[0] + ': ' + n + ' racks', { size: 13, a: 'start', w: 800, fill: d[2] }); for (var i = 0; i < n; i++) s += R(30 + (i % 43) * 10, y + 20 + Math.floor(i / 43) * 18, 8, 15, d[2], { rx: 1 }); });
+     return s; } } }
+]); })();
+</script>

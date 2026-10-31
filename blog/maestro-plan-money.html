@@ -1135,3 +1135,32 @@ monthly burn besides training: $318k (people $150k, serving $108k, other $60k) �
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(3, [
+ { place: 'math', scene: { t: 'Pricing a model with four steps', dur: 10000,
+   cap: 'Training work ≈ 6 × parameters × tokens. Divide by what a GPU really achieves (989 trillion operations per second at its peak, about 30% of that in practice), add 10% for failures, and multiply GPU-hours by the hourly price. For Maestro-1: 7.2×10<sup>23</sup> operations, ~771,000 GPU-hours, about $1.8M for the final run.',
+   render: function (p) { var St = [['🔢', '6 × N × D', '7.2e23 ops'], ['⚡', '÷ 989 TFLOP/s × 30%', 'per GPU'], ['⏱️', '+10% failures', '771,149 GPU-h'], ['💵', '× $2.35/h', '$1.81M']], s = '', k = Math.min(3, Math.floor(p * 4));
+     St.forEach(function (st, j) { var y = 26 + j * 64, on = j <= k; s += R(40, y, 400, 52, on ? '#eff6ff' : '#f8fafc', { s: on ? '#2563eb' : '#e2e8f0' }) + T(70, y + 34, st[0], { size: 22 }) + T(100, y + 32, st[1], { size: 14, a: 'start', w: 700 }) + T(428, y + 32, on ? st[2] : '', { size: 14, a: 'end', w: 800, fill: '#1d4ed8' }); });
+     return s; } } },
+ { place: 'decision', scene: { t: 'Four ways to get a model, priced', dur: 9000,
+   cap: 'Including experiments: post-training an open 32B model costs about $0.8M; training from scratch costs $5.3M (8B dense), $7.3M (a 12B-active mixture-of-experts) or $9.3M (32B dense). From <code>budget.py</code> (our assumptions).',
+   render: function (p) { var D = [['Post-train open 32B', 0.80, '#16a34a'], ['From scratch 8B dense', 5.34, '#2563eb'], ['From scratch MoE 12B active', 7.25, '#7c3aed'], ['From scratch 32B dense', 9.29, '#dc2626']], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var y = 30 + j * 60; s += T(30, y + 14, d[0], { size: 12.5, a: 'start' }) + R(30, y + 22, 380 * d[1] / 10 * a, 24, d[2], { rx: 4 }) + T(36 + 380 * d[1] / 10 * a, y + 39, '$' + (d[1] * a).toFixed(2) + 'M', { size: 12, a: 'start', w: 800 }); });
+     return s; } } },
+ { place: 'choice', scene: { t: 'The hybrid plan: ship first, then build', dur: 10000,
+   cap: 'Months 3–6: post-train an open model (Maestro-0) and put it in partners&#39; hands. That earns real verified data. Months 9–10.5: train Maestro-1 from scratch with that data. Then the self-improvement loop keeps it getting better.',
+   render: function (p) { var B = [['Maestro-0 (post-trained open model)', 3, 6, '#16a34a'], ['Verified data from partners', 4, 18, '#0d9488'], ['Maestro-1 training run', 9, 10.5, '#7c3aed'], ['Loop and products', 10.5, 18, '#be123c']], s = '', now = p * 18;
+     function X(m) { return 30 + m / 18 * 420; }
+     for (var m = 0; m <= 18; m += 3) s += '<line x1="' + X(m) + '" y1="30" x2="' + X(m) + '" y2="250" stroke="#f1f5f9"/>' + T(X(m), 270, 'M' + m, { size: 11 });
+     B.forEach(function (b, j) { var y = 50 + j * 50, e = Math.min(b[2], Math.max(b[1], now)); s += T(X(b[1]), y - 6, b[0], { size: 11.5, a: 'start' }) + R(X(b[1]), y, X(e) - X(b[1]), 22, b[3], { rx: 5 }); });
+     return s + '<line x1="' + X(now) + '" y1="30" x2="' + X(now) + '" y2="250" stroke="#dc2626" stroke-width="2"/>'; } } },
+ { place: 'cash', scene: { t: 'Where $20M goes', dur: 9000,
+   cap: 'About $8.1M is ring-fenced for training compute. The rest pays for people ($150k a month), serving GPUs ($108k) and everything else ($60k): about $318k a month, which gives roughly 38 months of runway. From <code>budget.py</code>.',
+   render: function (p) { var s = '', a = ease(p * 1.3), parts = [['training compute', 8.1, '#7c3aed'], ['everything else (runway)', 11.9, '#2563eb']], acc = 0;
+     parts.forEach(function (q) { var w = 420 * q[1] / 20 * a; s += R(30 + acc, 60, w, 50, q[2], { rx: 0 }) + T(30 + acc + w / 2, 90, '$' + q[1] + 'M', { size: 14, fill: '#fff' }); acc += w; });
+     s += T(30, 50, '$20M raise', { size: 13, a: 'start', w: 800 });
+     [['people', 150, '#0d9488'], ['serving', 108, '#ea580c'], ['other', 60, '#94a3b8']].forEach(function (q, j) { var y = 150 + j * 34; s += T(110, y + 16, q[0], { size: 12.5, a: 'end' }) + R(120, y, 300 * q[1] / 160 * a, 22, q[2], { rx: 4 }) + T(126 + 300 * q[1] / 160 * a, y + 16, '$' + q[1] + 'k/month', { size: 12, a: 'start' }); });
+     return s + T(240, 270, '≈ 38 months of runway', { size: 14, w: 800, fill: '#15803d' }); } } }
+]); })();
+</script>

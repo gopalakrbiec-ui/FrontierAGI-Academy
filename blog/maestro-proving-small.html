@@ -1413,3 +1413,38 @@ if __name__ == "__main__":
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(2, [
+ { place: 'trainer', scene: { t: 'A tiny model learning, step by step', dur: 9000,
+   cap: 'On a laptop, a 0.12M-parameter model starts by guessing (loss 5.49) and within 400 steps learns enough to reach about 2.19. The <b>loss</b> measures how wrong its next-character guesses are. Real output of <code>train_tiny.py</code>.',
+   render: function (p) { var D = [[0, 5.486], [100, 2.724], [200, 2.479], [300, 2.206], [399, 2.187]], s = '', n = 1 + Math.floor(ease(p * 1.2) * 4), pts = [];
+     for (var i = 0; i <= n && i < 5; i++) pts.push([50 + D[i][0], 250 - (D[i][1] - 1.5) * 50]);
+     s += '<line x1="50" y1="250" x2="460" y2="250" stroke="#cbd5e1"/>' + T(255, 274, 'training steps →', { size: 12, w: 500, fill: '#64748b' });
+     s += '<path d="' + MoSvg.path(pts) + '" fill="none" stroke="#2563eb" stroke-width="3"/>';
+     pts.forEach(function (q, i) { s += '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="5" fill="#2563eb"/>' + T(q[0], q[1] - 10, D[i][1].toFixed(2), { size: 11.5 }); });
+     return s; } } },
+ { place: 'ladder', scene: { t: 'Bigger is better, until it is not', dur: 10000,
+   cap: 'Four models of growing size, same data. Loss falls with size, until the biggest one is <b>worse</b> (red). Lowering its learning rate fixes it (green). Lesson: settings that work for small models can fail for large ones. Real output.',
+   render: function (p) { var D = [['xs 0.12M', 1.810, '#94a3b8'], ['s 0.83M', 1.573, '#2563eb'], ['sm 1.83M', 1.494, '#2563eb'], ['m 4.8M', 1.617, '#dc2626']], s = '', a = ease(p * 1.4), fix = ease(p * 2.4 - 1.5);
+     D.forEach(function (d, j) { var v = j === 3 && fix > 0 ? 1.617 - (1.617 - 1.499) * fix : d[1], x = 50 + j * 105, h = (2 - v) * 380 * a; s += R(x, 250 - h, 70, h, j === 3 && fix > 0.5 ? '#16a34a' : d[2], { rx: 6 }) + T(x + 35, 244 - h, (v).toFixed(3), { size: 13, w: 800 }) + T(x + 35, 272, d[0], { size: 11.5 }); });
+     return s + T(240, 24, 'final loss (lower = better)', { size: 12.5, w: 600 }); } } },
+ { place: 'fit', scene: { t: 'Predicting the next model, and missing', dur: 9000,
+   cap: 'Fitting a curve through the three smallest models predicted the largest would reach a loss of <b>1.410</b>. It actually reached <b>1.499</b>. Small experiments extrapolate imperfectly; the prediction is a check, not a promise. From <code>scaling_fit.py</code>.',
+   render: function (p) { var P = [[0.116, 1.810], [0.826, 1.573], [1.829, 1.494]], s = '', a = ease(p * 1.4);
+     function X(n) { return 60 + Math.log10(n / 0.1) * 230; } function Y(l) { return 250 - (l - 1.35) * 380; }
+     s += '<line x1="50" y1="250" x2="460" y2="250" stroke="#cbd5e1"/>' + T(255, 274, 'model size (log scale) →', { size: 12, w: 500, fill: '#64748b' });
+     P.forEach(function (q) { s += '<circle cx="' + X(q[0]) + '" cy="' + Y(q[1]) + '" r="6" fill="#2563eb"/>'; });
+     if (a > 0.3) s += '<path d="M' + X(0.116) + ' ' + Y(1.81) + ' Q ' + X(1) + ' ' + Y(1.47) + ' ' + X(4.8) + ' ' + Y(1.41) + '" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>' + '<circle cx="' + X(4.8) + '" cy="' + Y(1.41) + '" r="6" fill="none" stroke="#7c3aed" stroke-width="2"/>' + T(X(4.8) - 8, Y(1.41) + 22, 'predicted 1.410', { size: 12, a: 'end', fill: '#6d28d9' });
+     if (a >= 1) s += '<circle cx="' + X(4.8) + '" cy="' + Y(1.499) + '" r="7" fill="#dc2626"/>' + T(X(4.8) - 10, Y(1.499) - 10, 'actual 1.499', { size: 12, a: 'end', w: 800, fill: '#b91c1c' });
+     return s; } } },
+ { place: 'stats', scene: { t: 'Is the gain real? Count both models on the same tasks', dur: 9000,
+   cap: 'The base model solves 124 of 300 tasks; with skills, 140. The difference (+5.3 points) has a 95% range of +3.0 to +8.0 points: entirely above zero, so the rule says proceed. Simulated self-check of <code>paired_ci.py</code>, not real model results.',
+   render: function (p) { var s = '', a = ease(p * 1.4), x0 = 120, sc = 30;
+     s += R(60, 40, 360 * 124 / 300 * a, 30, '#94a3b8', { rx: 4 }) + T(66, 61, 'base 124/300', { size: 12, a: 'start', fill: '#fff' });
+     s += R(60, 84, 360 * 140 / 300 * a, 30, '#16a34a', { rx: 4 }) + T(66, 105, 'with skills 140/300', { size: 12, a: 'start', fill: '#fff' });
+     s += '<line x1="' + x0 + '" y1="150" x2="' + x0 + '" y2="250" stroke="#0f172a" stroke-width="2"/>' + T(x0, 270, '0', { size: 12 });
+     if (a > 0.5) s += '<line x1="' + (x0 + 3.0 * sc) + '" y1="200" x2="' + (x0 + 8.0 * sc) + '" y2="200" stroke="#16a34a" stroke-width="10" stroke-linecap="round"/><circle cx="' + (x0 + 5.3 * sc) + '" cy="200" r="7" fill="#0f172a"/>' + T(x0 + 5.3 * sc, 180, '+5.3 points [+3.0, +8.0]', { size: 13, w: 800 });
+     return s; } } }
+]); })();
+</script>
