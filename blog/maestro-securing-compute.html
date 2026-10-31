@@ -898,7 +898,10 @@
       <li>Books a separate on-demand pool for experiments and keeps one hyperscaler account for storage and serving burst.</li></ul></div>
 
     <h2 id="need" class="wr-sec">2. What exactly is he buying?</h2>
-    <p>&quot;1,024 GPUs&quot; is not a specification. Two clusters with the same GPU count can differ by a factor of two in training speed because of everything around the GPUs. Gopala&#x27;s requirements sheet, the first thing every provider receives:</p>
+    <div class="wr-fig mo-vis"><h3>What "1,024 GPUs" really means</h3><div class="mo-stack"><div style="--c:#7c3aed"><b>🖥️ GPUs</b><span>128 nodes × 8 H100-class, NVSwitch inside each node</span></div><div style="--c:#2563eb"><b>🕸️ One fabric</b><span>All nodes on one non-blocking 400 Gb/s-per-GPU network</span></div><div style="--c:#0d9488"><b>💾 Storage</b><span>Parallel file system that saves a checkpoint in minutes</span></div><div style="--c:#ea580c"><b>🔑 Access</b><span>Root on nodes, BMC or API to power-cycle</span></div><div style="--c:#be123c"><b>📅 Time</b><span>Delivery from month 3, 12-month term</span></div></div><p class="mo-cap">Two clusters with the same GPU count can differ two-fold in speed because of the layers around the GPUs.</p></div>
+
+    <ul class="mo-pts"><li>&quot;1,024 GPUs&quot; is not a specification.<ul><li>Two clusters with the same GPU count can differ by a factor of two in training speed because of everything around the GPUs.</li></ul></li></ul>
+    <p>Gopala&#x27;s requirements sheet, the first thing every provider receives:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Requirement</th><th>Why it matters for Maestro-1</th><th>What to ask for</th></tr>
       <tr><td><b>GPU</b></td><td>The budget (Part 3) assumes H100-class: 80 GB HBM, ~989 dense BF16 TFLOP/s peak.</td><td>H100 or H200 SXM, 8 per node on NVSwitch. Not PCIe cards: their GPU-to-GPU bandwidth is far lower.</td></tr>
@@ -909,10 +912,10 @@
       <tr><td><b>Location</b></td><td>Data-residency clauses from design partners; latency to his data.</td><td>Named data centre, no silent migration.</td></tr>
       <tr><td><b>Time</b></td><td>Every month of delay is ~$318k of burn with no model.</td><td>Delivery date with penalties; partial early delivery for experiments.</td></tr>
     </table></div>
-    <p>The total requirement, from Part 3: about 1,024 GPUs for the main run and its experiments (months 6–10.5), 64 GPUs for serving from month 4, and a smaller pool (64–128 GPUs) for Maestro-0 post-training and ablations from month 3. He decides to reserve the large block for 12 months anyway: in 2026, reserved capacity in one fabric is the scarce thing, and a block released between runs may not come back.</p>
+    <ul class="mo-pts"><li>The total requirement, from Part 3: about 1,024 GPUs for the main run and its experiments (months 6–10.5), 64 GPUs for serving from month 4, and a smaller pool (64–128 GPUs) for Maestro-0 post-training and ablations from month 3.<ul><li>He decides to reserve the large block for 12 months anyway: in 2026, reserved capacity in one fabric is the scarce thing, and a block released between runs may not come back.</li></ul></li></ul>
 
     <h2 id="market" class="wr-sec">3. The market in late 2026</h2>
-    <p>There are four kinds of seller. Each fits a different part of the plan.</p>
+    <ul class="mo-pts"><li>There are four kinds of seller.<ul><li>Each fits a different part of the plan.</li></ul></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Seller</th><th>Examples</th><th>Strength</th><th>Weakness for a start-up</th></tr>
       <tr><td><b>Hyperscalers</b></td><td>AWS, Microsoft Azure, Google Cloud, Oracle</td><td>Reliability, security reviews done, every other service next door, credits for start-ups</td><td>Highest list price for GPUs; large reservations often need long commitments</td></tr>
@@ -920,11 +923,12 @@
       <tr><td><b>Brokers and marketplaces</b></td><td>Aggregators across many small sites</td><td>Cheapest per hour, flexible terms</td><td>Mixed hardware, often no single fabric, thin support</td></tr>
       <tr><td><b>Colocation + owned hardware</b></td><td>Equinix, Digital Realty and regional operators</td><td>Lowest cost over 3–5 years</td><td>Capital, lead time and staff Gopala does not have (Part 3 chose to rent)</td></tr>
     </table></div>
-    <p>A useful public starting point is SemiAnalysis&#x27;s <a href="https://clustermax.semianalysis.com/" target="_blank" rel="noopener">ClusterMAX</a> rating, which reviews GPU clouds on security, networking, storage, orchestration, reliability and support, and puts them in tiers from Platinum to Underperform. CoreWeave was the only Platinum provider in the published ratings (⚠️ ratings are refreshed every few months, and a newer edition was reported in September 2026). Gopala uses it to build the long list, not to decide: a rating reviews a provider in general, and he needs to know about <b>his</b> block, in <b>one</b> building, on <b>his</b> dates.</p>
-    <div class="wr-box wr-note"><b class="l">Why not just use credits?</b>Hyperscaler start-up programmes give credits worth tens or hundreds of thousands of dollars. They pay for Maestro-0 experiments and storage nicely, but they do not reserve a 1,024-GPU block in one fabric. Gopala uses credits for the edges of the plan, not its centre.</div>
+    <ul class="mo-pts"><li>A useful public starting point is SemiAnalysis&#x27;s <a href="https://clustermax.semianalysis.com/" target="_blank" rel="noopener">ClusterMAX</a> rating, which reviews GPU clouds on security, networking, storage, orchestration, reliability and support, and puts them in tiers from Platinum to Underperform.<ul><li>CoreWeave was the only Platinum provider in the published ratings (⚠️ ratings are refreshed every few months, and a newer edition was reported in September 2026).</li><li>Gopala uses it to build the long list, not to decide: a rating reviews a provider in general, and he needs to know about <b>his</b> block, in <b>one</b> building, on <b>his</b> dates.</li></ul></li></ul>
+    <div class="wr-box wr-note"><b class="l">Why not just use credits?</b><ul class="mo-pts"><li>Hyperscaler start-up programmes give credits worth tens or hundreds of thousands of dollars.<ul><li>They pay for Maestro-0 experiments and storage nicely, but they do not reserve a 1,024-GPU block in one fabric.</li><li>Gopala uses credits for the edges of the plan, not its centre.</li></ul></li></ul></div>
 
     <h2 id="prices" class="wr-sec">4. What GPUs actually cost in 2026</h2>
-    <p>Prices for H100-class GPU-hours moved a lot in two years, and the quoted figure depends on term, volume, GPU variant and what is bundled. The public evidence, all secondary (⚠️):</p>
+    <ul class="mo-pts"><li>Prices for H100-class GPU-hours moved a lot in two years, and the quoted figure depends on term, volume, GPU variant and what is bundled.</li></ul>
+    <p>The public evidence, all secondary (⚠️):</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Price point</th><th>Figure</th><th>Source type</th></tr>
       <tr><td>One-year H100 contract, Oct 2025 low</td><td>~$1.70 per GPU-hour</td><td>SemiAnalysis figure reported by a price tracker ⚠️</td></tr>
@@ -933,10 +937,11 @@
       <tr><td>Hyperscaler on-demand</td><td>often several times neocloud prices per GPU-hour</td><td>Aggregators and list prices ⚠️</td></tr>
       <tr><td>Reserved vs on-demand</td><td>discounts of roughly 20–40% for 1–12 month terms</td><td>Aggregators ⚠️</td></tr>
     </table></div>
-    <p>Three things follow for a buyer. First, prices are not monotonic: they fell through 2025 as supply caught up and then firmed in 2026 as demand for inference grew, so a 12-month lock-in is a bet in either direction. Second, cheap single-GPU listings tell you little about a 1,024-GPU block in one fabric, which is a different product. Third, the spread between providers is wide enough that the useful-hour arithmetic in the next sections matters more than haggling over cents.</p>
+    <ul class="mo-pts"><li>Three things follow for a buyer.<ul><li>First, prices are not monotonic: they fell through 2025 as supply caught up and then firmed in 2026 as demand for inference grew, so a 12-month lock-in is a bet in either direction.</li><li>Second, cheap single-GPU listings tell you little about a 1,024-GPU block in one fabric, which is a different product.</li><li>Third, the spread between providers is wide enough that the useful-hour arithmetic in the next sections matters more than haggling over cents.</li></ul></li></ul>
 
     <h2 id="quote" class="wr-sec">5. A quote template that makes offers comparable</h2>
-    <p>Providers quote in different shapes: per GPU-hour or per node-month, with or without storage, with networking &quot;included&quot; but unspecified, with discounts that depend on paying a year up front. Gopala sends one template and refuses quotes that do not fill it in:</p>
+    <ul class="mo-pts"><li>Providers quote in different shapes:<ul><li>per GPU-hour or per node-month, with or without storage, with networking &quot;included&quot</li><li>but unspecified, with discounts that depend on paying a year up front.</li></ul></li></ul>
+    <p>Gopala sends one template and refuses quotes that do not fill it in:</p>
     <ol>
       <li>Price per GPU-hour, for 1, 6 and 12 months, and the upfront payment required for each.</li>
       <li>GPU model, memory, node design, NICs per node and link speed; the fabric topology and oversubscription ratio.</li>
@@ -950,7 +955,8 @@
     </ol>
 
     <h2 id="sla" class="wr-sec">6. Reading a real SLA</h2>
-    <p>Before writing his own clauses, Gopala reads what the market offers. CoreWeave&#x27;s public terms of service, for example, state a monthly uptime objective of at least 99.9% for cloud platform instances, and its master services agreement template defines a &quot;hardware failure&quot; as breakage of a GPU node that causes that node to fail. Its object-storage SLA says service credits do not entitle the customer to a refund or other payment. These are normal industry terms, and three lessons hold for any provider:</p>
+    <ul class="mo-pts"><li>Before writing his own clauses, Gopala reads what the market offers.<ul><li>CoreWeave&#x27;s public terms of service, for example, state a monthly uptime objective of at least 99.9% for cloud platform instances, and its master services agreement template defines a &quot;hardware failure&quot<ul><li>as breakage of a GPU node that causes that node to fail.</li></ul></li><li>Its object-storage SLA says service credits do not entitle the customer to a refund or other payment.</li></ul></li></ul>
+    <p>These are normal industry terms, and three lessons hold for any provider:</p>
     <ul>
       <li><b>Platform uptime is not node availability.</b> A control plane at 99.9% says nothing about whether node 57 of his 128 is healthy. He needs per-node terms.</li>
       <li><b>Credits are not cash.</b> They lower next month&#x27;s bill; they do not pay for a lost week of a training run.</li>
@@ -958,7 +964,9 @@
     </ul>
 
     <h2 id="score" class="wr-sec">7. Scoring offers: cost per useful GPU-hour</h2>
-    <p>The core idea of the script: you pay for every reserved hour, but you only get the hours when a node is up (<b>availability</b>) and, of those, only the hours that do useful training (<b>goodput</b>: lost to restarts after failures, slow nodes dragging the whole job, hand-offs that take days). Dividing the list price by both gives the price per useful hour. The rest of the score (network, support, security) is judged from the trial and references.</p>
+    <div class="wr-fig mo-vis"><h3>List price vs price per useful GPU-hour</h3><div class="mo-bars"><div class="r"><span class="l">P1 top-rated · list</span><span class="t"><span class="b" style="width:66.2%;background:#64748b"></span></span><span class="v">$2.65</span></div><div class="r"><span class="l">P1 · useful</span><span class="t"><span class="b" style="width:72.0%;background:#7c3aed"></span></span><span class="v">$2.88</span></div><div class="r"><span class="l">P2 cheap · list</span><span class="t"><span class="b" style="width:52.5%;background:#64748b"></span></span><span class="v">$2.10</span></div><div class="r"><span class="l">P2 · useful</span><span class="t"><span class="b" style="width:64.2%;background:#7c3aed"></span></span><span class="v">$2.57</span></div><div class="r"><span class="l">P3 hyperscaler · useful</span><span class="t"><span class="b" style="width:92.8%;background:#2563eb"></span></span><span class="v">$3.71</span></div><div class="r"><span class="l">P4 broker · useful</span><span class="t"><span class="b" style="width:64.8%;background:#be123c"></span></span><span class="v">$2.59</span></div></div><p class="mo-cap">Real output of <code>provider_score.py</code> on illustrative offers (our assumptions, not real quotes).</p></div>
+
+    <ul class="mo-pts"><li>The core idea of the script: you pay for every reserved hour, but you only get the hours when a node is up (<b>availability</b>) and, of those, only the hours that do useful training (<b>goodput</b>: lost to restarts after failures, slow nodes dragging the whole job, hand-offs that take days).<ul><li>Dividing the list price by both gives the price per useful hour.</li><li>The rest of the score (network, support, security) is judged from the trial and references.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>provider_score.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""provider_score.py — compare GPU cloud offers on cost per USEFUL GPU-hour.
 
 The list price is not the price. What matters is how many hours of real
@@ -1022,7 +1030,7 @@ main run = 761,856 GPU-hours of useful work; at P2 that needs 933,647 paid hours
       <li>A goodput gap is expensive: to get the same 761,856 useful GPU-hours for the main run, the cheap P2 offer needs about <b>106,000 more paid hours</b> than P1, roughly $220k at P2&#x27;s price, before counting the weeks of delay.</li>
       <li>The upfront column matters for a start-up as much as the price: P4 wants the whole contract in advance, which would take most of the $20M raise on day one.</li>
     </ul>
-    <p>Availability and goodput are the numbers a provider will not give honestly in a quote. That is why the trial (section <a href="#trial">10</a>) and the acceptance test (section <a href="#accept">14</a>) exist: they measure them before money is committed.</p>
+    <ul class="mo-pts"><li>Availability and goodput are the numbers a provider will not give honestly in a quote.<ul><li>That is why the trial (section <a href="#trial">10</a>) and the acceptance test (section <a href="#accept">14</a>) exist: they measure them before money is committed.</li></ul></li></ul>
 
     <h2 id="calc" class="wr-sec">8. Try your own offer</h2>
     <div class="wr-fig">
@@ -1037,7 +1045,7 @@ main run = 761,856 GPU-hours of useful work; at P2 that needs 933,647 paid hours
     </div>
 
     <h2 id="sweep" class="wr-sec">9. When does the cheap offer really win?</h2>
-    <p>The score in the previous section ranks P1 first. But Gopala is a founder as well as an engineer, so he checks the two questions a CFO would ask: how much must the cheap offer&#x27;s goodput improve to match, and what does the <b>whole contract</b> cost once upfront cash, storage, egress and late delivery are added?</p>
+    <ul class="mo-pts"><li>The score in the previous section ranks P1 first.<ul><li>But Gopala is a founder as well as an engineer, so he checks the two questions a CFO would ask: how much must the cheap offer&#x27;s goodput improve to match, and what does the <b>whole contract</b> cost once upfront cash, storage, egress and late delivery are added?</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>offer_sweep.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""offer_sweep.py — when does the cheap offer really win?
 
 Two questions the list price hides:
@@ -1096,12 +1104,15 @@ goodput of P2 -&gt; useful price
 P1: compute $23.77M + cash $0.36M + storage/egress $0.54M + delay $0.00M = $24.67M -&gt; $2.99 per useful GPU-hour
 P2: compute $18.84M + cash $0.57M + storage/egress $0.81M + delay $0.22M = $20.43M -&gt; $2.79 per useful GPU-hour
 whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
-    <p>The honest result is uncomfortable: <b>on money alone, the cheap offer P2 wins</b>, by about $0.20 per useful GPU-hour (about $4M over the year), even after paying for its later delivery and higher upfront payment. Its goodput would have to fall to about 76% before P1 matched it on useful price.</p>
-    <p>So why does the scenario pick a P1-like provider anyway? Because the numbers above assume P2&#x27;s 85% goodput is real, and that is the least reliable number in the table. Its 48-hour node replacement, weaker support and security score mean its <b>variance</b> is larger: a bad month on P2 is far worse than a bad month on P1, and the main run is a single 31-day bet that the company cannot repeat. Gopala writes the decision down this way:</p>
-    <div class="wr-box wr-note"><b class="l">Decision rule</b>Take the cheapest offer per useful hour <b>unless</b> its goodput is unproven and the work cannot be repeated. Experiments and evaluation, which can be rerun, go to the cheap pool; the main run goes to the provider whose goodput the trial confirmed. In the scenario he does exactly that: the main block with a P1-like provider, and a smaller on-demand P2-like pool for ablations.</div>
+    <ul class="mo-pts"><li>The honest result is uncomfortable: <b>on money alone, the cheap offer P2 wins</b>, by about $0.20 per useful GPU-hour (about $4M over the year), even after paying for its later delivery and higher upfront payment.<ul><li>Its goodput would have to fall to about 76% before P1 matched it on useful price.</li></ul></li></ul>
+    <ul class="mo-pts"><li>So why does the scenario pick a P1-like provider anyway?<ul><li>Because the numbers above assume P2&#x27;s 85% goodput is real, and that is the least reliable number in the table.</li><li>Its 48-hour node replacement, weaker support and security score mean its <b>variance</b> is larger: a bad month on P2 is far worse than a bad month on P1, and the main run is a single 31-day bet that the company cannot repeat.</li></ul></li></ul>
+    <p>Gopala writes the decision down this way:</p>
+    <div class="wr-box wr-note"><b class="l">Decision rule</b><ul class="mo-pts"><li>Take the cheapest offer per useful hour <b>unless</b> its goodput is unproven and the work cannot be repeated.<ul><li>Experiments and evaluation, which can be rerun, go to the cheap pool; the main run goes to the provider whose goodput the trial confirmed.</li><li>In the scenario he does exactly that: the main block with a P1-like provider, and a smaller on-demand P2-like pool for ablations.</li></ul></li></ul></div>
 
     <h2 id="trial" class="wr-sec">10. The two-node trial</h2>
-    <p>Before signing, Gopala asks every finalist for two nodes for 48 hours, and runs the same checks he will run on day zero (Part 6): GPU diagnostics, NVLink bandwidth inside a node, InfiniBand bandwidth between the two nodes, a 2-node NCCL all-reduce, a storage write test, and his own small training job from Part 2. Then he deliberately reports a fake fault at 2 a.m. local time and times the response.</p>
+    <div class="wr-fig mo-vis"><h3>How an offer is tested before signing</h3><div class="mo-flow"><div class="s" style="--c:#2563eb"><i>📝</i><b>Quote template</b><span>Same nine questions to everyone</span></div><div class="s" style="--c:#0d9488"><i>🧪</i><b>Two-node trial</b><span>Diagnostics, NCCL, storage, own job</span></div><div class="s" style="--c:#ea580c"><i>🌙</i><b>Night ticket</b><span>Time a fake 2 a.m. fault</span></div><div class="s" style="--c:#7c3aed"><i>🔢</i><b>Score</b><span>Useful price + network, support, security</span></div><div class="s" style="--c:#16a34a"><i>✍️</i><b>Contract</b><span>Billing starts at acceptance</span></div></div><p class="mo-cap">Each step can drop a provider.</p></div>
+
+    <ul class="mo-pts"><li>Before signing, Gopala asks every finalist for two nodes for 48 hours, and runs the same checks he will run on day zero (Part 6): GPU diagnostics, NVLink bandwidth inside a node, InfiniBand bandwidth between the two nodes, a 2-node NCCL all-reduce, a storage write test, and his own small training job from Part 2.<ul><li>Then he deliberately reports a fake fault at 2 a.m. local time and times the response.</li></ul></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Trial check</th><th>What it reveals</th></tr>
       <tr><td>All-reduce bus bandwidth between nodes</td><td>Whether the fabric delivers what the quote says (Part 6 shows how to read the numbers)</td></tr>
@@ -1110,10 +1121,11 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <tr><td>A support ticket at night</td><td>Whether &quot;24/7&quot; means a person or a queue</td></tr>
       <tr><td>Asking for root and BMC access</td><td>Whether he can run his own stack (Part 7)</td></tr>
     </table></div>
-    <div class="wr-box wr-caveat"><b class="l">Scenario</b>In the story, one finalist&#x27;s inter-node bandwidth comes in at about half of its peers&#x27; on the trial (the pattern Part 6&#x27;s parser flags), and support takes nine hours to answer the night ticket. It is dropped. The winner is a neocloud similar to P1 in the script. This is the scenario, not a review of any real provider.</div>
+    <div class="wr-box wr-caveat"><b class="l">Scenario</b><ul class="mo-pts"><li>In the story, one finalist&#x27;s inter-node bandwidth comes in at about half of its peers&#x27; on the trial (the pattern Part 6&#x27;s parser flags), and support takes nine hours to answer the night ticket.<ul><li>It is dropped.</li><li>The winner is a neocloud similar to P1 in the script.</li><li>This is the scenario, not a review of any real provider.</li></ul></li></ul></div>
 
     <h2 id="security" class="wr-sec">11. Security due diligence</h2>
-    <p>His model weights and his partners&#x27; code will live on someone else&#x27;s machines. The security questions he asks every finalist, and the answers he wants:</p>
+    <ul class="mo-pts"><li>His model weights and his partners&#x27; code will live on someone else&#x27;s machines.</li></ul>
+    <p>The security questions he asks every finalist, and the answers he wants:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Question</th><th>Why</th><th>Good answer</th></tr>
       <tr><td>Are my nodes single-tenant?</td><td>Shared hosts widen the attack surface</td><td>Dedicated bare-metal nodes, no other tenant&#x27;s VMs</td></tr>
@@ -1123,10 +1135,11 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <tr><td>How are drives handled at the end or on failure?</td><td>Weights and data on failed disks leave the building</td><td>Wipe or destroy on site, with certificates</td></tr>
       <tr><td>Can I encrypt storage with my own keys?</td><td>Limits exposure if storage is copied</td><td>Customer-managed keys for object and file storage</td></tr>
     </table></div>
-    <p>His design partners will ask the same questions about him (Part 14), so the answers go straight into his own security documentation.</p>
+    <ul class="mo-pts"><li>His design partners will ask the same questions about him (Part 14), so the answers go straight into his own security documentation.</li></ul>
 
     <h2 id="contract" class="wr-sec">12. The clauses that matter</h2>
-    <p>A GPU contract is mostly about what happens when things break. Gopala&#x27;s lawyer drafts, but these are the clauses he insists on as the infrastructure owner:</p>
+    <ul class="mo-pts"><li>A GPU contract is mostly about what happens when things break.</li></ul>
+    <p>Gopala&#x27;s lawyer drafts, but these are the clauses he insists on as the infrastructure owner:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Clause</th><th>Weak version</th><th>What he asks for</th></tr>
       <tr><td>Availability</td><td>&quot;99.9% platform uptime&quot;, measured on the provider&#x27;s control plane</td><td>Per-node availability, measured by his own health checks, with credits per node-hour lost</td></tr>
@@ -1138,14 +1151,17 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <tr><td>Exit</td><td>Silence</td><td>Egress fees capped or waived for moving checkpoints out at the end</td></tr>
       <tr><td>Security incidents</td><td>Notice &quot;without undue delay&quot;</td><td>Notice within a stated number of hours and access to the investigation</td></tr>
     </table></div>
-    <p>Credits are rarely large enough to repay the cost of a stalled run. Their real value is that they make the provider measure the same thing Gopala measures, so failures get fixed rather than argued about.</p>
+    <ul class="mo-pts"><li>Credits are rarely large enough to repay the cost of a stalled run.<ul><li>Their real value is that they make the provider measure the same thing Gopala measures, so failures get fixed rather than argued about.</li></ul></li></ul>
 
     <h2 id="reliability" class="wr-sec">13. What the research says about failures</h2>
-    <p>Goodput is where providers differ most and disclose least, so Gopala reads what large operators have published. Meta&#x27;s FAIR team studied 11 months of its research clusters (about 4 million jobs and over 150 million A100 GPU-hours) in &quot;Revisiting Reliability in Large-Scale Machine Learning Research Clusters&quot;. Its headline: the mean time to failure of a <b>1,024-GPU job</b> was about <b>7.9 hours</b>, against about 47.7 days for an 8-GPU job. Large jobs are hit far more often simply because they touch more hardware for longer.</p>
-    <p>That is much worse than the rate Part 7 derives from Meta&#x27;s Llama 3 production run (one interruption roughly every two days at Gopala&#x27;s size). The two are different settings (shared research clusters full of short jobs and new code, versus one carefully run production job), but together they bracket what he might see, and Part 7 simulates both. For buying, the lesson is that the provider&#x27;s operational quality (spares on site, fast swaps, health checks that catch bad nodes before jobs do) moves goodput by tens of points, which the score above treats as a 3-point difference in list price.</p>
+    <ul class="mo-pts"><li>Goodput is where providers differ most and disclose least, so Gopala reads what large operators have published.<ul><li>Meta&#x27;s FAIR team studied 11 months of its research clusters (about 4 million jobs and over 150 million A100 GPU-hours) in &quot;Revisiting Reliability in Large-Scale Machine Learning Research Clusters&quot;.</li><li>Its headline: the mean time to failure of a <b>1,024-GPU job</b> was about <b>7.9 hours</b>, against about 47.7 days for an 8-GPU job.</li><li>Large jobs are hit far more often simply because they touch more hardware for longer.</li></ul></li></ul>
+    <ul class="mo-pts"><li>That is much worse than the rate Part 7 derives from Meta&#x27;s Llama 3 production run (one interruption roughly every two days at Gopala&#x27;s size).<ul><li>The two are different settings (shared research clusters full of short jobs and new code, versus one carefully run production job), but together they bracket what he might see, and Part 7 simulates both.</li><li>For buying, the lesson is that the provider&#x27;s operational quality (spares on site, fast swaps, health checks that catch bad nodes before jobs do) moves goodput by tens of points, which the score above treats as a 3-point difference in list price.</li></ul></li></ul>
 
     <h2 id="accept" class="wr-sec">14. The acceptance test</h2>
-    <p>The most important clause is that billing starts only when the delivered block passes a test written into the contract. Gopala&#x27;s version, built from the burn-in in Part 6:</p>
+    <div class="wr-fig mo-vis"><h3>The acceptance test</h3><div class="mo-flow"><div class="s" style="--c:#2563eb"><i>🩺</i><b>Every node</b><span>DCGM level 3 + 24 h burn-in</span></div><div class="s" style="--c:#0d9488"><i>🔗</i><b>Every link</b><span>8 × 400 Gb/s active, firmware matches</span></div><div class="s" style="--c:#7c3aed"><i>📶</i><b>Every pair</b><span>All-reduce within 10% of contract</span></div><div class="s" style="--c:#ea580c"><i>💾</i><b>Storage</b><span>Stated write speed for 10 min</span></div><div class="s" style="--c:#16a34a"><i>🏋️</i><b>72 h job</b><span>His own training, no hardware stop</span></div></div><p class="mo-cap">Pass → billed. Fail → fixed or replaced by the provider first.</p></div>
+
+    <ul class="mo-pts"><li>The most important clause is that billing starts only when the delivered block passes a test written into the contract.</li></ul>
+    <p>Gopala&#x27;s version, built from the burn-in in Part 6:</p>
     <ol>
       <li>Every node passes the long GPU diagnostic (NVIDIA DCGM level 3) and a 24-hour burn-in with no GPU errors.</li>
       <li>Every node reports 8 GPUs and 8 active 400 Gb/s fabric links, with matching firmware and driver versions.</li>
@@ -1153,7 +1169,7 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <li>Storage sustains the stated write bandwidth from all nodes at once for 10 minutes.</li>
       <li>A 72-hour run of his own training job on the whole block completes without a hardware stop.</li>
     </ol>
-    <p>If 98% of nodes pass, the passing ones are accepted and billed, and the rest must be fixed or replaced before they are billed. This pushes the cost of bad hardware back to the provider, where it belongs.</p>
+    <ul class="mo-pts"><li>If 98% of nodes pass, the passing ones are accepted and billed, and the rest must be fixed or replaced before they are billed.<ul><li>This pushes the cost of bad hardware back to the provider, where it belongs.</li></ul></li></ul>
 
     <h2 id="mistakes" class="wr-sec">15. Seven buying mistakes</h2>
     <ol>
@@ -1186,7 +1202,7 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <tr><td>9–10.5</td><td>Main run</td><td>1,024 (all)</td><td>None; experiments move to the burst pool</td></tr>
       <tr><td>10.5–15</td><td>Post-training, RSI loop, evaluation</td><td>256–768</td><td>Medium: resell idle nodes</td></tr>
     </table></div>
-    <p>The months with idle risk are where the resale clause and the ramp pay for themselves. A block that is 70% busy over the year costs, per useful hour, about 1/0.7 ≈ 1.4 times its list price before any failure is counted, which is why Part 3&#x27;s budget counts only training compute and this part adds the rest.</p>
+    <ul class="mo-pts"><li>The months with idle risk are where the resale clause and the ramp pay for themselves.<ul><li>A block that is 70% busy over the year costs, per useful hour, about 1/0.7 ≈ 1.4 times its list price before any failure is counted, which is why Part 3&#x27;s budget counts only training compute and this part adds the rest.</li></ul></li></ul>
 
     <h2 id="portfolio" class="wr-sec">18. The final compute portfolio</h2>
     <div class="wr-scroll"><table class="wr-table">
@@ -1196,7 +1212,7 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <tr><td>Burst</td><td>0–128 GPUs</td><td>As needed</td><td>Evaluation sweeps, extra ablations</td><td>On demand, paid from cloud credits first</td></tr>
       <tr><td>Storage and data</td><td>Object storage</td><td>Now</td><td>Raw data, checkpoints archive</td><td>Hyperscaler with start-up credits</td></tr>
     </table></div>
-    <p>The 12-month block costs more than Part 3&#x27;s plan assumed for training alone, because the block is reserved even when it is between jobs. Gopala keeps it busy: Maestro-0 post-training in months 3–6, experiments in months 6–9, the main run in months 9–10.5, and post-training, evaluation and a second smaller run after that. Idle weeks would be resold back to the provider under a clause he negotiated (scenario).</p>
+    <ul class="mo-pts"><li>The 12-month block costs more than Part 3&#x27;s plan assumed for training alone, because the block is reserved even when it is between jobs.<ul><li>Gopala keeps it busy: Maestro-0 post-training in months 3–6, experiments in months 6–9, the main run in months 9–10.5, and post-training, evaluation and a second smaller run after that.</li><li>Idle weeks would be resold back to the provider under a clause he negotiated (scenario).</li></ul></li></ul>
 
     <h2 id="deleg" class="wr-sec">19. Delegation box</h2>
     <div class="mo-deleg">
@@ -1214,7 +1230,7 @@ whole-contract winner: P2 by $0.20 per useful GPU-hour</div>
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
-    <div class="wr-box wr-verdict"><b class="l">Verdict</b>Gopala buys useful hours, not GPU-hours: he prices every offer per useful hour, tests finalists with his own scripts, and makes billing start only when his acceptance test passes. The machine now exists on paper. Next, <a href="maestro-site-power-cooling.html">Part 5</a>: the power and cooling that physical machine needs, even when someone else runs the building.</div>
+    <div class="wr-box wr-verdict"><b class="l">Verdict</b><ul class="mo-pts"><li>Gopala buys useful hours, not GPU-hours: he prices every offer per useful hour, tests finalists with his own scripts, and makes billing start only when his acceptance test passes.<ul><li>The machine now exists on paper.</li><li>Next, <a href="maestro-site-power-cooling.html">Part 5</a>: the power and cooling that physical machine needs, even when someone else runs the building.</li></ul></li></ul></div>
 
     <h2 id="numbers" class="wr-sec">22. Reading the numbers</h2>
     <dl class="wr-dl">

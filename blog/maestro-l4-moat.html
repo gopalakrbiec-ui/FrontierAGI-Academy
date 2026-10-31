@@ -879,8 +879,10 @@
     </div>
 
     <h2 id="maestro" class="wr-sec">1. Meet the Maestro</h2>
-    <p>Gopala is a researcher-founder. He has read most of this site: the <a href="../pages/compute-stack.html">compute stack</a>, the <a href="../pages/ai-factories.html">gigawatt case studies</a>, the <a href="../pages/ml-layer.html">ML</a>, <a href="../pages/data-layer.html">data</a>, <a href="../pages/eval-layer.html">evaluation</a> and <a href="../pages/agent-layer.html">agent</a> layers, and the <a href="../pages/rsi-evolution.html">RSI Evolution Map</a> of self-improving systems. He has a conviction that the next real advantage in AI will not come from a slightly bigger model but from a model that <b>gets better at its job by doing its job</b>, safely, in a way that compounds for its owner.</p>
-    <p>Over the series he takes that conviction from a notebook to a running AI factory at start-up scale. The phases overlap, because real projects do: racks are ordered while data pipelines are written, evaluations are designed before training starts. Mission Control, the <a href="../pages/maestro.html">series hub</a>, shows all of it on one timeline.</p>
+    <div class="wr-fig mo-vis"><h3>Every hat Gopala wears</h3><div class="mo-stack"><div style="--c:#be123c"><b>🔬 Researcher</b><span>The L4 idea, experiments, kill criteria (Parts 1–2)</span></div><div style="--c:#ea580c"><b>💼 Founder</b><span>Money, partners, investors (Part 3)</span></div><div style="--c:#7c3aed"><b>🏗️ Infrastructure</b><span>GPUs, power, bring-up, cluster software (Parts 4–7)</span></div><div style="--c:#2563eb"><b>🧠 ML engineer</b><span>Data, architecture, pre- and post-training (Parts 8–11)</span></div><div style="--c:#0d9488"><b>📏 Evaluator · 🛡️ Safety lead</b><span>Evals, safety layers, approvals (Parts 12–14)</span></div><div style="--c:#16a34a"><b>🔄 Operator · product</b><span>Serving, agents, operations (Parts 15–18)</span></div></div><p class="mo-cap">One person, six hats, 18 parts. The series follows the order the hats are needed.</p></div>
+
+    <ul class="mo-pts"><li>Gopala is a researcher-founder.<ul><li>He has read most of this site: the <a href="../pages/compute-stack.html">compute stack</a>, the <a href="../pages/ai-factories.html">gigawatt case studies</a>, the <a href="../pages/ml-layer.html">ML</a>, <a href="../pages/data-layer.html">data</a>, <a href="../pages/eval-layer.html">evaluation</a> and <a href="../pages/agent-layer.html">agent</a> layers, and the <a href="../pages/rsi-evolution.html">RSI Evolution Map</a> of self-improving systems.</li><li>He has a conviction that the next real advantage in AI will not come from a slightly bigger model but from a model that <b>gets better at its job by doing its job</b>, safely, in a way that compounds for its owner.</li></ul></li></ul>
+    <ul class="mo-pts"><li>Over the series he takes that conviction from a notebook to a running AI factory at start-up scale.<ul><li>The phases overlap, because real projects do: racks are ordered while data pipelines are written, evaluations are designed before training starts.</li><li>Mission Control, the <a href="../pages/maestro.html">series hub</a>, shows all of it on one timeline.</li></ul></li></ul>
     <div class="cs-cards ml-five">
       <div style="--c:#be123c"><b>Phase 0 · The idea</b><span>Researcher and founder hats: the moat, small proofs, the plan and the money (Parts 1–3).</span></div>
       <div style="--c:#ea580c"><b>Phase 1 · Securing the machine</b><span>Infrastructure hat: compute, site and power, bring-up, cluster software (Parts 4–7).</span></div>
@@ -904,17 +906,17 @@
       <li>Second version works (section 9). Writes up the result honestly, including the failure, and moves on to proving it with real models (Part 2).</li></ul></div>
 
     <h2 id="ladder" class="wr-sec">3. The self-improvement ladder</h2>
-    <p>The <a href="../pages/rsi-evolution.html">RSI Evolution Map</a> sorts self-improving AI work into five levels, using the definitions of the Awesome-RSI catalog it draws on. The level matters because it decides what can change, who controls the change, and how hard it is to keep safe.</p>
+    <ul class="mo-pts"><li>The <a href="../pages/rsi-evolution.html">RSI Evolution Map</a> sorts self-improving AI work into five levels, using the definitions of the Awesome-RSI catalog it draws on.<ul><li>The level matters because it decides what can change, who controls the change, and how hard it is to keep safe.</li></ul></li></ul>
     <div class="wr-fig">
       <h3>Where does the idea sit?</h3>
       <p class="sub">Tap a level. Definitions from the catalog behind our RSI map; the start-up notes are our reading.</p>
       <div class="mo-ladder" id="ldBox"></div>
       <div class="wr-res" id="ldOut"></div>
     </div>
-    <p>Gopala's choice is <b>L4, deployment adaptation</b>: the system keeps memory, skills or components that change its later behaviour, but inside an improvement process that stays fixed. That last clause is the important one. At L4 the system gets better, but the rules for what counts as "better" and what is allowed to be kept are written by people and do not rewrite themselves. That is what makes it explainable to a client, testable by an evaluator and acceptable to a safety reviewer.</p>
+    <ul class="mo-pts"><li>Gopala's choice is <b>L4, deployment adaptation</b>: the system keeps memory, skills or components that change its later behaviour, but inside an improvement process that stays fixed.<ul><li>That last clause is the important one.</li><li>At L4 the system gets better, but the rules for what counts as "better" and what is allowed to be kept are written by people and do not rewrite themselves.</li><li>That is what makes it explainable to a client, testable by an evaluator and acceptable to a safety reviewer.</li></ul></li></ul>
 
     <h2 id="field" class="wr-sec">4. Reading the field</h2>
-    <p>The question Gopala asks of every paper is the same: <i>what does it change, what does it freeze, and how does it decide a change is good?</i></p>
+    <ul class="mo-pts"><li>The question Gopala asks of every paper is the same: <i>what does it change, what does it freeze, and how does it decide a change is good?</i></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Work</th><th>What improves</th><th>What stays frozen</th><th>How "better" is decided</th><th>Lesson for the idea</th></tr>
       <tr><td><b>STaR</b> (Zelikman et al., 2022)</td><td>Model weights, by fine-tuning on its own rationales that reached correct answers</td><td>The training recipe</td><td>Ground-truth answers</td><td>Verified self-generated data can improve weights</td></tr>
@@ -925,9 +927,11 @@
       <tr><td><b>Darwin Gödel Machine</b> (Zhang et al., 2025)</td><td>The agent's own code, evolved as an archive</td><td>The foundation models</td><td>Benchmark scores (SWE-bench 20.0% → 50.0%, Polyglot 14.2% → 30.7%, reported)</td><td>Empirical validation replaces proofs; run in sandboxes with human oversight</td></tr>
       <tr><td><b>AlphaEvolve</b> (Google DeepMind, 2025)</td><td>Algorithms and code, via evolutionary search with LLMs</td><td>The models and evaluators</td><td>Automatic evaluators</td><td>Value comes where results can be checked by machine; DeepMind reports a scheduling heuristic that recovers about 0.7% of Google's fleet-wide compute ⚠️</td></tr>
     </table></div>
-    <p>Two patterns decide the idea. First, the systems that improve <b>reliably</b> are the ones whose output can be <b>checked by a machine</b>: code that runs, answers that match, tests that pass. Second, almost everyone <b>freezes the foundation model</b> and improves what surrounds it, because changing weights is expensive and changing them with the model's own judgement is risky. The gap Gopala sees: a start-up can own the whole loop, from verified skills in deployment back into its own weights, if the checking is strict and the gate is human-controlled. The site's longer reviews of this work are <a href="self-improving-agentic-systems.html">self-improving agentic systems</a>, <a href="cs329a-self-improving-agents-handbook.html">the self-improving agents handbook</a> and <a href="ai-doing-rd.html">AI doing R&amp;D</a>.</p>
+    <ul class="mo-pts"><li>Two patterns decide the idea.<ul><li>First, the systems that improve <b>reliably</b> are the ones whose output can be <b>checked by a machine</b>: code that runs, answers that match, tests that pass.</li><li>Second, almost everyone <b>freezes the foundation model</b> and improves what surrounds it, because changing weights is expensive and changing them with the model's own judgement is risky.</li><li>The gap Gopala sees: a start-up can own the whole loop, from verified skills in deployment back into its own weights, if the checking is strict and the gate is human-controlled.</li><li>The site's longer reviews of this work are <a href="self-improving-agentic-systems.html">self-improving agentic systems</a>, <a href="cs329a-self-improving-agents-handbook.html">the self-improving agents handbook</a> and <a href="ai-doing-rd.html">AI doing R&amp;D</a>.</li></ul></li></ul>
 
     <h2 id="idea" class="wr-sec">5. The idea: a verified-skill flywheel</h2>
+    <div class="wr-fig mo-vis"><h3>The verified-skill flywheel</h3><div class="mo-flow mo-loop"><div class="s" style="--c:#2563eb"><i>🧩</i><b>Attempt</b><span>Model tries a task, retrieving stored skills first</span></div><div class="s" style="--c:#16a34a"><i>✅</i><b>Verify</b><span>Hidden tests, no-regression check</span></div><div class="s" style="--c:#0d9488"><i>📚</i><b>Curate</b><span>Keep only abstracted, verified skill cores</span></div><div class="s" style="--c:#be123c"><i>🚦</i><b>Gate</b><span>Fixed, human-controlled sign-off</span></div><div class="s" style="--c:#7c3aed"><i>⚙️</i><b>Update</b><span>Weights updated only after the gate</span></div></div><p class="mo-cap">The loop closes back to Attempt. The gate is fixed and owned by a human; the model cannot change it.</p></div>
+
     <div class="wr-fig">
       <h3>The loop Gopala wants to own</h3>
       <p class="sub">Press play. Each lap, verified work becomes skills; at fixed intervals the best skills are folded into the next model, but only through the gate. Our diagram.</p>
@@ -935,11 +939,11 @@
       <div class="mo-fly"><svg id="flySvg" viewBox="0 0 640 330" role="img" aria-label="Verified skill flywheel"></svg></div>
       <div class="wr-res" id="flyOut">Press play.</div>
     </div>
-    <p>In plain terms: the model works on client tasks where success can be checked by a machine. Gopala starts with software and data engineering (writing and fixing code, building data pipelines, migrating schemas), because tests decide success there. Every task runs in a sandbox. When a solution passes its tests, including tests the model never saw, the reusable core of the solution is stored as a <b>skill</b>: code plus the tests that prove it plus where it applies. Next time, the model retrieves relevant skills before it starts. Every few weeks, the best-verified skills become training data for a new version of the model, and that version only ships if it passes a release gate that Gopala and, later, an outside reviewer control.</p>
-    <p>The model gets better at the client's work by doing the client's work. It keeps what it learned in two places: a skill library it can inspect, and its weights. And nothing changes the rules of the loop except people.</p>
+    <ul class="mo-pts"><li>In plain terms: the model works on client tasks where success can be checked by a machine.<ul><li>Gopala starts with software and data engineering (writing and fixing code, building data pipelines, migrating schemas), because tests decide success there.</li><li>Every task runs in a sandbox.</li><li>When a solution passes its tests, including tests the model never saw, the reusable core of the solution is stored as a <b>skill</b>: code plus the tests that prove it plus where it applies.</li><li>Next time, the model retrieves relevant skills before it starts.</li><li>Every few weeks, the best-verified skills become training data for a new version of the model, and that version only ships if it passes a release gate that Gopala and, later, an outside reviewer control.</li></ul></li></ul>
+    <ul class="mo-pts"><li>The model gets better at the client's work by doing the client's work.<ul><li>It keeps what it learned in two places: a skill library it can inspect, and its weights.</li><li>And nothing changes the rules of the loop except people.</li></ul></li></ul>
 
     <h2 id="moat" class="wr-sec">6. Is it a moat?</h2>
-    <p>A moat is something a competitor with more money cannot simply buy or copy. Gopala scores the idea honestly on the forces that usually decide it. Move the sliders to see how the conclusion changes with your own view.</p>
+    <ul class="mo-pts"><li>A moat is something a competitor with more money cannot simply buy or copy.<ul><li>Gopala scores the idea honestly on the forces that usually decide it.</li><li>Move the sliders to see how the conclusion changes with your own view.</li></ul></li></ul>
     <div class="wr-fig">
       <h3>Moat scorecard</h3>
       <p class="sub">Our framework. 1 = weak, 5 = strong.</p>
@@ -952,29 +956,33 @@
       <div style="--c:#dc2626"><b>Against: big labs can do this too</b><span>Every frontier lab runs reinforcement learning on verifiable tasks. Gopala's edge must be focus, client data and the gate, not the technique.</span></div>
       <div style="--c:#dc2626"><b>Against: open models keep improving</b><span>A cheaper open model plus someone else's skill library may be good enough. Owning a model must earn its cost (Part 3 tests this).</span></div>
     </div>
-    <p>The honest conclusion: the technique is not the moat; <b>the verified data and the gate are</b>. That changes the plan. It means the first product must get into real client workflows early, the skill format and gate must be excellent, and the decision to pre-train a model from scratch has to be justified in Part 3 against the cheaper option of post-training an open model.</p>
+    <ul class="mo-pts"><li>The honest conclusion: the technique is not the moat; <b>the verified data and the gate are</b>.<ul><li>That changes the plan.</li><li>It means the first product must get into real client workflows early, the skill format and gate must be excellent, and the decision to pre-train a model from scratch has to be justified in Part 3 against the cheaper option of post-training an open model.</li></ul></li></ul>
 
     <h2 id="hyp" class="wr-sec">7. Hypotheses and kill criteria</h2>
-    <p>A research plan is only useful if it can fail. Gopala writes three hypotheses and, for each, the result that would make him stop or change course.</p>
+    <ul class="mo-pts"><li>A research plan is only useful if it can fail.<ul><li>Gopala writes three hypotheses and, for each, the result that would make him stop or change course.</li></ul></li></ul>
     <div class="mo-hyp"><b>H1 · Skills transfer.</b> With the same compute per task, retrieving verified skills raises the success rate on new, held-out tasks from the same domain.<div class="k">Kill if: no gain on held-out tasks after the library holds 1,000 skills, or gains only on tasks near-identical to stored ones.</div></div>
     <div class="mo-hyp"><b>H2 · Folding skills into weights beats generic data.</b> Fine-tuning on verified skills improves held-out success more than the same amount of compute spent on generic high-quality code data.<div class="k">Kill if: no difference, or regressions on general benchmarks that the gate cannot prevent.</div></div>
     <div class="mo-hyp"><b>H3 · The gate catches bad changes.</b> A fixed acceptance rule (hidden tests, no regression on a validation set, human sign-off for weight updates) rejects skills and model versions that would make things worse.<div class="k">Kill if: injected bad skills (overfit, reward-hacked or unsafe) get past the gate more than rarely in red-team tests.</div></div>
-    <p>H1 can be tested on a laptop; H2 needs real models (Part 2); H3 runs through every phase and becomes central in Phase 3.</p>
+    <ul class="mo-pts"><li>H1 can be tested on a laptop; H2 needs real models (Part 2); H3 runs through every phase and becomes central in Phase 3.</li></ul>
 
     <h2 id="exp" class="wr-sec">8. Experiment 1: it fails</h2>
-    <p>Before renting a single GPU, Gopala tests the shape of H1 with a toy. A "solver" searches for tiny programs that turn inputs into outputs. Tasks come in families that share hidden sub-routines, just as client tasks share patterns. Each task shows four examples and hides four more. A verified solution can be stored as a skill, and the solver gets the <b>same search budget</b> per task whatever its library holds, so any gain must come from the skills, not from more compute.</p>
-    <p>His first version does the obvious thing: <b>hoard</b>. Every verified solution is added to the search vocabulary. The result: the more it remembers, the worse it gets. The full script is in the next section; this is the line that compares the variants, with a fixed random seed:</p>
+    <ul class="mo-pts"><li>Before renting a single GPU, Gopala tests the shape of H1 with a toy.<ul><li>A "solver" searches for tiny programs that turn inputs into outputs.</li><li>Tasks come in families that share hidden sub-routines, just as client tasks share patterns.</li><li>Each task shows four examples and hides four more.</li><li>A verified solution can be stored as a skill, and the solver gets the <b>same search budget</b> per task whatever its library holds, so any gain must come from the skills, not from more compute.</li></ul></li></ul>
+    <ul class="mo-pts"><li>His first version does the obvious thing: <b>hoard</b>.<ul><li>Every verified solution is added to the search vocabulary.</li><li>The result: the more it remembers, the worse it gets.</li></ul></li></ul>
+    <p>The full script is in the next section; this is the line that compares the variants, with a fixed random seed:</p>
     <div class="mo-out">off     r0:16/40( 0) r1:12/40( 0) r2:14/40( 0) r3:12/40( 0) r4:14/40( 0) r5:16/40( 0)
 hoard   r0:14/40(13) r1:10/40(17) r2: 5/40(20) r3:14/40(29) r4: 7/40(31) r5:15/40(40)
 format: round:solved-on-hidden-tests(skills in library)</div>
-    <p>Without skills ("off") the solver averages about 14 of 40 tasks per round. Hoarding drops it to about 11, with wild swings, even as the library grows to 40 skills. Two days of digging find two reasons, both of which matter for the real system:</p>
+    <ul class="mo-pts"><li>Without skills ("off") the solver averages about 14 of 40 tasks per round.<ul><li>Hoarding drops it to about 11, with wild swings, even as the library grows to 40 skills.</li></ul></li></ul>
+    <p>Two days of digging find two reasons, both of which matter for the real system:</p>
     <div class="cs-cards ml-five">
       <div style="--c:#dc2626"><b>Whole solutions are not skills</b><span>A stored solution includes the task-specific first and last steps. It only helps on that exact task. The reusable part is the shared core in the middle.</span></div>
       <div style="--c:#dc2626"><b>More options dilute the search</b><span>Every new vocabulary item makes each random guess less likely to hit. Without retrieval, a bigger library is a bigger haystack. Real models suffer the same way when too many tools or memories are put in context (<a href="agent-memory-state.html">Agent Layer Part 6</a>).</span></div>
     </div>
 
     <h2 id="exp2" class="wr-sec">9. Experiment 2: it works</h2>
-    <p>The second version, <b>curate</b>, changes three things, each borrowed from the papers in section 4: it stores only the <b>abstracted core</b> of a solution (DreamCoder's lesson), it <b>retrieves the most useful skills first</b> and tries them with small wrappers before falling back to blind search (Voyager's lesson), and every new skill must pass the <b>gate</b>: hidden tests, no duplicates, no drop in a validation score. Same budget per task.</p>
+    <div class="wr-fig mo-vis"><h3>Experiment results: average tasks solved (of 40, hidden tests)</h3><div class="mo-bars"><div class="r"><span class="l">Off (no skills)</span><span class="t"><span class="b" style="width:35.0%;background:#64748b"></span></span><span class="v">14.0</span></div><div class="r"><span class="l">Hoard every skill</span><span class="t"><span class="b" style="width:27.0%;background:#d97706"></span></span><span class="v">10.8</span></div><div class="r"><span class="l">Curate verified skills</span><span class="t"><span class="b" style="width:52.0%;background:#16a34a"></span></span><span class="v">20.8</span></div></div><p class="mo-cap">Real output of <code>l4_toy.py</code>, averaged over six rounds. Hoarding hurts; curating helps.</p></div>
+
+    <ul class="mo-pts"><li>The second version, <b>curate</b>, changes three things, each borrowed from the papers in section 4: it stores only the <b>abstracted core</b> of a solution (DreamCoder's lesson), it <b>retrieves the most useful skills first</b> and tries them with small wrappers before falling back to blind search (Voyager's lesson), and every new skill must pass the <b>gate</b>: hidden tests, no duplicates, no drop in a validation score.<ul><li>Same budget per task.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>l4_toy.py · Python 3, no dependencies · ~7 s</span><button type="button" class="cp">Copy</button></div><pre>"""l4_toy.py — a toy L4 (deployment-adaptation) loop you can run on a laptop.
 
 A solver searches for small programs that match a task's examples. Verified
@@ -1103,10 +1111,13 @@ format: round:solved-on-hidden-tests(skills in library)</div>
       <svg id="resSvg" viewBox="0 0 640 260" role="img" aria-label="Results chart"></svg>
       <div class="wr-res" id="resOut"></div>
     </div>
-    <p>Curated skills lift the solve rate from about 14 to about 21 of 40 (roughly 50% more) at the same budget, with a smaller library (23 skills instead of 40). That is H1's shape, in miniature. It is a toy: one seed, a tiny made-up language, random search instead of a model. Its value is not the number but the two design rules it forces, which carry straight into the real system: <b>store abstractions, not transcripts</b>, and <b>retrieve before you search</b>.</p>
+    <ul class="mo-pts"><li>Curated skills lift the solve rate from about 14 to about 21 of 40 (roughly 50% more) at the same budget, with a smaller library (23 skills instead of 40).<ul><li>That is H1's shape, in miniature.</li><li>It is a toy: one seed, a tiny made-up language, random search instead of a model.</li><li>Its value is not the number but the two design rules it forces, which carry straight into the real system: <b>store abstractions, not transcripts</b>, and <b>retrieve before you search</b>.</li></ul></li></ul>
 
     <h2 id="gate" class="wr-sec">10. The gate is the product</h2>
-    <p>Look at the <code>gate</code> function in the script again. It is short, and it never changes itself. In the real system it grows into the most important piece of software Gopala writes, because it is what makes the loop L4 instead of L5, what a client audits, and what a safety reviewer signs off. Its checks, in the order they will run:</p>
+    <div class="wr-fig mo-vis"><h3>What the gate checks before any weight update</h3><div class="mo-flow"><div class="s" style="--c:#2563eb"><i>🙈</i><b>Hidden tests</b><span>Tests the loop never saw</span></div><div class="s" style="--c:#0d9488"><i>↩️</i><b>No regression</b><span>Old skills still pass</span></div><div class="s" style="--c:#ea580c"><i>🔍</i><b>Red-team probe</b><span>Looks for gaming of tests</span></div><div class="s" style="--c:#be123c"><i>🧑‍⚖️</i><b>Human sign-off</b><span>Named person approves</span></div></div><p class="mo-cap">If any check says no, the update does not happen. Default answer: no.</p></div>
+
+    <ul class="mo-pts"><li>Look at the <code>gate</code> function in the script again.<ul><li>It is short, and it never changes itself.</li><li>In the real system it grows into the most important piece of software Gopala writes, because it is what makes the loop L4 instead of L5, what a client audits, and what a safety reviewer signs off.</li></ul></li></ul>
+    <p>Its checks, in the order they will run:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Check</th><th>Toy version</th><th>Real version (Phases 2–4)</th></tr>
       <tr><td><b>Verified</b></td><td>Passes hidden tests</td><td>Passes hidden tests, static analysis and a sandboxed run; reviewed by an LLM judge for intent, with human spot checks (<a href="eval-llm-judges.html">Evaluation Layer Part 3</a>)</td></tr>
@@ -1117,7 +1128,8 @@ format: round:solved-on-hidden-tests(skills in library)</div>
     </table></div>
 
     <h2 id="safety" class="wr-sec">11. Safety from day one</h2>
-    <p>Self-improving systems are the part of AI that safety researchers worry about most, and with reason: a loop that rewards itself can drift, game its checks or learn things nobody intended. Gopala writes his safety principles before writing the product, so every later design choice has to satisfy them:</p>
+    <ul class="mo-pts"><li>Self-improving systems are the part of AI that safety researchers worry about most, and with reason: a loop that rewards itself can drift, game its checks or learn things nobody intended.</li></ul>
+    <p>Gopala writes his safety principles before writing the product, so every later design choice has to satisfy them:</p>
     <div class="cs-cards ml-five">
       <div style="--c:#be123c"><b>The process is fixed</b><span>The loop can change skills and, through the gate, weights. It can never change the gate, the evaluations or its own objectives.</span></div>
       <div style="--c:#be123c"><b>Checks are external</b><span>"Better" is decided by tests and evaluations the model does not write and cannot see in full, never by the model judging itself alone.</span></div>
@@ -1125,9 +1137,11 @@ format: round:solved-on-hidden-tests(skills in library)</div>
       <div style="--c:#be123c"><b>Humans hold the switch</b><span>Weight updates need human approval; any skill or version can be rolled back; tripwires pause the loop automatically.</span></div>
       <div style="--c:#be123c"><b>Everything is logged</b><span>Every skill's origin, tests and uses are traceable, so a bad behaviour can be traced to its source.</span></div>
     </div>
-    <p>These become the safety case in Part 13 and the approval file in Part 14. The <a href="eval-safety-capability.html">safety evaluations article</a> explains what the frontier labs test for; Gopala will borrow their structure.</p>
+    <ul class="mo-pts"><li>These become the safety case in Part 13 and the approval file in Part 14.<ul><li>The <a href="eval-safety-capability.html">safety evaluations article</a> explains what the frontier labs test for; Gopala will borrow their structure.</li></ul></li></ul>
 
     <h2 id="plan" class="wr-sec">12. The 90-day research plan</h2>
+    <div class="wr-fig mo-vis"><h3>The 90-day research plan</h3><div class="mo-flow"><div class="s" style="--c:#be123c"><i>📖</i><b>Weeks 1–3</b><span>Read the field, write hypotheses and kill criteria</span></div><div class="s" style="--c:#ea580c"><i>🧪</i><b>Weeks 4–8</b><span>Small proofs: trainer, scaling ladder, H1 and H2</span></div><div class="s" style="--c:#2563eb"><i>💰</i><b>Weeks 6–10</b><span>Plan, budget, raise</span></div><div class="s" style="--c:#16a34a"><i>🚦</i><b>Month 3</b><span>Gate G1: go or stop</span></div></div><p class="mo-cap">From Part 1. Each step ends with a decision, not a report.</p></div>
+
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Weeks</th><th>Goal</th><th>Output</th><th>Decision at the end</th></tr>
       <tr><td>1–3</td><td>Choose and frame the idea (this part)</td><td>Hypotheses, toy result, safety principles</td><td>Proceed to real models? <b>Yes</b></td></tr>
@@ -1160,7 +1174,7 @@ format: round:solved-on-hidden-tests(skills in library)</div>
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
-    <div class="wr-box wr-verdict"><b class="l">Verdict</b>Gopala's idea is an L4 system: a model that keeps machine-verified skills from real work and folds the best of them back into its weights, under a fixed gate that people control. The technique is not the moat; the verified data and the gate are. A laptop toy shows both the trap (hoarding memories makes things worse) and the fix (abstract, retrieve, gate). The next step is to see whether the effect survives with real models and grows with scale: <a href="maestro-proving-small.html">Part 2, proving it small</a>.</div>
+    <div class="wr-box wr-verdict"><b class="l">Verdict</b><ul class="mo-pts"><li>Gopala's idea is an L4 system: a model that keeps machine-verified skills from real work and folds the best of them back into its weights, under a fixed gate that people control.<ul><li>The technique is not the moat; the verified data and the gate are.</li><li>A laptop toy shows both the trap (hoarding memories makes things worse) and the fix (abstract, retrieve, gate).</li><li>The next step is to see whether the effect survives with real models and grows with scale: <a href="maestro-proving-small.html">Part 2, proving it small</a>.</li></ul></li></ul></div>
 
     <h2 id="numbers" class="wr-sec">16. Reading the numbers</h2>
     <dl class="wr-dl">

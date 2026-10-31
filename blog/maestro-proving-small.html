@@ -891,14 +891,16 @@
       <li>Applies the decision rules written <i>before</i> the runs (sections 7–9).</li></ul></div>
 
     <h2 id="two" class="wr-sec">2. Two questions</h2>
+    <div class="wr-fig mo-vis"><h3>Two questions, two kinds of evidence</h3><div class="mo-flow"><div class="s" style="--c:#2563eb"><i>❓</i><b>H1</b><span>Do curated skills help a real model at inference time?</span></div><div class="s" style="--c:#0d9488"><i>🧪</i><b>Test</b><span>Paired comparison on the same tasks, with a confidence interval</span></div><div class="s" style="--c:#7c3aed"><i>❓</i><b>H2</b><span>Do verified skills help when trained into the weights?</span></div><div class="s" style="--c:#ea580c"><i>🧪</i><b>Test</b><span>LoRA fine-tune vs base on held-out tasks</span></div></div><p class="mo-cap">Phase 0 must answer both cheaply before any large money is spent.</p></div>
+
     <div class="cs-cards ml-five">
       <div style="--c:#2563eb"><b>Track A · Can he train?</b><span>Does his own training code work, and does loss fall predictably with model size? Without this, every later decision about model size is a guess.</span></div>
       <div style="--c:#be123c"><b>Track B · Does the idea hold?</b><span>Do verified skills help a real language model on held-out tasks (H1)? Does folding them into weights beat generic data (H2)?</span></div>
     </div>
-    <p>Both tracks are cheap on purpose. The <a href="frontier-lab-startup-playbook.html">start-up playbook</a> makes the point that experiments usually cost several times the final run; the cheapest experiments are the ones that kill bad ideas early.</p>
+    <ul class="mo-pts"><li>Both tracks are cheap on purpose.<ul><li>The <a href="frontier-lab-startup-playbook.html">start-up playbook</a> makes the point that experiments usually cost several times the final run<ul><li>the cheapest experiments are the ones that kill bad ideas early.</li></ul></li></ul></li></ul>
 
     <h2 id="trainer" class="wr-sec">3. A trainer you trust</h2>
-    <p>The trainer is deliberately small: a GPT-style decoder (pre-norm blocks, causal attention through PyTorch's fused <code>scaled_dot_product_attention</code>, which uses FlashAttention-style kernels on a GPU), byte-level tokens so no tokenizer is needed yet, AdamW, a warmup-then-cosine learning-rate schedule, gradient clipping, bf16 on GPUs, periodic validation and checkpoint-and-resume. Those last features look like luxuries on a laptop; on a cluster they are what separates a lost hour from a lost week (<a href="llama-3-running-the-run.html">running the Llama 3 run</a>).</p>
+    <ul class="mo-pts"><li>The trainer is deliberately small: a GPT-style decoder (pre-norm blocks, causal attention through PyTorch's fused <code>scaled_dot_product_attention</code>, which uses FlashAttention-style kernels on a GPU), byte-level tokens so no tokenizer is needed yet, AdamW, a warmup-then-cosine learning-rate schedule, gradient clipping, bf16 on GPUs, periodic validation and checkpoint-and-resume.<ul><li>Those last features look like luxuries on a laptop<ul><li>on a cluster they are what separates a lost hour from a lost week (<a href="llama-3-running-the-run.html">running the Llama 3 run</a>).</li></ul></li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>train_tiny.py · PyTorch · CPU or one GPU</span><button type="button" class="cp">Copy</button></div><pre>"""train_tiny.py — a minimal GPT trainer for the Maestro's small-scale proofs.
 
 The same file trains a 0.1M-parameter smoke-test model on a laptop CPU and,
@@ -1025,7 +1027,8 @@ def main():
 
 if __name__ == "__main__":
     main()</pre></div>
-    <p>The first smoke test printed an initial loss of about 33, far above the ~5.5 expected for random guessing over 256 byte values (ln 256 ≈ 5.55). The cause: PyTorch's default embedding initialisation combined with tied input and output weights produced huge logits. The fix is the GPT-2-style small initialisation in <code>_init</code>. After it, the smoke test behaves:</p>
+    <ul class="mo-pts"><li>The first smoke test printed an initial loss of about 33, far above the ~5.5 expected for random guessing over 256 byte values (ln 256 ≈ 5.55).<ul><li>The cause: PyTorch's default embedding initialisation combined with tied input and output weights produced huge logits.</li><li>The fix is the GPT-2-style small initialisation in <code>_init</code>.</li></ul></li></ul>
+    <p>After it, the smoke test behaves:</p>
     <div class="mo-out" id="smokeOut">$ python3 train_tiny.py --size xs --steps 400
 size=xs params=0.12M tokens=0.82M compute≈5.73e+11 FLOPs device=cpu
 step     0  train 5.486  val 5.432  (0s)
@@ -1036,7 +1039,9 @@ step   399  train 2.187  val 2.332  (5s)
 final_val 2.3317 params 116480</div>
 
     <h2 id="ladder" class="wr-sec">4. The model ladder</h2>
-    <p>Next, four sizes from about 0.1M to 4.8M parameters, each trained for 1,500 steps on the <b>same</b> 3.1M tokens of Python source, with the same learning-rate recipe. Same data, same steps: the only thing that changes is the model size, so the curve isolates the effect of size.</p>
+    <div class="wr-fig mo-vis"><h3>The model ladder: final validation loss (lower is better)</h3><div class="mo-bars"><div class="r"><span class="l">xs · 0.12M params</span><span class="t"><span class="b" style="width:95.2%;background:#64748b"></span></span><span class="v">1.810</span></div><div class="r"><span class="l">s · 0.83M</span><span class="t"><span class="b" style="width:82.8%;background:#2563eb"></span></span><span class="v">1.573</span></div><div class="r"><span class="l">sm · 1.83M</span><span class="t"><span class="b" style="width:78.6%;background:#2563eb"></span></span><span class="v">1.494</span></div><div class="r"><span class="l">m · 4.80M, lr 3e-3</span><span class="t"><span class="b" style="width:85.1%;background:#be123c"></span></span><span class="v">1.617 ✗</span></div><div class="r"><span class="l">m · 4.80M, lr 1e-3</span><span class="t"><span class="b" style="width:78.9%;background:#16a34a"></span></span><span class="v">1.499</span></div></div><p class="mo-cap">Real output. The biggest model was worse until its learning rate was lowered: one setting does not fit all sizes.</p></div>
+
+    <ul class="mo-pts"><li>Next, four sizes from about 0.1M to 4.8M parameters, each trained for 1,500 steps on the <b>same</b> 3.1M tokens of Python source, with the same learning-rate recipe.<ul><li>Same data, same steps: the only thing that changes is the model size, so the curve isolates the effect of size.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>ladder.sh</span><button type="button" class="cp">Copy</button></div><pre>#!/bin/sh
 # ladder.sh — train four sizes on the same data budget, collect "params loss" for scaling_fit.py
 rm -f ladder.txt ckpt_*.pt
@@ -1057,7 +1062,10 @@ size=m params=4.80M tokens=3.07M compute≈8.86e+13 FLOPs device=cpu
 final_val 1.4991</div>
 
     <h2 id="fit" class="wr-sec">5. Fitting a scaling law</h2>
-    <p>Scaling laws describe how loss falls as a power of model size, approaching a floor: L(N) = E + A·N<sup>−α</sup>. Fitting one to small runs is how labs decide how big to go before spending real money (<a href="llama-3-planning-the-run.html">planning the run</a>). Gopala's fit uses only numpy:</p>
+    <div class="wr-fig mo-vis"><h3>What the scaling-law fit says</h3><div class="mo-kpis"><div style="--c:#2563eb"><b>1.450</b><span>loss floor in the fit</span></div><div style="--c:#7c3aed"><b>−0.604</b><span>exponent on parameters</span></div><div style="--c:#be123c"><b>1.410 vs 1.499</b><span>predicted vs measured for the largest model</span></div><div style="--c:#64748b"><b>0.0147</b><span>fit error (RMSE) on 4 runs</span></div></div><p class="mo-cap">Real output of <code>scaling_fit.py</code>. Fitting on three points over-predicted the gain: small ladders extrapolate badly.</p></div>
+
+    <ul class="mo-pts"><li>Scaling laws describe how loss falls as a power of model size, approaching a floor: L(N) = E + A·N<sup>−α</sup>.<ul><li>Fitting one to small runs is how labs decide how big to go before spending real money (<a href="llama-3-planning-the-run.html">planning the run</a>).</li></ul></li></ul>
+    <p>Gopala's fit uses only numpy:</p>
     <div class="mo-code"><div class="h"><span>scaling_fit.py · numpy</span><button type="button" class="cp">Copy</button></div><pre>"""scaling_fit.py — fit L(N) = E + A·N^(-alpha) to a ladder of small runs.
 
 Input: one line per run, "params final_val_loss" (the last line printed by
@@ -1105,10 +1113,11 @@ fit: L(N) = 1.450 + 413.06 * N^-0.604   (rmse 0.0147 on 4 runs)
       <svg id="fitSvg" viewBox="0 0 640 280" role="img" aria-label="Scaling fit"></svg>
       <div class="wr-res" id="fitOut"></div>
     </div>
-    <p>Two lessons came out of this ladder, both of which repeat at every scale. First, <b>one learning rate does not fit all sizes</b>: with the same 3e-3 as the small models, the 4.8M model trained worse than the 1.8M one; at 1e-3 it recovered. Larger models need smaller learning rates, which is why real scaling studies tune them per size or use parameterisations that transfer them. Second, the <b>predict-then-check</b> test failed usefully: fitted on the three smallest runs, the law predicted 1.41 for the largest model, which measured 1.50. The cause is data: every run saw the same 3.1M tokens, so beyond about 2M parameters extra size buys almost nothing, and the fitted floor of ~1.45 is a property of this tiny dataset, not of the models. Two cautions matter more than the numbers. First, these runs hold data fixed, so bigger models are increasingly data-starved; a real plan varies both size and tokens (the Chinchilla approach). Second, extrapolating two orders of magnitude from four points is risky; labs fit on dozens of runs spanning several orders of magnitude. The value here is the habit: <b>predict, then check</b>. Gopala refits with the three smallest runs and checks how well that predicts the fourth before he believes any extrapolation.</p>
+    <ul class="mo-pts"><li>Two lessons came out of this ladder, both of which repeat at every scale.<ul><li>First, <b>one learning rate does not fit all sizes</b>:<ul><li>with the same 3e-3 as the small models, the 4.8M model trained worse than the 1.8M one</li><li>at 1e-3 it recovered.</li></ul></li><li>Larger models need smaller learning rates, which is why real scaling studies tune them per size or use parameterisations that transfer them.</li><li>Second, the <b>predict-then-check</b> test failed usefully: fitted on the three smallest runs, the law predicted 1.41 for the largest model, which measured 1.50.</li><li>The cause is data: every run saw the same 3.1M tokens, so beyond about 2M parameters extra size buys almost nothing, and the fitted floor of ~1.45 is a property of this tiny dataset, not of the models.</li><li>Two cautions matter more than the numbers.</li><li>First, these runs hold data fixed, so bigger models are increasingly data-starved; a real plan varies both size and tokens (the Chinchilla approach).</li><li>Second, extrapolating two orders of magnitude from four points is risky; labs fit on dozens of runs spanning several orders of magnitude.</li><li>The value here is the habit: <b>predict, then check</b>.</li><li>Gopala refits with the three smallest runs and checks how well that predicts the fourth before he believes any extrapolation.</li></ul></li></ul>
 
     <h2 id="gpu" class="wr-sec">6. Moving to a real GPU</h2>
-    <p>The same script runs unchanged on one rented GPU at 125M–1B parameters (<code>--size 125M --ctx 1024 --bs 64</code>), with a proper tokenizer and a slice of a public dataset such as FineWeb-Edu replacing the Python source. What changes is not the code but the discipline:</p>
+    <ul class="mo-pts"><li>The same script runs unchanged on one rented GPU at 125M–1B parameters (<code>--size 125M --ctx 1024 --bs 64</code>), with a proper tokenizer and a slice of a public dataset such as FineWeb-Edu replacing the Python source.</li></ul>
+    <p>What changes is not the code but the discipline:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Concern</th><th>Laptop</th><th>One rented GPU</th></tr>
       <tr><td>Data</td><td>Local Python files, bytes</td><td>Tokenized shards of a public corpus, streamed</td></tr>
@@ -1117,10 +1126,10 @@ fit: L(N) = 1.450 + 413.06 * N^-0.604   (rmse 0.0147 on 4 runs)
       <tr><td>Failure handling</td><td>Rerun</td><td>Checkpoint every few hundred steps; resume automatically (already in the script)</td></tr>
       <tr><td>Logging</td><td>print()</td><td>An experiment tracker; every run tagged with code version and config (<a href="ai-factory-research-tooling.html">research tooling</a>)</td></tr>
     </table></div>
-    <p>Multi-GPU training (data, tensor and pipeline parallelism) waits for Part 9; for Phase 0, single-GPU runs are enough to validate the stack and the scaling behaviour.</p>
+    <ul class="mo-pts"><li>Multi-GPU training (data, tensor and pipeline parallelism) waits for Part 9; for Phase 0, single-GPU runs are enough to validate the stack and the scaling behaviour.</li></ul>
 
     <h2 id="h1" class="wr-sec">7. H1 on a real model</h2>
-    <p>Part 1's toy showed the shape of H1. The real test uses an open 7–8B instruction model served with vLLM on one GPU, and 300 engineering tasks written in the style of the design partners' work: fix this failing test, add this feature to this function, write this data transformation. Each has hidden tests. Tasks are split by <b>repository</b>: skills may only come from training repositories, and test tasks come from repositories the library never saw, so a skill cannot simply be the answer.</p>
+    <ul class="mo-pts"><li>Part 1's toy showed the shape of H1.<ul><li>The real test uses an open 7–8B instruction model served with vLLM on one GPU, and 300 engineering tasks written in the style of the design partners' work: fix this failing test, add this feature to this function, write this data transformation.</li><li>Each has hidden tests.</li><li>Tasks are split by <b>repository</b>: skills may only come from training repositories, and test tasks come from repositories the library never saw, so a skill cannot simply be the answer.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>skill_eval.py · needs a model server · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre>"""skill_eval.py — H1 with a real model: does retrieving verified skills help?
 
 Runs the same coding tasks twice against any OpenAI-compatible endpoint (for
@@ -1198,10 +1207,12 @@ def main():
 
 if __name__ == "__main__":
     main()</pre></div>
-    <p>Design choices worth copying: the two arms use the same model, the same sampling settings and the same number of attempts; correctness is decided by executing hidden tests, never by a judge model; and retrieval starts deliberately simple (word overlap) so that a positive result cannot be blamed on a clever retriever. Part 6 of the Agent Layer series explains why stuffing too many skills into the prompt backfires; the script caps it at three.</p>
+    <ul class="mo-pts"><li>Design choices worth copying: the two arms use the same model, the same sampling settings and the same number of attempts; correctness is decided by executing hidden tests, never by a judge model; and retrieval starts deliberately simple (word overlap) so that a positive result cannot be blamed on a clever retriever.<ul><li>Part 6 of the Agent Layer series explains why stuffing too many skills into the prompt backfires; the script caps it at three.</li></ul></li></ul>
 
     <h2 id="stats" class="wr-sec">8. Fair statistics</h2>
-    <p>With 300 tasks, a few points of difference can be luck. Because both arms solve the same tasks, the right comparison is <b>paired</b>: task by task. Gopala writes his decision rule before running anything: <i>proceed only if the 95% bootstrap interval for (skills − base) lies entirely above zero</i>.</p>
+    <div class="wr-fig mo-vis"><h3>Fair statistics: the paired test</h3><div class="mo-kpis"><div style="--c:#64748b"><b>124 / 300</b><span>base model solves</span></div><div style="--c:#16a34a"><b>140 / 300</b><span>with skills</span></div><div style="--c:#2563eb"><b>+0.053</b><span>difference</span></div><div style="--c:#7c3aed"><b>[+0.030, +0.080]</b><span>95% confidence interval</span></div></div><p class="mo-cap">Simulated self-check of <code>paired_ci.py</code> (not real model results). The interval excludes zero, so the rule says proceed.</p></div>
+
+    <ul class="mo-pts"><li>With 300 tasks, a few points of difference can be luck.<ul><li>Because both arms solve the same tasks, the right comparison is <b>paired</b>: task by task.</li><li>Gopala writes his decision rule before running anything: <i>proceed only if the 95% bootstrap interval for (skills − base) lies entirely above zero</i>.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>paired_ci.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""paired_ci.py — is the difference between two arms real, or luck?
 
 Both arms run the SAME tasks, so compare them task by task (a paired test) and
@@ -1235,7 +1246,7 @@ if __name__ == "__main__":
     <div class="mo-out">$ python3 paired_ci.py
 simulated: base 124/300, skills 140/300, diff +0.053, 95% CI [+0.030, +0.080]
 decision: proceed</div>
-    <p>The self-check uses <b>simulated</b> outcomes to show the method works; it is not a result. With real outcomes, the same function decides the experiment.</p>
+    <ul class="mo-pts"><li>The self-check uses <b>simulated</b> outcomes to show the method works; it is not a result.<ul><li>With real outcomes, the same function decides the experiment.</li></ul></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Outcome (written in advance)</th><th>Decision</th></tr>
       <tr><td>Interval entirely above 0, gain ≥ 5 points</td><td>Proceed to H2 and to planning (Part 3)</td></tr>
@@ -1245,7 +1256,7 @@ decision: proceed</div>
     </table></div>
 
     <h2 id="h2" class="wr-sec">9. H2: into the weights</h2>
-    <p>H1 shows skills help when they are in the prompt. H2 asks whether the model can carry them in its weights. Two LoRA adapters on the same base, trained for the same number of examples: one on verified skills turned into task-and-solution pairs, one on an equal amount of high-quality public code. Then both are evaluated <b>without</b> retrieval on the held-out tasks.</p>
+    <ul class="mo-pts"><li>H1 shows skills help when they are in the prompt.<ul><li>H2 asks whether the model can carry them in its weights.</li><li>Two LoRA adapters on the same base, trained for the same number of examples: one on verified skills turned into task-and-solution pairs, one on an equal amount of high-quality public code.</li><li>Then both are evaluated <b>without</b> retrieval on the held-out tasks.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>lora_skills.py · Hugging Face TRL + PEFT · needs a GPU · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre>"""lora_skills.py — H2 preview: fold verified skills into weights with LoRA.
 
 Two adapters on the same open base model, trained for the SAME number of tokens:
@@ -1307,13 +1318,15 @@ def main():
 
 if __name__ == "__main__":
     main()</pre></div>
-    <p>Why LoRA here and not full fine-tuning: it trains a few million parameters instead of billions, fits on one GPU, and makes the comparison cheap to repeat with different seeds. The full version of this experiment, folding skills into a model during pre-training and post-training, is Phase 2's job (Parts 10–11).</p>
+    <ul class="mo-pts"><li>Why LoRA here and not full fine-tuning: it trains a few million parameters instead of billions, fits on one GPU, and makes the comparison cheap to repeat with different seeds.<ul><li>The full version of this experiment, folding skills into a model during pre-training and post-training, is Phase 2's job (Parts 10–11).</li></ul></li></ul>
 
     <h2 id="scenario" class="wr-sec">10. What Gopala found (scenario)</h2>
-    <div class="wr-box wr-caveat"><b class="l">Scenario, not measurement</b>This section continues the story. The outcomes below are <b>what the scenario assumes</b> so the series can proceed; they are not results of running the scripts above. Run them yourself to get real numbers.</div>
-    <p>In the scenario, H1 lands in the first row of the decision table: retrieval of verified skills improves pass@4 on held-out repositories, with a paired interval clearly above zero. H2 lands in the second row: the skills adapter beats the generic-code adapter on held-out tasks, but by less, and it slightly weakens performance on a general coding benchmark, which is exactly what the gate's no-regression check exists to catch. The ladder and scaling fit behave as expected. Gopala's conclusion: the effect is real enough to plan around, the gate is not optional, and how skills enter the weights will need care at scale.</p>
+    <div class="wr-box wr-caveat"><b class="l">Scenario, not measurement</b><ul class="mo-pts"><li>This section continues the story.<ul><li>The outcomes below are <b>what the scenario assumes</b> so the series can proceed; they are not results of running the scripts above.</li><li>Run them yourself to get real numbers.</li></ul></li></ul></div>
+    <ul class="mo-pts"><li>In the scenario, H1 lands in the first row of the decision table: retrieval of verified skills improves pass@4 on held-out repositories, with a paired interval clearly above zero.<ul><li>H2 lands in the second row: the skills adapter beats the generic-code adapter on held-out tasks, but by less, and it slightly weakens performance on a general coding benchmark, which is exactly what the gate's no-regression check exists to catch.</li><li>The ladder and scaling fit behave as expected.</li><li>Gopala's conclusion: the effect is real enough to plan around, the gate is not optional, and how skills enter the weights will need care at scale.</li></ul></li></ul>
 
     <h2 id="cost" class="wr-sec">11. What it cost</h2>
+    <div class="wr-fig mo-vis"><h3>What Phase 0 experiments cost</h3><div class="mo-flow"><div class="s" style="--c:#16a34a"><i>💻</i><b>Laptop CPU</b><span>Trainer, ladder and fit: free</span></div><div class="s" style="--c:#2563eb"><i>🖥️</i><b>Rented GPUs</b><span>Short runs for H1/H2 (scenario)</span></div><div class="s" style="--c:#0d9488"><i>🔌</i><b>APIs</b><span>Model calls for skill extraction (scenario)</span></div></div><p class="mo-cap">Small proofs are cheap. The expensive part is the time to get them right.</p></div>
+
     <div class="wr-fig">
       <h3>Phase 0 experiment budget</h3>
       <p class="sub">Our model; GPU price is an on-demand assumption.</p>
@@ -1322,7 +1335,7 @@ if __name__ == "__main__":
       <div class="wr-sl"><label>On-demand price per GPU-hour <b id="ePv"></b></label><input type="range" id="eP" min="1.5" max="8" step="0.1" value="3.5"></div>
       <div class="wr-res" id="eOut"></div>
     </div>
-    <p>A few thousand dollars buys the evidence that decides whether to raise twenty million. That ratio is why Phase 0 exists.</p>
+    <ul class="mo-pts"><li>A few thousand dollars buys the evidence that decides whether to raise twenty million.<ul><li>That ratio is why Phase 0 exists.</li></ul></li></ul>
 
     <h2 id="deleg" class="wr-sec">12. Delegation box</h2>
     <div class="mo-deleg">
@@ -1347,7 +1360,7 @@ if __name__ == "__main__":
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
-    <div class="wr-box wr-verdict"><b class="l">Verdict</b>Track A works: a 150-line trainer trains, resumes and scales predictably across a four-size ladder, and the fitted law gives a first, cautious handle on how big to go. Track B has runnable, pre-registered tests for both hypotheses, with paired statistics and decision rules written before the data. The scenario's results are good enough to plan around and honest enough to show where the gate matters. Next: turning evidence into a budget and a raise in <a href="maestro-plan-money.html">Part 3, the plan and the money</a>.</div>
+    <div class="wr-box wr-verdict"><b class="l">Verdict</b><ul class="mo-pts"><li>Track A works: a 150-line trainer trains, resumes and scales predictably across a four-size ladder, and the fitted law gives a first, cautious handle on how big to go.<ul><li>Track B has runnable, pre-registered tests for both hypotheses, with paired statistics and decision rules written before the data.</li><li>The scenario's results are good enough to plan around and honest enough to show where the gate matters.</li><li>Next: turning evidence into a budget and a raise in <a href="maestro-plan-money.html">Part 3, the plan and the money</a>.</li></ul></li></ul></div>
 
     <h2 id="numbers" class="wr-sec">15. Reading the numbers</h2>
     <dl class="wr-dl">

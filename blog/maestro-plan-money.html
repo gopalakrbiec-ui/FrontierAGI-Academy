@@ -895,7 +895,9 @@
       <li>Pitches; the scenario assumes a $20M seed round closes at the end of week 10.</li></ul></div>
 
     <h2 id="decision" class="wr-sec">2. The big decision</h2>
-    <p>There are only four sensible ways for a start-up to get the model at the centre of its product. Gopala writes them down as scenarios with explicit sizes, so the comparison is about numbers, not taste.</p>
+    <div class="wr-fig mo-vis"><h3>Four ways to get a model: cost including experiments</h3><div class="mo-bars"><div class="r"><span class="l">A · post-train open 32B</span><span class="t"><span class="b" style="width:8.0%;background:#16a34a"></span></span><span class="v">$0.80M</span></div><div class="r"><span class="l">B · 8B dense from scratch</span><span class="t"><span class="b" style="width:53.4%;background:#2563eb"></span></span><span class="v">$5.34M</span></div><div class="r"><span class="l">D · MoE 12B active from scratch</span><span class="t"><span class="b" style="width:72.5%;background:#7c3aed"></span></span><span class="v">$7.25M</span></div><div class="r"><span class="l">C · 32B dense from scratch</span><span class="t"><span class="b" style="width:92.9%;background:#be123c"></span></span><span class="v">$9.29M</span></div></div><p class="mo-cap">Real output of <code>budget.py</code> (our assumptions: 30% MFU, $2.35/GPU-hr ⚠️).</p></div>
+
+    <ul class="mo-pts"><li>There are only four sensible ways for a start-up to get the model at the centre of its product.<ul><li>Gopala writes them down as scenarios with explicit sizes, so the comparison is about numbers, not taste.</li></ul></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Scenario</th><th>What it means</th><th>Upside</th><th>Downside</th></tr>
       <tr><td><b>A · Post-train an open 32B</b></td><td>Take an open-weight model; fine-tune and run reinforcement learning on verified skills</td><td>Cheap, fast, strong from day one</td><td>Someone else's architecture, data and licence; competitors can start from the same base</td></tr>
@@ -905,13 +907,15 @@
     </table></div>
 
     <h2 id="math" class="wr-sec">3. Compute from first principles</h2>
+    <div class="wr-fig mo-vis"><h3>Compute from first principles</h3><div class="mo-flow"><div class="s" style="--c:#2563eb"><i>🔢</i><b>FLOPs</b><span>6 × parameters × tokens</span></div><div class="s" style="--c:#7c3aed"><i>⚡</i><b>GPU speed</b><span>989 TFLOP/s peak × 30% MFU</span></div><div class="s" style="--c:#0d9488"><i>⏱️</i><b>GPU-hours</b><span>FLOPs ÷ speed, +10% failures</span></div><div class="s" style="--c:#16a34a"><i>💵</i><b>Cost</b><span>GPU-hours × $/hour</span></div></div><p class="mo-cap">The same four steps price every option in the table below.</p></div>
+
     <p>Every number in this part comes from three rules of thumb, explained in the site's <a href="frontier-lab-startup-playbook.html">frontier-lab start-up playbook</a> and <a href="llama-3-planning-the-run.html">planning the Llama 3 run</a>:</p>
     <div class="cs-cards ml-five">
       <div style="--c:#be123c"><b>Training ≈ 6 · N · D</b><span>FLOPs to train a dense transformer with N parameters on D tokens: about 2 for the forward pass and 4 for the backward pass, per parameter per token. For mixture-of-experts, N is the active parameters.</span></div>
       <div style="--c:#ea580c"><b>Generation ≈ 2 · N · D</b><span>Producing D tokens (for example reinforcement-learning rollouts) costs a forward pass only. It runs at lower utilisation than training.</span></div>
       <div style="--c:#2563eb"><b>GPU-time = FLOPs ÷ (peak · MFU)</b><span>An H100 peaks at 989 TFLOP/s in dense BF16 (NVIDIA spec). Real training achieves 30–45% of that ("model FLOPs utilisation"); the rest is lost to communication, memory and waiting.</span></div>
     </div>
-    <p>On top of the final run, two multipliers dominate the real bill: <b>experiments</b> (small runs, ablations, data mixes, failed attempts; labs commonly spend several times the final run) and <b>failures</b> (Llama 3's 405B run saw 466 interruptions in 54 days; see <a href="llama-3-running-the-run.html">running the run</a>).</p>
+    <ul class="mo-pts"><li>On top of the final run, two multipliers dominate the real bill:<ul><li><b>experiments</b> (small runs, ablations, data mixes, failed attempts</li><li>labs commonly spend several times the final run) and <b>failures</b> (Llama 3's 405B run saw 466 interruptions in 54 days</li><li>see <a href="llama-3-running-the-run.html">running the run</a>).</li></ul></li></ul>
 
     <h2 id="script" class="wr-sec">4. The budget script</h2>
     <div class="mo-code"><div class="h"><span>budget.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""budget.py — the Maestro's compute and cash plan, from first principles.
@@ -975,7 +979,7 @@ D  from scratch MoE 12B active        7.20e+23    771,149      31.4 $    1.81M $
 
 hybrid plan (A then D): training compute $8.1M of a $20M raise
 monthly burn besides training: $318k (people $150k, serving $108k, other $60k) → ~38 months of runway</div>
-    <p>Three things stand out. Post-training an open model costs about a tenth of any from-scratch option. A from-scratch run at start-up scale is a month on 1,024 GPUs and a few million dollars for the final run, but <b>five to nine million</b> once experiments and failures are counted. And the MoE option buys a model with far more total capacity than the 8B dense one for about 35% more compute, because the cost follows active parameters while the quality follows total parameters more closely.</p>
+    <ul class="mo-pts"><li>Three things stand out.<ul><li>Post-training an open model costs about a tenth of any from-scratch option.</li><li>A from-scratch run at start-up scale is a month on 1,024 GPUs and a few million dollars for the final run, but <b>five to nine million</b> once experiments and failures are counted.</li><li>And the MoE option buys a model with far more total capacity than the 8B dense one for about 35% more compute, because the cost follows active parameters while the quality follows total parameters more closely.</li></ul></li></ul>
 
     <h2 id="calc" class="wr-sec">5. Try your own numbers</h2>
     <div class="wr-fig">
@@ -991,16 +995,18 @@ monthly burn besides training: $318k (people $150k, serving $108k, other $60k) �
     </div>
 
     <h2 id="choice" class="wr-sec">6. The choice: a hybrid plan</h2>
+    <div class="wr-fig mo-vis"><h3>The hybrid plan</h3><div class="mo-flow"><div class="s" style="--c:#16a34a"><i>🚀</i><b>Maestro-0</b><span>Post-train an open model, ship to partners (months 3–6)</span></div><div class="s" style="--c:#0d9488"><i>🗃️</i><b>Verified data</b><span>Real client tasks feed the skill library</span></div><div class="s" style="--c:#7c3aed"><i>🏗️</i><b>Maestro-1</b><span>Pre-train own 12B-active MoE (months 9–10.5)</span></div><div class="s" style="--c:#be123c"><i>🔁</i><b>Flywheel</b><span>Post-training and the RSI loop (months 10.5+)</span></div></div><p class="mo-cap">Ship first to earn the data; then train the model that only that data makes possible.</p></div>
+
     <p>Part 1 concluded that the moat is verified data and the gate, not the technique. That settles the order of play:</p>
     <div class="cs-cards ml-five">
       <div style="--c:#16a34a"><b>Now: Maestro-0 (scenario A)</b><span>Post-train a strong open model on the skill loop and ship it to design partners within the first months. Purpose: real clients, real verified data, revenue, and proof that the loop works on production tasks.</span></div>
       <div style="--c:#2563eb"><b>Next: Maestro-1 (scenario D)</b><span>Pre-train a mixture-of-experts model from scratch, with an architecture and tokenizer designed for code and tools, trained on public data plus the verified-skill data that only Gopala has. Purpose: full ownership of weights and licence, cheaper serving, and a base model whose data rights are clean.</span></div>
     </div>
-    <p>Why not just stay on an open model? Three reasons, all about the moat: the licence and future direction of someone else's model are outside his control; the data mix of a model he did not train is unknown, which complicates the contamination checks his evaluations depend on (<a href="eval-contamination-saturation.html">Evaluation Layer Part 2</a>); and a model trained from the start on verified skills should absorb them better than one fine-tuned at the end (H2, to be tested in Phase 2). Why not pre-train first? Because it would burn the most money before a single client proves the idea.</p>
-    <p>The honest caveat: a 12B-active model trained by one start-up will not beat the frontier labs' best general models. It does not need to. It needs to be the best model <b>for its clients' verified work</b>, at a serving cost they can afford.</p>
+    <ul class="mo-pts"><li>Why not just stay on an open model?<ul><li>Three reasons, all about the moat:<ul><li>the licence and future direction of someone else's model are outside his control</li><li>the data mix of a model he did not train is unknown, which complicates the contamination checks his evaluations depend on (<a href="eval-contamination-saturation.html">Evaluation Layer Part 2</a>)</li><li>a model trained from the start on verified skills should absorb them better than one fine-tuned at the end (H2, to be tested in Phase 2).</li></ul></li><li>Why not pre-train first?</li><li>Because it would burn the most money before a single client proves the idea.</li></ul></li></ul>
+    <ul class="mo-pts"><li>The honest caveat: a 12B-active model trained by one start-up will not beat the frontier labs' best general models.<ul><li>It does not need to.</li><li>It needs to be the best model <b>for its clients' verified work</b>, at a serving cost they can afford.</li></ul></li></ul>
 
     <h2 id="size" class="wr-sec">7. Sizing the from-scratch model</h2>
-    <p>The Chinchilla study found that, for a fixed training budget, about 20 tokens per parameter minimises loss. Modern models deliberately train far beyond that (Llama 3 8B saw about 15 trillion tokens), because a smaller model trained longer is cheaper to <b>serve</b> for its whole life. Gopala follows the modern practice: the serving bill, not the training bill, dominates a product company's costs over time (<a href="training-vs-inference.html">the Great Flip</a>).</p>
+    <ul class="mo-pts"><li>The Chinchilla study found that, for a fixed training budget, about 20 tokens per parameter minimises loss.<ul><li>Modern models deliberately train far beyond that (Llama 3 8B saw about 15 trillion tokens), because a smaller model trained longer is cheaper to <b>serve</b> for its whole life.</li><li>Gopala follows the modern practice: the serving bill, not the training bill, dominates a product company's costs over time (<a href="training-vs-inference.html">the Great Flip</a>).</li></ul></li></ul>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Choice</th><th>Maestro-1 plan</th><th>Reason</th></tr>
       <tr><td>Architecture</td><td>Mixture-of-experts, 12B active parameters</td><td>Quality per serving dollar</td></tr>
@@ -1011,16 +1017,19 @@ monthly burn besides training: $318k (people $150k, serving $108k, other $60k) �
     </table></div>
 
     <h2 id="rent" class="wr-sec">8. Rent or buy?</h2>
-    <p>Buying 1,024 GPUs means paying for the chips (H100 prices have been widely reported in the tens of thousands of dollars each ⚠️), plus servers, networking, storage, a data hall with liquid-cooling-capable power and staff to run it, all before training starts. The final run itself needs those GPUs for about a month. The <a href="ai-factory-economics.html">AI Factory as a Service economics</a> calculator shows the break-even for owning usually needs high utilisation over years. For a start-up with one big run, a stream of experiments and an uncertain future, renting wins on every count: speed, cash and flexibility.</p>
+    <ul class="mo-pts"><li>Buying 1,024 GPUs means paying for the chips (H100 prices have been widely reported in the tens of thousands of dollars each ⚠️), plus servers, networking, storage, a data hall with liquid-cooling-capable power and staff to run it, all before training starts.<ul><li>The final run itself needs those GPUs for about a month.</li><li>The <a href="ai-factory-economics.html">AI Factory as a Service economics</a> calculator shows the break-even for owning usually needs high utilisation over years.</li><li>For a start-up with one big run, a stream of experiments and an uncertain future, renting wins on every count: speed, cash and flexibility.</li></ul></li></ul>
     <div class="cs-cards ml-five">
       <div style="--c:#16a34a"><b>Rent the training cluster</b><span>Reserve 1,024 GPUs for ~2 months around the main run; use smaller on-demand slices for experiments (<a href="coreweave-neoclouds.html">neoclouds</a> or hyperscalers).</span></div>
       <div style="--c:#16a34a"><b>Rent the serving cluster</b><span>64 GPUs reserved for design partners, scaled with demand.</span></div>
       <div style="--c:#f59e0b"><b>Revisit ownership at scale</b><span>Only when utilisation is high and predictable for years: the future "full frontier" section of this site.</span></div>
     </div>
-    <p>Renting does not remove Phase 1's work, it changes it: Gopala still has to choose and contract the provider, verify the cluster on day zero, install his own software stack and run operations. Parts 4–7 cover exactly that.</p>
+    <ul class="mo-pts"><li>Renting does not remove Phase 1's work, it changes it: Gopala still has to choose and contract the provider, verify the cluster on day zero, install his own software stack and run operations.<ul><li>Parts 4–7 cover exactly that.</li></ul></li></ul>
 
     <h2 id="cash" class="wr-sec">9. Cash and runway</h2>
-    <p>The budget script's last lines give the cash picture: training compute for the hybrid plan is about $8.1M of a $20M raise, and everything else (people and contractors, a serving cluster for design partners, storage, data licences, tools) burns about $318k a month, leaving roughly three years of runway if nothing else changes. The plan ties spending to evidence:</p>
+    <div class="wr-fig mo-vis"><h3>Where the $20M goes</h3><div class="mo-kpis"><div style="--c:#7c3aed"><b>$8.1M</b><span>training compute (A then D)</span></div><div style="--c:#ea580c"><b>$318k</b><span>monthly burn besides training</span></div><div style="--c:#16a34a"><b>~38 months</b><span>runway</span></div><div style="--c:#2563eb"><b>$150k</b><span>people per month</span></div></div><p class="mo-cap">Real output of <code>budget.py</code>; salaries, serving and the raise are our assumptions.</p></div>
+
+    <ul class="mo-pts"><li>The budget script's last lines give the cash picture: training compute for the hybrid plan is about $8.1M of a $20M raise, and everything else (people and contractors, a serving cluster for design partners, storage, data licences, tools) burns about $318k a month, leaving roughly three years of runway if nothing else changes.</li></ul>
+    <p>The plan ties spending to evidence:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Gate</th><th>Unlocks</th><th>Evidence required</th></tr>
       <tr><td>G1 · Month 3</td><td>Serving cluster; Maestro-0 post-training (~$0.8M)</td><td>Part 2 results hold; two design partners live</td></tr>
@@ -1074,7 +1083,7 @@ monthly burn besides training: $318k (people $150k, serving $108k, other $60k) �
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
-    <div class="wr-box wr-verdict"><b class="l">Verdict</b>Phase 0 ends with a decision grounded in arithmetic: ship first on a post-trained open model to earn real verified data, then pre-train a 12B-active mixture-of-experts model of his own, all on rented GPUs, with spending released only when evidence arrives. About $8M of a $20M raise goes to training compute; the rest buys three years of runway. Phase 1 turns money into a working machine: <a href="maestro-securing-compute.html"><b>Part 4, securing compute</b></a>. Follow it all on <a href="../pages/maestro.html">Maestro Mission Control</a>.</div>
+    <div class="wr-box wr-verdict"><b class="l">Verdict</b><ul class="mo-pts"><li>Phase 0 ends with a decision grounded in arithmetic: ship first on a post-trained open model to earn real verified data, then pre-train a 12B-active mixture-of-experts model of his own, all on rented GPUs, with spending released only when evidence arrives.<ul><li>About $8M of a $20M raise goes to training compute; the rest buys three years of runway.</li><li>Phase 1 turns money into a working machine: <a href="maestro-securing-compute.html"><b>Part 4, securing compute</b></a>.</li><li>Follow it all on <a href="../pages/maestro.html">Maestro Mission Control</a>.</li></ul></li></ul></div>
 
     <h2 id="numbers" class="wr-sec">15. Reading the numbers</h2>
     <dl class="wr-dl">

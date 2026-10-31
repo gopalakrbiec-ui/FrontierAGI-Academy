@@ -895,12 +895,15 @@
       <li>The full 128 nodes pass the contract <a href="maestro-securing-compute.html#accept">acceptance test</a> (Part 4) after replacements; billing starts. Maestro-0 post-training begins on the first accepted nodes.</li></ul></div>
 
     <h2 id="why" class="wr-sec">2. Why trust nothing</h2>
-    <p>Large training runs fail mostly because of hardware. Meta&#x27;s Llama 3 paper is the clearest public record: in a 54-day snapshot of pre-training Llama 3 405B on 16,384 H100s, there were 466 job interruptions, 419 of them unexpected. Faulty GPUs caused 30.1% of the unexpected ones and GPU HBM3 memory 17.2%; network switches and cables, host maintenance, SRAM, system processors and others made up the rest. Meta still reached more than 90% effective training time, because it found and replaced bad parts fast.</p>
-    <p>Gopala&#x27;s cluster is 16 times smaller, so he should expect roughly 16 times fewer failures per day (Part 7 does the arithmetic), but the <b>first weeks</b> are the worst: parts that are going to fail early (&quot;infant mortality&quot;) do so under the first sustained load. Bring-up means applying that load deliberately, before his job depends on it.</p>
-    <p>The site&#x27;s <a href="ai-factory-bring-up.html">Who Runs the AI Factory: bring-up and firmware</a> article covers the roles and tools at hyperscale; this part is the hands-on version for one person and 128 nodes.</p>
+    <div class="wr-fig mo-vis"><h3>Why trust nothing: Llama 3 405B, 54 days</h3><div class="mo-kpis"><div style="--c:#be123c"><b>466</b><span>job interruptions</span></div><div style="--c:#ea580c"><b>419</b><span>unexpected</span></div><div style="--c:#7c3aed"><b>30.1%</b><span>of unexpected: faulty GPUs</span></div><div style="--c:#2563eb"><b>17.2%</b><span>of unexpected: GPU HBM3 memory</span></div></div><p class="mo-cap">Meta, The Llama 3 Herd of Models (16,384 H100s).</p></div>
+
+    <ul class="mo-pts"><li>Large training runs fail mostly because of hardware.<ul><li>Meta&#x27;s Llama 3 paper is the clearest public record: in a 54-day snapshot of pre-training Llama 3 405B on 16,384 H100s, there were 466 job interruptions, 419 of them unexpected.</li><li>Faulty GPUs caused 30.1% of the unexpected ones and GPU HBM3 memory 17.2%<ul><li>network switches and cables, host maintenance, SRAM, system processors and others made up the rest.</li></ul></li><li>Meta still reached more than 90% effective training time, because it found and replaced bad parts fast.</li></ul></li></ul>
+    <ul class="mo-pts"><li>Gopala&#x27;s cluster is 16 times smaller, so he should expect roughly 16 times fewer failures per day (Part 7 does the arithmetic), but the <b>first weeks</b> are the worst: parts that are going to fail early (&quot;infant mortality&quot;) do so under the first sustained load.<ul><li>Bring-up means applying that load deliberately, before his job depends on it.</li></ul></li></ul>
+    <ul class="mo-pts"><li>The site&#x27;s <a href="ai-factory-bring-up.html">Who Runs the AI Factory:<ul><li>bring-up and firmware</a> article covers the roles and tools at hyperscale</li><li>this part is the hands-on version for one person and 128 nodes.</li></ul></li></ul>
 
     <h2 id="plan" class="wr-sec">3. The bring-up plan, week by week</h2>
-    <p>Bring-up overlaps delivery: the first nodes are tested while the rest are still being racked. Gopala&#x27;s plan, with the gate that ends each step:</p>
+    <ul class="mo-pts"><li>Bring-up overlaps delivery: the first nodes are tested while the rest are still being racked.</li></ul>
+    <p>Gopala&#x27;s plan, with the gate that ends each step:</p>
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Week</th><th>Step</th><th>Gate to move on</th></tr>
       <tr><td>13</td><td>BMC inventory of the first 32 nodes over Redfish; firmware drift report</td><td>All nodes on golden firmware or flagged</td></tr>
@@ -913,6 +916,8 @@
     </table></div>
 
     <h2 id="layers" class="wr-sec">4. What gets checked, layer by layer</h2>
+    <div class="wr-fig mo-vis"><h3>Bring-up, from the motherboard up</h3><div class="mo-stack"><div style="--c:#64748b"><b>📋 Inventory</b><span>BMC / Redfish, nvidia-smi</span></div><div style="--c:#d97706"><b>🧬 Firmware</b><span>Same versions everywhere</span></div><div style="--c:#ea580c"><b>🗺️ Topology</b><span>GPUs on NVSwitch, NICs near GPUs</span></div><div style="--c:#be123c"><b>🩺 GPU health</b><span>DCGM level 3</span></div><div style="--c:#7c3aed"><b>🔥 Thermals</b><span>24 h burn-in</span></div><div style="--c:#2563eb"><b>🔗 Links</b><span>8 × 400 Gb/s active</span></div><div style="--c:#0d9488"><b>📶 Collectives</b><span>NCCL in node, pairs, all</span></div><div style="--c:#16a34a"><b>💾 Storage</b><span>fio / IOR from all nodes</span></div></div><p class="mo-cap">Each layer is tested only after the one below it passes.</p></div>
+
     <div class="wr-scroll"><table class="wr-table">
       <tr><th>Layer</th><th>Check</th><th>Tool</th><th>Typical defect</th></tr>
       <tr><td>Inventory</td><td>8 GPUs, right model, memory, serial numbers recorded</td><td><code>nvidia-smi</code>, BMC (Redfish API)</td><td>A GPU missing from the bus</td></tr>
@@ -926,7 +931,8 @@
     </table></div>
 
     <h2 id="redfish" class="wr-sec">5. Before the OS: inventory through the BMC</h2>
-    <p>Every server has a baseboard management controller (BMC): a small computer on the motherboard that can power the node on and off, read its sensors and report its hardware and firmware, even when no operating system is installed. Modern BMCs speak <b>Redfish</b>, the DMTF&#x27;s standard REST API, so one script can inventory servers from different vendors. Gopala uses it on day zero to compare every node against the expected configuration before spending an hour installing anything:</p>
+    <ul class="mo-pts"><li>Every server has a baseboard management controller (BMC): a small computer on the motherboard that can power the node on and off, read its sensors and report its hardware and firmware, even when no operating system is installed.<ul><li>Modern BMCs speak <b>Redfish</b>, the DMTF&#x27;s standard REST API, so one script can inventory servers from different vendors.</li></ul></li></ul>
+    <p>Gopala uses it on day zero to compare every node against the expected configuration before spending an hour installing anything:</p>
     <div class="mo-code"><div class="h"><span>redfish_inventory.py · Python 3, no dependencies; runs against a built-in mock BMC</span><button type="button" class="cp">Copy</button></div><pre>"""redfish_inventory.py — inventory nodes through their BMCs (DMTF Redfish)
 and flag firmware drift before anything boots an OS.
 
@@ -1004,11 +1010,11 @@ node003  SN-1003  Warning  1.3.7           24.09           96.00.99.00.01  28.39
 DRIFT BIOS: golden 1.4.2, different on node003
 DRIFT NIC: golden 28.42.1000, different on node003
 hold back before OS install: node003</div>
-    <p>The run above is real but the &quot;BMC&quot; is a small mock server the script starts itself, with node003 deliberately given an older BIOS and NIC firmware and a warning status, so the drift logic can be seen working. Against real BMCs the same code reads the same paths (<code>/redfish/v1/Systems</code> and <code>/redfish/v1/UpdateService/FirmwareInventory</code>), with authentication and certificate checks added; exact resource names vary by vendor, so the first real run is checked by hand.</p>
-    <p>Why bother before the OS? Because firmware drift is cheap to fix before a node is in service and expensive after: a node with an older NIC firmware can pass every single-node test and only misbehave in a 1,024-GPU collective, where it is hardest to find.</p>
+    <ul class="mo-pts"><li>The run above is real but the &quot;BMC&quot; is a small mock server the script starts itself, with node003 deliberately given an older BIOS and NIC firmware and a warning status, so the drift logic can be seen working.<ul><li>Against real BMCs the same code reads the same paths (<code>/redfish/v1/Systems</code> and <code>/redfish/v1/UpdateService/FirmwareInventory</code>), with authentication and certificate checks added<ul><li>exact resource names vary by vendor, so the first real run is checked by hand.</li></ul></li></ul></li></ul>
+    <ul class="mo-pts"><li>Why bother before the OS?<ul><li>Because firmware drift is cheap to fix before a node is in service and expensive after: a node with an older NIC firmware can pass every single-node test and only misbehave in a 1,024-GPU collective, where it is hardest to find.</li></ul></li></ul>
 
     <h2 id="node" class="wr-sec">6. The per-node burn-in</h2>
-    <p>One script per node, run in parallel across the delivered nodes. Every step either passes or keeps the node out of the pool; there is no &quot;mostly fine&quot;. Logs go to a shared directory so every result is kept with the node&#x27;s serial numbers.</p>
+    <ul class="mo-pts"><li>One script per node, run in parallel across the delivered nodes.<ul><li>Every step either passes or keeps the node out of the pool; there is no &quot;mostly fine&quot;.</li><li>Logs go to a shared directory so every result is kept with the node&#x27;s serial numbers.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>burnin.sh · needs a real 8-GPU node · not executed for this article</span><button type="button" class="cp">Copy</button></div><pre>#!/bin/bash
 # burnin.sh NODE — day-zero acceptance for one 8-GPU node.
 # Every step must pass; any failure keeps the node out of the pool.
@@ -1034,8 +1040,8 @@ echo "PASS $N"</pre></div>
     </ul>
 
     <h2 id="nccl" class="wr-sec">7. Reading NCCL numbers</h2>
-    <p>nccl-tests prints two bandwidths. <b>algbw</b> is data size divided by time. <b>busbw</b> rescales it so the number can be compared with the hardware&#x27;s link speed, whatever the number of GPUs: for all-reduce, busbw = algbw × 2(n−1)/n, where n is the number of ranks. For 16 GPUs (two nodes) the factor is 1.875; for 1,024 GPUs it is almost exactly 2.</p>
-    <p>What is &quot;good&quot;? Inside one H100 node, NVLink gives each GPU up to 900 GB/s total. Between nodes, each GPU has its own 400 Gb/s NIC, i.e. 50 GB/s per direction, so the inter-node bus bandwidth for large messages is bounded by the network, not NVLink. The exact achievable figure depends on the NCCL version, topology and settings, so Gopala does not compare against a number from the internet: he compares nodes with each other, and the trial cluster with the contract figure. A pair far below its peers is a defect, whatever the absolute number.</p>
+    <ul class="mo-pts"><li>nccl-tests prints two bandwidths.<ul><li><b>algbw</b> is data size divided by time.</li><li><b>busbw</b> rescales it so the number can be compared with the hardware&#x27;s link speed, whatever the number of GPUs: for all-reduce, busbw = algbw × 2(n−1)/n, where n is the number of ranks.</li><li>For 16 GPUs (two nodes) the factor is 1.875; for 1,024 GPUs it is almost exactly 2.</li></ul></li></ul>
+    <ul class="mo-pts"><li>What is &quot;good&quot;?<ul><li>Inside one H100 node, NVLink gives each GPU up to 900 GB/s total.</li><li>Between nodes, each GPU has its own 400 Gb/s NIC, i.e. 50 GB/s per direction, so the inter-node bus bandwidth for large messages is bounded by the network, not NVLink.</li><li>The exact achievable figure depends on the NCCL version, topology and settings, so Gopala does not compare against a number from the internet: he compares nodes with each other, and the trial cluster with the contract figure.</li><li>A pair far below its peers is a defect, whatever the absolute number.</li></ul></li></ul>
 
     <h2 id="grid" class="wr-sec">8. Watching 128 nodes at once</h2>
     <div class="wr-fig">
@@ -1044,10 +1050,12 @@ echo "PASS $N"</pre></div>
       <p style="font-size:12.5px;margin:8px 0 0"><span style="color:#16a34a">■</span> accepted <span style="color:#2563eb">■</span> testing <span style="color:#d97706">■</span> parked <span style="color:#9ca3af">■</span> not yet delivered · tap a node</p>
       <p id="nOut" style="font-size:13.5px"></p>
     </div>
-    <p>One state per node, kept in a file, drives everything else: which nodes the scheduler may use, which tickets are open with the provider, and the acceptance report. The grid above is the story&#x27;s state, drawn from the defects described below, not real data.</p>
+    <ul class="mo-pts"><li>One state per node, kept in a file, drives everything else: which nodes the scheduler may use, which tickets are open with the provider, and the acceptance report.<ul><li>The grid above is the story&#x27;s state, drawn from the defects described below, not real data.</li></ul></li></ul>
 
     <h2 id="pairs" class="wr-sec">9. Testing in pairs, and a parser</h2>
-    <p>A full-cluster test tells him whether the whole is slow, not where. So he first runs 2-node tests on all pairs in a pattern (node 1 with 2, 3 with 4, and so on, then shifted), and the parser below flags any pair below 90% of the best. A node that is in two flagged pairs is the suspect; it is drained and tested alone.</p>
+    <div class="wr-fig mo-vis"><h3>Pairwise NCCL bus bandwidth (sample log)</h3><div class="mo-bars"><div class="r"><span class="l">node001 + node002</span><span class="t"><span class="b" style="width:93.8%;background:#16a34a"></span></span><span class="v">356 GB/s</span></div><div class="r"><span class="l">node003 + node004</span><span class="t"><span class="b" style="width:93.2%;background:#16a34a"></span></span><span class="v">354 GB/s</span></div><div class="r"><span class="l">node005 + node006</span><span class="t"><span class="b" style="width:43.2%;background:#be123c"></span></span><span class="v">164 GB/s ✗</span></div><div class="r"><span class="l">node007 + node008</span><span class="t"><span class="b" style="width:93.4%;background:#16a34a"></span></span><span class="v">355 GB/s</span></div></div><p class="mo-cap">Real output of <code>nccl_check.py</code> on a sample log written for this article, not a real cluster.</p></div>
+
+    <ul class="mo-pts"><li>A full-cluster test tells him whether the whole is slow, not where.<ul><li>So he first runs 2-node tests on all pairs in a pattern (node 1 with 2, 3 with 4, and so on, then shifted), and the parser below flags any pair below 90% of the best.</li><li>A node that is in two flagged pairs is the suspect; it is drained and tested alone.</li></ul></li></ul>
     <div class="mo-code"><div class="h"><span>nccl_check.py · Python 3, no dependencies</span><button type="button" class="cp">Copy</button></div><pre>"""nccl_check.py — read nccl-tests all_reduce_perf output and flag bad nodes.
 
 Usage: python3 nccl_check.py [log ...]. With no file it parses SAMPLE,
@@ -1108,11 +1116,13 @@ node003,node004    algbw 188.87 (recalc 188.87) busbw 354.13 GB/s x1.8750=354.13
 node005,node006    algbw  87.54 (recalc  87.55) busbw 164.14 GB/s x1.8750=164.14  SUSPECT
 node007,node008    algbw 189.24 (recalc 189.25) busbw 354.83 GB/s x1.8750=354.83  OK
 drain and re-test individually: node005,node006</div>
-    <p>The parser also recomputes algbw from the message size and time and the busbw factor from the rank count, so a misread column or a mislabelled run shows up immediately. On a real cluster it reads one log per pair: <code>python3 nccl_check.py logs/pair_*.txt</code>.</p>
-    <p>After the pairs pass, the full 1,024-GPU run is the final test. Its bus bandwidth should be close to the pair results; if it falls well below, the problem is usually in the higher switch layers (a congested or mis-cabled spine), which the provider has to fix.</p>
+    <ul class="mo-pts"><li>The parser also recomputes algbw from the message size and time and the busbw factor from the rank count, so a misread column or a mislabelled run shows up immediately.<ul><li>On a real cluster it reads one log per pair: <code>python3 nccl_check.py logs/pair_*.txt</code>.</li></ul></li></ul>
+    <ul class="mo-pts"><li>After the pairs pass, the full 1,024-GPU run is the final test.<ul><li>Its bus bandwidth should be close to the pair results<ul><li>if it falls well below, the problem is usually in the higher switch layers (a congested or mis-cabled spine), which the provider has to fix.</li></ul></li></ul></li></ul>
 
     <h2 id="defects" class="wr-sec">10. What bring-up found</h2>
-    <div class="wr-box wr-caveat"><b class="l">Scenario</b>Across 128 nodes, bring-up parks 9 nodes: 3 with GPUs failing DCGM memory tests, 2 with a fabric port trained at reduced speed (a reseated optic fixes one, a replaced cable the other), 1 with a NIC in the wrong PCIe slot after a repair, 2 with an older firmware version, and 1 that throttles under the 24-hour burn because of a blocked airflow path. All are fixed or replaced by the provider within the contract&#x27;s replacement window. These counts are made up for the story; Meta&#x27;s real record (section <a href="#why">2</a>) shows the kind of mix to expect, not the number.</div>
+    <div class="wr-fig mo-vis"><h3>Node life cycle</h3><div class="mo-flow"><div class="s" style="--c:#64748b"><i>📦</i><b>New</b><span>Delivered, inventoried</span></div><div class="s" style="--c:#2563eb"><i>🧪</i><b>Testing</b><span>Burn-in, links, pairs</span></div><div class="s" style="--c:#16a34a"><i>✅</i><b>Accepted</b><span>Baseline numbers recorded</span></div><div class="s" style="--c:#7c3aed"><i>🏃</i><b>In service</b><span>Handed to the scheduler</span></div><div class="s" style="--c:#d97706"><i>🅿️</i><b>Parked</b><span>Failed a test; fixed, then back to Testing</span></div></div><p class="mo-cap">A repaired node always goes back to Testing, never straight into service.</p></div>
+
+    <div class="wr-box wr-caveat"><b class="l">Scenario</b><ul class="mo-pts"><li>Across 128 nodes, bring-up parks 9 nodes: 3 with GPUs failing DCGM memory tests, 2 with a fabric port trained at reduced speed (a reseated optic fixes one, a replaced cable the other), 1 with a NIC in the wrong PCIe slot after a repair, 2 with an older firmware version, and 1 that throttles under the 24-hour burn because of a blocked airflow path.<ul><li>All are fixed or replaced by the provider within the contract&#x27;s replacement window.</li><li>These counts are made up for the story; Meta&#x27;s real record (section <a href="#why">2</a>) shows the kind of mix to expect, not the number.</li></ul></li></ul></div>
     <p>Two practices make this manageable for one person:</p>
     <ul>
       <li><b>One state per node</b>: new → testing → accepted → in service, or parked with a reason. A spreadsheet works; Part 7 moves it into the scheduler&#x27;s drain reasons.</li>
@@ -1120,11 +1130,12 @@ drain and re-test individually: node005,node006</div>
     </ul>
 
     <h2 id="storage" class="wr-sec">11. Testing storage before the run depends on it</h2>
-    <p>Checkpoints are the main storage load of a training run: every node writes its share of model and optimiser state at the same moment. If storage cannot absorb it, all 1,024 GPUs wait. Gopala tests the parallel file system with the standard tools <code>fio</code> and IOR, from all nodes at once, writing files of the size a checkpoint shard will have, and records three numbers: aggregate write bandwidth, time to write one full checkpoint, and read bandwidth for a restart (which matters just as much, because a restart reads everything back).</p>
-    <p>He also checks the slow path: what happens to bandwidth when one storage server is taken out of service, because that is exactly the condition under which he will be restarting after a failure. The checkpoint size itself is decided in Part 9; the policy of how often to save is in Part 7.</p>
+    <ul class="mo-pts"><li>Checkpoints are the main storage load of a training run: every node writes its share of model and optimiser state at the same moment.<ul><li>If storage cannot absorb it, all 1,024 GPUs wait.</li><li>Gopala tests the parallel file system with the standard tools <code>fio</code> and IOR, from all nodes at once, writing files of the size a checkpoint shard will have, and records three numbers: aggregate write bandwidth, time to write one full checkpoint, and read bandwidth for a restart (which matters just as much, because a restart reads everything back).</li></ul></li></ul>
+    <ul class="mo-pts"><li>He also checks the slow path: what happens to bandwidth when one storage server is taken out of service, because that is exactly the condition under which he will be restarting after a failure.<ul><li>The checkpoint size itself is decided in Part 9; the policy of how often to save is in Part 7.</li></ul></li></ul>
 
     <h2 id="firmware" class="wr-sec">12. Firmware: when to upgrade, and when not to</h2>
-    <p>Meta&#x27;s Llama 3 paper notes that a number of its planned interruptions were firmware upgrades, and the site&#x27;s <a href="ai-factory-bring-up.html">bring-up article</a> describes how much of the work at hyperscale is firmware. Gopala&#x27;s rules for a 128-node cluster:</p>
+    <ul class="mo-pts"><li>Meta&#x27;s Llama 3 paper notes that a number of its planned interruptions were firmware upgrades, and the site&#x27;s <a href="ai-factory-bring-up.html">bring-up article</a> describes how much of the work at hyperscale is firmware.</li></ul>
+    <p>Gopala&#x27;s rules for a 128-node cluster:</p>
     <ul>
       <li>One golden version of every firmware, recorded with the image.</li>
       <li>Upgrade only for a known problem or a security fix, never because a new version exists.</li>
@@ -1133,10 +1144,10 @@ drain and re-test individually: node005,node006</div>
     </ul>
 
     <h2 id="golden" class="wr-sec">13. The golden image</h2>
-    <p>Every accepted node runs the same software image: OS, kernel, GPU driver, CUDA, NCCL, fabric drivers, DCGM, container runtime. Versions are pinned and recorded, and a node whose versions differ is treated as untested. Gopala keeps the image definition in git alongside his training code, so a later bug can always be traced to the exact versions it ran on. Upgrades happen in a rolling way on a few nodes first, and never during the main run (the same freeze as Part 5).</p>
+    <ul class="mo-pts"><li>Every accepted node runs the same software image: OS, kernel, GPU driver, CUDA, NCCL, fabric drivers, DCGM, container runtime.<ul><li>Versions are pinned and recorded, and a node whose versions differ is treated as untested.</li><li>Gopala keeps the image definition in git alongside his training code, so a later bug can always be traced to the exact versions it ran on.</li><li>Upgrades happen in a rolling way on a few nodes first, and never during the main run (the same freeze as Part 5).</li></ul></li></ul>
 
     <h2 id="handover" class="wr-sec">14. Handing over to the scheduler</h2>
-    <p>Bring-up ends when every accepted node is handed to the cluster software with three things attached: its baseline numbers (bandwidths, temperatures, step time on a reference job), its firmware and image versions, and its history (which tests it failed and what was replaced). Part 7&#x27;s health checks compare live readings with those baselines, so &quot;node 57 is slow&quot; becomes &quot;node 57 is 6% slower than it was on day zero&quot;, which is actionable.</p>
+    <ul class="mo-pts"><li>Bring-up ends when every accepted node is handed to the cluster software with three things attached: its baseline numbers (bandwidths, temperatures, step time on a reference job), its firmware and image versions, and its history (which tests it failed and what was replaced).<ul><li>Part 7&#x27;s health checks compare live readings with those baselines, so &quot;node 57 is slow&quot<ul><li>becomes &quot;node 57 is 6% slower than it was on day zero&quot;, which is actionable.</li></ul></li></ul></li></ul>
 
     <h2 id="mistakes" class="wr-sec">15. Six bring-up mistakes</h2>
     <ol>
@@ -1149,7 +1160,7 @@ drain and re-test individually: node005,node006</div>
     </ol>
 
     <h2 id="report" class="wr-sec">16. The acceptance report</h2>
-    <p>The report that starts billing is a short table, generated from the logs: per node, the serial numbers, firmware versions, DCGM result, burn-in result, link count and speed, and pair bandwidth; then the full-cluster all-reduce result, the storage test and the 72-hour job. The provider signs it too. It becomes the baseline: whenever a node misbehaves later, Part 7&#x27;s health checks compare it with its own day-zero numbers.</p>
+    <ul class="mo-pts"><li>The report that starts billing is a short table, generated from the logs: per node, the serial numbers, firmware versions, DCGM result, burn-in result, link count and speed, and pair bandwidth; then the full-cluster all-reduce result, the storage test and the 72-hour job.<ul><li>The provider signs it too.</li><li>It becomes the baseline: whenever a node misbehaves later, Part 7&#x27;s health checks compare it with its own day-zero numbers.</li></ul></li></ul>
 
     <h2 id="deleg" class="wr-sec">17. Delegation box</h2>
     <div class="mo-deleg">
@@ -1167,7 +1178,7 @@ drain and re-test individually: node005,node006</div>
       <h3>The Maestro: 18 parts in five phases</h3>
       <div class="ml-fin" id="moSer"></div>
     </div>
-    <div class="wr-box wr-verdict"><b class="l">Verdict</b>Day zero is about distrust: every node is tested alone, every link in pairs, the whole fabric together, and only then accepted and billed. The parked nodes are the ones that would have stopped the run. Next, <a href="maestro-cluster-software.html">Part 7</a>: the software that keeps 1,024 GPUs busy and catches failures on its own.</div>
+    <div class="wr-box wr-verdict"><b class="l">Verdict</b><ul class="mo-pts"><li>Day zero is about distrust: every node is tested alone, every link in pairs, the whole fabric together, and only then accepted and billed.<ul><li>The parked nodes are the ones that would have stopped the run.</li><li>Next, <a href="maestro-cluster-software.html">Part 7</a>: the software that keeps 1,024 GPUs busy and catches failures on its own.</li></ul></li></ul></div>
 
     <h2 id="numbers" class="wr-sec">20. Reading the numbers</h2>
     <dl class="wr-dl">
