@@ -1089,3 +1089,39 @@ break-even on monthly burn at month 29 with $6.0M left
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(18, [
+ { place: 'score', scene: { t: 'The scorecard lights up', dur: 10000,
+   cap: 'Eight lines of the plan against what happened (scenario). Green within 10% of plan, amber within 25%, red beyond. Four green, three amber, one red: the gate approved fewer self-improvement updates than the pitch promised. From <code>scorecard.py</code>.',
+   render: function (p) { var D = [['Training compute', 'G'], ['Main run duration', 'G'], ['First partner use', 'A'], ['Maestro-1 release', 'G'], ['Improvement vs Maestro-0', 'G'], ['Loop updates approved', 'R'], ['Paying customers', 'A'], ['Monthly burn', 'A']], C = { G: '#16a34a', A: '#f59e0b', R: '#dc2626' }, s = '', n = Math.ceil(ease(p * 1.2) * 8);
+     for (var j = 0; j < n; j++) { var d = D[j], y = 22 + j * 33; s += R(60, y, 300, 26, '#f8fafc', { s: '#e2e8f0' }) + T(72, y + 18, d[0], { size: 12.5, a: 'start' }) + '<circle cx="390" cy="' + (y + 13) + '" r="11" fill="' + C[d[1]] + '"/>' + T(390, y + 18, d[1], { size: 11, fill: '#fff' }); }
+     return s; } } },
+ { place: 'hyp', scene: { t: 'Did the three hypotheses hold?', dur: 9000,
+   cap: 'H1, skills help on new tasks: held, modestly. H2, training on skills beats generic data: partly. H3, the gate catches bad changes: held, at a cost in speed. Story verdicts.',
+   render: function (p) { var H = [['H1', 'Skills transfer to new tasks', 'HELD', '#16a34a'], ['H2', 'Skills in the weights beat generic data', 'PARTLY', '#f59e0b'], ['H3', 'The gate catches bad changes', 'HELD', '#16a34a']], s = '';
+     H.forEach(function (h, j) { var y = 40 + j * 80, a = ease(p * 3 - j * 0.8); s += R(30, y, 420, 64, '#fff', { s: '#cbd5e1' }) + T(60, y + 40, h[0], { size: 20, w: 900, fill: '#be123c' }) + T(90, y + 38, h[1], { size: 13, a: 'start' }); if (a > 0) s += '<g opacity="' + a + '" transform="rotate(-8 400 ' + (y + 32) + ')">' + R(350, y + 14, 92, 34, 'none', { s: h[3], sw: 3 }) + T(396, y + 37, h[2], { size: 14, w: 900, fill: h[3] }) + '</g>'; });
+     return s; } } },
+ { place: 'cash', scene: { t: 'Cash after month 18', dur: 10000,
+   cap: 'With $7.4M left and revenue growing 12% a month (assumption), monthly losses shrink until revenue covers the burn around month 29, with about $6M still in the bank. Slower growth pushes break-even later. From <code>runway.py</code>.',
+   render: function (p) { var s = '', cash = 7.4, rev = 0.11, B = 0.352, pts = [[40, 250 - cash / 8 * 210]], m = 18, N = Math.round(ease(p * 1.2) * 11);
+     for (var i = 0; i < N && rev < B; i++) { m++; rev *= 1.12; cash -= B - rev; pts.push([40 + (m - 18) / 12 * 400, 250 - cash / 8 * 210]); }
+     s += '<line x1="40" y1="250" x2="440" y2="250" stroke="#cbd5e1"/>' + T(40, 270, 'month 18', { size: 11.5 }) + T(440, 270, 'month 30', { size: 11.5 });
+     s += '<path d="' + MoSvg.path(pts) + '" fill="none" stroke="#16a34a" stroke-width="3"/>' + T(240, 30, 'cash: $' + cash.toFixed(1) + 'M at month ' + m, { size: 15, w: 800 });
+     if (rev >= B) s += T(pts[pts.length - 1][0], pts[pts.length - 1][1] - 14, '✓ break-even', { size: 12.5, w: 800, fill: '#15803d' });
+     return s; } } },
+ { place: 'spend', scene: { t: 'Where the $12.6M went', dur: 9000,
+   cap: 'Building the model (Phase 2) and shipping it (Phase 4) cost about the same: serving, people and integrations run every month, while training happened once. The idea phase cost almost nothing but decided everything else. Story figures.',
+   render: function (p) { var D = [['Phase 0 · idea', 0.012, '#be123c'], ['Phase 1 · machine', 0.95, '#ea580c'], ['Phase 2 · model', 5.3, '#2563eb'], ['Phase 3 · proving', 1.1, '#7c3aed'], ['Phase 4 · shipping', 5.2, '#16a34a']], s = '', a = ease(p * 1.3);
+     D.forEach(function (d, j) { var y = 30 + j * 50; s += T(150, y + 22, d[0], { size: 12.5, a: 'end' }) + R(160, y + 6, 260 * d[1] / 5.5 * a + 2, 26, d[2], { rx: 4 }) + T(168 + 260 * d[1] / 5.5 * a, y + 24, '$' + d[1] + 'M', { size: 12, a: 'start' }); });
+     return s; } } },
+ { place: 'next', scene: { t: 'The whole story in one minute', dur: 14000,
+   cap: 'An idea tested on a laptop, money raised from arithmetic, 1,024 GPUs rented and tested, ten trillion tokens refined, a model designed and trained, a gate that says no, evaluations with honest error bars, a careful release, and products clients pay for.',
+   render: function (p, S) { var k = Math.min(6, Math.floor(p * 7)), s = '', t = S.now / 600;
+     var cap = ['💡 the idea', '💰 the money', '🖥️ 1,024 GPUs', '🗃️ 10T tokens', '🧠 the model', '🚦 the gate', '🚀 shipped'][k];
+     if (k === 2 || k === 4) s += MoCluster(16, 40, 448, function (n) { return k === 2 ? (n < (p * 7 - 2) * 128 ? '#2563eb' : '#cbd5e1') : 'hsl(142,' + (55 + 15 * Math.sin(t + n * .3)) + '%,44%)'; });
+     else if (k === 3) { for (var i = 0; i < 40; i++) { var u = (t * 0.1 + i / 40) % 1; s += '<circle cx="' + (30 + u * 420) + '" cy="' + (60 + (i * 37) % 180) + '" r="3" fill="#0d9488"/>'; } }
+     else s += T(240, 150, cap.split(' ')[0], { size: 80 });
+     return s + R(120, 254, 240, 36, '#0f172a', { rx: 18 }) + T(240, 278, cap, { size: 15, fill: '#fff' }); } } }
+]); })();
+</script>

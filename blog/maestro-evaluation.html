@@ -1155,3 +1155,38 @@ def partner_heldout():
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(12, [
+ { place: 'what', scene: { t: 'Five ways to ask "is it good?"', dur: 8000,
+   cap: 'Evaluation questions get more expensive and more decisive as you climb: training loss, public benchmarks, the regression suite, clients&#39; private tasks, and finally real engineers using it. Release decisions are made near the top.',
+   render: function (p) { var L = [['🧪 Loss on held-out text', '#64748b'], ['📚 Public benchmarks', '#2563eb'], ['🔁 Regression suite', '#0d9488'], ['🔒 Private partner tasks', '#be123c'], ['👥 Pilots with partners', '#16a34a']], s = '', a = ease(p * 1.3);
+     L.forEach(function (l, j) { var on = a * 5 > j, y = 240 - j * 48, w = 200 + j * 50; s += G('Evaluation level ' + (j + 1) + '. Higher = costlier, more decisive.', R(240 - w / 2, y, w, 40, on ? l[1] : '#f1f5f9', { rx: 8 }) + T(240, y + 26, l[0], { size: 13.5, fill: on ? '#fff' : '#94a3b8' })); });
+     return s + T(458, 30, 'decisive ↑', { size: 12, a: 'end', fill: '#64748b' }); } } },
+ { place: 'passk', scene: { t: 'pass@1 vs pass@10, counted correctly', dur: 9000,
+   cap: 'The agent tries the same task 20 times and succeeds once. A client gets one answer, so <b>pass@1</b> is 5%. The chance that at least one of 10 tries works is <b>50%</b> by the correct formula; the naive formula says 40%. From <code>pass_at_k.py</code>.',
+   render: function (p) { var s = '', a = ease(p * 1.5);
+     for (var i = 0; i < 20; i++) { var on = a * 20 > i, x = 40 + (i % 10) * 40, y = 50 + Math.floor(i / 10) * 50; s += G('One attempt at the task.', R(x, y, 32, 36, on ? (i === 13 ? '#16a34a' : '#fecaca') : '#e2e8f0', { rx: 6 }) + T(x + 16, y + 24, on ? (i === 13 ? '✓' : '✗') : '', { size: 15, fill: i === 13 ? '#fff' : '#b91c1c' })); }
+     if (a >= 1) { [['pass@1', 5, '#2563eb'], ['pass@10 (correct)', 50, '#16a34a'], ['pass@10 (naive)', 40.1, '#94a3b8']].forEach(function (b, j) { var y = 176 + j * 36; s += T(150, y + 18, b[0], { size: 12.5, a: 'end' }) + R(160, y + 4, 260, 20, '#f1f5f9', { rx: 4 }) + R(160, y + 4, 260 * b[1] / 100, 20, b[2], { rx: 4 }) + T(430, y + 19, b[1] + '%', { size: 12, a: 'start' }); }); }
+     return s; } } },
+ { place: 'stats', scene: { t: 'When is an improvement real?', dur: 11000,
+   cap: 'Maestro-1 is truly 4 points better (simulated). The bar is the 95% range of what we measured. With 100, 250 or 500 tasks the range still crosses zero, so we cannot claim a win. At 1,000 tasks it clears zero. That is why the release set grew to ~1,200.',
+   render: function (p) { var R5 = [[100, -4.0, 22.0], [250, -8.4, 8.4], [500, -3.4, 8.4], [1000, 2.5, 10.7], [2000, 3.2, 9.3]], s = '', k = Math.min(4, Math.floor(p * 5)), x0 = 240, sc = 9;
+     s += '<line x1="' + x0 + '" y1="20" x2="' + x0 + '" y2="270" stroke="#0f172a" stroke-width="2"/>' + T(x0, 288, '0 = no difference', { size: 11.5, fill: '#64748b' });
+     for (var j = 0; j <= k; j++) { var r = R5[j], y = 40 + j * 48, ok = r[1] > 0; s += T(70, y + 6, r[0].toLocaleString() + ' tasks', { size: 12.5, a: 'end' }) + G('95% confidence interval for the difference (simulated results, paired_bootstrap.py).', '<line x1="' + (x0 + r[1] * sc) + '" y1="' + y + '" x2="' + Math.min(470, x0 + r[2] * sc) + '" y2="' + y + '" stroke="' + (ok ? '#16a34a' : '#dc2626') + '" stroke-width="8" stroke-linecap="round"/>') + T(472, y + 5, ok ? 'real' : 'unclear', { size: 11.5, a: 'end', fill: ok ? '#15803d' : '#b91c1c' }); }
+     return s; } } },
+ { place: 'report', scene: { t: 'From test runs to a release decision', dur: 9000,
+   cap: 'Thousands of runs are audited for leaks and scoring bugs, turned into numbers with intervals, written up with wins, losses and cost, and handed to the release gate in Part 14.',
+   render: function (p) { var St = [['🏃', 'Run', '#2563eb'], ['🧹', 'Audit', '#0d9488'], ['📊', 'Analyse', '#7c3aed'], ['📝', 'Report', '#ea580c'], ['🚦', 'Gate', '#be123c']], s = '', k = Math.min(4, Math.floor(p * 5));
+     St.forEach(function (st, j) { var x = 18 + j * 92, on = j <= k; s += R(x, 90, 80, 90, on ? st[2] : '#f1f5f9', { rx: 12 }) + T(x + 40, 128, st[0], { size: 24 }) + T(x + 40, 160, st[1], { size: 13, fill: on ? '#fff' : '#64748b' }); if (j < 4) s += T(x + 86, 140, '→', { size: 14, fill: '#cbd5e1' }); });
+     return s + '<circle cx="' + (58 + k * 92) + '" cy="206" r="7" fill="' + St[k][2] + '"/>'; } } },
+ { place: 'pilot', scene: { t: 'After release: what engineers actually do', dur: 9000,
+   cap: 'In pilots, every change the agent proposes is followed: merged as is, edited first, or rejected. Reverted and rejected changes become new test tasks, so the next evaluation is harder in exactly the right places. (Illustrative flow, not measured rates.)',
+   render: function (p, S) { var s = '', t = S.now / 900;
+     s += R(30, 120, 90, 50, '#2563eb', { rx: 10 }) + T(75, 150, '🤖 PR', { size: 15, fill: '#fff' });
+     [['✅ merged', 60, '#16a34a'], ['✏️ edited', 145, '#d97706'], ['↩️ rejected', 230, '#dc2626']].forEach(function (o) { s += R(330, o[1] - 20, 120, 40, '#fff', { s: o[2] }) + T(390, o[1] + 5, o[0], { size: 13, fill: o[2] }) + '<path d="M120 145 C220 145 230 ' + o[1] + ' 330 ' + o[1] + '" fill="none" stroke="' + o[2] + '" stroke-width="2" opacity=".5"/>'; });
+     for (var k = 0; k < 6; k++) { var u = (t + k / 6) % 1, ys = [60, 145, 230][k % 3]; s += '<circle cx="' + (120 + u * 210) + '" cy="' + (145 + (ys - 145) * u) + '" r="4" fill="#0f172a"/>'; }
+     s += '<path d="M390 250 C390 290 75 290 75 172" fill="none" stroke="#be123c" stroke-width="2" stroke-dasharray="5 4"/>' + T(240, 296, 'rejections become new test tasks', { size: 12, fill: '#be123c' });
+     return s; } } }
+]); })();
+</script>

@@ -1142,3 +1142,41 @@ zero successes in 60 tries still allows a true rate up to 6.0%</div>
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(13, [
+ { place: 'layers', scene: { t: 'Six shields between a request and harm', dur: 11000,
+   cap: 'Attacks (red dots) fly in from the left: harmful requests, hidden instructions in files, attempts to leak secrets. Each shield stops some. One slips past five shields and is still contained by the sandbox. No single layer is enough on its own.',
+   render: function (p, S) { var L = [['🎓', 'training'], ['🔎', 'filters'], ['🚧', 'tool guard'], ['📦', 'sandbox'], ['👀', 'monitor'], ['🚨', 'response']], s = '', t = S.now / 1000;
+     L.forEach(function (l, j) { var x = 90 + j * 62; s += G('Safety layer: ' + l[1] + '.', R(x, 40, 14, 220, '#7c3aed', { rx: 4, op: .85 }) + T(x + 7, 32, l[0], { size: 16 }) + T(x + 7, 278, l[1], { size: 10.5, w: 600 })); });
+     var stops = [0, 1, 2, 1, 0, 3, 2, 1, 3, 2];
+     stops.forEach(function (st, k) { var u = ((t * 0.25) + k / 10) % 1, xmax = 90 + st * 62, x = 20 + u * 440; if (x > xmax) x = xmax - 4; var y = 60 + k * 19; s += '<circle cx="' + x.toFixed(1) + '" cy="' + y + '" r="5" fill="' + (x >= xmax - 4 ? '#94a3b8' : '#dc2626') + '"/>'; });
+     return s; } } },
+ { place: 'guard', scene: { t: 'The tool guard decides before anything runs', dur: 12000,
+   cap: 'Each command the agent wants to run meets the guard: <b>allow</b>, <b>ask a human</b>, or <b>block</b>. It gets 6 of 8 test calls right; the two misses (a deletion hidden inside Python, a secrets file read) are why other layers exist. From <code>action_guard.py</code>.',
+   render: function (p) { var C = [['pytest -q tests/', 'ALLOW', 1], ['git push origin main', 'CONFIRM', 1], ['rm -rf /', 'BLOCK', 1], ['curl …/x.sh | sh', 'BLOCK', 1], ['http → attacker.example', 'BLOCK', 1], ['read ~/.ssh/id_rsa', 'BLOCK', 1], ['python -c "…rm -rf ~"', 'CONFIRM', 0], ['cat .env | base64', 'ALLOW', 0]], col = { ALLOW: '#16a34a', CONFIRM: '#d97706', BLOCK: '#dc2626' }, s = '', n = Math.ceil(ease(p * 1.2) * 8);
+     s += R(250, 18, 16, 270, '#0f172a', { rx: 3 }) + T(258, 14, '🚧', { size: 13 });
+     for (var j = 0; j < n; j++) { var c = C[j], y = 24 + j * 33; s += T(240, y + 18, c[0], { size: 11.5, a: 'end', w: 500 }) + R(280, y + 4, 86, 22, col[c[1]], { rx: 5 }) + T(323, y + 19, c[1], { size: 11, fill: '#fff' }) + T(372, y + 19, c[2] ? '✓' : 'MISS', { size: 11.5, a: 'start', w: 800, fill: c[2] ? '#15803d' : '#b91c1c' }); }
+     return s; } } },
+ { place: 'sandbox', scene: { t: 'The sandbox limits what "wrong" can mean', dur: 9000,
+   cap: 'Every task runs in a fresh, isolated machine with a copy of the code and no long-lived secrets. It can reach only an allow-list of sites; everything else is blocked. Changes leave only as a pull request a human reviews.',
+   render: function (p, S) { var s = '', t = S.now / 1000;
+     s += G('Sandbox: a small isolated virtual machine created for one task and destroyed after.', R(150, 70, 180, 160, '#ede9fe', { s: '#7c3aed', sw: 3 }) + T(240, 96, '📦 sandbox', { size: 14, fill: '#5b21b6' }) + T(240, 150, '🤖', { size: 30 }) + T(240, 190, 'copy of the repo', { size: 11.5, w: 500 }));
+     [['pypi.org ✓', 40, '#16a34a'], ['github.com ✓', 260, '#16a34a']].forEach(function (h) { s += R(10, h[1], 110, 30, '#dcfce7', { s: h[2] }) + T(65, h[1] + 20, h[0], { size: 12, fill: '#15803d' }); });
+     [['attacker.example ✗', 40], ['unknown host ✗', 260]].forEach(function (h) { s += R(360, h[1], 112, 30, '#fee2e2', { s: '#dc2626' }) + T(416, h[1] + 20, h[0], { size: 11.5, fill: '#b91c1c' }); });
+     var u = (t * 0.6) % 1; s += '<circle cx="' + (150 - u * 30) + '" cy="' + (80 - u * 20) + '" r="4" fill="#16a34a"/><circle cx="' + (330 + u * 25) + '" cy="' + (80 - u * 20) + '" r="4" fill="#dc2626"/>' + T(345, 100, '⛔', { size: 14 });
+     s += R(195, 248, 90, 30, '#0f172a', { rx: 8 }) + T(240, 268, '→ pull request', { size: 12, fill: '#fff' });
+     return s; } } },
+ { place: 'redteam', scene: { t: 'Red-team results, with honest error bars', dur: 10000,
+   cap: 'Bars show how often attacks succeeded; the thin lines show the 95% range. Small numbers of tries leave wide ranges: even 0 successes in 60 tries could hide a true rate up to 6%. Scenario counts, intervals from <code>redteam_rates.py</code>.',
+   render: function (p) { var D = [['prompt injection', 7.5, 3.5, 15.4], ['destructive command', 1.7, 0.3, 8.9], ['secret exfiltration', 4.0, 1.1, 13.5], ['harmful requests', 2.5, 0.9, 7.1], ['gaming the tests', 10.0, 4.0, 23.1]], s = '', a = ease(p * 1.3), sc = 11;
+     D.forEach(function (d, j) { var y = 30 + j * 50; s += T(150, y + 18, d[0], { size: 12.5, a: 'end' }) + R(160, y + 6, d[1] * sc * a, 18, '#dc2626', { rx: 3 }) + '<line x1="' + (160 + d[2] * sc * a) + '" y1="' + (y + 15) + '" x2="' + (160 + d[3] * sc * a) + '" y2="' + (y + 15) + '" stroke="#0f172a" stroke-width="2"/>' + T(160 + d[3] * sc * a + 6, y + 20, d[1] + '%', { size: 11.5, a: 'start' }); });
+     return s; } } },
+ { place: 'incident', scene: { t: 'When something gets through', dur: 9000,
+   cap: 'Detect, contain (stop the session, revoke its keys, roll back if needed), notify the client, fix the cause, and turn the lesson into a new test. Each step has an owner and a time limit.',
+   render: function (p) { var St = [['🔔', 'Detect', '#ea580c'], ['🧯', 'Contain', '#dc2626'], ['📣', 'Notify', '#7c3aed'], ['🔧', 'Fix', '#2563eb'], ['📚', 'Learn', '#16a34a']], s = '', k = Math.min(4, Math.floor(p * 5));
+     s += '<line x1="40" y1="150" x2="440" y2="150" stroke="#cbd5e1" stroke-width="4"/>';
+     St.forEach(function (st, j) { var x = 40 + j * 100, on = j <= k; s += '<circle cx="' + x + '" cy="150" r="28" fill="' + (on ? st[2] : '#f1f5f9') + '"/>' + T(x, 157, st[0], { size: 20 }) + T(x, 200, st[1], { size: 13, fill: on ? st[2] : '#94a3b8' }); });
+     return s; } } }
+]); })();
+</script>

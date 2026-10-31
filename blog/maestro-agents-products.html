@@ -1109,3 +1109,33 @@ hybrid: seat fee with an included allowance, then per solved task above it</div>
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () { if (!window.MoSvg) return; var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease;
+MoScenes(16, [
+ { place: 'agent', scene: { t: 'One agent task, like a storyboard', dur: 12000,
+   cap: 'An issue arrives. The agent reads files and looks up saved skills, edits code in its sandbox, runs the tests (they fail), fixes the problem, runs them again (they pass) and opens a pull request for a human to review. It never merges by itself.',
+   render: function (p) { var St = [['📥', 'Issue #412'], ['🔎', 'Read files + skills'], ['✏️', 'Edit code'], ['🧪', 'Tests: 2 fail'], ['🔧', 'Fix'], ['🧪', 'Tests: all pass'], ['📤', 'Pull request']], s = '', k = Math.min(6, Math.floor(p * 7));
+     St.forEach(function (st, j) { var x = 14 + (j % 4) * 116, y = 30 + Math.floor(j / 4) * 130, on = j <= k, bad = j === 3; s += R(x, y, 104, 100, on ? (bad ? '#fee2e2' : j === 6 ? '#16a34a' : '#eff6ff') : '#f8fafc', { s: on ? (bad ? '#dc2626' : '#2563eb') : '#e2e8f0' }) + T(x + 52, y + 46, st[0], { size: 26 }) + T(x + 52, y + 80, st[1], { size: 11, fill: j === 6 && on ? '#fff' : '#0f172a' }); });
+     return s; }, counters: function (p) { return [['steps', Math.min(30, Math.round(p * 30))], ['merges by itself', 'never']]; } } },
+ { place: 'cost', scene: { t: 'Why caching makes long tasks affordable', dur: 10000,
+   cap: 'Every step re-sends everything the agent has read so far. Without caching (red) the cost climbs faster and faster; with caching (green) the repeated part is almost free. At 30 steps: about 37¢ versus 6.5¢ per task. From <code>task_cost.py</code> (our price assumptions).',
+   render: function (p) { var s = '', N = Math.max(1, Math.round(ease(p * 1.2) * 30)), pts0 = [], pts1 = [];
+     function cost(st, cache) { var ctx = 6000, c = 0, I = 1.17 / 5 / 1e6, O = 1.17 / 1e6; for (var i = 0; i < st; i++) { c += cache ? ctx * I / 10 + 2500 * I : (ctx + 2500) * I; c += 400 * O; ctx += 2900; } return c; }
+     for (var i = 1; i <= N; i++) { pts0.push([40 + i * 13.5, 250 - cost(i, false) / 0.4 * 210]); pts1.push([40 + i * 13.5, 250 - cost(i, true) / 0.4 * 210]); }
+     s += '<line x1="40" y1="250" x2="460" y2="250" stroke="#cbd5e1"/>' + T(250, 274, 'agent steps →', { size: 12, w: 500, fill: '#64748b' });
+     s += '<path d="' + MoSvg.path(pts0) + '" fill="none" stroke="#dc2626" stroke-width="3"/><path d="' + MoSvg.path(pts1) + '" fill="none" stroke="#16a34a" stroke-width="3"/>';
+     return s + T(60, 40, 'no cache: $' + cost(N, false).toFixed(3), { size: 13, a: 'start', fill: '#b91c1c' }) + T(60, 60, 'cached:   $' + cost(N, true).toFixed(3), { size: 13, a: 'start', fill: '#15803d' }); } } },
+ { place: 'pricing', scene: { t: 'Light users, heavy users and the price', dur: 10000,
+   cap: 'With a flat $40 seat, a light user (20 tasks a month) is very profitable but a heavy user (600 tasks) uses up almost the whole fee in serving costs. Charging per solved task keeps the margin steady at about 93%. Hence hybrid pricing. From <code>pricing.py</code>.',
+   render: function (p) { var D = [[20, 97, 93], [100, 84, 93], [300, 51, 93], [600, 2, 93]], s = '', a = ease(p * 1.3);
+     s += T(150, 26, 'seat margin', { size: 13, w: 800, fill: '#b91c1c' }) + T(360, 26, 'per-task margin', { size: 13, w: 800, fill: '#15803d' });
+     D.forEach(function (d, j) { var y = 44 + j * 56; s += T(60, y + 24, d[0] + ' tasks', { size: 12, a: 'end' }) + R(70, y + 8, 160 * d[1] / 100 * a, 24, d[1] < 30 ? '#dc2626' : '#f59e0b', { rx: 4 }) + T(76 + 160 * d[1] / 100 * a, y + 25, Math.round(d[1] * a) + '%', { size: 11.5, a: 'start' }) + R(280, y + 8, 160 * d[2] / 100 * a, 24, '#16a34a', { rx: 4 }) + T(286 + 160 * d[2] / 100 * a, y + 25, Math.round(d[2] * a) + '%', { size: 11.5, a: 'start' }); });
+     return s; } } },
+ { place: 'onboard', scene: { t: 'A new client, week by week', dur: 9000,
+   cap: 'Contract and data agreement; connecting the code host, tracker and test system; replaying 50 of the client&#39;s past issues offline to set honest expectations; then live work with every change reviewed; and a review meeting with numbers at week 4.',
+   render: function (p) { var St = [['📝', 'Day 0', 'contract'], ['🔌', 'Days 1–3', 'connect tools'], ['🧪', 'Days 3–7', 'replay 50 past issues'], ['🤝', 'Week 2', 'live, all reviewed'], ['📈', 'Week 4', 'review the numbers']], s = '', k = Math.min(4, Math.floor(p * 5));
+     s += '<line x1="40" y1="130" x2="440" y2="130" stroke="#cbd5e1" stroke-width="4"/>';
+     St.forEach(function (st, j) { var x = 40 + j * 100, on = j <= k; s += '<circle cx="' + x + '" cy="130" r="24" fill="' + (on ? '#2563eb' : '#f1f5f9') + '"/>' + T(x, 137, st[0], { size: 18 }) + T(x, 180, st[1], { size: 12, w: 800, fill: on ? '#1d4ed8' : '#94a3b8' }) + T(x, 198, st[2], { size: 10.5, w: 500, fill: on ? '#0f172a' : '#94a3b8' }); });
+     return s; } } }
+]); })();
+</script>
