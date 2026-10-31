@@ -51,6 +51,10 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🔁 [The Maestro, Part 11: Post-Training and the RSI Loop](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-post-training-rsi.html) | Phase 2 ends. | 2026-10-31 |
+| 🏋️ [The Maestro, Part 10: The Pre-Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-pretraining-run.html) | 31 days on 1,024 GPUs: the go/no-go gate, a warmup-stable-decay learning-rate schedule, a loss-spike detector that tells a blip from a… | 2026-10-31 |
+| 🏗️ [The Maestro, Part 9: Architecture and Parallelism](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-architecture-parallelism.html) | Designing Maestro-1: a mixture-of-experts model with 65.2B total and 11.7B active parameters, a memory plan for 1,024 H100s, the four kinds… | 2026-10-31 |
+| 🗃️ [The Maestro, Part 8: The Data Refinery](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-data-refinery.html) | Phase 2 begins. | 2026-10-31 |
 | 📋 [The Maestro, Part 7: The Cluster Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-cluster-software.html) | Phase 1 ends. | 2026-10-30 |
 | 🔧 [The Maestro, Part 6: Day Zero — Bring-Up](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-bring-up.html) | Phase 1. | 2026-10-30 |
 | ⚡ [The Maestro, Part 5: Site, Power and Cooling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-site-power-cooling.html) | Phase 1. | 2026-10-30 |

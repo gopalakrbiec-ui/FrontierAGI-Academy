@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "maestro-post-training-rsi",
+      "title": "The Maestro, Part 11: Post-Training and the RSI Loop",
+      "excerpt": "Phase 2 ends. SFT, preferences and RL with verifiable rewards turn the base model into Maestro-1; a runnable GRPO toy shows a weak verifier teaching the model to cheat; and the fixed, human-controlled gate is built in code.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🔁",
+      "featured": false
+    },
+    {
+      "slug": "maestro-pretraining-run",
+      "title": "The Maestro, Part 10: The Pre-Training Run",
+      "excerpt": "31 days on 1,024 GPUs: the go/no-go gate, a warmup-stable-decay learning-rate schedule, a loss-spike detector that tells a blip from a divergence, the daily run ledger, annealing on the best data and choosing the base checkpoint.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "19 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🏋️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-architecture-parallelism",
+      "title": "The Maestro, Part 9: Architecture and Parallelism",
+      "excerpt": "Designing Maestro-1: a mixture-of-experts model with 65.2B total and 11.7B active parameters, a memory plan for 1,024 H100s, the four kinds of parallelism in plain terms, an interactive layout planner, and the ablation ladder that de-risks the main run.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "19 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🏗️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-data-refinery",
+      "title": "The Maestro, Part 8: The Data Refinery",
+      "excerpt": "Phase 2 begins. Gopala builds the refinery that turns raw web, code and partner tasks into a 10-trillion-token blend: data rights, Gopher-style filters, MinHash deduplication, a quality classifier, a mixture plan whose script exposed a flaw, and the manifest that records what the model saw.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "20 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🗃️",
+      "featured": false
+    },
+    {
       "slug": "maestro-cluster-software",
       "title": "The Maestro, Part 7: The Cluster Software",
       "excerpt": "Phase 1 ends. Slurm for training, Kubernetes for serving, DCGM and Prometheus monitoring, a health check that drains bad nodes, a checkpoint interval derived from Meta's Llama 3 failure record, a fire drill and one-person on-call rules.",

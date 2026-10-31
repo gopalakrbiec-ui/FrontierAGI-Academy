@@ -238,7 +238,11 @@
         "maestro-securing-compute",
         "maestro-site-power-cooling",
         "maestro-bring-up",
-        "maestro-cluster-software"
+        "maestro-cluster-software",
+        "maestro-data-refinery",
+        "maestro-architecture-parallelism",
+        "maestro-pretraining-run",
+        "maestro-post-training-rsi"
       ]
     },
     {
