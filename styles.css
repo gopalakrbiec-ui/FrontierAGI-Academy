@@ -6826,3 +6826,14 @@ body {
 @media (max-width: 768px) { .mf-cap { font-size: 14px; } .mf-dots button { width: 14px; } }
 .mf-one .mf-dots, .mf-one [data-a="prev"], .mf-one [data-a="next"] { display: none; }
 .mf-one .mf-ctl::after { content: "Plays once when you scroll to it · ↺ to replay"; font-size: 12px; color: #64748b; }
+
+/* ===================== Maestro system map (Mission Control) ===================== */
+.sm-wrap { border: 1.5px solid #e5e7eb; border-radius: 16px; background: #fff; padding: 12px; margin: 14px 0 26px; box-shadow: 0 8px 26px rgba(15,23,42,.06); }
+.sm-ctl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.sm-ctl button { border: 0; background: #be123c; color: #fff; font-weight: 700; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.sm-mode { font-size: 14px; }
+.sm-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.sm-chips button { width: 32px; height: 30px; border-radius: 8px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-weight: 700; cursor: pointer; }
+.sm-chips button.on { background: #0f172a; color: #fff; border-color: #0f172a; }
+#smSvg { width: 100%; height: auto; display: block; }
+.sm-txt { font-size: 14.5px; line-height: 1.55; padding: 6px 4px 0; }
