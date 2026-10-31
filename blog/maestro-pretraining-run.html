@@ -1153,3 +1153,72 @@ done</pre></div>
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () {
+  if (!window.MoSvg) return;
+  var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease, cl = MoSvg.cl, path = MoSvg.path;
+  var FAIL = [[2.1, 17], [4.6, 88], [6.0, 41], [8.3, 102], [11.0, -1], [12.4, 7], [15.2, 63], [17.8, 120], [19.5, 33], [22.9, 77], [23.0, 95], [27.3, 54]];
+  function loss(x) { return 1.9 + 9 * Math.pow(x * 600 + 1, -0.35); }
+  MoScenes(10, [
+    { place: 'stakes', scene: { t: '31 days in one picture', dur: 12000,
+      cap: 'All 1,024 GPUs train one model. Watch a month pass: tokens pile up towards 10 trillion, servers occasionally fail (red), a spare takes over and training continues. On day 11 the whole run rewinds after a bad data shard (story events).',
+      render: function (p, S) {
+        var day = p * 32.5, t = S.now / 500, bad = {};
+        FAIL.forEach(function (f) { if (f[1] >= 0 && day > f[0] && day < f[0] + 0.9) bad[f[1]] = 1; });
+        var rew = day > 11 && day < 11.6;
+        var s = MoCluster(16, 40, 448, function (n) { if (bad[n]) return '#dc2626'; if (rew) return '#f59e0b'; return 'hsl(142,' + (55 + 15 * Math.sin(t + n * 0.3)) + '%,44%)'; });
+        s += T(240, 26, 'Day ' + Math.min(32.5, day).toFixed(1) + ' of 32.5 (story)', { size: 16, w: 800 });
+        s += R(16, 262, 448, 14, '#e2e8f0', { rx: 7 }) + R(16, 262, 448 * Math.min(1, day / 32.5), 14, '#16a34a', { rx: 7 });
+        s += T(240, 294, rew ? '⏪ rewinding after a bad data shard (day 11)' : Object.keys(bad).length ? '🔴 a server failed → hot spare swaps in' : 'training…', { size: 13, w: 700, fill: rew ? '#b45309' : Object.keys(bad).length ? '#b91c1c' : '#15803d' });
+        return s;
+      }, counters: function (p) { var d = p * 32.5, n = FAIL.filter(function (f) { return f[1] >= 0 && f[0] < d; }).length; return [['tokens', (Math.min(10, d / 32.5 * 10)).toFixed(2) + 'T'], ['hardware interruptions', n], ['rewinds', d > 11 ? 1 : 0]]; } } },
+    { place: 'gonogo', scene: { t: 'The go/no-go checklist', dur: 8000,
+      cap: 'Before the most expensive step, every item must be green: the data is frozen, the design is frozen, the speed is measured, recovery is tested, checkpoints restore, evaluations are ready, people are on call, and the building will not be touched. Then: go.',
+      render: function (p) {
+        var I = ['Data blend frozen', 'Design frozen', 'Speed measured', 'Recovery tested', 'Checkpoints restore', 'Evaluations ready', 'On-call rota', 'Facility freeze'], s = '', a = ease(p * 1.4);
+        I.forEach(function (it, j) { var x = 30 + (j % 2) * 220, y = 30 + Math.floor(j / 2) * 46, on = a * 8 > j; s += R(x, y, 200, 36, on ? '#dcfce7' : '#f1f5f9', { s: on ? '#16a34a' : '#cbd5e1' }) + T(x + 18, y + 24, on ? '✔' : '○', { size: 15, fill: on ? '#15803d' : '#94a3b8' }) + T(x + 36, y + 23, it, { size: 13, a: 'start' }); });
+        if (a >= 1) s += R(160, 222, 160, 50, '#16a34a', { rx: 25 }) + T(240, 254, 'GO', { size: 24, w: 900, fill: '#fff' });
+        return s;
+      } } },
+    { place: 'lr', scene: { t: 'How fast the model learns: the learning-rate plan', dur: 9000,
+      cap: 'The <b>learning rate</b> is how big each update step is. A cosine schedule (blue) slows down from the start. The chosen warmup-stable-decay schedule (red) stays fast for 85% of the run, then slows sharply at the end, which is when it switches to the best data.',
+      render: function (p) {
+        var s = '', N = Math.round(120 * ease(p * 1.2)), pc = [], pw = [];
+        for (var i = 0; i <= N; i++) { var x = i / 120; var c = x < 0.0033 ? x / 0.0033 : 0.1 + 0.9 * 0.5 * (1 + Math.cos(Math.PI * x)); var w = x < 0.0033 ? x / 0.0033 : x < 0.85 ? 1 : 0.1 + 0.9 * (1 - (x - 0.85) / 0.15); pc.push([40 + x * 420, 240 - c * 190]); pw.push([40 + x * 420, 240 - w * 190]); }
+        s += '<line x1="40" y1="240" x2="460" y2="240" stroke="#cbd5e1"/><line x1="40" y1="40" x2="40" y2="240" stroke="#cbd5e1"/>';
+        s += T(250, 266, 'progress through the run →', { size: 12, w: 500, fill: '#64748b' }) + T(34, 46, 'fast', { size: 11, a: 'end', fill: '#64748b' }) + T(34, 240, 'slow', { size: 11, a: 'end', fill: '#64748b' });
+        if (pc.length > 1) s += '<path d="' + path(pc) + '" fill="none" stroke="#2563eb" stroke-width="3"/><path d="' + path(pw) + '" fill="none" stroke="#be123c" stroke-width="3"/>';
+        s += '<line x1="' + (40 + 0.85 * 420) + '" y1="40" x2="' + (40 + 0.85 * 420) + '" y2="240" stroke="#94a3b8" stroke-dasharray="4 4"/>' + T(40 + 0.85 * 420, 34, 'switch to best data', { size: 11, fill: '#64748b' });
+        return s;
+      } } },
+    { place: 'spikes', scene: { t: 'A blip or a real problem?', dur: 11000,
+      cap: 'The <b>loss</b> (how wrong the model&#39;s guesses are) should keep falling. At step 4,200 it jumps for six steps and recovers: a blip, logged and ignored. At step 7,401 it jumps and stays up: the detector raises the alarm and the run <b>rewinds</b> to the last good checkpoint. Simulated curve, as in <code>spike_watch.py</code>.',
+      render: function (p) {
+        var s = '', N = Math.round(9000 * ease(p * 1.15)), pts = [];
+        for (var st = 1; st <= N; st += 60) { var y = loss(st / 9000 * 1); if (st >= 4200 && st < 4300) y += 0.9 * (st < 4206 + 60 ? 1 : 0); if (st >= 7400 && st < 7700) y += 0.6; pts.push([30 + st / 9000 * 420, 240 - (y - 1.8) * 22]); }
+        s += '<line x1="30" y1="240" x2="450" y2="240" stroke="#cbd5e1"/>' + T(240, 266, 'training steps →', { size: 12, w: 500, fill: '#64748b' });
+        if (pts.length > 1) s += '<path d="' + path(pts) + '" fill="none" stroke="#2563eb" stroke-width="2.5"/>';
+        if (N > 4300) s += T(30 + 4200 / 9000 * 420, 120, 'blip: ignore', { size: 12, w: 800, fill: '#b45309' });
+        if (N > 7700) { var x = 30 + 7400 / 9000 * 420; s += T(x, 100, '🚨 stays up: rewind', { size: 12, w: 800, fill: '#b91c1c' }) + '<path d="M' + x + ' 110 Q' + (x - 30) + ' 80 ' + (x - 60) + ' 130" fill="none" stroke="#b91c1c" stroke-width="2" marker-end=""/>'; }
+        return s;
+      } } },
+    { place: 'ledger', scene: { t: 'Every morning: are we on schedule?', dur: 9000,
+      cap: 'The plan is about 0.318 trillion tokens a day. Each bar is one day of the story&#39;s run; the line is the plan. Days 7 and 19 fell below 90% of plan and were investigated. The run stayed within 0.03T of plan.',
+      render: function (p) {
+        var D = [0.31, 0.33, 0.33, 0.30, 0.33, 0.33, 0.24, 0.33, 0.33, 0.32, 0.33, 0.33, 0.33, 0.29, 0.33, 0.33, 0.33, 0.33, 0.26, 0.33], s = '', n = Math.ceil(ease(p * 1.2) * 20);
+        for (var i = 0; i < n; i++) { var h = D[i] / 0.36 * 190, low = D[i] < 0.9 * 0.318; s += G('Day ' + (i + 1) + ': ' + D[i] + 'T tokens trained (scenario).', R(30 + i * 21, 240 - h, 16, h, low ? '#dc2626' : '#16a34a', { rx: 2 })); }
+        var py = 240 - 0.318 / 0.36 * 190; s += '<line x1="26" y1="' + py + '" x2="456" y2="' + py + '" stroke="#0f172a" stroke-dasharray="5 4"/>' + T(456, py - 6, 'plan', { size: 11, a: 'end' }) + T(240, 266, 'days 1–20', { size: 12, w: 500, fill: '#64748b' });
+        return s;
+      } } },
+    { place: 'anneal', scene: { t: 'The last 15%: best data, slower steps', dur: 9000,
+      cap: 'In the final stretch the learning rate falls and the data mix shifts towards the best material: top-scored web pages, maths, code and the small set of verified skills. Then the best of the last few checkpoints is frozen as <b>Maestro-1 base</b>.',
+      render: function (p) {
+        var a = ease(p * 1.4), s = '';
+        var A = [['General web', 55, 35, '#2563eb'], ['Code', 20, 26, '#7c3aed'], ['Maths', 8, 14, '#0d9488'], ['Best-scored web', 0, 15, '#ea580c'], ['Verified skills', 0.4, 2, '#be123c']];
+        A.forEach(function (m, j) { var v = m[1] + (m[2] - m[1]) * a, y = 30 + j * 40; s += T(150, y + 18, m[0], { size: 12.5, a: 'end' }) + R(160, y + 4, 280, 20, '#f1f5f9', { rx: 4 }) + R(160, y + 4, 280 * v / 60, 20, m[3], { rx: 4 }) + T(446, y + 19, v.toFixed(1) + '%', { size: 12, a: 'end', fill: '#475569' }); });
+        if (a >= 1) s += R(140, 236, 200, 44, '#0f172a', { rx: 10 }) + T(240, 264, '🧊 Maestro-1 base', { size: 15, fill: '#fff' });
+        return s;
+      }, counters: function () { return [['shares', 'illustrative']]; } } }
+  ]);
+})();
+</script>

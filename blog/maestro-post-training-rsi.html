@@ -1125,3 +1125,68 @@ approved 1 of 4; rejected updates are logged with reasons, never retried unchang
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
 })();
 </script>
+<script>
+(function () {
+  if (!window.MoSvg) return;
+  var T = MoSvg.T, R = MoSvg.R, G = MoSvg.G, ease = MoSvg.ease, cl = MoSvg.cl;
+  MoScenes(11, [
+    { place: 'pipeline', scene: { t: 'From base model to product, stage by stage', dur: 10000,
+      cap: 'The base model can only continue text. <b>Supervised fine-tuning</b> teaches it to follow instructions and use tools; <b>preferences</b> teach it which answers people prefer; <b>reinforcement learning</b> rewards it when hidden tests pass. Only the <b>gate</b> can promote the result.',
+      render: function (p) {
+        var St = [['🧊', 'Base model', '#64748b', 'continues text'], ['🗣️', 'Fine-tuning', '#2563eb', 'follows instructions'], ['⚖️', 'Preferences', '#7c3aed', 'clearer, safer answers'], ['🎯', 'RL with tests', '#be123c', 'solves real tasks'], ['🚦', 'Gate', '#ea580c', 'fixed rules + human'], ['🚀', 'Maestro-1', '#16a34a', 'to evaluation']], s = '', k = Math.min(5, Math.floor(p * 6));
+        St.forEach(function (st, j) { var x = 14 + j * 77, on = j <= k; s += R(x, 60, 70, 90, on ? st[2] : '#f1f5f9', { rx: 10 }) + T(x + 35, 96, st[0], { size: 22 }) + T(x + 35, 124, st[1], { size: 10.5, fill: on ? '#fff' : '#64748b' }); });
+        s += T(240, 196, 'Now the model ' + St[k][3], { size: 16, w: 800, fill: St[k][2] });
+        s += '<circle cx="' + (49 + k * 77) + '" cy="168" r="7" fill="' + St[k][2] + '"/>';
+        return s;
+      } } },
+    { place: 'rl', scene: { t: 'Learning from a group of attempts (GRPO)', dur: 10000,
+      cap: 'For each task the model makes <b>16 attempts</b>. Tests mark each pass (green) or fail (red). Attempts better than the group average are made more likely next time; worse ones less likely. No separate judge model is needed.',
+      render: function (p) {
+        var s = '', a = ease(p * 1.4), res = [1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0], mean = 6 / 16;
+        for (var i = 0; i < 16; i++) { var x = 30 + (i % 8) * 54, y = 40 + Math.floor(i / 8) * 64, on = a * 16 > i; s += G('One attempt at the same task.', R(x, y, 44, 44, on ? (res[i] ? '#16a34a' : '#dc2626') : '#e2e8f0', { rx: 8 }) + T(x + 22, y + 28, on ? (res[i] ? '✓' : '✗') : '…', { size: 18, fill: '#fff' })); if (a >= 1) s += T(x + 22, y + 58, res[i] ? '↑ more likely' : '↓ less', { size: 9.5, w: 600, fill: res[i] ? '#15803d' : '#b91c1c' }); }
+        s += T(240, 210, a >= 1 ? 'group average 6/16 passed: better-than-average attempts are reinforced' : 'running hidden tests…', { size: 13, w: 700 });
+        return s;
+      } } },
+    { place: 'rl', scene: { t: 'The verifier decides what it learns', dur: 10000,
+      cap: 'Same training, two checkers. With only the tests the model can see (left), it learns to <b>special-case the tests</b>: 98% of its answers are the hack, and only 3% really work. With hidden tests (right), it learns the careful solution: 97%, with 63% really working. Real output of <code>grpo_toy.py</code>.',
+      render: function (p) {
+        var a = ease(p * 1.2), s = '';
+        [[20, 'Visible tests only', 98, 3, '#dc2626', 'hack'], [250, 'With hidden tests', 97, 63, '#16a34a', 'careful solution']].forEach(function (c) {
+          s += R(c[0], 24, 210, 250, '#fff', { s: '#cbd5e1' }) + T(c[0] + 105, 48, c[1], { size: 14, w: 800 });
+          s += T(c[0] + 105, 78, 'model picks: ' + c[5], { size: 12, w: 500 });
+          s += R(c[0] + 30, 90, 50, 160, '#f1f5f9', { rx: 4 }) + R(c[0] + 30, 250 - 160 * c[2] / 100 * a, 50, 160 * c[2] / 100 * a, c[4], { rx: 4 }) + T(c[0] + 55, 268, Math.round(c[2] * a) + '%', { size: 13, w: 800 });
+          s += R(c[0] + 120, 90, 50, 160, '#f1f5f9', { rx: 4 }) + R(c[0] + 120, 250 - 160 * c[3] / 100 * a, 50, 160 * c[3] / 100 * a, '#2563eb', { rx: 4 }) + T(c[0] + 145, 268, Math.round(c[3] * a) + '% real', { size: 12, w: 800 });
+        });
+        return s;
+      } } },
+    { place: 'loop', scene: { t: 'The self-improving loop, running', dur: 10000,
+      cap: 'Tasks come in, the model attempts them, hidden tests verify, good methods are saved as skills, a candidate update is trained, and the gate decides. Everything turns automatically except the gate, which a person controls.',
+      render: function (p, S) {
+        var St = [['📥', 'Tasks'], ['🤖', 'Attempt'], ['✅', 'Verify'], ['📚', 'Curate'], ['🏋️', 'Train'], ['🚦', 'Gate']], s = '', cx = 240, cy = 150, r = 105, ang = (S.now / 1600) % (Math.PI * 2);
+        s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="#e2e8f0" stroke-width="18"/>';
+        St.forEach(function (st, j) { var t = j / 6 * Math.PI * 2 - Math.PI / 2, x = cx + r * Math.cos(t), y = cy + r * Math.sin(t), gate = j === 5; s += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="27" fill="' + (gate ? '#be123c' : '#fff') + '" stroke="' + (gate ? '#9f1239' : '#94a3b8') + '" stroke-width="2"/>' + T(x, y + 2, st[0], { size: 17 }) + T(x, y + 44, st[1], { size: 12, fill: gate ? '#9f1239' : '#0f172a' }); });
+        var t2 = ang - Math.PI / 2; s += '<circle cx="' + (cx + r * Math.cos(t2)).toFixed(1) + '" cy="' + (cy + r * Math.sin(t2)).toFixed(1) + '" r="8" fill="#2563eb"/>';
+        s += T(cx, cy - 4, 'every 2 weeks', { size: 13, w: 800 }) + T(cx, cy + 16, 'gate = human', { size: 12, w: 500, fill: '#9f1239' });
+        return s;
+      } } },
+    { place: 'gate', scene: { t: 'Four updates at the gate', dur: 12000,
+      cap: 'Four candidate updates arrive. Only <b>upd-031</b> passes every rule. upd-032 looked great on visible tests but barely improved on hidden ones (gaming). upd-033 broke an old skill. upd-034 triggered red-team flags. Same decisions as <code>gate.py</code>.',
+      render: function (p) {
+        var C = [['upd-031', 1, 'all rules pass'], ['upd-032', 0, 'visible ≫ hidden: gaming'], ['upd-033', 0, 'broke an old skill'], ['upd-034', 0, 'red-team flags']], s = '';
+        s += R(300, 30, 16, 240, '#0f172a', { rx: 3 }) + T(308, 22, '🚦 gate', { size: 13, w: 800 });
+        C.forEach(function (c, j) { var a = ease(p * 4 - j * 0.9), y = 48 + j * 58, x = 30 + a * (c[1] ? 330 : 160); if (!c[1] && a >= 1) x = 190 - (ease(p * 4 - j * 0.9 - 0.3)) * 30;
+          s += R(x, y, 100, 36, c[1] ? '#16a34a' : '#f1f5f9', { s: c[1] ? '#15803d' : '#94a3b8' }) + T(x + 50, y + 23, c[0], { size: 13, fill: c[1] ? '#fff' : '#0f172a' });
+          if (a >= 1) s += T(c[1] ? 410 : 150, y + 50, c[1] ? '✅ approved' : '⛔ ' + c[2], { size: 11.5, w: 700, fill: c[1] ? '#15803d' : '#b91c1c', a: c[1] ? 'middle' : 'middle' });
+        });
+        return s;
+      }, counters: function (p) { return [['approved', p > 0.3 ? '1 of 4' : '…']]; } } },
+    { place: 'pools', scene: { t: 'Four task pools behind walls', dur: 8000,
+      cap: 'Tasks are split into four pools that never mix. The loop trains on the first two; only the verifier sees the hidden tests; only the evaluator sees the private release set. If anything leaks, that pool is retired and replaced.',
+      render: function (p) {
+        var P = [['Training tasks', 'the loop', '#2563eb'], ['Visible tests', 'the loop', '#7c3aed'], ['Hidden tests', 'verifier only', '#be123c'], ['Private release set', 'evaluator only', '#0f172a']], s = '', a = ease(p * 1.4);
+        P.forEach(function (q, j) { var x = 14 + j * 116, on = a * 4 > j; s += R(x, 50, 104, 170, on ? q[2] : '#f1f5f9', { rx: 10, op: on ? 0.92 : 1 }) + T(x + 52, 130, q[0].split(' ')[0], { size: 13, fill: on ? '#fff' : '#64748b' }) + T(x + 52, 148, q[0].split(' ').slice(1).join(' '), { size: 13, fill: on ? '#fff' : '#64748b' }) + T(x + 52, 245, q[1], { size: 11.5, w: 600 }); if (j < 3) s += R(x + 108, 40, 4, 190, '#0f172a', { rx: 2 }); });
+        return s;
+      } } }
+  ]);
+})();
+</script>

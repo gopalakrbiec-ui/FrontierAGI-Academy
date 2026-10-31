@@ -697,6 +697,26 @@ window.MoFilm = function (el, cfg) {
     io.observe(el);
   }
 };
+
+// Drawing helpers shared by scene scripts, and a placer that puts one player after each section heading.
+window.MoSvg = {
+  T: function (x, y, s, o) { o = o || {}; return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 14) + '" fill="' + (o.fill || '#0f172a') + '" text-anchor="' + (o.a || 'middle') + '" font-weight="' + (o.w || 600) + '"' + (o.op != null ? ' opacity="' + o.op + '"' : '') + '>' + s + '</text>'; },
+  R: function (x, y, w, h, f, o) { o = o || {}; return '<rect x="' + x + '" y="' + y + '" width="' + Math.max(0, w) + '" height="' + Math.max(0, h) + '" rx="' + (o.rx == null ? 6 : o.rx) + '" fill="' + f + '"' + (o.s ? ' stroke="' + o.s + '" stroke-width="' + (o.sw || 1.5) + '"' : '') + (o.op != null ? ' opacity="' + o.op + '"' : '') + '/>'; },
+  G: function (def, inner) { return '<g data-def="' + def + '">' + inner + '</g>'; },
+  cl: function (v) { return Math.max(0, Math.min(1, v)); },
+  ease: function (v) { v = Math.max(0, Math.min(1, v)); return v * v * (3 - 2 * v); },
+  path: function (pts) { return pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' '); }
+};
+window.MoScenes = function (part, list) {
+  if (!window.MoFilm) return;
+  list.forEach(function (it, k) {
+    var h = document.getElementById(it.place); if (!h) return;
+    var box = document.createElement('div'); box.id = 'scene' + part + '-' + (k + 1);
+    var after = h; while (after.nextElementSibling && after.nextElementSibling.id && after.nextElementSibling.id.indexOf('scene' + part + '-') === 0) after = after.nextElementSibling;
+    after.after(box);
+    MoFilm(box, { title: it.scene.t, label: 'Animated scene · Part ' + part, scenes: [it.scene] });
+  });
+};
 // The recurring "cluster" character: 1,024 GPUs as 128 nodes x 8 GPUs.
 // colour(node, gpu) -> fill; returns an SVG group string.
 window.MoCluster = function (x, y, w, colour, opts) {
