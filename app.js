@@ -644,6 +644,86 @@ async function initLatestThreads() {
   if (panel && boxes.length) { panel.innerHTML = boxes.join(''); panel.hidden = false; }
 }
 
+// ── Article reader: browser text-to-speech for every blog article ──
+function initArticleReader() {
+  if (!/\/blog\/[^/]+\.html$/.test(location.pathname) || !('speechSynthesis' in window)) return;
+  const root = document.querySelector('.blog-post-wrap') || document.querySelector('main');
+  if (!root) return;
+  const SKIP = 'nav, pre, code, table, svg, script, style, button, select, .mo-code, .mo-out, .blog-breadcrumb, [class*="section-nav"], .ar-reader, .ar-bar, .series-nav, [aria-hidden="true"]';
+  const els = [...root.querySelectorAll('h1, h2, h3, h4, p, li, dd, blockquote')].filter(el => !el.closest(SKIP) && !(el.tagName !== 'LI' && el.closest('li')));
+  const items = [];
+  els.forEach(el => {
+    const c = el.cloneNode(true);
+    c.querySelectorAll('ul, ol, pre, code, svg, button').forEach(x => x.remove());
+    const t = c.textContent.replace(/\s+/g, ' ').trim();
+    if (t.length < 3) return;
+    const parts = t.match(/[^.!?]+[.!?]*["”)]*\s*/g) || [t];
+    let buf = '';
+    parts.forEach(p => { if ((buf + p).length > 220 && buf) { items.push({ el, text: buf.trim() }); buf = ''; } buf += p; });
+    if (buf.trim()) items.push({ el, text: buf.trim() });
+  });
+  if (items.length < 3) return;
+  const words = items.reduce((n, i) => n + i.text.split(' ').length, 0);
+  const synth = window.speechSynthesis;
+  let idx = 0, playing = false, rate = parseFloat(localStorage.getItem('ar-rate') || '1'), voice = null;
+
+  const pill = document.createElement('div');
+  pill.className = 'ar-reader';
+  pill.innerHTML = '<button type="button" class="ar-listen">🔊 Listen to this article</button><span>~' + Math.max(1, Math.round(words / 160)) + ' min · read aloud by your browser</span>';
+  const anchor = root.querySelector('.blog-meta-row') || root.querySelector('h1');
+  if (anchor) anchor.after(pill); else root.prepend(pill);
+
+  const bar = document.createElement('div');
+  bar.className = 'ar-bar'; bar.hidden = true;
+  bar.innerHTML = '<button type="button" data-a="prev" title="Previous">⏮</button><button type="button" data-a="play" class="ar-main" title="Play / pause">⏸</button><button type="button" data-a="next" title="Next">⏭</button>' +
+    '<select data-a="rate" title="Speed">' + [0.75, 1, 1.25, 1.5, 1.75, 2].map(r => '<option value="' + r + '"' + (r === rate ? ' selected' : '') + '>' + r + '×</option>').join('') + '</select>' +
+    '<select data-a="voice" title="Voice" class="ar-voice"></select><span class="ar-prog"></span><button type="button" data-a="stop" title="Stop">✕</button>';
+  document.body.appendChild(bar);
+  const vSel = bar.querySelector('[data-a="voice"]');
+  function loadVoices() {
+    const vs = synth.getVoices().filter(v => /^en/i.test(v.lang));
+    if (!vs.length) return;
+    const saved = localStorage.getItem('ar-voice');
+    vSel.innerHTML = vs.map(v => '<option value="' + v.name.replace(/"/g, '') + '">' + v.name.replace(/</g, '') + ' (' + v.lang + ')</option>').join('');
+    voice = vs.find(v => v.name === saved) || vs.find(v => v.default) || vs[0];
+    vSel.value = voice.name.replace(/"/g, '');
+  }
+  loadVoices(); synth.onvoiceschanged = loadVoices;
+
+  function mark() {
+    root.querySelectorAll('.ar-now').forEach(e => e.classList.remove('ar-now'));
+    const it = items[idx]; if (!it) return;
+    it.el.classList.add('ar-now');
+    const r = it.el.getBoundingClientRect();
+    if (r.top < 100 || r.bottom > innerHeight - 90) it.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    bar.querySelector('.ar-prog').textContent = Math.round(idx / items.length * 100) + '%';
+  }
+  function speak() {
+    synth.cancel();
+    if (idx >= items.length) { stop(); return; }
+    const u = new SpeechSynthesisUtterance(items[idx].text);
+    u.rate = rate; if (voice) u.voice = voice;
+    u.onend = () => { if (playing) { idx++; speak(); } };
+    mark(); synth.speak(u);
+  }
+  function play() { playing = true; bar.hidden = false; bar.querySelector('.ar-main').textContent = '⏸'; speak(); }
+  function pause() { playing = false; synth.cancel(); bar.querySelector('.ar-main').textContent = '▶'; }
+  function stop() { pause(); bar.hidden = true; root.querySelectorAll('.ar-now').forEach(e => e.classList.remove('ar-now')); }
+  pill.querySelector('.ar-listen').addEventListener('click', () => { if (playing) pause(); else play(); });
+  bar.addEventListener('click', e => {
+    const a = e.target.closest('button') && e.target.closest('button').dataset.a;
+    if (a === 'play') playing ? pause() : play();
+    else if (a === 'prev') { idx = Math.max(0, idx - 1); if (playing) speak(); else mark(); }
+    else if (a === 'next') { idx = Math.min(items.length - 1, idx + 1); if (playing) speak(); else mark(); }
+    else if (a === 'stop') stop();
+  });
+  bar.querySelector('[data-a="rate"]').addEventListener('change', e => { rate = +e.target.value; try { localStorage.setItem('ar-rate', rate); } catch (x) {} if (playing) speak(); });
+  vSel.addEventListener('change', () => { voice = synth.getVoices().find(v => v.name.replace(/"/g, '') === vSel.value) || voice; try { localStorage.setItem('ar-voice', voice.name); } catch (x) {} if (playing) speak(); });
+  // click any paragraph while the bar is open to start reading from there
+  root.addEventListener('dblclick', e => { const i = items.findIndex(it => it.el.contains(e.target)); if (i >= 0 && !bar.hidden) { idx = i; play(); } });
+  window.addEventListener('pagehide', () => synth.cancel());
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   recordArticleVisit();
   initLatestThreads();
@@ -674,4 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Convert an article's on-page section nav into a left sidebar, if present
   initArticleSidebarNav();
+
+  // Listen button: read the article aloud with the browser's speech engine
+  initArticleReader();
 });

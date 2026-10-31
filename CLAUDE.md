@@ -92,6 +92,9 @@ Backdrop (`#navBackdrop`) closes panels on click.
 ```
 Only one post should have `"featured": true` at a time.
 
+### Article reader ("Listen")
+`initArticleReader()` in `app.js` adds a "🔊 Listen to this article" button under the meta row of every `blog/*.html` page and a floating player (previous / play-pause / next, speed, voice, progress, stop). It uses the browser's built-in speech synthesis (Web Speech API): free, no server, no audio files; voices depend on the reader's device. It reads headings, paragraphs, list items and boxes, skips code, output, tables, nav and SVG, highlights the current block (`.ar-now`) and remembers speed and voice in localStorage. Double-click a block while the player is open to jump there. Hidden when the browser has no speech synthesis.
+
 ### Article sidebar ("On this page")
 `initArticleSidebarNav()` in `app.js` turns an article's section nav (`.agi-section-nav`, any `*-section-nav`, `.fde-nav`, `.sk-nav`, `.sb-nav`, `.phase-nav`, `.fr-toc`) into a sticky left sidebar with active-section highlight; articles with none get one built from 4+ `h2` headings. The wrap widens to 1040px on wide screens so the text column keeps its width. Keep a section-nav row near the top of new articles.
 

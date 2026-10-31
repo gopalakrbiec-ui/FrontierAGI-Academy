@@ -6787,3 +6787,17 @@ body {
   .mo-bars .l { grid-column: 1 / -1; margin-bottom: -4px; }
   .mo-stack div { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* ===================== Article reader (text to speech) ===================== */
+.ar-reader { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 12px 0 18px; font-size: 12.5px; color: #6b7280; }
+.ar-listen { border: 1.5px solid var(--accent, #4f46e5); background: #fff; color: var(--accent, #4f46e5); font-weight: 700; font-size: 13.5px; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.ar-listen:hover { background: var(--accent, #4f46e5); color: #fff; }
+.ar-bar { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 1200; display: flex; align-items: center; gap: 6px; background: #111827; color: #e5e7eb; border-radius: 999px; padding: 6px 10px; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: calc(100vw - 24px); }
+.ar-bar[hidden] { display: none; }
+.ar-bar button { border: 0; background: transparent; color: #e5e7eb; font-size: 16px; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; }
+.ar-bar button:hover { background: #374151; }
+.ar-bar .ar-main { background: var(--accent, #4f46e5); color: #fff; }
+.ar-bar select { background: #1f2937; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; font-size: 12px; padding: 4px; max-width: 150px; }
+.ar-prog { font-size: 12px; min-width: 34px; text-align: right; font-variant-numeric: tabular-nums; }
+.ar-now { background: rgba(250, 204, 21, .2); outline: 3px solid #facc15; outline-offset: 2px; border-radius: 4px; transition: background .2s; }
+@media (max-width: 768px) { .ar-voice { display: none; } .ar-bar { bottom: 10px; } }
