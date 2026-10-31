@@ -650,7 +650,7 @@ async function initLatestThreads() {
 window.MoFilm = function (el, cfg) {
   const W = cfg.w || 480, H = cfg.h || 300, sc = cfg.scenes;
   let i = 0, t0 = 0, el0 = 0, playing = false, raf = 0, last = 0;
-  el.classList.add('mf');
+  el.classList.add('mf'); if (cfg.scenes.length === 1) el.classList.add('mf-one');
   el.innerHTML = '<div class="mf-top"><b>🎬 ' + cfg.title + '</b><span class="mf-sim">animated diagram · numbers from this article&#39;s scripts</span></div>' +
     '<div class="mf-stage"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img"></svg><div class="mf-def" hidden></div></div>' +
     '<div class="mf-cap"><span class="mf-n"></span><b class="mf-t"></b><span class="mf-c"></span></div><div class="mf-ctr"></div>' +
@@ -670,7 +670,7 @@ window.MoFilm = function (el, cfg) {
   }
   function go(k, keep) {
     i = Math.max(0, Math.min(sc.length - 1, k)); el0 = 0; t0 = performance.now(); def.hidden = true;
-    el.querySelector('.mf-n').textContent = 'Scene ' + (i + 1) + ' of ' + sc.length;
+    el.querySelector('.mf-n').textContent = sc.length === 1 ? (cfg.label || '') : 'Scene ' + (i + 1) + ' of ' + sc.length;
     el.querySelector('.mf-t').textContent = sc[i].t; el.querySelector('.mf-c').innerHTML = sc[i].cap;
     el.querySelectorAll('.mf-dots button').forEach((b, j) => b.className = j === i ? 'on' : j < i ? 'done' : '');
     cancelAnimationFrame(raf); if (playing || keep) { playing = true; raf = requestAnimationFrame(frame); } else frame(performance.now());

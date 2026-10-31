@@ -6824,3 +6824,5 @@ body {
 .mf-dots button { width: 22px; height: 8px; border-radius: 4px; border: 0; background: #e2e8f0; cursor: pointer; padding: 0; }
 .mf-dots button.done { background: #fda4af; } .mf-dots button.on { background: #be123c; }
 @media (max-width: 768px) { .mf-cap { font-size: 14px; } .mf-dots button { width: 14px; } }
+.mf-one .mf-dots, .mf-one [data-a="prev"], .mf-one [data-a="next"] { display: none; }
+.mf-one .mf-ctl::after { content: "Plays once when you scroll to it · ↺ to replay"; font-size: 12px; color: #64748b; }
