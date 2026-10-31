@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "maestro-scorecard",
+      "title": "The Maestro, Part 18: The Scorecard",
+      "excerpt": "The finale. Plan vs outcome after 18 months (4 green, 3 amber, 1 red), which hypotheses held, the kill criteria, runway and break-even, where the money went, what Gopala would do differently, ten lessons and what comes next.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📊",
+      "featured": false
+    },
+    {
+      "slug": "maestro-operations",
+      "title": "The Maestro, Part 17: Operations and the Flywheel",
+      "excerpt": "Running it every day: SLOs and burn-rate alerts, canary rollouts with instant rollback, an incident start to finish, the weekly rhythm, a flywheel simulation that compounds slowly, drift, data agreements and handing operations to the first hires.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🔄",
+      "featured": false
+    },
+    {
+      "slug": "maestro-agents-products",
+      "title": "The Maestro, Part 16: Agents and Client Products",
+      "excerpt": "From model to products: the agent loop, a PR bot, a CI fixer and an IDE assistant, the cost of one agent task (and why caching makes long tasks affordable), seat vs per-task pricing, MCP integrations, onboarding and the data agreement that feeds the flywheel.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🤖",
+      "featured": false
+    },
+    {
+      "slug": "maestro-serving",
+      "title": "The Maestro, Part 15: Serving at Scale",
+      "excerpt": "Phase 4 begins. Maestro-1 on 64 GPUs: why memory, not compute, limits serving, how FP8 weights take a replica from 5 to about 30 conversations, continuous batching and prefix caching, the serving stack, latency, load tests and the cost of a million tokens.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-10-31",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "💬",
+      "featured": false
+    },
+    {
       "slug": "maestro-approvals",
       "title": "The Maestro, Part 14: Approvals and Compliance",
       "excerpt": "Phase 3 ends. Where Maestro-1 sits under the EU AI Act (7% of the 1e25 FLOP presumption), voluntary frameworks, the model card and evidence library, customer security reviews, contracts, and a release gate that says no-go before go.",

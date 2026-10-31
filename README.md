@@ -51,6 +51,10 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 📊 [The Maestro, Part 18: The Scorecard](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-scorecard.html) | The finale. | 2026-10-31 |
+| 🔄 [The Maestro, Part 17: Operations and the Flywheel](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-operations.html) | Running it every day: SLOs and burn-rate alerts, canary rollouts with instant rollback, an incident start to finish, the weekly rhythm, a… | 2026-10-31 |
+| 🤖 [The Maestro, Part 16: Agents and Client Products](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-agents-products.html) | From model to products: the agent loop, a PR bot, a CI fixer and an IDE assistant, the cost of one agent task (and why caching makes long… | 2026-10-31 |
+| 💬 [The Maestro, Part 15: Serving at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-serving.html) | Phase 4 begins. | 2026-10-31 |
 | 📜 [The Maestro, Part 14: Approvals and Compliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-approvals.html) | Phase 3 ends. | 2026-10-31 |
 | 🛡️ [The Maestro, Part 13: Safety Layers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-safety-layers.html) | Defence in depth for an engineering agent: safety in training, classifiers, a tool guard the model cannot change (whose runnable code… | 2026-10-31 |
 | 📏 [The Maestro, Part 12: The Evaluation Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-evaluation.html) | Phase 3 begins. | 2026-10-31 |

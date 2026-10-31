@@ -245,7 +245,11 @@
         "maestro-post-training-rsi",
         "maestro-evaluation",
         "maestro-safety-layers",
-        "maestro-approvals"
+        "maestro-approvals",
+        "maestro-serving",
+        "maestro-agents-products",
+        "maestro-operations",
+        "maestro-scorecard"
       ]
     },
     {
