@@ -1171,9 +1171,9 @@ MoScenes(12, [
      return s; } } },
  { place: 'stats', scene: { t: 'When is an improvement real?', dur: 11000,
    cap: 'Maestro-1 is truly 4 points better (simulated). The bar is the 95% range of what we measured. With 100, 250 or 500 tasks the range still crosses zero, so we cannot claim a win. At 1,000 tasks it clears zero. That is why the release set grew to ~1,200.',
-   render: function (p) { var R5 = [[100, -4.0, 22.0], [250, -8.4, 8.4], [500, -3.4, 8.4], [1000, 2.5, 10.7], [2000, 3.2, 9.3]], s = '', k = Math.min(4, Math.floor(p * 5)), x0 = 240, sc = 9;
+   render: function (p) { var R5 = [[100, -4.0, 22.0], [250, -8.4, 8.4], [500, -3.4, 8.4], [1000, 2.5, 10.7], [2000, 3.2, 9.3]], s = '', k = Math.min(4, Math.floor(p * 5)), x0 = 250, sc = 8;
      s += '<line x1="' + x0 + '" y1="20" x2="' + x0 + '" y2="270" stroke="#0f172a" stroke-width="2"/>' + T(x0, 288, '0 = no difference', { size: 11.5, fill: '#64748b' });
-     for (var j = 0; j <= k; j++) { var r = R5[j], y = 40 + j * 48, ok = r[1] > 0; s += T(70, y + 6, r[0].toLocaleString() + ' tasks', { size: 12.5, a: 'end' }) + G('95% confidence interval for the difference (simulated results, paired_bootstrap.py).', '<line x1="' + (x0 + r[1] * sc) + '" y1="' + y + '" x2="' + Math.min(470, x0 + r[2] * sc) + '" y2="' + y + '" stroke="' + (ok ? '#16a34a' : '#dc2626') + '" stroke-width="8" stroke-linecap="round"/>') + T(472, y + 5, ok ? 'real' : 'unclear', { size: 11.5, a: 'end', fill: ok ? '#15803d' : '#b91c1c' }); }
+     for (var j = 0; j <= k; j++) { var r = R5[j], y = 40 + j * 48, ok = r[1] > 0; s += T(100, y + 6, r[0].toLocaleString() + ' tasks', { size: 12.5, a: 'end' }) + G('95% confidence interval for the difference (simulated results, paired_bootstrap.py).', '<line x1="' + (x0 + r[1] * sc) + '" y1="' + y + '" x2="' + Math.min(410, x0 + r[2] * sc) + '" y2="' + y + '" stroke="' + (ok ? '#16a34a' : '#dc2626') + '" stroke-width="8" stroke-linecap="round"/>') + T(472, y + 5, ok ? 'real' : 'unclear', { size: 11.5, a: 'end', fill: ok ? '#15803d' : '#b91c1c' }); }
      return s; } } },
  { place: 'report', scene: { t: 'From test runs to a release decision', dur: 9000,
    cap: 'Thousands of runs are audited for leaks and scoring bugs, turned into numbers with intervals, written up with wins, losses and cost, and handed to the release gate in Part 14.',
