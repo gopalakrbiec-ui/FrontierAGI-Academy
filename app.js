@@ -644,6 +644,73 @@ async function initLatestThreads() {
   if (panel && boxes.length) { panel.innerHTML = boxes.join(''); panel.hidden = false; }
 }
 
+// ── Maestro films: a small scene player for documentary-style animated diagrams ──
+// MoFilm(el, {title, scenes:[{t, cap, dur, render(p, S) -> svg string, counters(p) -> [[label, value]]}]})
+// p runs 0..1 within a scene. Elements with data-def="..." show a plain-English definition when tapped.
+window.MoFilm = function (el, cfg) {
+  const W = cfg.w || 480, H = cfg.h || 300, sc = cfg.scenes;
+  let i = 0, t0 = 0, el0 = 0, playing = false, raf = 0, last = 0;
+  el.classList.add('mf');
+  el.innerHTML = '<div class="mf-top"><b>🎬 ' + cfg.title + '</b><span class="mf-sim">animated diagram · numbers from this article&#39;s scripts</span></div>' +
+    '<div class="mf-stage"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img"></svg><div class="mf-def" hidden></div></div>' +
+    '<div class="mf-cap"><span class="mf-n"></span><b class="mf-t"></b><span class="mf-c"></span></div><div class="mf-ctr"></div>' +
+    '<div class="mf-ctl"><button type="button" data-a="prev" aria-label="Previous scene">⏮</button><button type="button" data-a="play" class="mf-play" aria-label="Play or pause">▶</button><button type="button" data-a="next" aria-label="Next scene">⏭</button>' +
+    '<div class="mf-dots">' + sc.map((s, k) => '<button type="button" data-k="' + k + '" title="' + s.t.replace(/"/g, '') + '"></button>').join('') + '</div></div>';
+  const svg = el.querySelector('svg'), def = el.querySelector('.mf-def');
+  function frame(now) {
+    const s = sc[i], d = s.dur || 7000;
+    let p = playing ? Math.min(1, el0 + (now - t0) / d) : el0;
+    if (!playing || now - last > 33) {
+      last = now;
+      svg.innerHTML = s.render(p, { W: W, H: H, now: now });
+      el.querySelector('.mf-ctr').innerHTML = (s.counters ? s.counters(p) : []).map(c => '<span><i>' + c[0] + '</i><b>' + c[1] + '</b></span>').join('');
+    }
+    if (playing && p >= 1) { if (i < sc.length - 1) { go(i + 1, true); return; } playing = false; el.querySelector('.mf-play').textContent = '↺'; }
+    if (playing) raf = requestAnimationFrame(frame);
+  }
+  function go(k, keep) {
+    i = Math.max(0, Math.min(sc.length - 1, k)); el0 = 0; t0 = performance.now(); def.hidden = true;
+    el.querySelector('.mf-n').textContent = 'Scene ' + (i + 1) + ' of ' + sc.length;
+    el.querySelector('.mf-t').textContent = sc[i].t; el.querySelector('.mf-c').innerHTML = sc[i].cap;
+    el.querySelectorAll('.mf-dots button').forEach((b, j) => b.className = j === i ? 'on' : j < i ? 'done' : '');
+    cancelAnimationFrame(raf); if (playing || keep) { playing = true; raf = requestAnimationFrame(frame); } else frame(performance.now());
+  }
+  function toggle() {
+    if (playing) { el0 = Math.min(1, el0 + (performance.now() - t0) / (sc[i].dur || 7000)); playing = false; cancelAnimationFrame(raf); el.querySelector('.mf-play').textContent = '▶'; }
+    else { if (i === sc.length - 1 && el0 >= 1) { go(0, true); } else { playing = true; t0 = performance.now(); raf = requestAnimationFrame(frame); } el.querySelector('.mf-play').textContent = '⏸'; }
+  }
+  el.querySelector('.mf-ctl').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.k !== undefined) go(+b.dataset.k, playing);
+    else if (b.dataset.a === 'play') toggle();
+    else if (b.dataset.a === 'prev') go(i - 1, playing);
+    else if (b.dataset.a === 'next') go(i + 1, playing);
+  });
+  svg.addEventListener('click', e => {
+    const g = e.target.closest('[data-def]'); if (!g) { def.hidden = true; return; }
+    def.innerHTML = g.getAttribute('data-def'); def.hidden = false;
+  });
+  go(0, false);
+  // start when scrolled into view, once
+  if ('IntersectionObserver' in window && cfg.autoplay !== false) {
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting && !playing && i === 0 && el0 === 0) { toggle(); io.disconnect(); } }, { threshold: 0.6 });
+    io.observe(el);
+  }
+};
+// The recurring "cluster" character: 1,024 GPUs as 128 nodes x 8 GPUs.
+// colour(node, gpu) -> fill; returns an SVG group string.
+window.MoCluster = function (x, y, w, colour, opts) {
+  opts = opts || {};
+  const cols = 16, rows = 8, gap = 3, nw = (w - gap * (cols - 1)) / cols, gw = (nw - 4) / 4, nh = gw * 2 + 6;
+  let s = '<g data-def="' + (opts.def || 'The whole cluster: 128 servers (nodes), each with 8 GPUs = 1,024 GPUs. Each small square is one GPU.') + '">';
+  for (let n = 0; n < 128; n++) {
+    const cx = x + (n % cols) * (nw + gap), cy = y + Math.floor(n / cols) * (nh + gap);
+    s += '<rect x="' + cx.toFixed(1) + '" y="' + cy.toFixed(1) + '" width="' + nw.toFixed(1) + '" height="' + nh.toFixed(1) + '" rx="2" fill="#f1f5f9" stroke="' + (opts.stroke ? opts.stroke(n) : '#cbd5e1') + '" stroke-width="' + (opts.stroke ? 1.6 : 0.6) + '"/>';
+    for (let g = 0; g < 8; g++) s += '<rect x="' + (cx + 2 + (g % 4) * gw).toFixed(1) + '" y="' + (cy + 2 + Math.floor(g / 4) * (gw + 2)).toFixed(1) + '" width="' + (gw - 1).toFixed(1) + '" height="' + (gw - 1).toFixed(1) + '" rx="1" fill="' + colour(n, g) + '"/>';
+  }
+  return s + '</g>';
+};
+
 // ── Article reader: browser text-to-speech for every blog article ──
 function initArticleReader() {
   if (!/\/blog\/[^/]+\.html$/.test(location.pathname) || !('speechSynthesis' in window)) return;

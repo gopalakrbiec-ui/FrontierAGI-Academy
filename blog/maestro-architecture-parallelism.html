@@ -866,6 +866,9 @@
       Published figures for Mixtral, DeepSeek-V3 and Llama 3 are from their papers. <code>moe_params.py</code> and <code>memory_plan.py</code> were run (real output below); the architecture is <b>our design for the story</b>, and the activation-memory estimate is a rough rule of thumb, not a measurement. <code>launch_megatron.sh</code> was <b>not executed for this article</b>. Ablation results in the story are the scenario. <b>Disclosure:</b> Claude, made by Anthropic, helps write this site.
     </div>
 
+    <h2 id="film" class="wr-sec">▶ Watch the episode</h2>
+    <div id="film9"></div>
+
     <div class="wr-section-nav">
       <a href="#log">Mission log: weeks 24–38</a>
       <a href="#why">Why mixture-of-experts</a>
@@ -1117,5 +1120,122 @@ srun python pretrain_gpt.py \
   var SN = ['🧭 The moat: an L4 idea', '🧪 Proving it small', '💰 The plan and the money', '🖥️ Securing compute', '⚡ Site, power and cooling', '🔧 Day zero: bring-up', '📋 The cluster software', '🗃️ The data refinery', '🏗️ Architecture and parallelism', '🏋️ The pre-training run', '🔁 Post-training and the RSI loop', '📏 The evaluation harness', '🛡️ Safety layers', '📜 Approvals and compliance', '💬 Serving at scale', '🤖 Agents and client products', '🔄 Operations and the flywheel', '📊 The scorecard'];
   var PH = [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4], PC = ['#be123c', '#ea580c', '#2563eb', '#7c3aed', '#16a34a'], HERE = 8, PUB = 18;
   $('moSer').innerHTML = SN.map(function (n, i) { return '<a class="' + (i === HERE ? 'here' : '') + '"' + (i < PUB && i !== HERE ? ' href=\x22' + SLG[i] + '.html\x22' : '') + ' style="--c:' + PC[PH[i]] + '"><span>Part ' + (i + 1) + ' · Phase ' + PH[i] + '</span><b>' + n + (i === HERE ? ' (this part)' : i >= PUB ? ' · coming' : '') + '</b></a>'; }).join('');
+})();
+</script>
+<script>
+(function () {
+  var el = document.getElementById('film9'); if (!el || !window.MoFilm) return;
+  function T(x, y, s, o) { o = o || {}; return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 14) + '" fill="' + (o.fill || '#0f172a') + '" text-anchor="' + (o.a || 'middle') + '" font-weight="' + (o.w || 600) + '">' + s + '</text>'; }
+  function R(x, y, w, h, f, o) { o = o || {}; return '<rect x="' + x + '" y="' + y + '" width="' + Math.max(0, w) + '" height="' + h + '" rx="' + (o.rx == null ? 6 : o.rx) + '" fill="' + f + '"' + (o.s ? ' stroke="' + o.s + '" stroke-width="' + (o.sw || 1.5) + '"' : '') + (o.op != null ? ' opacity="' + o.op + '"' : '') + '/>'; }
+  function G(def, inner) { return '<g data-def="' + def + '">' + inner + '</g>'; }
+  function cl(v) { return Math.max(0, Math.min(1, v)); }
+  function ease(v) { v = cl(v); return v * v * (3 - 2 * v); }
+  var words = ['fix', 'the', 'flaky', 'test'];
+  var chosen = [3, 9, 14, 22, 30, 41, 47, 58];
+  var scenes = [
+    { t: 'A language model is a stack of layers', dur: 7000,
+      cap: 'Text is cut into <b>tokens</b> (pieces of words). Each token passes up through the same kind of layer again and again. Maestro-1 has <b>40 layers</b>. Tap anything in the picture for a definition.',
+      render: function (p) {
+        var s = '', n = Math.round(ease(p * 1.2) * 40), shown = Math.min(10, Math.ceil(n / 4));
+        words.forEach(function (w, k) { s += G('A token: a word or piece of a word, turned into a list of numbers the model can work with.', R(90 + k * 80, 252, 66, 30, '#dbeafe') + T(123 + k * 80, 272, w, { size: 15 })); });
+        for (var k = 0; k < shown; k++) s += G('One transformer layer. Every layer has the same design but its own learned numbers (parameters).', R(80, 222 - k * 20, 320, 15, k === shown - 1 ? '#be123c' : '#c4b5fd', { rx: 4 }));
+        s += T(240, 24, n + ' of 40 layers', { size: 17, w: 800, fill: '#be123c' });
+        if (n >= 40) s += T(430, 120, '× 4 each', { size: 13, fill: '#6b7280' }) + T(430, 138, 'bar = 4 layers', { size: 11, fill: '#6b7280', w: 400 });
+        return s;
+      }, counters: function (p) { return [['layers', Math.round(ease(p * 1.2) * 40)], ['tokens in', 4]]; } },
+    { t: 'Inside one layer: look around, then think', dur: 8000,
+      cap: '<b>Attention</b> lets each token look at the other tokens ("flaky" looks at "test"). The <b>feed-forward</b> block then processes each token on its own, like thinking about what it saw. Most of the model&#39;s parameters live in the feed-forward part.',
+      render: function (p) {
+        var s = G('Attention: each token computes how much to look at every other token, and mixes in what it finds.', R(20, 40, 210, 220, '#ede9fe', { s: '#7c3aed' }) + T(125, 64, '👀 Attention', { size: 16, w: 800, fill: '#5b21b6' }));
+        words.forEach(function (w, k) { s += R(40 + k * 46, 200, 42, 26, '#fff', { s: '#a78bfa' }) + T(61 + k * 46, 218, w, { size: 12 }); });
+        var a = ease(p * 1.6);
+        [[2, 3], [2, 0], [3, 2], [1, 3], [0, 2]].forEach(function (e, j) { if (a * 5 > j) { var x1 = 61 + e[0] * 46, x2 = 61 + e[1] * 46; s += '<path d="M' + x1 + ' 198 Q' + (x1 + x2) / 2 + ' ' + (110 + j * 12) + ' ' + x2 + ' 198" fill="none" stroke="#7c3aed" stroke-width="' + (j === 0 ? 3 : 1.5) + '" opacity="' + (j === 0 ? 1 : 0.6) + '"/>'; } });
+        s += G('Feed-forward block: a large set of learned numbers that transforms each token separately. In Maestro-1 this is where the experts live.', R(250, 40, 210, 220, '#fee2e2', { s: '#be123c' }) + T(355, 64, '🧠 Feed-forward', { size: 16, w: 800, fill: '#9f1239' }));
+        var b = ease(p * 2 - 0.8);
+        for (var r = 0; r < 6; r++) for (var c = 0; c < 8; c++) s += R(270 + c * 22, 90 + r * 22, 18, 18, b > (r * 8 + c) / 48 ? '#be123c' : '#fecdd3', { rx: 3 });
+        s += T(355, 240, 'most parameters are here', { size: 12, fill: '#9f1239', w: 500 });
+        return s;
+      } },
+    { t: 'Decision 1: one big block, or many small experts?', dur: 9000,
+      cap: 'A <b>dense</b> model sends every token through all of its feed-forward numbers. A <b>mixture-of-experts</b> model splits them into many small <b>experts</b> and a <b>router</b> picks a few per token. Gopala picks 64 experts: far more knowledge, same compute per token.',
+      render: function (p) {
+        var s = G('Dense feed-forward: every token uses all of it, so cost per token grows with size.', R(20, 60, 170, 170, '#fecdd3', { s: '#be123c' }) + T(105, 150, 'Dense', { size: 18, w: 800, fill: '#9f1239' }) + T(105, 172, 'every token uses all', { size: 12, w: 500 }));
+        s += T(240, 150, 'vs', { size: 18, fill: '#64748b' });
+        var a = ease(p * 1.5);
+        s += G('Mixture-of-experts: 64 small feed-forward blocks. Each token uses only 8 of them (plus 1 shared), so most weights rest for any given token.', '');
+        for (var k = 0; k < 64; k++) { var on = a * 64 > k; s += G('One expert: a small feed-forward block (about 25 million parameters) that specialises during training.', R(280 + (k % 8) * 23, 60 + Math.floor(k / 8) * 21, 19, 17, on ? '#fda4af' : '#f1f5f9', { rx: 3 })); }
+        s += T(372, 245, '64 experts', { size: 14, w: 800, fill: '#9f1239' });
+        s += G('Router: a tiny network that scores the experts for each token and sends it to the best 8.', R(330, 22, 84, 26, '#0f172a') + T(372, 40, 'router', { size: 13, fill: '#fff' }));
+        return s;
+      }, counters: function (p) { return p > 0.45 ? [['total parameters', '65.2B'], ['used per token', '11.7B'], ['share used', '18%']] : [['total parameters', '…'], ['used per token', '…']]; } },
+    { t: 'Follow one token through the router', dur: 8000,
+      cap: 'The token "flaky" arrives, the router scores all 64 experts and sends it to <b>8</b> of them plus one <b>shared</b> expert every token uses. Only those light up. Compute follows the 11.7B active parameters; memory must still hold all 65.2B.',
+      render: function (p, S) {
+        var s = '', a = ease(p * 2.2), b = ease(p * 2 - 0.9);
+        var ty = 270 - a * 180;
+        for (var k = 0; k < 64; k++) { var hit = chosen.indexOf(k) >= 0, x = 70 + (k % 16) * 22, y = 120 + Math.floor(k / 16) * 26; s += R(x, y, 18, 20, hit && b > 0 ? 'rgba(190,18,60,' + (0.35 + 0.65 * b) + ')' : '#f1f5f9', { rx: 3, s: hit && b > 0 ? '#be123c' : null }); if (hit && b > 0) s += '<line x1="240" y1="62" x2="' + (x + 9) + '" y2="' + y + '" stroke="#be123c" stroke-width="1.2" opacity="' + b + '"/>'; }
+        s += G('Shared expert: always used by every token, so common knowledge is not duplicated across experts.', R(400, 230, 60, 26, b > 0 ? '#7c3aed' : '#ede9fe', { rx: 5 }) + T(430, 248, 'shared', { size: 12, fill: b > 0 ? '#fff' : '#5b21b6' }));
+        s += G('Router: scores all 64 experts for this token and keeps the top 8.', R(198, 40, 84, 26, '#0f172a') + T(240, 58, 'router', { size: 13, fill: '#fff' }));
+        s += '<circle cx="240" cy="' + Math.max(88, ty) + '" r="13" fill="#2563eb"/>' + T(240, Math.max(88, ty) + 4, 'flaky', { size: 9, fill: '#fff' });
+        return s;
+      }, counters: function (p) { return [['experts used', p > 0.45 ? '8 of 64 + 1 shared' : '…'], ['compute per token', '11.7B params'], ['memory needed', '65.2B params']]; } },
+    { t: 'Decision 2: share memory between attention heads', dur: 8000,
+      cap: 'While it writes, the model keeps a memory of the conversation (the <b>KV cache</b>). With 32 attention heads each keeping its own, a 8,192-token conversation needs ~5.4 GB. <b>Grouped-query attention</b> lets 4 heads share one memory: ~1.3 GB, so a GPU can serve about four times more people.',
+      render: function (p) {
+        var s = '', a = ease(p * 1.6);
+        for (var k = 0; k < 32; k++) s += G('Query head: one of 32 ways the layer looks at the text.', '<circle cx="' + (40 + k * 13) + '" cy="60" r="5" fill="#7c3aed"/>');
+        for (var g = 0; g < 8; g++) { var gx = 59 + g * 52; s += G('Key/value group: the memory four query heads share. Fewer groups = smaller memory per conversation.', R(gx - 18, 110, 36, 22, '#0d9488', { rx: 4 })); for (var q = 0; q < 4; q++) s += '<line x1="' + (40 + (g * 4 + q) * 13) + '" y1="66" x2="' + gx + '" y2="110" stroke="#0d9488" stroke-width="1" opacity="' + a + '"/>'; }
+        s += T(240, 34, '32 query heads', { size: 13, fill: '#5b21b6' }) + T(240, 150, '8 shared memory groups', { size: 13, fill: '#0f766e' });
+        s += T(20, 192, 'Memory per 8K-token conversation', { size: 13, a: 'start' });
+        s += R(20, 202, 440, 22, '#f1f5f9') + R(20, 202, 440 * (1 - 0.0 * a), 22, '#fecaca') + T(28, 218, 'every head its own: ~5.4 GB', { size: 12, a: 'start' });
+        s += R(20, 234, 440, 22, '#f1f5f9') + R(20, 234, 440 * (0.25 + 0.75 * (1 - a)), 22, '#99f6e4') + T(28, 250, 'grouped (chosen): ~1.3 GB', { size: 12, a: 'start' });
+        return s;
+      }, counters: function () { return [['memory per token', '160 KB'], ['saving', '4×']]; } },
+    { t: 'Decision 3: will it fit on the GPUs?', dur: 8000,
+      cap: 'Training needs about <b>16 bytes per parameter</b> (the weights, their gradients and the optimizer&#39;s notes). For 65.2B parameters that is far more than one GPU&#39;s <b>80 GB</b>. Splitting the model across GPUs brings it down to about <b>29 GB</b> each.',
+      render: function (p) {
+        var s = '', a = ease(p * 1.4 - 0.3), v = 273 - (273 - 29.3) * a, sc = 400 / 280;
+        s += T(20, 40, 'Memory needed per GPU', { size: 14, a: 'start' });
+        s += G('Memory one GPU must hold during training: weights, gradients, optimizer state and activations.', R(20, 60, v * sc, 50, v > 80 ? '#dc2626' : '#16a34a'));
+        s += '<line x1="' + (20 + 80 * sc) + '" y1="50" x2="' + (20 + 80 * sc) + '" y2="125" stroke="#0f172a" stroke-width="2" stroke-dasharray="5 4"/>' + T(20 + 80 * sc, 140, 'one H100: 80 GB', { size: 12 });
+        s += T(28, 92, v.toFixed(0) + ' GB', { size: 18, w: 800, fill: '#fff', a: 'start' });
+        s += T(240, 190, a < 0.05 ? 'no split: does not fit' : a < 0.99 ? 'splitting across GPUs…' : 'tensor ×2 · expert ×8 → fits with room to spare', { size: 14, w: 700, fill: a < 0.99 ? '#9f1239' : '#15803d' });
+        return s;
+      }, counters: function (p) { return [['bytes per parameter', 16], ['per GPU now', (273 - (273 - 29.3) * ease(p * 1.4 - 0.3)).toFixed(1) + ' GB']]; } },
+    { t: 'Spreading the model across 1,024 GPUs', dur: 11000,
+      cap: 'Meet the cluster: <b>128 servers × 8 GPUs</b>. First, GPUs pair up to share each layer (<b>tensor parallel</b>, pairs in the same colour). Then 64 teams of 16 GPUs each share out the 64 experts (<b>expert parallel</b>, outlined). Finally all <b>512 pairs</b> read different data at once and average what they learn (<b>data parallel</b>).',
+      render: function (p, S) {
+        var ph = p < 0.33 ? 0 : p < 0.66 ? 1 : 2, t = S.now / 600;
+        var pal = ['#a78bfa', '#7c3aed'], grp = ['#be123c', '#2563eb', '#0d9488', '#ea580c'];
+        var s = MoCluster(16, 34, 448, function (n, g) {
+          if (ph === 0) return pal[Math.floor(g / 2) % 2];
+          if (ph === 1) return grp[Math.floor(n / 2) % 4];
+          return 'hsl(142,' + (55 + 20 * Math.sin(t + n * 0.35)) + '%,' + (42 + 8 * Math.sin(t + n * 0.35)) + '%)';
+        }, { stroke: ph === 1 ? function (n) { return grp[Math.floor(n / 2) % 4]; } : null });
+        s += ['Each square is one GPU; each box of 8 is one server.', 'Same colour = GPUs working on the same piece of the model.', 'Every GPU busy: one training job across the whole cluster.'].map(function (L, k) { return T(240, 250 + k * 19, L, { size: 14, w: k === ph ? 800 : 400, fill: k === ph ? '#be123c' : '#475569' }); }).join('');
+        s += T(240, 22, ['① tensor parallel: GPU pairs split each layer', '② expert parallel: 64 teams of 16 GPUs share the experts', '③ data parallel: 512 GPU pairs learn from different data at once'][ph], { size: 13.5, w: 800, fill: '#0f172a' });
+        return s;
+      }, counters: function (p) { return [['GPUs', '1,024'], ['tensor', '×2'], ['expert', '×8'], ['data', '×512'], ['GPUs busy', p > 0.66 ? '1,024 · training' : 'setting up']]; } },
+    { t: 'Fast roads and slower roads', dur: 9000,
+      cap: 'Inside one server, GPUs talk over <b>NVLink</b>: up to 900 GB/s each. Between servers they use the <b>network</b> (InfiniBand): about 50 GB/s each way per GPU. So the chattiest split (tensor) stays inside a server, and slower traffic is overlapped with computing.',
+      render: function (p, S) {
+        var s = '', t = S.now / 1000;
+        [[30, 'Server A'], [270, 'Server B']].forEach(function (b) { s += G('One server (node): 8 H100 GPUs connected by NVLink switches.', R(b[0], 50, 180, 170, '#f8fafc', { s: '#94a3b8' }) + T(b[0] + 90, 42, b[1], { size: 13 })); for (var g = 0; g < 8; g++) s += R(b[0] + 14 + (g % 4) * 41, 80 + Math.floor(g / 4) * 80, 32, 40, '#16a34a', { rx: 4 }); });
+        for (var k = 0; k < 10; k++) { var u = (t * 1.6 + k / 10) % 1; s += '<circle cx="' + (44 + u * 150) + '" cy="' + (140 + 4 * Math.sin(k)) + '" r="3.5" fill="#7c3aed"/>'; s += '<circle cx="' + (284 + u * 150) + '" cy="' + (140 + 4 * Math.cos(k)) + '" r="3.5" fill="#7c3aed"/>'; }
+        for (var k2 = 0; k2 < 4; k2++) { var u2 = (t * 0.35 + k2 / 4) % 1; s += '<circle cx="' + (210 + u2 * 60) + '" cy="135" r="3" fill="#2563eb"/>'; }
+        s += G('NVLink: very fast links between GPUs inside one server.', R(40, 236, 160, 24, '#ede9fe') + T(120, 253, 'NVLink ~900 GB/s', { size: 12, fill: '#5b21b6' }));
+        s += G('InfiniBand network: links between servers; about 50 GB/s each way per GPU at 400 Gb/s.', R(180, 268, 120, 24, '#dbeafe') + T(240, 285, 'network ~50 GB/s', { size: 12, fill: '#1d4ed8' }));
+        s += '<line x1="210" y1="135" x2="270" y2="135" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 4"/>';
+        return s;
+      } },
+    { t: 'Design frozen: Maestro-1', dur: 7000,
+      cap: 'Every choice is now written into one launch file (see <a href="#launch">the launch configuration</a>). Next episode, Part 10: these 1,024 GPUs run one job for 31 days.',
+      render: function (p) {
+        var s = '', items = [['40', 'layers'], ['64 + 1', 'experts per layer'], ['8', 'experts per token'], ['65.2B', 'total parameters'], ['11.7B', 'used per token'], ['~29 GB', 'memory per GPU'], ['2 × 8 × 512', 'tensor × expert × data'], ['1,024', 'H100 GPUs']];
+        items.forEach(function (it, k) { var a = ease(p * 3 - k * 0.25), x = 20 + (k % 4) * 115, y = 50 + Math.floor(k / 4) * 110; s += '<g opacity="' + a + '">' + R(x, y, 105, 90, '#fff', { s: '#be123c' }) + T(x + 52, y + 42, it[0], { size: 19, w: 800, fill: '#be123c' }) + T(x + 52, y + 66, it[1], { size: 11, w: 500 }) + '</g>'; });
+        return s;
+      } }
+  ];
+  MoFilm(el, { title: 'Episode 9 · Designing the model', scenes: scenes });
 })();
 </script>

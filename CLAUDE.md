@@ -92,6 +92,9 @@ Backdrop (`#navBackdrop`) closes panels on click.
 ```
 Only one post should have `"featured": true` at a time.
 
+### Maestro films (documentary-style episodes)
+`MoFilm(el, {title, scenes})` in `app.js` is a small scene player: each scene has a title `t`, caption `cap`, duration `dur`, `render(p, S)` returning SVG for progress p 0..1 (viewBox 480×300; use font sizes ≥ 12 so phones stay legible) and optional `counters(p)`. Controls: play/pause, previous/next, chapter dots; autoplays once when scrolled into view; elements with `data-def` show a plain-English definition when tapped. `MoCluster(x, y, w, colour(n, g), opts)` draws the recurring 1,024-GPU cluster (128 nodes × 8 GPUs). Episodes sit under a "▶ Watch the episode" heading (`#film`) before the section nav, with their scene script appended at the end of the article. First episode: Part 9 (`#film9`, 9 scenes: layers → attention/feed-forward → dense vs MoE → router → GQA → memory → parallelism on the cluster → NVLink vs network → frozen design). Planned: the other 17 parts (outline agreed 31 Oct 2026: Season 2 Parts 8–11 next, then 12–14, 15–18, 1–7, plus a beginner primer and a whole-system map on Mission Control). Numbers in films must come from the article's scripts or sources.
+
 ### Article reader ("Listen")
 `initArticleReader()` in `app.js` adds a "🔊 Listen to this article" button under the meta row of every `blog/*.html` page and a floating player (previous / play-pause / next, speed, voice, progress, stop). It uses the browser's built-in speech synthesis (Web Speech API): free, no server, no audio files; voices depend on the reader's device. It reads headings, paragraphs, list items and boxes, skips code, output, tables, nav and SVG, highlights the current block (`.ar-now`) and remembers speed and voice in localStorage. Double-click a block while the player is open to jump there. Hidden when the browser has no speech synthesis.
 
