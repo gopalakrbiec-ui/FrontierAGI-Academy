@@ -2,7 +2,7 @@
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
   "2021-10-01",
-  "2026-10-27"
+  "2026-11-02"
  ],
  "labs": [
   [
@@ -3968,6 +3968,34 @@
     "Nasdaq: ANT (proposed)"
    ],
    "source": "https://www.anthropic.com/news/s1-sec",
+   "flagship": true
+  },
+  {
+   "id": "google-20261028-gemini-4-carbon",
+   "date": "2026-10-28",
+   "lab": "google",
+   "type": "model",
+   "title": "Gemini 4 Carbon",
+   "summary": "A cybersecurity-focused Gemini 4 model for finding vulnerabilities, testing whether they can be exploited and writing patches, announced two weeks after Gemini 4 Argon became widely available. Access is restricted to vetted defenders through the Fairwind Program; reported scores and pricing ($2/$10 per million tokens) are Google's own claims, from secondary coverage.",
+   "facts": [
+    "Cyber-defence model",
+    "Fairwind Program only"
+   ],
+   "source": "https://interestingengineering.com/ai-robotics/google-gemini-4-carbon-ai-cybersecurity-vulnerability-detection",
+   "flagship": false
+  },
+  {
+   "id": "mistral-20261029-mistral-large-4-open-weights",
+   "date": "2026-10-29",
+   "lab": "mistral",
+   "type": "model",
+   "title": "Mistral Large 4 open weights",
+   "summary": "Three weeks after the API preview, Mistral published the weights of Large 4 on Hugging Face (Mistral-Large-4-1T-A52B, FP8, plus an NVFP4 checkpoint) under its Mistral Ecosystem Open-Weight licence, described as a modified MIT. Reports differ on the active parameter count (49B vs 52B); benchmark figures are Mistral's.",
+   "facts": [
+    "~1T total, ~49-52B active",
+    "Weights on Hugging Face"
+   ],
+   "source": "https://www.online-tech-tips.com/mistral-releases-large-4-open-weight-frontier-ai-model/",
    "flagship": true
   }
  ]

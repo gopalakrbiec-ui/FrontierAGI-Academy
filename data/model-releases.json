@@ -5225,6 +5225,40 @@
 "st": "ga",
 "sec": 0,
 "ref": "openai-20261026-gpt-6-1-terra"
+},
+{
+"id": "google-20261028-gemini-4-carbon",
+"ref": "google-20261028-gemini-4-carbon",
+"date": "2026-10-28",
+"lab": "google",
+"mod": [
+"llm"
+],
+"fam": "gemini",
+"name": "Gemini 4 Carbon",
+"full": "Gemini 4 Carbon: cyber-defence model, restricted to the Fairwind Program; scores are Google's claims (secondary coverage)",
+"src": "https://interestingengineering.com/ai-robotics/google-gemini-4-carbon-ai-cybersecurity-vulnerability-detection",
+"flag": 0,
+"open": 0,
+"st": "preview",
+"sec": 1
+},
+{
+"id": "mistral-20261029-mistral-large-4",
+"ref": "mistral-20261029-mistral-large-4-open-weights",
+"date": "2026-10-29",
+"lab": "mistral",
+"mod": [
+"llm"
+],
+"fam": "mistral",
+"name": "Mistral Large 4",
+"full": "Mistral Large 4: open weights on Hugging Face under the Mistral Ecosystem Open-Weight licence (modified MIT, as reported)",
+"src": "https://www.online-tech-tips.com/mistral-releases-large-4-open-weight-frontier-ai-model/",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 1
 }
 ]
 }
