@@ -253,6 +253,18 @@
       ]
     },
     {
+      "id": "sec-maestro2",
+      "title": "The Maestro, Season 2: Scaling the Factory",
+      "short": "The Maestro, Season 2",
+      "icon": "🎼",
+      "slugs": [
+        "maestro-s2-series-a",
+        "maestro-s2-team",
+        "maestro-s2-strategy",
+        "maestro-s2-operating-cadence"
+      ]
+    },
+    {
       "id": "sec-llm-pipeline",
       "title": "How LLMs Are Built: One In-Depth Article per Stage",
       "short": "How LLMs Are Built",

@@ -51,6 +51,10 @@ Everything is served as static files. No login, no tracking, no paywall.
 <!-- BLOG_POSTS_START -->
 | Article | Summary | Date |
 |---|---|---|
+| 🗓️ [The Maestro, Season 2, Part 4: The Operating Cadence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-operating-cadence.html) | The company's operating system: the meeting rhythm, quarterly goals tied to the strategy, a weekly review built on input metrics, a… | 2026-11-02 |
+| 🧭 [The Maestro, Season 2, Part 3: The Strategy One-Pager](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-strategy.html) | Where to play and how to win against frontier labs, open models and tool incumbents: 31 buyer interviews, a scoring script whose… | 2026-11-02 |
+| 👥 [The Maestro, Season 2, Part 2: Building the Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-team.html) | From three people to about forty: the shape of the organisation, the order of the first 36 hires and why the safety lead is hire five,… | 2026-11-02 |
+| 💸 [The Maestro, Season 2, Part 1: The Second Raise](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-series-a.html) | Season 2 opens at month 18. | 2026-11-02 |
 | 📊 [The Maestro, Part 18: The Scorecard](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-scorecard.html) | The finale. | 2026-10-31 |
 | 🔄 [The Maestro, Part 17: Operations and the Flywheel](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-operations.html) | Running it every day: SLOs and burn-rate alerts, canary rollouts with instant rollback, an incident start to finish, the weekly rhythm, a… | 2026-10-31 |
 | 🤖 [The Maestro, Part 16: Agents and Client Products](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-agents-products.html) | From model to products: the agent loop, a PR bot, a CI fixer and an IDE assistant, the cost of one agent task (and why caching makes long… | 2026-10-31 |

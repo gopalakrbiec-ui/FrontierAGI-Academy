@@ -711,10 +711,10 @@ window.MoScenes = function (part, list) {
   if (!window.MoFilm) return;
   list.forEach(function (it, k) {
     var h = document.getElementById(it.place); if (!h) return;
-    var box = document.createElement('div'); box.id = 'scene' + part + '-' + (k + 1);
-    var after = h; while (after.nextElementSibling && after.nextElementSibling.id && after.nextElementSibling.id.indexOf('scene' + part + '-') === 0) after = after.nextElementSibling;
+    var pid = String(part).replace(/[^A-Za-z0-9]+/g, ''), box = document.createElement('div'); box.id = 'scene' + pid + '-' + (k + 1);
+    var after = h; while (after.nextElementSibling && after.nextElementSibling.id && after.nextElementSibling.id.indexOf('scene' + pid + '-') === 0) after = after.nextElementSibling;
     after.after(box);
-    MoFilm(box, { title: it.scene.t, label: 'Animated scene · Part ' + part, scenes: [it.scene] });
+    MoFilm(box, { title: it.scene.t, label: 'Animated scene · ' + (typeof part === 'string' ? part : 'Part ' + part), scenes: [it.scene] });
   });
 };
 // The recurring "cluster" character: 1,024 GPUs as 128 nodes x 8 GPUs.

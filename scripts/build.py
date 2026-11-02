@@ -641,7 +641,7 @@ def validate_software():
 
 REQUIRED_VALIDATORS = ["broken_links", "validate_rsi", "validate_rsi_supplement", "validate_discovery", "validate_models",
                        "validate_stack", "validate_software", "validate_hf", "validate_content"]
-DISCLOSE_SERIES = ("agent-layer-map", "eval-layer-map", "maestro-l4-moat")
+DISCLOSE_SERIES = ("agent-layer-map", "eval-layer-map", "maestro-l4-moat", "maestro-s2-series-a")
 DISCLOSE_PAGES = ("pages/software-stack-live.html", "pages/ai-factory-3d.html", "pages/maestro.html",
                   "pages/agent-layer.html", "pages/eval-layer.html")
 

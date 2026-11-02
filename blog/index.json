@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "maestro-s2-operating-cadence",
+      "title": "The Maestro, Season 2, Part 4: The Operating Cadence",
+      "excerpt": "The company's operating system: the meeting rhythm, quarterly goals tied to the strategy, a weekly review built on input metrics, a decision table checked for self-approval, a reviewer roster that keeps the gate independent at 40 people, the board, and the incident that tested it.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-02",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🗓️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-strategy",
+      "title": "The Maestro, Season 2, Part 3: The Strategy One-Pager",
+      "excerpt": "Where to play and how to win against frontier labs, open models and tool incumbents: 31 buyer interviews, a scoring script whose sensitivity test shows how narrow the lead is, bottom-up market sizing, the moat in plain words, three bets with kill criteria and the not-do list.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-02",
+      "readTime": "16 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧭",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-team",
+      "title": "The Maestro, Season 2, Part 2: Building the Team",
+      "excerpt": "From three people to about forty: the shape of the organisation, the order of the first 36 hires and why the safety lead is hire five, structured hiring backed by research, pay and equity, AI agents with owners, and the hats Gopala stops wearing.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-02",
+      "readTime": "17 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "👥",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-series-a",
+      "title": "The Maestro, Season 2, Part 1: The Second Raise",
+      "excerpt": "Season 2 opens at month 18. Gopala raises a Series A from Season 1's evidence: the six numbers investors ask for in 2026, the data room, the deck and funnel, three term sheets compared with a script (pool shuffle, runway through the Maestro-2 run) and a new board that protects the gate.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-02",
+      "readTime": "18 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "💸",
+      "featured": false
+    },
+    {
       "slug": "maestro-scorecard",
       "title": "The Maestro, Part 18: The Scorecard",
       "excerpt": "The finale. Plan vs outcome after 18 months (4 green, 3 amber, 1 red), which hypotheses held, the kill criteria, runway and break-even, where the money went, what Gopala would do differently, ten lessons and what comes next.",
