@@ -462,7 +462,7 @@ Recursive self-improvement as it actually exists in 2026: agents that evolve the
 #### 🧬 Architecture & Learning Technique: How the Field Actually Got Here
 
 The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.  
-<sub>6 articles</sub>
+<sub>5 articles</sub>
 
 | # | Article | Read |
 |---|---|---|
@@ -471,12 +471,11 @@ The history of neural network architectures, the separate thread of learning tec
 | 3 | 🧵 [Two Threads, One Chain: Architecture vs. Learning Technique](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/two-threads-architecture-vs-learning-technique.html) | 85 min |
 | 4 | 🔭 [After Transformers: What's Working, What's a Dead End, What's Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/after-transformers-current-methods-and-dead-ends.html) | 90 min |
 | 5 | ⚖️ [The AGI Debate: Scaling vs. New Architectures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-debate-scaling-vs-new-architectures.html) | 65 min |
-| 6 | 🔎 [How to Read a Paper Like a Researcher](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-to-read-a-paper-like-a-researcher.html) | 60 min |
 
 #### 🔍 Topic Explainers: Standalone Deep Dives
 
 World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, brain–computer interfaces, and fresh launches like TypeSafe's Jev — each explained on its own.  
-<sub>16 articles</sub>
+<sub>18 articles</sub>
 
 | # | Article | Read |
 |---|---|---|
@@ -496,6 +495,8 @@ World models, retrieval, agents, safety, reasoning, chips, robotics, multimodali
 | 14 | ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-loop-explained.html) | 16 min |
 | 15 | 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/filmmaking-encyclopedia.html) | 30 min |
 | 16 | 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | 24 min |
+| 17 | 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ssi-complete-investigation.html) | 110 min |
+| 18 | 🔎 [How to Read a Paper Like a Researcher](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-to-read-a-paper-like-a-researcher.html) | 60 min |
 
 #### 🗂️ The Model Lineage Series
 
@@ -620,14 +621,13 @@ Onboarding, production training code, distributed debugging, compute economics, 
 #### 🧭 The Researcher's Path: Careers, Labs & Field Notes
 
 What it actually takes to work on AGI — papers to read, labs to target, a real day in the life, and a full investigation into one of the field's most secretive labs.  
-<sub>4 articles</sub>
+<sub>3 articles</sub>
 
 | # | Article | Read |
 |---|---|---|
 | 1 | 🎓 [The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-field-guide.html) | 80 min |
 | 2 | ☀️ [A Day in the Life of an AGI Researcher: The Complete Operating Manual](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-day-in-life.html) | 85 min |
 | 3 | 🗺️ [The Research Frontier Map: What Every Major AI Lab Is Actually Betting On](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-frontier-map-labs-compared.html) | 75 min |
-| 4 | 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ssi-complete-investigation.html) | 110 min |
 
 
 ### 05 · Build a Company

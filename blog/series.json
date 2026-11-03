@@ -344,8 +344,7 @@
         "how-each-architecture-actually-learned",
         "two-threads-architecture-vs-learning-technique",
         "after-transformers-current-methods-and-dead-ends",
-        "agi-debate-scaling-vs-new-architectures",
-        "how-to-read-a-paper-like-a-researcher"
+        "agi-debate-scaling-vs-new-architectures"
       ]
     },
     {
@@ -369,7 +368,9 @@
         "ai-safety-alignment-interpretability",
         "agentic-loop-explained",
         "filmmaking-encyclopedia",
-        "brain-computer-interfaces"
+        "brain-computer-interfaces",
+        "ssi-complete-investigation",
+        "how-to-read-a-paper-like-a-researcher"
       ]
     },
     {
@@ -494,8 +495,7 @@
       "slugs": [
         "ai-researcher-field-guide",
         "agi-researcher-day-in-life",
-        "ai-research-frontier-map-labs-compared",
-        "ssi-complete-investigation"
+        "ai-research-frontier-map-labs-compared"
       ]
     },
     {
