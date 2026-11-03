@@ -572,6 +572,40 @@ def validate_models():
     return problems
 
 
+def validate_benchmarks():
+    """data/benchmarks.json: structural checks for pages/benchmarks.html."""
+    path = ROOT / "data/benchmarks.json"
+    if not path.exists():
+        return []
+    d = json.loads(path.read_text(encoding="utf-8"))
+    models = {i["id"] for i in json.loads((ROOT / "data/model-releases.json").read_text(encoding="utf-8"))["items"]}
+    cats = {c[0] for c in d["categories"]}
+    problems, bids, seen = [], set(), set()
+    for b in d["benchmarks"]:
+        if b[0] in bids or b[2] not in cats or b[3] not in ("%", "score", "$"):
+            problems.append(f"data/benchmarks.json: benchmark {b[0]}: duplicate, unknown category or bad unit")
+        bids.add(b[0])
+    for s in d["scores"]:
+        w = f"data/benchmarks.json: {s.get('m', '?')} × {s.get('b', '?')}"
+        key = (s["m"], s["b"], s["rep"], s["src"], s.get("note", ""))
+        if key in seen:
+            problems.append(f"{w}: duplicate row")
+        seen.add(key)
+        if s["m"] not in models:
+            problems.append(f"{w}: model is not in data/model-releases.json")
+        if s["b"] not in bids:
+            problems.append(f"{w}: unknown benchmark")
+        if s["rep"] not in ("lab", "other", "independent") or s.get("sec") not in (0, 1):
+            problems.append(f"{w}: rep must be lab/other/independent and sec 0/1")
+        if not isinstance(s["v"], (int, float)):
+            problems.append(f"{w}: value must be a number")
+        if not re.fullmatch(r"20\d\d-\d\d-\d\d", s["d"]) or s["d"] > date.today().isoformat():
+            problems.append(f"{w}: date {s['d']} invalid or in the future")
+        if not s["src"].startswith("https://") or not s.get("by"):
+            problems.append(f"{w}: needs an https source and a 'by' line")
+    return problems
+
+
 def validate_stack():
     """data/stack-innovations.json: structural checks for pages/stack-innovations.html."""
     path = ROOT / "data/stack-innovations.json"
@@ -639,7 +673,7 @@ def validate_software():
     return problems
 
 
-REQUIRED_VALIDATORS = ["broken_links", "validate_rsi", "validate_rsi_supplement", "validate_discovery", "validate_models",
+REQUIRED_VALIDATORS = ["broken_links", "validate_rsi", "validate_rsi_supplement", "validate_discovery", "validate_models", "validate_benchmarks",
                        "validate_stack", "validate_software", "validate_hf", "validate_content"]
 DISCLOSE_SERIES = ("agent-layer-map", "eval-layer-map", "maestro-l4-moat", "maestro-s2-series-a")
 DISCLOSE_PAGES = ("pages/software-stack-live.html", "pages/ai-factory-3d.html", "pages/maestro.html",
@@ -806,7 +840,7 @@ def main():
         stale = [p for p in stale if p.name != "sitemap.xml"]
         readme = subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py"), "--check"])
         problems = [f"stale: {p.relative_to(ROOT)} (run python3 scripts/build.py)" for p in stale]
-        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_stack() + validate_software() + validate_hf() + validate_content()
+        problems += broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_benchmarks() + validate_stack() + validate_software() + validate_hf() + validate_content()
         if readme.returncode:
             problems.append("stale: README.md (run python3 scripts/build.py)")
         for line in problems:
@@ -816,7 +850,7 @@ def main():
     for p in stale:
         p.write_text(outputs[p], encoding="utf-8")
     subprocess.run([sys.executable, str(ROOT / "scripts/update_readme.py")], check=True)
-    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_stack() + validate_software() + validate_hf() + validate_content()
+    problems = broken_links(files) + graph_problems + lab_problems + validate_rsi() + validate_rsi_supplement() + validate_discovery() + validate_models() + validate_benchmarks() + validate_stack() + validate_software() + validate_hf() + validate_content()
     print(f"build: {len(stale)} file(s) updated, {len(files)} pages checked, {len(problems)} broken link(s)")
     for line in problems:
         print("  " + line)

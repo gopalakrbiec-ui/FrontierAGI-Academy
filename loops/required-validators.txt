@@ -4,6 +4,7 @@ validate_rsi
 validate_rsi_supplement
 validate_discovery
 validate_models
+validate_benchmarks
 validate_stack
 validate_software
 validate_hf
