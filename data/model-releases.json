@@ -1,5 +1,5 @@
 {
-"about": "Hand-curated model releases, by modality. LLM-modality rows reference verified items in data/lab-updates.json (ref). open: 1 open weights, 2 research/limited access, 0 closed, null licence not recorded. st: ga available, preview limited or alpha, research announced but not released. sec: 1 means the source is secondary (press or reference site). t marks the first-at-tier milestone items. end: date the product was retired.",
+"about": "Hand-curated model releases, by modality (foundation, image, video, speech and world models). LLM-modality rows reference verified items in data/lab-updates.json (ref). open: 1 open weights, 2 research/limited access, 0 closed, null licence not recorded. st: ga available, preview limited or alpha, research announced but not released. sec: 1 means the source is secondary (press or reference site). t marks the first-at-tier milestone items. end: date the product was retired.",
 "range": [
 "2022-04",
 "2026-10"
@@ -24,6 +24,11 @@
 "speech",
 "Speech models",
 "🎙️"
+],
+[
+"world",
+"World models",
+"🌍"
 ]
 ],
 "labs": [
@@ -188,6 +193,18 @@
 "Ideogram",
 "Id",
 "#0d9488"
+],
+[
+"worldlabs",
+"World Labs",
+"WL",
+"#0ea5e9"
+],
+[
+"wayve",
+"Wayve",
+"Wy",
+"#65a30d"
 ]
 ],
 "families": [
@@ -474,6 +491,30 @@
 [
 "grokvoice",
 "Grok Voice"
+],
+[
+"genie",
+"Genie"
+],
+[
+"cosmos",
+"Cosmos"
+],
+[
+"vjepa",
+"V-JEPA"
+],
+[
+"marble",
+"Marble"
+],
+[
+"gaia",
+"GAIA"
+],
+[
+"hunyuanworld",
+"HunyuanWorld"
 ]
 ],
 "tiers": [
@@ -518,6 +559,18 @@
 "speech",
 "Robust multilingual speech recognition",
 "General-purpose speech-to-text"
+],
+[
+"interactive",
+"world",
+"Real-time interactive world model",
+"A model that generates a world you can move through and act in, frame by frame, in real time"
+],
+[
+"wfm",
+"world",
+"Open world foundation model for physical AI",
+"Openly released model that predicts how the physical world evolves, for robots and vehicles"
 ]
 ],
 "items": [
@@ -5257,6 +5310,168 @@
 "src": "https://www.online-tech-tips.com/mistral-releases-large-4-open-weight-frontier-ai-model/",
 "flag": 1,
 "open": 1,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "wayve-20230608-gaia-1",
+"date": "2023-06-08",
+"lab": "wayve",
+"mod": [
+"world"
+],
+"fam": "gaia",
+"name": "GAIA-1",
+"full": "GAIA-1: generative world model for autonomous driving (research announcement)",
+"src": "https://wayve.ai/thinking/introducing-gaia1/",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-20240223-genie",
+"date": "2024-02-23",
+"lab": "google",
+"mod": [
+"world"
+],
+"fam": "genie",
+"name": "Genie",
+"full": "Genie: generative interactive environments learned from unlabelled video (research paper)",
+"src": "https://arxiv.org/abs/2402.15391",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "google-20241204-genie-2",
+"date": "2024-12-04",
+"lab": "google",
+"mod": [
+"world"
+],
+"fam": "genie",
+"name": "Genie 2",
+"full": "Genie 2: large-scale foundation world model generating playable 3D environments (research)",
+"src": "https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/",
+"flag": 1,
+"open": 0,
+"st": "research",
+"sec": 0
+},
+{
+"id": "nvidia-20250106-cosmos",
+"date": "2025-01-06",
+"lab": "nvidia",
+"mod": [
+"world"
+],
+"fam": "cosmos",
+"name": "Cosmos",
+"full": "Cosmos world foundation models for physical AI, released with open weights under the NVIDIA Open Model License",
+"src": "https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-world-foundation-model-platform-to-accelerate-physical-ai-development",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 0,
+"t": "wfm"
+},
+{
+"id": "meta-20250611-v-jepa-2",
+"date": "2025-06-11",
+"lab": "meta",
+"mod": [
+"world"
+],
+"fam": "vjepa",
+"name": "V-JEPA 2",
+"full": "V-JEPA 2: self-supervised video world model for understanding, prediction and robot planning, open weights",
+"src": "https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/",
+"flag": 1,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "tencent-20250726-hunyuanworld-1",
+"date": "2025-07-26",
+"lab": "tencent",
+"mod": [
+"world"
+],
+"fam": "hunyuanworld",
+"name": "HunyuanWorld 1.0",
+"full": "HunyuanWorld 1.0: open-source model generating explorable 3D worlds from text or an image",
+"src": "https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0",
+"flag": 0,
+"open": 1,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "google-20250805-genie-3",
+"date": "2025-08-05",
+"lab": "google",
+"mod": [
+"world"
+],
+"fam": "genie",
+"name": "Genie 3",
+"full": "Genie 3: real-time interactive world model (24 fps, minutes of consistency), limited research preview",
+"src": "https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/",
+"flag": 1,
+"open": 0,
+"st": "preview",
+"sec": 0,
+"t": "interactive"
+},
+{
+"id": "worldlabs-20251112-marble",
+"date": "2025-11-12",
+"lab": "worldlabs",
+"mod": [
+"world"
+],
+"fam": "marble",
+"name": "Marble",
+"full": "Marble: generative 3D world model, generally available as a product",
+"src": "https://radiancefields.com/world-labs-formally-launches-marble-a-generative-world-model",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "google-20260129-project-genie",
+"date": "2026-01-29",
+"lab": "google",
+"mod": [
+"world"
+],
+"fam": "genie",
+"name": "Project Genie (Genie 3)",
+"full": "Project Genie: public access to Genie 3 world generation",
+"src": "https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "worldlabs-20260402-marble-1-1",
+"date": "2026-04-02",
+"lab": "worldlabs",
+"mod": [
+"world"
+],
+"fam": "marble",
+"name": "Marble 1.1",
+"full": "Marble 1.1 and 1.1 Plus: auto-expanding 3D world generation",
+"src": "https://rits.shanghai.nyu.edu/ai/world-labs-releases-marble-1-1-auto-expanding-3d-world-generation",
+"flag": 0,
+"open": 0,
 "st": "ga",
 "sec": 1
 }
