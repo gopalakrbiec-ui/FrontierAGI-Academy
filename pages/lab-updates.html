@@ -732,7 +732,7 @@
   var st = { labs: new Set(), types: new Set(), q: '', range: 'all', flag: false, month: '' };
   var TODAY = '2026-10-27';
 
-  fetch('../data/lab-updates.json').then(function (r) { return r.json(); }).then(function (D) {
+  fetch('../data/lab-updates.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (D) {
     var LAB = {}; D.labs.forEach(function (l) { LAB[l[0]] = { id: l[0], name: l[1], mono: l[2], c: l[3] }; });
     var TYPE = {}; D.types.forEach(function (t) { TYPE[t[0]] = { icon: t[1], name: t[2] }; });
     var items = D.items.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });

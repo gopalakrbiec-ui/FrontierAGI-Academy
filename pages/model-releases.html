@@ -486,7 +486,7 @@
   window.addEventListener('resize', function () { if (S.view === 'lanes') drawLines(); });
   window.addEventListener('hashchange', function () { var m = location.hash.match(/m=([\w-]+)/); if (m) select(m[1], true); });
 
-  fetch('../data/model-releases.json?v=1').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('../data/model-releases.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
     D = d; d.labs.forEach(function (l) { labOf[l[0]] = l; }); d.families.forEach(function (f) { famName[f[0]] = f[1]; }); d.items.forEach(function (i) { byId[i.id] = i; });
     (function () { var n = {}; d.items.forEach(function (i) { n[i.id] = d.items.filter(function (x) { return x.fam === i.fam && x.id !== i.id && (x.date + x.id) > (i.date + i.id); }).length; }); var v = d.items.map(function (i) { return n[i.id]; }).sort(function (a, b) { return b - a; }), th = Math.max(2, v[Math.floor(v.length * 0.12)]); d.items.forEach(function (i, k) { if (n[i.id] >= th) hot[i.id] = k + 1; }); })();
     $('mrList').innerHTML = d.items.map(function (i) { return '<option value="' + esc(i.name) + '">'; }).join('');

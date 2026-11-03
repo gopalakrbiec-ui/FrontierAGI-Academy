@@ -328,7 +328,7 @@
   var EMBED = /[?&]embed=1/.test(location.search); if (EMBED) document.body.classList.add('si-embed');
   var D, LANES, GRP, byId = {}, view = 'chains', z0 = 2001, exp = null, flagOnly = false, q = '', sel = null, gOff = {}, mobLanes = ['gpu', 'kern', 'inf'];
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
-  fetch('../data/stack-innovations.json').then(function (r) { return r.json(); }).then(function (d) { D = d; LANES = d.lanes; GRP = d.groups; d.items.forEach(function (i) { byId[i.id] = i; i.t = +i.date.slice(0, 4) + (+i.date.slice(5, 7) - 0.5) / 12; }); init(); });
+  fetch('../data/stack-innovations.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) { D = d; LANES = d.lanes; GRP = d.groups; d.items.forEach(function (i) { byId[i.id] = i; i.t = +i.date.slice(0, 4) + (+i.date.slice(5, 7) - 0.5) / 12; }); init(); });
 
   function init() {
     $('siFlag').checked = flagOnly;

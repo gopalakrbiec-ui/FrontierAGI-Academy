@@ -374,7 +374,7 @@
   var MTOP = null, lay = 'real', COLS = [], CB = {}, ZB = {}, HAND = [], HO = [], OBX = null, D, GEN = {}, L = [], LB = {}, BX = [], BB = {}, JR = [], EDGES = {}, view = 'arch', load = 0.55, year = 2026, jsel = 'all', sel = null, q = '';
   var svg = $('ssSvg'), cv = $('ssCv'), g = cv.getContext('2d'), W = 0, H = 0, DPR = 1, mobile = false;
 
-  Promise.all([fetch('../data/software-stack.json').then(function (r) { return r.json(); }), fetch('../data/stack-innovations.json').then(function (r) { return r.json(); }).catch(function () { return { items: [] }; })]).then(function (a) { D = a[0]; a[1].items.forEach(function (i) { GEN[i.id] = i; }); init(); });
+  Promise.all([fetch('../data/software-stack.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }), fetch('../data/stack-innovations.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return { items: [] }; })]).then(function (a) { D = a[0]; a[1].items.forEach(function (i) { GEN[i.id] = i; }); init(); });
 
   function init() {
     D.layers.forEach(function (l) { var o = { id: l[0], name: l[1], emoji: l[2], c: l[3], role: l[4], job: l[5] }; L.push(o); LB[o.id] = o; });
