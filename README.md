@@ -678,14 +678,6 @@ Two pieces on the productivity paradox — what happens to jobs, growth, and the
 | 1 | ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-layoffs.html) | 24 min |
 | 2 | 🌐 [The AI Productivity Paradox: When Economic Growth Stops Needing Humans](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-civilization.html) | 20 min |
 
-
-### 📝 More articles (not in a series)
-
-| Article | Date |
-|---|---|
-| 📅 [August 2026: The Month in Review](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-august-2026.html) | 2026-08-30 |
-| 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-june-22-2026.html) | 2026-06-22 |
-
 <!-- SERIES:END -->
 
 ---
@@ -719,4 +711,3 @@ python3 scripts/build.py --check  # what CI runs: stale files, broken links, dat
 
 More detail: [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) · project notes for AI agents: [`CLAUDE.md`](CLAUDE.md).
 
-<sub>Claude, made by Anthropic, helps write this site.</sub>

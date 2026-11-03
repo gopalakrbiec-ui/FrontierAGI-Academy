@@ -104,11 +104,6 @@ def series_block(posts, series, maps, home):
             table.append(f"| {n} | {p.get('emoji', '📝')} [{cell(p['title'])}]({BASE}/blog/{p['slug']}.html) | {p.get('readTime', '')} |")
         t = "\n".join(table)
         out.append((f"🆕 *Newest series.*\n\n" if s["id"] in open_ids else "") + f"{t}\n")
-    rest = [p for p in posts if p["slug"] not in seen]
-    if rest:
-        out.append("\n### 📝 More articles (not in a series)\n")
-        table = ["| Article | Date |", "|---|---|"] + [f"| {p.get('emoji', '📝')} [{cell(p['title'])}]({BASE}/blog/{p['slug']}.html) | {p.get('date', '')} |" for p in rest]
-        out.append("\n".join(table) + "\n")
     return "\n".join(out)
 
 
