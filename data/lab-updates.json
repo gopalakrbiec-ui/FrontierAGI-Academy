@@ -3997,6 +3997,20 @@
    ],
    "source": "https://www.online-tech-tips.com/mistral-releases-large-4-open-weight-frontier-ai-model/",
    "flagship": true
+  },
+  {
+   "id": "google-20261027-genie-4",
+   "date": "2026-10-27",
+   "lab": "google",
+   "type": "model",
+   "title": "Genie 4 (research preview)",
+   "summary": "Google DeepMind's real-time world model, the first in the Genie line to generate audio natively (music, ambient sound and dialogue), with scenes users can steer mid-run. Released as an early, experimental research preview to trusted testers, with a waitlist in Project Genie; details from secondary coverage.",
+   "facts": [
+    "Native audio",
+    "Research preview, waitlist"
+   ],
+   "source": "https://northeasttimes.com/2026/10/27/google-deepmind-opens-genie-4-preview-to-testers-with-audio-and-two-minute/",
+   "flagship": false
   }
  ]
 }

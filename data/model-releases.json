@@ -5474,6 +5474,23 @@
 "open": 0,
 "st": "ga",
 "sec": 1
+},
+{
+"id": "google-20261027-genie-4",
+"ref": "google-20261027-genie-4",
+"date": "2026-10-27",
+"lab": "google",
+"mod": [
+"world"
+],
+"fam": "genie",
+"name": "Genie 4",
+"full": "Genie 4: real-time world model with native audio (music, ambience, dialogue) and mid-run steering; research preview for trusted testers, waitlist in Project Genie",
+"src": "https://northeasttimes.com/2026/10/27/google-deepmind-opens-genie-4-preview-to-testers-with-audio-and-two-minute/",
+"flag": 1,
+"open": 0,
+"st": "preview",
+"sec": 1
 }
 ]
 }
