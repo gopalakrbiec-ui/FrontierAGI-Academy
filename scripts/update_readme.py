@@ -6,7 +6,7 @@ Regenerates the generated parts of README.md:
             then a compact strip of series hub pages
   SERIES  – one section per article series, grouped by the homepage section it
             sits in and in homepage card order (blog/series.json + index.html);
-            the two newest series are expanded, the rest are collapsed
+            every series is shown in full; the two newest are marked 🆕
 Run by scripts/build.py (and `--check` by build.py --check).
 Screenshots live in assets/readme/ and are made by scripts/readme_shots.js.
 """
@@ -103,15 +103,12 @@ def series_block(posts, series, maps, home):
         for n, p in enumerate(rows, 1):
             table.append(f"| {n} | {p.get('emoji', '📝')} [{cell(p['title'])}]({BASE}/blog/{p['slug']}.html) | {p.get('readTime', '')} |")
         t = "\n".join(table)
-        if s["id"] in open_ids:
-            out.append(f"🆕 *Newest series, shown in full.*\n\n{t}\n")
-        else:
-            out.append(f"<details><summary>Show all {len(rows)} articles</summary>\n\n{t}\n\n</details>\n")
+        out.append((f"🆕 *Newest series.*\n\n" if s["id"] in open_ids else "") + f"{t}\n")
     rest = [p for p in posts if p["slug"] not in seen]
     if rest:
         out.append("\n### 📝 More articles (not in a series)\n")
         table = ["| Article | Date |", "|---|---|"] + [f"| {p.get('emoji', '📝')} [{cell(p['title'])}]({BASE}/blog/{p['slug']}.html) | {p.get('date', '')} |" for p in rest]
-        out.append(f"<details><summary>Show {len(rest)} more articles</summary>\n\n" + "\n".join(table) + "\n\n</details>\n")
+        out.append("\n".join(table) + "\n")
     return "\n".join(out)
 
 
