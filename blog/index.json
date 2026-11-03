@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "maestro-s2-research-says-no",
+      "title": "The Maestro, Season 2, Part 9: When Research Says No",
+      "excerpt": "Killing a favourite direction with criteria written in advance: the long-horizon agent test fails 3 of 4 criteria, a sunk-cost check shows why stopping wins, and how the team is redeployed. Closes Phase 6.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "5 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🛑",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-environments",
+      "title": "The Maestro, Season 2, Part 8: Environments as the Asset",
+      "excerpt": "How customer tasks become verified training environments: three cheating agents that every environment must defeat, why half are thrown away, drift and maintenance, and a sandbox of the environment flywheel.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "5 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🏗️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-next-moat",
+      "title": "The Maestro, Season 2, Part 7: Hunting the Next Moat",
+      "excerpt": "Five candidate moats scored in three possible futures: a knowledge graph, a minimum-regret choice that picks verified environments, a copy-time estimate against a bigger rival, and a sandbox to bet on your own future.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "5 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🎯",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-experiments",
+      "title": "The Maestro, Season 2, Part 6: Many Experiments, Cheaply",
+      "excerpt": "How the research engine runs many small bets: a portfolio search that fills a 120k GPU-hour budget, a kill ladder from toy to full run that stops half the experiments early and saves 31% of compute, and a sandbox to pick your own portfolio.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "5 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧮",
+      "featured": false
+    },
+    {
       "slug": "maestro-s2-research-org",
       "title": "The Maestro, Season 2, Part 5: A Research Org for Every RSI Level",
       "excerpt": "Phase 6 opens the research engine in a new, explore-first format: a knowledge graph of the research org with a guided tour, a sandbox to staff five tracks (one per RSI level), and scripts that set the allocation and the safety boundaries, with L5 kept in a sandbox.",
