@@ -58,6 +58,26 @@
     body.bt-embed .bt-embedbar { display: flex; justify-content: space-between; gap: 8px; font-size: .82rem; margin-bottom: 4px; } body.bt-embed .bt-embedbar a { font-weight: 700; color: #1d4ed8; text-decoration: none; }
     body.bt-embed .bt-gridwrap { max-height: 470px; overflow: auto; }
     @media (max-width: 640px) { .bt-seg button { padding: 5px 9px; font-size: .74rem; } .bt-radwrap { grid-template-columns: 1fr; } .bt-grid th { min-width: 78px; } .bt-grid th:first-child { min-width: 128px; } body.bt-embed #btCats { flex-wrap: nowrap; overflow-x: auto; } }
+      /* colour pass */
+    .bt-hero { background: linear-gradient(120deg, #4f46e5 0%, #7c3aed 30%, #db2777 60%, #ea580c 85%, #f59e0b 100%); color: #fff; border-radius: 20px; padding: 26px 24px 22px; box-shadow: 0 14px 40px rgba(124,58,237,.25); position: relative; overflow: hidden; }
+    .bt-hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgba(255,255,255,.25), transparent 40%), radial-gradient(circle at 10% 90%, rgba(255,255,255,.15), transparent 40%); pointer-events: none; }
+    .bt-hero h1 { color: #fff; } .bt-hero p { color: rgba(255,255,255,.92); } .bt-badge { background: rgba(255,255,255,.2); color: #fff; }
+    .bt-seg button { border-color: color-mix(in srgb, var(--c, #6366f1) 35%, #fff); color: var(--c, #3730a3); }
+    .bt-seg button.on { background: var(--c, #1e1b4b); border-color: var(--c, #1e1b4b); color: #fff; box-shadow: 0 4px 12px color-mix(in srgb, var(--c, #1e1b4b) 35%, transparent); }
+    #btViews button:nth-child(1) { --c: #4f46e5; } #btViews button:nth-child(2) { --c: #0891b2; } #btViews button:nth-child(3) { --c: #db2777; } #btViews button:nth-child(4) { --c: #7c3aed; } #btViews button:nth-child(5) { --c: #ea580c; }
+    #btRep button { --c: #0f766e; }
+    .bt-gridwrap { border: 0; box-shadow: 0 8px 28px rgba(79,70,229,.12); }
+    .bt-grid th { background: #fff; border-bottom: 4px solid var(--c, #e2e8f0); }
+    .bt-mp { display: inline-block !important; background: var(--c); color: #fff; border-radius: 12px; padding: 3px 10px; font-size: .78rem; line-height: 1.3; } @media (max-width: 640px) { .bt-mp { font-size: .68rem; padding: 3px 6px; } }
+    .bt-grid th:first-child .bt-mp, .bt-grid th:first-child { color: #1e1b4b; }
+    .bt-cat td { background: linear-gradient(90deg, color-mix(in srgb, var(--c) 18%, #fff), #fff 70%) !important; border-left: 5px solid var(--c); font-size: .76rem; }
+    td.bt-c { font-weight: 600; transition: transform .12s; } td.bt-c:hover { transform: scale(1.06); position: relative; z-index: 2; }
+    td.bt-best { color: #fff !important; font-weight: 900; box-shadow: 0 4px 14px color-mix(in srgb, var(--cc) 45%, transparent); }
+    td.bt-mix { background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 6px, #f1f5f9 6px, #f1f5f9 12px) !important; }
+    .bt-card { border-top: 5px solid var(--c, #6366f1); box-shadow: 0 6px 18px color-mix(in srgb, var(--c, #6366f1) 14%, transparent); }
+    .bt-caveat { background: linear-gradient(90deg, #fffbeb, #fff7ed); }
+    .bt-legend span { background: #fff; border-radius: 999px; padding: 3px 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    body.bt-embed .bt-wrap { background: linear-gradient(180deg, #eef2ff, #fff 140px); }
   </style>
 
 </head>
@@ -215,10 +235,10 @@
 (function () {
   var EMBED = new URLSearchParams(location.search).has('embed'); if (EMBED) document.body.classList.add('bt-embed');
   var $ = function (id) { return document.getElementById(id); }, D, MR = {}, LAB = {}, view = 'grid', cat = 'all', rep = 'all', pick = null;
-  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+  var EM = { general: '🧠', coding: '💻', computer: '🖱️', knowledge: '📚', multimodal: '🖼️', longctx: '📜', science: '🔬', cyber: '🛡️' }, esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
   Promise.all([fetch('../data/benchmarks.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }), fetch('../data/model-releases.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })]).then(function (x) {
     D = x[0]; x[1].labs.forEach(function (l) { LAB[l[0]] = l; }); x[1].items.forEach(function (i) { MR[i.id] = i; });
-    $('btCats').innerHTML = '<button data-c="all" class="on">All categories</button>' + D.categories.map(function (c) { return '<button data-c="' + c[0] + '">' + c[1] + '</button>'; }).join('');
+    $('btCats').innerHTML = '<button data-c="all" class="on" style="--c:#1e1b4b">🌈 All categories</button>' + D.categories.map(function (c) { return '<button data-c="' + c[0] + '" style="--c:' + c[2] + '">' + (EM[c[0]] || '') + ' ' + c[1] + '</button>'; }).join('');
     render();
   });
   function B(id) { return D.benchmarks.filter(function (b) { return b[0] === id; })[0]; }
@@ -237,11 +257,11 @@
 
   function grid() { var list = rows(), ms = models(list);
     if (narrow()) { if (!pick) pick = ms.slice(0, 3); $('btPick').innerHTML = '<span>Compare (pick up to 3):</span>' + ms.map(function (m) { return '<button data-m="' + m + '" class="' + (pick.indexOf(m) >= 0 ? 'on' : '') + '" style="--c:' + col(m) + '">' + esc(name(m)) + '</button>'; }).join(''); ms = ms.filter(function (m) { return pick.indexOf(m) >= 0; }); } else $('btPick').innerHTML = '';
-    var bs = D.benchmarks.filter(function (b) { return list.some(function (s) { return s.b === b[0]; }); }), h = '<div class="bt-gridwrap"><table class="bt-grid"><tr><th>Benchmark</th>' + ms.map(function (m) { return '<th style="--c:' + col(m) + '"><span>' + esc(name(m)) + '</span><em>' + (MR[m] ? MR[m].date : '') + '</em></th>'; }).join('') + '</tr>', lastc = '';
+    var bs = D.benchmarks.filter(function (b) { return list.some(function (s) { return s.b === b[0]; }); }), h = '<div class="bt-gridwrap"><table class="bt-grid"><tr><th>Benchmark</th>' + ms.map(function (m) { return '<th style="--c:' + col(m) + '"><span class="bt-mp">' + esc(name(m)) + '</span><em>' + (MR[m] ? MR[m].date : '') + '</em></th>'; }).join('') + '</tr>', lastc = '';
     bs.forEach(function (b) { var cs = ms.map(function (m) { return cell(list, m, b[0]); }), cnt = {}; cs.forEach(function (c) { if (c) cnt[c.pick.src] = (cnt[c.pick.src] || 0) + 1; }); var dom = Object.keys(cnt).sort(function (x, y) { return cnt[y] - cnt[x]; })[0], vals = cs.filter(function (c) { return c && c.pick.src === dom; }).map(function (c) { return c.pick.v; }), best = vals.length > 1 ? Math.max.apply(null, vals) : null, mixed = Object.keys(cnt).length > 1;
-      if (b[2] !== lastc) { lastc = b[2]; h += '<tr class="bt-cat"><td colspan="' + (ms.length + 1) + '" style="--c:' + C(b[2])[2] + '">' + C(b[2])[1] + '</td></tr>'; }
+      if (b[2] !== lastc) { lastc = b[2]; h += '<tr class="bt-cat"><td colspan="' + (ms.length + 1) + '" style="--c:' + C(b[2])[2] + '">' + (EM[b[2]] || '') + ' ' + C(b[2])[1] + '</td></tr>'; }
       h += '<tr><td class="bt-bn">' + esc(b[1]) + (b[5] ? '<em>' + esc(b[5]) + '</em>' : '') + '</td>' + cs.map(function (c) { if (!c) return '<td class="bt-na">—</td>'; var s = c.pick, k = D.scores.indexOf(s);
-        var bb = s.v === best && s.src === dom; return '<td class="bt-c ' + cls(s) + (bb ? ' bt-best' : '') + (mixed && s.src !== dom ? ' bt-mix' : '') + '" data-k="' + k + '">' + fmt(b, s.v) + (bb ? ' ★' : '') + (s.sec ? ' ⚠️' : '') + (c.all.length > 1 ? '<sup>+' + (c.all.length - 1) + '</sup>' : '') + '</td>'; }).join('') + '</tr>'; });
+        var bb = s.v === best && s.src === dom, cc = C(b[2])[2], lo = vals.length ? Math.min.apply(null, vals) : 0, hi = vals.length ? Math.max.apply(null, vals) : 1, t = s.src === dom && hi > lo ? (s.v - lo) / (hi - lo) : 0.35, bg = s.src === dom ? cc + Math.round(18 + t * 70).toString(16).padStart(2, '0') : 'transparent'; return '<td class="bt-c ' + cls(s) + (bb ? ' bt-best' : '') + (mixed && s.src !== dom ? ' bt-mix' : '') + '" data-k="' + k + '" style="--cc:' + cc + ';background:' + (bb ? cc : bg) + '">' + fmt(b, s.v) + (bb ? ' ★' : '') + (s.sec ? ' ⚠️' : '') + (c.all.length > 1 ? '<sup>+' + (c.all.length - 1) + '</sup>' : '') + '</td>'; }).join('') + '</tr>'; });
     return h + '</table></div><p class="bt-note">★ marks the best score among cells from the same source table; cells in <i>italics</i> come from a different source or setup and are not ranked against the rest. Tap a cell for its source and settings. <sup>+N</sup> means N more reports of the same score from other sources (see the ⚖️ view).</p>'; }
 
   function lead() { var list = rows(), bs = D.benchmarks.filter(function (b) { return list.filter(function (s) { return s.b === b[0]; }).length > 1; });
@@ -251,7 +271,7 @@
       pts.forEach(function (p) { if (p.s.v > best) { best = p.s.v; step += (step ? ' L' : 'M') + X(p.d).toFixed(1) + ' ' + Y(best).toFixed(1); } else step += ' L' + X(p.d).toFixed(1) + ' ' + Y(best).toFixed(1); });
       pts.forEach(function (p) { svg += '<circle class="bt-c" data-k="' + D.scores.indexOf(p.s) + '" cx="' + X(p.d) + '" cy="' + Y(p.s.v) + '" r="5" fill="' + col(p.s.m) + '" stroke="#fff" stroke-width="1.5"' + (p.s.rep === 'independent' ? '' : ' fill-opacity=".75"') + '><title>' + esc(name(p.s.m)) + '</title></circle>'; });
       var top = pts.filter(function (p) { return p.s.v === hi; })[0];
-      return '<div class="bt-card"><h4>' + esc(b[1]) + '</h4><svg viewBox="0 0 300 118"><path d="' + step + '" fill="none" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>' + svg + '<text x="30" y="114" font-size="9" fill="#64748b">' + pts[0].d.slice(0, 7) + '</text><text x="280" y="114" font-size="9" fill="#64748b" text-anchor="end">' + pts[pts.length - 1].d.slice(0, 7) + '</text></svg><p>Leader: <b style="color:' + col(top.s.m) + '">' + esc(name(top.s.m)) + '</b> · ' + fmt(b, hi) + '</p></div>'; }).join('') + '</div><p class="bt-note">Dots are models placed at their release date; the dashed line is the best score so far. Only benchmarks with two or more scores are shown. With data starting in late 2026, most lines are short for now.</p>'; }
+      return '<div class="bt-card" style="--c:' + C(b[2])[2] + '"><h4>' + (EM[b[2]] || '') + ' ' + esc(b[1]) + '</h4><svg viewBox="0 0 300 118"><path d="' + step + '" fill="none" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 3"/>' + svg + '<text x="30" y="114" font-size="9" fill="#64748b">' + pts[0].d.slice(0, 7) + '</text><text x="280" y="114" font-size="9" fill="#64748b" text-anchor="end">' + pts[pts.length - 1].d.slice(0, 7) + '</text></svg><p>Leader: <b style="color:' + col(top.s.m) + '">' + esc(name(top.s.m)) + '</b> · ' + fmt(b, hi) + '</p></div>'; }).join('') + '</div><p class="bt-note">Dots are models placed at their release date; the dashed line is the best score so far. Only benchmarks with two or more scores are shown. With data starting in late 2026, most lines are short for now.</p>'; }
 
   function sat() { var list = rows(), bs = D.benchmarks.filter(function (b) { return b[4] && list.some(function (s) { return s.b === b[0]; }); }), s = '<svg class="bt-sat" viewBox="0 0 640 360"><line x1="60" y1="320" x2="620" y2="320" stroke="#cbd5e1"/><line x1="60" y1="20" x2="60" y2="320" stroke="#cbd5e1"/><text x="340" y="350" font-size="12" text-anchor="middle" fill="#475569">best score as % of the maximum → (right = nearly saturated)</text><text x="18" y="170" font-size="12" text-anchor="middle" fill="#475569" transform="rotate(-90 18 170)">spread between models →</text>';
     [0, 25, 50, 75, 100].forEach(function (t) { s += '<text x="' + (60 + t * 5.6) + '" y="336" font-size="10" text-anchor="middle" fill="#94a3b8">' + t + '%</text>'; });
