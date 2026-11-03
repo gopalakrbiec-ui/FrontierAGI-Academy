@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**295 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-03
+**296 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-03
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -373,7 +373,7 @@ Phase 0 (the idea) → Phase 1 (securing the machine) → Phase 2 (building the 
 #### 🎼 The Maestro, Season 2: Scaling the Factory
 
 Phase 5 (founder to CEO) → Phase 6 (the research engine) → Phase 7 (Maestro-2) → Phase 8 (the product grows up) → Phase 9 (competing at the frontier). 23 parts, published phase by phase; Phase 5 is out now.  
-<sub>4 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html)</sub>
+<sub>5 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html)</sub>
 
 🆕 *Newest series.*
 
@@ -383,6 +383,7 @@ Phase 5 (founder to CEO) → Phase 6 (the research engine) → Phase 7 (Maestro-
 | 2 | 👥 [The Maestro, Season 2, Part 2: Building the Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-team.html) | 17 min |
 | 3 | 🧭 [The Maestro, Season 2, Part 3: The Strategy One-Pager](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-strategy.html) | 16 min |
 | 4 | 🗓️ [The Maestro, Season 2, Part 4: The Operating Cadence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-operating-cadence.html) | 17 min |
+| 5 | 🔬 [The Maestro, Season 2, Part 5: A Research Org for Every RSI Level](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-research-org.html) | 8 min |
 
 
 ### 02 · Learn How LLMs Work

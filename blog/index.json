@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "maestro-s2-research-org",
+      "title": "The Maestro, Season 2, Part 5: A Research Org for Every RSI Level",
+      "excerpt": "Phase 6 opens the research engine in a new, explore-first format: a knowledge graph of the research org with a guided tour, a sandbox to staff five tracks (one per RSI level), and scripts that set the allocation and the safety boundaries, with L5 kept in a sandbox.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "8 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🔬",
+      "featured": false
+    },
+    {
       "slug": "ai-bubble-explained",
       "title": "Is AI a Bubble? Triggers, Impacts, Timing and How to Prepare",
       "excerpt": "Is the AI boom a bubble? The full timeline of warnings (2023 → Nov 2026), how much is being spent versus earned, circular financing and the rise of debt, October 2026's stress test, the case against, triggers, impacts, timing and how to prepare.",
