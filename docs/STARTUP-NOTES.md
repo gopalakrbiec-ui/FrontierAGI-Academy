@@ -122,6 +122,26 @@ Added 3 Nov 2026. Owner's summary, not a verified transcript. Company facts in i
 
 **Across eight conversations:** the builders (Altman, Zuckerberg, Pichai) are racing to make intelligence abundant, and the investors and application builders (Sosin, Noronha, Rauch, Chase) are working out what remains valuable once it is. Both point to the same human role. Altman's "understand the problem first", Sosin's "fundamentals to challenge AI" and Matias's "ask the right questions" all describe it: people supply the direction and judgment that cheap intelligence can't supply for itself.
 
+## Reference: "Anthropic Claude Agentic AI Ecosystem" infographic (third party)
+
+Added 3 Nov 2026 by the owner as a reference for the Maestro series (Season 2, Phase 8: the agent platform and the harness as product). Source: an infographic by @rakeshgohel01 (newsletter.rakeshgohel.com), **not an Anthropic document**. Several boxes are the author's framing or invented labels rather than named Anthropic products (for example "Constitutional AI Checker", "RLHF Compliance Engine", "Safe Artifact Repo", "Model Weights Archive", "Anthropic Inference Cluster"). Model names and versions on it do not all match the site's verified records. **Do not cite any item on the site without a primary Anthropic source**; use it only as a map of the layers an agent platform needs. Disclosure when used: Claude, made by Anthropic, helps write this site.
+
+**Layers as drawn (transcribed):**
+
+| Layer | Boxes on the infographic |
+|---|---|
+| Core models | Opus (judgment, honesty, agentic coding and computer use), Sonnet (speed + intelligence for business workflows), Haiku (fast, high-volume), Mythos (preview, restricted to select security orgs) |
+| Framework & tools | Managed Agents (hosted, stateful long-running sessions), Marketplace (partner tools), Agent SDK (self-hosted agents), API core, multimodel input, tool use, MCP (standard for connecting AI to tools and data) |
+| Production & workspace | Claude Code (agentic coding, parallel subagents, dynamic workflows), Cowork (agentic AI for knowledge workers), Claude Design (visuals, prototypes, presentations), Claude Security (zero-trust: identity, access, sandboxing, memory safeguards); workspace integrations with Chrome, Excel, PowerPoint, Slack |
+| Memory & storage | Context store (persistent session intelligence), memory store (long-running memory with enterprise controls), context-window cache (token efficiency), artifact storage, versioned model storage |
+| Security & governance | Zero-trust security framework; real-time alignment checks on outputs; outputs validated against safety standards; adversarial defence against prompt injection and jailbreaks |
+| Deployment & CI/CD | Inference compute; research-to-production workflow pipeline; mandatory safety evaluation before every release; model-improvement loop (preference data preparation, instruction-tuning pipeline) |
+
+**How to use it in the Maestro series:**
+- As a checklist for Phase 8 ("From PR bot to agent platform", "The harness as product"): Maestro needs the same six layers at start-up scale: models, an SDK and tool layer (MCP), workspace integrations, memory, security and governance, and a release pipeline with a safety gate.
+- The "mandatory safety evaluation before every release" box matches Maestro's fixed human gate (Season 1, Part 11).
+- Compare against the site's own, sourced map of the same layers: the Inside the Agent Layer series (sandboxes, durable execution, tool gateways and MCP, identity, memory, observability, RL environments).
+
 ## Across the conversations
 
 - Both stress verification loops.
