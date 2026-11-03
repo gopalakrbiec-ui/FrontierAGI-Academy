@@ -89,7 +89,38 @@ Added 3 Nov 2026. Owner's summary, not a verified transcript. An investor's view
 
 **How this updates the overall picture:** Sosin supplies the economic logic beneath what the builders described. If intelligence is a commodity with diminishing returns, then the lasting advantages are the complements: data and context (Google, Meta), trust (Vercel), taste (Gamma), network effects (NFX) and the human judgment that defines the evals (Chase). Across seven conversations, almost everyone lands on the same conclusion: cheap intelligence makes everything around it more valuable.
 
-Note: the Pichai, Zuckerberg/Meta and NFX conversations referenced above are not yet written up in this file.
+Note: the Pichai, Zuckerberg/Meta and NFX conversations referenced in the comparisons are not yet written up in this file.
+
+## Takeaways from a conversation with Sam Altman (OpenAI)
+
+Added 3 Nov 2026. Owner's summary, not a verified transcript. Company facts in it (for example killing Sora to focus on coding agents) must be checked against a primary source and marked ⚠️ until then. When used on the site, add the disclosure (Claude, made by Anthropic, helps write this site), because a competing lab is discussed.
+
+| Theme | Altman's argument | Why it matters |
+|---|---|---|
+| Small teams, huge leverage | Small teams can now build impactful products far faster than 10 years ago. He frames this era as a "singularity" that empowers humanity. | The minimum team size for meaningful products keeps shrinking, which lowers the barrier to starting companies. |
+| Mission: abundant, decentralized intelligence | OpenAI aims to make intelligence abundant and widely distributed. | If it succeeds, intelligence becomes cheap and everywhere, which is the same commoditisation Sosin described. |
+| Aligning incentives | Partners and internal teams need aligned incentives. | Large AI efforts span labs, cloud providers and customers, and misaligned incentives break them faster than technical problems do. |
+| The biggest risk | "AI authoritarianism" versus liberty. | He frames the central danger as concentration of control rather than only technical failure. That shapes his case for decentralisation. |
+| Execution over planning | Execution beats abstract planning. He is willing to kill successful projects (like Sora) to focus on priorities like coding agents. | Focus is a resource. Cutting good projects to fund great ones is harder, and more valuable, than cutting bad ones. |
+| Ambition on compute | He admits to sometimes undershooting infrastructure investment. | The frontier lab's own CEO thinks he bet too small, the opposite of Sosin's caution about overbuilding. |
+| Strengths over weaknesses | Leaders should get better at what they're already good at instead of fixing weaknesses. | Leverage comes from exceptional strengths, while weaknesses can be covered by the team. |
+| Design starts with the problem | Inspired by Jony Ive: deeply understand the problem before rushing to a solution. | When building is cheap, the temptation is to build first. Understanding the problem becomes the scarce step. |
+| Personal habits | Texts 300 to 400 people a day, flies in during marginal crises, deleted TikTok to regain focus. | High-bandwidth communication and protected attention are treated as core leadership tools. |
+
+**The common thread:** move fast, concentrate resources ruthlessly and bet big, while keeping the long-term aim of intelligence that is widely shared rather than controlled by a few.
+
+### How Altman fits with the other conversations (owner's comparison)
+
+| Question | Altman | The others |
+|---|---|---|
+| What happens to intelligence | Abundant and decentralised by design | Matches Sosin's commoditisation thesis. The irony: if OpenAI succeeds, Sosin's logic suggests value shifts to complements like data, attention and trust, rather than staying with the intelligence provider. |
+| CapEx | Undershot compute | Aligned with Pichai and Zuckerberg on spending heavily; opposite to Sosin's view that the buildout is speculative. |
+| Focus and killing projects | Cut Sora to prioritise coding agents | Echoes Matias on choosing the highest-impact problems, and Rauch on riding the wave, since coding agents are where Rauch saw the shift happening. |
+| Small teams | Small teams now build big products | Matches Matias's "organization of one" and Meta's talent-density reboot. |
+| Design and taste | Understand the problem first | Matches Noronha's emphasis on taste and avoiding generic "AI smell". |
+| Main risk | Authoritarian concentration of AI | A different framing from Meta's user-directed alignment and Chase's autonomous improvement loops. Altman centres who controls AI, while they focus on how AI behaves. |
+
+**Across eight conversations:** the builders (Altman, Zuckerberg, Pichai) are racing to make intelligence abundant, and the investors and application builders (Sosin, Noronha, Rauch, Chase) are working out what remains valuable once it is. Both point to the same human role. Altman's "understand the problem first", Sosin's "fundamentals to challenge AI" and Matias's "ask the right questions" all describe it: people supply the direction and judgment that cheap intelligence can't supply for itself.
 
 ## Across the conversations
 
@@ -100,6 +131,7 @@ Note: the Pichai, Zuckerberg/Meta and NFX conversations referenced above are not
 - **Matias** adds a third lever: when capability is abundant, the scarce skills are choosing the problem and coordinating the tools (systems thinking, judgment). All three point the same way: value moves from doing the work to directing and checking it.
 - **Chase** gives the map for all of it: model, harness and context are three separate levers, cheapest first (context, then harness, then weights), with traces as the data and evals as the definition of success. His North Star, improvement with no human checkpoint, is exactly where Maestro differs on purpose: Maestro automates finding and proposing fixes but keeps a fixed, human-controlled gate before anything ships.
 - **Sosin** gives the economics underneath: intelligence is becoming a commodity with diminishing returns, so value moves to its complements (data, attention, proximity, scale, judgment). For Maestro, the complements are the customer-specific skill library and environments, the gate record (trust) and the reviewers who define the evals.
+- **Altman** is the builder's counterpoint: bet big on compute, focus ruthlessly, keep teams small. For Maestro the useful parts are focus (kill good projects for great ones) and "understand the problem first"; the compute ambition is the frontier-scale view that Season 3 would test, not Gopala's Series A reality.
 
 ## Where these show up in the Maestro series
 
@@ -122,4 +154,8 @@ Note: the Pichai, Zuckerberg/Meta and NFX conversations referenced above are not
 - **Complements to cheap intelligence (Sosin):** Season 2, Part 3 strategy and Phase 9: the moat is what intelligence cannot make by itself: private customer data and skills, the gate record, integrations. Strengthens Phase 7, Part 10 (do not over-invest in raw model capability).
 - **Agents erode price stickiness:** Phase 9 ("When a frontier lab ships your product", "Market shifts"): if customers' agents compare vendors, Maestro must win on measured value per task, which per-task pricing and the evidence tier already expose.
 - **Speculative CapEx:** Phase 7, Part 11 (scaling the machine): prefer renting and options over long capacity commitments, and model an overbuilt market where GPU prices fall.
+- **Killing good projects to fund great ones (Altman):** Phase 6, Part 9 ("When research says no") and Phase 9: Gopala cuts a working side product to concentrate on the agent platform.
+- **Aligned incentives across partners:** Phase 9, Part 22 (partnerships and distribution) and the Series A strategic-investor trap (S2 Part 1).
+- **Strengths over weaknesses; high-bandwidth communication, protected attention:** the CEO thread (S2 Parts 2 and 4: what Gopala keeps, hires around, and how he spends his week).
+- **Undershoot vs overbuild compute:** Phase 7, Part 11 pairs Altman (bet bigger) with Sosin (speculative) as the two ends of the compute decision.
 - **Judgment and fundamentals:** use in the team and culture threads (hiring, onboarding, what Gopala keeps doing himself).
