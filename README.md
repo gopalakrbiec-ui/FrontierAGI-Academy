@@ -1,401 +1,842 @@
 # 🚀 FrontierAGI Academy
 
-**A free, interactive educational website about frontier AI and large language models.**
+**A free, interactive website about frontier AI: how the models are built, the AI factories that train them, and what is happening at the frontier.**
 
-FrontierAGI Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
+🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
-🌐 **Live site:** [gopalakrbiec-ui.github.io/FrontierAGI-Academy](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)
+<!-- STATS:START -->
+**294 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-02
+<!-- STATS:END -->
 
----
+<a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
 
-## What This Project Is
+Plain HTML, CSS and JavaScript: no framework, no login, no tracking, no paywall. Every number links to its source; story events, simulations and our own models are labelled as such.
 
-A static educational website (pure HTML/CSS/JS — no framework, no build step, no backend) organized around:
-
-- **8 Learning Modes** — switch perspective between Layman, Graduate, Researcher, Startup, Investor, Founder, Team, and Agentic mode
-- **Deep-dive pages** — curated content on timelines, AI ecosystems, and engineering concepts
-- **A blog** — long-form posts with diagrams, animations, and interactive examples
-- **Daily AI News** — a live feed of what's happening in the field
-
-Everything is served as static files. No login, no tracking, no paywall.
+**On this page:** [🗺️ Interactive maps](#maps) · [📚 Articles by series](#articles) · [🛠️ For contributors](#contributors)
 
 ---
 
-## Site Structure
+<a id="maps"></a>
+## 🗺️ Interactive maps
 
-### 🏠 Home
-- [Home](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy) — AGI research & progress hub: latest signal, the three AGI startup lanes, deep investigations, and the researcher's path
+Click any picture to open the live map. 🎞️ marks an animated preview.
 
-### 🧭 Explore — Deep-Dive Resources
-- [Interactive LLM Course](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-model-learning.html) — The mode-based course on how modern LLMs work (layman, researcher, founder, investor, and more)
-- [FrontierAI Timeline](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-timeline.html) — A chronological map of major frontier model releases, capability jumps, and research milestones
-- [Future Frontier](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/future-frontier.html) — Forward-looking analysis of where AI capability and safety research is heading
-- [LLM Engineering](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-engineering.html) — Practical concepts for building with LLMs — prompting, fine-tuning, RAG, agents, evals
-- [Coding Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/coding-agents.html) — Deep dive on coding agents & tools: evolution timeline, tool comparisons, MCP ecosystem, SWE-bench, investments, research papers, and future roadmap
+<!-- MAPS:START -->
+### 🛰️ Follow the frontier
 
-### 🌏 AI Ecosystems — Country Deep Dives
-- [Sovereign AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sovereign-ai.html) — Comprehensive guide to sovereign AI — all countries, investment strategies, Pax Silica, and the four pillars
-- [America AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/usa-ai.html) — US AI policy, hyperscaler investments, leading labs, and the Stargate project
-- [China AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/china-ai.html) — China's AI strategy, frontier labs, regulatory environment, and key models
-- [Europe AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/europe-ai.html) — European AI landscape — Mistral, EU AI Act, country hubs, and the path to AI sovereignty
-- [India AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/india-ai.html) — India's AI landscape — domestic models, government initiatives, startup ecosystem
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/lab-updates.html"><img src="assets/readme/lab-updates.webp" alt="Frontier Lab Updates" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/lab-updates.html">Frontier Lab Updates</a></b><br>Every release and announcement from 13 frontier labs, Oct 2021 → today, newest first.<br><sub>Data: <code>data/lab-updates.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/model-releases.html"><img src="assets/readme/model-releases.webp" alt="Model Release Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/model-releases.html">Model Release Map</a></b><br>Foundation, image, video, speech and world models across labs since the Transformer: lab lanes, open vs closed, cadence.<br><sub>Data: <code>data/model-releases.json</code></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/benchmarks.html"><img src="assets/readme/benchmarks.webp" alt="Frontier Benchmark Tracker" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/benchmarks.html">Frontier Benchmark Tracker</a></b><br>Latest benchmark scores across 8 kinds of task, each labelled by who measured it.<br><sub>Data: <code>data/benchmarks.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html"><img src="assets/readme/hf-paper-themes.webp" alt="HF Paper Themes" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html">HF Paper Themes</a></b><br>Monthly top Hugging Face Daily Papers grouped by theme.<br><sub>Data: <code>data/hf-papers.json</code></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-evolution.html"><img src="assets/readme/rsi-evolution.webp" alt="RSI Evolution Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-evolution.html">RSI Evolution Map</a></b><br>Recursive self-improvement research by autonomy level (L1–L5) and what gets rewritten.<br><sub>Data: <code>data/rsi-papers.json</code></sub></td>
+<td width="50%"></td>
+</tr>
+</table>
 
-### 📰 News & Blog
-- [Daily AI News](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-news.html) — Curated AI news feed updated regularly
-- [Blog](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html) — All blog posts — full listing with cards
+### 💡 Ideas and research
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-flow.html"><img src="assets/readme/idea-flow.webp" alt="AI Idea Flow" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-flow.html">AI Idea Flow</a></b><br>A metro map of AI ideas from 1950 to 2026: who built on whom.<br><sub>Data: <code>blog/idea-graph.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-map.html"><img src="assets/readme/idea-map.webp" alt="AI Idea Map (3D)" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-map.html">AI Idea Map (3D)</a></b><br>The same idea graph as a 3D map with guided tours.<br><sub>Data: <code>blog/idea-graph.json</code></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html"><img src="assets/readme/threads.webp" alt="Threads" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html">Threads</a></b><br>Every article series as a metro line, plus a month-by-month publishing history.<br><sub>Data: <code>blog/series.json</code></sub></td>
+<td width="50%"></td>
+</tr>
+</table>
+
+### 🏭 The AI factory
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-map.html"><img src="assets/readme/ai-factory-map.webp" alt="The AI Factory, Cut Open" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-map.html">The AI Factory, Cut Open</a></b><br>Isometric cutaway of one AI factory, nine floors from power to agents.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-plan.html"><img src="assets/readme/ai-factory-plan.webp" alt="The AI Factory, From Above" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-plan.html">The AI Factory, From Above</a></b><br>Top-down site plan of a reference ~100 MW campus, physical and software views.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-3d.html"><img src="assets/readme/ai-factory-3d.gif" alt="The AI Factory in 3D" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-3d.html">The AI Factory in 3D</a></b> 🎞️<br>Walkable 3D model of the campus with power, coolant and data flows.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/software-stack-live.html"><img src="assets/readme/software-stack-live.gif" alt="The AI Software Stack, Live" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/software-stack-live.html">The AI Software Stack, Live</a></b> 🎞️<br>The factory's software stack with animated training, serving and agent flows.<br><sub>Data: <code>data/software-stack.json</code></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/stack-innovations.html"><img src="assets/readme/stack-innovations.webp" alt="Stack Innovation Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/stack-innovations.html">Stack Innovation Map</a></b><br>Hardware and software milestones across 19 layers, 2001 → today.<br><sub>Data: <code>data/stack-innovations.json</code></sub></td>
+<td width="50%"></td>
+</tr>
+</table>
+
+### 🎼 The Maestro
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html"><img src="assets/readme/maestro-journey.gif" alt="Gopala's Journey" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html">Gopala's Journey</a></b> 🎞️<br>The whole Maestro story as one road, Season 1 and Season 2; press play.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro.html"><img src="assets/readme/maestro.webp" alt="Maestro Mission Control" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro.html">Maestro Mission Control</a></b><br>Every phase, hat, budget line and risk, plus a 2-minute primer and a live system map.</td>
+</tr>
+</table>
+
+### 🧭 Series hubs: each series at a glance
+
+<table>
+<tr>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html"><img src="assets/readme/hub-compute-stack.webp" alt="AI Compute Stack" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html"><b>AI Compute Stack</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html"><img src="assets/readme/hub-producing-intelligence.webp" alt="Producing Intelligence" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html"><b>Producing Intelligence</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html"><img src="assets/readme/hub-who-runs-the-ai-factory.webp" alt="Who Runs the AI Factory" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html"><b>Who Runs the AI Factory</b></a></td>
+</tr>
+<tr>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><img src="assets/readme/hub-ai-factories.webp" alt="AI Factories" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><b>AI Factories</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html"><img src="assets/readme/hub-ai-factory-service.webp" alt="AI Factory as a Service" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html"><b>AI Factory as a Service</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html"><img src="assets/readme/hub-ml-layer.webp" alt="ML Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html"><b>ML Layer</b></a></td>
+</tr>
+<tr>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><img src="assets/readme/hub-data-layer.webp" alt="Data Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><b>Data Layer</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html"><img src="assets/readme/hub-eval-layer.webp" alt="Evaluation Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html"><b>Evaluation Layer</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html"><img src="assets/readme/hub-agent-layer.webp" alt="Agent Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html"><b>Agent Layer</b></a></td>
+</tr>
+</table>
+<!-- MAPS:END -->
 
 ---
 
-## 📝 Blog Posts
+<a id="articles"></a>
+## 📚 Articles by series
 
-<!-- BLOG_POSTS_START -->
-| Article | Summary | Date |
+Series appear in the same order as on the homepage. The two newest series are shown in full; open any other with **Show all**.
+
+<!-- SERIES:START -->
+
+### The Long View
+
+#### 📅 AI Research Progress Through the Years
+
+A year-by-year record of the papers and ideas that moved AI research forward — explained in plain English with animations, and linked to the sources.  
+<sub>19 articles</sub>
+
+<details><summary>Show all 19 articles</summary>
+
+| # | Article | Read |
 |---|---|---|
-| 🗓️ [The Maestro, Season 2, Part 4: The Operating Cadence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-operating-cadence.html) | The company's operating system: the meeting rhythm, quarterly goals tied to the strategy, a weekly review built on input metrics, a… | 2026-11-02 |
-| 🧭 [The Maestro, Season 2, Part 3: The Strategy One-Pager](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-strategy.html) | Where to play and how to win against frontier labs, open models and tool incumbents: 31 buyer interviews, a scoring script whose… | 2026-11-02 |
-| 👥 [The Maestro, Season 2, Part 2: Building the Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-team.html) | From three people to about forty: the shape of the organisation, the order of the first 36 hires and why the safety lead is hire five,… | 2026-11-02 |
-| 💸 [The Maestro, Season 2, Part 1: The Second Raise](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-series-a.html) | Season 2 opens at month 18. | 2026-11-02 |
-| 📊 [The Maestro, Part 18: The Scorecard](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-scorecard.html) | The finale. | 2026-10-31 |
-| 🔄 [The Maestro, Part 17: Operations and the Flywheel](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-operations.html) | Running it every day: SLOs and burn-rate alerts, canary rollouts with instant rollback, an incident start to finish, the weekly rhythm, a… | 2026-10-31 |
-| 🤖 [The Maestro, Part 16: Agents and Client Products](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-agents-products.html) | From model to products: the agent loop, a PR bot, a CI fixer and an IDE assistant, the cost of one agent task (and why caching makes long… | 2026-10-31 |
-| 💬 [The Maestro, Part 15: Serving at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-serving.html) | Phase 4 begins. | 2026-10-31 |
-| 📜 [The Maestro, Part 14: Approvals and Compliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-approvals.html) | Phase 3 ends. | 2026-10-31 |
-| 🛡️ [The Maestro, Part 13: Safety Layers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-safety-layers.html) | Defence in depth for an engineering agent: safety in training, classifiers, a tool guard the model cannot change (whose runnable code… | 2026-10-31 |
-| 📏 [The Maestro, Part 12: The Evaluation Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-evaluation.html) | Phase 3 begins. | 2026-10-31 |
-| 🔁 [The Maestro, Part 11: Post-Training and the RSI Loop](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-post-training-rsi.html) | Phase 2 ends. | 2026-10-31 |
-| 🏋️ [The Maestro, Part 10: The Pre-Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-pretraining-run.html) | 31 days on 1,024 GPUs: the go/no-go gate, a warmup-stable-decay learning-rate schedule, a loss-spike detector that tells a blip from a… | 2026-10-31 |
-| 🏗️ [The Maestro, Part 9: Architecture and Parallelism](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-architecture-parallelism.html) | Designing Maestro-1: a mixture-of-experts model with 65.2B total and 11.7B active parameters, a memory plan for 1,024 H100s, the four kinds… | 2026-10-31 |
-| 🗃️ [The Maestro, Part 8: The Data Refinery](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-data-refinery.html) | Phase 2 begins. | 2026-10-31 |
-| 📋 [The Maestro, Part 7: The Cluster Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-cluster-software.html) | Phase 1 ends. | 2026-10-30 |
-| 🔧 [The Maestro, Part 6: Day Zero — Bring-Up](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-bring-up.html) | Phase 1. | 2026-10-30 |
-| ⚡ [The Maestro, Part 5: Site, Power and Cooling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-site-power-cooling.html) | Phase 1. | 2026-10-30 |
-| 🖥️ [The Maestro, Part 4: Securing Compute](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-securing-compute.html) | Phase 1, infrastructure hat. | 2026-10-30 |
-| 💰 [The Maestro, Part 3: The Plan and the Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-plan-money.html) | Phase 0, founder hat. | 2026-10-30 |
-| 🧪 [The Maestro, Part 2: Proving It Small](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-proving-small.html) | Phase 0, researcher and ML-engineer hats. | 2026-10-30 |
-| 🧭 [The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-l4-moat.html) | Phase 0, researcher hat. | 2026-10-30 |
-| 🏋️ [Where Agents Learn: RL Environments as Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-rl-environments.html) | Part 8 of Inside the Agent Layer: how labs train agents with reinforcement learning in simulated workplaces, what an RL environment… | 2026-10-28 |
-| 📈 [Seeing Inside Agent Runs: Observability, Tracing and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-observability-cost.html) | Part 7 of Inside the Agent Layer: why agent failures are invisible to ordinary monitoring, traces and spans for model and tool calls, the… | 2026-10-28 |
-| 🧩 [What Agents Remember: Memory, State and the Context Window](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-memory-state.html) | Part 6 of Inside the Agent Layer: the four kinds of agent memory, why long runs exhaust the context window, context editing and compaction,… | 2026-10-28 |
-| 🪪 [On Whose Behalf? Identity and Permissions for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-identity-permissions.html) | Part 5 of Inside the Agent Layer: why agents need their own identities, how OAuth on-behalf-of tokens carry both the user and the agent,… | 2026-10-28 |
-| 🔌 [How Agents Reach the World: Tool Gateways and MCP at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-tool-gateways.html) | Part 4 of Inside the Agent Layer: how agents call tools through the Model Context Protocol, why companies put a gateway between agents and… | 2026-10-28 |
-| ⏳ [Agents That Survive: Durable Execution for Long-Running Work](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-durable-execution.html) | Part 3 of Inside the Agent Layer: why an agent that runs for hours must survive crashes, deploys and human pauses, how durable execution… | 2026-10-28 |
-| 📦 [Where Agents Act: Sandboxes, Micro-VMs and Cloud Browsers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-sandboxes.html) | Part 2 of Inside the Agent Layer: the isolated computers where agents run code and browse, from containers and gVisor to Firecracker… | 2026-10-28 |
-| 🤖 [The Agent Layer, Mapped: What Runs Between a Request and the 400th Tool Call](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-layer-map.html) | Part 1 of Inside the Agent Layer maps the infrastructure that runs AI agents at scale: the loop, sandboxes, durable execution, tool… | 2026-10-28 |
-| 🚦 [From Score to Ship: How Evaluation Results Become a Launch Decision](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-score-to-ship.html) | The final part of Inside the Evaluation Layer: how labs turn hundreds of evaluation results into a go or no-go, what goes into a system… | 2026-10-28 |
-| 🛡️ [Testing for Danger: Dangerous-Capability Evals, Safety Thresholds and Models That Know They Are Being Tested](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-safety-capability.html) | Part 6 of Inside the Evaluation Layer: how labs test for biological, cyber, autonomy and manipulation risks, how Anthropic, OpenAI and… | 2026-10-28 |
-| 🤖 [Grading Agents: Long Tasks, Live Environments and Why Reliability Beats a Single Score](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-agents-long-tasks.html) | Part 5 of Inside the Evaluation Layer: how agents are tested in real environments (SWE-bench Verified, Terminal-Bench 2.0, OSWorld,… | 2026-10-28 |
-| 🙋 [Humans in the Loop: Arenas, Expert Graders and What a Vote Really Measures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-human-arenas.html) | Part 4 of Inside the Evaluation Layer: how Chatbot Arena turns millions of votes into a ranking, the Llama 4 leaderboard episode and the… | 2026-10-28 |
-| ⚖️ [Models Grading Models: LLM Judges, Reward Models and How They Get Fooled](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-llm-judges.html) | Part 3 of Inside the Evaluation Layer: why labs let one model grade another, how well LLM judges agree with people (over 80% in the… | 2026-10-28 |
-| 🧪 [Tests That Leak and Tests That Wear Out: Benchmark Contamination and Saturation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-contamination-saturation.html) | Part 2 of Inside the Evaluation Layer: how test questions leak into training data, how labs and researchers detect it (13-gram overlap,… | 2026-10-28 |
-| 🎯 [The Evaluation Layer, Mapped: Who Tests a Frontier Model, When, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-layer-map.html) | Part 1 of Inside the Evaluation Layer maps every test a frontier model faces, from training checkpoints to government pre-deployment… | 2026-10-28 |
-| 📜 [Who Owns the Training Data? Copyright, Consent and the Coming Data Wall](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-law-data-wall.html) | The final part of Inside the Data Layer maps the law and the limits: US fair-use rulings (Bartz v. | 2026-10-27 |
-| 🗄️ [Feeding the Furnace: Storage, Tokenisation and the Data Loaders Behind Every Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-infrastructure.html) | Part 7 of Inside the Data Layer covers the plumbing: petabyte storage and processing jobs, tokenisers and why vocabulary size matters,… | 2026-10-27 |
-| ⚖️ [The Secret Recipe: How Labs Mix, Weight and Schedule Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-mixtures.html) | Part 6 of Inside the Data Layer explains data mixtures: how labs split a token budget between web, code, maths, books and languages, how… | 2026-10-27 |
-| 👩‍🏫 [The Human Layer: Labellers, Experts and the Multibillion-Dollar Business of Teaching AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-human-labelling.html) | Part 5 of Inside the Data Layer covers human data: demonstrations, preferences, rubrics, red-teaming and expert tasks; how labels are… | 2026-10-27 |
-| ✨ [Models Teaching Models: How Synthetic Data Became the Fastest-Growing Source of Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-synthetic.html) | Part 4 of Inside the Data Layer explains how labs manufacture training data (rephrasing, generated textbooks, instruction data,… | 2026-10-27 |
-| 🧹 [Throwing Away 90% of the Web: How AI Labs Filter and Deduplicate Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-filtering-dedup.html) | Part 3 of Inside the Data Layer opens the refinery that turns raw crawls into training data: Gopher-style rules, quality classifiers… | 2026-10-27 |
-| 🕷️ [Where the Tokens Come From: Crawlers, Licences and the Closing Web](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-crawling-sourcing.html) | Part 2 of Inside the Data Layer explains how crawlers collect the web, what each source (web, code, books, papers, forums, licensed… | 2026-10-27 |
-| 🗃️ [The Data Layer, Mapped: From a Web Crawl to a Training Batch](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-layer-map.html) | Before a GPU starts training, petabytes of web pages, books, code, licensed archives, synthetic text and human examples must be found,… | 2026-10-27 |
-| 🤖 [The Top of the Stack: Agent Runtimes, Tool Protocols and the Software That Lets Models Act](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-agent-runtimes.html) | The final part of Inside the ML Layer covers the top of the stack: the agent loop, tool calling, MCP and A2A, runtime patterns, the lab… | 2026-10-27 |
-| ⚡ [Serving the Model: vLLM, SGLang, TensorRT-LLM and the Engines That Turn GPUs into Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-inference-engines.html) | Inference is where AI factories earn their money. | 2026-10-27 |
-| 📏 [Measuring the Machine: The Evaluation Harnesses That Decide What Ships](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-evaluation-harnesses.html) | Every release decision ends with a number from an evaluation harness. | 2026-10-27 |
-| 🎯 [After Pre-training: The Software That Turns a Base Model into a Reasoning Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-post-training-rl.html) | Post-training turns a base model into a reasoning assistant, and RL makes it a systems problem. | 2026-10-27 |
-| ⚙️ [The Kernels That Matter: FlashAttention, CUTLASS, Triton and the Code That Actually Runs on the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-kernels.html) | The arithmetic of every frontier model happens inside a few GPU kernels. | 2026-10-27 |
-| 🧩 [Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-parallelism-libraries.html) | No frontier model fits on one chip. | 2026-10-27 |
-| 🧱 [Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-frameworks-pytorch-jax.html) | Almost every frontier model is written in PyTorch or JAX. | 2026-10-26 |
-| 🗺️ [The ML Layer, Mapped: From PyTorch to Production in One Diagram](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-layer-map.html) | Between a rack of GPUs and an agent answering a question sit about eight layers of software. | 2026-10-26 |
-| 🚀 [Starting a Frontier Lab in 2026: Compute, Cost and Capital, with a Bangalore Playbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-startup-playbook.html) | How much compute does a new frontier-model startup need to train, experiment, serve its model and run agents? Where do the GPUs come from,… | 2026-10-26 |
-| 🧮 [Build, Install, Buy or Rent? The Economics of Getting an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-economics.html) | The price of a GPU-hour is the wrong number. | 2026-10-26 |
-| 👥 [Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factory-customers.html) | Telcos turning into national AI clouds, Lilly and the Novo Nordisk Foundation training on proteins, Mayo Clinic speeding up pathology, BNY… | 2026-10-26 |
-| 🛒 [The Arms Dealers: How Dell, HPE, Lenovo and Supermicro Sell AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-hardware-vendors.html) | Dell has a $95B AI server backlog; HPE, Supermicro and Lenovo are racing too. | 2026-10-26 |
-| 🏛️ [The Blueprint Business: How NVIDIA Designs Other People's AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/nvidia-ai-factory-blueprint.html) | NVIDIA now publishes the design for an entire AI factory, from racks and networking to the building and a digital twin, lines up partners… | 2026-10-26 |
-| 📦 [The Cloud Comes to You: How AWS, Microsoft, Google and Oracle Put AI Factories Inside Customers' Buildings](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/hyperscaler-on-prem-ai-factories.html) | Every major cloud now runs a version of itself inside customers' buildings, some of it fully air-gapped with AI models included: AWS AI… | 2026-10-26 |
-| 🗺️ [Build, Install, Buy or Rent: The Four Ways to Get an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factories-landscape.html) | Only a handful of companies can build a Colossus. | 2026-10-26 |
-| 📊 [Nine AI Factories, One Map: Which Bets Are Winning?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-compared.html) | The final AI factory case study puts Colossus, Abilene, Fairwater, Rainier, Meta, Google, CoreWeave, China and the sovereign projects on… | 2026-10-26 |
-| 🏳️ [Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sovereign-ai-factories.html) | Governments now treat AI compute as national infrastructure: Stargate UAE, Saudi Arabia's Humain, the EU's AI gigafactories, Stargate… | 2026-10-26 |
-| 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | Cut off from NVIDIA's best chips, China builds AI factories with many more Huawei Ascend chips joined into supernodes, plentiful power, a… | 2026-10-26 |
-| ☁️ [The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/coreweave-neoclouds.html) | CoreWeave borrows against GPUs, puts them in leased buildings and rents them to Microsoft, OpenAI and Meta: about $104B of backlog against… | 2026-10-26 |
-| 🟢 [The Fleet: How Google Built AI Factories a Decade Before Everyone Else](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/google-tpu-fleet.html) | Google started designing its own AI chips in the mid-2010s, joined them into 9,216-chip pods with optical switches, trained Gemini across… | 2026-10-26 |
-| 🔥 [Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-prometheus-hyperion.html) | Meta stitched Prometheus together from traditional halls, AI-optimised buildings, quick-build structures and leased space, then planned… | 2026-10-26 |
-| ⛰️ [Project Rainier: The AI Factory Built Without NVIDIA](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/project-rainier.html) | Amazon filled farmland in New Carlisle, Indiana with nearly half a million of its own Trainium2 chips for Anthropic. | 2026-10-26 |
-| 🔗 [Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/microsoft-fairwater.html) | Microsoft's Fairwater sites in Wisconsin and Atlanta are joined by a dedicated AI WAN to work as one 'AI superfactory'. | 2026-10-26 |
-| 🌵 [Stargate Abilene: The AI Factory Built on Other People's Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stargate-abilene.html) | OpenAI's flagship campus in Abilene, Texas was built by a chain of companies: Lancium, Crusoe, Blue Owl, Primary Digital, J.P. | 2026-10-26 |
-| 🏭 [Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/colossus-xai-memphis.html) | xAI turned an empty Memphis factory into a 100,000-GPU cluster in 122 days, then built Colossus 2 in phases of 91 and 64 days. | 2026-10-26 |
-| 🔐 [Guarding the Crown Jewels: The Engineers Who Protect Model Weights, Data and the AI Supply Chain](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-security.html) | Part 12 of Who Runs the AI Factory: the security engineers who protect model weights, data and the supply chain, from RAND's 38 attack… | 2026-10-25 |
-| 🚨 [Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-observability.html) | Part 11 of Who Runs the AI Factory: the SREs who watch AI infrastructure, from GPU telemetry, flight recorders and error budgets to two… | 2026-10-25 |
-| ⚡ [Always On: The Inference Engineers Who Serve Models to Billions](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-inference-platform.html) | Part 10 of Who Runs the AI Factory: the inference engineers who run models as a product, from SLOs and cost per token to disaggregated… | 2026-10-25 |
-| 🔬 [The Research Accelerators: Engineers Who Build the Tools for Thousands of Experiments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-research-tooling.html) | Part 9 of Who Runs the AI Factory: the research infrastructure engineers who make experiments fast to launch, easy to compare and hard to… | 2026-10-25 |
-| 🗃️ [Refining the Internet: The Data Engineers Who Turn Petabytes of Web Pages into Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-data-platform.html) | Part 8 of Who Runs the AI Factory: the data engineers and data-quality researchers who crawl, extract, filter, deduplicate and version… | 2026-10-25 |
-| 🧠 [The Code That Trains the Model: ML Systems Engineers and the Frameworks Behind Frontier Training](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-training-frameworks.html) | Part 7 of Who Runs the AI Factory: the ML systems engineers who build training frameworks, from FSDP2, Megatron, DeepSpeed and JAX to… | 2026-10-25 |
-| ⚙️ [Making Every FLOP Count: The Kernel and Compiler Engineers of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-kernels-compilers.html) | Part 6 of Who Runs the AI Factory: the kernel and compiler engineers who turn peak FLOPs into real throughput, from rooflines and fusion to… | 2026-10-25 |
-| 🗓️ [Who Gets the GPUs? The Engineers Who Schedule an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-scheduling.html) | Part 5 of Who Runs the AI Factory: the cluster platform engineers who decide which job gets which GPUs, from gang scheduling, preemption… | 2026-10-25 |
-| 💾 [Feeding the Beast: The Engineers Who Move Petabytes In and Terabytes Out of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-storage.html) | Part 4 of Who Runs the AI Factory: the storage engineers who keep GPUs fed, from training-data reads and multi-terabyte checkpoint storms… | 2026-10-25 |
-| 🕸️ [Making 100,000 GPUs Talk: The Engineers Who Run an AI Factory's Network](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-networking.html) | Part 3 of Who Runs the AI Factory: the fabric and collective-communication engineers who keep RDMA networks lossless and fast, from ECMP… | 2026-10-25 |
-| 🐧 [The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-os-drivers-runtime.html) | Part 2 of Who Runs the AI Factory: the systems software engineers who keep Linux kernels, NVIDIA drivers, CUDA and OS images consistent… | 2026-10-25 |
-| 🔧 [Day Zero: The Engineers Who Turn 10,000 Boxes of GPUs into a Working AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-bring-up.html) | Part 1 of Who Runs the AI Factory: the deployment engineers who bring up racks of GPUs, from firmware and BMCs to burn-in, acceptance tests… | 2026-10-25 |
-| 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | How brain–computer interfaces actually work in 2026: electrodes, the tiny implant chip and its heat and power limits, the AI decoders… | 2026-10-24 |
-| 🔭 [Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/future-of-ai-compute.html) | Part 18 of the AI Compute Stack: a reality check on what comes after today's GPUs, from 3D silicon and co-packaged optics to photonic,… | 2026-10-24 |
-| 🛠️ [Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-operations.html) | Part 9 of Producing Intelligence: how Meta keeps the 24,000-GPU clusters behind Llama 3 productive, from health checks and lemon-node… | 2026-10-24 |
-| 🚀 [From Checkpoint to Endpoint: How Llama 3 405B Is Served](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-serving.html) | Part 8 of Producing Intelligence: why the BF16 405B model needs two servers, how micro-batching, a careful FP8 recipe and KV-cache… | 2026-10-24 |
-| 🧪 [Is It Ready? How Meta Tested Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-evaluation.html) | Part 7 of Producing Intelligence: the benchmarks, contamination checks, human side-by-side judgments, safety metrics and red-team uplift… | 2026-10-24 |
-| 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | Part 6 of Producing Intelligence: how Meta turned the Llama 3 405B base model into an assistant with rounds of human preference data, a… | 2026-10-24 |
-| ⏱️ [Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-running-the-run.html) | Part 5 of Producing Intelligence: the Llama 3 405B training run in motion, from the learning-rate and batch schedule and FP32 accumulation… | 2026-10-24 |
-| 🧩 [Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-4d-parallelism.html) | Part 4 of Producing Intelligence: why a 405B model needs 4D parallelism, Meta's exact tensor/context/pipeline/data layouts (43% MFU on… | 2026-10-24 |
-| 📐 [Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-planning-the-run.html) | Part 3 of Producing Intelligence: the compute equation, IsoFLOP scaling laws that pointed to ~402B parameters on ~16.55T tokens,… | 2026-10-24 |
-| 🛢️ [The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-data-refinery.html) | Part 2 of Producing Intelligence: the data pipeline behind Llama 3's ~15T tokens, from extraction, safety filters and three levels of… | 2026-10-24 |
-| 🧱 [The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-software-stack.html) | Part 1 of Producing Intelligence: every software layer between a researcher's Python and 16,384 GPUs, from drivers, CUDA and NCCL to… | 2026-10-23 |
-| 🏛️ [AI Factories vs Supercomputers: Same Chips, Different Machines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-vs-supercomputers.html) | HPC, supercomputers and AI factories explained: the FP64 vs FP8/FP4 precision divide, a side-by-side comparison, El Capitan's 30 MW vs… | 2026-10-23 |
-| 📱 [AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-at-the-edge.html) | Phones and laptops now run small AI models locally: what an NPU is, why memory not TOPS decides what runs, the 2026 chips and small models,… | 2026-10-23 |
-| 💧 [Heat and Water: How AI Data Centres Keep Cool, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/heat-and-water-cooling.html) | As AI racks climb from 40 kW to a planned 600 kW, air cooling fails and data centres are rebuilt around liquid. | 2026-10-23 |
-| 🔥 [Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/energy-beyond-the-grid.html) | With grid queues stretching for years and PJM capacity prices up more than tenfold, AI builders are bringing their own power: 101 GW of… | 2026-10-23 |
-| 🇨🇳 [China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-chip-stack.html) | How China is building a parallel AI compute stack under US export controls: SMIC without EUV, Huawei's Ascend roadmap and 8,192-chip… | 2026-10-23 |
-| 🔄 [The Great Flip: Why AI Compute Is Shifting from Training to Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/training-vs-inference.html) | Inference is now forecast at about two-thirds of AI compute. | 2026-10-23 |
-| 💸 [Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/who-pays-for-ai-buildout.html) | Roughly 00 billion of 2026 data-centre spending, followed layer by layer: hyperscaler cash flow, the bond wave, Meta's off-balance-sheet… | 2026-10-23 |
-| ⛓️ [The Chokepoint: How One Supply Chain Decides How Much AI the World Gets](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chip-supply-chain.html) | Follow one AI chip from design to data centre: ASML's EUV monopoly, TSMC's fabs, sold-out CoWoS packaging and HBM, the T-glass shortage,… | 2026-10-23 |
-| 🕸️ [The Interconnect Wars: How 100,000 Chips Become One Computer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/interconnect-wars.html) | Why the network now decides AI performance: NVLink vs UALink and Ethernet inside the rack, InfiniBand vs Ultra Ethernet across the hall,… | 2026-10-23 |
-| 📉 [The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/token-price-collapse.html) | GPT-3-level answers went from $60 to $0.06 per million tokens in three years, yet AI bills keep rising. | 2026-10-23 |
-| 🔩 [Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/custom-silicon-vs-nvidia.html) | Nvidia earns a 75% gross margin and every big customer now designs its own AI chips. | 2026-10-23 |
-| 💾 [The Memory Wall: Why HBM Decides Who Wins AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-wall-hbm.html) | Chips learned to calculate far faster than memory can feed them, and LLM inference turned that gap into AI's defining limit. | 2026-10-23 |
-| 🏭 [Inside the AI Factory: How Electricity Becomes Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-the-ai-factory.html) | What Nvidia means by an AI factory, how a gigawatt campus turns power into tokens, why racks now draw 600 kW, who is building the biggest… | 2026-10-23 |
-| 🛰️ [Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-centers-in-space.html) | SpaceX filed for a million computing satellites, Google put TPUs in orbit and Starcloud trained a model in space. | 2026-10-23 |
-| 🧱 [Sandboxing AI Agents: How to Let an Agent Act Without Letting It Escape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sandboxing-ai-agents.html) | From kernel flags on a laptop to microVMs in the cloud: how agent sandboxes work, what each layer stops, how often frontier models escape… | 2026-10-23 |
-| 🐟 [Sakana AI: A Primer on Tokyo's Nature-Inspired Frontier Lab](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sakana-ai-primer.html) | Who founded Sakana AI, how it grew from a 2023 seed round to a unicorn, what it has shipped, and which papers matter, from model merging to… | 2026-10-15 |
-| 🧑‍🔧 [Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/forward-deployed-engineers-great-role-merge.html) | OpenAI, Microsoft and Anthropic all committed to embedding engineers inside customers in 2026. | 2026-10-13 |
-| 📟 [AI Research in 1950–1980: The Three Decades That Founded the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1950-1980-papers.html) ⭐ | From Turing's question and the Dartmouth proposal to perceptrons, A*, ELIZA, Shakey and MYCIN — twenty founding papers and milestones in… | 2026-09-29 |
-| 📼 [AI Research in 1980–2000: The Two Decades That Invented Modern AI's Core Ideas](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1980-2000-papers.html) | Twenty papers and milestones from 1980–2000 in eight themes — Hopfield networks, backpropagation, LeNet, LSTM, TD learning, Q-learning,… | 2026-09-29 |
-| 🧭 [AI Research in 2001–2010: The Decade That Set the Stage for Deep Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2001-2010-papers.html) | Eighteen papers and milestones from 2001–2010 in eight themes — deep belief nets, neural language models, ImageNet, GPUs, Viola–Jones,… | 2026-09-29 |
-| 🌅 [AI Research in 2011: The Year Before the Breakthrough](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2011-papers.html) | Thirteen 2011 papers and systems in eight themes — ReLU, AdaGrad, GPU CNNs beating humans on traffic signs, Hogwild!, deep speech, NLP from… | 2026-09-29 |
-| 💥 [AI Research in 2012: The Year Deep Learning Broke Through](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2012-papers.html) | Eight 2012 papers in eight themes — AlexNet, DistBelief, the cat-neuron experiment, deep networks for speech, dropout, multi-column CNNs,… | 2026-09-29 |
-| 📐 [AI Research in 2013: The Year Representation Learning Became the Language of AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2013-papers.html) | Twelve 2013 papers in eight themes — word2vec, the Atari DQN, the VAE, deep LSTMs, DeViSE, Network In Network, OverFeat, Zeiler & Fergus… | 2026-09-29 |
-| 🎭 [AI Research in 2014: The Year Deep Learning Learned to Generate, Translate and Remember](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2014-papers.html) | Twelve 2014 papers in eight themes — GANs, Seq2Seq, GRU, attention, Neural Turing Machines, VGG, GoogLeNet, R-CNN, DeepFace, adversarial… | 2026-09-29 |
-| 🔧 [AI Research in 2015: The Year Deep Learning Became Trainable, Attentive and Interactive](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2015-papers.html) | Twelve 2015 papers in eight themes — BatchNorm, Adam, DQN, attention, Show Attend and Tell, Faster R-CNN, U-Net, spatial transformers,… | 2026-09-29 |
-| ⚙️ [AI Research in 2016: The Year Deep Learning Became a General-Purpose Engine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2016-papers.html) | Twelve 2016 papers in eight themes — ResNet, AlphaGo, A3C, the Differentiable Neural Computer, learned optimisers, GNMT, BPE, Deep Speech… | 2026-09-29 |
-| 🌱 [AI Research in 2017: The Year the Modern AI Architecture Was Born](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2017-papers.html) | Eleven 2017 papers in eight themes — the Transformer, AlphaGo Zero, RL from human preferences, PPO, neural architecture search,… | 2026-09-29 |
-| 🔓 [AI Research in 2018: The Year Pretraining Changed Everything](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2018-papers.html) | Fourteen 2018 papers in eight themes — ELMo, ULMFiT, GPT-1, BERT, GLUE, World Models, AlphaZero, OpenAI Five, Dactyl, graph networks,… | 2026-09-29 |
-| 🏗️ [AI Research in 2019: The Year Pretraining Became the Default](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2019-papers.html) | Sixteen 2019 papers in eight themes — GPT-2, XLNet, RoBERTa, BART, Transformer-XL, Megatron-LM, ALBERT, EfficientNet, StyleGAN, AlphaStar,… | 2026-09-29 |
-| 📐 [AI Research in 2020: The Year Scaling Became the AI Strategy](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2020-papers.html) | Twelve 2020 papers in eight themes — scaling laws, GPT-3, T5, RAG, learning from human feedback, ViT, DETR, SimCLR, wav2vec 2.0, DDPM, NeRF… | 2026-09-29 |
-| 🧱 [AI Research in 2021: The Year the Foundation-Model Stack Emerged](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2021-papers.html) | Fourteen 2021 papers in eight themes — Switch Transformer, the Foundation Models report, LoRA, CLIP, Codex, RETRO, WebGPT, diffusion… | 2026-09-29 |
-| 🌱 [AI Research in 2022: The Year Reasoning, Alignment and Generative AI Converged](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2022-papers.html) | Seventeen 2022 papers in eight themes — Chinchilla, InstructGPT, chain-of-thought, ReAct, latent diffusion, Flamingo, FlashAttention and… | 2026-09-29 |
-| 🏗️ [AI Research in 2023: The Year Foundation Models Became Platforms](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2023-papers.html) | Seventeen papers that turned foundation models into platforms — GPT-4, LLaMA, Llama 2, QLoRA, DPO, Tree of Thoughts, Toolformer, Reflexion,… | 2026-09-29 |
-| 🧭 [AI Research in 2024: The Year Context, Agents and World Models Took Shape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2024-papers.html) | Twenty-one papers that prepared the ground for reasoning models and agentic AI — Gemini 1.5, Llama 3, LongRoPE, Quiet-STaR, Self-Rewarding… | 2026-09-29 |
-| 🚀 [AI Research in 2025: The Year Reasoning, Agents and Test-Time Compute Broke Out](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2025-papers.html) | Eighteen papers that set up the 2026 self-improving-agent era — DeepSeek-R1, s1, Absolute Zero, the Darwin Gödel Machine, CollabLLM, gated… | 2026-09-29 |
-| 📅 [AI Research in 2026: The Papers and Ideas Reshaping the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2026-papers.html) | Twenty of 2026's most-awarded and most-discussed AI papers from ICLR, ICML, CVPR, ACL, RLC and COLM — Transformer succinctness,… | 2026-09-29 |
-| 🧩 [Open Problems in Recursive Self-Improvement: A Research Map](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/open-problems-in-rsi.html) | Sixteen open problems blocking genuine recursive self-improvement in five clusters — measurement, evaluation, research capability, dynamics… | 2026-09-29 |
-| 📈 [From Automated R&D to Effective RSI: Frontier, Evidence and Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/automated-rd-to-effective-rsi.html) | What is already real in AI R&D, the difference between structural and effective recursion, the first experiments built to test it (AIDE²,… | 2026-09-28 |
-| 🧬 [How Self-Improving Agentic Systems Actually Work: Mechanisms, Architecture and the Path to Verified Persistent Improvement](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/self-improving-agentic-systems.html) | A field map of self-improving AI: five levels, the closed improvement loop across model, harness, evaluator, research-process and data… | 2026-09-28 |
-| 🔬 [AI Doing R&D: From Research Assistant to Autonomous Research Organization](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-doing-rd.html) | Where AI already does science: Co-Scientist, ERA, AlphaEvolve, Robin, The AI Scientist-v2, OpenAI's research intern and Navier–Stokes… | 2026-09-27 |
-| 🧭 [Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025–2026](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/are-we-approaching-rsi.html) | An evidence review of the path to recursive self-improvement: OpenAI's automated research intern, Claude leading 26% of Anthropic's AI R&D,… | 2026-09-27 |
-| ♻️ [Recursive Harness Self-Improvement: How Agents Are Starting to Improve the Systems That Run Them](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/recursive-harness-self-improvement.html) | The recursive self-improvement arriving in 2026 is harness-first: agents evolve their own prompts, tools, context and policies behind a… | 2026-09-27 |
-| 🌐 [Harness Engineering Across Real-World Contexts: One Pattern, Nine Domains](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-across-real-world-contexts.html) | The same agent harness runs code, contact centres, sales, legal, finance, healthcare, construction, factories and research. | 2026-09-27 |
-| 🛠️ [Agentic Developer Workbenches: Cursor, GitHub Copilot, Google Antigravity 2.0 and Devin Desktop Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-developer-workbenches.html) | How four agentic coding workbenches are built, layer by layer: surfaces, harnesses, models, local vs cloud agents, parallelism, SDKs and… | 2026-09-27 |
-| 🏛️ [Harness Product Architecture Comparison: Foundry, ADK, LangChain, CrewAI, Temporal, E2B, Browserbase and AgentCore](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-architecture-comparison.html) | Eight more agent platforms, architecture only: what each manages and leaves to you, how Microsoft Foundry, Google ADK and Agent Runtime,… | 2026-09-27 |
-| 🐋 [DeepSeek Harness (dsh): an Open-Source, Plugin-Composed Agent Runtime](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepseek-harness-dsh.html) | Product case study #3: DeepSeek's MIT-licensed agent harness, taken apart from its repository — Cordis plugins with reversible effects,… | 2026-09-27 |
-| 🧠 [Claude Agent SDK and Managed Agents: the Claude Code Harness in Production](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-agent-sdk-managed-agents.html) | Product case study #2: Anthropic's Claude Agent SDK and Claude Managed Agents, taken apart from documentation and engineering posts —… | 2026-09-27 |
-| 🧩 [OpenAI Agents API: the Codex Harness as a Managed Production Runtime](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/openai-agents-api-codex-harness.html) | Product case study #1: OpenAI's public-beta Agents API, taken apart from its documentation — the OpenAI/developer boundary, agents,… | 2026-09-27 |
-| 🔍 [Harness Case Studies: OpenAI Codex, Claude Code Auto Mode and Gemini Deep Research](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-case-studies.html) | Three real agent harnesses taken apart from public documentation: Codex's parallel worktrees and sandbox policies, Claude Code auto mode's… | 2026-09-27 |
-| 🧭 [The Harness Market Landscape: Who Builds the Infrastructure Around Frontier Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-market-landscape.html) | The agent-infrastructure market as of September 2026: frameworks at 1.0, the MCP ecosystem and registry, retrieval, memory, browsers,… | 2026-09-26 |
-| 🏗️ [Harness Production Engineering: Running Agents Reliably at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-production-engineering.html) | The production side of agent harnesses: durable runtimes, async long-running jobs, context lifecycles, state stores, tool execution gates,… | 2026-09-26 |
-| 🧰 [Harness & Scaffolding Research and Innovation: What's Changing Around the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-scaffolding-research-and-innovation.html) | The research frontier of agent harnesses in 2026: context engineering, compaction, structured and prospective memory, planning and… | 2026-09-26 |
-| 🔬 [Frontier Model Case Studies: DeepSeek-V3 → R1, Llama 4 and Qwen3 / Qwen3-Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-case-studies.html) | Three open model families taken apart: DeepSeek's efficient MoE and RL-trained reasoning, Llama 4's early-fusion multimodality and sparse… | 2026-09-26 |
-| 🗺️ [The Frontier Model Market Landscape: Who Builds, Trains, Serves and Sells the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-market-landscape.html) | The model-side market as of September 2026: closed labs and their line-ups and prices, the open-weight ecosystem, training and serving… | 2026-09-26 |
-| 🏭 [Frontier Model Production Engineering: Training, Serving and Operating Models at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-production-engineering.html) | How frontier models are trained across thousands of GPUs and served to millions: parallelism, ZeRO, MoE all-to-all, failure-proof… | 2026-09-26 |
-| 🧬 [Frontier Model Research & Innovation: What's Changing Inside the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-research-and-innovation.html) | Mixture-of-experts, compressed sparse attention for million-token context, RL and test-time reasoning, controllable thinking, native… | 2026-09-26 |
-| 🧰 [LLM Harness Engineering: Engineering the System Around the Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llm-harness-engineering.html) | What harness engineering is, and why the same model can fail or succeed depending on the system around it: context, tools, environment,… | 2026-09-26 |
-| 🗺️ [From Transformer to Production Agentic AI: The Complete Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/transformer-to-agentic-ai-complete-stack.html) | The series finale as an interactive map: twenty components from data and tokenization to agents, production platforms and evaluation. | 2026-09-26 |
-| 📏 [Evaluating Agents: Measuring Success, Safety and Reliability](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/evaluating-agents.html) | How to evaluate agents, not just answers: outcome, trajectory and system levels, automated checks, environment signals, LLM judges and… | 2026-09-26 |
-| 🏛️ [Production Agent Architecture: End-to-End System Design](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/production-agent-architecture.html) | The capstone: control plane vs execution plane, core platform components, and the infrastructure that makes agents production-grade —… | 2026-09-26 |
-| 🔌 [MCP and Tool Ecosystems: How Agents Discover, Connect to and Use External Capabilities](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/mcp-model-context-protocol.html) | The Model Context Protocol as it works on the wire: hosts, clients and servers; tools, resources and prompts; discovery, invocation,… | 2026-09-26 |
-| 🗂️ [Agent Memory and Planning Patterns: How Agents Remember, Plan, Reflect and Keep Going](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-memory-and-planning-patterns.html) | Memory types and architecture, planning patterns, task state and checkpoints, memory write policies, reflection and long-running… | 2026-09-26 |
-| 👥 [Multi-Agent Systems: End-to-End Architecture](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-systems-architecture.html) | Supervisors, specialists and reviewers: roles, routing, coordination patterns, shared state, parallel execution, failure handling and cost… | 2026-09-26 |
-| 🤖 [Agentic Systems: From Single Tool Calls to Multi-Step Goal Completion](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-systems-multi-step-goals.html) | The agent loop — plan, act, observe, update state, reflect, replan, stop — and everything around it: components, memory, human approval,… | 2026-09-26 |
-| 🛠️ [Tool and Function Calling: How an LLM Goes from Answering to Acting](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/tool-and-function-calling.html) | How models call tools: schemas, the call loop, read vs action tools, orchestration, sequential and parallel calls, validation, permissions… | 2026-09-26 |
-| 🔎 [RAG: Retrieval-Augmented Generation, End to End](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rag-retrieval-augmented-generation.html) | The full RAG system — ingestion, chunking, embeddings, vector search, hybrid retrieval, reranking, cited generation and evaluation — with a… | 2026-09-26 |
-| 🧩 [Context Engineering and Memory Architecture for LLMs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-engineering-and-memory.html) | What goes into a model's context window and how it's chosen: history management, working vs persistent memory, write and retrieval… | 2026-09-26 |
-| 🏗️ [Production LLM System Design: Anatomy of a ChatGPT- or Claude-Style Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/production-llm-system-design.html) | The full system around the model: gateway, conversation state and memory, retrieval, a context builder working to a token budget, layered… | 2026-09-26 |
-| 📈 [Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-scaling-and-distributed-training-works.html) | Scaling laws and compute-optimal training, how GPUs turn matrix multiplies into FLOPs, and how data, tensor, pipeline and expert… | 2026-09-25 |
-| ⚡ [How LLM Inference Works: From a Request to a Streamed Response](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-inference-works.html) | How a trained model is served at scale: prefill and decode, why decode is memory-bound, the KV cache (with a calculator), sampling and a… | 2026-09-25 |
-| 🧭 [How Post-Training Works: SFT, RLHF, DPO and RLAIF](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-post-training-works.html) | How a pretrained model becomes a helpful, safe assistant: supervised fine-tuning, preference data, RLHF with a reward model and PPO, DPO… | 2026-09-25 |
-| 🎯 [How LLM Fine-Tuning Works: Adapting a Base Model to a Task](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-fine-tuning-works.html) | How a pretrained model becomes an assistant or a specialist: defining the goal, curating data, chat templates and prompt-masked loss, full… | 2026-09-25 |
-| 🏭 [How LLM Pretraining Works: From Raw Text to a Foundation Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-pretraining-works.html) | The full pretraining pipeline, stage by stage: collecting, filtering and deduplicating web-scale text, tokenizing and packing it, the… | 2026-09-25 |
-| ⚙️ [How a Transformer Works: A Decoder-Only Model, End to End](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-a-transformer-works-decoder-only.html) | Follow "The cat sat on the" through every stage of a GPT-style model -- tokens, embeddings, masked attention, the MLP, logits and sampling… | 2026-09-25 |
-| 🖥️ [Compute Frontier: Why AI Keeps Building Bigger Clusters](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/compute-frontier-ai-infrastructure-explainer.html) | If MoE and better kernels make models cheaper per unit of intelligence, why do labs keep building million-chip clusters? The… | 2026-09-24 |
-| 🧮 [Language Modeling from Scratch, Part 3: PyTorch & Resource Accounting](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-pytorch-resource-accounting-part3.html) | FLOPs, memory, and arithmetic intensity from first principles -- the 6N training-compute heuristic, the real cost of Adam's optimizer… | 2026-09-24 |
-| 🧩 [Language Modeling from Scratch, Part 4: Architectures & Hyperparameters](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-architectures-hyperparameters-part4.html) | What actually changed since the original 2017 Transformer -- Pre-LN, RMSNorm, RoPE and SwiGLU, each with an original animated diagram --… | 2026-09-24 |
-| 🔡 [Language Modeling from Scratch, Part 2: Tokenization & Byte-Pair Encoding](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-tokenization-byte-pair-encoding-part2.html) | Real citations for the BPE paper and GPT-2's byte-level BPE, a complete original from-scratch Python implementation (verified to run), and… | 2026-09-24 |
-| 🧱 [Language Modeling from Scratch, Part 1: Course Primer & Overview](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-language-modeling-from-scratch-part1-overview.html) | Opening a lecture-by-lecture series on Stanford CS336. | 2026-09-24 |
-| 🎓 [Top AI Research PhD Programs: A Researcher's Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/top-ai-research-phd-programs.html) | Twenty programs across the US, UK, Europe, Canada, and Asia -- real program structure, admission statistics where they are actually public,… | 2026-09-24 |
-| 🗂️ [A Public Study Stack for Frontier AI Research Roles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-ai-research-study-stack.html) | Four researchers who actually interviewed at OpenAI, DeepMind, and elsewhere published their prep notes and topic lists. | 2026-09-24 |
-| 📏 [Evaluation and the Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-evaluation-and-open-problems.html) | Deep Dive 5 of 5, closing the CS329A field handbook series: METR's time-horizon methodology, GDPval, and DeepScholar-Bench, expanded with… | 2026-09-23 |
-| 🔍 [Competitive Programming and Retrieval Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-competitive-programming-and-retrieval-agents.html) | Deep Dive 4 of 5 on the CS329A field handbook: AlphaCode and AlphaCode 2's shift from brute-force generation to learned selection, plus… | 2026-09-23 |
-| 🏋️ [Training on What Search Finds](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-training-on-what-search-finds.html) | Deep Dive 3 of 5 on the CS329A field handbook: STaR's bootstrapped-rationale training, GRPO's critic-free group-relative RL from… | 2026-09-23 |
-| 🌳 [Planning as Search](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-planning-as-search.html) | Deep Dive 2 of 5 on the CS329A field handbook: LATS tree search, SPRINT parallel reasoning, and SWiRL synthetic-trajectory training,… | 2026-09-23 |
-| 🔁 [Agentic Feedback Loops in Practice](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-agentic-feedback-loops.html) | Deep Dive 1 of 5 on the CS329A field handbook: ReAct, RLEF, and Constitutional AI expanded with verified paper citations (real arXiv IDs,… | 2026-09-23 |
-| 📘 [Self-Improving AI Agents: A Field Handbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-self-improving-agents-handbook.html) | A standalone companion to our CS329A guide covering the rest of the course in one place: agentic feedback loops (ReAct, RLEF,… | 2026-09-23 |
-| ⚙️ [Running RSI Repos Yourself: A Hands-On Walkthrough](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-hands-on-repo-walkthrough.html) | A deep-dive companion to the practitioner's primer: FunSearch, SICA, and Godel Agent, actually cloned and read through, with real setup… | 2026-09-23 |
-| 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) | The hands-on follow-up to the RSI research pieces: what to read first, real open-source repos to actually run, how to design and publish a… | 2026-09-22 |
-| 🧬 [2026 in RSI Research: New Breakthroughs and Papers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-2026-breakthroughs.html) | A follow-up to the RSI literature survey: new named techniques, new surveys, the 2026 AI-automating-AI-research benchmark wave, a 2026-only… | 2026-09-22 |
-| 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) | An annotated bibliography for researchers: foundational theory, four recent formal surveys, thirteen named RSI techniques chronologically,… | 2026-09-22 |
-| 🕳️ [When Capability Evaluations Break Their Own Sandbox](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-bonus-capability-evaluation-breakouts.html) | RSI series bonus: Google's Gemini breached 3 real companies during a May 2026 security test and stopped itself; OpenAI's models escaped a… | 2026-09-22 |
-| 🧭 [Inside Jev: TypeSafe AI's "System One" Model, Explained](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/typesafe-jev-system-one-models-explained.html) | A days-old startup launch claims a model that can't hallucinate. | 2026-09-22 |
-| ⏳ [Autonomy Timelines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-autonomy-timelines.html) | The RSI series finale: METR's actual accelerating doubling-time data (7 months to ~3 months), named forecasts with their hedges intact, and… | 2026-09-22 |
-| 🤖 [The Sim-to-Real Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-sim-to-real-gap.html) | A research agent that scores well on a clean benchmark isn't the same as one that accelerates real research. | 2026-09-21 |
-| 📊 [Data vs. Reinforcement Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-data-vs-reinforcement-learning.html) | Does RL teach new capabilities or just sharpen what's already latent in the base model? A 2025 pass@k study, DeepSeek-R1's own documented… | 2026-09-21 |
-| 🏛️ [Distillation, Centralization, and the Moat Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-distillation-centralization-moat.html) | If one lab pulls ahead through RSI, does the lead survive contact with distillation? The OpenAI-DeepSeek accusation, what DeepSeek's $5.6M… | 2026-09-21 |
-| 🎯 [The Objective-Specification Problem](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-objective-specification-problem.html) | Part 2 of the RSI series. | 2026-09-21 |
-| 🧪 [AI Automating AI Research: RSI's Testing Ground](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-ai-automating-ai-research.html) | Part 4 of the RSI series. | 2026-09-21 |
-| 🔁 [Recursive Self-Improvement: A Primer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/recursive-self-improvement-primer.html) | The opening piece in a planned seven-part series on recursive self-improvement (RSI). | 2026-09-21 |
-| 🐉 [The Qwen Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/qwen-lineage-consolidated-comparison.html) | An eighth lab, and the one that competed on breadth rather than a single flagship: Alibaba's Tongyi Lab shipped Qwen from a single 7B model… | 2026-09-20 |
-| 🧑‍🔬 [The AI Researcher Atlas: 50 People Who Built the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-atlas.html) | A tiered survey of roughly fifty ML/DL/AI/AGI researchers behind the labs this site covers — foundational figures (Hinton, Bengio, LeCun,… | 2026-09-19 |
-| 📈 [What Stanford's 2026 AI Index Says About Where AI Research Is Heading](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stanford-ai-index-2026-research-directions.html) | A companion piece pulling research-direction findings from Stanford HAI's 2026 AI Index Report: the new standalone Science and Medicine… | 2026-09-18 |
-| 🧭 [AGI Benchmarks: How the Field Tries to Measure the Thing It Can't Yet Define](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-benchmarks-measuring-the-undefined.html) | A sequel to the Benchmark Landscape article, focused specifically on AGI-measurement attempts: the four competing lab definitions of AGI… | 2026-09-18 |
-| 📊 [The Frontier AI Benchmark Landscape: How Every Capability Gets Measured](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-ai-benchmark-landscape.html) | A reference article mapping the fragmented world of AI benchmarking: how MMLU became saturated and what replaced it, the… | 2026-09-17 |
-| 🌬️ [The Mistral AI Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/mistral-lineage-consolidated-comparison.html) | A seventh lab, and the first case study centered on a country as much as a company: Mistral's rise from a reputation-only $113M seed round… | 2026-09-16 |
-| 🦙 [The Meta AI (Llama) Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-llama-lineage-consolidated-comparison.html) | A sixth lab, and the first defined by a distribution strategy rather than a single model: Meta's four-generation open-weight bet from Llama… | 2026-09-16 |
-| 🐋 [The DeepSeek Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepseek-lineage-consolidated-comparison.html) | A fifth lab, and the one whose release moved markets: Liang Wenfeng's High-Flyer-funded lab, DeepSeek-V3's genuinely disclosed… | 2026-09-16 |
-| 🚀 [The Grok Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/grok-lineage-consolidated-comparison.html) | A fourth lab, a genuinely different story: xAI's founding-to-launch speed (8 months), the Colossus supercomputer built in 122 days,… | 2026-09-16 |
-| 🗂️ [The Gemini Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gemini-lineage-consolidated-comparison.html) | A consolidated synthesis of the entire Gemini lineage since the DeepMind–Google Brain merger — Gemini 1.0's native multimodality, 1.5's… | 2026-09-16 |
-| 🤝 [Google DeepMind: How the Lab Behind Gemini Was Actually Formed](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepmind-founding-merger-how-it-was-built.html) | Google DeepMind Case Study, Article 1 — the April 20, 2023 merger of DeepMind and Google Brain into a single unit, triggered directly by… | 2026-09-16 |
-| 🗂️ [The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-lineage-consolidated-comparison.html) | A side-by-side synthesis of the entire Anthropic model lineage — Claude 1 and 2's full case studies plus bridge-depth coverage of Claude… | 2026-09-16 |
-| 💬 [Claude 2: How Anthropic's First Public Product Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-2-how-it-was-built.html) | Anthropic Model Case Study, Article 2 — the July 11, 2023 release that gave Anthropic its first direct consumer product: the claude.ai… | 2026-09-16 |
-| 🏛️ [Claude 1: How Anthropic's First Model Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-1-how-it-was-built.html) | Anthropic Model Case Study, Article 1 — the founding bet behind Claude: eight ex-OpenAI researchers (including GPT-3 lead author Tom Brown)… | 2026-09-16 |
-| 🗂️ [The GPT Lineage: A Consolidated Comparison, GPT-1 to GPT-6 Astra](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-lineage-consolidated-comparison.html) | A side-by-side synthesis of all six Model Case Studies plus the eight interim releases between them (GPT-3.5, GPT-4 Turbo, GPT-4o, o1,… | 2026-09-16 |
-| 🌌 [GPT-6 Astra: How the Sixth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-6-how-it-was-built.html) | Model Case Study, Article 6 — the September 2026 release shaped by a real security incident: the July 2026 Hugging Face containment breach,… | 2026-09-15 |
-| 🚦 [GPT-5: How the Fifth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-5-how-it-was-built.html) | Model Case Study, Article 5 — the August 2025 release that changed the unit of scaling itself: a real-time router unifying a fast model and… | 2026-09-15 |
-| 🔒 [GPT-4: How the Fourth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-4-how-it-was-built.html) | Model Case Study, Article 4 — the release that reversed three papers of disclosure: no confirmed parameter count, architecture, dataset, or… | 2026-09-15 |
-| 🧠 [GPT-3: How the Third GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-3-how-it-was-built.html) | Model Case Study, Article 3 — GPT-2's zero-shot bet pushed to genuine in-context few-shot learning at 175 billion parameters: a 31-person… | 2026-09-15 |
-| 🌐 [GPT-2: How the Second GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-2-how-it-was-built.html) | Model Case Study, Article 2 — GPT-1's fine-tuning recipe pushed one step further into genuine zero-shot task transfer: a six-person team,… | 2026-09-15 |
-| 📄 [GPT-1: How the First GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-1-how-it-was-built.html) | A Model Case Study — the end-to-end story of GPT-1, from the pre-2018 NLP landscape and the ELMo/ULMFiT precursors, through the four-person… | 2026-09-15 |
-| 🗓️ [Capstone: A Week in the Life of a Research Engineer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-week-in-the-life.html) | The ninth and final article in Frontier Lab Engineering Practicum — a realistic Monday-through-Friday tying together all eight prior… | 2026-09-15 |
-| 🔀 [Shipping an Experiment From Idea to Merged PR](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-idea-to-merged-pr.html) | The eighth article in Frontier Lab Engineering Practicum — a single realistic experiment walked end to end, showing exactly where every… | 2026-09-15 |
-| 🧩 [Working With (and Around) Other Teams' Code](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-other-teams-code.html) | The seventh article in Frontier Lab Engineering Practicum — why organizational structure mirrors code structure per Conway's Law, how… | 2026-09-15 |
-| 📟 [The On-Call Reality: Monitoring, Alerts, and 2am Incidents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-oncall-reality.html) | The sixth article in Frontier Lab Engineering Practicum — what happens when a system fails unattended: the four golden signals and why… | 2026-09-15 |
-| 🧵 [Writing Custom Kernels and Why You Occasionally Have To](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-custom-kernels.html) | The fifth article in Frontier Lab Engineering Practicum — when PyTorch's built-in operators genuinely aren't fast enough: the compute-bound… | 2026-09-15 |
-| 💳 [Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-compute-economics.html) | The fourth article in Frontier Lab Engineering Practicum — how compute is actually requested and scheduled at a frontier lab (priority,… | 2026-09-15 |
-| 🧯 [Debugging a Distributed Job That Won't Converge (Or Won't Start)](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-debugging-distributed-jobs.html) | The third article in Frontier Lab Engineering Practicum — a practical triage framework splitting distributed training failures into two… | 2026-09-15 |
-| 📜 [Reading and Writing Production Training Code](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-production-training-code.html) | The second article in Frontier Lab Engineering Practicum — how real teams run hundreds of experiment variants off one shared training loop:… | 2026-09-15 |
-| 🧑‍💻 [Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-day-one-onboarding.html) | The first article in a new companion series, Frontier Lab Engineering Practicum — a practitioner's guide to what the job actually feels… | 2026-09-14 |
-| 🗺️ [AGI Researcher Foundations: The Capstone](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-capstone.html) | The eleventh and final article in the AGI Researcher Foundations series — ties all ten prior articles into one unified dependency map… | 2026-09-14 |
-| 🖧 [AGI Researcher Foundations: Systems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-systems.html) | The tenth article in the AGI Researcher Foundations series — the distributed-systems mechanics underneath every model in this series:… | 2026-09-14 |
-| 🌍 [AGI Researcher Foundations: World Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-world-models.html) | The ninth article in the AGI Researcher Foundations series — the real technical lineage behind the new-architecture camp's central bet from… | 2026-09-14 |
-| 🎯 [AGI Researcher Foundations: Alignment](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-alignment.html) | The eighth article in the AGI Researcher Foundations series — the outer vs. | 2026-09-14 |
-| 🔬 [AGI Researcher Foundations: Interpretability](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-interpretability.html) | The seventh article in the AGI Researcher Foundations series — the technical toolkit for looking inside a trained model: early… | 2026-09-14 |
-| 🎮 [AGI Researcher Foundations: Reinforcement Learning Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-rl-foundations.html) | The sixth article in the AGI Researcher Foundations series — the RL theory underneath RLHF: the state/action/reward/policy framework,… | 2026-09-14 |
-| 📊 [AGI Researcher Foundations: Generalization & Learning Theory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-generalization-learning-theory.html) | The fifth article in the AGI Researcher Foundations series — the classical story (PAC learning, VC dimension, the bias-variance tradeoff)… | 2026-09-14 |
-| ⚙️ [How Each Network Architecture Actually Learned](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-each-architecture-actually-learned.html) | The sixth in the Evolution / After Transformers arc — the deepest mechanics dive yet: nine architecture eras (Perceptron through reasoning… | 2026-09-14 |
-| 🧵 [Two Threads, One Chain: Architecture vs. Learning Technique](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/two-threads-architecture-vs-learning-technique.html) | The fifth in the Evolution / After Transformers arc — pulls the merged history apart into two lineages (the network's structure vs. | 2026-09-13 |
-| ⚖️ [The AGI Debate: Scaling vs. New Architectures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-debate-scaling-vs-new-architectures.html) | The fourth in the Evolution / After Transformers arc — a full steelman of both sides of AI's most consequential live disagreement: the… | 2026-09-12 |
-| 🔎 [How to Read a Paper Like a Researcher](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-to-read-a-paper-like-a-researcher.html) | The practical companion to After Transformers' six-question framework — three fully worked examples showing exactly how to apply it:… | 2026-09-12 |
-| 🔭 [After Transformers: What's Working, What's a Dead End, What's Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/after-transformers-current-methods-and-dead-ends.html) | The sequel to The Evolution of Neural Networks — a live status report on today's dominant methods and their real limitations (Transformers'… | 2026-09-12 |
-| 🧬 [The Evolution of Neural Networks: From a 1943 Toy Model to Transformers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/evolution-of-neural-networks.html) | A layman-friendly, chronological walk through 83 years of neural network history — from McCulloch & Pitts' 1943 artificial neuron through… | 2026-09-12 |
-| 🧠 [AGI Researcher Foundations: Core Deep Learning Concepts](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-core-deep-learning-concepts.html) | The fourth article in the AGI Researcher Foundations series — the architectural and training-dynamics concepts built on top of the math… | 2026-09-12 |
-| 📐 [AGI Researcher Foundations: The Mathematical Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-mathematical-foundations.html) | The third article in the AGI Researcher Foundations series — scopes the math that actually matters for AI research: linear algebra,… | 2026-09-12 |
-| ✅ [AGI Researcher Foundations: The Self-Assessment Deep Dive](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-self-assessment-deep-dive.html) | The second article in the AGI Researcher Foundations series — opens up all eight items from Article 1's Self-Assessment Checklist, one by… | 2026-09-12 |
-| 🧰 [AGI Researcher Foundations: The Technical Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-technical-stack.html) | The first article in a new deep-dive series — the end-to-end technical stack every AGI researcher needs before touching a paper:… | 2026-09-12 |
-| ☀️ [A Day in the Life of an AGI Researcher: The Complete Operating Manual](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-day-in-life.html) | The practical follow-up to the Field Guide — an hour-by-hour walkthrough of a real research day, daily reading sources and tool stack, a… | 2026-09-11 |
-| 🎓 [The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-field-guide.html) | A companion to the Research Frontier Map — core papers, survey papers, and top university labs for 7 research directions (foundations,… | 2026-09-11 |
-| 🗺️ [The Research Frontier Map: What Every Major AI Lab Is Actually Betting On](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-frontier-map-labs-compared.html) | A comparative study of where SSI, Thinking Machines, Goodfire, Periodic Labs, and Ricursive Intelligence are actually spending their… | 2026-09-11 |
-| 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ssi-complete-investigation.html) | Every publicly available clue about the most secretive, best-funded, least-shipping company in AI — founding story, full funding timeline,… | 2026-09-11 |
-| 🟢 [Inside an AGI Startup Team: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane3-narrow-research-bet.html) | An end-to-end deep dive into how the smallest, most senior team in AI actually works — structure, experience profiles, skills matrix,… | 2026-09-10 |
-| 🔴 [Inside an AGI Startup Team: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane1-frontier-scale.html) | An end-to-end deep dive into how a Lane 1 team actually works — structure, experience profiles, skills matrix, cross-team coordination,… | 2026-09-10 |
-| 🔵 [Inside an AGI Startup Team: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane2-applied-agentic.html) | An end-to-end deep dive into how a Lane 2 team actually works — structure, experience profiles, skills matrix, cross-team coordination,… | 2026-09-10 |
-| 🧑‍💼 [Building an AGI Startup: Who You'd Actually Hire](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-team-profiles-resumes.html) | Sample team profiles and detailed composite resumes for every key role across all three lanes — Applied & Agentic, Frontier Scale-First,… | 2026-09-10 |
-| 🟢 [Building an AGI Startup: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane3-narrow-research-bet.html) | A standalone deep dive into Lane 3 — no product, no revenue plan, just a small team betting on one research thesis. | 2026-09-09 |
-| 🔴 [Building an AGI Startup: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane1-frontier-scale.html) | A standalone deep dive into Lane 1 — the frontier scale-first market (Mistral, Reflection AI, DeepSeek, Moonshot), whitespace ideas, and a… | 2026-09-09 |
-| 🔵 [Building an AGI Startup: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane2-applied-agentic.html) | A standalone deep dive into Lane 2 — the current market landscape, named players, whitespace ideas, and a detailed real-world build… | 2026-09-09 |
-| 🗂️ [Founding an AGI Startup: The Complete 12-Part Series](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-series.html) | The full index for the standalone founder-playbook simulation — idea to legal structure, team, capital, infrastructure, product, research,… | 2026-09-09 |
-| 🧮 [Founding an AGI Startup, Part 12 (Bonus): Financial Modeling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-12-financial-modeling.html) | Balance sheets, real pricing decisions, and 1/3/5-year forecasts by lane — with real 2026 unit-economics data (inference now eats ~23% of… | 2026-09-09 |
-| ⚔️ [Founding an AGI Startup, Part 11: Surviving the Market (Series Finale)](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-11-surviving-market.html) | The finale. | 2026-09-09 |
-| 📈 [Founding an AGI Startup, Part 10: Scaling & Series A](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-10-scaling-series-a.html) | Growth metrics that actually matter, run three-lanes-deep with the real 2026 Series A bar (.5M ARR, sub-1.2x burn multiple, 120%+ NRR) and… | 2026-09-09 |
-| 🤝 [Founding an AGI Startup, Part 9: Sales & Early Customers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-09-sales-early-customers.html) | From first deal to repeatable revenue, run three-lanes-deep with real 2026 sales-cycle benchmarks (14-150+ days by ACV band) and a case… | 2026-09-09 |
-| 📣 [Founding an AGI Startup, Part 8: Go-to-Market & Marketing](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-08-gtm-marketing.html) | Positioning in a crowded field, run three-lanes-deep — with a Perplexity case study on the multi-channel growth engine (viral loops,… | 2026-09-09 |
-| 🔬 [Founding an AGI Startup, Part 7: The Research Function](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-07-research-function.html) | Building an R&D culture on a startup budget, run three-lanes-deep — with a DeepSeek case study on how a ~160-person team produced… | 2026-09-09 |
-| 🏗️ [Founding an AGI Startup, Part 6: Building the Product](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-06-building-product.html) | The implementation roadmap, run three-lanes-deep — the prompt-then-RAG-then-fine-tune-then-distill escalation ladder, real 2026 MVP cost… | 2026-09-09 |
-| 🖥️ [Founding an AGI Startup, Part 5: Office, Ops & Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-05-office-ops-infrastructure.html) | Compute procurement, startup credit programs, tooling, and the remote-vs-in-person question, run three-lanes-deep — with real September… | 2026-09-09 |
-| 💰 [Founding an AGI Startup, Part 4: Seed Capital](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-04-seed-capital.html) | Pitching, valuation, and term sheets, run three-lanes-deep with real 2026 fundraising data (median seed valuations, SAFE terms, AI premium)… | 2026-09-09 |
-| 👥 [Founding an AGI Startup, Part 3: The Founding Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-03-founding-team.html) | Co-founder selection, early hires, equity splits, and a full role-by-role team structure table for each lane — plus the Anthropic… | 2026-09-09 |
-| 📜 [Founding an AGI Startup, Part 2: Legal Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-02-legal-foundations.html) | Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep — plus an India-specific path, and a reality check… | 2026-09-09 |
-| 💡 [Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-01-finding-idea.html) | A step-by-step simulation of starting an AGI company in 2026. | 2026-09-09 |
-| 🔌 [The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/power-bottleneck-ai-infrastructure-race.html) | The 49GW shortfall stat this whole series kept citing, finally unpacked: nuclear restarts, SMR deals, natural gas turbines booked through… | 2026-09-08 |
-| 🔍 [The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/interpretability-gap-reading-model-minds.html) | Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained — what mechanistic interpretability has… | 2026-09-08 |
-| 💾 [Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-continual-learning-agi-race.html) | The most underexplored lever on the AGI stack, finally explained: catastrophic forgetting, three genuinely different research approaches… | 2026-09-08 |
-| 🔭 [AGI Startups to Watch: Who's Actually Building in the Open Lanes](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-startups-to-watch.html) | Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes — Mistral, Thinking Machines, Cursor,… | 2026-09-08 |
-| 🚪 [The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-lever-gaps-new-entrants.html) | A gap analysis across six lab lineages: which levers are saturated, which are still winnable, what conditions a ground-up AGI startup… | 2026-09-08 |
-| ⚡ [Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/grok-deepseek-qwen-agi-stack-timeline.html) | Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration… | 2026-09-08 |
-| 🔵 [The Gemini Series on the AGI Stack: Google DeepMind's Long Game](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gemini-series-agi-stack-timeline.html) | Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack — context-window scale and… | 2026-09-08 |
-| 🟣 [The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-series-agi-stack-timeline.html) | Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack — where its safety-first founding bet… | 2026-09-08 |
-| 📜 [The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-series-agi-stack-timeline.html) | GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack — the actual sequence of levers OpenAI… | 2026-09-08 |
-| 🗺️ [The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-capability-stack-mapped.html) | Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term,… | 2026-09-08 |
-| 🛠️ [Beyond More Data: The Six Real Levers of Frontier AI's Next Advances](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-innovation-levers.html) | More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A… | 2026-09-07 |
-| 🔬 [Astra, Claude & Gemini: Naming Names on the AGI Capability Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-models-astra-claude-gemini.html) | GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis — a single model scoring 62.7% and 99.9%+ on the… | 2026-09-07 |
-| 🧩 [The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-threshold-capability-stack.html) | AGI isn't a model that gets announced — it's a capability stack filled in unevenly. | 2026-09-07 |
-| 🌐 [The AI Productivity Paradox: When Economic Growth Stops Needing Humans](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-civilization.html) | We are entering one of the strangest transitions in history — economies that keep growing while needing fewer humans. | 2026-09-04 |
-| ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-layoffs.html) | Enterprises report soaring AI adoption while major tech firms execute historic layoffs, often citing the same technology. | 2026-09-02 |
-| 📅 [August 2026: The Month in Review](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-august-2026.html) | A full-month AI news recap across Research, Major Players, Commercial, Markets & Chips, Startups, Sovereign AI, Political & Legal, China… | 2026-08-30 |
-| 🌍 [World Models: Teaching AI to Understand Reality](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/world-models.html) | Why video generation, robotic control, and game simulation may all be downstream of the same bet — a model that learns a compressed,… | 2026-07-24 |
-| 🔍 [Retrieval, Knowledge & the RAG Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rag-retrieval-knowledge-stack.html) | How models ground answers beyond training data and context windows — embeddings, vector databases, hybrid search, agentic retrieval, and… | 2026-07-21 |
-| 🤝 [AI Agents & the Enterprise Agent Economy](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-agents-enterprise-economy.html) | What happens when the perceive-think-act loop gets wired into real business systems — orchestration, MCP/A2A standards, multi-agent… | 2026-07-18 |
-| 🛡️ [AI Safety, Alignment & Interpretability: Building Trust Into the Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-safety-alignment-interpretability.html) | The counterweight to nine posts of pure capability — RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous… | 2026-07-15 |
-| 🧠 [Reasoning Models & Test-Time Compute: The Second Scaling Law](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/reasoning-models-test-time-compute.html) | Why letting a model think longer before answering became a legitimate second scaling law — o1/o3, DeepSeek-R1's open-weights shock,… | 2026-07-12 |
-| 🔌 [AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chips-compute-infrastructure.html) | Why every model in this series traces back to silicon, memory bandwidth, and power — GPUs vs custom ASICs, data center architecture, chip… | 2026-07-09 |
-| 🦾 [Physical Intelligence: Teaching AI to Act in the Real World](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/physical-intelligence.html) | Why action is the final modality — VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose… | 2026-07-06 |
-| 🧬 [Multimodality & The Great Consolidation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multimodal-consolidation.html) | Why text, image, video, audio, and action are converging into single any-to-any foundation models — architecture taxonomy, the frontier lab… | 2026-07-03 |
-| 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-ai-models.html) | Every TTS, ASR, and voice cloning model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and… | 2026-07-01 |
-| 🎨 [Image & Video AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/image-video-ai-models.html) | Every generative image and video model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and… | 2026-06-30 |
-| 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/filmmaking-encyclopedia.html) | Every phase, role, and activity in the filmmaking pipeline — from a single idea to a global audience. | 2026-06-27 |
-| 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-pricing.html) | Tokens vs parameters, architecture cost drivers, the full pricing table across all frontier models, regional variation, open-source… | 2026-06-23 |
-| 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-june-22-2026.html) | Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future — 11 categories, real sources,… | 2026-06-22 |
-| ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-loop-explained.html) | The shift from prompt engineering to loop engineering — how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm… | 2026-06-22 |
-<!-- BLOG_POSTS_END -->
+| 1 | 📅 [AI Research in 2026: The Papers and Ideas Reshaping the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2026-papers.html) | 40 min |
+| 2 | 🚀 [AI Research in 2025: The Year Reasoning, Agents and Test-Time Compute Broke Out](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2025-papers.html) | 45 min |
+| 3 | 🧭 [AI Research in 2024: The Year Context, Agents and World Models Took Shape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2024-papers.html) | 45 min |
+| 4 | 🏗️ [AI Research in 2023: The Year Foundation Models Became Platforms](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2023-papers.html) | 45 min |
+| 5 | 🌱 [AI Research in 2022: The Year Reasoning, Alignment and Generative AI Converged](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2022-papers.html) | 45 min |
+| 6 | 🧱 [AI Research in 2021: The Year the Foundation-Model Stack Emerged](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2021-papers.html) | 40 min |
+| 7 | 📐 [AI Research in 2020: The Year Scaling Became the AI Strategy](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2020-papers.html) | 40 min |
+| 8 | 🏗️ [AI Research in 2019: The Year Pretraining Became the Default](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2019-papers.html) | 45 min |
+| 9 | 🔓 [AI Research in 2018: The Year Pretraining Changed Everything](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2018-papers.html) | 40 min |
+| 10 | 🌱 [AI Research in 2017: The Year the Modern AI Architecture Was Born](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2017-papers.html) | 40 min |
+| 11 | ⚙️ [AI Research in 2016: The Year Deep Learning Became a General-Purpose Engine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2016-papers.html) | 40 min |
+| 12 | 🔧 [AI Research in 2015: The Year Deep Learning Became Trainable, Attentive and Interactive](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2015-papers.html) | 40 min |
+| 13 | 🎭 [AI Research in 2014: The Year Deep Learning Learned to Generate, Translate and Remember](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2014-papers.html) | 40 min |
+| 14 | 📐 [AI Research in 2013: The Year Representation Learning Became the Language of AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2013-papers.html) | 40 min |
+| 15 | 💥 [AI Research in 2012: The Year Deep Learning Broke Through](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2012-papers.html) | 35 min |
+| 16 | 🌅 [AI Research in 2011: The Year Before the Breakthrough](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2011-papers.html) | 40 min |
+| 17 | 🧭 [AI Research in 2001–2010: The Decade That Set the Stage for Deep Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-2001-2010-papers.html) | 45 min |
+| 18 | 📼 [AI Research in 1980–2000: The Two Decades That Invented Modern AI's Core Ideas](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1980-2000-papers.html) | 50 min |
+| 19 | 📟 [AI Research in 1950–1980: The Three Decades That Founded the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-1950-1980-papers.html) | 50 min |
+
+</details>
+
+
+### 00 · Follow the Frontier
+
+#### 🔁 The Recursive Self-Improvement Series
+
+A seven-part deep dive into whether AI can meaningfully accelerate the process that builds better AI — from the 1965 origin of the "intelligence explosion" concept through the real, independently verified systems (Dream-RSI, ModularRSI, ScienceBuddy, AlphaEvolve) attacking pieces of the problem today, with every claim checked against primary sources before publication.  
+<sub>11 articles</sub>
+
+<details><summary>Show all 11 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🔁 [Recursive Self-Improvement: A Primer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/recursive-self-improvement-primer.html) | 45 min |
+| 2 | 🧪 [AI Automating AI Research: RSI's Testing Ground](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-ai-automating-ai-research.html) | 50 min |
+| 3 | 🎯 [The Objective-Specification Problem](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-objective-specification-problem.html) | 45 min |
+| 4 | 🏛️ [Distillation, Centralization, and the Moat Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-distillation-centralization-moat.html) | 40 min |
+| 5 | 📊 [Data vs. Reinforcement Learning](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-data-vs-reinforcement-learning.html) | 40 min |
+| 6 | 🤖 [The Sim-to-Real Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-sim-to-real-gap.html) | 40 min |
+| 7 | ⏳ [Autonomy Timelines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-autonomy-timelines.html) | 42 min |
+| 8 | 🕳️ [When Capability Evaluations Break Their Own Sandbox](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-bonus-capability-evaluation-breakouts.html) | 38 min |
+| 9 | 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) | 55 min |
+| 10 | 🧬 [2026 in RSI Research: New Breakthroughs and Papers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-2026-breakthroughs.html) | 40 min |
+| 11 | 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) | 35 min |
+
+</details>
+
+#### 📈 The AGI Capability Stack: Levers, Gaps & Per-Lab Timelines
+
+Where frontier models actually stand, the six real levers of progress, per-lab release-by-release stack timelines, and the gaps a new entrant could still exploit.  
+<sub>12 articles</sub>
+
+<details><summary>Show all 12 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🛠️ [Beyond More Data: The Six Real Levers of Frontier AI's Next Advances](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-innovation-levers.html) | 25 min |
+| 2 | 🗺️ [The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-capability-stack-mapped.html) | 28 min |
+| 3 | 🧩 [The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-threshold-capability-stack.html) | 27 min |
+| 4 | 🔬 [Astra, Claude & Gemini: Naming Names on the AGI Capability Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-models-astra-claude-gemini.html) | 26 min |
+| 5 | 📜 [The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-series-agi-stack-timeline.html) | 27 min |
+| 6 | 🟣 [The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-series-agi-stack-timeline.html) | 27 min |
+| 7 | 🔵 [The Gemini Series on the AGI Stack: Google DeepMind's Long Game](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gemini-series-agi-stack-timeline.html) | 27 min |
+| 8 | ⚡ [Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/grok-deepseek-qwen-agi-stack-timeline.html) | 26 min |
+| 9 | 🚪 [The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-lever-gaps-new-entrants.html) | 30 min |
+| 10 | 🔭 [AGI Startups to Watch: Who's Actually Building in the Open Lanes](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-startups-to-watch.html) | 28 min |
+| 11 | 💾 [Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-continual-learning-agi-race.html) | 26 min |
+| 12 | 🔍 [The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/interpretability-gap-reading-model-minds.html) | 27 min |
+
+</details>
+
+
+### 01 · Build the Machine
+
+#### 🖥️ The AI Compute Stack: From Electrons to Tokens
+
+What it physically takes to run AI: power, factories, chips, memory and the economics that tie them together. Power → private energy → factories → vs supercomputers → cooling & water → chips → supply chain → networks → memory → custom silicon → inference → edge devices → token prices → financing → China → frontier sites → economics → the horizon. Each part stands alone; together they explain why AI is now an energy and hardware story as much as a software one.  
+<sub>18 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html)</sub>
+
+<details><summary>Show all 18 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🔌 [The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/power-bottleneck-ai-infrastructure-race.html) | 26 min |
+| 2 | 🔥 [Energy Beyond the Grid: Gas Turbines, Nuclear Restarts and the Race for Private Power](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/energy-beyond-the-grid.html) | 27 min |
+| 3 | 🏭 [Inside the AI Factory: How Electricity Becomes Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-the-ai-factory.html) | 30 min |
+| 4 | 🏛️ [AI Factories vs Supercomputers: Same Chips, Different Machines](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-vs-supercomputers.html) | 24 min |
+| 5 | 💧 [Heat and Water: How AI Data Centres Keep Cool, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/heat-and-water-cooling.html) | 26 min |
+| 6 | 🔌 [AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chips-compute-infrastructure.html) | 26 min |
+| 7 | ⛓️ [The Chokepoint: How One Supply Chain Decides How Much AI the World Gets](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-chip-supply-chain.html) | 27 min |
+| 8 | 🕸️ [The Interconnect Wars: How 100,000 Chips Become One Computer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/interconnect-wars.html) | 26 min |
+| 9 | 💾 [The Memory Wall: Why HBM Decides Who Wins AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/memory-wall-hbm.html) | 28 min |
+| 10 | 🔩 [Custom Silicon vs Nvidia: Can the Hyperscalers Break the GPU Monopoly?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/custom-silicon-vs-nvidia.html) | 30 min |
+| 11 | 🔄 [The Great Flip: Why AI Compute Is Shifting from Training to Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/training-vs-inference.html) | 26 min |
+| 12 | 📱 [AI at the Edge: NPUs, Small Models and the Shift to On-Device Inference](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-at-the-edge.html) | 24 min |
+| 13 | 📉 [The Token Price Collapse: Why AI Gets 10× Cheaper Every Year, and Who Pays for It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/token-price-collapse.html) | 27 min |
+| 14 | 💸 [Who Pays for the AI Build-Out? Capex, Debt, Neoclouds and the Circular Money Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/who-pays-for-ai-buildout.html) | 28 min |
+| 15 | 🇨🇳 [China's Chip Stack: Export Controls, Huawei and the Race for Self-Reliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-chip-stack.html) | 28 min |
+| 16 | 🛰️ [Data Centers in Space: Hype, Physics and the $100-per-Kilogram Question](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-centers-in-space.html) | 28 min |
+| 17 | 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-pricing.html) | 20 min |
+| 18 | 🔭 [Beyond Silicon: Quantum, Light, Brains in Chips and Orbit, and What Actually Comes After the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/future-of-ai-compute.html) | 26 min |
+
+</details>
+
+#### 🏭 Producing Intelligence: From AI Factory to Frontier Model
+
+The next layer up from the AI Compute Stack: how a frontier model is actually produced inside an AI factory, end to end. Software stack → data → planning the run → parallelism → running the run → post-training → evaluation → serving → operations. Nine parts, each with a running Llama 3 case file.  
+<sub>9 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html)</sub>
+
+<details><summary>Show all 9 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧱 [The Software Stack of an AI Factory: From CUDA to PyTorch to a 16,000-GPU Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-software-stack.html) | 26 min |
+| 2 | 🛢️ [The Data Refinery: How 15 Trillion Tokens Were Collected, Cleaned and Mixed for Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-data-refinery.html) | 25 min |
+| 3 | 📐 [Planning the Run: How Meta Sized Llama 3 405B with Scaling Laws and a 3.8×10²⁵ FLOP Budget](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-planning-the-run.html) | 24 min |
+| 4 | 🧩 [Splitting a Giant: How Llama 3 405B Was Divided Across 16,384 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-4d-parallelism.html) | 25 min |
+| 5 | ⏱️ [Running the Run: 54 Days, 466 Interruptions and the Final Polish of Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-running-the-run.html) | 25 min |
+| 6 | 🎓 [Post-Training: How Llama 3 405B Became an Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-post-training.html) | 22 min |
+| 7 | 🧪 [Is It Ready? How Meta Tested Llama 3 405B](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-evaluation.html) | 22 min |
+| 8 | 🚀 [From Checkpoint to Endpoint: How Llama 3 405B Is Served](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llama-3-serving.html) | 24 min |
+| 9 | 🛠️ [Keeping the Factory Running: Health Checks, Lemon Nodes and Rolling Maintenance Behind Llama 3](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-operations.html) | 22 min |
+
+</details>
+
+#### 🧑‍🔧 Who Runs the AI Factory: The Software Stack, Role by Role
+
+The AI factory's software stack, one layer at a time, through the people who own it: what they run, the tools they use, what breaks and how they hand off to the next layer. Bring-up & firmware → OS & runtime → networking → storage → scheduling → kernels & compilers → training frameworks → data platform → experiment tooling → inference → observability → security.  
+<sub>12 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html)</sub>
+
+<details><summary>Show all 12 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🔧 [Day Zero: The Engineers Who Turn 10,000 Boxes of GPUs into a Working AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-bring-up.html) | 22 min |
+| 2 | 🐧 [The Same Machine, 100,000 Times: The Engineers Who Keep Kernels, Drivers and CUDA in Step](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-os-drivers-runtime.html) | 22 min |
+| 3 | 🕸️ [Making 100,000 GPUs Talk: The Engineers Who Run an AI Factory's Network](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-networking.html) | 23 min |
+| 4 | 💾 [Feeding the Beast: The Engineers Who Move Petabytes In and Terabytes Out of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-storage.html) | 22 min |
+| 5 | 🗓️ [Who Gets the GPUs? The Engineers Who Schedule an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-scheduling.html) | 22 min |
+| 6 | ⚙️ [Making Every FLOP Count: The Kernel and Compiler Engineers of an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-kernels-compilers.html) | 23 min |
+| 7 | 🧠 [The Code That Trains the Model: ML Systems Engineers and the Frameworks Behind Frontier Training](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-training-frameworks.html) | 22 min |
+| 8 | 🗃️ [Refining the Internet: The Data Engineers Who Turn Petabytes of Web Pages into Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-data-platform.html) | 22 min |
+| 9 | 🔬 [The Research Accelerators: Engineers Who Build the Tools for Thousands of Experiments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-research-tooling.html) | 21 min |
+| 10 | ⚡ [Always On: The Inference Engineers Who Serve Models to Billions](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-inference-platform.html) | 22 min |
+| 11 | 🚨 [Who Watches the Factory? Observability, Incidents and the SREs Behind AI Services](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-observability.html) | 22 min |
+| 12 | 🔐 [Guarding the Crown Jewels: The Engineers Who Protect Model Weights, Data and the AI Supply Chain](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-security.html) | 22 min |
+
+</details>
+
+#### 🏭 Inside the Gigawatt Club: Case Studies of AI Factories
+
+The world's largest AI factories, one site at a time: how each was built, where its power comes from, how big it really is and what it cost its neighbours. xAI Colossus → Stargate Abilene → Microsoft Fairwater → Project Rainier → Meta Prometheus & Hyperion → Google's TPU fleet → neoclouds → China → sovereign factories → the bets compared.  
+<sub>10 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html)</sub>
+
+<details><summary>Show all 10 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🏭 [Colossus: How xAI Built an AI Factory in 122 Days, and What Speed Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/colossus-xai-memphis.html) | 18 min |
+| 2 | 🌵 [Stargate Abilene: The AI Factory Built on Other People's Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stargate-abilene.html) | 17 min |
+| 3 | 🔗 [Fairwater: How Microsoft Wired Two AI Factories Into One Supercomputer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/microsoft-fairwater.html) | 17 min |
+| 4 | ⛰️ [Project Rainier: The AI Factory Built Without NVIDIA](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/project-rainier.html) | 17 min |
+| 5 | 🔥 [Prometheus and Hyperion: How Meta Went From Tents to a 5-Gigawatt City](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-prometheus-hyperion.html) | 18 min |
+| 6 | 🟢 [The Fleet: How Google Built AI Factories a Decade Before Everyone Else](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/google-tpu-fleet.html) | 17 min |
+| 7 | ☁️ [The Neoclouds: How CoreWeave Turned GPUs Into a Debt-Financed Rental Business](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/coreweave-neoclouds.html) | 17 min |
+| 8 | 🇨🇳 [Built Under Sanctions: How China Makes AI Factories Without NVIDIA's Best Chips](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/china-ai-factories.html) | 17 min |
+| 9 | 🏳️ [Compute as Sovereignty: Stargate UAE, Humain and the Race for National AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sovereign-ai-factories.html) | 18 min |
+| 10 | 📊 [Nine AI Factories, One Map: Which Bets Are Winning?](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factories-compared.html) | 16 min |
+
+</details>
+
+#### 🧰 AI Factory as a Service: Who Builds Them, Who Buys Them
+
+How governments, banks, drug makers and telcos get AI factories without building a Colossus: install, buy or rent. The landscape → hyperscalers come to you → NVIDIA as the architect → the hardware vendors → the customers → the economics and the decision.  
+<sub>7 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html)</sub>
+
+<details><summary>Show all 7 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗺️ [Build, Install, Buy or Rent: The Four Ways to Get an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factories-landscape.html) | 15 min |
+| 2 | 📦 [The Cloud Comes to You: How AWS, Microsoft, Google and Oracle Put AI Factories Inside Customers' Buildings](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/hyperscaler-on-prem-ai-factories.html) | 16 min |
+| 3 | 🏛️ [The Blueprint Business: How NVIDIA Designs Other People's AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/nvidia-ai-factory-blueprint.html) | 16 min |
+| 4 | 🛒 [The Arms Dealers: How Dell, HPE, Lenovo and Supermicro Sell AI Factories](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-hardware-vendors.html) | 16 min |
+| 5 | 👥 [Who Buys an AI Factory? Telcos, Drug Makers, Banks, Hospitals and Governments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/managed-ai-factory-customers.html) | 17 min |
+| 6 | 🧮 [Build, Install, Buy or Rent? The Economics of Getting an AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-factory-economics.html) | 16 min |
+| 7 | 🚀 [Starting a Frontier Lab in 2026: Compute, Cost and Capital, with a Bangalore Playbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-startup-playbook.html) | 32 min |
+
+</details>
+
+#### 🧠 Inside the ML Layer: The Software That Turns GPUs into Models
+
+The AI factory's machine-learning software, component by component: the map → frameworks → parallelism libraries → kernels → post-training & RL → evaluation harnesses → inference engines → agent runtimes.  
+<sub>8 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html)</sub>
+
+<details><summary>Show all 8 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗺️ [The ML Layer, Mapped: From PyTorch to Production in One Diagram](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-layer-map.html) | 17 min |
+| 2 | 🧱 [Two Frameworks Rule Them All: PyTorch vs JAX Inside the AI Factory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-frameworks-pytorch-jax.html) | 26 min |
+| 3 | 🧩 [Splitting the Giant: The Libraries That Spread One Model Across 16,000 GPUs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-parallelism-libraries.html) | 27 min |
+| 4 | ⚙️ [The Kernels That Matter: FlashAttention, CUTLASS, Triton and the Code That Actually Runs on the GPU](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-kernels.html) | 28 min |
+| 5 | 🎯 [After Pre-training: The Software That Turns a Base Model into a Reasoning Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-post-training-rl.html) | 28 min |
+| 6 | 📏 [Measuring the Machine: The Evaluation Harnesses That Decide What Ships](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-evaluation-harnesses.html) | 27 min |
+| 7 | ⚡ [Serving the Model: vLLM, SGLang, TensorRT-LLM and the Engines That Turn GPUs into Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-inference-engines.html) | 29 min |
+| 8 | 🤖 [The Top of the Stack: Agent Runtimes, Tool Protocols and the Software That Lets Models Act](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-agent-runtimes.html) | 28 min |
+
+</details>
+
+#### 🗃️ Inside the Data Layer: How AI Factories Collect, Clean and Feed Data
+
+The data that feeds the AI factory, stage by stage: the map → crawling and sourcing → filtering and deduplication → synthetic data → human data → mixtures → data infrastructure → law and the data wall.  
+<sub>8 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html)</sub>
+
+<details><summary>Show all 8 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗃️ [The Data Layer, Mapped: From a Web Crawl to a Training Batch](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-layer-map.html) | 20 min |
+| 2 | 🕷️ [Where the Tokens Come From: Crawlers, Licences and the Closing Web](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-crawling-sourcing.html) | 24 min |
+| 3 | 🧹 [Throwing Away 90% of the Web: How AI Labs Filter and Deduplicate Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-filtering-dedup.html) | 26 min |
+| 4 | ✨ [Models Teaching Models: How Synthetic Data Became the Fastest-Growing Source of Training Tokens](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-synthetic.html) | 25 min |
+| 5 | 👩‍🏫 [The Human Layer: Labellers, Experts and the Multibillion-Dollar Business of Teaching AI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-human-labelling.html) | 24 min |
+| 6 | ⚖️ [The Secret Recipe: How Labs Mix, Weight and Schedule Training Data](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-mixtures.html) | 23 min |
+| 7 | 🗄️ [Feeding the Furnace: Storage, Tokenisation and the Data Loaders Behind Every Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-infrastructure.html) | 22 min |
+| 8 | 📜 [Who Owns the Training Data? Copyright, Consent and the Coming Data Wall](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/data-law-data-wall.html) | 25 min |
+
+</details>
+
+#### 🎯 Inside the Evaluation Layer: How Frontier Models Are Tested Before and After They Ship
+
+Every test a model faces, stage by stage: the map → contamination and saturation → LLM judges → humans and arenas → agent and long-task evals → safety and dangerous-capability evals → from score to ship.  
+<sub>7 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html)</sub>
+
+<details><summary>Show all 7 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🎯 [The Evaluation Layer, Mapped: Who Tests a Frontier Model, When, and What It Costs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-layer-map.html) | 21 min |
+| 2 | 🧪 [Tests That Leak and Tests That Wear Out: Benchmark Contamination and Saturation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-contamination-saturation.html) | 22 min |
+| 3 | ⚖️ [Models Grading Models: LLM Judges, Reward Models and How They Get Fooled](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-llm-judges.html) | 22 min |
+| 4 | 🙋 [Humans in the Loop: Arenas, Expert Graders and What a Vote Really Measures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-human-arenas.html) | 23 min |
+| 5 | 🤖 [Grading Agents: Long Tasks, Live Environments and Why Reliability Beats a Single Score](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-agents-long-tasks.html) | 24 min |
+| 6 | 🛡️ [Testing for Danger: Dangerous-Capability Evals, Safety Thresholds and Models That Know They Are Being Tested](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-safety-capability.html) | 25 min |
+| 7 | 🚦 [From Score to Ship: How Evaluation Results Become a Launch Decision](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/eval-score-to-ship.html) | 22 min |
+
+</details>
+
+#### 🤖 Inside the Agent Layer: The Infrastructure That Runs AI Agents at Scale
+
+What runs between a request and the 400th tool call: the map → sandboxes → durable execution → tool gateways and MCP → identity and permissions → memory → observability and cost → RL environments.  
+<sub>8 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html)</sub>
+
+<details><summary>Show all 8 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🤖 [The Agent Layer, Mapped: What Runs Between a Request and the 400th Tool Call](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-layer-map.html) | 21 min |
+| 2 | 📦 [Where Agents Act: Sandboxes, Micro-VMs and Cloud Browsers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-sandboxes.html) | 22 min |
+| 3 | ⏳ [Agents That Survive: Durable Execution for Long-Running Work](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-durable-execution.html) | 20 min |
+| 4 | 🔌 [How Agents Reach the World: Tool Gateways and MCP at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-tool-gateways.html) | 21 min |
+| 5 | 🪪 [On Whose Behalf? Identity and Permissions for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-identity-permissions.html) | 20 min |
+| 6 | 🧩 [What Agents Remember: Memory, State and the Context Window](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-memory-state.html) | 21 min |
+| 7 | 📈 [Seeing Inside Agent Runs: Observability, Tracing and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-observability-cost.html) | 20 min |
+| 8 | 🏋️ [Where Agents Learn: RL Environments as Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-rl-environments.html) | 22 min |
+
+</details>
+
+
+### Run the Machine · The Maestro
+
+#### 🎼 The Maestro: Building a Frontier AI Factory From Zero
+
+Phase 0 (the idea) → Phase 1 (securing the machine) → Phase 2 (building the model) → Phase 3 (proving it is safe and good) → Phase 4 (shipping products). 18 parts, published phase by phase.  
+<sub>18 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro.html)</sub>
+
+🆕 *Newest series, shown in full.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧭 [The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-l4-moat.html) | 40 min |
+| 2 | 🧪 [The Maestro, Part 2: Proving It Small](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-proving-small.html) | 45 min |
+| 3 | 💰 [The Maestro, Part 3: The Plan and the Money](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-plan-money.html) | 42 min |
+| 4 | 🖥️ [The Maestro, Part 4: Securing Compute](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-securing-compute.html) | 25 min |
+| 5 | ⚡ [The Maestro, Part 5: Site, Power and Cooling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-site-power-cooling.html) | 20 min |
+| 6 | 🔧 [The Maestro, Part 6: Day Zero — Bring-Up](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-bring-up.html) | 19 min |
+| 7 | 📋 [The Maestro, Part 7: The Cluster Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-cluster-software.html) | 22 min |
+| 8 | 🗃️ [The Maestro, Part 8: The Data Refinery](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-data-refinery.html) | 20 min |
+| 9 | 🏗️ [The Maestro, Part 9: Architecture and Parallelism](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-architecture-parallelism.html) | 19 min |
+| 10 | 🏋️ [The Maestro, Part 10: The Pre-Training Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-pretraining-run.html) | 19 min |
+| 11 | 🔁 [The Maestro, Part 11: Post-Training and the RSI Loop](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-post-training-rsi.html) | 18 min |
+| 12 | 📏 [The Maestro, Part 12: The Evaluation Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-evaluation.html) | 18 min |
+| 13 | 🛡️ [The Maestro, Part 13: Safety Layers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-safety-layers.html) | 18 min |
+| 14 | 📜 [The Maestro, Part 14: Approvals and Compliance](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-approvals.html) | 17 min |
+| 15 | 💬 [The Maestro, Part 15: Serving at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-serving.html) | 18 min |
+| 16 | 🤖 [The Maestro, Part 16: Agents and Client Products](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-agents-products.html) | 17 min |
+| 17 | 🔄 [The Maestro, Part 17: Operations and the Flywheel](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-operations.html) | 17 min |
+| 18 | 📊 [The Maestro, Part 18: The Scorecard](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-scorecard.html) | 18 min |
+
+#### 🎼 The Maestro, Season 2: Scaling the Factory
+
+Phase 5 (founder to CEO) → Phase 6 (the research engine) → Phase 7 (Maestro-2) → Phase 8 (the product grows up) → Phase 9 (competing at the frontier). 23 parts, published phase by phase; Phase 5 is out now.  
+<sub>4 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html)</sub>
+
+🆕 *Newest series, shown in full.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 💸 [The Maestro, Season 2, Part 1: The Second Raise](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-series-a.html) | 18 min |
+| 2 | 👥 [The Maestro, Season 2, Part 2: Building the Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-team.html) | 17 min |
+| 3 | 🧭 [The Maestro, Season 2, Part 3: The Strategy One-Pager](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-strategy.html) | 16 min |
+| 4 | 🗓️ [The Maestro, Season 2, Part 4: The Operating Cadence](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-operating-cadence.html) | 17 min |
+
+
+### 02 · Learn How LLMs Work
+
+#### 🛠️ How LLMs Are Built: One In-Depth Article per Stage
+
+The full lifecycle of a large language model, one in-depth article per stage — the transformer, pretraining, fine-tuning, post-training, inference, scaling with distributed training, the production system around the model, context engineering and memory, retrieval-augmented generation, tool calling, agentic systems, multi-agent systems, agent memory and planning, MCP, production agent architecture and agent evaluation — starting with an interactive map of the complete stack — each with runnable code, real output, and sources checked.  
+<sub>18 articles</sub>
+
+<details><summary>Show all 18 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗺️ [From Transformer to Production Agentic AI: The Complete Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/transformer-to-agentic-ai-complete-stack.html) | 10 min |
+| 2 | ⚙️ [How a Transformer Works: A Decoder-Only Model, End to End](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-a-transformer-works-decoder-only.html) | 45 min |
+| 3 | 🏭 [How LLM Pretraining Works: From Raw Text to a Foundation Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-pretraining-works.html) | 40 min |
+| 4 | 🎯 [How LLM Fine-Tuning Works: Adapting a Base Model to a Task](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-fine-tuning-works.html) | 40 min |
+| 5 | 🧭 [How Post-Training Works: SFT, RLHF, DPO and RLAIF](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-post-training-works.html) | 45 min |
+| 6 | ⚡ [How LLM Inference Works: From a Request to a Streamed Response](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-inference-works.html) | 40 min |
+| 7 | 📈 [Scaling Laws, GPUs and Distributed Training: How Frontier Models Get Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-llm-scaling-and-distributed-training-works.html) | 40 min |
+| 8 | 🏗️ [Production LLM System Design: Anatomy of a ChatGPT- or Claude-Style Assistant](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/production-llm-system-design.html) | 35 min |
+| 9 | 🧩 [Context Engineering and Memory Architecture for LLMs](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-engineering-and-memory.html) | 30 min |
+| 10 | 🔎 [RAG: Retrieval-Augmented Generation, End to End](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rag-retrieval-augmented-generation.html) | 35 min |
+| 11 | 🛠️ [Tool and Function Calling: How an LLM Goes from Answering to Acting](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/tool-and-function-calling.html) | 30 min |
+| 12 | 🤖 [Agentic Systems: From Single Tool Calls to Multi-Step Goal Completion](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-systems-multi-step-goals.html) | 30 min |
+| 13 | 👥 [Multi-Agent Systems: End-to-End Architecture](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-systems-architecture.html) | 30 min |
+| 14 | 🗂️ [Agent Memory and Planning Patterns: How Agents Remember, Plan, Reflect and Keep Going](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-memory-and-planning-patterns.html) | 30 min |
+| 15 | 🔌 [MCP and Tool Ecosystems: How Agents Discover, Connect to and Use External Capabilities](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/mcp-model-context-protocol.html) | 30 min |
+| 16 | 🏛️ [Production Agent Architecture: End-to-End System Design](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/production-agent-architecture.html) | 30 min |
+| 17 | 📏 [Evaluating Agents: Measuring Success, Safety and Reliability](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/evaluating-agents.html) | 30 min |
+| 18 | 🧰 [LLM Harness Engineering: Engineering the System Around the Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/llm-harness-engineering.html) | 20 min |
+
+</details>
+
+#### 🧬 Latest in Frontier Model Architecture & Reasoning — 4-Lens Review
+
+The latest in how frontier models are designed and how they reason, as of September 2026, reviewed through four lenses: the research changing what's inside the models, the engineering to train and serve them at scale, the market of labs, open models, chips and clouds, and case studies of real model families.  
+<sub>4 articles</sub>
+
+<details><summary>Show all 4 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧬 [Frontier Model Research & Innovation: What's Changing Inside the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-research-and-innovation.html) | 30 min |
+| 2 | 🏭 [Frontier Model Production Engineering: Training, Serving and Operating Models at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-production-engineering.html) | 35 min |
+| 3 | 🗺️ [The Frontier Model Market Landscape: Who Builds, Trains, Serves and Sells the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-market-landscape.html) | 30 min |
+| 4 | 🔬 [Frontier Model Case Studies: DeepSeek-V3 → R1, Llama 4 and Qwen3 / Qwen3-Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-model-case-studies.html) | 30 min |
+
+</details>
+
+#### 🧰 Latest in Harness Engineering (Agentic Scaffoldings) — 4-Lens Review
+
+The latest in the systems built around models to turn them into working agents — context and memory, tools, planning loops, verification, guardrails and evaluation — reviewed through four lenses: the research advancing agent scaffolding, the engineering to run it reliably in production, the market of agent frameworks, platforms and protocols, and case studies of real agent harnesses.  
+<sub>10 articles</sub>
+
+<details><summary>Show all 10 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧰 [Harness & Scaffolding Research and Innovation: What's Changing Around the Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-scaffolding-research-and-innovation.html) | 35 min |
+| 2 | 🏗️ [Harness Production Engineering: Running Agents Reliably at Scale](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-production-engineering.html) | 35 min |
+| 3 | 🧭 [The Harness Market Landscape: Who Builds the Infrastructure Around Frontier Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-market-landscape.html) | 30 min |
+| 4 | 🔍 [Harness Case Studies: OpenAI Codex, Claude Code Auto Mode and Gemini Deep Research](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-case-studies.html) | 30 min |
+| 5 | 🧩 [OpenAI Agents API: the Codex Harness as a Managed Production Runtime](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/openai-agents-api-codex-harness.html) | 30 min |
+| 6 | 🧠 [Claude Agent SDK and Managed Agents: the Claude Code Harness in Production](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-agent-sdk-managed-agents.html) | 30 min |
+| 7 | 🐋 [DeepSeek Harness (dsh): an Open-Source, Plugin-Composed Agent Runtime](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepseek-harness-dsh.html) | 30 min |
+| 8 | 🏛️ [Harness Product Architecture Comparison: Foundry, ADK, LangChain, CrewAI, Temporal, E2B, Browserbase and AgentCore](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-architecture-comparison.html) | 35 min |
+| 9 | 🛠️ [Agentic Developer Workbenches: Cursor, GitHub Copilot, Google Antigravity 2.0 and Devin Desktop Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-developer-workbenches.html) | 35 min |
+| 10 | 🌐 [Harness Engineering Across Real-World Contexts: One Pattern, Nine Domains](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/harness-across-real-world-contexts.html) | 35 min |
+
+</details>
+
+#### ♻️ Practical RSI — How Agents Are Starting to Improve Themselves
+
+Recursive self-improvement as it actually exists in 2026: agents that evolve their own harnesses behind release gates, the evidence from frontier labs, AI doing real R&D, the mechanisms and architecture of self-improving systems, and what it would take to prove improvement that genuinely compounds — with the incidents, open problems and verification it demands.  
+<sub>6 articles</sub>
+
+<details><summary>Show all 6 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | ♻️ [Recursive Harness Self-Improvement: How Agents Are Starting to Improve the Systems That Run Them](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/recursive-harness-self-improvement.html) | 35 min |
+| 2 | 🧭 [Are We Approaching Recursive Self-Improvement? Evidence from Frontier Labs, 2025–2026](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/are-we-approaching-rsi.html) | 30 min |
+| 3 | 🔬 [AI Doing R&D: From Research Assistant to Autonomous Research Organization](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-doing-rd.html) | 35 min |
+| 4 | 🧬 [How Self-Improving Agentic Systems Actually Work: Mechanisms, Architecture and the Path to Verified Persistent Improvement](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/self-improving-agentic-systems.html) | 35 min |
+| 5 | 📈 [From Automated R&D to Effective RSI: Frontier, Evidence and Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/automated-rd-to-effective-rsi.html) | 35 min |
+| 6 | 🧩 [Open Problems in Recursive Self-Improvement: A Research Map](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/open-problems-in-rsi.html) | 40 min |
+
+</details>
+
+#### 🧬 Architecture & Learning Technique: How the Field Actually Got Here
+
+The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.  
+<sub>6 articles</sub>
+
+<details><summary>Show all 6 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧬 [The Evolution of Neural Networks: From a 1943 Toy Model to Transformers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/evolution-of-neural-networks.html) | 95 min |
+| 2 | ⚙️ [How Each Network Architecture Actually Learned](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-each-architecture-actually-learned.html) | 110 min |
+| 3 | 🧵 [Two Threads, One Chain: Architecture vs. Learning Technique](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/two-threads-architecture-vs-learning-technique.html) | 85 min |
+| 4 | 🔭 [After Transformers: What's Working, What's a Dead End, What's Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/after-transformers-current-methods-and-dead-ends.html) | 90 min |
+| 5 | ⚖️ [The AGI Debate: Scaling vs. New Architectures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-debate-scaling-vs-new-architectures.html) | 65 min |
+| 6 | 🔎 [How to Read a Paper Like a Researcher](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-to-read-a-paper-like-a-researcher.html) | 60 min |
+
+</details>
+
+#### 🔍 Topic Explainers: Standalone Deep Dives
+
+World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, brain–computer interfaces, and fresh launches like TypeSafe's Jev — each explained on its own.  
+<sub>16 articles</sub>
+
+<details><summary>Show all 16 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧱 [Sandboxing AI Agents: How to Let an Agent Act Without Letting It Escape](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sandboxing-ai-agents.html) | 32 min |
+| 2 | 🐟 [Sakana AI: A Primer on Tokyo's Nature-Inspired Frontier Lab](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sakana-ai-primer.html) | 16 min |
+| 3 | 🧑‍🔧 [Who Ships the Last Mile? The Forward Deployed Engineer and the Great Role Merge](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/forward-deployed-engineers-great-role-merge.html) | 15 min |
+| 4 | 🧭 [Inside Jev: TypeSafe AI's "System One" Model, Explained](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/typesafe-jev-system-one-models-explained.html) | 35 min |
+| 5 | 🌍 [World Models: Teaching AI to Understand Reality](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/world-models.html) | 24 min |
+| 6 | 🦾 [Physical Intelligence: Teaching AI to Act in the Real World](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/physical-intelligence.html) | 25 min |
+| 7 | 🧬 [Multimodality & The Great Consolidation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multimodal-consolidation.html) | 26 min |
+| 8 | 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-ai-models.html) | 24 min |
+| 9 | 🎨 [Image & Video AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/image-video-ai-models.html) | 25 min |
+| 10 | 🧠 [Reasoning Models & Test-Time Compute: The Second Scaling Law](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/reasoning-models-test-time-compute.html) | 25 min |
+| 11 | 🔍 [Retrieval, Knowledge & the RAG Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rag-retrieval-knowledge-stack.html) | 24 min |
+| 12 | 🤝 [AI Agents & the Enterprise Agent Economy](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-agents-enterprise-economy.html) | 25 min |
+| 13 | 🛡️ [AI Safety, Alignment & Interpretability: Building Trust Into the Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-safety-alignment-interpretability.html) | 25 min |
+| 14 | ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-loop-explained.html) | 16 min |
+| 15 | 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/filmmaking-encyclopedia.html) | 30 min |
+| 16 | 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | 24 min |
+
+</details>
+
+#### 🗂️ The Model Lineage Series
+
+Eight consolidated comparisons tracing every major model from OpenAI, Anthropic, Google DeepMind, xAI, DeepSeek, Meta, Mistral, and Qwen — architecture, data, safety frameworks, and disclosure philosophy, each lineage cross-linked to the other seven for direct side-by-side reading.  
+<sub>8 articles</sub>
+
+<details><summary>Show all 8 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗂️ [The GPT Lineage: A Consolidated Comparison, GPT-1 to GPT-6 Astra](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-lineage-consolidated-comparison.html) | 85 min |
+| 2 | 🗂️ [The Claude Lineage: A Consolidated Comparison, Claude 1 to Fable 5.1](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-lineage-consolidated-comparison.html) | 80 min |
+| 3 | 🗂️ [The Gemini Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gemini-lineage-consolidated-comparison.html) | 75 min |
+| 4 | 🚀 [The Grok Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/grok-lineage-consolidated-comparison.html) | 75 min |
+| 5 | 🐋 [The DeepSeek Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepseek-lineage-consolidated-comparison.html) | 80 min |
+| 6 | 🦙 [The Meta AI (Llama) Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/meta-llama-lineage-consolidated-comparison.html) | 80 min |
+| 7 | 🌬️ [The Mistral AI Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/mistral-lineage-consolidated-comparison.html) | 80 min |
+| 8 | 🐉 [The Qwen Lineage: A Consolidated Comparison](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/qwen-lineage-consolidated-comparison.html) | 80 min |
+
+</details>
+
+#### 🏗️ Model Case Studies: How Each Model Was Actually Built
+
+Nine deep dives into the specific engineering, research, and organizational decisions behind individual model releases — read before the consolidated lineage comparisons above.  
+<sub>9 articles</sub>
+
+<details><summary>Show all 9 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 📄 [GPT-1: How the First GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-1-how-it-was-built.html) | 70 min |
+| 2 | 🌐 [GPT-2: How the Second GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-2-how-it-was-built.html) | 70 min |
+| 3 | 🧠 [GPT-3: How the Third GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-3-how-it-was-built.html) | 75 min |
+| 4 | 🔒 [GPT-4: How the Fourth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-4-how-it-was-built.html) | 70 min |
+| 5 | 🚦 [GPT-5: How the Fifth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-5-how-it-was-built.html) | 65 min |
+| 6 | 🌌 [GPT-6 Astra: How the Sixth GPT Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/gpt-6-how-it-was-built.html) | 75 min |
+| 7 | 🏛️ [Claude 1: How Anthropic's First Model Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-1-how-it-was-built.html) | 65 min |
+| 8 | 💬 [Claude 2: How Anthropic's First Public Product Was Actually Built](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/claude-2-how-it-was-built.html) | 60 min |
+| 9 | 🤝 [Google DeepMind: How the Lab Behind Gemini Was Actually Formed](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/deepmind-founding-merger-how-it-was-built.html) | 60 min |
+
+</details>
+
+#### 📊 Reference Series: Benchmarks, Research Direction & the People Behind It
+
+Cross-lab reference pieces this site's lineage articles cite back to — how capability gets measured, how AGI itself gets measured, where research is actually heading, and who's building it.  
+<sub>11 articles</sub>
+
+<details><summary>Show all 11 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🖥️ [Compute Frontier: Why AI Keeps Building Bigger Clusters](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/compute-frontier-ai-infrastructure-explainer.html) | 24 min |
+| 2 | 🎓 [Top AI Research PhD Programs: A Researcher's Guide](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/top-ai-research-phd-programs.html) | 26 min |
+| 3 | 🗂️ [A Public Study Stack for Frontier AI Research Roles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-ai-research-study-stack.html) | 16 min |
+| 4 | ⚙️ [Running RSI Repos Yourself: A Hands-On Walkthrough](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-hands-on-repo-walkthrough.html) | 22 min |
+| 5 | 🧭 [A Practitioner's Primer on RSI](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-practitioners-primer.html) | 35 min |
+| 6 | 🧬 [2026 in RSI Research: New Breakthroughs and Papers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-2026-breakthroughs.html) | 40 min |
+| 7 | 📚 [Recursive Self-Improvement: A Literature Survey](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/rsi-literature-survey.html) | 55 min |
+| 8 | 📊 [The Frontier AI Benchmark Landscape: How Every Capability Gets Measured](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-ai-benchmark-landscape.html) | 55 min |
+| 9 | 🧭 [AGI Benchmarks: How the Field Tries to Measure the Thing It Can't Yet Define](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-benchmarks-measuring-the-undefined.html) | 55 min |
+| 10 | 📈 [What Stanford's 2026 AI Index Says About Where AI Research Is Heading](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/stanford-ai-index-2026-research-directions.html) | 40 min |
+| 11 | 🧑‍🔬 [The AI Researcher Atlas: 50 People Who Built the Field](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-atlas.html) | 65 min |
+
+</details>
+
+
+### 03 · Take a Course
+
+#### 🧱 Language Modeling from Scratch: A Guide to Stanford's CS336
+
+A lecture-by-lecture deep-dive series on Stanford's from-scratch LLM-building course — tokenization, architectures, systems, scaling laws, data, and alignment, with real citations, original code walkthroughs, and hands-on directions tied to the actual public assignment repos. One full article per lecture, no length cap.  
+<sub>4 articles</sub>
+
+<details><summary>Show all 4 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧱 [Language Modeling from Scratch, Part 1: Course Primer & Overview](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-language-modeling-from-scratch-part1-overview.html) | 20 min |
+| 2 | 🔡 [Language Modeling from Scratch, Part 2: Tokenization & Byte-Pair Encoding](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-tokenization-byte-pair-encoding-part2.html) | 28 min |
+| 3 | 🧮 [Language Modeling from Scratch, Part 3: PyTorch & Resource Accounting](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-pytorch-resource-accounting-part3.html) | 22 min |
+| 4 | 🧩 [Language Modeling from Scratch, Part 4: Architectures & Hyperparameters](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs336-architectures-hyperparameters-part4.html) | 42 min |
+
+</details>
+
+#### 🎓 Self-Improving AI Agents: A Guide to Stanford's CS329A
+
+A standalone companion to Stanford's course on the mechanics behind self-improving agents — test-time compute, verification, agentic feedback loops, planning as search, RL for reasoning, and long-horizon evaluation. A different branch of "self-improvement" from this site's RSI series, covered on its own.  
+<sub>6 articles</sub>
+
+<details><summary>Show all 6 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 📘 [Self-Improving AI Agents: A Field Handbook](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-self-improving-agents-handbook.html) | 32 min |
+| 2 | 🔁 [Agentic Feedback Loops in Practice](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-agentic-feedback-loops.html) | 24 min |
+| 3 | 🌳 [Planning as Search](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-planning-as-search.html) | 22 min |
+| 4 | 🏋️ [Training on What Search Finds](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-training-on-what-search-finds.html) | 23 min |
+| 5 | 🔍 [Competitive Programming and Retrieval Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-competitive-programming-and-retrieval-agents.html) | 22 min |
+| 6 | 📏 [Evaluation and the Open Problems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/cs329a-evaluation-and-open-problems.html) | 24 min |
+
+</details>
+
+
+### 04 · Become a Researcher
+
+#### 🎓 AGI Researcher Foundations: An 11-Part Curriculum
+
+The math, deep learning theory, RL, interpretability, alignment, world models, and systems knowledge an AGI researcher actually needs — plus a technical stack primer and self-assessment.  
+<sub>11 articles</sub>
+
+<details><summary>Show all 11 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧰 [AGI Researcher Foundations: The Technical Stack](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-technical-stack.html) | 100+ min |
+| 2 | ✅ [AGI Researcher Foundations: The Self-Assessment Deep Dive](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-self-assessment-deep-dive.html) | 65 min |
+| 3 | 📐 [AGI Researcher Foundations: The Mathematical Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-mathematical-foundations.html) | 75 min |
+| 4 | 🧠 [AGI Researcher Foundations: Core Deep Learning Concepts](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-core-deep-learning-concepts.html) | 75 min |
+| 5 | 📊 [AGI Researcher Foundations: Generalization & Learning Theory](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-generalization-learning-theory.html) | 70 min |
+| 6 | 🎮 [AGI Researcher Foundations: Reinforcement Learning Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-rl-foundations.html) | 75 min |
+| 7 | 🔬 [AGI Researcher Foundations: Interpretability](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-interpretability.html) | 75 min |
+| 8 | 🎯 [AGI Researcher Foundations: Alignment](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-alignment.html) | 75 min |
+| 9 | 🌍 [AGI Researcher Foundations: World Models](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-world-models.html) | 75 min |
+| 10 | 🖧 [AGI Researcher Foundations: Systems](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-systems.html) | 80 min |
+| 11 | 🗺️ [AGI Researcher Foundations: The Capstone](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-foundations-capstone.html) | 65 min |
+
+</details>
+
+#### 🧑‍💻 Frontier Lab Engineering Practicum: A 9-Part Practitioner's Companion
+
+Onboarding, production training code, distributed debugging, compute economics, custom kernels, on-call reality, cross-team code, and a full experiment shipped from idea to merged PR.  
+<sub>9 articles</sub>
+
+<details><summary>Show all 9 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🧑‍💻 [Day One at a Frontier Lab: The Engineering Onboarding Nobody Writes Down](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-day-one-onboarding.html) | 55 min |
+| 2 | 📜 [Reading and Writing Production Training Code](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-production-training-code.html) | 55 min |
+| 3 | 🧯 [Debugging a Distributed Job That Won't Converge (Or Won't Start)](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-debugging-distributed-jobs.html) | 60 min |
+| 4 | 💳 [Compute Economics: Requesting, Scheduling, and Not Wasting a GPU-Hour](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-compute-economics.html) | 55 min |
+| 5 | 🧵 [Writing Custom Kernels and Why You Occasionally Have To](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-custom-kernels.html) | 55 min |
+| 6 | 📟 [The On-Call Reality: Monitoring, Alerts, and 2am Incidents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-oncall-reality.html) | 50 min |
+| 7 | 🧩 [Working With (and Around) Other Teams' Code](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-other-teams-code.html) | 50 min |
+| 8 | 🔀 [Shipping an Experiment From Idea to Merged PR](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-idea-to-merged-pr.html) | 55 min |
+| 9 | 🗓️ [Capstone: A Week in the Life of a Research Engineer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/frontier-lab-engineering-week-in-the-life.html) | 50 min |
+
+</details>
+
+#### 🧭 The Researcher's Path: Careers, Labs & Field Notes
+
+What it actually takes to work on AGI — papers to read, labs to target, a real day in the life, and a full investigation into one of the field's most secretive labs.  
+<sub>4 articles</sub>
+
+<details><summary>Show all 4 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🎓 [The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-researcher-field-guide.html) | 80 min |
+| 2 | ☀️ [A Day in the Life of an AGI Researcher: The Complete Operating Manual](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-researcher-day-in-life.html) | 85 min |
+| 3 | 🗺️ [The Research Frontier Map: What Every Major AI Lab Is Actually Betting On](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-research-frontier-map-labs-compared.html) | 75 min |
+| 4 | 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ssi-complete-investigation.html) | 110 min |
+
+</details>
+
+
+### 05 · Build a Company
+
+#### 🚀 Founding an AGI Startup: The Complete 12-Part Series
+
+From finding your idea and choosing your lane through legal foundations, seed capital, building product, go-to-market, scaling, and surviving the market — a full startup lifecycle.  
+<sub>13 articles</sub>
+
+<details><summary>Show all 13 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗂️ [Founding an AGI Startup: The Complete 12-Part Series](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-series.html) | 5 min |
+| 2 | 💡 [Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-01-finding-idea.html) | 22 min |
+| 3 | 📜 [Founding an AGI Startup, Part 2: Legal Foundations](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-02-legal-foundations.html) | 30 min |
+| 4 | 👥 [Founding an AGI Startup, Part 3: The Founding Team](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-03-founding-team.html) | 29 min |
+| 5 | 💰 [Founding an AGI Startup, Part 4: Seed Capital](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-04-seed-capital.html) | 28 min |
+| 6 | 🖥️ [Founding an AGI Startup, Part 5: Office, Ops & Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-05-office-ops-infrastructure.html) | 26 min |
+| 7 | 🏗️ [Founding an AGI Startup, Part 6: Building the Product](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-06-building-product.html) | 27 min |
+| 8 | 🔬 [Founding an AGI Startup, Part 7: The Research Function](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-07-research-function.html) | 26 min |
+| 9 | 📣 [Founding an AGI Startup, Part 8: Go-to-Market & Marketing](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-08-gtm-marketing.html) | 27 min |
+| 10 | 🤝 [Founding an AGI Startup, Part 9: Sales & Early Customers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-09-sales-early-customers.html) | 27 min |
+| 11 | 📈 [Founding an AGI Startup, Part 10: Scaling & Series A](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-10-scaling-series-a.html) | 27 min |
+| 12 | ⚔️ [Founding an AGI Startup, Part 11: Surviving the Market (Series Finale)](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-11-surviving-market.html) | 28 min |
+| 13 | 🧮 [Founding an AGI Startup, Part 12 (Bonus): Financial Modeling](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/founding-agi-startup-12-financial-modeling.html) | 29 min |
+
+</details>
+
+#### 🎯 AGI Startup Lane Deep Dives: Three Bets, Two Angles Each
+
+Team profiles and a look inside each of the three strategic lanes — frontier scale-first, the applied & agentic layer, and the narrow research bet.  
+<sub>7 articles</sub>
+
+<details><summary>Show all 7 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🔴 [Building an AGI Startup: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane1-frontier-scale.html) | 50 min |
+| 2 | 🔵 [Building an AGI Startup: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane2-applied-agentic.html) | 50 min |
+| 3 | 🟢 [Building an AGI Startup: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-lane3-narrow-research-bet.html) | 50 min |
+| 4 | 🧑‍💼 [Building an AGI Startup: Who You'd Actually Hire](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/building-agi-startup-team-profiles-resumes.html) | 45 min |
+| 5 | 🔴 [Inside an AGI Startup Team: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane1-frontier-scale.html) | 55 min |
+| 6 | 🔵 [Inside an AGI Startup Team: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane2-applied-agentic.html) | 55 min |
+| 7 | 🟢 [Inside an AGI Startup Team: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/inside-agi-team-lane3-narrow-research-bet.html) | 55 min |
+
+</details>
+
+#### 💼 Economics & Society: What AI Progress Does to the Rest of the World
+
+Two pieces on the productivity paradox — what happens to jobs, growth, and the shape of the economy as AI adoption accelerates.  
+<sub>2 articles</sub>
+
+<details><summary>Show all 2 articles</summary>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-layoffs.html) | 24 min |
+| 2 | 🌐 [The AI Productivity Paradox: When Economic Growth Stops Needing Humans](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-productivity-paradox-civilization.html) | 20 min |
+
+</details>
+
+
+### 📝 More articles (not in a series)
+
+<details><summary>Show 2 more articles</summary>
+
+| Article | Date |
+|---|---|
+| 📅 [August 2026: The Month in Review](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-august-2026.html) | 2026-08-30 |
+| 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-news-june-22-2026.html) | 2026-06-22 |
+
+</details>
+
+<!-- SERIES:END -->
 
 ---
 
-## 🗂 File Structure
+<a id="contributors"></a>
+## 🛠️ For contributors
+
+**Structure**
 
 ```
-FrontierAGI-Academy/
-├── index.html              ← Home page
-├── styles.css              ← All CSS (single file)
-├── app.js                  ← All JS (single file)
-├── pages/                  ← All sub-pages
-│   ├── blog.html           ← Blog listing
-│   ├── frontier-timeline.html
-│   ├── future-frontier.html
-│   ├── llm-engineering.html
-│   ├── ai-news.html
-│   ├── india-ai.html
-│   ├── china-ai.html
-│   └── usa-ai.html
-├── blog/                   ← Blog posts
-│   ├── index.json          ← Post manifest (source of truth)
-│   ├── _template.html      ← Copy to create a new post
-│   └── [slug].html         ← Individual post files
-├── docs/
-│   └── CONTRIBUTING.md     ← How to add pages and blog posts
-├── scripts/
-│   └── update_readme.py    ← Auto-updates blog list above
-└── CLAUDE.md               ← AI agent context file
+index.html        homepage          pages/        maps, hubs and other pages
+styles.css        all CSS           blog/         articles + index.json (post manifest)
+app.js            all JS            data/         data behind the maps (hand-curated, sourced)
+partials/nav.html shared nav        scripts/      build, checks, importers, README tools
 ```
 
----
+**Build and check** (run after any change):
 
-## 🛠 Tech Stack
+```bash
+python3 scripts/build.py          # nav, SEO tags, sitemap, series, this README
+python3 scripts/build.py --check  # what CI runs: stale files, broken links, data validators
+```
 
-- **Pure HTML5 / CSS3 / Vanilla JS** — no framework, no bundler
-- **GitHub Pages** — static hosting, zero config
-- **GitHub Actions** — auto-updates the blog list in this README on every push
+**Adding things**
 
----
+- **An article:** copy `blog/_template.html`, add it to `blog/index.json`, and add its card to the right series grid on `index.html` (card order = series order). Run the build.
+- **A release, score or milestone:** add one sourced item to `data/lab-updates.json`, `data/model-releases.json`, `data/benchmarks.json` or `data/stack-innovations.json`. The validators reject missing sources, unknown labs and bad dates.
+- **A map in this README:** add it to `data/readme-maps.json`, then refresh the pictures with `node scripts/readme_shots.js` (needs Playwright and ffmpeg).
 
-## ➕ Adding Content
+**Automation:** a daily workflow refreshes the Hugging Face paper and RSI catalogue data; a weekly review drafts new releases, benchmark scores and stack milestones as a pull request.
 
-See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for step-by-step guides on:
-- Adding a new blog post (copy template → fill in → add to `blog/index.json`)
-- Adding a new page (copy existing page → update nav panels across all files)
+More detail: [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) · project notes for AI agents: [`CLAUDE.md`](CLAUDE.md).
 
-When you push a new entry to `blog/index.json`, the GitHub Action automatically regenerates the blog list in this README.
-
----
-
-## 🤖 Auto-Update
-
-The **Blog Posts** list above is auto-generated from `blog/index.json` by `.github/workflows/update-readme.yml`. It runs on every push that touches `blog/index.json` or any `blog/*.html` file. No manual README edits needed when adding or removing posts.
+<sub>Claude, made by Anthropic, helps write this site.</sub>
