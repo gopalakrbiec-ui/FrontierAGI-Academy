@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "ai-bubble-explained",
+      "title": "Is AI a Bubble? Triggers, Impacts, Timing and How to Prepare",
+      "excerpt": "Is the AI boom a bubble? The full timeline of warnings (2023 → Nov 2026), how much is being spent versus earned, circular financing and the rise of debt, October 2026's stress test, the case against, triggers, impacts, timing and how to prepare.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-03",
+      "readTime": "18 min",
+      "tags": [
+        "Markets",
+        "AI Economy"
+      ],
+      "emoji": "🫧",
+      "featured": false
+    },
+    {
       "slug": "maestro-s2-operating-cadence",
       "title": "The Maestro, Season 2, Part 4: The Operating Cadence",
       "excerpt": "The company's operating system: the meeting rhythm, quarterly goals tied to the strategy, a weekly review built on input metrics, a decision table checked for self-approval, a reviewer roster that keeps the gate independent at 40 people, the board, and the incident that tested it.",

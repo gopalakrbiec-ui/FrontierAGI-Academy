@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**294 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-02
+**295 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-03
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -349,8 +349,6 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 Phase 0 (the idea) → Phase 1 (securing the machine) → Phase 2 (building the model) → Phase 3 (proving it is safe and good) → Phase 4 (shipping products). 18 parts, published phase by phase.  
 <sub>18 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro.html)</sub>
 
-🆕 *Newest series.*
-
 | # | Article | Read |
 |---|---|---|
 | 1 | 🧭 [The Maestro, Part 1: Finding the Moat in a Self-Improving (L4) Model](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-l4-moat.html) | 40 min |
@@ -475,7 +473,9 @@ The history of neural network architectures, the separate thread of learning tec
 #### 🔍 Topic Explainers: Standalone Deep Dives
 
 World models, retrieval, agents, safety, reasoning, chips, robotics, multimodality, voice, image/video, pricing, agentic loop engineering, brain–computer interfaces, and fresh launches like TypeSafe's Jev — each explained on its own.  
-<sub>18 articles</sub>
+<sub>19 articles</sub>
+
+🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|
@@ -497,6 +497,7 @@ World models, retrieval, agents, safety, reasoning, chips, robotics, multimodali
 | 16 | 🧠 [Brain–Computer Interfaces: The Chip Inside the Skull and the AI Outside It](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/brain-computer-interfaces.html) | 24 min |
 | 17 | 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ssi-complete-investigation.html) | 110 min |
 | 18 | 🔎 [How to Read a Paper Like a Researcher](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-to-read-a-paper-like-a-researcher.html) | 60 min |
+| 19 | 🫧 [Is AI a Bubble? Triggers, Impacts, Timing and How to Prepare](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ai-bubble-explained.html) | 18 min |
 
 #### 🗂️ The Model Lineage Series
 
