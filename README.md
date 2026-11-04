@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**300 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-03
+**305 articles** · **31 series** · **15 interactive maps** + **9 series hubs** · newest post 2026-11-04
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -373,7 +373,7 @@ Phase 0 (the idea) → Phase 1 (securing the machine) → Phase 2 (building the 
 #### 🎼 The Maestro, Season 2: Scaling the Factory
 
 Phase 5 (founder to CEO) → Phase 6 (the research engine) → Phase 7 (Maestro-2) → Phase 8 (the product grows up) → Phase 9 (competing at the frontier). 23 parts, published phase by phase; Phase 5 is out now.  
-<sub>9 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html)</sub>
+<sub>14 articles · 🧭 [Hub page](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html)</sub>
 
 🆕 *Newest series.*
 
@@ -388,6 +388,11 @@ Phase 5 (founder to CEO) → Phase 6 (the research engine) → Phase 7 (Maestro-
 | 7 | 🎯 [The Maestro, Season 2, Part 7: Hunting the Next Moat](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-next-moat.html) | 5 min |
 | 8 | 🏗️ [The Maestro, Season 2, Part 8: Environments as the Asset](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-environments.html) | 5 min |
 | 9 | 🛑 [The Maestro, Season 2, Part 9: When Research Says No](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-research-says-no.html) | 5 min |
+| 10 | 📐 [The Maestro, Season 2, Part 10: Sizing Maestro-2](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-sizing.html) | 8 min |
+| 11 | 🖥️ [The Maestro, Season 2, Part 11: Scaling the Machine](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-scaling-machine.html) | 7 min |
+| 12 | 📜 [The Maestro, Season 2, Part 12: Crossing the EU Line](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-eu-line.html) | 7 min |
+| 13 | 🧪 [The Maestro, Season 2, Part 13: New Ingredients](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-new-ingredients.html) | 7 min |
+| 14 | 🏋️ [The Maestro, Season 2, Part 14: The Maestro-2 Run](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/maestro-s2-maestro2-run.html) | 7 min |
 
 
 ### 02 · Learn How LLMs Work

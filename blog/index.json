@@ -1,6 +1,81 @@
 {
   "posts": [
     {
+      "slug": "maestro-s2-maestro2-run",
+      "title": "The Maestro, Season 2, Part 14: The Maestro-2 Run",
+      "excerpt": "Sixty-two days on 4,096 GPUs: 117 interruptions, one night of loss spikes and a rollback, 90.8% goodput, and a sealed evaluation waiting at the end. Closes Phase 7.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "7 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🏋️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-new-ingredients",
+      "title": "The Maestro, Season 2, Part 13: New Ingredients",
+      "excerpt": "Seven candidate ideas tested at two scales with three seeds: multi-token prediction, aux-loss-free balancing and environment data survive, three ideas that only help small models are dropped, and FP8 cuts the run by 21 days and $5M.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "7 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧪",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-eu-line",
+      "title": "The Maestro, Season 2, Part 12: Crossing the EU Line",
+      "excerpt": "Once every training stage is counted, Maestro-2 is 3.7% over the AI Act's 10^25 FLOP line. Shave the model or cross on purpose? The ledger, the Article 52–55 duties and their cost (~11% of the compute bill).",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "7 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📜",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-scaling-machine",
+      "title": "The Maestro, Season 2, Part 11: Scaling the Machine",
+      "excerpt": "Why 4,096 GPUs: at this scale the run is a reliability problem. Interruptions at the Llama 3 rate, a checkpoint every 54 minutes, and a contract written around failure rather than price.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "7 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🖥️",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-sizing",
+      "title": "The Maestro, Season 2, Part 10: Sizing Maestro-2",
+      "excerpt": "Phase 7 opens as a story: before sizing a new model, the research director triages 400 failures (only 21% need a stronger model), then a scaling law and the serving bill pick 32B active parameters × 50T tokens, 4% under the EU compute line.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "8 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📐",
+      "featured": false
+    },
+    {
       "slug": "maestro-s2-research-says-no",
       "title": "The Maestro, Season 2, Part 9: When Research Says No",
       "excerpt": "Killing a favourite direction with criteria written in advance: the long-horizon agent test fails 3 of 4 criteria, a sunk-cost check shows why stopping wins, and how the team is redeployed. Closes Phase 6.",
