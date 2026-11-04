@@ -271,7 +271,12 @@
         "maestro-s2-scaling-machine",
         "maestro-s2-eu-line",
         "maestro-s2-new-ingredients",
-        "maestro-s2-maestro2-run"
+        "maestro-s2-maestro2-run",
+        "maestro-s2-agent-platform",
+        "maestro-s2-harness-product",
+        "maestro-s2-model-agnostic",
+        "maestro-s2-enterprise",
+        "maestro-s2-adoption-metrics"
       ]
     },
     {

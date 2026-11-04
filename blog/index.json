@@ -1,6 +1,81 @@
 {
   "posts": [
     {
+      "slug": "maestro-s2-adoption-metrics",
+      "title": "The Maestro, Season 2, Part 19: Adoption Metrics That Matter",
+      "excerpt": "Sessions up 60%, hours saved up 8%: the company was measuring activity. It picks one north star (merged changes still in place after 30 days) and watches net revenue retention (platform 165%). Closes Phase 8.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "6 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "📈",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-enterprise",
+      "title": "The Maestro, Season 2, Part 18: Enterprise Adoption",
+      "excerpt": "Enterprise deals are won in the pilot and lost in the security review: 14.6 of 100 opportunities sign after 30 weeks. A trust pack built from EU and gate documents turns compliance into the best sales asset.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "5 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🏢",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-model-agnostic",
+      "title": "The Maestro, Season 2, Part 17: Model-Agnostic or Not?",
+      "excerpt": "Route each task to the cheapest model within 2 points of the best: 65% Maestro-2, 20% a small open model, 15% an external frontier API. What happens to margins when that provider changes its terms, and why a warm fallback matters.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "6 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🔌",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-harness-product",
+      "title": "The Maestro, Season 2, Part 16: The Harness as Product",
+      "excerpt": "One model, four harnesses: merged changes rise from 32% to 59% with generate-check-fix plus a taste review. Then the harness starts proposing changes to itself: bounded L5 in a product, with a judge it may never touch.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "7 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🧰",
+      "featured": false
+    },
+    {
+      "slug": "maestro-s2-agent-platform",
+      "title": "The Maestro, Season 2, Part 15: From PR Bot to Agent Platform",
+      "excerpt": "Phase 8 opens with the sealed evaluation: Maestro-2 fixes 44 of 83 target failures and gains +5.2 points (95% CI +2.5 to +8.0) with six regressions. Then the product grows from a PR bot into a platform and an API for other agents.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-04",
+      "readTime": "6 min",
+      "tags": [
+        "AI Factories",
+        "Maestro"
+      ],
+      "emoji": "🤖",
+      "featured": false
+    },
+    {
       "slug": "maestro-s2-maestro2-run",
       "title": "The Maestro, Season 2, Part 14: The Maestro-2 Run",
       "excerpt": "Sixty-two days on 4,096 GPUs: 117 interruptions, one night of loss spikes and a rollback, 90.8% goodput, and a sealed evaluation waiting at the end. Closes Phase 7.",
