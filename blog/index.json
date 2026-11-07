@@ -1,6 +1,96 @@
 {
   "posts": [
     {
+      "slug": "agentic-systems-map",
+      "title": "Four Ways to Build an Agent: Frameworks, Harnesses, Runtimes and Builders",
+      "excerpt": "Agent frameworks, harnesses, runtimes and builders solve different problems. A map of the four, a chooser, and the start of a series that takes the main agent systems apart one by one.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "5 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "🧭",
+      "featured": false
+    },
+    {
+      "slug": "agentic-claude-code",
+      "title": "Claude Code, Taken Apart: How an Agent Harness Works",
+      "excerpt": "Anthropic's coding agent as the clearest example of a harness: one general loop, strong built-in tools, and memory, permissions, hooks, skills, MCP and subagents added as configuration. One task traced box by box.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "7 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "🧰",
+      "featured": false
+    },
+    {
+      "slug": "agentic-codex",
+      "title": "Codex, Taken Apart: Local Agent and Cloud Tasks",
+      "excerpt": "OpenAI's Codex is two harnesses under one name: an open-source CLI that runs on your computer and cloud tasks that run in parallel containers and hand back diffs.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "6 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "☁️",
+      "featured": false
+    },
+    {
+      "slug": "agentic-gemini-jules",
+      "title": "Gemini CLI, Antigravity and Jules, Taken Apart: Google’s Two Kinds of Harness",
+      "excerpt": "Google's interactive terminal agent (Gemini CLI, whose free access moved to Antigravity CLI in June 2026) and its asynchronous cloud agent Jules, traced through the same task.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "6 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "🐙",
+      "featured": false
+    },
+    {
+      "slug": "agentic-deep-agents",
+      "title": "Deep Agents, Taken Apart: A Harness You Can Embed",
+      "excerpt": "LangChain's open-source Deep Agents packages planning, sub-agents, a pluggable filesystem and context management into a library built on LangGraph.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "6 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "🕸️",
+      "featured": false
+    },
+    {
+      "slug": "agentic-hermes-agent",
+      "title": "Hermes Agent, Taken Apart: The Self-Improving Harness",
+      "excerpt": "Nous Research's MIT-licensed agent curates its own memory, searches past sessions, writes its own skills and talks to you from chat apps: a Level 4 pattern on the RSI ladder.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-07",
+      "readTime": "6 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "📚",
+      "featured": false
+    },
+    {
       "slug": "maestro-s2-adoption-metrics",
       "title": "The Maestro, Season 2, Part 19: Adoption Metrics That Matter",
       "excerpt": "Sessions up 60%, hours saved up 8%: the company was measuring activity. It picks one north star (merged changes still in place after 30 days) and watches net revenue retention (platform 165%). Closes Phase 8.",

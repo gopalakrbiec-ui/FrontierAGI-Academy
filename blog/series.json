@@ -227,6 +227,20 @@
       ]
     },
     {
+      "id": "sec-agentic",
+      "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
+      "short": "Agentic AI System Designs",
+      "icon": "🧩",
+      "slugs": [
+        "agentic-systems-map",
+        "agentic-claude-code",
+        "agentic-codex",
+        "agentic-gemini-jules",
+        "agentic-deep-agents",
+        "agentic-hermes-agent"
+      ]
+    },
+    {
       "id": "sec-maestro",
       "title": "The Maestro: Building a Frontier AI Factory From Zero",
       "short": "The Maestro",
