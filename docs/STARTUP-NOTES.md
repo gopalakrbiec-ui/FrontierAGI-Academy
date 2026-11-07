@@ -142,6 +142,19 @@ Added 3 Nov 2026 by the owner as a reference for the Maestro series (Season 2, P
 - The "mandatory safety evaluation before every release" box matches Maestro's fixed human gate (Season 1, Part 11).
 - Compare against the site's own, sourced map of the same layers: the Inside the Agent Layer series (sandboxes, durable execution, tool gateways and MCP, identity, memory, observability, RL environments).
 
+## Reference: "Agent framework vs. agent harness vs. agent runtime vs. agent builder" infographic (third party)
+
+Added 7 Nov 2026. Transcribed from an infographic shared by the owner, credited on the image to Denis Panjuta (@denis-panjuta). A third-party summary, not a primary source: product placements are the author's, so check vendors' own pages before citing any of them on the site.
+
+| Category | What you do | How it works | Examples named on the image | When to use (per the image) |
+|---|---|---|---|---|
+| Agent framework | You assemble the parts | Start → model adapters → branch → tools / custom step → state → end; follows the flow you defined | LangChain, CrewAI, Google ADK, OpenAI Agents SDK | You can draw the workflow up front |
+| Agent harness | You configure a working agent | Model at the centre with tools, files and shell, context, memory and subagents; you add your instructions, skills, tools and data | Hermes Agent, Codex, Deep Agents, Claude Code | The task is open-ended and long-running |
+| Agent runtime | You deploy and operate the agent | Users and events → your agent, wrapped in autoscaling, state and sessions, identity and auth, tracing; keeps any agent running in production | Amazon Bedrock AgentCore, LangSmith Deployment, Temporal | The agent has to run reliably at scale |
+| Agent builder | You design an agent visually | Trigger → AI agent (model, memory, tools) → action, add steps; drag, drop and prompt, little or no code | n8n, Zapier Agents, Microsoft Copilot Studio, Make | Business teams automating without code |
+
+**Where it fits in the Maestro series:** a vocabulary for Season 2, Phase 8–9. Maestro's own product is a *harness* (S2 Part 16) running on its own *runtime* (Season 1, Part 17 operations; Agent Layer series), and the agent platform (S2 Part 15) lets customers configure agents on that harness, close to the "builder" quadrant for less technical buyers. Phase 9 ("When a frontier lab ships your product") can use the quadrant to show where frontier labs compete (harnesses) versus where Maestro differentiates (gate, skills, environments). When used on the site, add the Claude/Anthropic disclosure (Claude Code is named) and label it as a third-party framing.
+
 ## Across the conversations
 
 - Both stress verification loops.
