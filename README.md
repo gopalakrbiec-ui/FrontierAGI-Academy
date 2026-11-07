@@ -343,7 +343,7 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 
 #### 🧩 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 
-Four kinds of agent system (frameworks, harnesses, runtimes, builders) and one teardown per system: case file, architecture, one task traced end to end, and when to choose it. Wave 1: the map and five harnesses.  
+Four kinds of agent system (frameworks, harnesses, runtimes, builders), each system dismantled layer by layer: an eight-layer architecture, one task traced through it, failure modes, security, how to build one from scratch and what it costs. Wave 1: the map and five harnesses.  
 <sub>6 articles</sub>
 
 🆕 *Newest series.*
@@ -351,11 +351,11 @@ Four kinds of agent system (frameworks, harnesses, runtimes, builders) and one t
 | # | Article | Read |
 |---|---|---|
 | 1 | 🧭 [Four Ways to Build an Agent: Frameworks, Harnesses, Runtimes and Builders](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-systems-map.html) | 5 min |
-| 2 | 🧰 [Claude Code, Taken Apart: How an Agent Harness Works](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-claude-code.html) | 7 min |
-| 3 | ☁️ [Codex, Taken Apart: Local Agent and Cloud Tasks](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-codex.html) | 6 min |
-| 4 | 🐙 [Gemini CLI, Antigravity and Jules, Taken Apart: Google’s Two Kinds of Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-gemini-jules.html) | 6 min |
-| 5 | 🕸️ [Deep Agents, Taken Apart: A Harness You Can Embed](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-deep-agents.html) | 6 min |
-| 6 | 📚 [Hermes Agent, Taken Apart: The Self-Improving Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-hermes-agent.html) | 6 min |
+| 2 | 🧰 [Claude Code, Taken Apart: How an Agent Harness Works](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-claude-code.html) | 14 min |
+| 3 | ☁️ [Codex, Taken Apart: Local Agent and Cloud Tasks](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-codex.html) | 12 min |
+| 4 | 🐙 [Gemini CLI, Antigravity and Jules, Taken Apart: Google’s Two Kinds of Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-gemini-jules.html) | 11 min |
+| 5 | 🕸️ [Deep Agents, Taken Apart: A Harness You Can Embed](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-deep-agents.html) | 11 min |
+| 6 | 📚 [Hermes Agent, Taken Apart: The Self-Improving Harness](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-hermes-agent.html) | 11 min |
 
 
 ### Run the Machine · The Maestro
