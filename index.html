@@ -196,6 +196,26 @@
       .home-jump-toggle { display: flex; }
     }
 
+    /* Section pointers v2: grouped table of contents, "you are here" bar, next-section links */
+    .home-jumpnav .jn-grp { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; border: 0; cursor: pointer; font-family: inherit; text-align: left; font-size: 0.74rem; font-weight: 800; color: var(--accent); background: #eef2ff; padding: 8px 10px; border-radius: 8px; margin-top: 6px; }
+    .home-jumpnav .jn-grp:hover { background: #e0e7ff; } .home-jumpnav .jn-grp i { font-style: normal; transition: transform .2s; } .home-jumpnav .jn-grp[aria-expanded="true"] i { transform: rotate(90deg); }
+    .home-jumpnav .jn-grp.is-active { background: #4338ca; color: #fff; }
+    .home-jumpnav .jn-kids { display: none; flex-direction: column; gap: 3px; padding-left: 6px; border-left: 2px solid #e0e7ff; margin-left: 4px; } .home-jumpnav .jn-kids.open { display: flex; }
+    .home-jumpnav a { display: flex; align-items: center; gap: 6px; } .home-jumpnav a .jn-t { flex: 1; min-width: 0; }
+    .home-jumpnav a .jn-n { font-size: .64rem; font-weight: 700; color: #6b7280; background: #fff; border: 1px solid #e5e7eb; border-radius: 99px; padding: 0 6px; }
+    .home-jumpnav a .jn-new { font-size: .58rem; font-weight: 800; color: #fff; background: #dc2626; border-radius: 99px; padding: 1px 5px; }
+    .home-jumpnav a.jn-map { background: #fffbeb; } .home-jumpnav a.jn-go { background: #eef2ff; }
+    .home-jumpnav a.is-active { background: #4338ca; color: #fff; } .home-jumpnav a.is-active .jn-n { color: #4338ca; }
+    .home-here { position: fixed; top: 94px; left: 0; right: 0; z-index: 44; display: flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255, 255, 255, .96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); font-size: .8rem; transform: translateY(-110%); transition: transform .25s; }
+    .home-here.show { transform: none; }
+    .home-here .hh-path { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #374151; } .home-here .hh-path b { color: #4338ca; } .home-here .hh-path span { color: #9ca3af; margin: 0 4px; }
+    .home-here button { flex: none; border: 1px solid var(--border); background: #fff; border-radius: 99px; min-width: 34px; height: 30px; padding: 0 10px; font: inherit; font-weight: 800; color: #4338ca; cursor: pointer; } .home-here button:hover { background: #eef2ff; } .home-here button:disabled { opacity: .35; cursor: default; }
+    .home-here .hh-all { display: none; } @media (max-width: 1600px) { .home-here .hh-all { display: inline-block; } }
+    .home-next { display: block; width: fit-content; margin: 12px auto 0; font-size: .8rem; font-weight: 700; color: #4338ca; text-decoration: none; background: #eef2ff; border-radius: 99px; padding: 6px 14px; } .home-next:hover { background: #e0e7ff; }
+    [id^="sec-"], [id^="grp-"], .home-idea-embed { scroll-margin-top: 146px; } .home-layer-anchor { scroll-margin-top: 36px; }
+    @media (max-width: 768px) { .home-here { font-size: .74rem; padding: 5px 8px; gap: 5px; } .home-here button { min-width: 30px; padding: 0 8px; } }
+    @media (prefers-reduced-motion: reduce) { .home-here { transition: none; } }
+
     /* Collapsible section grids */
     .home-grid-collapsible.is-collapsed { display: none; }
     .home-grid-toggle {
@@ -417,7 +437,7 @@
     @media (max-width: 600px) { .home-series-grid, .home-rsi-grid, .home-lineage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-series-card-title, .home-rsi-card-title, .home-lineage-card-title { -webkit-line-clamp: 4; } }
     /* ── Neuron-network background (homepage only) ── */
     #neuronBg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; display: block; }
-    .home-hero, .home-section, .pipeline-section, .home-jumpbar-wrap, .footer { position: relative; z-index: 1; }
+    .home-hero, .home-section, .pipeline-section, .footer { position: relative; z-index: 1; }
     .home-hero { background: linear-gradient(135deg, rgba(248,250,252,0.72) 0%, rgba(238,242,255,0.72) 45%, rgba(245,240,255,0.72) 100%); }
     .home-section.alt { background: rgba(250,250,251,0.62); }
     .pipeline-section { background: rgba(251,251,254,0.62); }
@@ -1748,6 +1768,7 @@
     <a href="#grp-evallayer">Inside the Evaluation Layer</a>
     <a href="#grp-agentlayer">Inside the Agent Layer</a>
     <a href="#grp-agentic">Agentic AI System Designs</a>
+    <a href="#grp-run" class="jn-group">Run the Machine</a>
     <a href="#grp-maestro">The Maestro</a>
     <a href="#grp-maestro2">The Maestro, Season 2</a>
     <a href="#sec-llm-lifecycle" class="jn-group">02 · How LLMs Are Built</a>
@@ -3285,12 +3306,57 @@
   function toggleJumpPanel() {
     document.getElementById('homeJumpPanel').classList.toggle('is-open');
   }
+  // Section pointers v2: the hand-written links in #homeJumpNav are the base list; maps are added
+  // from the page, everything is ordered by position, grouped, counted and tracked while scrolling.
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#homeJumpNav a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.getElementById('homeJumpPanel').classList.remove('is-open');
-      });
-    });
+    const nav = document.getElementById('homeJumpNav'), panel = document.getElementById('homeJumpPanel');
+    const NEWEST = ['grp-agentic', 'grp-maestro2'];
+    const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const topOf = el => el.getBoundingClientRect().top + window.scrollY;
+    const items = [];
+    nav.querySelectorAll('a').forEach(a => { const id = a.getAttribute('href').slice(1), el = document.getElementById(id); if (el) items.push({ id, el, label: a.textContent.trim(), group: a.classList.contains('jn-group'), map: false }); });
+    document.querySelectorAll('.home-idea-embed').forEach((em, i) => { const t = em.querySelector('.home-rsimap-title'); if (!t) return; if (!em.id) em.id = 'map-' + (i + 1);
+      const prev = em.previousElementSibling; if (prev && prev.classList.contains('home-layer-anchor') && items.some(x => x.id === prev.id)) return;
+      items.push({ id: em.id, el: em, label: t.textContent.split(':')[0].trim(), group: false, map: true }); });
+    items.forEach(x => { x.y = topOf(x.el) + (x.group ? -1 : 0); });
+    items.sort((a, b) => a.y - b.y);
+    const countOf = x => { if (x.map || x.group) return 0; let sp = x.el.matches('[class*="-spotlight"]') ? x.el : x.el.nextElementSibling; if (!sp || !sp.matches('[class*="-spotlight"]')) return 0; return sp.querySelectorAll('.home-rsi-card, .home-lineage-card, .home-series-card').length; };
+    let html = '', open = false, gi = -1;
+    items.forEach((x, i) => { x.i = i;
+      if (x.group) { if (open) html += '</div>'; gi++; x.g = gi; html += '<button type="button" class="jn-grp" data-g="' + gi + '" data-i="' + i + '" aria-expanded="false"><span>' + x.label + '</span><i>›</i></button><div class="jn-kids" data-g="' + gi + '"><a href=\x22#' + x.id + '\x22 data-i="' + i + '" class="jn-go"><span class="jn-t">↳ Go to section</span></a>'; open = true; return; }
+      x.g = gi; const n = countOf(x);
+      html += '<a href=\x22#' + x.id + '\x22 data-i="' + i + '"' + (x.map ? ' class="jn-map"' : '') + '><span class="jn-t">' + (x.map ? '🗺️ ' : '') + x.label + '</span>' + (NEWEST.includes(x.id) ? '<span class="jn-new">NEW</span>' : '') + (n ? '<span class="jn-n">' + n + '</span>' : '') + '</a>'; });
+    if (open) html += '</div>';
+    nav.innerHTML = html;
+    const go = i => { const x = items[i]; if (!x) return; x.el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); history.replaceState(null, '', '#' + x.id); };
+    const openGroup = g => { nav.querySelectorAll('.jn-kids').forEach(k => k.classList.toggle('open', +k.dataset.g === g)); nav.querySelectorAll('.jn-grp').forEach(b => b.setAttribute('aria-expanded', String(+b.dataset.g === g))); };
+    nav.addEventListener('click', e => { const b = e.target.closest('.jn-grp'); if (b) { const g = +b.dataset.g, isOpen = b.getAttribute('aria-expanded') === 'true'; openGroup(isOpen ? -1 : g); return; }
+      const a = e.target.closest('a'); if (a) { e.preventDefault(); panel.classList.remove('is-open'); go(+a.dataset.i); } });
+    // "You are here" bar
+    const bar = document.createElement('div'); bar.className = 'home-here'; bar.setAttribute('aria-label', 'Current section');
+    bar.innerHTML = '<button type="button" class="hh-prev" aria-label="Previous section">‹</button><div class="hh-path"></div><button type="button" class="hh-all">☰ Sections</button><button type="button" class="hh-next" aria-label="Next section">›</button>';
+    document.body.appendChild(bar);
+    const path = bar.querySelector('.hh-path'), bp = bar.querySelector('.hh-prev'), bn = bar.querySelector('.hh-next');
+    let cur = -1;
+    bp.onclick = () => go(Math.max(0, cur - 1)); bn.onclick = () => go(Math.min(items.length - 1, cur + 1));
+    bar.querySelector('.hh-all').onclick = () => panel.classList.toggle('is-open');
+    // Next-section links under every series block
+    items.forEach((x, i) => { if (x.group || x.map) return; let sp = x.el.matches('[class*="-spotlight"]') ? x.el : x.el.nextElementSibling; const nx = items.slice(i + 1).find(y => !y.group) ; if (!sp || !sp.matches('[class*="-spotlight"]') || !nx) return;
+      const a = document.createElement('a'); a.className = 'home-next'; a.href = '#' + nx.id; a.textContent = 'Next: ' + (nx.map ? '🗺️ ' : '') + nx.label + ' ↓'; a.addEventListener('click', e => { e.preventDefault(); go(nx.i); }); sp.appendChild(a); });
+    let tick = false;
+    const track = () => { tick = false; const y = window.scrollY + 170; items.forEach(x => { x.y = topOf(x.el); });
+      let c = -1; items.forEach((x, i) => { if (x.y <= y) c = i; });
+      bar.classList.toggle('show', c >= 0 && window.scrollY > 300);
+      if (c === cur) return; cur = c; if (c < 0) return;
+      const x = items[c], grp = items.find(z => z.group && z.g === x.g);
+      path.innerHTML = (grp && grp !== x ? '<b>' + grp.label + '</b><span>›</span>' : '') + (x.group ? '<b>' + x.label + '</b>' : (x.map ? '🗺️ ' : '') + x.label);
+      bp.disabled = c <= 0; bn.disabled = c >= items.length - 1;
+      nav.querySelectorAll('.is-active').forEach(el => el.classList.remove('is-active'));
+      const act = x.group ? nav.querySelector('.jn-grp[data-i="' + c + '"]') : nav.querySelector('a[data-i="' + c + '"]');
+      if (act) { act.classList.add('is-active'); if (!document.getElementById('articleSearch').value) { openGroup(x.g); const r = act.getBoundingClientRect(), pr = panel.getBoundingClientRect(); if (pr.height && (r.top < pr.top + 60 || r.bottom > pr.bottom - 10)) panel.scrollTop += r.top - pr.top - pr.height / 2; } } };
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(track); } }, { passive: true });
+    window.addEventListener('resize', track);
+    openGroup(0); track();
   });
 
   // Every spotlight starts fully collapsed (title + description only) with a Show/Hide toggle.
