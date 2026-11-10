@@ -163,7 +163,7 @@
 
     /* Jump nav + search */
     .home-jumpbar-wrap {
-      position: fixed; top: 50%; right: 18px; transform: translateY(-50%);
+      position: fixed; top: 50%; left: 18px; transform: translateY(-50%);
       width: 216px; max-height: 80vh; overflow-y: auto;
       background: #fff; border: 1px solid var(--border); border-radius: 14px;
       padding: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); z-index: 45;
@@ -182,7 +182,7 @@
     .home-search-empty { text-align: left; color: var(--text-muted); font-size: 0.76rem; padding: 10px 0 0; }
 
     .home-jump-toggle {
-      display: none; position: fixed; bottom: 22px; right: 20px; z-index: 46;
+      display: none; position: fixed; bottom: 22px; left: 20px; z-index: 46;
       width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
       background: #4338ca; color: #fff; font-size: 1.3rem; box-shadow: 0 6px 16px rgba(0,0,0,0.25);
       align-items: center; justify-content: center;
@@ -210,7 +210,7 @@
     .home-here.show { transform: none; }
     .home-here .hh-path { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #374151; } .home-here .hh-path b { color: #4338ca; } .home-here .hh-path span { color: #9ca3af; margin: 0 4px; }
     .home-here button { flex: none; border: 1px solid var(--border); background: #fff; border-radius: 99px; min-width: 34px; height: 30px; padding: 0 10px; font: inherit; font-weight: 800; color: #4338ca; cursor: pointer; } .home-here button:hover { background: #eef2ff; } .home-here button:disabled { opacity: .35; cursor: default; }
-    @media (min-width: 1601px) { .home-here { padding-right: 256px; } }
+    @media (min-width: 1601px) { .home-here { padding-left: 256px; } }
     .home-here .hh-all { display: none; } @media (max-width: 1600px) { .home-here .hh-all { display: inline-block; } }
     .home-next { display: block; width: fit-content; margin: 12px auto 0; font-size: .8rem; font-weight: 700; color: #4338ca; text-decoration: none; background: #eef2ff; border-radius: 99px; padding: 6px 14px; } .home-next:hover { background: #e0e7ff; }
     [id^="sec-"], [id^="grp-"], .home-idea-embed { scroll-margin-top: 146px; } .home-layer-anchor { scroll-margin-top: 36px; }

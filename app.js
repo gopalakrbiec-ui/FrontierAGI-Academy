@@ -858,7 +858,6 @@ function initBackToTop() {
   var C = 2 * Math.PI * 21, b = document.createElement('button');
   b.type = 'button'; b.id = 'toTop'; b.className = 'to-top'; b.setAttribute('aria-label', 'Back to top'); b.title = 'Back to top';
   b.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-bg" cx="24" cy="24" r="21"/><circle class="tt-ring" cx="24" cy="24" r="21" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + C.toFixed(1) + '"/><path class="tt-arrow" d="M24 33V16M16.5 23.5L24 16l7.5 7.5"/></svg>';
-  if (document.getElementById('homeJumpToggle')) b.classList.add('has-fab');
   document.body.appendChild(b);
   var ring = b.querySelector('.tt-ring'), tick = false;
   function upd() { tick = false; var max = document.documentElement.scrollHeight - window.innerHeight, y = window.scrollY || 0;
