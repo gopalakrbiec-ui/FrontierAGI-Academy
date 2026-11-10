@@ -187,14 +187,37 @@
       background: #4338ca; color: #fff; font-size: 1.3rem; box-shadow: 0 6px 16px rgba(0,0,0,0.25);
       align-items: center; justify-content: center;
     }
-    @media (max-width: 1600px) {
+    /* Left contents rail: always visible from 1100px up (after the hero); a sheet behind the 🔍 pill below that */
+    @media (min-width: 1100px) {
+      .home-jumpbar-wrap { top: 104px; bottom: 14px; left: 12px; width: 228px; max-height: none; padding: 12px 12px 12px 16px; transform: translateX(-125%); transition: transform .25s; }
+      body.rail-show .home-jumpbar-wrap { transform: none; }
+      body.rail-min .home-jumpbar-wrap { width: 46px; padding: 8px 6px; overflow: hidden; bottom: auto; }
+      body.rail-min .home-jumpbar-wrap > :not(.jn-mini):not(.jn-prog) { display: none !important; }
+      body:not(.rail-show) .jn-prog { display: none; }
+      body.rail-min .jn-mini { display: flex; }
+    }
+    @media (min-width: 1100px) and (max-width: 1579px) {
+      .home-jumpbar-wrap { width: 208px; }
+      body .home-section, body .pipeline-section, body .footer { padding-left: 226px; transition: padding-left .25s; }
+      body.rail-min .home-section, body.rail-min .pipeline-section, body.rail-min .footer { padding-left: 56px; }
+    }
+    @media (max-width: 1099px) {
       .home-jumpbar-wrap {
         top: auto; bottom: 86px; right: 16px; left: 16px; transform: none;
         width: auto; max-height: 60vh; display: none;
       }
       .home-jumpbar-wrap.is-open { display: block; }
-      .home-jump-toggle { display: flex; }
+      .home-jump-toggle { display: flex; width: auto; max-width: 72vw; height: 48px; padding: 0 16px; border-radius: 99px; gap: 7px; font-size: .8rem; font-weight: 700; font-family: inherit; }
+      .home-jump-toggle .jt-l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .jn-tools .jn-min { display: none; }
     }
+    .jn-tools { display: flex; gap: 6px; margin-bottom: 8px; } .jn-tools button, .jn-mini button { flex: 1; border: 1px solid var(--border); background: #fff; border-radius: 8px; height: 28px; font: inherit; font-weight: 800; color: #4338ca; cursor: pointer; } .jn-tools button:hover, .jn-mini button:hover { background: #eef2ff; } .jn-tools button:disabled { opacity: .35; cursor: default; }
+    .jn-head { position: sticky; top: -12px; z-index: 2; background: #fff; padding-top: 12px; margin-top: -12px; } .jn-head .home-search-input { margin-bottom: 8px; }
+    @media (max-width: 1099px) { .jn-prog { display: none; } .jn-head { top: -16px; padding-top: 16px; margin-top: -16px; } }
+    .jn-prog { position: fixed; left: 12px; top: 104px; z-index: 46; width: 4px; height: 0; background: linear-gradient(#6366f1, #22d3ee); border-radius: 4px 0 4px 0; transition: height .15s linear; }
+    .jn-mini { display: none; flex-direction: column; align-items: center; gap: 9px; } .jn-mini button { flex: none; width: 32px; }
+    .jn-mini i { width: 12px; height: 12px; border-radius: 50%; background: #c7d2fe; cursor: pointer; } .jn-mini i.on { background: #4338ca; box-shadow: 0 0 0 3px #e0e7ff; }
+    .home-jumpnav .jn-grp.has-active { box-shadow: inset 4px 0 0 #4338ca; }
 
     /* Section pointers v2: grouped table of contents, "you are here" bar, next-section links */
     .home-jumpnav .jn-grp { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; border: 0; cursor: pointer; font-family: inherit; text-align: left; font-size: 0.74rem; font-weight: 800; color: var(--accent); background: #eef2ff; padding: 8px 10px; border-radius: 8px; margin-top: 6px; }
@@ -206,16 +229,8 @@
     .home-jumpnav a .jn-new { font-size: .58rem; font-weight: 800; color: #fff; background: #dc2626; border-radius: 99px; padding: 1px 5px; }
     .home-jumpnav a.jn-map { background: #fffbeb; } .home-jumpnav a.jn-go { background: #eef2ff; }
     .home-jumpnav a.is-active { background: #4338ca; color: #fff; } .home-jumpnav a.is-active .jn-n { color: #4338ca; }
-    .home-here { position: fixed; top: 94px; left: 0; right: 0; z-index: 44; display: flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255, 255, 255, .96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); font-size: .8rem; transform: translateY(-110%); transition: transform .25s; }
-    .home-here.show { transform: none; }
-    .home-here .hh-path { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #374151; } .home-here .hh-path b { color: #4338ca; } .home-here .hh-path span { color: #9ca3af; margin: 0 4px; }
-    .home-here button { flex: none; border: 1px solid var(--border); background: #fff; border-radius: 99px; min-width: 34px; height: 30px; padding: 0 10px; font: inherit; font-weight: 800; color: #4338ca; cursor: pointer; } .home-here button:hover { background: #eef2ff; } .home-here button:disabled { opacity: .35; cursor: default; }
-    @media (min-width: 1601px) { .home-here { padding-left: 256px; } }
-    .home-here .hh-all { display: none; } @media (max-width: 1600px) { .home-here .hh-all { display: inline-block; } }
     .home-next { display: block; width: fit-content; margin: 12px auto 0; font-size: .8rem; font-weight: 700; color: #4338ca; text-decoration: none; background: #eef2ff; border-radius: 99px; padding: 6px 14px; } .home-next:hover { background: #e0e7ff; }
-    [id^="sec-"], [id^="grp-"], .home-idea-embed { scroll-margin-top: 146px; } .home-layer-anchor { scroll-margin-top: 36px; }
-    @media (max-width: 768px) { .home-here { font-size: .74rem; padding: 5px 8px; gap: 5px; } .home-here button { min-width: 30px; padding: 0 8px; } }
-    @media (prefers-reduced-motion: reduce) { .home-here { transition: none; } }
+    [id^="sec-"], [id^="grp-"], .home-idea-embed { scroll-margin-top: 110px; } .home-layer-anchor { scroll-margin-top: 0; }
 
     /* Collapsible section grids */
     .home-grid-collapsible.is-collapsed { display: none; }
@@ -3331,24 +3346,41 @@
     const openGroup = g => { nav.querySelectorAll('.jn-kids').forEach(k => k.classList.toggle('open', +k.dataset.g === g)); nav.querySelectorAll('.jn-grp').forEach(b => b.setAttribute('aria-expanded', String(+b.dataset.g === g))); };
     nav.addEventListener('click', e => { const b = e.target.closest('.jn-grp'); if (b) { const g = +b.dataset.g, isOpen = b.getAttribute('aria-expanded') === 'true'; openGroup(isOpen ? -1 : g); return; }
       const a = e.target.closest('a'); if (a) { e.preventDefault(); panel.classList.remove('is-open'); go(+a.dataset.i); } });
-    // "You are here" bar
-    const bar = document.createElement('div'); bar.className = 'home-here'; bar.setAttribute('aria-label', 'Current section');
-    bar.innerHTML = '<button type="button" class="hh-prev" aria-label="Previous section">‹</button><div class="hh-path"></div><button type="button" class="hh-all">☰ Sections</button><button type="button" class="hh-next" aria-label="Next section">›</button>';
-    document.body.appendChild(bar);
-    const path = bar.querySelector('.hh-path'), bp = bar.querySelector('.hh-prev'), bn = bar.querySelector('.hh-next');
+    // Contents rail: prev/next + collapse on top, a page-progress line, and a mini strip when collapsed
+    panel.style.position = 'fixed';
+    const tools = document.createElement('div'); tools.className = 'jn-tools';
+    tools.innerHTML = '<button type="button" class="jn-prev" aria-label="Previous section" title="Previous section">‹</button><button type="button" class="jn-next" aria-label="Next section" title="Next section">›</button><button type="button" class="jn-min" aria-label="Collapse contents" title="Collapse">⇤</button>';
+    const head = document.createElement('div'); head.className = 'jn-head'; panel.insertBefore(head, panel.firstChild);
+    head.appendChild(tools); head.appendChild(document.getElementById('articleSearch'));
+    const centre = () => { const act = nav.querySelector('a.is-active, .jn-grp.is-active'); if (!act) return; const r = act.getBoundingClientRect(), pr = panel.getBoundingClientRect(); if (pr.height) panel.scrollTop += r.top - pr.top - pr.height / 2; };
+    document.getElementById('homeJumpToggle').addEventListener('click', () => setTimeout(centre, 30));
+    const prog = document.createElement('div'); prog.className = 'jn-prog'; panel.appendChild(prog);
+    const mini = document.createElement('div'); mini.className = 'jn-mini';
+    mini.innerHTML = '<button type="button" aria-label="Expand contents" title="Show contents">⇥</button>' + items.filter(x => x.group).map(x => '<i data-i="' + x.i + '" data-g="' + x.g + '" title="' + x.label.replace(/"/g, '') + '"></i>').join('');
+    panel.appendChild(mini);
+    const setMin = v => { document.body.classList.toggle('rail-min', v); try { localStorage.setItem('fa-rail-min', v ? '1' : '0'); } catch (e) {} };
+    try { if (localStorage.getItem('fa-rail-min') === '1') document.body.classList.add('rail-min'); } catch (e) {}
+    tools.querySelector('.jn-min').onclick = () => setMin(true);
+    mini.addEventListener('click', e => { if (e.target.closest('button')) setMin(false); else if (e.target.dataset.i) go(+e.target.dataset.i); });
+    const bp = tools.querySelector('.jn-prev'), bn = tools.querySelector('.jn-next'), tog = document.getElementById('homeJumpToggle');
+    tog.innerHTML = '🔍<span class="jt-l">Sections</span>';
+    const hero = document.querySelector('.home-hero');
     let cur = -1;
     bp.onclick = () => go(Math.max(0, cur - 1)); bn.onclick = () => go(Math.min(items.length - 1, cur + 1));
-    bar.querySelector('.hh-all').onclick = () => panel.classList.toggle('is-open');
     // Next-section links under every series block
     items.forEach((x, i) => { if (x.group || x.map) return; let sp = x.el.matches('[class*="-spotlight"]') ? x.el : x.el.nextElementSibling; const nx = items.slice(i + 1).find(y => !y.group) ; if (!sp || !sp.matches('[class*="-spotlight"]') || !nx) return;
       const a = document.createElement('a'); a.className = 'home-next'; a.href = '#' + nx.id; a.textContent = 'Next: ' + (nx.map ? '🗺️ ' : '') + nx.label + ' ↓'; a.addEventListener('click', e => { e.preventDefault(); go(nx.i); }); sp.appendChild(a); });
     let tick = false;
-    const track = () => { tick = false; const y = window.scrollY + 170; items.forEach(x => { x.y = topOf(x.el); });
+    const track = () => { tick = false; const y = window.scrollY + 130; items.forEach(x => { x.y = topOf(x.el); });
       let c = -1; items.forEach((x, i) => { if (x.y <= y) c = i; });
-      bar.classList.toggle('show', c >= 0 && window.scrollY > 300);
-      if (c === cur) return; cur = c; if (c < 0) return;
-      const x = items[c], grp = items.find(z => z.group && z.g === x.g);
-      path.innerHTML = (grp && grp !== x ? '<b>' + grp.label + '</b><span>›</span>' : '') + (x.group ? '<b>' + x.label + '</b>' : (x.map ? '🗺️ ' : '') + x.label);
+      document.body.classList.toggle('rail-show', window.scrollY > (hero ? hero.offsetHeight - 140 : 300));
+      const max = document.documentElement.scrollHeight - window.innerHeight; prog.style.height = Math.round((max > 0 ? Math.min(1, window.scrollY / max) : 0) * panel.clientHeight) + 'px';
+      if (c === cur) return; cur = c; if (c < 0) { tog.querySelector('.jt-l').textContent = 'Sections'; return; }
+      const x = items[c];
+      tog.querySelector('.jt-l').textContent = x.label;
+      nav.querySelectorAll('.has-active').forEach(el => el.classList.remove('has-active'));
+      const gb = nav.querySelector('.jn-grp[data-g="' + x.g + '"]'); if (gb && !x.group) gb.classList.add('has-active');
+      mini.querySelectorAll('i').forEach(d => d.classList.toggle('on', +d.dataset.g === x.g));
       bp.disabled = c <= 0; bn.disabled = c >= items.length - 1;
       nav.querySelectorAll('.is-active').forEach(el => el.classList.remove('is-active'));
       const act = x.group ? nav.querySelector('.jn-grp[data-i="' + c + '"]') : nav.querySelector('a[data-i="' + c + '"]');
