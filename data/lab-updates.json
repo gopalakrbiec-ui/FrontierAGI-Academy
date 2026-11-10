@@ -2,7 +2,7 @@
  "about": "Frontier lab announcements, newest first. Curated by hand: every item links to its source. Dates are release/announcement dates; 'YYYY-MM' means only the month is confirmed. Benchmark and pricing facts are as announced by the lab.",
  "range": [
   "2021-10-01",
-  "2026-11-02"
+  "2026-11-10"
  ],
  "labs": [
   [
@@ -4010,6 +4010,48 @@
     "Research preview, waitlist"
    ],
    "source": "https://northeasttimes.com/2026/10/27/google-deepmind-opens-genie-4-preview-to-testers-with-audio-and-two-minute/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20261104-images-2-6",
+   "date": "2026-11-04",
+   "lab": "openai",
+   "type": "model",
+   "title": "Images 2.6 (GPT Image 2.6)",
+   "summary": "OpenAI's new image model in ChatGPT, Codex and the API, with two API models: GPT-Image-2.6 Flare (speed) and Sunburst (quality). OpenAI says it is 50% faster than Images 2.5; reported additions include animated GIFs, persistent reference images and SVG output.",
+   "facts": [
+    "Flare + Sunburst API models",
+    "~50% faster (OpenAI)"
+   ],
+   "source": "https://openai.com/index/introducing-images-2-6/",
+   "flagship": false
+  },
+  {
+   "id": "openai-20261105-gpt-6-cyber",
+   "date": "2026-11-05",
+   "lab": "openai",
+   "type": "model",
+   "title": "GPT-6 Cyber",
+   "summary": "A cybersecurity-focused version of GPT-6 Astra, limited to approved customers in OpenAI's Daybreak Red programme. OpenAI rates its vulnerability-finding and exploit capability as 'critical'; reported benchmark gains (e.g. ExploitGym 48.5% vs 32.1% for GPT-5.6 Cyber) are OpenAI's own figures from secondary coverage.",
+   "facts": [
+    "Restricted access",
+    "Based on GPT-6 Astra"
+   ],
+   "source": "https://www.esecurityplanet.com/news/news-openai-gpt-6-cyber-security-benchmarks/",
+   "flagship": false
+  },
+  {
+   "id": "meta-20261109-muse-ember",
+   "date": "2026-11-09",
+   "lab": "meta",
+   "type": "model",
+   "title": "Muse Ember",
+   "summary": "Meta Superintelligence Labs' lightest and most cost-efficient Muse model so far, aimed at running agents. Reported via secondary coverage.",
+   "facts": [
+    "Lightweight Muse model",
+    "For agent execution"
+   ],
+   "source": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/",
    "flagship": false
   }
  ]

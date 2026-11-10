@@ -2,7 +2,7 @@
 "about": "Hand-curated model releases, by modality (foundation, image, video, speech and world models). LLM-modality rows reference verified items in data/lab-updates.json (ref). open: 1 open weights, 2 research/limited access, 0 closed, null licence not recorded. st: ga available, preview limited or alpha, research announced but not released. sec: 1 means the source is secondary (press or reference site). t marks the first-at-tier milestone items. end: date the product was retired.",
 "range": [
 "2022-04",
-"2026-10"
+"2026-11"
 ],
 "modalities": [
 [
@@ -574,6 +574,72 @@
 ]
 ],
 "items": [
+{
+"id": "openai-20261104-images-2-6",
+"date": "2026-11-04",
+"lab": "openai",
+"mod": [
+"image"
+],
+"fam": "gptimage",
+"name": "GPT Image 2.6",
+"full": "Images 2.6 in ChatGPT, Codex and the API (GPT-Image-2.6 Flare and Sunburst)",
+"src": "https://openai.com/index/introducing-images-2-6/",
+"flag": 1,
+"open": 0,
+"st": "ga",
+"sec": 0
+},
+{
+"id": "openai-20261105-gpt-6-cyber",
+"ref": "openai-20261105-gpt-6-cyber",
+"date": "2026-11-05",
+"lab": "openai",
+"mod": [
+"llm"
+],
+"fam": "gpt",
+"name": "GPT-6 Cyber",
+"full": "GPT-6 Cyber: cybersecurity variant of GPT-6 Astra, approved Daybreak Red customers only",
+"src": "https://www.esecurityplanet.com/news/news-openai-gpt-6-cyber-security-benchmarks/",
+"flag": 0,
+"open": 0,
+"st": "preview",
+"sec": 1
+},
+{
+"id": "meta-20261109-muse-ember",
+"ref": "meta-20261109-muse-ember",
+"date": "2026-11-09",
+"lab": "meta",
+"mod": [
+"llm"
+],
+"fam": "muse",
+"name": "Muse Ember",
+"full": "Muse Ember: lightweight, cost-efficient Muse model for agent execution",
+"src": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/",
+"flag": 0,
+"open": 0,
+"st": "ga",
+"sec": 1
+},
+{
+"id": "tencent-20261104-hy4",
+"date": "2026-11-04",
+"lab": "tencent",
+"mod": [
+"llm"
+],
+"fam": "hunyuan",
+"name": "Hy4",
+"full": "Tencent Hy4 with vision and computer use; weights and system cards announced for the following days (Hy4 preview weights were released on 2026-08-28, Apache 2.0)",
+"src": "https://technode.com/2026/11/04/tencent-launches-hy4-with-vision-and-computer-use-capabilities/",
+"flag": 1,
+"open": null,
+"st": "ga",
+"sec": 1
+},
 {
 "id": "meta-20261012-muse-wonder-1-0",
 "date": "2026-10-12",
