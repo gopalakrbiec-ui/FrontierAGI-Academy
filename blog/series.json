@@ -233,6 +233,7 @@
       "icon": "🧩",
       "slugs": [
         "agentic-systems-map",
+        "agentic-agent-loop",
         "agentic-claude-code",
         "agentic-codex",
         "agentic-gemini-jules",

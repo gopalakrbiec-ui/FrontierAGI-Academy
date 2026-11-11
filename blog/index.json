@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agentic-agent-loop",
+      "title": "Inside the Agent Loop: How Five Harnesses Think, Act and Stop",
+      "excerpt": "The one cycle every harness runs, the ten dials each product sets differently, five loops side by side, a runnable loop lab, and an RSI level for each loop: four L1 task loops, and Hermes Agent's L4 pattern.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-11",
+      "readTime": "14 min",
+      "tags": [
+        "Agentic AI",
+        "Agent Systems"
+      ],
+      "emoji": "🔁",
+      "featured": false
+    },
+    {
       "slug": "agentic-systems-map",
       "title": "Four Ways to Build an Agent: Frameworks, Harnesses, Runtimes and Builders",
       "excerpt": "Agent frameworks, harnesses, runtimes and builders solve different problems. A map of the four, a chooser, and the start of a series that takes the main agent systems apart one by one.",
