@@ -2728,7 +2728,7 @@
     const ctx = cv.getContext('2d');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const TAU = Math.PI * 2, rnd = (a, b) => a + Math.random() * (b - a);
-    let W = 0, H = 0, DPR = 1, bg = null, fg = null, cells = [], links = [], sparks = [], pulses = [], bursts = [];
+    let W = 0, H = 0, DPR = 1, bg = null, cells = [], links = [];
 
     function layer() { const c = document.createElement('canvas'); c.width = W * DPR; c.height = H * DPR; const g = c.getContext('2d'); g.setTransform(DPR, 0, 0, DPR, 0, 0); return [c, g]; }
     function taper(g, pts, w0, w1, c0, c1) {                   // a tapered, colour-graded curve through pts
@@ -2800,91 +2800,96 @@
         b.addColorStop(0, warm ? 'rgba(251,146,60,0.25)' : 'rgba(96,165,250,0.22)'); b.addColorStop(1, 'rgba(0,0,0,0)');
         g.fillStyle = b; g.beginPath(); g.arc(x, y, r * 2, 0, TAU); g.fill();
       }
-      // foreground: sharp neurons around the edges of the text column, connected by long dendrites
-      [fg, g] = layer();
+      // foreground: small free-floating neurons, each pre-drawn once to its own sprite
       const small = W < 700, count = small ? 7 : 12;
       cells = [];
-      const slots = small ? [[0.12, 0.18], [0.85, 0.12], [0.1, 0.72], [0.9, 0.62], [0.5, 0.96], [0.08, 0.45], [0.92, 0.38]]
-                          : [[0.08, 0.22], [0.25, 0.08], [0.88, 0.18], [0.72, 0.05], [0.06, 0.78], [0.94, 0.72], [0.3, 0.97], [0.66, 0.95], [0.16, 0.5], [0.84, 0.45], [0.45, 0.04], [0.52, 0.98]];
-      slots.slice(0, count).forEach(([fx, fy]) => cells.push({ x: fx * W + rnd(-20, 20), y: fy * H + rnd(-15, 15), r: rnd(22, 30) * (small ? 0.7 : 1) * Z, ph: rnd(0, TAU), glow: 0 }));
+      for (let i = 0; i < count; i++) {
+        const r = rnd(22, 30) * (small ? 0.7 : 1) * Z, size = Math.ceil(r * 2 + 2 * 130 * Z) + 8;
+        const sc = document.createElement('canvas'); sc.width = sc.height = size * DPR;
+        const sg = sc.getContext('2d'); sg.setTransform(DPR, 0, 0, DPR, 0, 0); sg.globalAlpha = 0.55;
+        for (let k = 0; k < 6; k++) branch(sg, size / 2, size / 2, k / 6 * TAU + rnd(-0.35, 0.35), rnd(65, 110) * (small ? 0.7 : 1) * Z, 10 * Z, 0, 1, null);
+        sg.globalAlpha = 0.75; soma(sg, size / 2, size / 2, r);
+        cells.push({ x: rnd(0.04, 0.96) * W, y: rnd(0.06, 0.94) * H, vx: rnd(-7, 7), vy: rnd(-5, 5), wob: rnd(0, TAU), rot: rnd(0, TAU), vr: rnd(-0.05, 0.05), r, sp: sc, size, glow: 0 });
+      }
       links = [];
-      cells.forEach((a, i) => {
-        cells.map((b, j) => [j, Math.hypot(a.x - b.x, a.y - b.y)]).filter(([j]) => j !== i).sort((p, q) => p[1] - q[1]).slice(0, 4).forEach(([j]) => {
-          if (links.some(l => (l.a === i && l.b === j) || (l.a === j && l.b === i))) return;
-          const b = cells[j], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, nx = -(b.y - a.y) * 0.25, ny = (b.x - a.x) * 0.25, s = rnd(-1, 1);
-          const pts = bez([a.x, a.y], [a.x + (mx - a.x) * 0.6 + nx * s, a.y + (my - a.y) * 0.6 + ny * s], [b.x - (b.x - mx) * 0.6 + nx * s, b.y - (b.y - my) * 0.6 + ny * s], [b.x, b.y], 40);
-          links.push({ a: i, b: j, pts });
-        });
-      });
-      g.globalAlpha = 0.45; links.forEach(l => taper(g, l.pts, 10 * Z, 4 * Z, '#2b3fa0', '#22b8a8')); g.globalAlpha = 0.55;
-      sparks = [];
-      cells.forEach(c => {
-        const tips = [];
-        for (let k = 0; k < 6; k++) branch(g, c.x, c.y, k / 6 * TAU + rnd(-0.35, 0.35), rnd(65, 110) * (small ? 0.7 : 1) * Z, 10 * Z, 0, 1, tips);
-        tips.forEach(t => { if (Math.random() < 0.35) sparks.push({ x: t[0], y: t[1], ph: rnd(0, TAU), sp: rnd(0.6, 1.4) }); });
-      });
-      links.forEach(l => { const m = l.pts[20]; sparks.push({ x: m[0], y: m[1], ph: rnd(0, TAU), sp: rnd(0.5, 1) }); });
-      g.globalAlpha = 0.75; cells.forEach(c => soma(g, c.x, c.y, c.r)); g.globalAlpha = 1;
       draw(performance.now());
     }
     function glow(x, y, r, color, a) {
       const gr = ctx.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, color.replace('A', a)); gr.addColorStop(1, color.replace('A', 0));
       ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill();
     }
-    function starburst(x, y, s, a) {
-      ctx.strokeStyle = `rgba(253,224,71,${a})`; ctx.lineWidth = 1;
-      for (let k = 0; k < 10; k++) { const ang = k / 10 * TAU + s, len = (6 + (k % 3) * 5) * (0.6 + a) * Z;
-        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(ang) * len, y + Math.sin(ang) * len); ctx.stroke(); }
+    function curve(l) {                                              // control point of a gently curved link, computed live
+      const a = cells[l.a], b = cells[l.b];
+      return [(a.x + b.x) / 2 - (b.y - a.y) * l.bend, (a.y + b.y) / 2 + (b.x - a.x) * l.bend];
+    }
+    function on(l, u) { const a = cells[l.a], b = cells[l.b], c = curve(l), v = 1 - u; return [v * v * a.x + 2 * v * u * c[0] + u * u * b.x, v * v * a.y + 2 * v * u * c[1] + u * u * b.y]; }
+    function textDim(x, y) {                                         // neurons behind the headline block are dimmer
+      const dx = Math.abs(x - W / 2) / (W * 0.3), dy = Math.abs(y - H * 0.42) / (H * 0.38);
+      return dx < 1 && dy < 1 ? 0.45 + 0.55 * Math.max(dx, dy) : 1;
     }
     function draw(now) {
-      const t = now / 1000;
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.globalCompositeOperation = 'source-over';
-      if (bg) ctx.drawImage(bg, 0, 0, W, H); if (fg) ctx.drawImage(fg, 0, 0, W, H);
+      if (bg) ctx.drawImage(bg, 0, 0, W, H);
+      cells.forEach(c => { ctx.save(); ctx.globalAlpha = textDim(c.x, c.y); ctx.translate(c.x, c.y); ctx.rotate(c.rot); ctx.drawImage(c.sp, -c.size / 2, -c.size / 2, c.size, c.size); ctx.restore(); });
       ctx.globalCompositeOperation = 'lighter';
-      cells.forEach(c => {                                           // breathing cores + fired glow
-        const a = 0.06 + 0.04 * Math.sin(t * 1.6 + c.ph) + c.glow;    // faint at rest, bright when firing
-        glow(c.x, c.y, c.r * (1.6 + 2.2 * c.glow), 'rgba(253,186,116,A)', Math.min(1, a).toFixed(3));
-        if (c.glow > 0.05) glow(c.x, c.y, c.r * 0.9, 'rgba(255,247,237,A)', c.glow.toFixed(3));
+      links.forEach(l => {                                           // temporary links: grow with the signal, then fade
+        const a = cells[l.a], b = cells[l.b], c = curve(l), grow = Math.min(1, l.t * 1.4), fade = l.t <= 1 ? 1 : Math.max(0, 1 - (l.t - 1) / 1.2);
+        if (fade <= 0) return;
+        ctx.strokeStyle = 'rgba(94,234,212,' + (0.55 * fade).toFixed(3) + ')'; ctx.lineWidth = 1.2; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(a.x, a.y);
+        const n = 24, m = Math.max(1, Math.round(n * grow));
+        for (let i = 1; i <= m; i++) { const q = on(l, i / n); ctx.lineTo(q[0], q[1]); }
+        ctx.stroke();
+        if (l.t < 1) { const q = on(l, Math.min(1, l.t)); glow(q[0], q[1], 11, 'rgba(251,146,60,A)', 1); glow(q[0], q[1], 4, 'rgba(255,247,237,A)', 1); }
       });
-      sparks.forEach(s => {                                          // twinkling synapse sparks
-        const a = Math.pow(Math.max(0, Math.sin(t * s.sp + s.ph)), 4);
-        if (a > 0.05) { glow(s.x, s.y, 5, 'rgba(251,191,36,A)', (a * 0.3).toFixed(3)); }
+      cells.forEach(c => {
+        if (c.glow < 0.03) return;
+        glow(c.x, c.y, c.r * (1.6 + 2.2 * c.glow), 'rgba(253,186,116,A)', Math.min(1, c.glow).toFixed(3));
+        glow(c.x, c.y, c.r * 0.9, 'rgba(255,247,237,A)', c.glow.toFixed(3));
       });
-      pulses.forEach(p => {                                          // signals travelling along dendrites
-        const pts = links[p.l].pts, u = Math.min(1, p.t), idx = Math.floor((p.rev ? 1 - u : u) * (pts.length - 1)), q = pts[idx];
-        glow(q[0], q[1], 11, 'rgba(251,146,60,A)', 1); glow(q[0], q[1], 4, 'rgba(255,247,237,A)', 1);
-      });
-      bursts.forEach(b => { starburst(b.x, b.y, b.s, 1 - b.t); glow(b.x, b.y, 26 * (0.5 + b.t), 'rgba(253,224,71,A)', (0.8 * (1 - b.t)).toFixed(3)); });
       ctx.globalCompositeOperation = 'source-over';
     }
-    function fire(i, hop) {
+    function fire(i, hops) {                                         // connect to the 1-3 nearest neurons right now
       cells[i].glow = 1;
-      if (hop > 2) return;
-      links.forEach((l, k) => { if (l.a === i || l.b === i) pulses.push({ l: k, rev: l.b === i, t: 0, hop }); });
+      if (hops <= 0) return;
+      const near = cells.map((c, j) => [j, Math.hypot(c.x - cells[i].x, c.y - cells[i].y)]).filter(([j]) => j !== i)
+        .sort((p, q) => p[1] - q[1]).slice(0, 1 + Math.floor(Math.random() * 3)).filter(p => p[1] < Math.max(W, H) * 0.45);
+      near.forEach(([j]) => links.push({ a: i, b: j, bend: rnd(-0.22, 0.22), t: 0, hops: hops - 1, done: false }));
     }
     let last = 0, running = false, visible = true, nextIdle = 0;
     function step(now) {
       running = false;
       if (!visible || document.hidden) return;
       const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
-      cells.forEach(c => { c.glow *= Math.pow(0.15, dt); });
-      pulses.forEach(p => { p.t += dt * 0.9; });
-      pulses = pulses.filter(p => {
-        if (p.t < 1) return true;
-        const l = links[p.l], to = p.rev ? l.a : l.b; bursts.push({ x: cells[to].x, y: cells[to].y, s: Math.random() * 3, t: 0 });
-        if (p.hop < 2) fire(to, p.hop + 1); else cells[to].glow = 1;
-        return false;
+      const gap = 70 * (W < 700 ? 0.7 : 1);
+      cells.forEach((c, i) => {                                      // slow drift + wobble, soft edges, no contact
+        c.wob += dt * 0.4; c.x += (c.vx + Math.sin(c.wob) * 3) * dt; c.y += (c.vy + Math.cos(c.wob * 0.8) * 3) * dt; c.rot += c.vr * dt;
+        if (c.x < 20) c.vx += 12 * dt; if (c.x > W - 20) c.vx -= 12 * dt; if (c.y < 20) c.vy += 12 * dt; if (c.y > H - 20) c.vy -= 12 * dt;
+        for (let j = i + 1; j < cells.length; j++) { const d = cells[j], dx = d.x - c.x, dy = d.y - c.y, dd = Math.hypot(dx, dy) || 1;
+          if (dd < gap) { const f = (gap - dd) / gap * 30 * dt; c.vx -= dx / dd * f; c.vy -= dy / dd * f; d.vx += dx / dd * f; d.vy += dy / dd * f; } }
+        const sp = Math.hypot(c.vx, c.vy); if (sp > 9) { c.vx *= 9 / sp; c.vy *= 9 / sp; }
+        c.glow *= Math.pow(0.18, dt);
       });
-      bursts.forEach(b => { b.t += dt * 1.6; }); bursts = bursts.filter(b => b.t < 1);
-      if (now > nextIdle && cells.length) { fire(Math.floor(Math.random() * cells.length), 2); nextIdle = now + rnd(1800, 3200); }
+      links.forEach(l => { l.t += dt * 0.8; if (l.t >= 1 && !l.done) { l.done = true; fire(l.b, l.hops); } });
+      links = links.filter(l => l.t < 2.2);
+      if (now > nextIdle && cells.length) { fire(Math.floor(Math.random() * cells.length), 1); nextIdle = now + rnd(2000, 3200); }
       draw(now); schedule();
     }
-    function schedule() { if (!running && !reduce) { running = true; requestAnimationFrame(step); } }
+    function schedule() { if (!running) { running = true; requestAnimationFrame(reduce ? stepCalm : step); } }
+    function stepCalm(now) {                                         // reduced motion: still neurons, rare firing, no drift
+      running = false;
+      if (!visible || document.hidden) return;
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      cells.forEach(c => { c.glow *= Math.pow(0.18, dt); });
+      links.forEach(l => { l.t += dt * 0.8; }); links = links.filter(l => l.t < 2.2);
+      if (now > nextIdle && cells.length) { fire(Math.floor(Math.random() * cells.length), 0); nextIdle = now + rnd(6000, 9000); }
+      draw(now); setTimeout(schedule, 100);
+    }
     hero.addEventListener('pointerdown', e => {
       if (reduce || !cells.length || e.target.closest('a, button, input')) return;
       const r = hero.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
       let best = 0, bd = Infinity; cells.forEach((c, i) => { const d = Math.hypot(c.x - x, c.y - y); if (d < bd) { bd = d; best = i; } });
-      bursts.push({ x, y, s: 0, t: 0 }); fire(best, 0); schedule();
+      fire(best, 3); schedule();
     });
     if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; schedule(); } }).observe(hero);
     document.addEventListener('visibilitychange', () => { if (!document.hidden) { last = 0; schedule(); } });
