@@ -26,11 +26,11 @@
     .ax-ctl button { border:1.5px solid #4f46e5; background:#4f46e5; color:#fff; border-radius:999px; padding:7px 13px; font-weight:700; cursor:pointer; font-size:.88rem; }
     .ax-ctl span { color:#475569; font-size:.9rem; }
     .ax-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; }
-    .ax-scroll svg { display:block; width:100%; min-width:900px; height:auto; }
+    .ax-scroll svg { display:block; width:100%; min-width:1000px; height:auto; }
     .ax-hint { display:none; font-size:.8rem; color:#64748b; margin:4px 0; } @media (max-width:900px){ .ax-hint{display:block} }
     .ax svg .row { cursor:pointer; } .ax svg .row:hover > rect:first-child { stroke:#94a3b8; }
-    .ax svg .lp { animation:axd 1.4s linear infinite; } @keyframes axd { to { stroke-dashoffset:-22 } }
-    @media (prefers-reduced-motion:reduce){ .ax svg .lp{animation:none} }
+    .ax svg .mv { animation:axd 1.1s linear infinite; } @keyframes axd { to { stroke-dashoffset:-24 } } body.ax-still .ax svg .mv { animation:none }
+    @media (prefers-reduced-motion:reduce){ .ax svg .mv{animation:none} }
     .ax-panel { margin-top:12px; background:#fff; border:1px solid #e2e8f0; border-left:6px solid var(--c); border-radius:12px; padding:14px 16px; }
     .ax-panel h3 { margin:0 0 8px; } .ax-panel h3 span { font-size:.85rem; color:var(--c); font-weight:700; }
     .ax-g { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; } .ax-g div { background:#f8fafc; border-radius:10px; padding:10px; } .ax-g p { margin:4px 0 0; line-height:1.5; }
@@ -178,7 +178,7 @@
 <div class="ax">
   <div class="ax-hero"><h1>Six Agent Architectures, From Chatbot to Enterprise Agent</h1><p class="intro">Each level adds one thing to the one below: a data layer, a reasoning loop, orchestration, self-correction, governance. Tap a level to see when to use it, when not to climb that high and how it fails; run a request through it; or answer five questions to find the lowest level that fits your task.</p></div>
   <div class="ax-box">
-    <div class="ax-ctl"><button id="axPlay">▶ Run a request</button><span>through the selected level · tap a row to select it</span></div>
+    <div class="ax-ctl"><button id="axPlay">⏸ Pause animation</button><span>tap a level to see when to use it</span></div>
     <div class="ax-hint">Swipe sideways to see each row in full.</div>
     <div class="ax-scroll"><svg id="axSvg" viewBox="0 0 1100 718" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif"></svg></div>
     <div class="ax-panel" id="axPanel"></div>
@@ -203,61 +203,130 @@
     ['Autonomous workflow', '+ self-correction', '#c2410c', ['Trigger', 'Planner (task graph)', 'Executors', 'Validator', 'Human gate', 'Output + log'], [3, 2, 'fail → auto-retry'], 'n8n, LangGraph, Temporal, Airflow', 'Recurring work started by events or schedules, with checks and approval before anything goes out.', 'Nobody will own the approvals or read the logs.', 'Retries that repeat side effects (a refund twice), approval queues nobody empties.', [['Runtimes compared (the crash test)', B + 'agentic-runtimes-compared.html'], ['Temporal, taken apart', B + 'agentic-temporal.html'], ['n8n, taken apart', B + 'agentic-n8n.html']]],
     ['Enterprise AI agent', '+ governance', '#be123c', ['User (SSO)', 'AI gateway', 'Agent runtime', 'RAG · MCP · memory', 'Governance'], [4, 1, 'audit · evals · cost → improve'], 'Azure AI Foundry, Amazon Bedrock, Claude API, LangSmith', 'Agents used by many people, on company data and systems, under audit.', 'A pilot: start lower and add governance as use grows.', 'Permissions not enforced per user, no audit trail, costs nobody can attribute.', [['The LLM gateway map', 'llm-gateway.html'], ['Production Agent Blueprints compared', B + 'agentic-blueprint-compared.html'], ['ADLC Part 7: security', B + 'adlc-security-guardrails.html']]]
   ];
-  var NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('axSvg'), sel = 0, rec = -1, run = null;
+  // ---- geometry following the infographic (owner's request: "exactly as in the image, with animations") ----
+  // node: [id, x, cy, w, icon, title, lines[], compact]
+  var G = [
+    { h: 112, col: '#15803d', icon: '💬', tools: [['✳️', 'Claude'], ['⚙️', 'GPT-4o'], ['✦', 'Gemini']],
+      n: [['u', 220, 56, 80, '👤', 'User', []], ['p', 335, 56, 100, '✉️', 'Prompt', []], ['l', 470, 56, 180, '🧩', 'LLM API', ['(System Prompt +', 'User Query)']], ['r', 685, 56, 110, '🗨️', 'Response', []], ['a', 830, 56, 175, '📞', 'Answer', ['(No memory', '· No tools · No data)']]],
+      e: [['u', 'p'], ['p', 'l'], ['l', 'r'], ['r', 'a']], path: [0, 1, 2, 3] },
+    { h: 165, col: '#1e40af', icon: '📚', tools: [['🌲', 'Pinecone'], ['🔷', 'Qdrant'], ['🦜', 'LangChain'], ['🟠', 'Cohere']],
+      n: [['u', 220, 50, 78, '👤', 'User', []], ['q', 335, 50, 105, '🔢', 'Embed Query', []], ['v', 480, 50, 145, '🗄️', 'Vector DB', ['(Top-K Semantic', 'Match)']], ['k', 665, 50, 130, '🎯', 'Reranker', ['(Best Chunks Only)']], ['l', 835, 50, 170, '🧠', 'LLM', ['(Grounded Answer', '+ Citations)']],
+        ['d', 345, 135, 110, '📄', 'Documents', [], 1], ['c', 485, 135, 110, '✂️', 'Chunking', [], 1], ['m', 625, 135, 120, '🔢', 'Embeddings', [], 1], ['w', 780, 135, 110, '🗄️', 'Vector DB', [], 1]],
+      e: [['u', 'q', 'Query'], ['q', 'v', 'Search'], ['v', 'k', 'Re-rank'], ['k', 'l', 'Context'], ['k', 'v', 'Retrieve', 'M690 96 C670 112 620 112 600 96', 1, [645, 120]], ['d', 'c'], ['c', 'm'], ['m', 'w'], ['w', 'v', 'Index', 'M835 120 C835 104 560 112 552 92', 1, [862, 113]]],
+      path: [0, 1, 2, 3], seq: [0, 1, 2, 4, 2, 3], path2: [5, 6, 7, 8], note: ['Ingestion', '(offline):', 222, 128] },
+    { h: 150, col: '#6d28d9', icon: '🤖', tools: [['✳️', 'Claude Code'], ['🦜', 'LangChain'], ['⚙️', 'OpenAI SDK']],
+      n: [['u', 220, 55, 78, '👤', 'User', []], ['p', 335, 55, 135, '📋', 'Planner', ['(Break Goal →', 'Steps)']], ['c', 510, 55, 150, '🧑‍💻', 'Agent Core', ['(LLM Reasoning', '+ Tool Selection)']], ['t1', 705, 20, 140, '🌐', 'Web Search', [], 1], ['t2', 705, 55, 140, '⌨️', 'Code Runner', [], 1], ['t3', 705, 90, 140, '🔌', 'APIs / MCP', [], 1], ['m', 880, 55, 125, '🧠', 'Memory', ['(Session +', 'Long-term)']]],
+      e: [['u', 'p', 'Goal'], ['p', 'c', 'Think'], ['c', 't2', 'Act'], ['c', 't1'], ['c', 't3'], ['t2', 'm', 'Done'], ['t3', 'p', '', 'M760 106 C760 140 400 140 400 98', 1]],
+      path: [0, 1, 2, 5], seq: [0, 1, 2, 6, 1, 2, 5], loop: [6, 'Observe result → Re-plan → Repeat until goal met', 580, 145] },
+    { h: 150, col: '#166534', icon: '👥', tools: [['🚣', 'CrewAI'], ['🦜', 'LangGraph'], ['🅰️', 'AutoGen'], ['🔗', 'A2A']],
+      n: [['u', 220, 60, 78, '👤', 'User', []], ['o', 335, 60, 155, '🧭', 'Orchestrator', ['(Decompose Task', '→ Routes →', 'Supervise)']], ['s1', 540, 24, 175, '🔎', 'Researcher (web + RAG)', [], 1], ['s2', 540, 60, 175, '⌨️', 'Coder (code runner)', [], 1], ['s3', 540, 96, 175, '📝', 'Reviewer (critique loop)', [], 1], ['h', 765, 60, 120, '🗂️', 'Shared State', ['(Message Bus +', 'Shared Memory)']], ['g', 910, 60, 95, '🔀', 'Aggre-gator', ['(Final Result)']]],
+      e: [['u', 'o', 'Task'], ['o', 's2', 'Delegate'], ['o', 's1'], ['o', 's3'], ['s2', 'h', 'Read/Write', null, 0, [733, 78]], ['h', 'g', 'Merge'], ['s3', 's1', '', 'M600 112 C620 140 660 140 680 112', 1]],
+      path: [0, 1, 4, 5], seq: [0, 1, 6, 4, 5], loop: [6, 'Agent-to-agent handoffs', 640, 145] },
+    { h: 135, col: '#1d4ed8', icon: '⚡', tools: [['🔗', 'n8n'], ['🦜', 'LangGraph'], ['⏱️', 'Temporal'], ['🌀', 'Airflow']],
+      n: [['t', 220, 55, 115, '⚡', 'Triggers', ['(Webhook /', 'Event / Cron', 'Schedule)']], ['p', 365, 55, 120, '📋', 'Planner', ['(DAG of Tasks', '+ Task Queue)']], ['x', 510, 55, 120, '⚙️', 'Executor', ['Agents', '(Parallel Runs)']], ['v', 655, 55, 110, '✅', 'Validator', ['(Checks', 'Output)']], ['g', 790, 55, 110, '🙋', 'HITL Gate', ['(Approve /', 'Reject)']], ['o', 920, 55, 85, '📤', 'Output', ['(Notify +', 'Log)']]],
+      e: [['t', 'p'], ['p', 'x', 'Run'], ['x', 'v', 'Pass'], ['v', 'g'], ['g', 'o'], ['v', 'x', '', 'M710 100 C710 126 570 126 570 100', 1]],
+      path: [0, 1, 2, 3, 4], seq: [0, 1, 2, 5, 2, 3, 4], loop: [5, 'Fail → auto-retry → repeat', 640, 130] },
+    { h: 172, col: '#1e3a8a', icon: '🏢', tools: [['🔷', 'Azure AI Foundry'], ['🟧', 'AWS Bedrock'], ['✳️', 'Claude API'], ['🦜', 'LangSmith']],
+      n: [['u', 220, 50, 78, '👤', 'User', []], ['g', 335, 50, 185, '🛡️', 'AI Gateway', ['(Guardrails + PII Filter,', 'RBAC + Rate Limits,', 'Prompt Injection Defense)']], ['r', 565, 50, 180, '⚙️', 'Agent Runtime', ['(Multi-Agent', 'Orchestration + Model', 'Router / latency)']], ['a', 790, 14, 215, '📚', 'Enterprise RAG (ACL-aware)', [], 1], ['b', 790, 50, 215, '🔌', 'MCP Connectors (CRM · ERP)', [], 1], ['c', 790, 86, 215, '🧠', 'Memory Store (per-tenant)', [], 1],
+        ['o', 345, 145, 115, '👁️', 'Observability', [], 1], ['e', 480, 145, 80, '🧪', 'Evals', [], 1], ['l', 580, 145, 105, '📜', 'Audit Logs', [], 1], ['k', 705, 145, 120, '💲', 'Cost Tracking', [], 1], ['i', 835, 145, 172, '🔁', 'Improve Prompts & Models', [], 1]],
+      e: [['u', 'g', 'SSO'], ['g', 'r', 'Routes'], ['r', 'b', 'Ground'], ['r', 'a'], ['r', 'c'], ['o', 'e'], ['e', 'l'], ['l', 'k'], ['k', 'i']],
+      path: [0, 1, 2], path2: [5, 6, 7, 8], note: ['Governance plane:', 'traces every step', 222, 140] }
+  ];
+  var NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('axSvg'), sel = 0, rec = -1, paused = false;
   function el(t, a, p) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; }
   function tx(x, y, s, a, p) { var t = el('text', Object.assign({ x: x, y: y }, a), p); t.textContent = s; return t; }
-  var RH = 118, Y0 = 10, PTH = [];
+  var TOP = 112, ROWY = [], EP = [], DOTS = [];
+  (function () { var y = TOP; G.forEach(function (g) { ROWY.push(y); y += g.h + 10; }); svg.setAttribute('viewBox', '0 0 1200 ' + y); })();
+  function box(n) { var h = n[7] ? 30 : 44 + 13 * n[6].length; return { x: n[1], y: n[2] - h / 2, w: n[3], h: h, cx: n[1] + n[3] / 2, cy: n[2] }; }
   function draw() {
-    svg.innerHTML = ''; PTH = [];
-    var d = el('defs', {}); var m = el('marker', { id: 'axA', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, d); el('path', { d: 'M0 0L10 5L0 10z', fill: '#334155' }, m);
-    L.forEach(function (r, i) {
-      var y = Y0 + i * RH, on = i === sel, g = el('g', { class: 'row' + (on ? ' sel' : ''), tabindex: 0, role: 'button', 'aria-label': 'Level ' + (i + 1) + ': ' + r[0] });
-      g.addEventListener('click', function () { sel = i; stop(); draw(); });
-      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sel = i; stop(); draw(); } });
-      el('rect', { x: 4, y: y, width: 1092, height: RH - 12, rx: 14, fill: on ? r[2] + '12' : '#fff', stroke: on ? r[2] : '#e2e8f0', 'stroke-width': on ? 2.5 : 1.2 }, g);
-      el('rect', { x: 12, y: y + 8, width: 196, height: RH - 28, rx: 12, fill: r[2] }, g);
-      tx(110, y + 32, 'Level 0' + (i + 1), { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: '#fff', opacity: .85 }, g);
-      tx(110, y + 56, r[0], { 'text-anchor': 'middle', 'font-size': 16, 'font-weight': 800, fill: '#fff' }, g);
-      tx(110, y + 78, r[1], { 'text-anchor': 'middle', 'font-size': 13, fill: '#fff' }, g);
-      if (i === rec) { el('rect', { x: 150, y: y - 2, width: 92, height: 22, rx: 11, fill: '#facc15', stroke: '#854d0e' }, g); tx(196, y + 13, '★ your fit', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: '#713f12' }, g); }
-      var n = r[3].length, x0 = 228, W = 1080 - x0, gap = 22, bw = (W - gap * (n - 1)) / n, cy = y + 40, pts = [];
-      r[3].forEach(function (s, k) {
-        var x = x0 + k * (bw + gap);
-        el('rect', { x: x, y: cy - 22, width: bw, height: 44, rx: 10, fill: '#fff', stroke: r[2], 'stroke-width': 1.6 }, g);
-        var words = s.split(' '), line = '', lines = []; words.forEach(function (w) { if ((line + ' ' + w).trim().length > Math.floor(bw / 8.4)) { lines.push(line.trim()); line = w; } else line += ' ' + w; }); lines.push(line.trim());
-        lines.forEach(function (l, j) { tx(x + bw / 2, cy + 5 + (j - (lines.length - 1) / 2) * 15, l, { 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 700, fill: '#0f172a' }, g); });
-        if (k) el('path', { d: 'M' + (x - gap + 1) + ' ' + cy + ' L' + (x - 3) + ' ' + cy, stroke: '#334155', 'stroke-width': 1.6, 'marker-end': 'url(#axA)' }, g);
-        pts.push([x + bw / 2, cy]);
+    svg.innerHTML = ''; EP = []; DOTS = [];
+    var d = el('defs', {});
+    G.forEach(function (g, i) { var m = el('marker', { id: 'axA' + i, viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, d); el('path', { d: 'M0 0L10 5L0 10z', fill: '#334155' }, m); });
+    el('rect', { x: 0, y: 0, width: 1200, height: 2000, fill: '#fff' });
+    tx(20, 58, '6 Agentic AI Architectures', { 'font-size': 46, 'font-weight': 800, fill: '#2563eb' });
+    tx(20, 94, 'From Chatbot To Enterprise Agent.', { 'font-size': 24, 'font-weight': 800, fill: '#0f172a' });
+    el('line', { x1: 20, y1: 104, x2: 760, y2: 104, stroke: '#94a3b8', 'stroke-dasharray': '4 3' });
+    G.forEach(function (g, i) {
+      var y0 = ROWY[i], r = L[i], on = i === sel, rowG = el('g', { class: 'row', tabindex: 0, role: 'button', 'aria-label': 'Level ' + (i + 1) + ': ' + r[0] });
+      rowG.addEventListener('click', function () { sel = i; draw(); });
+      rowG.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sel = i; draw(); } });
+      el('rect', { x: 8, y: y0, width: 1184, height: g.h, rx: 14, fill: g.col + '12', stroke: on ? g.col : g.col + '55', 'stroke-width': on ? 3 : 1.4 }, rowG);
+      // level card
+      el('rect', { x: 14, y: y0 + 6, width: 190, height: g.h - 12, rx: 12, fill: g.col }, rowG);
+      el('rect', { x: 70, y: y0 - 2, width: 78, height: 22, rx: 8, fill: '#0f172a' }, rowG); tx(109, y0 + 14, 'Level 0' + (i + 1), { 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 800, fill: '#fff' }, rowG);
+      var cy = y0 + g.h / 2;
+      el('circle', { cx: 109, cy: cy - 22, r: 19, fill: '#fff' }, rowG); tx(109, cy - 15, g.icon, { 'text-anchor': 'middle', 'font-size': 20 }, rowG);
+      tx(109, cy + 16, r[0].replace(/\b\w/g, function (c) { return c.toUpperCase(); }), { 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 800, fill: '#fff' }, rowG);
+      for (var s = 0; s < 6; s++) el('rect', { x: 50 + s * 20, y: cy + 26, width: 16, height: 6, rx: 3, fill: s <= i ? '#fff' : '#ffffff55' }, rowG);
+      tx(109, cy + 48, r[1].replace('+1', '+ 1').replace(/\b\w/g, function (c) { return c.toUpperCase(); }), { 'text-anchor': 'middle', 'font-size': 12.5, 'font-weight': 700, fill: '#fff' }, rowG);
+      if (i === rec) { el('rect', { x: 150, y: y0 - 4, width: 88, height: 22, rx: 11, fill: '#facc15', stroke: '#854d0e' }, rowG); tx(194, y0 + 11, '★ your fit', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: '#713f12' }, rowG); }
+      // tools panel
+      el('rect', { x: 1022, y: y0 + 6, width: 164, height: g.h - 12, rx: 12, fill: g.col + '22', stroke: g.col + '66' }, rowG);
+      tx(1104, y0 + 28, 'Tools:', { 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 800, fill: '#0f172a' }, rowG);
+      var ts = (g.h - 46) / g.tools.length;
+      g.tools.forEach(function (t, k) { var ty = y0 + 46 + k * Math.min(ts, 30) + 8; tx(1040, ty, t[0], { 'font-size': 14 }, rowG); tx(1062, ty, t[1], { 'font-size': 14, 'font-weight': 700, fill: '#0f172a' }, rowG); });
+      if (g.note) { tx(g.note[2], y0 + g.note[3], g.note[0], { 'font-size': 12, 'font-weight': 700, fill: '#334155' }, rowG); tx(g.note[2], y0 + g.note[3] + 14, g.note[1], { 'font-size': 12, 'font-weight': 700, fill: '#334155' }, rowG); }
+      var B = {}; g.n.forEach(function (n) { var b = box(n); b.y += y0; b.cy += y0; B[n[0]] = b; });
+      // edges
+      var EPi = [];
+      g.e.forEach(function (e, k) {
+        var a = B[e[0]], b = B[e[1]], dd;
+        if (e[3]) dd = e[3].replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, function (m, x, y) { return x + ' ' + (+y + y0); });
+        else if (Math.abs(a.cy - b.cy) < 2) dd = 'M' + (a.x + a.w) + ' ' + a.cy + ' L' + (b.x - 3) + ' ' + b.cy;
+        else if (b.x > a.x + a.w - 2) { var mx = (a.x + a.w + b.x) / 2; dd = 'M' + (a.x + a.w) + ' ' + a.cy + ' C' + mx + ' ' + a.cy + ' ' + mx + ' ' + b.cy + ' ' + (b.x - 3) + ' ' + b.cy; }
+        else dd = 'M' + a.cx + ' ' + (a.y) + ' L' + b.cx + ' ' + (b.y + b.h + 2);
+        var p = el('path', { d: dd, fill: 'none', stroke: e[4] ? g.col : '#334155', 'stroke-width': 1.8, 'stroke-dasharray': e[4] ? '6 5' : '7 5', class: 'mv', 'marker-end': 'url(#axA' + i + ')' }, rowG);
+        EPi.push(p);
+        if (e[5]) tx(e[5][0], y0 + e[5][1], e[2], { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700, fill: g.col }, rowG); else if (e[2] && !e[3]) { var lx = (a.x + a.w + b.x) / 2, ly = Math.min(a.y, b.y) - 4; tx(lx, ly, e[2], { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700, fill: '#334155' }, rowG); }
+        else if (e[2]) { var q = p.getPointAtLength(p.getTotalLength() / 2); tx(q.x + 6, q.y + 14, e[2], { 'font-size': 12, 'font-weight': 700, fill: g.col }, rowG); }
       });
-      if (r[4]) {
-        var a = x0 + r[4][0] * (bw + gap) + bw / 2, b = x0 + r[4][1] * (bw + gap) + bw / 2;
-        el('path', { d: 'M' + a + ' ' + (cy + 22) + ' C' + a + ' ' + (cy + 52) + ' ' + b + ' ' + (cy + 52) + ' ' + b + ' ' + (cy + 24), fill: 'none', stroke: r[2], 'stroke-width': 1.6, 'stroke-dasharray': '6 5', 'marker-end': 'url(#axA)', class: 'lp' }, g);
-        tx((a + b) / 2, cy + 58, r[4][2], { 'text-anchor': 'middle', 'font-size': 12, 'font-style': 'italic', fill: r[2] }, g);
-      }
-      PTH.push(pts);
+      if (g.loop) tx(g.loop[2], y0 + g.loop[3] - 4, g.loop[1], { 'text-anchor': 'middle', 'font-size': 12, 'font-style': 'italic', 'font-weight': 700, fill: g.col }, rowG);
+      EP.push(EPi);
+      // nodes
+      g.n.forEach(function (n) {
+        var b = B[n[0]];
+        el('rect', { x: b.x, y: b.y, width: b.w, height: b.h, rx: 10, fill: '#fff', stroke: g.col, 'stroke-width': 1.6 }, rowG);
+        if (n[7]) { tx(b.x + 14, b.cy + 5, n[4], { 'font-size': 14, 'text-anchor': 'middle' }, rowG); tx(b.x + b.w / 2 + 10, b.cy + 5, n[5], { 'text-anchor': 'middle', 'font-size': 12.5, 'font-weight': 700, fill: '#0f172a' }, rowG); }
+        else {
+          tx(b.cx, b.y + 19, n[4], { 'text-anchor': 'middle', 'font-size': 15 }, rowG);
+          var tl = n[5].indexOf('-') > 0 ? n[5].split('-') : [n[5]];
+          tx(b.cx, b.y + 37, tl.join(''), { 'text-anchor': 'middle', 'font-size': 14, 'font-weight': 800, fill: '#0f172a' }, rowG);
+          n[6].forEach(function (s, k) { tx(b.cx, b.y + 52 + k * 13, s, { 'text-anchor': 'middle', 'font-size': 11, fill: '#334155' }, rowG); });
+        }
+      });
+      DOTS.push([el('circle', { r: 6.5, fill: '#f59e0b', stroke: '#fff', 'stroke-width': 2, opacity: 0 }), g.path2 ? el('circle', { r: 5.5, fill: '#22d3ee', stroke: '#fff', 'stroke-width': 2, opacity: 0 }) : null]);
     });
-    panel();
+    panel(); animate();
   }
   function panel() {
     var r = L[sel], P = document.getElementById('axPanel');
-    P.style.setProperty('--c', r[2]);
+    P.style.setProperty('--c', G[sel].col);
     P.innerHTML = '<h3>Level ' + (sel + 1) + ': ' + r[0] + ' <span>' + r[1] + '</span></h3><div class="ax-g"><div><b>Use it when</b><p>' + r[6] + '</p></div><div><b>Don’t climb this high when</b><p>' + r[7] + '</p></div><div><b>How it fails</b><p>' + r[8] + '</p></div><div><b>Example tools</b><p>' + r[5] + ' ⚠️</p></div></div><p class="ax-l"><b>Go deeper:</b> ' + r[9].map(function (l) { return '<a hr' + 'ef="' + l[1] + '">' + l[0] + '</a>'; }).join(' · ') + '</p>';
     tell();
   }
-  var dot = null, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function stop() { if (run) { cancelAnimationFrame(run); clearTimeout(run); } run = null; if (dot) dot.remove(); dot = null; document.getElementById('axPlay').textContent = '▶ Run a request'; }
-  document.getElementById('axPlay').addEventListener('click', function () {
-    if (run) { stop(); return; }
-    var p = PTH[sel], k = 0; dot = el('circle', { r: 8, fill: '#f59e0b', stroke: '#fff', 'stroke-width': 2 });
-    document.getElementById('axPlay').textContent = '⏸ Stop';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, gen = 0, speed = 1;
+  function loopDot(dot, list, my, dur) {
+    var k = 0;
     function hop() {
-      if (k >= p.length - 1) { stop(); return; }
-      var a = p[k], b = p[k + 1], t0 = null, d = reduce ? 1 : 700; k++;
-      function f(ts) { t0 = t0 || ts; var q = Math.min(1, (ts - t0) / d); dot.setAttribute('cx', a[0] + (b[0] - a[0]) * q); dot.setAttribute('cy', a[1]); if (q < 1) run = requestAnimationFrame(f); else run = setTimeout(hop, 350); }
-      run = requestAnimationFrame(f);
+      if (my !== gen) return;
+      if (k >= list.length) { dot.setAttribute('opacity', 0); k = 0; setTimeout(hop, 900); return; }
+      var p = list[k++], L = p.getTotalLength(), t0 = null; dot.setAttribute('opacity', 1);
+      function f(ts) { if (my !== gen) return; t0 = t0 || ts; var q = Math.min(1, (ts - t0) / (dur * speed)), pt = p.getPointAtLength(q * L); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); if (q < 1) requestAnimationFrame(f); else setTimeout(hop, 160); }
+      requestAnimationFrame(f);
     }
-    dot.setAttribute('cx', p[0][0]); dot.setAttribute('cy', p[0][1]); run = 1; hop();
-  });
+    hop();
+  }
+  function animate() {
+    gen++; if (reduce || paused) return; var my = gen;
+    G.forEach(function (g, i) {
+      var main = (g.seq || g.path).map(function (k) { return EP[i][k]; });
+      loopDot(DOTS[i][0], main, my, i === sel ? 900 : 650);
+      if (g.path2) loopDot(DOTS[i][1], g.path2.map(function (k) { return EP[i][k]; }), my, 700);
+    });
+  }
+  var pb = document.getElementById('axPlay');
+  pb.addEventListener('click', function () { paused = !paused; pb.textContent = paused ? '▶ Animate' : '⏸ Pause animation'; document.body.classList.toggle('ax-still', paused); if (paused) { gen++; DOTS.forEach(function (d) { d.forEach(function (x) { if (x) x.setAttribute('opacity', 0); }); }); } else animate(); });
+  function stop() {}
   // chooser
   var Q = [['Does the answer need your own documents or data?', 1], ['Does it need to take actions or use tools, with steps you cannot fix in advance?', 2], ['Does the work split into parts needing very different skills, and has one agent failed your evals?', 3], ['Is it started by events or schedules rather than a person asking?', 4], ['Will many people use it on company systems, under audit?', 5]];
   var C = document.getElementById('axQ'), ans = Q.map(function () { return 0; });
