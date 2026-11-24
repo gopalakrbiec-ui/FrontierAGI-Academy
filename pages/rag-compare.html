@@ -28,7 +28,7 @@
     .rg-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; }
     .rg-scroll svg { display:block; width:100%; min-width:900px; height:auto; }
     .rg-hint { display:none; font-size:.8rem; color:#64748b; margin:4px 0; } @media (max-width:900px){ .rg-hint{display:block} }
-    .rg svg .nd { cursor:pointer; }
+    .rg svg .nd { cursor:pointer; } .rg svg .mv { animation:rgm 1.1s linear infinite; } @keyframes rgm { to { stroke-dashoffset:-26 } } body.rg-still .rg svg .mv { animation:none } @media (prefers-reduced-motion:reduce){ .rg svg .mv{animation:none} }
     .rg-step { margin-top:8px; font-weight:700; color:#0f172a; min-height:1.4em; line-height:1.5; }
     .rg-panel { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-left:6px solid var(--c); border-radius:12px; padding:14px 16px; }
     .rg-panel h3 { margin:0 0 6px; } .rg-panel h3 span { font-size:.85rem; color:var(--c); } .rg-panel p { margin:0; line-height:1.55; }
@@ -176,11 +176,11 @@
 <div class="rg">
   <div class="rg-hero"><h1>RAG vs Agentic RAG vs Graph RAG</h1><p class="intro">Three ways to give a model your own data before it answers. Classic RAG finds similar text once; agentic RAG lets agents plan and check the search; graph RAG searches through connections between things. Run one question through each, flip the switches, and tap any block.</p></div>
   <div class="rg-box">
-    <div class="rg-ctl"><button class="p" data-play="r" style="background:#2563eb">▶ Run RAG</button><button class="p" data-play="a" style="background:#c2410c">▶ Run agentic RAG</button><button class="p" data-play="g" style="background:#15803d">▶ Run graph RAG</button></div>
+    <div class="rg-ctl"><button id="rgPause">⏸ Pause animation</button><button class="p" data-play="r" style="background:#2563eb">▶ Run RAG</button><button class="p" data-play="a" style="background:#c2410c">▶ Run agentic RAG</button><button class="p" data-play="g" style="background:#15803d">▶ Run graph RAG</button></div>
     <div class="rg-ctl"><button id="rgNeed">Agentic: retrieval needed</button><button id="rgRetry">Agentic: first search good</button><button id="rgGlob">Graph: specific question (local)</button></div>
     <div class="rg-hint">Swipe sideways to see all three.</div>
-    <div class="rg-scroll"><svg id="rgSvg" viewBox="0 0 1110 790" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif"></svg></div>
-    <div class="rg-step" id="rgStep">Press a ▶ button to follow one question, or tap a block.</div>
+    <div class="rg-scroll"><svg id="rgSvg" viewBox="0 0 1110 1345" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif"></svg></div>
+    <div class="rg-step" id="rgStep">All three run continuously. Press a ▶ button to follow one question step by step, or tap a block.</div>
     <div class="rg-panel" id="rgPanel"></div>
   </div>
   <div class="rg-box rg-tw"><table class="rg-cmp"><tr><th></th><th style="color:#2563eb">RAG</th><th style="color:#c2410c">Agentic RAG</th><th style="color:#15803d">Graph RAG</th></tr>
@@ -201,107 +201,128 @@
   var embed = /[?&]embed=1/.test(location.search);
   if (embed) { document.body.classList.add('rg-embed'); document.querySelectorAll('a[href]').forEach(function (a) { if (!/^https?:/.test(a.getAttribute('href'))) a.target = '_top'; }); }
   var NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('rgSvg');
-  var C = { r: '#2563eb', a: '#c2410c', g: '#15803d' };
-  // id: [cx, cy, w, lane, title, sub, info]
+  var C = { r: '#2563eb', a: '#c2410c', g: '#15803d' }, BG = { r: '#eff6ff', a: '#fff7ed', g: '#f0fdf4' };
+  // id: [x, y, w, h, lane, icon, title, lines[], info]
   var N = {
-    rq: [170, 70, 230, 'r', 'User query', '', 'The question as the user typed it.'],
-    re: [170, 170, 230, 'r', 'Embedding model', 'query → vector', 'Turns the question into a vector, a list of numbers that places similar meanings close together.'],
-    rv: [170, 280, 230, 'r', 'Vector database', 'top K chunks', 'Finds the K stored text chunks whose vectors are closest to the question’s. The documents were split into chunks and embedded ahead of time (offline indexing).'],
-    ra: [170, 390, 230, 'r', 'Context augmentation', 'prompt + query + chunks', 'Builds one prompt: instructions, the user’s question and the retrieved chunks.'],
-    rl: [170, 500, 230, 'r', 'LLM', 'writes the answer', 'Answers from the augmented prompt. Nothing checks whether the chunks were the right ones.'],
-    rr: [170, 610, 230, 'r', 'Response', '', 'Fast and cheap: one search, one model call.'],
-    aq: [510, 70, 250, 'a', 'User query', '', 'The same question, handled by agents.'],
-    ap: [510, 170, 250, 'a', 'Planning agent', 'needs retrieval? sub-queries', 'An LLM decides whether retrieval is needed at all, rewrites the question into sub-queries and picks sources and tools.'],
-    ar: [510, 280, 250, 'a', 'Retrieval', 'vector DB · tools · APIs · MCP', 'Searches several sources: the vector database, other tools and APIs, MCP servers.'],
-    ae: [510, 390, 250, 'a', 'Evaluator agent', 'pass or re-retrieve?', 'An LLM scores the retrieved context. If it is insufficient, it sends the search back with a better query; if it passes, it moves on.'],
-    aa: [510, 500, 250, 'a', 'Context augmentation', 'prompt + query + context', 'Builds the final prompt from the checked context.'],
-    al: [510, 610, 250, 'a', 'LLM', 'final answer', 'Writes the answer from the augmented prompt, or directly if the planner decided no retrieval was needed.'],
-    ar2: [510, 720, 250, 'a', 'Response', '', 'Better on hard questions; more model calls, so slower and costlier.'],
-    gq: [890, 70, 260, 'g', 'User query', '', 'The question, first classified.'],
-    gc: [890, 160, 260, 'g', 'Query classification', 'specific → local · broad → global', 'Specific questions (about named things) go to local search; broad questions (themes across everything) go to global search.'],
-    ge: [800, 260, 165, 'g', 'Embedding model', 'query → vector', 'Embeds the question to find matching entities.'],
-    gv: [800, 350, 165, 'g', 'Vector database', 'matching entities', 'Returns the top K entity IDs, not text chunks.'],
-    gk: [800, 440, 165, 'g', 'Knowledge graph', 'follow links', 'Built offline from the documents: entities and their relationships. Follows the links from the matched entities to gather connected context.'],
-    ga: [800, 530, 165, 'g', 'Context augmentation', 'entities + links + text', 'Prompt with the entities, relationships and text chunks found.'],
-    gl: [800, 620, 165, 'g', 'LLM', 'answers', 'Answers from the connected context.'],
-    gm: [985, 260, 165, 'g', 'Community reports', 'loaded in batches', 'Built offline: the graph is grouped into communities of related entities, each with a summary report.'],
-    gp: [985, 350, 165, 'g', 'LLM mapping call', 'extract + rate points', 'For each batch of reports, an LLM extracts key points about the question and rates them. Repeats until all batches are done.'],
-    gf: [985, 440, 165, 'g', 'Filter', 'keep top-rated points', 'Drops low-rated points so the final call sees only the best.'],
-    gs: [985, 530, 165, 'g', 'LLM final synthesis', 'combine points', 'One last LLM call combines the top points into an answer about the whole collection.'],
-    gr: [890, 720, 260, 'g', 'Response', '', 'Strong on relationships and big-picture questions; the graph is costly to build and keep current.']
+    rq: [85, 90, 206, 60, 'r', '👤', 'User query', [], 'The question as the user typed it. It goes to the embedding model and, unchanged, to context augmentation.'],
+    re: [75, 290, 226, 80, 'r', '🧬', 'Embedding model', ['Query → Vector'], 'Turns the question into a vector: numbers that place similar meanings close together.'],
+    rv: [60, 500, 250, 80, 'r', '🗄️', 'Vector database', ['(offline indexing)', 'Index + Metadata'], 'Finds the K stored chunks closest to the question. Documents were chunked and embedded ahead of time.'],
+    ra: [50, 745, 270, 90, 'r', '📄', 'Context augmentation', ['System prompt + User query', '+ Top K chunks'], 'One prompt: instructions, the question and the retrieved chunks.'],
+    rl: [110, 980, 150, 70, 'r', '🧠', 'LLM', [], 'Writes the answer from the augmented prompt. Nothing checks whether the chunks were right.'],
+    rr: [95, 1180, 186, 64, 'r', '💬', 'Response', [], 'One search, one model call: fast and cheap.'],
+    aq: [445, 90, 200, 60, 'a', '👤', 'User query', [], 'The same question, handled by agents.'],
+    ap: [400, 225, 268, 145, 'a', '🤖', 'Planning agent', ['(LLM + System Prompt)'], 'An LLM decides whether retrieval is needed. If yes, it writes sub-queries and picks tools; if no, the question goes straight to the LLM.'],
+    ar: [430, 440, 210, 110, 'a', '⚙️', 'Retrieval', ['- Vector database', '- Tools + APIs', '- MCP servers'], 'Searches several sources: the vector database, tools and APIs, MCP servers.'],
+    ae: [405, 610, 260, 175, 'a', '🔍', 'Evaluator agent', ['(LLM + System Prompt)'], 'An LLM scores the retrieved context. Pass: on to augmentation. Insufficient: back to retrieval with a better query.'],
+    aa: [425, 840, 225, 110, 'a', '📄', 'Context augmentation', ['System prompt', '+ user query', '+ retrieved context'], 'Builds the final prompt from the checked context.'],
+    al: [420, 1010, 235, 105, 'a', '🧠', 'LLM', ['Write final answer from', 'direct / augmented prompt'], 'Answers from the augmented prompt, or directly when no retrieval was needed.'],
+    ax: [450, 1170, 170, 64, 'a', '💬', 'Response', [], 'Better on hard questions; more model calls, so slower and costlier.'],
+    gq: [790, 80, 190, 60, 'g', '👤', 'User query', [], 'The question, classified first.'],
+    gc: [735, 165, 320, 95, 'g', '🗂️', 'Query classification', ['• Specific query → Local search', '• Broad query → Global search'], 'Specific questions about named things go to local search; broad questions about the whole collection go to global search.'],
+    ga: [775, 285, 285, 105, 'g', '📄', 'Context augmentation', ['System prompt + user query', '+ assembled context', '(entities, relationships, text chunks)'], 'Prompt built from the entities, relationships and text chunks found in the graph.'],
+    gl: [805, 410, 110, 70, 'g', '🧠', 'LLM', [], 'Answers from the connected context.'],
+    gr: [780, 495, 175, 64, 'g', '💬', 'Response', [], 'Strong on relationships and big-picture questions; the graph is costly to build and keep current.'],
+    ge: [840, 575, 240, 80, 'g', '🧬', 'Embedding model', ['Query → Vector'], 'Embeds the question to find matching entities.'],
+    gv: [840, 685, 230, 85, 'g', '🗄️', 'Vector database', ['(offline indexing)', 'Find matching entities'], 'Returns the top K entity IDs, not text chunks.'],
+    gk: [840, 805, 230, 105, 'g', '🕸️', 'Knowledge graph', ['(offline indexing)', 'Traverses linked context', 'across connected node'], 'Built offline from the documents: entities and relationships. Follows links from the matched entities.'],
+    gm: [745, 935, 240, 80, 'g', '📊', 'Community reports', ['loaded in batches', '(offline indexing)'], 'Built offline: related entities grouped into communities, each with a summary report.'],
+    gp: [830, 1035, 245, 100, 'g', '🧠', 'LLM — mapping call', ['System prompt (extract & rate)', '+ user query + batch', 'of community reports'], 'For each batch of reports, an LLM extracts key points and rates them; repeats until all batches are processed.'],
+    gf: [740, 1150, 240, 85, 'g', '🔻', 'Filter low rated points', ['Keep top ranked only'], 'Drops low-rated points so the final call sees only the best.'],
+    gs: [872, 1238, 215, 95, 'g', '🧠', 'LLM — final synthesis', ['System prompt (synthesize)', '+ user query', '+ top-ranked points'], 'One last call combines the top points into an answer about the whole collection.']
   };
-  var LANES = [['r', 'RAG', 20, 300], ['a', 'Agentic RAG', 370, 280], ['g', 'Graph RAG', 680, 420]];
+  // id: [from, to, d, label lines, lx, ly, anchor]
+  var E = {
+    r1: ['rq', 're', 'M188 150 L188 288'], r2: ['re', 'rv', 'M188 370 L188 498', ['Query vector for', 'similarity search'], 195, 425, 'middle'],
+    r3: ['rv', 'ra', 'M188 580 L188 743', ['Top K', 'chunks'], 196, 650, 'start'], rb: ['rq', 'ra', 'M291 120 L338 120 L338 790 L322 790'],
+    r4: ['ra', 'rl', 'M188 835 L188 978', ['Augmented', 'prompt'], 196, 885, 'start'], r5: ['rl', 'rr', 'M188 1050 L188 1178'],
+    a1: ['aq', 'ap', 'M545 150 L545 223'], a2: ['ap', 'ar', 'M535 370 L535 438', ['Updated query +', 'source'], 548, 398, 'start'],
+    a3: ['ar', 'ae', 'M495 550 L495 608', ['Retrieved context'], 488, 585, 'end'], a3b: ['ae', 'ar', 'M600 608 L600 552', ['Re-retrieve if', 'insufficient'], 610, 572, 'start'],
+    a4: ['ae', 'aa', 'M535 785 L535 838', ['Pass'], 545, 815, 'start'], a5: ['aa', 'al', 'M535 950 L535 1008', ['Augmented', 'prompt'], 545, 972, 'start'],
+    a6: ['al', 'ax', 'M535 1115 L535 1168'], an: ['aq', 'al', 'M445 120 L384 120 L384 1062 L418 1062', ['No (direct query)'], 0, 0, 'rot'],
+    ay: ['ap', 'al', 'M668 300 L686 300 L686 1062 L657 1062'],
+    g1: ['gq', 'gc', 'M885 140 L885 163'], gL: ['gc', 'ge', 'M1055 212 L1088 212 L1088 615 L1082 615', ['Local'], 1083, 300, 'end'],
+    g2: ['ge', 'gv', 'M955 655 L955 683'], g3: ['gv', 'gk', 'M955 770 L955 803', ['Top K', 'entity IDs'], 945, 783, 'end'],
+    gK: ['gk', 'ga', 'M840 858 L758 858 L758 337 L773 337', ['Linked', 'context'], 764, 640, 'start'],
+    g4: ['ga', 'gl', 'M860 390 L860 408'], g5: ['gl', 'gr', 'M860 480 L860 493'],
+    gG: ['gc', 'gm', 'M735 212 L720 212 L720 975 L743 975', ['Global'], 726, 900, 'start'],
+    g6: ['gm', 'gp', 'M900 1015 L900 1033'], gN: ['gp', 'gp', 'M1075 1060 L1095 1060 L1095 990 L987 990', ['next batch'], 994, 1028, 'start'],
+    g7: ['gp', 'gf', 'M860 1135 L860 1148', ['Key points + ratings'], 852, 1146, 'end'], g8: ['gf', 'gs', 'M980 1192 L995 1192 L995 1236'],
+    g9: ['gs', 'gr', 'M1085 1286 L1102 1286 L1102 527 L957 527']
+  };
+  var need = true, retry = false, glob = false, sel = 'rv', paused = false;
   function path(l) {
-    if (l === 'r') return ['rq', 're', 'rv', 'ra', 'rl', 'rr'];
-    if (l === 'a') { if (!need) return ['aq', 'ap', 'al', 'ar2']; return ['aq', 'ap', 'ar', 'ae'].concat(retry ? ['ar', 'ae'] : []).concat(['aa', 'al', 'ar2']); }
-    return glob ? ['gq', 'gc', 'gm', 'gp', 'gp', 'gf', 'gs', 'gr'] : ['gq', 'gc', 'ge', 'gv', 'gk', 'ga', 'gl', 'gr'];
+    if (l === 'r') return ['r1', 'r2', 'r3', 'r4', 'r5'];
+    if (l === 'a') { if (!need) return ['a1', 'ay', 'a6']; return ['a1', 'a2', 'a3'].concat(retry ? ['a3b', 'a3'] : []).concat(['a4', 'a5', 'a6']); }
+    return glob ? ['g1', 'gG', 'g6', 'gN', 'g6', 'g7', 'g8', 'g9'] : ['g1', 'gL', 'g2', 'g3', 'gK', 'g4', 'g5'];
   }
-  var need = true, retry = false, glob = false, run = null, sel = 'rv';
   function el(t, a, p) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; }
   function tx(x, y, s, a, p) { var t = el('text', Object.assign({ x: x, y: y }, a), p); t.textContent = s; return t; }
-  var EG = {}, NG = {}, dot;
-  function ekey(a, b) { return a + '>' + b; }
-  function edge(a, b, dash) {
-    var A = N[a], B = N[b], c = C[A[3]], d;
-    if (a === b) { d = 'M' + (A[0] + A[2] / 2) + ' ' + (A[1] - 8) + ' c40 -30 40 46 0 16'; }
-    else if (B[1] < A[1]) { var x = Math.max(A[0], B[0]) + Math.max(A[2], B[2]) / 2; d = 'M' + (A[0] + A[2] / 2) + ' ' + A[1] + ' C' + (x + 40) + ' ' + A[1] + ' ' + (x + 40) + ' ' + B[1] + ' ' + (B[0] + B[2] / 2 + 2) + ' ' + B[1]; }
-    else if (Math.abs(A[0] - B[0]) < 5) d = 'M' + A[0] + ' ' + (A[1] + 26) + ' L' + B[0] + ' ' + (B[1] - 28);
-    else d = 'M' + A[0] + ' ' + (A[1] + 26) + ' C' + A[0] + ' ' + ((A[1] + B[1]) / 2) + ' ' + B[0] + ' ' + ((A[1] + B[1]) / 2) + ' ' + B[0] + ' ' + (B[1] - 28);
-    return el('path', { d: d, fill: 'none', stroke: c, 'stroke-width': 1.8, 'stroke-dasharray': dash ? '6 5' : 'none', 'marker-end': 'url(#rgA)', opacity: .5 });
-  }
+  var EP = {}, NG = {}, dots = {};
   function draw() {
-    svg.innerHTML = ''; EG = {}; NG = {};
-    var d = el('defs', {}); var m = el('marker', { id: 'rgA', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, d); el('path', { d: 'M0 0L10 5L0 10z', fill: '#334155' }, m);
-    LANES.forEach(function (l) { el('rect', { x: l[2], y: 8, width: l[3], height: 770, rx: 16, fill: C[l[0]] + '0c', stroke: C[l[0]], 'stroke-dasharray': '6 5' }); el('rect', { x: l[2] + l[3] / 2 - 80, y: 0, width: 160, height: 28, rx: 14, fill: C[l[0]] }); tx(l[2] + l[3] / 2, 19, l[1], { 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 800, fill: '#fff' }); });
-    tx(800, 222, 'Local search', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: C.g, opacity: glob ? .35 : 1 }); tx(985, 222, 'Global search', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 800, fill: C.g, opacity: glob ? 1 : .35 });
-    var all = [['rq', 're', 'rv', 'ra', 'rl', 'rr'], ['aq', 'ap', 'ar', 'ae', 'aa', 'al', 'ar2'], ['ap', 'al'], ['ae', 'ar'], ['gq', 'gc', 'ge', 'gv', 'gk', 'ga', 'gl', 'gr'], ['gc', 'gm', 'gp', 'gf', 'gs', 'gr'], ['gp', 'gp']];
-    var act = {}; ['r', 'a', 'g'].forEach(function (l) { var p = path(l); for (var i = 1; i < p.length; i++) act[ekey(p[i - 1], p[i])] = 1; });
-    all.forEach(function (p) { for (var i = 1; i < p.length; i++) { var k = ekey(p[i - 1], p[i]); if (!EG[k]) { EG[k] = edge(p[i - 1], p[i], k === 'ap>al' || k === 'ae>ar' || k === 'gp>gp'); if (!act[k]) EG[k].setAttribute('opacity', .12); } } });
-    tx(560, 228, need ? '' : 'no retrieval needed', { 'font-size': 12, 'font-style': 'italic', fill: C.a });
-    tx(660, 340, 're-retrieve', { 'font-size': 12, 'font-style': 'italic', fill: C.a, opacity: retry ? 1 : .35, 'text-anchor': 'end' });
-    tx(1072, 306, 'next batch', { 'font-size': 11, 'font-style': 'italic', fill: C.g, opacity: glob ? 1 : .35, 'text-anchor': 'end' });
+    svg.innerHTML = ''; EP = {}; NG = {};
+    var d = el('defs', {}); ['r', 'a', 'g'].forEach(function (l) { var m = el('marker', { id: 'rgA' + l, viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, d); el('path', { d: 'M0 0L10 5L0 10z', fill: C[l] }, m); });
+    el('rect', { x: 0, y: 0, width: 1110, height: 1345, fill: '#fff' });
+    el('rect', { x: 2, y: 8, width: 8, height: 34, rx: 3, fill: '#22c55e' });
+    [['RAG', 'r', 60, 270], ['Agentic RAG', 'a', 375, 290], ['Graph RAG', 'g', 750, 300]].forEach(function (t) { el('rect', { x: t[2], y: 6, width: t[3], height: 40, rx: 8, fill: C[t[1]] }); tx(t[2] + t[3] / 2, 35, t[0], { 'text-anchor': 'middle', 'font-size': 26, 'font-weight': 800, fill: '#fff' }); });
+    tx(352, 37, 'vs.', { 'text-anchor': 'middle', 'font-size': 22, 'font-weight': 800, fill: '#0f172a' }); tx(705, 37, 'vs.', { 'text-anchor': 'middle', 'font-size': 22, 'font-weight': 800, fill: '#0f172a' });
+    [['r', 14, 336], ['a', 366, 334], ['g', 708, 398]].forEach(function (l) { el('rect', { x: l[1], y: 60, width: l[2], height: 1278, rx: 12, fill: BG[l[0]], stroke: '#334155', 'stroke-width': 1.4 }); });
+    [['Retrieval', 470, 485, 110], ['Augmented', 715, 730, 120], ['Generation', 940, 955, 120]].forEach(function (g) { tx(40, g[1], g[0], { 'font-size': 20, 'font-weight': 800, fill: C.r }); el('rect', { x: 38, y: g[2], width: 292, height: g[3], rx: 12, fill: '#dbeafe66', stroke: C.r, 'stroke-dasharray': '5 4' }); });
+    var act = {}; ['r', 'a', 'g'].forEach(function (l) { path(l).forEach(function (k) { act[k] = 1; }); });
+    Object.keys(E).forEach(function (k) {
+      var e = E[k], l = N[e[0]][4], p = el('path', { d: e[2], fill: 'none', stroke: C[l], 'stroke-width': 2, 'stroke-dasharray': '7 6', class: 'mv', 'marker-end': 'url(#rgA' + l + ')', opacity: act[k] ? .9 : .25 });
+      EP[k] = p;
+      if (e[3] && e[6] === 'rot') tx(0, 0, e[3][0], { 'font-size': 12, fill: '#475569', 'text-anchor': 'middle', transform: 'translate(377 600) rotate(-90)', opacity: act[k] ? 1 : .4 }); else if (e[3]) e[3].forEach(function (s, i) { tx(e[4], e[5] + i * 14, s, { 'font-size': 12, fill: '#475569', 'text-anchor': e[6], opacity: act[k] ? 1 : .4 }); });
+    });
     Object.keys(N).forEach(function (k) {
-      var n = N[k], c = C[n[3]], g = el('g', { class: 'nd' + (k === sel ? ' sel' : ''), tabindex: 0, role: 'button', 'aria-label': n[4] });
-      var on = path(n[3]).indexOf(k) >= 0;
-      el('rect', { x: n[0] - n[2] / 2, y: n[1] - 26, width: n[2], height: 52, rx: 11, fill: '#fff', stroke: c, 'stroke-width': k === sel ? 3 : 1.6 }, g);
-      tx(n[0], n[1] + (n[5] ? -3 : 5), n[4], { 'text-anchor': 'middle', 'font-size': n[2] < 200 ? 13 : 14, 'font-weight': 800, fill: '#0f172a' }, g);
-      if (n[5]) tx(n[0], n[1] + 15, n[5], { 'text-anchor': 'middle', 'font-size': 11.5, fill: '#475569' }, g);
-      if (!on) g.setAttribute('opacity', .35);
+      var n = N[k], l = n[4], c = C[l], g = el('g', { class: 'nd', tabindex: 0, role: 'button', 'aria-label': n[6] });
+      var on = path(l).some(function (e) { return E[e][0] === k || E[e][1] === k; });
+      el('rect', { x: n[0], y: n[1], width: n[2], height: n[3], rx: 10, fill: '#fff', stroke: k === sel ? c : '#334155', 'stroke-width': k === sel ? 3 : 1.4 }, g);
+      var tl = n[7].length, big = n[3] >= 70;
+      tx(n[0] + 20, n[1] + (big ? 27 : n[3] / 2 + 7), n[5], { 'font-size': 18, 'text-anchor': 'middle' }, g);
+      tx(n[0] + n[2] / 2 + 14, n[1] + (big ? 28 : n[3] / 2 + 6), n[6], { 'text-anchor': 'middle', 'font-size': 16, 'font-weight': 800, fill: '#0f172a' }, g);
+      n[7].forEach(function (s, i) { tx(n[0] + n[2] / 2 + 14, n[1] + 48 + i * 16, s, { 'text-anchor': 'middle', 'font-size': 12.5, fill: '#334155' }, g); });
+      if (k === 'ap') { el('rect', { x: 410, y: 312, width: 100, height: 42, rx: 6, fill: '#fde68a', stroke: '#92400e' }, g); tx(460, 337, 'Needs retrieval?', { 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 700 }, g); tx(530, 328, 'Yes', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700 }, g); el('path', { d: 'M512 333 L548 333', stroke: '#334155', 'marker-end': 'url(#rgAa)' }, g); el('rect', { x: 550, y: 306, width: 110, height: 54, rx: 6, fill: '#fde68a', stroke: '#92400e' }, g); tx(605, 329, 'Sub-queries +', { 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 700 }, g); tx(605, 346, 'tool selection', { 'text-anchor': 'middle', 'font-size': 11.5, 'font-weight': 700 }, g); }
+      if (k === 'ae') { el('rect', { x: 445, y: 683, width: 205, height: 32, rx: 6, fill: '#fde68a', stroke: '#92400e' }, g); tx(547, 704, 'Scores retrieved context', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700 }, g); el('rect', { x: 445, y: 733, width: 205, height: 32, rx: 6, fill: '#fde68a', stroke: '#92400e' }, g); tx(547, 754, 'Pass or re-retrieve?', { 'text-anchor': 'middle', 'font-size': 12, 'font-weight': 700 }, g); el('path', { d: 'M445 749 L425 749 L425 699 L443 699', fill: 'none', stroke: '#334155', 'stroke-width': 1.6, 'marker-end': 'url(#rgAa)', class: 'mv', 'stroke-dasharray': '5 4' }, g); }
+      if (!on) g.setAttribute('opacity', .4);
       g.addEventListener('click', function () { sel = k; draw(); }); g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sel = k; draw(); } });
       NG[k] = g;
     });
-    dot = el('circle', { r: 8, fill: '#f59e0b', stroke: '#fff', 'stroke-width': 2, opacity: 0 });
-    var n = N[sel], P = document.getElementById('rgPanel'); P.style.setProperty('--c', C[n[3]]);
-    P.innerHTML = '<h3>' + n[4] + ' <span>' + { r: 'RAG', a: 'Agentic RAG', g: 'Graph RAG' }[n[3]] + '</span></h3><p>' + n[6] + '</p>';
+    tx(1100, 1340, '', {});
+    ['r', 'a', 'g'].forEach(function (l) { dots[l] = el('circle', { r: 8, fill: '#f59e0b', stroke: '#fff', 'stroke-width': 2, opacity: 0 }); });
+    var n = N[sel], P = document.getElementById('rgPanel'); P.style.setProperty('--c', C[n[4]]);
+    P.innerHTML = '<h3>' + n[5] + ' ' + n[6] + ' <span>' + { r: 'RAG', a: 'Agentic RAG', g: 'Graph RAG' }[n[4]] + '</span></h3><p>' + n[8] + '</p>';
     tell();
   }
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, step = document.getElementById('rgStep');
-  function stop() { if (run) { cancelAnimationFrame(run); clearTimeout(run); } run = null; if (dot) dot.setAttribute('opacity', 0); }
-  function play(l) {
-    stop(); var p = path(l), i = 0; run = 1;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, step = document.getElementById('rgStep'), timers = {}, gen = 0;
+  function runLane(l, loop, my) {
+    var p = path(l), i = 0;
     function hop() {
-      if (i >= p.length - 1) { stop(); step.textContent = 'Done: ' + (p.length) + ' steps, ' + p.filter(function (k) { return /LLM|agent/.test(N[k][4]); }).length + ' model calls in this run (each mapping batch counts once here).'; return; }
-      var a = p[i], b = p[++i], e = EG[ekey(a, b)], L = e.getTotalLength(), t0 = null, d = reduce ? 1 : 750;
-      sel = b; var n = N[b]; step.textContent = n[4] + ': ' + n[6];
-      Object.keys(NG).forEach(function (k) { NG[k].querySelector('rect').setAttribute('stroke-width', k === b ? 3.2 : 1.6); });
-      dot.setAttribute('opacity', 1);
-      function f(ts) { t0 = t0 || ts; var q = Math.min(1, (ts - t0) / d), pt = e.getPointAtLength(q * L); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); if (q < 1) run = requestAnimationFrame(f); else run = setTimeout(hop, 450); }
-      run = requestAnimationFrame(f);
+      if (my !== gen) return;
+      if (i >= p.length) { dots[l].setAttribute('opacity', 0); if (loop && !paused) timers[l] = setTimeout(function () { i = 0; hop(); }, 1200); return; }
+      var k = p[i++], e = EP[k], L = e.getTotalLength(), t0 = null, d = Math.max(500, L * 3.2), to = E[k][1];
+      if (!loop) { var n = N[to]; step.textContent = n[6] + ': ' + n[8]; }
+      Object.keys(NG).forEach(function (j) { if (N[j][4] === l) NG[j].querySelector('rect').setAttribute('stroke-width', j === to ? 3.2 : (j === sel ? 3 : 1.4)); });
+      dots[l].setAttribute('opacity', 1);
+      function f(ts) { if (my !== gen) return; t0 = t0 || ts; var q = Math.min(1, (ts - t0) / d), pt = e.getPointAtLength(q * L); dots[l].setAttribute('cx', pt.x); dots[l].setAttribute('cy', pt.y); if (q < 1) requestAnimationFrame(f); else timers[l] = setTimeout(hop, loop ? 250 : 500); }
+      requestAnimationFrame(f);
     }
     hop();
   }
-  document.querySelectorAll('[data-play]').forEach(function (b) { b.addEventListener('click', function () { draw(); play(b.dataset.play); }); });
-  function tog(id, fn) { var b = document.getElementById(id); b.addEventListener('click', function () { stop(); fn(b); draw(); }); }
+  function stopAll() { gen++; Object.keys(timers).forEach(function (k) { clearTimeout(timers[k]); }); Object.keys(dots).forEach(function (k) { dots[k].setAttribute('opacity', 0); }); }
+  function auto() { stopAll(); if (reduce || paused) return; var my = gen; ['r', 'a', 'g'].forEach(function (l) { runLane(l, true, my); }); }
+  document.querySelectorAll('[data-play]').forEach(function (b) { b.addEventListener('click', function () { stopAll(); draw(); runLane(b.dataset.play, false, gen); }); });
+  var pb = document.getElementById('rgPause');
+  pb.addEventListener('click', function () { paused = !paused; pb.textContent = paused ? '▶ Animate all three' : '⏸ Pause animation'; document.body.classList.toggle('rg-still', paused); if (paused) stopAll(); else { draw(); auto(); } });
+  function tog(id, fn) { var b = document.getElementById(id); b.addEventListener('click', function () { fn(b); draw(); auto(); }); }
   tog('rgNeed', function (b) { need = !need; b.textContent = 'Agentic: retrieval ' + (need ? 'needed' : 'not needed'); b.classList.toggle('on', !need); });
   tog('rgRetry', function (b) { retry = !retry; b.textContent = 'Agentic: first search ' + (retry ? 'insufficient' : 'good'); b.classList.toggle('on', retry); });
   tog('rgGlob', function (b) { glob = !glob; b.textContent = 'Graph: ' + (glob ? 'broad question (global)' : 'specific question (local)'); b.classList.toggle('on', glob); });
-  // chooser
   var CH = [['A fact or passage from your documents ("What is our refund limit?")', 'RAG', 'r', 'One search and one model call is enough; add a reranker before anything else.'], ['A multi-part question, several sources, or answers that must be checked ("Compare our refund policy with last year’s and the regulator’s rules")', 'Agentic RAG', 'a', 'Planner and evaluator earn their extra calls here.'], ['How named things connect ("Which suppliers are linked to the failed part?")', 'Graph RAG, local search', 'g', 'Following links finds what similar-text search misses.'], ['Themes across the whole collection ("What are the main complaints this year?")', 'Graph RAG, global search', 'g', 'Community reports summarise everything; top-K chunks cannot.']];
   var Q = document.getElementById('rgQ');
-  CH.forEach(function (c, i) { var l = document.createElement('label'); l.innerHTML = '<input type="radio" name="rgq"> ' + c[0]; l.querySelector('input').addEventListener('change', function () { document.getElementById('rgRec').innerHTML = 'Start with <b style="color:' + C[c[2]] + '">' + c[1] + '</b>. ' + c[3] + ' (our reading)'; if (i === 3 && !glob) document.getElementById('rgGlob').click(); if (i === 2 && glob) document.getElementById('rgGlob').click(); sel = c[2] === 'r' ? 'rv' : c[2] === 'a' ? 'ae' : (i === 3 ? 'gm' : 'gk'); draw(); }); Q.appendChild(l); });
+  CH.forEach(function (c, i) { var l = document.createElement('label'); l.innerHTML = '<input type="radio" name="rgq"> ' + c[0]; l.querySelector('input').addEventListener('change', function () { document.getElementById('rgRec').innerHTML = 'Start with <b style="color:' + C[c[2]] + '">' + c[1] + '</b>. ' + c[3] + ' (our reading)'; if ((i === 3) !== glob && i >= 2) document.getElementById('rgGlob').click(); sel = c[2] === 'r' ? 'rv' : c[2] === 'a' ? 'ae' : (i === 3 ? 'gm' : 'gk'); draw(); auto(); }); Q.appendChild(l); });
   function tell() { if (embed && parent !== window) parent.postMessage({ rgHeight: Math.ceil(document.querySelector('.rg').getBoundingClientRect().bottom + 8) }, '*'); }
   addEventListener('resize', tell);
-  draw();
+  draw(); auto();
 })();
 </script>
 </body>
