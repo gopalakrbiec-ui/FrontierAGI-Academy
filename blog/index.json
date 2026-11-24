@@ -451,6 +451,21 @@
       "featured": false
     },
     {
+      "slug": "agentic-llm-gateway",
+      "title": "The Architecture of an LLM Gateway: Routing, Caching, Guardrails and Cost Tracking",
+      "excerpt": "One front door for every model call: virtual keys and budgets, guardrails in and out, a semantic cache, a model router with fallback, and the traces that tune it. How it differs from a harness and an MCP gateway, with a savings calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-24",
+      "readTime": "10 min",
+      "tags": [
+        "Agents",
+        "Infrastructure"
+      ],
+      "emoji": "🚪",
+      "featured": false
+    },
+    {
       "slug": "agent-tech-stack-map",
       "title": "The Modern AI Agent Tech Stack, Mapped",
       "excerpt": "Six layers, a production layer and the agent loop, with every tool linked to where this site covers it and the gaps marked.",

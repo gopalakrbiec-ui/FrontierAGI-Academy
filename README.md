@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**384 articles** · **38 series** · **22 interactive maps** + **9 series hubs** · newest post 2026-11-23
+**385 articles** · **38 series** · **22 interactive maps** + **9 series hubs** · newest post 2026-11-24
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -376,7 +376,9 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 #### 🧩 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 
 Four kinds of agent system (frameworks, harnesses, runtimes, builders), each system dismantled layer by layer: an eight-layer architecture, one task traced through it, failure modes, security, how to build one from scratch and what it costs. Wave 1: the map, the agent loop and five harnesses. Wave 2: six frameworks, one triage agent. Wave 3: four runtimes, one production workload. Wave 4: four builders, one support agent. Series complete.  
-<sub>27 articles</sub>
+<sub>28 articles</sub>
+
+🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|
@@ -407,6 +409,7 @@ Four kinds of agent system (frameworks, harnesses, runtimes, builders), each sys
 | 25 | 🖥️ [The Agent UI Layer: Streaming, Tool Cards and Human Approval](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-ui-layer.html) | 5 min |
 | 26 | 🛡️ [The Agent Production Layer, Tool by Tool](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-production-layer.html) | 5 min |
 | 27 | 🏭 [The Software Factory: The Layer Above the Agent](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-software-factory.html) | 4 min |
+| 28 | 🚪 [The Architecture of an LLM Gateway: Routing, Caching, Guardrails and Cost Tracking](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-llm-gateway.html) | 10 min |
 
 #### 🏗️ Production Agent Blueprints: Reference Architectures by Cloud
 
@@ -802,8 +805,6 @@ Cross-lab reference pieces this site's lineage articles cite back to — how cap
 
 Half-decade by half-decade back to 2001, then decade by decade to the 1940s: jobs born and gone, pay in real dollars, demand and layoffs, employers, skills, who did the work, and the India and global thread.  
 <sub>13 articles</sub>
-
-🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|

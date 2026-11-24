@@ -258,7 +258,8 @@
         "agent-tech-stack-map",
         "agent-ui-layer",
         "agent-production-layer",
-        "agentic-software-factory"
+        "agentic-software-factory",
+        "agentic-llm-gateway"
       ]
     },
     {
