@@ -210,3 +210,6 @@ See `docs/LOOP-ENGINEERING.md` and `loops/` (one config per loop: trigger, stop 
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`
 Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierAGI-Academy`)
+
+## Parked ideas (do not build until the owner asks)
+- **European AI Labs map** (owner shared a "49 European AI model labs" infographic, 24 Nov 2026, and said "just remember this, don't go ahead"): interactive city-pin map in the AI Ecosystems nav next to USA/China/India, near the AI World Map block; lab cards (what it trains, company vs public, open weights, flagship model, source), filters, links to existing articles. Only labs confirmed from their own sites; the "49" count is the infographic's. Optional companion article "Europe's own models". Credit line rule applies.
