@@ -1,0 +1,46 @@
+name: Fetch X tips
+
+# Daily: scan recent posts from data/x-watchlist.json (or your Following timeline) for likely announcements and
+# write data/x-tips.json. Tips are never shown on the site; each is checked against its primary source first.
+# Needs repository secret X_BEARER_TOKEN (or X_USER_TOKEN + X_USER_ID). Without one the job does nothing.
+# Scheduled runs only fire on the default branch; run by hand from the Actions tab at any time.
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Look back this many days"
+        default: "2"
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-x-tips
+  cancel-in-progress: false
+
+jobs:
+  tips:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Selftest
+        run: python3 scripts/fetch_x_tips.py --selftest
+      - name: Fetch tips
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          X_USER_TOKEN: ${{ secrets.X_USER_TOKEN }}
+          X_USER_ID: ${{ secrets.X_USER_ID }}
+        run: python3 scripts/fetch_x_tips.py --days "${{ inputs.days || '2' }}"
+      - name: Commit tips
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/x-tips.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "No new tips."; else
+            git commit -m "X tips for review"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          fi

@@ -1,0 +1,7 @@
+{
+  "about": "X accounts whose posts scripts/fetch_x_tips.py scans for announcements (handles without @). Edit freely; handles that do not exist are reported and skipped. Ignored when X_USER_TOKEN + X_USER_ID are set (then your own Following timeline is used).",
+  "accounts": [
+    "OpenAI", "AnthropicAI", "GoogleDeepMind", "AIatMeta", "xai", "MistralAI", "deepseek_ai",
+    "Alibaba_Qwen", "Kimi_Moonshot", "nvidia", "METR_Evals", "arcprize", "EpochAIResearch"
+  ]
+}
