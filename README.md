@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**385 articles** · **38 series** · **22 interactive maps** + **9 series hubs** · newest post 2026-11-24
+**385 articles** · **38 series** · **29 interactive maps** + **9 series hubs** · newest post 2026-11-24
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -78,6 +78,18 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html"><img src="assets/readme/ai-coding-layers.webp" alt="AI Coding in Five Layers" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html">AI Coding in Five Layers</a></b><br>Model → harness → loop → graph → software factory, original vs corrected, with a ticket run through all five.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html"><img src="assets/readme/agent-lifecycle.webp" alt="Agent Development Lifecycle" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html">Agent Development Lifecycle</a></b><br>Scaffold, run, eval, deploy and observe with an animated security gate.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sdlc-adlc-map.html"><img src="assets/readme/sdlc-adlc-map.webp" alt="SDLC → ADLC, Side by Side" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sdlc-adlc-map.html">SDLC → ADLC, Side by Side</a></b><br>Eight stages from 1970 to 2026, with a people / agents toggle.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-architectures.html"><img src="assets/readme/agent-architectures.webp" alt="Six Agent Architectures" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-architectures.html">Six Agent Architectures</a></b><br>From chatbot to enterprise agent, with a "which level do you need?" chooser.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rag-compare.html"><img src="assets/readme/rag-compare.webp" alt="RAG vs Agentic RAG vs Graph RAG" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rag-compare.html">RAG vs Agentic RAG vs Graph RAG</a></b><br>Three retrieval designs side by side, animated, with local and global graph search.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html"><img src="assets/readme/llm-gateway.webp" alt="LLM Gateway" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html">LLM Gateway</a></b><br>Keys, guardrails, semantic cache, routing and fallback for every model call.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
 <td width="50%"></td>
 </tr>
 </table>
@@ -100,7 +112,7 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-world-map.html"><img src="assets/readme/ai-world-map.webp" alt="AI World Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-world-map.html">AI World Map</a></b><br>Money, models, compute, sovereign GPUs and papers by country.<br><sub>Data: <code>data/ai-world-map.json</code></sub></td>
-<td width="50%"></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/tech-jobs-history.html"><img src="assets/readme/tech-jobs-history.webp" alt="Tech Jobs Through Time" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/tech-jobs-history.html">Tech Jobs Through Time</a></b><br>Job families as waves from 1945 to 2030, with merges and splits.<br><sub>Data: <code>data/tech-jobs-history.json</code></sub></td>
 </tr>
 </table>
 

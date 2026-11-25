@@ -144,37 +144,43 @@
           "name": "Agent Development Lifecycle",
           "page": "agent-lifecycle",
           "line": "Scaffold, run, eval, deploy and observe with an animated security gate.",
-          "shot": "agent-lifecycle.webp"
+          "shot": "agent-lifecycle.webp",
+          "data": "in-page"
         },
         {
           "name": "SDLC → ADLC, Side by Side",
           "page": "sdlc-adlc-map",
           "line": "Eight stages from 1970 to 2026, with a people / agents toggle.",
-          "shot": "sdlc-adlc-map.webp"
+          "shot": "sdlc-adlc-map.webp",
+          "data": "in-page"
         },
         {
           "name": "Six Agent Architectures",
           "page": "agent-architectures",
           "line": "From chatbot to enterprise agent, with a \"which level do you need?\" chooser.",
-          "shot": "agent-architectures.webp"
+          "shot": "agent-architectures.webp",
+          "data": "in-page"
         },
         {
           "name": "RAG vs Agentic RAG vs Graph RAG",
           "page": "rag-compare",
           "line": "Three retrieval designs side by side, animated, with local and global graph search.",
-          "shot": "rag-compare.webp"
+          "shot": "rag-compare.webp",
+          "data": "in-page"
         },
         {
           "name": "LLM Gateway",
           "page": "llm-gateway",
           "line": "Keys, guardrails, semantic cache, routing and fallback for every model call.",
-          "shot": "llm-gateway.webp"
+          "shot": "llm-gateway.webp",
+          "data": "in-page"
         },
         {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",
-          "shot": "harness-timeline.webp"
+          "shot": "harness-timeline.webp",
+          "data": "in-page"
         }
       ]
     ],
@@ -226,7 +232,8 @@
           "name": "Tech Jobs Through Time",
           "page": "tech-jobs-history",
           "line": "Job families as waves from 1945 to 2030, with merges and splits.",
-          "shot": "tech-jobs-history.webp"
+          "shot": "tech-jobs-history.webp",
+          "data": "data/tech-jobs-history.json"
         }
       ]
     ]
