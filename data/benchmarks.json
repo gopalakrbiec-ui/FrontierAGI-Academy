@@ -1,1741 +1,1774 @@
 {
- "about": "Hand-curated benchmark scores for frontier language models. Each score says who reported it: lab = the model's own lab; other = a competitor lab's published table; independent = a third-party evaluator. sec 1 = the figure reached us through a secondary source (⚠️). Scores run under different harnesses, effort settings or subsets are not directly comparable: read the note.",
- "updated": "2026-11-03",
- "categories": [
-  [
-   "general",
-   "General capabilities",
-   "#475569"
+  "about": "Hand-curated benchmark scores for frontier language models. Each score says who reported it: lab = the model's own lab; other = a competitor lab's published table; independent = a third-party evaluator. sec 1 = the figure reached us through a secondary source (⚠️). Scores run under different harnesses, effort settings or subsets are not directly comparable: read the note.",
+  "updated": "2026-11-03",
+  "categories": [
+    [
+      "general",
+      "General capabilities",
+      "#475569"
+    ],
+    [
+      "coding",
+      "Agentic coding",
+      "#7c3aed"
+    ],
+    [
+      "computer",
+      "Computer use",
+      "#2563eb"
+    ],
+    [
+      "knowledge",
+      "Knowledge work",
+      "#0d9488"
+    ],
+    [
+      "multimodal",
+      "Multimodal understanding",
+      "#db2777"
+    ],
+    [
+      "longctx",
+      "Long context",
+      "#ea580c"
+    ],
+    [
+      "science",
+      "Science and math",
+      "#16a34a"
+    ],
+    [
+      "cyber",
+      "Cybersecurity",
+      "#dc2626"
+    ],
+    [
+      "horizon",
+      "Long tasks (time horizon)",
+      "#0891b2"
+    ],
+    [
+      "factual",
+      "Factuality",
+      "#a16207"
+    ],
+    [
+      "airnd",
+      "AI research & engineering",
+      "#4f46e5"
+    ],
+    [
+      "tools",
+      "Tool calling",
+      "#be185d"
+    ],
+    [
+      "agi",
+      "AGI-style reasoning",
+      "#0f172a"
+    ],
+    [
+      "econ",
+      "Real economic work",
+      "#065f46"
+    ],
+    [
+      "pref",
+      "Human preference",
+      "#9333ea"
+    ]
   ],
-  [
-   "coding",
-   "Agentic coding",
-   "#7c3aed"
+  "benchmarks": [
+    [
+      "aa-index-5",
+      "AA Index v5.0",
+      "general",
+      "score",
+      null,
+      "Artificial Analysis composite index",
+      "Artificial Analysis"
+    ],
+    [
+      "vals-index-2-2",
+      "Vals Index v2.2",
+      "general",
+      "%",
+      100,
+      "",
+      "Vals AI"
+    ],
+    [
+      "swe-sweep",
+      "SWE-sweep",
+      "coding",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "frontierswe-2",
+      "FrontierSWE 2",
+      "coding",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "terminal-bench-4",
+      "Terminal-Bench 4.0",
+      "coding",
+      "%",
+      100,
+      "Agent harness and effort setting change results a lot; see each score's note",
+      "Terminal-Bench"
+    ],
+    [
+      "deepswe-1-1",
+      "DeepSWE v1.1",
+      "coding",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "ale-1-1",
+      "Agents' Last Exam v1.1",
+      "computer",
+      "score",
+      100,
+      "",
+      ""
+    ],
+    [
+      "osworld-2-1",
+      "OSWorld-2.1 (offline subset)",
+      "computer",
+      "%",
+      100,
+      "Offline subset",
+      "OSWorld"
+    ],
+    [
+      "automationbench",
+      "AutomationBench (Zapier)",
+      "knowledge",
+      "%",
+      100,
+      "",
+      "Zapier"
+    ],
+    [
+      "vending-bench-2",
+      "Vending-Bench 2",
+      "knowledge",
+      "$",
+      null,
+      "Final bank balance in dollars",
+      "Andon Labs"
+    ],
+    [
+      "chartography",
+      "Chartography",
+      "multimodal",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "blueprint-bench-2",
+      "Blueprint-Bench 2",
+      "multimodal",
+      "score",
+      100,
+      "Similarity score",
+      ""
+    ],
+    [
+      "graphwalks",
+      "GraphWalks (256k–1M, BFS F1)",
+      "longctx",
+      "%",
+      100,
+      "256k to 1M tokens, breadth-first search, F1",
+      ""
+    ],
+    [
+      "riemannbench",
+      "RiemannBench",
+      "science",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "tb-science",
+      "Terminal-Bench-Science 0.1",
+      "science",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "cwe-bench",
+      "CWE-bench",
+      "cyber",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "exploitgym",
+      "ExploitGym",
+      "cyber",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "sec-bench-pro",
+      "SEC-bench Pro",
+      "cyber",
+      "%",
+      100,
+      "",
+      ""
+    ],
+    [
+      "cybergym",
+      "CyberGym",
+      "cyber",
+      "score",
+      100,
+      "",
+      ""
+    ],
+    [
+      "metr-horizon",
+      "METR 50% time horizon",
+      "horizon",
+      "h",
+      null,
+      "Length of task (in human-expert hours) the agent completes with 50% success on METR's task suite; wide confidence intervals",
+      "METR"
+    ],
+    [
+      "simpleqa-verified",
+      "SimpleQA Verified",
+      "factual",
+      "%",
+      100,
+      "Short fact questions; percent correct (abstaining counts as wrong), so willingness to guess moves scores",
+      "Google DeepMind / Kaggle; tracked by Epoch AI"
+    ],
+    [
+      "mle-bench-lite",
+      "MLE-bench Lite",
+      "airnd",
+      "%",
+      100,
+      "Kaggle-style ML engineering tasks; share of tasks earning a medal. Frontier labs mostly report full MLE-bench or PaperBench only in system cards",
+      "OpenAI (benchmark); results self-reported"
+    ],
+    [
+      "mcp-atlas",
+      "MCP Atlas (Scale)",
+      "tools",
+      "%",
+      100,
+      "Multi-step tool use against real MCP servers",
+      "Scale Labs leaderboard"
+    ],
+    [
+      "arc-agi-3",
+      "ARC-AGI-3",
+      "agi",
+      "%",
+      100,
+      "Interactive puzzle games that are easy for people and new to the model; the ARC Prize team's main AGI test. Scores differ by harness and effort setting",
+      "ARC Prize Foundation"
+    ],
+    [
+      "arc-agi-2",
+      "ARC-AGI-2",
+      "agi",
+      "%",
+      100,
+      "Abstract grid puzzles; reported close to saturation by late 2026",
+      "ARC Prize Foundation"
+    ],
+    [
+      "hle",
+      "Humanity's Last Exam",
+      "agi",
+      "%",
+      100,
+      "2,500 expert-written questions across many fields; scores depend on tools, effort and subset",
+      "Center for AI Safety and Scale AI"
+    ],
+    [
+      "frontiermath-t4-v2",
+      "FrontierMath Tier 4 (v2)",
+      "agi",
+      "%",
+      100,
+      "Research-level mathematics; Epoch AI reports every Tier 4 problem has now been solved by some model (saturated)",
+      "Epoch AI"
+    ],
+    [
+      "posttrainbench-1-1",
+      "PostTrainBench v1.1",
+      "airnd",
+      "%",
+      100,
+      "Agents get a base model, a GPU budget and a target task and must post-train the model themselves; scored on the trained model. Run by the benchmark authors, not the labs (a few entries may be provider-submitted)",
+      "PostTrainBench authors (arXiv 2603.08640)"
+    ],
+    [
+      "gdpval-2",
+      "GDPval v2",
+      "econ",
+      "%",
+      100,
+      "Long real-world tasks from professional occupations (consulting, finance, design), graded against expert work; run by OpenAI, so scores are lab-reported",
+      "OpenAI"
+    ],
+    [
+      "lmarena-text",
+      "LMArena Text (Elo)",
+      "pref",
+      "elo",
+      null,
+      "Rating from blind side-by-side votes by users; top models sit within overlapping margins, so small gaps are noise",
+      "LMArena (arena.ai)"
+    ]
   ],
-  [
-   "computer",
-   "Computer use",
-   "#2563eb"
-  ],
-  [
-   "knowledge",
-   "Knowledge work",
-   "#0d9488"
-  ],
-  [
-   "multimodal",
-   "Multimodal understanding",
-   "#db2777"
-  ],
-  [
-   "longctx",
-   "Long context",
-   "#ea580c"
-  ],
-  [
-   "science",
-   "Science and math",
-   "#16a34a"
-  ],
-  [
-   "cyber",
-   "Cybersecurity",
-   "#dc2626"
-  ],
-  [
-   "horizon",
-   "Long tasks (time horizon)",
-   "#0891b2"
-  ],
-  [
-   "factual",
-   "Factuality",
-   "#a16207"
-  ],
-  [
-   "airnd",
-   "AI research & engineering",
-   "#4f46e5"
-  ],
-  [
-   "tools",
-   "Tool calling",
-   "#be185d"
-  ],
-  [
-   "agi",
-   "AGI-style reasoning",
-   "#0f172a"
-  ],
-  [
-   "econ",
-   "Real economic work",
-   "#065f46"
-  ],
-  [
-   "pref",
-   "Human preference",
-   "#9333ea"
+  "scores": [
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "aa-index-5",
+      "v": 59,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "aa-index-5",
+      "v": 50,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "aa-index-5",
+      "v": 57,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "aa-index-5",
+      "v": 58,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "aa-index-5",
+      "v": 49,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "vals-index-2-2",
+      "v": 70.4,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "vals-index-2-2",
+      "v": 69.2,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "vals-index-2-2",
+      "v": 65.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "vals-index-2-2",
+      "v": 70.2,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "swe-sweep",
+      "v": 9.6,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "swe-sweep",
+      "v": 4.3,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "swe-sweep",
+      "v": 9.5,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "swe-sweep",
+      "v": 3.6,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "swe-sweep",
+      "v": 2.9,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "frontierswe-2",
+      "v": 61.2,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "frontierswe-2",
+      "v": 55.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "frontierswe-2",
+      "v": 65.5,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "frontierswe-2",
+      "v": 62.3,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "frontierswe-2",
+      "v": 56.3,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "terminal-bench-4",
+      "v": 65.2,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "terminal-bench-4",
+      "v": 57.1,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "terminal-bench-4",
+      "v": 59.1,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "terminal-bench-4",
+      "v": 59.6,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "terminal-bench-4",
+      "v": 52.0,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "ale-1-1",
+      "v": 77.4,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "ale-1-1",
+      "v": 69.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "ale-1-1",
+      "v": 73.1,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "ale-1-1",
+      "v": 71.6,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "osworld-2-1",
+      "v": 81.5,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "osworld-2-1",
+      "v": 74.7,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "osworld-2-1",
+      "v": 80.9,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "osworld-2-1",
+      "v": 87.2,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "osworld-2-1",
+      "v": 76.8,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "automationbench",
+      "v": 53.9,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "automationbench",
+      "v": 51.3,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "automationbench",
+      "v": 41.4,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "automationbench",
+      "v": 42.5,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "automationbench",
+      "v": 31.4,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "vending-bench-2",
+      "v": 16484,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "vending-bench-2",
+      "v": 13718,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "vending-bench-2",
+      "v": 15515,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "vending-bench-2",
+      "v": 9235,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "vending-bench-2",
+      "v": 5422,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "chartography",
+      "v": 72.5,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "chartography",
+      "v": 71.6,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "chartography",
+      "v": 71.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "chartography",
+      "v": 66.3,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "chartography",
+      "v": 46.2,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "blueprint-bench-2",
+      "v": 58.6,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "blueprint-bench-2",
+      "v": 54.4,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "blueprint-bench-2",
+      "v": 49.7,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "blueprint-bench-2",
+      "v": 51.2,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "blueprint-bench-2",
+      "v": 41.9,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "graphwalks",
+      "v": 96.2,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "graphwalks",
+      "v": 84.2,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "graphwalks",
+      "v": 71.8,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "graphwalks",
+      "v": 66.8,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "graphwalks",
+      "v": 65.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "riemannbench",
+      "v": 80.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "riemannbench",
+      "v": 76.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "riemannbench",
+      "v": 72.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "riemannbench",
+      "v": 69.6,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "riemannbench",
+      "v": 65.6,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "tb-science",
+      "v": 64.8,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "tb-science",
+      "v": 52.9,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "tb-science",
+      "v": 63.3,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "tb-science",
+      "v": 59.0,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "tb-science",
+      "v": 43.3,
+      "d": "2026-10-28",
+      "rep": "independent",
+      "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Run by Artificial Analysis (labelled AA in Google's table)"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "cwe-bench",
+      "v": 71.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "cwe-bench",
+      "v": 68.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "cwe-bench",
+      "v": 68.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "cwe-bench",
+      "v": 67.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
+      "b": "cwe-bench",
+      "v": 58.0,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "exploitgym",
+      "v": 54.8,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "exploitgym",
+      "v": 42.0,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "exploitgym",
+      "v": 42.4,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "exploitgym",
+      "v": 34.5,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "sec-bench-pro",
+      "v": 88.2,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "sec-bench-pro",
+      "v": 83.4,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": ""
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "sec-bench-pro",
+      "v": 85.4,
+      "d": "2026-10-28",
+      "rep": "other",
+      "by": "Google's Gemini 4 Carbon table",
+      "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
+      "sec": 0,
+      "note": "Competitor score as reported by Google"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "terminal-bench-4",
+      "v": 66.4,
+      "d": "2026-09-22",
+      "rep": "lab",
+      "by": "Anthropic launch figures, as relayed by a secondary site",
+      "src": "https://computingforgeeks.com/claude-opus-5-5-released-features-benchmarks/",
+      "sec": 1,
+      "note": "xhigh effort, Anthropic's own harness"
+    },
+    {
+      "m": "moonshot-20261023-kimi-k3-1-pro",
+      "b": "terminal-bench-4",
+      "v": 65.7,
+      "d": "2026-10-23",
+      "rep": "lab",
+      "by": "Moonshot launch figures, as relayed by a secondary site",
+      "src": "https://www.eesel.ai/blog/kimi-k3-1-pro",
+      "sec": 1,
+      "note": "Claude Code harness, max reasoning effort"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "terminal-bench-4",
+      "v": 58.2,
+      "d": "2026-10-23",
+      "rep": "other",
+      "by": "Moonshot's launch table, as relayed by a secondary site",
+      "src": "https://www.eesel.ai/blog/kimi-k3-1-pro",
+      "sec": 1,
+      "note": "Competitor score as reported by Moonshot"
+    },
+    {
+      "m": "openai-20261026-gpt-6-1-terra",
+      "b": "terminal-bench-4",
+      "v": 50.3,
+      "d": "2026-10-26",
+      "rep": "lab",
+      "by": "OpenAI launch figures, as relayed by DataCamp",
+      "src": "https://www.datacamp.com/blog/gpt-6-1-terra",
+      "sec": 1,
+      "note": "Max effort"
+    },
+    {
+      "m": "moonshot-20261023-kimi-k3-1-pro",
+      "b": "deepswe-1-1",
+      "v": 75.5,
+      "d": "2026-10-23",
+      "rep": "lab",
+      "by": "Moonshot launch figures, as relayed by a secondary site",
+      "src": "https://www.testmuai.com/blog/kimi-k3-1-pro/",
+      "sec": 1,
+      "note": ""
+    },
+    {
+      "m": "mistral-20261029-mistral-large-4",
+      "b": "deepswe-1-1",
+      "v": 61.7,
+      "d": "2026-10-06",
+      "rep": "lab",
+      "by": "Mistral launch figures (preview model), as relayed by a secondary site",
+      "src": "https://www.eesel.ai/de/blog/mistral-large-4-preise-benchmarks-open-weights",
+      "sec": 1,
+      "note": "Measured on the October preview; the open-weight release had three more weeks of training"
+    },
+    {
+      "m": "mistral-20261029-mistral-large-4",
+      "b": "terminal-bench-4",
+      "v": 28.3,
+      "d": "2026-10-06",
+      "rep": "lab",
+      "by": "Mistral launch figures (preview model), as relayed by a secondary site",
+      "src": "https://www.eesel.ai/de/blog/mistral-large-4-preise-benchmarks-open-weights",
+      "sec": 1,
+      "note": "Measured on the October preview"
+    },
+    {
+      "m": "deepseek-20260910-deepseek-v4-1-flash",
+      "b": "cybergym",
+      "v": 88.1,
+      "d": "2026-09-10",
+      "rep": "lab",
+      "by": "DeepSeek-reported, as relayed by a secondary site",
+      "src": "https://www.leptidigital.fr/intelligence-artificielle-ia/deepseek-v4-1-flash-vs-claude-mythos-cybersecurite-91792/",
+      "sec": 1,
+      "note": ""
+    },
+    {
+      "m": "openai-20261117-gpt-6-2-astra-and-sol",
+      "b": "terminal-bench-4",
+      "v": 63.13,
+      "d": "2026-11-17",
+      "rep": "independent",
+      "by": "Vals AI model page",
+      "src": "https://www.vals.ai/models/openai_gpt-6.2-astra",
+      "sec": 0,
+      "note": "GPT-6.2 Astra; Vals AI's own run"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "terminal-bench-4",
+      "v": 65.15,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Vals AI results, as relayed by 4sysops",
+      "src": "https://4sysops.com/archives/gpt-6-2-astra-and-sol-reviews-benchmarks-and-early-tester-bashing/",
+      "sec": 1,
+      "note": "Claude Fable 5.2; Vals AI run"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "osworld-2-1",
+      "v": 89.3,
+      "d": "2026-11-09",
+      "rep": "lab",
+      "by": "Anthropic launch figures, as relayed by a secondary site",
+      "src": "https://neuraltrust.ai/blog/claude-fable-5-2",
+      "sec": 1,
+      "note": "Claude Fable 5.2; offline setup with partial credit"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "tb-science",
+      "v": 74.6,
+      "d": "2026-11-09",
+      "rep": "lab",
+      "by": "Anthropic launch figures, as relayed by a secondary site",
+      "src": "https://neuraltrust.ai/blog/claude-fable-5-2",
+      "sec": 1,
+      "note": "Claude Fable 5.2"
+    },
+    {
+      "m": "google-20261112-gemini-4-hydrogen",
+      "b": "terminal-bench-4",
+      "v": 54,
+      "d": "2026-11-12",
+      "rep": "independent",
+      "by": "Artificial Analysis, as relayed by DataCamp",
+      "src": "https://www.datacamp.com/blog/gemini-4-hydrogen",
+      "sec": 1,
+      "note": "Another tracker lists 56.36%; unresolved"
+    },
+    {
+      "m": "google-20261112-gemini-4-hydrogen",
+      "b": "tb-science",
+      "v": 51.4,
+      "d": "2026-11-12",
+      "rep": "lab",
+      "by": "Google launch table, as relayed by a secondary site",
+      "src": "https://felloai.com/gemini-4-hydrogen/",
+      "sec": 1,
+      "note": "Gemini 4 Hydrogen"
+    },
+    {
+      "m": "anthropic-20251124-claude-opus-4-5",
+      "b": "metr-horizon",
+      "v": 4.8,
+      "d": "2025-12-19",
+      "rep": "independent",
+      "by": "METR (post on X)",
+      "src": "https://x.com/METR_Evals/status/2002203627377574113",
+      "sec": 0,
+      "note": "~4 h 49 min; 95% CI 1 h 49 min to 20 h 25 min"
+    },
+    {
+      "m": "anthropic-20260407-claude-mythos-preview-and-project-glasswing",
+      "b": "metr-horizon",
+      "v": 16,
+      "d": "2026-05-19",
+      "rep": "independent",
+      "by": "METR, as summarised by Wikipedia",
+      "src": "https://en.wikipedia.org/wiki/METR",
+      "sec": 1,
+      "note": "'Likely at least 16 hours'; another source reads 17.4 h from METR's raw data. Newer models not yet published by METR"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "simpleqa-verified",
+      "v": 76.0,
+      "d": "2026-11-01",
+      "rep": "independent",
+      "by": "Epoch AI data, as relayed by a leaderboard aggregator",
+      "src": "https://www.benchleader.com/benchmarks/simpleqa_verified",
+      "sec": 1,
+      "note": "Sources disagree by about a point"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "simpleqa-verified",
+      "v": 75.6,
+      "d": "2026-11-01",
+      "rep": "independent",
+      "by": "Epoch AI data, as relayed by a leaderboard aggregator",
+      "src": "https://www.benchleader.com/benchmarks/simpleqa_verified",
+      "sec": 1,
+      "note": "Another table has 75.8%"
+    },
+    {
+      "m": "anthropic-20260609-claude-fable-5-and-claude-mythos-5",
+      "b": "simpleqa-verified",
+      "v": 70.7,
+      "d": "2026-11-01",
+      "rep": "independent",
+      "by": "Leaderboard aggregator",
+      "src": "https://benchgecko.ai/benchmark/simpleqa-verified",
+      "sec": 1,
+      "note": "Claude Fable 5"
+    },
+    {
+      "m": "deepseek-20260910-deepseek-v4-1-flash",
+      "b": "mle-bench-lite",
+      "v": 89.2,
+      "d": "2026-11-18",
+      "rep": "other",
+      "by": "Shanghai AI Lab's Sage S2.1-Flash model card comparison, as relayed by a secondary site",
+      "src": "https://explainx.ai/blog/sage-s2-1-flash-shanghai-ai-lab-science-agent-november-2026",
+      "sec": 1,
+      "note": "DeepSeek-V4.1-Flash-1017 checkpoint; Sage S2.1-Flash (90.3, vendor-reported) is not in our model map"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "mcp-atlas",
+      "v": 90.7,
+      "d": "2026-11-19",
+      "rep": "independent",
+      "by": "Scale Labs leaderboard, as mirrored by BenchLM",
+      "src": "https://benchlm.ai/benchmarks/scale-mcp-atlas",
+      "sec": 1,
+      "note": "Snapshot 19 Nov 2026"
+    },
+    {
+      "m": "meta-20261015-muse-spark-open",
+      "b": "mcp-atlas",
+      "v": 89.2,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Leaderboard aggregator",
+      "src": "https://benchlm.ai/benchmarks/mcpatlas",
+      "sec": 1,
+      "note": "Snapshot 18 Nov 2026"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "mcp-atlas",
+      "v": 85.4,
+      "d": "2026-11-19",
+      "rep": "independent",
+      "by": "Scale Labs leaderboard (search snippet)",
+      "src": "https://labs.scale.com/leaderboard/mcp_atlas",
+      "sec": 1,
+      "note": "Could not open the leaderboard page directly"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "arc-agi-3",
+      "v": 81.2,
+      "d": "2026-11-16",
+      "rep": "independent",
+      "by": "ARC Prize results, as mirrored by BenchLM",
+      "src": "https://benchlm.ai/benchmarks/arcagi3",
+      "sec": 1,
+      "note": "Claude Fable 5.2, xhigh effort; not checked on arcprize.org"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "arc-agi-3",
+      "v": 62.71,
+      "d": "2026-10-23",
+      "rep": "independent",
+      "by": "ARC Prize standard harness, as relayed by a leaderboard aggregator",
+      "src": "https://llmlearner.com/rankings/arc-agi-3",
+      "sec": 1,
+      "note": "Standard harness; different setup from the 81.2% row"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "arc-agi-2",
+      "v": 95.0,
+      "d": "2026-11-01",
+      "rep": "independent",
+      "by": "Leaderboard aggregator",
+      "src": "https://llm-stats.com/benchmarks/arc-agi-v2",
+      "sec": 1,
+      "note": "Near saturation; another page credits GPT-5.6 Sol with 92.5%"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "hle",
+      "v": 74.3,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Artificial Analysis",
+      "src": "https://artificialanalysis.ai/evaluations/humanitys-last-exam",
+      "sec": 1,
+      "note": "Claude Fable 5.2, max effort; seen via search excerpt"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "hle",
+      "v": 69.1,
+      "d": "2026-10-28",
+      "rep": "lab",
+      "by": "Google launch figures, as relayed by Klu",
+      "src": "https://klu.ai/benchmarks/humanitys-last-exam",
+      "sec": 1,
+      "note": "Gemini 4 Carbon (High); Artificial Analysis's run gives 60.4%"
+    },
+    {
+      "m": "openai-20260929-gpt-6-1-sol",
+      "b": "frontiermath-t4-v2",
+      "v": 100,
+      "d": "2026-10-15",
+      "rep": "independent",
+      "by": "Epoch AI run, as relayed by a leaderboard aggregator",
+      "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
+      "sec": 1,
+      "note": "Benchmark saturated"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "frontiermath-t4-v2",
+      "v": 97.6,
+      "d": "2026-10-15",
+      "rep": "independent",
+      "by": "Epoch AI run, as relayed by a leaderboard aggregator",
+      "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
+      "sec": 1,
+      "note": "Epoch AI says GPT-6 Astra solved the last unsolved Tier 4 problem"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "frontiermath-t4-v2",
+      "v": 95,
+      "d": "2026-10-15",
+      "rep": "independent",
+      "by": "Epoch AI run, as relayed by a leaderboard aggregator",
+      "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
+      "sec": 1,
+      "note": ""
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "posttrainbench-1-1",
+      "v": 49.3,
+      "d": "2026-10-31",
+      "rep": "independent",
+      "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
+      "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
+      "sec": 1,
+      "note": "Claude Opus 5.5; same figure on Inference360's mirror"
+    },
+    {
+      "m": "google-20260930-gemini-4-argon",
+      "b": "posttrainbench-1-1",
+      "v": 45.3,
+      "d": "2026-10-31",
+      "rep": "independent",
+      "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
+      "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
+      "sec": 1,
+      "note": "Gemini 4 Argon; same figure on Inference360's mirror"
+    },
+    {
+      "m": "openai-20260904-gpt-6-astra",
+      "b": "posttrainbench-1-1",
+      "v": 44.3,
+      "d": "2026-10-31",
+      "rep": "independent",
+      "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
+      "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
+      "sec": 1,
+      "note": "GPT-6 Astra; same figure on Inference360's mirror"
+    },
+    {
+      "m": "openai-20261117-gpt-6-2-astra-and-sol",
+      "b": "gdpval-2",
+      "v": 50.4,
+      "d": "2026-11-17",
+      "rep": "lab",
+      "by": "OpenAI launch figures, as relayed by a secondary site",
+      "src": "https://www.intelligentliving.co/gpt-62-astra-vs-sol-smarter-default/",
+      "sec": 1,
+      "note": "GPT-6.2 Astra; +6.2 points over GPT-6 Astra (44.2%)"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "gdpval-2",
+      "v": 44.8,
+      "d": "2026-11-17",
+      "rep": "other",
+      "by": "OpenAI's GPT-6.2 launch table, as relayed by a secondary site",
+      "src": "https://www.intelligentliving.co/gpt-62-astra-vs-sol-smarter-default/",
+      "sec": 1,
+      "note": "Claude Fable 5.2, as run by OpenAI"
+    },
+    {
+      "m": "google-20261028-gemini-4-carbon",
+      "b": "lmarena-text",
+      "v": 1526,
+      "d": "2026-11-06",
+      "rep": "independent",
+      "by": "LMArena, as relayed by Developers Digest",
+      "src": "https://www.developersdigest.tech/benchmarks/lmarena",
+      "sec": 1,
+      "note": "±9, preliminary; other trackers show 1528–1538"
+    },
+    {
+      "m": "anthropic-20260922-claude-opus-5-5",
+      "b": "lmarena-text",
+      "v": 1509,
+      "d": "2026-11-09",
+      "rep": "independent",
+      "by": "LMArena, as relayed by a daily tracker",
+      "src": "https://www.benchleader.com/benchmarks/lmarena_text",
+      "sec": 1,
+      "note": "Margins overlap with the top models"
+    },
+    {
+      "m": "google-20261118-gemini-4-neon",
+      "b": "tb-science",
+      "v": 70.5,
+      "d": "2026-11-18",
+      "rep": "lab",
+      "by": "Google launch figures, as relayed by a secondary site",
+      "src": "https://ahmetbalaman.com/en/blog/what-is-gemini-4-neon-en/",
+      "sec": 1,
+      "note": "Self-computed by Google; same table gives Opus 5.5 63.3%, GPT-6.2 Sol 68.0%"
+    },
+    {
+      "m": "google-20261118-gemini-4-neon",
+      "b": "riemannbench",
+      "v": 84.0,
+      "d": "2026-11-18",
+      "rep": "lab",
+      "by": "Google launch figures, as relayed by a secondary site",
+      "src": "https://felloai.com/gemini-4-neon/",
+      "sec": 1,
+      "note": "Gemini 4 Neon"
+    },
+    {
+      "m": "google-20261118-gemini-4-neon",
+      "b": "automationbench",
+      "v": 56.3,
+      "d": "2026-11-18",
+      "rep": "lab",
+      "by": "Google launch figures, as relayed by a secondary site",
+      "src": "https://felloai.com/gemini-4-neon/",
+      "sec": 1,
+      "note": "Google says #1 on Zapier's AutomationBench"
+    },
+    {
+      "m": "google-20261118-gemini-4-neon",
+      "b": "aa-index-5",
+      "v": 61,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Artificial Analysis model page",
+      "src": "https://artificialanalysis.ai/models/gemini-4-neon",
+      "sec": 1,
+      "note": "xhigh effort; 60 at the default high setting; seen via search excerpt"
+    },
+    {
+      "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
+      "b": "aa-index-5",
+      "v": 65,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Artificial Analysis, as reported by The Next Web",
+      "src": "https://thenextweb.com/news/gemini-4-neon-google-third-intelligence-index-replaces-argon",
+      "sec": 1,
+      "note": "Claude Fable 5.2; index v5.0.1"
+    },
+    {
+      "m": "openai-20261117-gpt-6-2-astra-and-sol",
+      "b": "aa-index-5",
+      "v": 62,
+      "d": "2026-11-18",
+      "rep": "independent",
+      "by": "Artificial Analysis, as reported by The Next Web",
+      "src": "https://thenextweb.com/news/gemini-4-neon-google-third-intelligence-index-replaces-argon",
+      "sec": 1,
+      "note": "GPT-6.2 Astra; index v5.0.1"
+    },
+    {
+      "m": "qwen-20261116-qwen4-max",
+      "b": "terminal-bench-4",
+      "v": 48.5,
+      "d": "2026-11-16",
+      "rep": "lab",
+      "by": "Alibaba launch figures, as relayed by DataCamp",
+      "src": "https://www.datacamp.com/blog/qwen4-max",
+      "sec": 1,
+      "note": "Qwen4-Max; an independent Vals AI run reportedly measured 48.48%, matching it. ~48% fewer tokens per attempt than Qwen3.8-Max (company claim)"
+    },
+    {
+      "m": "qwen-20261116-qwen4-max",
+      "b": "deepswe-1-1",
+      "v": 75.7,
+      "d": "2026-11-16",
+      "rep": "lab",
+      "by": "Alibaba launch figures, as relayed by DataCamp",
+      "src": "https://www.datacamp.com/blog/qwen4-max",
+      "sec": 1,
+      "note": "Qwen4-Max; Kimi K3.1 at 75.5 in the same table"
+    },
+    {
+      "m": "openai-20261117-gpt-6-2-astra-and-sol",
+      "b": "arc-agi-3",
+      "v": 70.3,
+      "d": "2026-11-24",
+      "rep": "independent",
+      "by": "ARC Prize Foundation results page",
+      "src": "https://arcprize.org/results/openai-gpt-6-2-astra",
+      "sec": 0,
+      "note": "GPT-6.2 Astra, Max effort, standard harness; 99.8% with the provider adapter (different setup, not ranked)"
+    },
+    {
+      "m": "openai-20261117-gpt-6-2-astra-and-sol",
+      "b": "arc-agi-2",
+      "v": 95.8,
+      "d": "2026-11-24",
+      "rep": "independent",
+      "by": "ARC Prize Foundation results page",
+      "src": "https://arcprize.org/results/openai-gpt-6-2-astra",
+      "sec": 0,
+      "note": "GPT-6.2 Astra, max reasoning, semi-private set; near saturation"
+    },
+    {
+      "m": "google-20261118-gemini-4-neon",
+      "b": "hle",
+      "v": 71.3,
+      "d": "2026-11-18",
+      "rep": "lab",
+      "by": "Google launch table, as relayed by DEV Community",
+      "src": "https://dev.to/uulab/gemini-4-neon-the-balance-point-between-carbon-and-hydrogen-benchmarks-api-pricing-and-4pa6",
+      "sec": 1,
+      "note": "HLE-Diamond subset, not the full exam; not comparable with full-set rows"
+    }
   ]
- ],
- "benchmarks": [
-  [
-   "aa-index-5",
-   "AA Index v5.0",
-   "general",
-   "score",
-   null,
-   "Artificial Analysis composite index",
-   "Artificial Analysis"
-  ],
-  [
-   "vals-index-2-2",
-   "Vals Index v2.2",
-   "general",
-   "%",
-   100,
-   "",
-   "Vals AI"
-  ],
-  [
-   "swe-sweep",
-   "SWE-sweep",
-   "coding",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "frontierswe-2",
-   "FrontierSWE 2",
-   "coding",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "terminal-bench-4",
-   "Terminal-Bench 4.0",
-   "coding",
-   "%",
-   100,
-   "Agent harness and effort setting change results a lot; see each score's note",
-   "Terminal-Bench"
-  ],
-  [
-   "deepswe-1-1",
-   "DeepSWE v1.1",
-   "coding",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "ale-1-1",
-   "Agents' Last Exam v1.1",
-   "computer",
-   "score",
-   100,
-   "",
-   ""
-  ],
-  [
-   "osworld-2-1",
-   "OSWorld-2.1 (offline subset)",
-   "computer",
-   "%",
-   100,
-   "Offline subset",
-   "OSWorld"
-  ],
-  [
-   "automationbench",
-   "AutomationBench (Zapier)",
-   "knowledge",
-   "%",
-   100,
-   "",
-   "Zapier"
-  ],
-  [
-   "vending-bench-2",
-   "Vending-Bench 2",
-   "knowledge",
-   "$",
-   null,
-   "Final bank balance in dollars",
-   "Andon Labs"
-  ],
-  [
-   "chartography",
-   "Chartography",
-   "multimodal",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "blueprint-bench-2",
-   "Blueprint-Bench 2",
-   "multimodal",
-   "score",
-   100,
-   "Similarity score",
-   ""
-  ],
-  [
-   "graphwalks",
-   "GraphWalks (256k–1M, BFS F1)",
-   "longctx",
-   "%",
-   100,
-   "256k to 1M tokens, breadth-first search, F1",
-   ""
-  ],
-  [
-   "riemannbench",
-   "RiemannBench",
-   "science",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "tb-science",
-   "Terminal-Bench-Science 0.1",
-   "science",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "cwe-bench",
-   "CWE-bench",
-   "cyber",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "exploitgym",
-   "ExploitGym",
-   "cyber",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "sec-bench-pro",
-   "SEC-bench Pro",
-   "cyber",
-   "%",
-   100,
-   "",
-   ""
-  ],
-  [
-   "cybergym",
-   "CyberGym",
-   "cyber",
-   "score",
-   100,
-   "",
-   ""
-  ],
-  [
-   "metr-horizon",
-   "METR 50% time horizon",
-   "horizon",
-   "h",
-   null,
-   "Length of task (in human-expert hours) the agent completes with 50% success on METR's task suite; wide confidence intervals",
-   "METR"
-  ],
-  [
-   "simpleqa-verified",
-   "SimpleQA Verified",
-   "factual",
-   "%",
-   100,
-   "Short fact questions; percent correct (abstaining counts as wrong), so willingness to guess moves scores",
-   "Google DeepMind / Kaggle; tracked by Epoch AI"
-  ],
-  [
-   "mle-bench-lite",
-   "MLE-bench Lite",
-   "airnd",
-   "%",
-   100,
-   "Kaggle-style ML engineering tasks; share of tasks earning a medal. Frontier labs mostly report full MLE-bench or PaperBench only in system cards",
-   "OpenAI (benchmark); results self-reported"
-  ],
-  [
-   "mcp-atlas",
-   "MCP Atlas (Scale)",
-   "tools",
-   "%",
-   100,
-   "Multi-step tool use against real MCP servers",
-   "Scale Labs leaderboard"
-  ],
-  [
-   "arc-agi-3",
-   "ARC-AGI-3",
-   "agi",
-   "%",
-   100,
-   "Interactive puzzle games that are easy for people and new to the model; the ARC Prize team's main AGI test. Scores differ by harness and effort setting",
-   "ARC Prize Foundation"
-  ],
-  [
-   "arc-agi-2",
-   "ARC-AGI-2",
-   "agi",
-   "%",
-   100,
-   "Abstract grid puzzles; reported close to saturation by late 2026",
-   "ARC Prize Foundation"
-  ],
-  [
-   "hle",
-   "Humanity's Last Exam",
-   "agi",
-   "%",
-   100,
-   "2,500 expert-written questions across many fields; scores depend on tools, effort and subset",
-   "Center for AI Safety and Scale AI"
-  ],
-  [
-   "frontiermath-t4-v2",
-   "FrontierMath Tier 4 (v2)",
-   "agi",
-   "%",
-   100,
-   "Research-level mathematics; Epoch AI reports every Tier 4 problem has now been solved by some model (saturated)",
-   "Epoch AI"
-  ],
-  [
-   "posttrainbench-1-1",
-   "PostTrainBench v1.1",
-   "airnd",
-   "%",
-   100,
-   "Agents get a base model, a GPU budget and a target task and must post-train the model themselves; scored on the trained model. Run by the benchmark authors, not the labs (a few entries may be provider-submitted)",
-   "PostTrainBench authors (arXiv 2603.08640)"
-  ],
-  [
-   "gdpval-2",
-   "GDPval v2",
-   "econ",
-   "%",
-   100,
-   "Long real-world tasks from professional occupations (consulting, finance, design), graded against expert work; run by OpenAI, so scores are lab-reported",
-   "OpenAI"
-  ],
-  [
-   "lmarena-text",
-   "LMArena Text (Elo)",
-   "pref",
-   "elo",
-   null,
-   "Rating from blind side-by-side votes by users; top models sit within overlapping margins, so small gaps are noise",
-   "LMArena (arena.ai)"
-  ]
- ],
- "scores": [
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "aa-index-5",
-   "v": 59,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "aa-index-5",
-   "v": 50,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "aa-index-5",
-   "v": 57,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "aa-index-5",
-   "v": 58,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "aa-index-5",
-   "v": 49,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "vals-index-2-2",
-   "v": 70.4,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "vals-index-2-2",
-   "v": 69.2,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "vals-index-2-2",
-   "v": 65.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "vals-index-2-2",
-   "v": 70.2,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "swe-sweep",
-   "v": 9.6,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "swe-sweep",
-   "v": 4.3,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "swe-sweep",
-   "v": 9.5,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "swe-sweep",
-   "v": 3.6,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "swe-sweep",
-   "v": 2.9,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "frontierswe-2",
-   "v": 61.2,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "frontierswe-2",
-   "v": 55.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "frontierswe-2",
-   "v": 65.5,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "frontierswe-2",
-   "v": 62.3,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "frontierswe-2",
-   "v": 56.3,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "terminal-bench-4",
-   "v": 65.2,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "terminal-bench-4",
-   "v": 57.1,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "terminal-bench-4",
-   "v": 59.1,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "terminal-bench-4",
-   "v": 59.6,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "terminal-bench-4",
-   "v": 52.0,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "ale-1-1",
-   "v": 77.4,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "ale-1-1",
-   "v": 69.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "ale-1-1",
-   "v": 73.1,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "ale-1-1",
-   "v": 71.6,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "osworld-2-1",
-   "v": 81.5,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "osworld-2-1",
-   "v": 74.7,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "osworld-2-1",
-   "v": 80.9,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "osworld-2-1",
-   "v": 87.2,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "osworld-2-1",
-   "v": 76.8,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "automationbench",
-   "v": 53.9,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "automationbench",
-   "v": 51.3,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "automationbench",
-   "v": 41.4,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "automationbench",
-   "v": 42.5,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "automationbench",
-   "v": 31.4,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "vending-bench-2",
-   "v": 16484,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "vending-bench-2",
-   "v": 13718,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "vending-bench-2",
-   "v": 15515,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "vending-bench-2",
-   "v": 9235,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "vending-bench-2",
-   "v": 5422,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "chartography",
-   "v": 72.5,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "chartography",
-   "v": 71.6,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "chartography",
-   "v": 71.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "chartography",
-   "v": 66.3,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "chartography",
-   "v": 46.2,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "blueprint-bench-2",
-   "v": 58.6,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "blueprint-bench-2",
-   "v": 54.4,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "blueprint-bench-2",
-   "v": 49.7,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "blueprint-bench-2",
-   "v": 51.2,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "blueprint-bench-2",
-   "v": 41.9,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "graphwalks",
-   "v": 96.2,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "graphwalks",
-   "v": 84.2,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "graphwalks",
-   "v": 71.8,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "graphwalks",
-   "v": 66.8,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "graphwalks",
-   "v": 65.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "riemannbench",
-   "v": 80.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "riemannbench",
-   "v": 76.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "riemannbench",
-   "v": 72.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "riemannbench",
-   "v": 69.6,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "riemannbench",
-   "v": 65.6,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "tb-science",
-   "v": 64.8,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "tb-science",
-   "v": 52.9,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "tb-science",
-   "v": 63.3,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "tb-science",
-   "v": 59.0,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "tb-science",
-   "v": 43.3,
-   "d": "2026-10-28",
-   "rep": "independent",
-   "by": "Artificial Analysis, as cited in Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Run by Artificial Analysis (labelled AA in Google's table)"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "cwe-bench",
-   "v": 71.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "cwe-bench",
-   "v": 68.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "cwe-bench",
-   "v": 68.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "cwe-bench",
-   "v": 67.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260901-claude-fable-5-1-and-claude-mythos-5-1",
-   "b": "cwe-bench",
-   "v": 58.0,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "exploitgym",
-   "v": 54.8,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "exploitgym",
-   "v": 42.0,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "exploitgym",
-   "v": 42.4,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "exploitgym",
-   "v": 34.5,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "sec-bench-pro",
-   "v": 88.2,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "sec-bench-pro",
-   "v": 83.4,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": ""
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "sec-bench-pro",
-   "v": 85.4,
-   "d": "2026-10-28",
-   "rep": "other",
-   "by": "Google's Gemini 4 Carbon table",
-   "src": "https://deepmind.google/models/evals-methodology/gemini-4-carbon",
-   "sec": 0,
-   "note": "Competitor score as reported by Google"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "terminal-bench-4",
-   "v": 66.4,
-   "d": "2026-09-22",
-   "rep": "lab",
-   "by": "Anthropic launch figures, as relayed by a secondary site",
-   "src": "https://computingforgeeks.com/claude-opus-5-5-released-features-benchmarks/",
-   "sec": 1,
-   "note": "xhigh effort, Anthropic's own harness"
-  },
-  {
-   "m": "moonshot-20261023-kimi-k3-1-pro",
-   "b": "terminal-bench-4",
-   "v": 65.7,
-   "d": "2026-10-23",
-   "rep": "lab",
-   "by": "Moonshot launch figures, as relayed by a secondary site",
-   "src": "https://www.eesel.ai/blog/kimi-k3-1-pro",
-   "sec": 1,
-   "note": "Claude Code harness, max reasoning effort"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "terminal-bench-4",
-   "v": 58.2,
-   "d": "2026-10-23",
-   "rep": "other",
-   "by": "Moonshot's launch table, as relayed by a secondary site",
-   "src": "https://www.eesel.ai/blog/kimi-k3-1-pro",
-   "sec": 1,
-   "note": "Competitor score as reported by Moonshot"
-  },
-  {
-   "m": "openai-20261026-gpt-6-1-terra",
-   "b": "terminal-bench-4",
-   "v": 50.3,
-   "d": "2026-10-26",
-   "rep": "lab",
-   "by": "OpenAI launch figures, as relayed by DataCamp",
-   "src": "https://www.datacamp.com/blog/gpt-6-1-terra",
-   "sec": 1,
-   "note": "Max effort"
-  },
-  {
-   "m": "moonshot-20261023-kimi-k3-1-pro",
-   "b": "deepswe-1-1",
-   "v": 75.5,
-   "d": "2026-10-23",
-   "rep": "lab",
-   "by": "Moonshot launch figures, as relayed by a secondary site",
-   "src": "https://www.testmuai.com/blog/kimi-k3-1-pro/",
-   "sec": 1,
-   "note": ""
-  },
-  {
-   "m": "mistral-20261029-mistral-large-4",
-   "b": "deepswe-1-1",
-   "v": 61.7,
-   "d": "2026-10-06",
-   "rep": "lab",
-   "by": "Mistral launch figures (preview model), as relayed by a secondary site",
-   "src": "https://www.eesel.ai/de/blog/mistral-large-4-preise-benchmarks-open-weights",
-   "sec": 1,
-   "note": "Measured on the October preview; the open-weight release had three more weeks of training"
-  },
-  {
-   "m": "mistral-20261029-mistral-large-4",
-   "b": "terminal-bench-4",
-   "v": 28.3,
-   "d": "2026-10-06",
-   "rep": "lab",
-   "by": "Mistral launch figures (preview model), as relayed by a secondary site",
-   "src": "https://www.eesel.ai/de/blog/mistral-large-4-preise-benchmarks-open-weights",
-   "sec": 1,
-   "note": "Measured on the October preview"
-  },
-  {
-   "m": "deepseek-20260910-deepseek-v4-1-flash",
-   "b": "cybergym",
-   "v": 88.1,
-   "d": "2026-09-10",
-   "rep": "lab",
-   "by": "DeepSeek-reported, as relayed by a secondary site",
-   "src": "https://www.leptidigital.fr/intelligence-artificielle-ia/deepseek-v4-1-flash-vs-claude-mythos-cybersecurite-91792/",
-   "sec": 1,
-   "note": ""
-  },
-  {
-   "m": "openai-20261117-gpt-6-2-astra-and-sol",
-   "b": "terminal-bench-4",
-   "v": 63.13,
-   "d": "2026-11-17",
-   "rep": "independent",
-   "by": "Vals AI model page",
-   "src": "https://www.vals.ai/models/openai_gpt-6.2-astra",
-   "sec": 0,
-   "note": "GPT-6.2 Astra; Vals AI's own run"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "terminal-bench-4",
-   "v": 65.15,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Vals AI results, as relayed by 4sysops",
-   "src": "https://4sysops.com/archives/gpt-6-2-astra-and-sol-reviews-benchmarks-and-early-tester-bashing/",
-   "sec": 1,
-   "note": "Claude Fable 5.2; Vals AI run"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "osworld-2-1",
-   "v": 89.3,
-   "d": "2026-11-09",
-   "rep": "lab",
-   "by": "Anthropic launch figures, as relayed by a secondary site",
-   "src": "https://neuraltrust.ai/blog/claude-fable-5-2",
-   "sec": 1,
-   "note": "Claude Fable 5.2; offline setup with partial credit"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "tb-science",
-   "v": 74.6,
-   "d": "2026-11-09",
-   "rep": "lab",
-   "by": "Anthropic launch figures, as relayed by a secondary site",
-   "src": "https://neuraltrust.ai/blog/claude-fable-5-2",
-   "sec": 1,
-   "note": "Claude Fable 5.2"
-  },
-  {
-   "m": "google-20261112-gemini-4-hydrogen",
-   "b": "terminal-bench-4",
-   "v": 54,
-   "d": "2026-11-12",
-   "rep": "independent",
-   "by": "Artificial Analysis, as relayed by DataCamp",
-   "src": "https://www.datacamp.com/blog/gemini-4-hydrogen",
-   "sec": 1,
-   "note": "Another tracker lists 56.36%; unresolved"
-  },
-  {
-   "m": "google-20261112-gemini-4-hydrogen",
-   "b": "tb-science",
-   "v": 51.4,
-   "d": "2026-11-12",
-   "rep": "lab",
-   "by": "Google launch table, as relayed by a secondary site",
-   "src": "https://felloai.com/gemini-4-hydrogen/",
-   "sec": 1,
-   "note": "Gemini 4 Hydrogen"
-  },
-  {
-   "m": "anthropic-20251124-claude-opus-4-5",
-   "b": "metr-horizon",
-   "v": 4.8,
-   "d": "2025-12-19",
-   "rep": "independent",
-   "by": "METR (post on X)",
-   "src": "https://x.com/METR_Evals/status/2002203627377574113",
-   "sec": 0,
-   "note": "~4 h 49 min; 95% CI 1 h 49 min to 20 h 25 min"
-  },
-  {
-   "m": "anthropic-20260407-claude-mythos-preview-and-project-glasswing",
-   "b": "metr-horizon",
-   "v": 16,
-   "d": "2026-05-19",
-   "rep": "independent",
-   "by": "METR, as summarised by Wikipedia",
-   "src": "https://en.wikipedia.org/wiki/METR",
-   "sec": 1,
-   "note": "'Likely at least 16 hours'; another source reads 17.4 h from METR's raw data. Newer models not yet published by METR"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "simpleqa-verified",
-   "v": 76.0,
-   "d": "2026-11-01",
-   "rep": "independent",
-   "by": "Epoch AI data, as relayed by a leaderboard aggregator",
-   "src": "https://www.benchleader.com/benchmarks/simpleqa_verified",
-   "sec": 1,
-   "note": "Sources disagree by about a point"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "simpleqa-verified",
-   "v": 75.6,
-   "d": "2026-11-01",
-   "rep": "independent",
-   "by": "Epoch AI data, as relayed by a leaderboard aggregator",
-   "src": "https://www.benchleader.com/benchmarks/simpleqa_verified",
-   "sec": 1,
-   "note": "Another table has 75.8%"
-  },
-  {
-   "m": "anthropic-20260609-claude-fable-5-and-claude-mythos-5",
-   "b": "simpleqa-verified",
-   "v": 70.7,
-   "d": "2026-11-01",
-   "rep": "independent",
-   "by": "Leaderboard aggregator",
-   "src": "https://benchgecko.ai/benchmark/simpleqa-verified",
-   "sec": 1,
-   "note": "Claude Fable 5"
-  },
-  {
-   "m": "deepseek-20260910-deepseek-v4-1-flash",
-   "b": "mle-bench-lite",
-   "v": 89.2,
-   "d": "2026-11-18",
-   "rep": "other",
-   "by": "Shanghai AI Lab's Sage S2.1-Flash model card comparison, as relayed by a secondary site",
-   "src": "https://explainx.ai/blog/sage-s2-1-flash-shanghai-ai-lab-science-agent-november-2026",
-   "sec": 1,
-   "note": "DeepSeek-V4.1-Flash-1017 checkpoint; Sage S2.1-Flash (90.3, vendor-reported) is not in our model map"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "mcp-atlas",
-   "v": 90.7,
-   "d": "2026-11-19",
-   "rep": "independent",
-   "by": "Scale Labs leaderboard, as mirrored by BenchLM",
-   "src": "https://benchlm.ai/benchmarks/scale-mcp-atlas",
-   "sec": 1,
-   "note": "Snapshot 19 Nov 2026"
-  },
-  {
-   "m": "meta-20261015-muse-spark-open",
-   "b": "mcp-atlas",
-   "v": 89.2,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Leaderboard aggregator",
-   "src": "https://benchlm.ai/benchmarks/mcpatlas",
-   "sec": 1,
-   "note": "Snapshot 18 Nov 2026"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "mcp-atlas",
-   "v": 85.4,
-   "d": "2026-11-19",
-   "rep": "independent",
-   "by": "Scale Labs leaderboard (search snippet)",
-   "src": "https://labs.scale.com/leaderboard/mcp_atlas",
-   "sec": 1,
-   "note": "Could not open the leaderboard page directly"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "arc-agi-3",
-   "v": 81.2,
-   "d": "2026-11-16",
-   "rep": "independent",
-   "by": "ARC Prize results, as mirrored by BenchLM",
-   "src": "https://benchlm.ai/benchmarks/arcagi3",
-   "sec": 1,
-   "note": "Claude Fable 5.2, xhigh effort; not checked on arcprize.org"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "arc-agi-3",
-   "v": 62.71,
-   "d": "2026-10-23",
-   "rep": "independent",
-   "by": "ARC Prize standard harness, as relayed by a leaderboard aggregator",
-   "src": "https://llmlearner.com/rankings/arc-agi-3",
-   "sec": 1,
-   "note": "Standard harness; different setup from the 81.2% row"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "arc-agi-2",
-   "v": 95.0,
-   "d": "2026-11-01",
-   "rep": "independent",
-   "by": "Leaderboard aggregator",
-   "src": "https://llm-stats.com/benchmarks/arc-agi-v2",
-   "sec": 1,
-   "note": "Near saturation; another page credits GPT-5.6 Sol with 92.5%"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "hle",
-   "v": 74.3,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Artificial Analysis",
-   "src": "https://artificialanalysis.ai/evaluations/humanitys-last-exam",
-   "sec": 1,
-   "note": "Claude Fable 5.2, max effort; seen via search excerpt"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "hle",
-   "v": 69.1,
-   "d": "2026-10-28",
-   "rep": "lab",
-   "by": "Google launch figures, as relayed by Klu",
-   "src": "https://klu.ai/benchmarks/humanitys-last-exam",
-   "sec": 1,
-   "note": "Gemini 4 Carbon (High); Artificial Analysis's run gives 60.4%"
-  },
-  {
-   "m": "openai-20260929-gpt-6-1-sol",
-   "b": "frontiermath-t4-v2",
-   "v": 100,
-   "d": "2026-10-15",
-   "rep": "independent",
-   "by": "Epoch AI run, as relayed by a leaderboard aggregator",
-   "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
-   "sec": 1,
-   "note": "Benchmark saturated"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "frontiermath-t4-v2",
-   "v": 97.6,
-   "d": "2026-10-15",
-   "rep": "independent",
-   "by": "Epoch AI run, as relayed by a leaderboard aggregator",
-   "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
-   "sec": 1,
-   "note": "Epoch AI says GPT-6 Astra solved the last unsolved Tier 4 problem"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "frontiermath-t4-v2",
-   "v": 95,
-   "d": "2026-10-15",
-   "rep": "independent",
-   "by": "Epoch AI run, as relayed by a leaderboard aggregator",
-   "src": "https://llmlearner.com/rankings/frontier-math-tier-4-v2",
-   "sec": 1,
-   "note": ""
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "posttrainbench-1-1",
-   "v": 49.3,
-   "d": "2026-10-31",
-   "rep": "independent",
-   "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
-   "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
-   "sec": 1,
-   "note": "Claude Opus 5.5; same figure on Inference360's mirror"
-  },
-  {
-   "m": "google-20260930-gemini-4-argon",
-   "b": "posttrainbench-1-1",
-   "v": 45.3,
-   "d": "2026-10-31",
-   "rep": "independent",
-   "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
-   "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
-   "sec": 1,
-   "note": "Gemini 4 Argon; same figure on Inference360's mirror"
-  },
-  {
-   "m": "openai-20260904-gpt-6-astra",
-   "b": "posttrainbench-1-1",
-   "v": 44.3,
-   "d": "2026-10-31",
-   "rep": "independent",
-   "by": "PostTrainBench v1.1 leaderboard, as mirrored by BenchLM",
-   "src": "https://benchlm.ai/benchmarks/posttrainbench-v1-1",
-   "sec": 1,
-   "note": "GPT-6 Astra; same figure on Inference360's mirror"
-  },
-  {
-   "m": "openai-20261117-gpt-6-2-astra-and-sol",
-   "b": "gdpval-2",
-   "v": 50.4,
-   "d": "2026-11-17",
-   "rep": "lab",
-   "by": "OpenAI launch figures, as relayed by a secondary site",
-   "src": "https://www.intelligentliving.co/gpt-62-astra-vs-sol-smarter-default/",
-   "sec": 1,
-   "note": "GPT-6.2 Astra; +6.2 points over GPT-6 Astra (44.2%)"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "gdpval-2",
-   "v": 44.8,
-   "d": "2026-11-17",
-   "rep": "other",
-   "by": "OpenAI's GPT-6.2 launch table, as relayed by a secondary site",
-   "src": "https://www.intelligentliving.co/gpt-62-astra-vs-sol-smarter-default/",
-   "sec": 1,
-   "note": "Claude Fable 5.2, as run by OpenAI"
-  },
-  {
-   "m": "google-20261028-gemini-4-carbon",
-   "b": "lmarena-text",
-   "v": 1526,
-   "d": "2026-11-06",
-   "rep": "independent",
-   "by": "LMArena, as relayed by Developers Digest",
-   "src": "https://www.developersdigest.tech/benchmarks/lmarena",
-   "sec": 1,
-   "note": "±9, preliminary; other trackers show 1528–1538"
-  },
-  {
-   "m": "anthropic-20260922-claude-opus-5-5",
-   "b": "lmarena-text",
-   "v": 1509,
-   "d": "2026-11-09",
-   "rep": "independent",
-   "by": "LMArena, as relayed by a daily tracker",
-   "src": "https://www.benchleader.com/benchmarks/lmarena_text",
-   "sec": 1,
-   "note": "Margins overlap with the top models"
-  },
-  {
-   "m": "google-20261118-gemini-4-neon",
-   "b": "tb-science",
-   "v": 70.5,
-   "d": "2026-11-18",
-   "rep": "lab",
-   "by": "Google launch figures, as relayed by a secondary site",
-   "src": "https://ahmetbalaman.com/en/blog/what-is-gemini-4-neon-en/",
-   "sec": 1,
-   "note": "Self-computed by Google; same table gives Opus 5.5 63.3%, GPT-6.2 Sol 68.0%"
-  },
-  {
-   "m": "google-20261118-gemini-4-neon",
-   "b": "riemannbench",
-   "v": 84.0,
-   "d": "2026-11-18",
-   "rep": "lab",
-   "by": "Google launch figures, as relayed by a secondary site",
-   "src": "https://felloai.com/gemini-4-neon/",
-   "sec": 1,
-   "note": "Gemini 4 Neon"
-  },
-  {
-   "m": "google-20261118-gemini-4-neon",
-   "b": "automationbench",
-   "v": 56.3,
-   "d": "2026-11-18",
-   "rep": "lab",
-   "by": "Google launch figures, as relayed by a secondary site",
-   "src": "https://felloai.com/gemini-4-neon/",
-   "sec": 1,
-   "note": "Google says #1 on Zapier's AutomationBench"
-  },
-  {
-   "m": "google-20261118-gemini-4-neon",
-   "b": "aa-index-5",
-   "v": 61,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Artificial Analysis model page",
-   "src": "https://artificialanalysis.ai/models/gemini-4-neon",
-   "sec": 1,
-   "note": "xhigh effort; 60 at the default high setting; seen via search excerpt"
-  },
-  {
-   "m": "anthropic-20261109-claude-fable-5-2-and-mythos-5-2",
-   "b": "aa-index-5",
-   "v": 65,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Artificial Analysis, as reported by The Next Web",
-   "src": "https://thenextweb.com/news/gemini-4-neon-google-third-intelligence-index-replaces-argon",
-   "sec": 1,
-   "note": "Claude Fable 5.2; index v5.0.1"
-  },
-  {
-   "m": "openai-20261117-gpt-6-2-astra-and-sol",
-   "b": "aa-index-5",
-   "v": 62,
-   "d": "2026-11-18",
-   "rep": "independent",
-   "by": "Artificial Analysis, as reported by The Next Web",
-   "src": "https://thenextweb.com/news/gemini-4-neon-google-third-intelligence-index-replaces-argon",
-   "sec": 1,
-   "note": "GPT-6.2 Astra; index v5.0.1"
-  },
-  {
-   "m": "qwen-20261116-qwen4-max",
-   "b": "terminal-bench-4",
-   "v": 48.5,
-   "d": "2026-11-16",
-   "rep": "lab",
-   "by": "Alibaba launch figures, as relayed by DataCamp",
-   "src": "https://www.datacamp.com/blog/qwen4-max",
-   "sec": 1,
-   "note": "Qwen4-Max; an independent Vals AI run reportedly measured 48.48%, matching it. ~48% fewer tokens per attempt than Qwen3.8-Max (company claim)"
-  },
-  {
-   "m": "qwen-20261116-qwen4-max",
-   "b": "deepswe-1-1",
-   "v": 75.7,
-   "d": "2026-11-16",
-   "rep": "lab",
-   "by": "Alibaba launch figures, as relayed by DataCamp",
-   "src": "https://www.datacamp.com/blog/qwen4-max",
-   "sec": 1,
-   "note": "Qwen4-Max; Kimi K3.1 at 75.5 in the same table"
-  }
- ]
 }
