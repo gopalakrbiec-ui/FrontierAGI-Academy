@@ -4183,6 +4183,21 @@
       ],
       "source": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
       "flagship": true
+    },
+    {
+      "id": "anthropic-20261123-claude-ship",
+      "date": "2026-11-23",
+      "lab": "anthropic",
+      "type": "product",
+      "title": "Claude Ship",
+      "summary": "Three agents for GitHub pull requests: Code Review (generally available), plus PR Steward and Claude Approvals (beta), which can review, fix and approve changes a team's policy allows. For Team and Enterprise plans; a /ship command in Claude Code. Reported via secondary coverage; Anthropic's productivity figures are self-reported.",
+      "facts": [
+        "Policy file .claude/approvals.yml; observe mode recommended first",
+        "Not available with Zero Data Retention, HIPAA or customer-managed keys",
+        "Billed by tokens used"
+      ],
+      "source": "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/",
+      "flagship": false
     }
   ]
 }
