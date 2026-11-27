@@ -170,6 +170,13 @@
           "shot": "software-factory-floor.webp"
         },
         {
+          "name": "The FDE Market",
+          "page": "fde-market",
+          "line": "255 forward deployed engineering postings from ten companies’ job boards: filter by company, region, level and skill; compare pay.",
+          "data": "data/fde-postings.json",
+          "shot": "fde-market.webp"
+        },
+        {
           "name": "How AI Agents Remember",
           "page": "agent-memory",
           "line": "Episodic, semantic, working and procedural memory, with five animated flows.",

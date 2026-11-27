@@ -1,6 +1,54 @@
 {
   "posts": [
     {
+      "slug": "fde-role-2026",
+      "title": "The Forward Deployed Engineer in 2026: What 255 Job Posts Say",
+      "excerpt": "Who hires forward deployed engineers, what they pay, where the roles are and what they ask for, from 255 live postings on ten companies’ own job boards.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "12 min",
+      "tags": [
+        "Forward Deployed Engineer",
+        "Careers",
+        "Agents"
+      ],
+      "emoji": "📋",
+      "featured": false
+    },
+    {
+      "slug": "fde-engagement",
+      "title": "Inside an FDE Engagement: From First Meeting to Handover",
+      "excerpt": "What forward deployed engineers do phase by phase, from discovery to handover, built from live job-post responsibilities, with a week in the role and where agents now help.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "10 min",
+      "tags": [
+        "Forward Deployed Engineer",
+        "Careers",
+        "Agents"
+      ],
+      "emoji": "🛠️",
+      "featured": false
+    },
+    {
+      "slug": "fde-becoming-one",
+      "title": "Becoming a Forward Deployed Engineer: Skills, Interviews and Paths In",
+      "excerpt": "The skills postings ask for most, reported interview formats, six paths in, India, a 90-day plan and the videos and podcasts worth your time.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "9 min",
+      "tags": [
+        "Forward Deployed Engineer",
+        "Careers",
+        "Agents"
+      ],
+      "emoji": "🧭",
+      "featured": false
+    },
+    {
       "slug": "sf-what-is-a-software-factory",
       "title": "What a Software Factory Is, and What the Numbers Say",
       "excerpt": "The six stations of a software factory, its 55-year history, and what GitHub, LinearB, DORA and company figures on AI-written code actually count.",

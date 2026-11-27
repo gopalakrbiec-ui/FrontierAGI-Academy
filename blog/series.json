@@ -240,6 +240,17 @@
       ]
     },
     {
+      "id": "sec-fde",
+      "title": "The Forward Deployed Engineer: The People Who Put AI to Work",
+      "short": "The Forward Deployed Engineer",
+      "icon": "🧭",
+      "slugs": [
+        "fde-role-2026",
+        "fde-engagement",
+        "fde-becoming-one"
+      ]
+    },
+    {
       "id": "sec-agentic",
       "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
       "short": "Agentic AI System Designs",
