@@ -331,11 +331,13 @@
       "lab": "openai",
       "type": "product",
       "title": "DevDay 2026",
-      "summary": "OpenAI's developer conference, with GPT-6.1 Sol announced a week after GPT-6 Sol.",
+      "summary": "OpenAI’s developer conference, with more than 20 announcements: dots, GPT-6.1 Sol, the Ultrafast tier, Pro 500, Agents API computer use, the Decisions API preview, ChatGPT Space and Private Intelligence.",
       "facts": [
+        "20+ announcements",
+        "Dots",
         "GPT-6.1 Sol"
       ],
-      "source": "https://www.cnbc.com/2026/09/29/openai-devday-2026-live-updates.html",
+      "source": "https://openai.com/index/devday-2026-recap/",
       "flagship": false
     },
     {
@@ -4197,6 +4199,145 @@
         "Billed by tokens used"
       ],
       "source": "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20250121-the-stargate-project",
+      "date": "2025-01-21",
+      "lab": "openai",
+      "type": "company",
+      "title": "The Stargate Project",
+      "summary": "A new venture to invest $500 billion over four years in US AI infrastructure for OpenAI, with SoftBank and OpenAI as lead partners.",
+      "facts": [
+        "$500B over four years",
+        "SoftBank, OpenAI, Oracle, MGX"
+      ],
+      "source": "https://openai.com/index/announcing-the-stargate-project/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20250819-chatgpt-go",
+      "date": "2025-08-19",
+      "lab": "openai",
+      "type": "pricing",
+      "title": "ChatGPT Go",
+      "summary": "A low-cost ChatGPT plan, launched first in India; it became available everywhere ChatGPT is offered on 16 January 2026 ($8 a month in the US).",
+      "facts": [
+        "India first",
+        "Worldwide from 16 Jan 2026"
+      ],
+      "source": "https://openai.com/index/introducing-chatgpt-go/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20250925-chatgpt-pulse",
+      "date": "2025-09-25",
+      "lab": "openai",
+      "type": "product",
+      "title": "ChatGPT Pulse",
+      "summary": "Personalised daily updates built from chats, memory and connected apps; a preview for Pro users on mobile, later on the web.",
+      "facts": [
+        "Pro, mobile first",
+        "Tasks folded into Pulse in Dec 2025"
+      ],
+      "source": "https://openai.com/index/introducing-chatgpt-pulse/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20250929-instant-checkout-and-the-agentic-commerc",
+      "date": "2025-09-29",
+      "lab": "openai",
+      "type": "product",
+      "title": "Instant Checkout and the Agentic Commerce Protocol",
+      "summary": "Buy from merchants inside ChatGPT, built with Stripe; starts with US Etsy sellers and single-item purchases.",
+      "facts": [
+        "Built with Stripe",
+        "Open Agentic Commerce Protocol"
+      ],
+      "source": "https://openai.com/index/buy-it-in-chatgpt/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20251120-group-chats-in-chatgpt",
+      "date": "2025-11-20",
+      "lab": "openai",
+      "type": "product",
+      "title": "Group chats in ChatGPT",
+      "summary": "Group conversations with people and ChatGPT, opened to logged-in Free, Go, Plus and Pro users worldwide after a pilot; wound down from 9 July 2026.",
+      "facts": [
+        "Retired for new chats 9 Jul 2026"
+      ],
+      "source": "https://openai.com/index/group-chats-in-chatgpt/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20260426-sora-app-discontinued",
+      "date": "2026-04-26",
+      "lab": "openai",
+      "type": "product",
+      "title": "Sora app discontinued",
+      "summary": "OpenAI’s page for Sora 2 notes that the Sora product stopped being available on 26 April 2026.",
+      "facts": [
+        "Sora 2 launched 30 Sep 2025"
+      ],
+      "source": "https://openai.com/index/sora-2/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20260929-dots-always-on-agents-in-chatgpt",
+      "date": "2026-09-29",
+      "lab": "openai",
+      "type": "product",
+      "title": "Dots: always-on agents in ChatGPT",
+      "summary": "Persistent agents that keep working on goals between conversations, each with its own cloud computer, powered by GPT-6 Astra; reachable in ChatGPT, Slack and Teams, with 4,000+ apps through plugins. Background research is read-only, and sensitive actions such as password changes stay with the user.",
+      "facts": [
+        "GPT-6 Astra",
+        "Own cloud computer",
+        "One dot included in Pro and Business Premium",
+        "Enterprise: $50–$500 per dot per month; on by default from 18 Nov 2026"
+      ],
+      "source": "https://openai.com/index/introducing-dots/",
+      "flagship": true
+    },
+    {
+      "id": "openai-20260929-agents-api-with-computer-use-decisions",
+      "date": "2026-09-29",
+      "lab": "openai",
+      "type": "api",
+      "title": "Agents API with computer use, Decisions API preview",
+      "summary": "The Agents API adds computer use so developers can build agents that operate software; a Decisions API (limited preview) answers user-defined questions with fixed answers using Luna.",
+      "facts": [
+        "Agents API: computer use",
+        "Decisions API: limited preview"
+      ],
+      "source": "https://openai.com/index/devday-2026-recap/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20260929-ultrafast-tier-and-pro-500",
+      "date": "2026-09-29",
+      "lab": "openai",
+      "type": "pricing",
+      "title": "Ultrafast tier and Pro 500",
+      "summary": "A paid speed tier (OpenAI reports up to 8× faster in Codex, 6× in the API) and a $500-a-month Pro plan.",
+      "facts": [
+        "GPT-6 Astra Ultrafast in the API",
+        "Pro 500 plan"
+      ],
+      "source": "https://openai.com/index/devday-2026-recap/",
+      "flagship": false
+    },
+    {
+      "id": "openai-20260929-chatgpt-space-and-private-intelligence",
+      "date": "2026-09-29",
+      "lab": "openai",
+      "type": "product",
+      "title": "ChatGPT Space and Private Intelligence",
+      "summary": "Space is a shared workspace for people and agents (it replaced Library on 20 November 2026); Private Intelligence is a privacy package for businesses with a Private Inference preview.",
+      "facts": [
+        "Space replaced Library 20 Nov 2026"
+      ],
+      "source": "https://openai.com/index/devday-2026-recap/",
       "flagship": false
     }
   ]
