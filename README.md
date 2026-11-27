@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**386 articles** · **38 series** · **37 interactive maps** + **9 series hubs** · newest post 2026-11-27
+**391 articles** · **39 series** · **38 interactive maps** + **9 series hubs** · newest post 2026-11-27
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -81,20 +81,20 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html"><img src="assets/readme/ai-coding-layers.webp" alt="AI Coding in Five Layers" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html">AI Coding in Five Layers</a></b><br>Model → harness → loop → graph → software factory, original vs corrected, with a ticket run through all five.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/software-factory-floor.html"><img src="assets/readme/software-factory-floor.webp" alt="The Factory Floor" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/software-factory-floor.html">The Factory Floor</a></b><br>A software factory as a live production line: add agents, weaken gates, overload reviewers and watch escaped defects (toy simulation).</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-memory.html"><img src="assets/readme/agent-memory.webp" alt="How AI Agents Remember" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-memory.html">How AI Agents Remember</a></b><br>Episodic, semantic, working and procedural memory, with five animated flows.</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html"><img src="assets/readme/agent-lifecycle.webp" alt="Agent Development Lifecycle" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html">Agent Development Lifecycle</a></b><br>Scaffold, run, eval, deploy and observe with an animated security gate.</td>
-</tr>
-<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sdlc-adlc-map.html"><img src="assets/readme/sdlc-adlc-map.webp" alt="SDLC → ADLC, Side by Side" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sdlc-adlc-map.html">SDLC → ADLC, Side by Side</a></b><br>Eight stages from 1970 to 2026, with a people / agents toggle.</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-architectures.html"><img src="assets/readme/agent-architectures.webp" alt="Six Agent Architectures" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-architectures.html">Six Agent Architectures</a></b><br>From chatbot to enterprise agent, with a "which level do you need?" chooser.</td>
-</tr>
-<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rag-compare.html"><img src="assets/readme/rag-compare.webp" alt="RAG vs Agentic RAG vs Graph RAG" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rag-compare.html">RAG vs Agentic RAG vs Graph RAG</a></b><br>Three retrieval designs side by side, animated, with local and global graph search.</td>
-<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html"><img src="assets/readme/llm-gateway.webp" alt="LLM Gateway" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html">LLM Gateway</a></b><br>Keys, guardrails, semantic cache, routing and fallback for every model call.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html"><img src="assets/readme/llm-gateway.webp" alt="LLM Gateway" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html">LLM Gateway</a></b><br>Keys, guardrails, semantic cache, routing and fallback for every model call.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
-<td width="50%"></td>
 </tr>
 </table>
 
@@ -402,12 +402,25 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 
 ### 07 · Agents in Production
 
+#### 🏭 Inside the Software Factory: How Agent Fleets Ship Code
+
+The system around coding agents, station by station: intake, specs, parallel agents, gates, the human gate and measurement. Built on primary sources (Stripe’s Minions, GitHub Octoverse 2026, LinearB, DORA), ending with this site’s own one-agent factory and the road to autonomous software.  
+<sub>5 articles</sub>
+
+🆕 *Newest series.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🏭 [What a Software Factory Is, and What the Numbers Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-what-is-a-software-factory.html) | 15 min |
+| 2 | 🧑‍🔧 [Case Study: Stripe’s Minions, 1,300 Agent Pull Requests a Week](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-stripe-minions.html) | 15 min |
+| 3 | 🧱 [Building the Line: Intake, Specs and Parallel Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-building-the-line.html) | 12 min |
+| 4 | 🚦 [Gates, the Human Gate and Measuring the Line](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-gates-and-measures.html) | 12 min |
+| 5 | 🔭 [Our Own Factory, and the Road to Autonomous Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-our-factory-and-future.html) | 12 min |
+
 #### 🧩 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 
 Four kinds of agent system (frameworks, harnesses, runtimes, builders), each system dismantled layer by layer: an eight-layer architecture, one task traced through it, failure modes, security, how to build one from scratch and what it costs. Wave 1: the map, the agent loop and five harnesses. Wave 2: six frameworks, one triage agent. Wave 3: four runtimes, one production workload. Wave 4: four builders, one support agent. Series complete.  
 <sub>28 articles</sub>
-
-🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|

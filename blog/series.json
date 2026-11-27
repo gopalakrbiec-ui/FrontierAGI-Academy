@@ -227,6 +227,19 @@
       ]
     },
     {
+      "id": "sec-softwarefactory",
+      "title": "Inside the Software Factory: How Agent Fleets Ship Code",
+      "short": "Inside the Software Factory",
+      "icon": "🏭",
+      "slugs": [
+        "sf-what-is-a-software-factory",
+        "sf-stripe-minions",
+        "sf-building-the-line",
+        "sf-gates-and-measures",
+        "sf-our-factory-and-future"
+      ]
+    },
+    {
       "id": "sec-agentic",
       "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
       "short": "Agentic AI System Designs",

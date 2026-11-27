@@ -1,6 +1,86 @@
 {
   "posts": [
     {
+      "slug": "sf-what-is-a-software-factory",
+      "title": "What a Software Factory Is, and What the Numbers Say",
+      "excerpt": "The six stations of a software factory, its 55-year history, and what GitHub, LinearB, DORA and company figures on AI-written code actually count.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "15 min",
+      "tags": [
+        "Software Factory",
+        "Agents",
+        "DevOps"
+      ],
+      "emoji": "🏭",
+      "featured": false
+    },
+    {
+      "slug": "sf-stripe-minions",
+      "title": "Case Study: Stripe’s Minions, 1,300 Agent Pull Requests a Week",
+      "excerpt": "Stripe’s unattended coding agents station by station, from its own posts: devboxes, blueprints, Toolshed, two CI rounds and human review.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "15 min",
+      "tags": [
+        "Software Factory",
+        "Agents",
+        "DevOps"
+      ],
+      "emoji": "🧑‍🔧",
+      "featured": false
+    },
+    {
+      "slug": "sf-building-the-line",
+      "title": "Building the Line: Intake, Specs and Parallel Agents",
+      "excerpt": "How work gets into a software factory, how to cut it into agent-ready tasks, how to run many agents at once, and where review becomes the bottleneck.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "12 min",
+      "tags": [
+        "Software Factory",
+        "Agents",
+        "DevOps"
+      ],
+      "emoji": "🧱",
+      "featured": false
+    },
+    {
+      "slug": "sf-gates-and-measures",
+      "title": "Gates, the Human Gate and Measuring the Line",
+      "excerpt": "The automatic gates, the human gate and the metrics that decide whether a software factory is fast and safe, with DORA’s amplifier finding.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "12 min",
+      "tags": [
+        "Software Factory",
+        "Agents",
+        "DevOps"
+      ],
+      "emoji": "🚦",
+      "featured": false
+    },
+    {
+      "slug": "sf-our-factory-and-future",
+      "title": "Our Own Factory, and the Road to Autonomous Software",
+      "excerpt": "This site’s one-agent factory with real numbers from its repository, the four problems to solve before autonomous software, and a 90-day plan.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "12 min",
+      "tags": [
+        "Software Factory",
+        "Agents",
+        "DevOps"
+      ],
+      "emoji": "🔭",
+      "featured": false
+    },
+    {
       "slug": "transformer-upgrades",
       "title": "20 Transformer Upgrades: What Changed Inside the Model Since 2017",
       "excerpt": "Pre-norm, RMSNorm, RoPE, grouped-query and latent attention, FlashAttention, SwiGLU, mixtures of experts and more: the twenty changes inside today’s frontier models, each with what it fixes, what it costs and who uses it.",

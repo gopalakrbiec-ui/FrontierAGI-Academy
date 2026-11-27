@@ -163,6 +163,13 @@
           "shot": "ai-coding-layers.webp"
         },
         {
+          "name": "The Factory Floor",
+          "page": "software-factory-floor",
+          "line": "A software factory as a live production line: add agents, weaken gates, overload reviewers and watch escaped defects (toy simulation).",
+          "data": "in-page",
+          "shot": "software-factory-floor.webp"
+        },
+        {
           "name": "How AI Agents Remember",
           "page": "agent-memory",
           "line": "Episodic, semantic, working and procedural memory, with five animated flows.",
