@@ -192,7 +192,147 @@ body.cr-embed main{padding-top:0!important}
   <div class="cr-bar"><button id="crPause">⏸ Pause rotation</button><span>Inner rings are closer to the model; outer rings build on everything inside them. The orange ring is one request travelling in to the model and back out.</span></div>
   <div class="cr-grid"><div class="cr-wrap"><svg id="crSvg" viewBox="0 0 1120 1120" role="img" aria-label="Concentric rings of the Claude platform"></svg></div>
   <div id="crPanel"><h3>Tap a block</h3><p>Every block opens here with a short explanation and a link to the article that covers it.</p></div></div>
-  <div class="cr-how">
+  <!-- RINGTL:START -->
+<style>.rtl{margin-top:22px;background:#fff;border:1px solid #e7e5e4;border-radius:14px;padding:18px 20px}.rtl h2{margin:0 0 4px;font-size:1.35rem}.rtl>p{margin:0 0 12px;color:#57534e;line-height:1.5}.rtl-row{margin:14px 0 4px}.rtl-row h3{margin:0 0 4px;font-size:1rem;color:var(--c)}.rtl-row h3 small{color:#78716c;font-weight:600}.rtl-tr{position:relative;height:34px;border-bottom:2px solid #e7e5e4;margin:0 8px}.rtl-y{position:absolute;bottom:-20px;font-size:.72rem;color:#a8a29e;transform:translateX(-50%)}.rtl-y:before{content:"";position:absolute;left:50%;top:-14px;height:8px;border-left:1px solid #d6d3d1}.rtl-d{position:absolute;bottom:-7px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 0 0 1px var(--c);cursor:pointer;padding:0;animation:rtlIn .5s both}.rtl-d.f{width:16px;height:16px;margin-left:-8px;bottom:-9px}.rtl-d:hover,.rtl-d.on{transform:scale(1.4)}@keyframes rtlIn{from{opacity:0;transform:translateY(-14px)}}@media (prefers-reduced-motion:reduce){.rtl-d{animation:none}}.rtl-ch{display:flex;gap:6px;overflow-x:auto;padding:26px 2px 6px}.rtl-ch button{flex:0 0 auto;border:1px solid #e7e5e4;border-left:3px solid var(--c);background:#fafaf9;border-radius:8px;padding:4px 8px;font-size:.78rem;cursor:pointer;text-align:left}.rtl-ch button b{display:block;color:#78716c;font-size:.7rem}.rtl-ch button.on{background:#fff7ed}.rtl-info{margin-top:12px;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;padding:10px 12px;line-height:1.5;min-height:2em}body.cr-embed .rtl{display:none}</style>
+<div class="rtl" id="rtl"><h2>Each layer over time</h2>
+<p>When each ring gained its pieces, from the announcements this site tracks (Frontier Lab Updates). Big dots are flagship releases. Tap a dot or a chip for the summary and source. Which ring an announcement belongs to is our grouping; company, funding and safety news are left out (they are on the full timeline).</p>
+<div class="rtl-row" style="--c:#1c1917"><h3>Layer 0 · Model <small>· 21</small></h3><div class="rtl-tr">
+<span class="rtl-y" style="left:0.0%">2023</span>
+<span class="rtl-y" style="left:25.53%">2024</span>
+<span class="rtl-y" style="left:51.06%">2025</span>
+<span class="rtl-y" style="left:76.6%">2026</span>
+<button class="rtl-d f" style="left:4.26%;animation-delay:0.00s" data-k="0" title="2023-03-14 · Claude (first public release)" aria-label="Claude (first public release)"></button>
+<button class="rtl-d" style="left:21.28%;animation-delay:0.06s" data-k="1" title="2023-11-21 · Claude 2.1" aria-label="Claude 2.1"></button>
+<button class="rtl-d f" style="left:29.79%;animation-delay:0.12s" data-k="2" title="2024-03-04 · Claude 3 family (Opus, Sonnet, Haiku)" aria-label="Claude 3 family (Opus, Sonnet, Haiku)"></button>
+<button class="rtl-d f" style="left:59.57%;animation-delay:0.18s" data-k="3" title="2025-05-22 · Claude 4: Opus 4 and Sonnet 4" aria-label="Claude 4: Opus 4 and Sonnet 4"></button>
+<button class="rtl-d" style="left:65.96%;animation-delay:0.24s" data-k="4" title="2025-08-05 · Claude Opus 4.1" aria-label="Claude Opus 4.1"></button>
+<button class="rtl-d f" style="left:68.09%;animation-delay:0.30s" data-k="5" title="2025-09-29 · Claude Sonnet 4.5" aria-label="Claude Sonnet 4.5"></button>
+<button class="rtl-d" style="left:70.21%;animation-delay:0.36s" data-k="6" title="2025-10-15 · Claude Haiku 4.5" aria-label="Claude Haiku 4.5"></button>
+<button class="rtl-d f" style="left:72.34%;animation-delay:0.42s" data-k="7" title="2025-11-24 · Claude Opus 4.5" aria-label="Claude Opus 4.5"></button>
+<button class="rtl-d f" style="left:78.72%;animation-delay:0.48s" data-k="8" title="2026-02-05 · Claude Opus 4.6" aria-label="Claude Opus 4.6"></button>
+<button class="rtl-d" style="left:78.72%;animation-delay:0.54s" data-k="9" title="2026-02-17 · Claude Sonnet 4.6" aria-label="Claude Sonnet 4.6"></button>
+<button class="rtl-d f" style="left:82.98%;animation-delay:0.60s" data-k="10" title="2026-04-07 · Claude Mythos Preview and Project Glasswing" aria-label="Claude Mythos Preview and Project Glasswing"></button>
+<button class="rtl-d f" style="left:82.98%;animation-delay:0.66s" data-k="11" title="2026-04-16 · Claude Opus 4.7" aria-label="Claude Opus 4.7"></button>
+<button class="rtl-d" style="left:85.11%;animation-delay:0.72s" data-k="12" title="2026-05-28 · Claude Opus 4.8" aria-label="Claude Opus 4.8"></button>
+<button class="rtl-d f" style="left:87.23%;animation-delay:0.78s" data-k="13" title="2026-06-09 · Claude Fable 5 and Claude Mythos 5" aria-label="Claude Fable 5 and Claude Mythos 5"></button>
+<button class="rtl-d f" style="left:87.23%;animation-delay:0.84s" data-k="14" title="2026-06-30 · Claude Sonnet 5" aria-label="Claude Sonnet 5"></button>
+<button class="rtl-d f" style="left:89.36%;animation-delay:0.90s" data-k="15" title="2026-07-24 · Claude Opus 5" aria-label="Claude Opus 5"></button>
+<button class="rtl-d f" style="left:93.62%;animation-delay:0.96s" data-k="16" title="2026-09-01 · Claude Fable 5.1 and Claude Mythos 5.1" aria-label="Claude Fable 5.1 and Claude Mythos 5.1"></button>
+<button class="rtl-d f" style="left:93.62%;animation-delay:1.02s" data-k="17" title="2026-09-22 · Claude Opus 5.5" aria-label="Claude Opus 5.5"></button>
+<button class="rtl-d f" style="left:93.62%;animation-delay:1.08s" data-k="18" title="2026-09-28 · Claude Sonnet 5.5" aria-label="Claude Sonnet 5.5"></button>
+<button class="rtl-d" style="left:95.74%;animation-delay:1.14s" data-k="19" title="2026-10-07 · Claude Haiku 5.5" aria-label="Claude Haiku 5.5"></button>
+<button class="rtl-d f" style="left:97.87%;animation-delay:1.20s" data-k="20" title="2026-11-09 · Claude Fable 5.2 and Claude Mythos 5.2" aria-label="Claude Fable 5.2 and Claude Mythos 5.2"></button>
+</div><div class="rtl-ch">
+<button data-k="0"><b>2023-03-14</b>Claude (first public release)</button>
+<button data-k="1"><b>2023-11-21</b>Claude 2.1</button>
+<button data-k="2"><b>2024-03-04</b>Claude 3 family (Opus, Sonnet, Haiku)</button>
+<button data-k="3"><b>2025-05-22</b>Claude 4: Opus 4 and Sonnet 4</button>
+<button data-k="4"><b>2025-08-05</b>Claude Opus 4.1</button>
+<button data-k="5"><b>2025-09-29</b>Claude Sonnet 4.5</button>
+<button data-k="6"><b>2025-10-15</b>Claude Haiku 4.5</button>
+<button data-k="7"><b>2025-11-24</b>Claude Opus 4.5</button>
+<button data-k="8"><b>2026-02-05</b>Claude Opus 4.6</button>
+<button data-k="9"><b>2026-02-17</b>Claude Sonnet 4.6</button>
+<button data-k="10"><b>2026-04-07</b>Claude Mythos Preview and Project Glasswing</button>
+<button data-k="11"><b>2026-04-16</b>Claude Opus 4.7</button>
+<button data-k="12"><b>2026-05-28</b>Claude Opus 4.8</button>
+<button data-k="13"><b>2026-06-09</b>Claude Fable 5 and Claude Mythos 5</button>
+<button data-k="14"><b>2026-06-30</b>Claude Sonnet 5</button>
+<button data-k="15"><b>2026-07-24</b>Claude Opus 5</button>
+<button data-k="16"><b>2026-09-01</b>Claude Fable 5.1 and Claude Mythos 5.1</button>
+<button data-k="17"><b>2026-09-22</b>Claude Opus 5.5</button>
+<button data-k="18"><b>2026-09-28</b>Claude Sonnet 5.5</button>
+<button data-k="19"><b>2026-10-07</b>Claude Haiku 5.5</button>
+<button data-k="20"><b>2026-11-09</b>Claude Fable 5.2 and Claude Mythos 5.2</button>
+</div></div>
+<div class="rtl-row" style="--c:#6b4c9a"><h3>Layer 1 · Messages API <small>· 3</small></h3><div class="rtl-tr">
+<span class="rtl-y" style="left:0.0%">2023</span>
+<span class="rtl-y" style="left:25.53%">2024</span>
+<span class="rtl-y" style="left:51.06%">2025</span>
+<span class="rtl-y" style="left:76.6%">2026</span>
+<button class="rtl-d" style="left:2.13%;animation-delay:0.00s" data-k="21" title="2023-02-03 · Google Cloud partnership" aria-label="Google Cloud partnership"></button>
+<button class="rtl-d" style="left:8.51%;animation-delay:0.06s" data-k="22" title="2023-05-11 · 100K-token context window" aria-label="100K-token context window"></button>
+<button class="rtl-d" style="left:42.55%;animation-delay:0.12s" data-k="23" title="2024-09-19 · Contextual Retrieval" aria-label="Contextual Retrieval"></button>
+</div><div class="rtl-ch">
+<button data-k="21"><b>2023-02-03</b>Google Cloud partnership</button>
+<button data-k="22"><b>2023-05-11</b>100K-token context window</button>
+<button data-k="23"><b>2024-09-19</b>Contextual Retrieval</button>
+</div></div>
+<div class="rtl-row" style="--c:#2f6b45"><h3>Layer 2 · Tool-use loop <small>· 1</small></h3><div class="rtl-tr">
+<span class="rtl-y" style="left:0.0%">2023</span>
+<span class="rtl-y" style="left:25.53%">2024</span>
+<span class="rtl-y" style="left:51.06%">2025</span>
+<span class="rtl-y" style="left:76.6%">2026</span>
+<button class="rtl-d f" style="left:44.68%;animation-delay:0.00s" data-k="24" title="2024-10-22 · Claude 3.5 Sonnet (new), 3.5 Haiku and computer use" aria-label="Claude 3.5 Sonnet (new), 3.5 Haiku and computer use"></button>
+</div><div class="rtl-ch">
+<button data-k="24"><b>2024-10-22</b>Claude 3.5 Sonnet (new), 3.5 Haiku and computer use</button>
+</div></div>
+<div class="rtl-row" style="--c:#2b5a9e"><h3>Layer 3 · Agent harness <small>· 6</small></h3><div class="rtl-tr">
+<span class="rtl-y" style="left:0.0%">2023</span>
+<span class="rtl-y" style="left:25.53%">2024</span>
+<span class="rtl-y" style="left:51.06%">2025</span>
+<span class="rtl-y" style="left:76.6%">2026</span>
+<button class="rtl-d" style="left:46.81%;animation-delay:0.00s" data-k="25" title="2024-11-25 · Model Context Protocol (MCP)" aria-label="Model Context Protocol (MCP)"></button>
+<button class="rtl-d f" style="left:53.19%;animation-delay:0.06s" data-k="26" title="2025-02-24 · Claude 3.7 Sonnet and Claude Code" aria-label="Claude 3.7 Sonnet and Claude Code"></button>
+<button class="rtl-d" style="left:70.21%;animation-delay:0.12s" data-k="27" title="2025-10-16 · Agent Skills" aria-label="Agent Skills"></button>
+<button class="rtl-d" style="left:74.47%;animation-delay:0.18s" data-k="28" title="2025-12-03 · Acquires Bun as Claude Code hits $1B" aria-label="Acquires Bun as Claude Code hits $1B"></button>
+<button class="rtl-d" style="left:74.47%;animation-delay:0.24s" data-k="29" title="2025-12-09 · MCP donated to the Agentic AI Foundation" aria-label="MCP donated to the Agentic AI Foundation"></button>
+<button class="rtl-d" style="left:95.74%;animation-delay:0.30s" data-k="30" title="2026-10-22 · Agent Skills donated to the Agentic AI Foundation" aria-label="Agent Skills donated to the Agentic AI Foundation"></button>
+</div><div class="rtl-ch">
+<button data-k="25"><b>2024-11-25</b>Model Context Protocol (MCP)</button>
+<button data-k="26"><b>2025-02-24</b>Claude 3.7 Sonnet and Claude Code</button>
+<button data-k="27"><b>2025-10-16</b>Agent Skills</button>
+<button data-k="28"><b>2025-12-03</b>Acquires Bun as Claude Code hits $1B</button>
+<button data-k="29"><b>2025-12-09</b>MCP donated to the Agentic AI Foundation</button>
+<button data-k="30"><b>2026-10-22</b>Agent Skills donated to the Agentic AI Foundation</button>
+</div></div>
+<div class="rtl-row" style="--c:#b4532a"><h3>Layer 4 · Products <small>· 18</small></h3><div class="rtl-tr">
+<span class="rtl-y" style="left:0.0%">2023</span>
+<span class="rtl-y" style="left:25.53%">2024</span>
+<span class="rtl-y" style="left:51.06%">2025</span>
+<span class="rtl-y" style="left:76.6%">2026</span>
+<button class="rtl-d f" style="left:12.77%;animation-delay:0.00s" data-k="31" title="2023-07-11 · Claude 2 and claude.ai" aria-label="Claude 2 and claude.ai"></button>
+<button class="rtl-d" style="left:17.02%;animation-delay:0.06s" data-k="32" title="2023-09-07 · Claude Pro" aria-label="Claude Pro"></button>
+<button class="rtl-d f" style="left:36.17%;animation-delay:0.12s" data-k="33" title="2024-06-21 · Claude 3.5 Sonnet and Artifacts" aria-label="Claude 3.5 Sonnet and Artifacts"></button>
+<button class="rtl-d" style="left:36.17%;animation-delay:0.18s" data-k="34" title="2024-06-25 · Projects in Claude" aria-label="Projects in Claude"></button>
+<button class="rtl-d" style="left:63.83%;animation-delay:0.24s" data-k="35" title="2025-07-15 · Claude for Financial Services" aria-label="Claude for Financial Services"></button>
+<button class="rtl-d" style="left:65.96%;animation-delay:0.30s" data-k="36" title="2025-08-20 · Claude Code for Team and Enterprise" aria-label="Claude Code for Team and Enterprise"></button>
+<button class="rtl-d" style="left:70.21%;animation-delay:0.36s" data-k="37" title="2025-10-20 · Claude for Life Sciences" aria-label="Claude for Life Sciences"></button>
+<button class="rtl-d" style="left:76.6%;animation-delay:0.42s" data-k="38" title="2026-01-11 · Claude for Healthcare" aria-label="Claude for Healthcare"></button>
+<button class="rtl-d" style="left:76.6%;animation-delay:0.48s" data-k="39" title="2026-01-13 · Anthropic Labs" aria-label="Anthropic Labs"></button>
+<button class="rtl-d" style="left:78.72%;animation-delay:0.54s" data-k="40" title="2026-02-20 · Claude Code Security" aria-label="Claude Code Security"></button>
+<button class="rtl-d" style="left:82.98%;animation-delay:0.60s" data-k="41" title="2026-04-17 · Claude Design" aria-label="Claude Design"></button>
+<button class="rtl-d" style="left:82.98%;animation-delay:0.66s" data-k="42" title="2026-04-28 · Claude for Creative Work" aria-label="Claude for Creative Work"></button>
+<button class="rtl-d" style="left:87.23%;animation-delay:0.72s" data-k="43" title="2026-06-23 · Claude Tag" aria-label="Claude Tag"></button>
+<button class="rtl-d" style="left:87.23%;animation-delay:0.78s" data-k="44" title="2026-06-30 · Claude Science" aria-label="Claude Science"></button>
+<button class="rtl-d" style="left:89.36%;animation-delay:0.84s" data-k="45" title="2026-07-14 · Claude for Teachers" aria-label="Claude for Teachers"></button>
+<button class="rtl-d" style="left:95.74%;animation-delay:0.90s" data-k="46" title="2026-10-15 · Claude Code Review generally available" aria-label="Claude Code Review generally available"></button>
+<button class="rtl-d" style="left:95.74%;animation-delay:0.96s" data-k="47" title="2026-10-21 · Claude Duet (research preview)" aria-label="Claude Duet (research preview)"></button>
+<button class="rtl-d" style="left:97.87%;animation-delay:1.02s" data-k="48" title="2026-11-23 · Claude Ship" aria-label="Claude Ship"></button>
+</div><div class="rtl-ch">
+<button data-k="31"><b>2023-07-11</b>Claude 2 and claude.ai</button>
+<button data-k="32"><b>2023-09-07</b>Claude Pro</button>
+<button data-k="33"><b>2024-06-21</b>Claude 3.5 Sonnet and Artifacts</button>
+<button data-k="34"><b>2024-06-25</b>Projects in Claude</button>
+<button data-k="35"><b>2025-07-15</b>Claude for Financial Services</button>
+<button data-k="36"><b>2025-08-20</b>Claude Code for Team and Enterprise</button>
+<button data-k="37"><b>2025-10-20</b>Claude for Life Sciences</button>
+<button data-k="38"><b>2026-01-11</b>Claude for Healthcare</button>
+<button data-k="39"><b>2026-01-13</b>Anthropic Labs</button>
+<button data-k="40"><b>2026-02-20</b>Claude Code Security</button>
+<button data-k="41"><b>2026-04-17</b>Claude Design</button>
+<button data-k="42"><b>2026-04-28</b>Claude for Creative Work</button>
+<button data-k="43"><b>2026-06-23</b>Claude Tag</button>
+<button data-k="44"><b>2026-06-30</b>Claude Science</button>
+<button data-k="45"><b>2026-07-14</b>Claude for Teachers</button>
+<button data-k="46"><b>2026-10-15</b>Claude Code Review generally available</button>
+<button data-k="47"><b>2026-10-21</b>Claude Duet (research preview)</button>
+<button data-k="48"><b>2026-11-23</b>Claude Ship</button>
+</div></div>
+<div class="rtl-info" id="rtlInfo">Tap any dot or chip.</div></div>
+<script>(function(){var D=[["2023-03-14", "Claude (first public release)", "Claude and the faster Claude Instant become available through a chat interface and the API.", "https://www.anthropic.com/news/introducing-claude"], ["2023-11-21", "Claude 2.1", "A 200K-token context window, fewer hallucinations and tool use in beta.", "https://www.anthropic.com/news/claude-2-1"], ["2024-03-04", "Claude 3 family (Opus, Sonnet, Haiku)", "Three models with vision; Opus set new marks on many benchmarks.", "https://www.anthropic.com/news/claude-3-family"], ["2025-05-22", "Claude 4: Opus 4 and Sonnet 4", "New flagship models focused on coding and long-running agent work; Claude Code becomes generally available.", "https://www.anthropic.com/news/claude-4"], ["2025-08-05", "Claude Opus 4.1", "An upgrade to Opus 4 for agentic tasks, real-world coding and reasoning.", "https://www.anthropic.com/news/claude-opus-4-1"], ["2025-09-29", "Claude Sonnet 4.5", "Billed as the best coding model and the strongest for building agents and using computers.", "https://www.anthropic.com/news/claude-sonnet-4-5"], ["2025-10-15", "Claude Haiku 4.5", "The latest small, fast model, available to all users.", "https://www.anthropic.com/news/claude-haiku-4-5"], ["2025-11-24", "Claude Opus 4.5", "New flagship with state-of-the-art coding and agentic performance at a much lower price.", "https://www.anthropic.com/news/claude-opus-4-5"], ["2026-02-05", "Claude Opus 4.6", "An upgrade to the smartest model across agentic coding, computer use, tool use, search and finance.", "https://www.anthropic.com/news/claude-opus-4-6"], ["2026-02-17", "Claude Sonnet 4.6", "A full upgrade of Sonnet across coding, computer use, long reasoning, planning and design.", "https://www.anthropic.com/news/claude-sonnet-4-6"], ["2026-04-07", "Claude Mythos Preview and Project Glasswing", "A limited-release model given to about 50 partners to find and fix software vulnerabilities before attackers do.", "https://www.anthropic.com/project/glasswing"], ["2026-04-16", "Claude Opus 4.7", "A notable step up from Opus 4.6 in advanced software engineering.", "https://www.anthropic.com/news/claude-opus-4-7"], ["2026-05-28", "Claude Opus 4.8", "Stronger coding, agentic and professional work, with more consistency on long-running tasks.", "https://www.anthropic.com/news/claude-opus-4-8"], ["2026-06-09", "Claude Fable 5 and Claude Mythos 5", "Fable 5 is a Mythos-class model made safe for general use.", "https://www.anthropic.com/news/claude-fable-5-mythos-5"], ["2026-06-30", "Claude Sonnet 5", "The most agentic Sonnet yet, for coding and everyday professional work.", "https://www.anthropic.com/news/claude-sonnet-5"], ["2026-07-24", "Claude Opus 5", "A step-change for the Opus tier, built for long-running agents.", "https://www.anthropic.com/news/claude-opus-5"], ["2026-09-01", "Claude Fable 5.1 and Claude Mythos 5.1", "The same model with different safeguards: Fable 5.1 is generally available, Mythos 5.1 only through trusted-access programmes.", "https://www.anthropic.com/claude-fable-and-mythos-5-1"], ["2026-09-22", "Claude Opus 5.5", "A flagship that matches Fable 5.1 on most work, with a 1M-token context window and a reported 40% lower running cost than Opus 5.", "https://www.anthropic.com/claude-opus-5-5"], ["2026-09-28", "Claude Sonnet 5.5", "Generates output over 30% faster than Sonnet 5 at the same API prices.", "https://www.anthropic.com/claude-sonnet-5-5"], ["2026-10-07", "Claude Haiku 5.5", "Anthropic's small, fast model for high-volume work such as summarising and classification, and as a sub-agent alongside Sonnet 5.5 and Opus 5.5. Anthropic says running costs are about 75% lower than Haiku 4.5; coverage reports pricing from $0.10 per million input tokens and notes tiered pricing and higher token use.", "https://www.anthropic.com/claude/haiku"], ["2026-11-09", "Claude Fable 5.2 and Claude Mythos 5.2", "Anthropic's new top models for hard technical work. Fable 5.2 is generally available; Mythos 5.2 goes only to vetted organisations through Anthropic's life-sciences and cyber verification programmes. Anthropic reports 69.9% on FrontierSWE v2 for Fable 5.2 (Opus 5.5: 62.3%); press coverage also reports lower prices and fewer refusals than Fable 5.1. Benchmark and pricing figures are the company's, as reported. Disclosure: Claude, made by Anthropic, helps write this site.", "https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html"], ["2023-02-03", "Google Cloud partnership", "Anthropic picks Google Cloud as a preferred cloud provider for training and serving its models.", "https://www.anthropic.com/news/anthropic-partners-with-google-cloud"], ["2023-05-11", "100K-token context window", "Claude's context window grows from 9K to 100K tokens — about 75,000 words.", "https://www.anthropic.com/news/100k-context-windows"], ["2024-09-19", "Contextual Retrieval", "A retrieval technique that cuts failed retrievals by adding context to each chunk.", "https://www.anthropic.com/news/contextual-retrieval"], ["2024-10-22", "Claude 3.5 Sonnet (new), 3.5 Haiku and computer use", "A refreshed Claude 3.5 Sonnet, the new Claude 3.5 Haiku, and an experimental ability to operate a computer by looking at the screen.", "https://www.anthropic.com/news/3-5-models-and-computer-use"], ["2024-11-25", "Model Context Protocol (MCP)", "An open standard for connecting AI assistants to the tools and data where work lives.", "https://www.anthropic.com/news/model-context-protocol"], ["2025-02-24", "Claude 3.7 Sonnet and Claude Code", "The first generally available hybrid reasoning model — answer instantly or think step by step — plus a preview of Claude Code, an agentic coding tool.", "https://www.anthropic.com/news/claude-3-7-sonnet"], ["2025-10-16", "Agent Skills", "Folders of instructions, scripts and resources that Claude loads when a task needs them.", "https://www.anthropic.com/news/skills"], ["2025-12-03", "Acquires Bun as Claude Code hits $1B", "Anthropic buys the Bun JavaScript runtime; Claude Code reached $1 billion run-rate revenue within six months.", "https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone"], ["2025-12-09", "MCP donated to the Agentic AI Foundation", "The Model Context Protocol moves to a new Linux Foundation body co-founded with Block and OpenAI.", "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"], ["2026-10-22", "Agent Skills donated to the Agentic AI Foundation", "Anthropic handed the Agent Skills standard (name, GitHub organisation and agentskills.io) to the Linux Foundation’s Agentic AI Foundation, following MCP. Anthropic cites about 280 million skill installs.", "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"], ["2023-07-11", "Claude 2 and claude.ai", "Better performance, a 100K context window and a public chat website in the US and UK.", "https://www.anthropic.com/news/claude-2"], ["2023-09-07", "Claude Pro", "A paid plan with 5x more usage and priority access.", "https://www.anthropic.com/news/claude-pro"], ["2024-06-21", "Claude 3.5 Sonnet and Artifacts", "A mid-size model that beat Claude 3 Opus, launched with Artifacts for building content alongside the chat.", "https://www.anthropic.com/news/claude-3-5-sonnet"], ["2024-06-25", "Projects in Claude", "Pro and Team users can organise chats with shared knowledge into Projects.", "https://www.anthropic.com/news/projects"], ["2025-07-15", "Claude for Financial Services", "A package of Claude, data connectors and tools for market analysis and financial research.", "https://www.anthropic.com/news/claude-for-financial-services"], ["2025-08-20", "Claude Code for Team and Enterprise", "Business plans get premium seats bundling the Claude app and Claude Code, with new admin controls.", "https://www.anthropic.com/news/claude-code-on-team-and-enterprise"], ["2025-10-20", "Claude for Life Sciences", "New scientific connectors and skills for drug discovery and clinical work.", "https://www.anthropic.com/news/claude-for-life-sciences"], ["2026-01-11", "Claude for Healthcare", "HIPAA-ready infrastructure for healthcare, plus expanded life-sciences tools for clinical trials and regulatory work.", "https://www.anthropic.com/news/healthcare-life-sciences"], ["2026-01-13", "Anthropic Labs", "A new group to incubate experimental AI products.", "https://www.anthropic.com/news/introducing-anthropic-labs"], ["2026-02-20", "Claude Code Security", "Frontier vulnerability-finding capabilities made available to defenders.", "https://www.anthropic.com/news/claude-code-security"], ["2026-04-17", "Claude Design", "Collaborate with Claude on designs, prototypes, slides and one-pagers.", "https://www.anthropic.com/news/claude-design-anthropic-labs"], ["2026-04-28", "Claude for Creative Work", "Connectors for Adobe Creative Cloud, Blender, Autodesk Fusion, SketchUp and music tools.", "https://www.anthropic.com/news/claude-for-creative-work"], ["2026-06-23", "Claude Tag", "A new way for teams to work with Claude.", "https://www.anthropic.com/news/introducing-claude-tag"], ["2026-06-30", "Claude Science", "An AI workbench for scientists with auditable outputs and flexible computing.", "https://www.anthropic.com/news/claude-science-ai-workbench"], ["2026-07-14", "Claude for Teachers", "Free premium access for verified US K-12 teachers, with a teaching-skills library and curricula.", "https://www.anthropic.com/news/claude-for-teachers"], ["2026-10-15", "Claude Code Review generally available", "Anthropic moved Claude Code Review out of research preview for Team and Enterprise customers, with Quick, Standard and Deep review levels per repository. Reported from a third-party write-up rather than an Anthropic post we could open.", "https://www.digitalapplied.com/blog/claude-code-review-generally-available-levels-cost"], ["2026-10-21", "Claude Duet (research preview)", "A proactive agent app that runs on Claude Opus 5.5 in its own virtual machine, sends a daily rundown from connected apps, completes tasks and asks before sensitive actions. Waitlist for US Pro and Max users.", "https://betanews.com/article/proactive-ai-agent-claude-duet/"], ["2026-11-23", "Claude Ship", "Three agents for GitHub pull requests: Code Review (generally available), plus PR Steward and Claude Approvals (beta), which can review, fix and approve changes a team's policy allows. For Team and Enterprise plans; a /ship command in Claude Code. Reported via secondary coverage; Anthropic's productivity figures are self-reported.", "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/"]],box=document.getElementById("rtl"),inf=document.getElementById("rtlInfo");box.addEventListener("click",function(e){var b=e.target.closest("[data-k]");if(!b)return;var k=b.getAttribute("data-k"),x=D[k];box.querySelectorAll(".on").forEach(function(o){o.classList.remove("on")});box.querySelectorAll('[data-k="'+k+'"]').forEach(function(o){o.classList.add("on")});inf.innerHTML="<b>"+x[0]+" · "+x[1]+"</b><br>"+x[2]+(x[3]?' <a hr'+'ef="'+x[3]+'" target="_blank" rel="noopener">Source →</a>':"")});})();</script>
+<!-- RINGTL:END -->
+<div class="cr-how">
     <h2>How the platform works, layer by layer</h2>
     <p>Each layer is built on the one below it, and the products sit on top.</p>
     <h3>1 · The models (core)</h3>
