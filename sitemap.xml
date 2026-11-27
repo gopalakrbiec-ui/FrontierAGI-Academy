@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<<<<<<< HEAD
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy-stack.html</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy.html</loc><lastmod>2026-11-27</lastmod></url>
@@ -56,6 +57,64 @@
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/usa-ai.html</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html</loc><lastmod>2026-11-27</lastmod></url>
+=======
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy-stack.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-architectures.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-tech-stack.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agentic-systems.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-3d.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-map.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-plan.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-investment-history.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-market-map.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-news.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-world-map.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/benchmarks.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/china-ai.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-code-kit.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/coding-agents.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/europe-ai.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-model-learning.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/frontier-timeline.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/future-frontier.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-flow.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/idea-map.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/india-ai.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/lab-updates.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-api-journey.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-engineering.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro-journey.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/maestro.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/model-releases.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rag-compare.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-evolution.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-labs.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sdlc-adlc-map.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/software-stack-live.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/sovereign-ai.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/stack-innovations.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/tech-jobs-history.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/usa-ai.html</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html</loc><lastmod>2026-11-26</lastmod></url>
+>>>>>>> 9929a08d2a64f7dfe19b4df1d57adfca2b50337f
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-code-context.html</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-design-architecture.html</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-maintenance-improvement.html</loc><lastmod>2026-11-23</lastmod></url>
