@@ -7038,3 +7038,7 @@ body.home-searching .sec-maps { display: none; }
 /* ── Hype cycle: dots on the curve ── */
 .hc-plot{overflow-x:auto;margin:10px 0}.hc-svg.hc-big{min-width:900px;width:100%;height:auto}.hc-pt text{paint-order:stroke;stroke:#fff;stroke-width:3px}.hc-pt:hover text{font-weight:700}
 @media (prefers-reduced-motion:reduce){.hc-run{display:none}}
+
+/* ═══ AI Waves homepage embed: full-width break-out (owner's request 27 Nov 2026) ═══ */
+#home-agiwaves{width:min(1840px,calc(100vw - 32px));max-width:none;margin-left:calc(50% - min(920px,50vw - 16px))}
+@media (min-width:1100px){body.rail-show:not(.rail-min) #home-agiwaves{width:min(1840px,calc(100vw - 256px));margin-left:calc(240px - 50vw + 50%)}body.rail-show.rail-min #home-agiwaves{width:min(1840px,calc(100vw - 96px));margin-left:calc(80px - 50vw + 50%)}}
