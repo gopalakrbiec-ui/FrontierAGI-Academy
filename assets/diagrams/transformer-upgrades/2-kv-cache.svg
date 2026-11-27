@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" font-family="Arial,Helvetica,sans-serif">
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="20" y="32" font-size="20" font-weight="700" fill="#0f172a">KV cache per token: same model, four attention designs</text>
+<text x="20" y="54" font-size="13" fill="#475569">Example: 64 layers, 64 query heads of size 128, 16-bit numbers. Illustrative configuration, our arithmetic.</text>
+<text x="20" y="104" font-size="14" fill="#0f172a">Multi-head attention (64 K/V heads)</text>
+<rect x="330" y="86" width="560.0" height="28" rx="5" fill="#0d9488"/>
+<text x="900" y="106" font-size="14" font-weight="700" fill="#0f172a">2048 KB</text>
+<text x="20" y="162" font-size="14" fill="#0f172a">Grouped-query, 8 groups</text>
+<rect x="330" y="144" width="70.0" height="28" rx="5" fill="#0d9488"/>
+<text x="410" y="164" font-size="14" font-weight="700" fill="#0f172a">256 KB</text>
+<text x="20" y="220" font-size="14" fill="#0f172a">Multi-query (1 K/V head)</text>
+<rect x="330" y="202" width="8.8" height="28" rx="5" fill="#0d9488"/>
+<text x="349" y="222" font-size="14" font-weight="700" fill="#0f172a">32 KB</text>
+<text x="20" y="278" font-size="14" fill="#0f172a">Latent attention (512 + 64 dims)</text>
+<rect x="330" y="260" width="19.7" height="28" rx="5" fill="#0d9488"/>
+<text x="360" y="280" font-size="14" font-weight="700" fill="#0f172a">72 KB</text>
+</svg>

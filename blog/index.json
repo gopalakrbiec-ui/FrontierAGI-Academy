@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "transformer-upgrades",
+      "title": "20 Transformer Upgrades: What Changed Inside the Model Since 2017",
+      "excerpt": "Pre-norm, RMSNorm, RoPE, grouped-query and latent attention, FlashAttention, SwiGLU, mixtures of experts and more: the twenty changes inside today’s frontier models, each with what it fixes, what it costs and who uses it.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-27",
+      "readTime": "19 min",
+      "tags": [
+        "Architecture",
+        "Transformers"
+      ],
+      "emoji": "🔧",
+      "featured": false
+    },
+    {
       "slug": "tech-jobs-2021-2026",
       "title": "Tech Jobs 2021–2026: The Boom, the Bust and the AI Reshaping",
       "excerpt": "From the pandemic hiring frenzy to 262,735 layoffs in 2023 and the rise of the AI engineer: which tech jobs emerged, changed and faded, what they paid in real dollars, who hired, and how India and the H-1B system shifted.",

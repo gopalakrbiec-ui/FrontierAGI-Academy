@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**385 articles** · **38 series** · **29 interactive maps** + **9 series hubs** · newest post 2026-11-24
+**386 articles** · **38 series** · **29 interactive maps** + **9 series hubs** · newest post 2026-11-27
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -441,8 +441,6 @@ The whole production system, not one product: users, entry point, planner and sp
 A 12-part series, complete: sixty years of the software lifecycle, what an agent development lifecycle is, then one stage at a time (requirements → eval sets, design → agent architecture, code → context and tools, test → evaluation, security → guardrails, release → staged rollout, operations → traces and drift, maintenance → continuous improvement), roles, and a playbook. Start with the interactive lifecycle map above.  
 <sub>12 articles</sub>
 
-🆕 *Newest series.*
-
 | # | Article | Read |
 |---|---|---|
 | 1 | 📜 [From SDLC to ADLC, Part 1: Sixty Years of the Software Lifecycle](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-sdlc-history.html) | 11 min |
@@ -721,7 +719,9 @@ Recursive self-improvement as it actually exists in 2026: agents that evolve the
 #### 🧬 Architecture & Learning Technique: How the Field Actually Got Here
 
 The history of neural network architectures, the separate thread of learning techniques layered on top, and the live debate over what comes after Transformers.  
-<sub>5 articles</sub>
+<sub>6 articles</sub>
+
+🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|
@@ -729,7 +729,8 @@ The history of neural network architectures, the separate thread of learning tec
 | 2 | ⚙️ [How Each Network Architecture Actually Learned](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/how-each-architecture-actually-learned.html) | 110 min |
 | 3 | 🧵 [Two Threads, One Chain: Architecture vs. Learning Technique](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/two-threads-architecture-vs-learning-technique.html) | 85 min |
 | 4 | 🔭 [After Transformers: What's Working, What's a Dead End, What's Next](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/after-transformers-current-methods-and-dead-ends.html) | 90 min |
-| 5 | ⚖️ [The AGI Debate: Scaling vs. New Architectures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-debate-scaling-vs-new-architectures.html) | 65 min |
+| 5 | 🔧 [20 Transformer Upgrades: What Changed Inside the Model Since 2017](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/transformer-upgrades.html) | 19 min |
+| 6 | ⚖️ [The AGI Debate: Scaling vs. New Architectures](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agi-debate-scaling-vs-new-architectures.html) | 65 min |
 
 #### 🔍 Topic Explainers: Standalone Deep Dives
 
