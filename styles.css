@@ -7034,3 +7034,7 @@ body.home-searching .sec-maps { display: none; }
 @media (max-width: 1000px) { .hc-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .hc-grid { grid-template-columns: 1fr; } .home-hype h2 { font-size: 1.25rem; } }
 @media (prefers-reduced-motion: reduce) { .hc-svg circle { display: none; } }
+
+/* ── Hype cycle: dots on the curve ── */
+.hc-plot{overflow-x:auto;margin:10px 0}.hc-svg.hc-big{min-width:900px;width:100%;height:auto}.hc-pt text{paint-order:stroke;stroke:#fff;stroke-width:3px}.hc-pt:hover text{font-weight:700}
+@media (prefers-reduced-motion:reduce){.hc-run{display:none}}
