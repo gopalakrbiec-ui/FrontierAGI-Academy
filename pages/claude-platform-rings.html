@@ -44,6 +44,7 @@ body.cr-still .cr-pulse{animation-play-state:paused}
 @media (max-width:768px){.cr-grid{grid-template-columns:1fr}#crPanel{position:static}}
 body.cr-embed .navbar,body.cr-embed .nav-panel-wrap,body.cr-embed .nav-backdrop,body.cr-embed .cr-hero,body.cr-embed .cr-more,body.cr-embed .to-top{display:none!important}
 body.cr-embed main{padding-top:0!important}
+.cr-how{margin-top:22px;background:#fff;border:1px solid #e7e5e4;border-radius:14px;padding:18px 20px;line-height:1.6;color:#292524}.cr-how h2{margin:0 0 6px;font-size:1.35rem}.cr-how h3{margin:16px 0 4px;font-size:1.05rem;color:#6b4c9a}.cr-how ul,.cr-how ol{margin:4px 0;padding-left:22px}.cr-key{margin-top:14px;background:#fff7ed;border-left:4px solid #f59e0b;border-radius:8px;padding:10px 12px}body.cr-embed .cr-how{display:none}
 </style>
 </head>
 <body>
@@ -185,6 +186,24 @@ body.cr-embed main{padding-top:0!important}
   <div class="cr-bar"><button id="crPause">⏸ Pause rotation</button><span>Inner rings are closer to the model; outer rings build on everything inside them. The orange ring is one request travelling in to the model and back out.</span></div>
   <div class="cr-grid"><div class="cr-wrap"><svg id="crSvg" viewBox="0 0 1120 1120" role="img" aria-label="Concentric rings of the Claude platform"></svg></div>
   <div id="crPanel"><h3>Tap a block</h3><p>Every block opens here with a short explanation and a link to the article that covers it.</p></div></div>
+  <div class="cr-how">
+    <h2>How the platform works, layer by layer</h2>
+    <p>Each layer is built on the one below it, and the products sit on top.</p>
+    <h3>1 · The models (core)</h3>
+    <p>Opus, Sonnet and Haiku are the trained models. On their own they only take text (and images) in and produce text out: no memory, no tools, no internet. Everything else is built around that.</p>
+    <h3>2 · The Messages API (the doorway)</h3>
+    <ul><li><b>Stateless:</b> every call sends the whole conversation again; the API remembers nothing between calls.</li><li><b>Prompt caching:</b> a long, repeated start of a prompt is stored, so later calls are cheaper and faster.</li><li><b>Batch:</b> many jobs run in the background at a lower price.</li><li><b>Extended thinking:</b> the model reasons in a separate block before it answers.</li><li><b>Same models elsewhere:</b> also offered through Amazon Bedrock, Google Vertex AI and Microsoft Foundry.</li></ul>
+    <h3>3 · The tool-use loop (giving the model hands)</h3>
+    <p>The model cannot act by itself, but it can ask for a tool:</p>
+    <ol><li>You describe the tools: a name plus a JSON schema for the inputs.</li><li>The model replies, for example: call <code>get_weather(city='Paris')</code>.</li><li>Your code runs it and sends back the result.</li><li>The model continues, perhaps asking for more tools, until it is done.</li></ol>
+    <p>Some tools Anthropic runs itself (web search, fetching a page, running code in a sandbox); others are your own functions.</p>
+    <h3>4 · The agent harness (running the loop for you)</h3>
+    <p>Writing that loop well is hard: context, permissions, retries, files and sub-tasks all need handling. So Anthropic packages it:</p>
+    <ul><li><b>Agent SDK:</b> the same loop that powers Claude Code, as a Python or TypeScript library.</li><li><b>MCP connectors:</b> a standard way to plug in tools like GitHub, Drive, Jira or your own systems.</li><li><b>Skills and hooks:</b> skills are packaged know-how; hooks are your own checks before or after a tool call.</li><li><b>Computer and browser use:</b> the model sees screenshots and clicks and types.</li><li>⚠️ <b>Hosted agents and scheduled runs:</b> shown in the source figure; exact names and scope not confirmed.</li></ul>
+    <h3>5 · Products (what people use)</h3>
+    <ul><li><b>Claude apps</b> (web, desktop, mobile): model + API + tools such as search, files and memory, with a chat window on top.</li><li><b>Claude Code:</b> model + tool loop + harness, pointed at your codebase and terminal.</li><li><b>Claude in Chrome:</b> the harness plus browser use, inside your browser.</li><li><b>Claude in Slack and office suites:</b> the same pieces, placed where teams already work.</li><li><b>Your own app:</b> whatever developers build on layers 1 to 4.</li></ul>
+    <div class="cr-key"><b>The key idea:</b> the model’s intelligence is the same in every product. What changes is the layers around it: what it can remember, which tools it can use, where it runs and who approves its actions. A request from Claude Code travels in through the harness, the tool loop and the API to the model, then back out the same way; that is the orange pulse on the rings.</div>
+  </div>
   <div class="cr-more"><p>⚠️ Managed Agents, Scheduled tasks and M365/Workspace are shown as in the source figure; we have not confirmed their names and scope in Anthropic’s documentation. Rotation speeds are decorative and mean nothing. Disclosure: Claude, made by Anthropic, helps write this site.</p><p>Layout adapted from a public infographic.</p></div>
 </div>
 </main>
