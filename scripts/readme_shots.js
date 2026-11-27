@@ -12,6 +12,7 @@ const webp = (png, out, w) => execFileSync('ffmpeg', ['-y', '-loglevel', 'error'
 const GIF = { // page: how to animate it
   'maestro-journey': async p => { await p.goto(BASE + 'pages/maestro-journey.html?embed=1'); await p.waitForTimeout(1200); await p.click('#jrPlay'); },
   'software-stack-live': async p => { await p.goto(BASE + 'pages/software-stack-live.html?embed=1'); await p.waitForTimeout(2500); },
+  'agi-waves': async p => { await p.goto(BASE + 'pages/agi-waves.html?embed=1'); await p.waitForTimeout(200); },
   'ai-factory-3d': async p => { await p.goto(BASE + 'pages/ai-factory-3d.html?embed=1'); await p.waitForTimeout(2500); }
 };
 (async () => {
@@ -29,7 +30,7 @@ const GIF = { // page: how to animate it
     const dir = fs.mkdtempSync(path.join(TMP, m.page));
     for (let i = 0; i < 36; i++) {
       if (m.page === 'ai-factory-3d') { await p.mouse.move(500, 310); await p.mouse.down({ button: 'right' }); await p.mouse.move(530, 310, { steps: 3 }); await p.mouse.up({ button: 'right' }); }
-      await p.screenshot({ path: path.join(dir, String(i).padStart(3, '0') + '.png') }); await p.waitForTimeout(m.page === 'maestro-journey' ? 900 : 160);
+      await p.screenshot({ path: path.join(dir, String(i).padStart(3, '0') + '.png') }); await p.waitForTimeout(m.page === 'maestro-journey' ? 900 : m.page === 'agi-waves' ? 450 : 160);
     }
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', m.page === 'maestro-journey' ? '3' : '7', '-i', path.join(dir, '%03d.png'), '-vf', 'scale=760:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96[p];[b][p]paletteuse=dither=bayer:bayer_scale=4', path.join(OUT, m.shot)]);
     await p.close(); console.log('gif', m.shot);

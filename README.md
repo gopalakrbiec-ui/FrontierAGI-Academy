@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**386 articles** · **38 series** · **29 interactive maps** + **9 series hubs** · newest post 2026-11-27
+**386 articles** · **38 series** · **37 interactive maps** + **9 series hubs** · newest post 2026-11-27
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -31,11 +31,11 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/benchmarks.html"><img src="assets/readme/benchmarks.webp" alt="Frontier Benchmark Tracker" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/benchmarks.html">Frontier Benchmark Tracker</a></b><br>Latest benchmark scores across 8 kinds of task, each labelled by who measured it.<br><sub>Data: <code>data/benchmarks.json</code></sub></td>
-<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html"><img src="assets/readme/hf-paper-themes.webp" alt="HF Paper Themes" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html">HF Paper Themes</a></b><br>Monthly top Hugging Face Daily Papers grouped by theme.<br><sub>Data: <code>data/hf-papers.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agi-waves.html"><img src="assets/readme/agi-waves.gif" alt="AI Waves" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agi-waves.html">AI Waves</a></b> 🎞️<br>Seven nested waves from ML to agentic AI, plus our predicted next wave and AGI; grows from a big bang, with each wave's timeline.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html"><img src="assets/readme/hf-paper-themes.webp" alt="HF Paper Themes" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/hf-paper-themes.html">HF Paper Themes</a></b><br>Monthly top Hugging Face Daily Papers grouped by theme.<br><sub>Data: <code>data/hf-papers.json</code></sub></td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-evolution.html"><img src="assets/readme/rsi-evolution.webp" alt="RSI Evolution Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/rsi-evolution.html">RSI Evolution Map</a></b><br>Recursive self-improvement research by autonomy level (L1–L5) and what gets rewritten.<br><sub>Data: <code>data/rsi-papers.json</code></sub></td>
-<td width="50%"></td>
 </tr>
 </table>
 
@@ -48,7 +48,7 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html"><img src="assets/readme/threads.webp" alt="Threads" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/threads.html">Threads</a></b><br>Every article series as a metro line, plus a month-by-month publishing history.<br><sub>Data: <code>blog/series.json</code></sub></td>
-<td width="50%"></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/mit-breakthroughs.html"><img src="assets/readme/mit-breakthroughs.webp" alt="MIT Breakthroughs, 2001–2026" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/mit-breakthroughs.html">MIT Breakthroughs, 2001–2026</a></b><br>All 250 picks from MIT Technology Review's yearly lists, scored by what happened (our reading).</td>
 </tr>
 </table>
 
@@ -73,11 +73,15 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 
 <table>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agentic-framework.html"><img src="assets/readme/agentic-framework.webp" alt="Agentic AI: A Complete Framework" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agentic-framework.html">Agentic AI: A Complete Framework</a></b><br>Five nested circles from AI & ML to agentic AI, 70+ capability notes, next wave and AGI columns.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy-stack.html"><img src="assets/readme/agent-anatomy-stack.webp" alt="AI Agent Anatomy and Tech Stack" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-anatomy-stack.html">AI Agent Anatomy and Tech Stack</a></b><br>How every agent works (perceive, think, plan, act, remember), the tools that fill each block, and one task followed end to end.</td>
-<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-code-kit.html"><img src="assets/readme/claude-code-kit.webp" alt="Claude Code: The Agent Development Kit" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-code-kit.html">Claude Code: The Agent Development Kit</a></b><br>CLAUDE.md, skills, hooks, subagents and plugins, with a playable session in a mock terminal.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-code-kit.html"><img src="assets/readme/claude-code-kit.webp" alt="Claude Code: The Agent Development Kit" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-code-kit.html">Claude Code: The Agent Development Kit</a></b><br>CLAUDE.md, skills, hooks, subagents and plugins, with a playable session in a mock terminal.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html"><img src="assets/readme/ai-coding-layers.webp" alt="AI Coding in Five Layers" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-coding-layers.html">AI Coding in Five Layers</a></b><br>Model → harness → loop → graph → software factory, original vs corrected, with a ticket run through all five.</td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-memory.html"><img src="assets/readme/agent-memory.webp" alt="How AI Agents Remember" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-memory.html">How AI Agents Remember</a></b><br>Episodic, semantic, working and procedural memory, with five animated flows.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html"><img src="assets/readme/agent-lifecycle.webp" alt="Agent Development Lifecycle" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-lifecycle.html">Agent Development Lifecycle</a></b><br>Scaffold, run, eval, deploy and observe with an animated security gate.</td>
 </tr>
 <tr>
@@ -113,6 +117,19 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-world-map.html"><img src="assets/readme/ai-world-map.webp" alt="AI World Map" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-world-map.html">AI World Map</a></b><br>Money, models, compute, sovereign GPUs and papers by country.<br><sub>Data: <code>data/ai-world-map.json</code></sub></td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/tech-jobs-history.html"><img src="assets/readme/tech-jobs-history.webp" alt="Tech Jobs Through Time" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/tech-jobs-history.html">Tech Jobs Through Time</a></b><br>Job families as waves from 1945 to 2030, with merges and splits.<br><sub>Data: <code>data/tech-jobs-history.json</code></sub></td>
+</tr>
+</table>
+
+### 🔬 Lab platforms
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-platform-rings.html"><img src="assets/readme/claude-platform-rings.webp" alt="The Claude Platform in Rings" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-platform-rings.html">The Claude Platform in Rings</a></b><br>Model → Messages API → tool loop → agent harness → products as rotating rings, with each layer's timeline.<br><sub>Data: <code>data/lab-updates.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-evolution.html"><img src="assets/readme/claude-evolution.webp" alt="How Claude Evolved" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/claude-evolution.html">How Claude Evolved</a></b><br>Every Anthropic announcement since 2023 in seven lanes.<br><sub>Data: <code>data/lab-updates.json</code></sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-platform-rings.html"><img src="assets/readme/openai-platform-rings.webp" alt="The OpenAI Platform in Rings" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-platform-rings.html">The OpenAI Platform in Rings</a></b><br>Models → developer platform → tools → agent stack → products, with each layer's timeline.<br><sub>Data: <code>data/lab-updates.json</code></sub></td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-evolution.html"><img src="assets/readme/openai-evolution.webp" alt="How OpenAI Evolved" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-evolution.html">How OpenAI Evolved</a></b><br>Every OpenAI announcement since 2021 in seven lanes.<br><sub>Data: <code>data/lab-updates.json</code></sub></td>
 </tr>
 </table>
 

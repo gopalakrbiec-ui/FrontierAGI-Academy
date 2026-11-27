@@ -26,6 +26,14 @@
           "shot": "benchmarks.webp"
         },
         {
+          "name": "AI Waves",
+          "page": "agi-waves",
+          "line": "Seven nested waves from ML to agentic AI, plus our predicted next wave and AGI; grows from a big bang, with each wave's timeline.",
+          "shot": "agi-waves.gif",
+          "gif": true,
+          "data": "in-page"
+        },
+        {
           "name": "HF Paper Themes",
           "page": "hf-paper-themes",
           "line": "Monthly top Hugging Face Daily Papers grouped by theme.",
@@ -64,6 +72,13 @@
           "line": "Every article series as a metro line, plus a month-by-month publishing history.",
           "data": "blog/series.json",
           "shot": "threads.webp"
+        },
+        {
+          "name": "MIT Breakthroughs, 2001–2026",
+          "page": "mit-breakthroughs",
+          "line": "All 250 picks from MIT Technology Review's yearly lists, scored by what happened (our reading).",
+          "shot": "mit-breakthroughs.webp",
+          "data": "in-page"
         }
       ]
     ],
@@ -120,6 +135,13 @@
       "🤖 Agents in production",
       [
         {
+          "name": "Agentic AI: A Complete Framework",
+          "page": "agentic-framework",
+          "line": "Five nested circles from AI & ML to agentic AI, 70+ capability notes, next wave and AGI columns.",
+          "shot": "agentic-framework.webp",
+          "data": "in-page"
+        },
+        {
           "name": "AI Agent Anatomy and Tech Stack",
           "page": "agent-anatomy-stack",
           "line": "How every agent works (perceive, think, plan, act, remember), the tools that fill each block, and one task followed end to end.",
@@ -139,6 +161,13 @@
           "line": "Model → harness → loop → graph → software factory, original vs corrected, with a ticket run through all five.",
           "data": "in-page",
           "shot": "ai-coding-layers.webp"
+        },
+        {
+          "name": "How AI Agents Remember",
+          "page": "agent-memory",
+          "line": "Episodic, semantic, working and procedural memory, with five animated flows.",
+          "shot": "agent-memory.webp",
+          "data": "in-page"
         },
         {
           "name": "Agent Development Lifecycle",
@@ -234,6 +263,39 @@
           "line": "Job families as waves from 1945 to 2030, with merges and splits.",
           "shot": "tech-jobs-history.webp",
           "data": "data/tech-jobs-history.json"
+        }
+      ]
+    ],
+    [
+      "🔬 Lab platforms",
+      [
+        {
+          "name": "The Claude Platform in Rings",
+          "page": "claude-platform-rings",
+          "line": "Model → Messages API → tool loop → agent harness → products as rotating rings, with each layer's timeline.",
+          "data": "data/lab-updates.json",
+          "shot": "claude-platform-rings.webp"
+        },
+        {
+          "name": "How Claude Evolved",
+          "page": "claude-evolution",
+          "line": "Every Anthropic announcement since 2023 in seven lanes.",
+          "data": "data/lab-updates.json",
+          "shot": "claude-evolution.webp"
+        },
+        {
+          "name": "The OpenAI Platform in Rings",
+          "page": "openai-platform-rings",
+          "line": "Models → developer platform → tools → agent stack → products, with each layer's timeline.",
+          "data": "data/lab-updates.json",
+          "shot": "openai-platform-rings.webp"
+        },
+        {
+          "name": "How OpenAI Evolved",
+          "page": "openai-evolution",
+          "line": "Every OpenAI announcement since 2021 in seven lanes.",
+          "data": "data/lab-updates.json",
+          "shot": "openai-evolution.webp"
         }
       ]
     ]
