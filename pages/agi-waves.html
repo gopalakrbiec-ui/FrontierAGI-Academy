@@ -246,8 +246,6 @@ function tx(x,y,s,o,p){var t=el('text',Object.assign({x:x,y:y,'text-anchor':'mid
 function wrap(s,n){var w=s.split(' '),o=[],l='';w.forEach(function(x){if((l+' '+x).trim().length>n){o.push(l.trim());l=x;}else l+=' '+x;});o.push(l.trim());return o;}
 function note(x,y,w,col,lines,fs,p){var g=el('g',{},p),h=lines.length*(fs+3)+10;el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,fill:col},g);lines.forEach(function(s,i){tx(x,y-h/2+fs+4+i*(fs+3),s,{'font-size':fs,fill:'#1f2937'},g);});return g;}
 // title + corner boxes
-['• Attention Mechanisms','• Transfer Learning','• Large Language','   Models (LLMs)','• Transformers','• CNNs','• LSTMs'].forEach(function(s,i){var w=s.length*11.5;el('rect',{x:75,y:228+i*31,width:w,height:29,fill:'#bef264'});tx(82,251+i*31,s,{'font-size':22,'text-anchor':'start'});});
-['• Task Scheduling','• Rollback','• Self-Improvement','  • Feedback Loops'].forEach(function(s,i){el('rect',{x:910,y:218+i*32,width:220,height:30,fill:'#5eead4'});tx(918,242+i*32,s,{'font-size':23,'text-anchor':'start'});});
 // rings (outer first)
 var cp=el('clipPath',{id:'afClip'},el('defs',{}));el('rect',{x:1152,y:0,width:900,height:1600},cp);
 el('rect',{x:1170,y:250,width:320,height:1050,rx:18,fill:'#f5f3ff',stroke:'#7c3aed','stroke-dasharray':'8 6'});el('rect',{x:1515,y:250,width:300,height:1050,rx:18,fill:'#fdf2f8',stroke:'#be185d','stroke-dasharray':'8 6'});
