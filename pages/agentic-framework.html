@@ -284,7 +284,7 @@ document.getElementById('afPlay').onclick=function(){bang();if(red){focus(-1);re
   [5,6].forEach(function(l,j){setTimeout(function(){focus(l);nodes.filter(function(g){return g.n[3]===l;}).forEach(function(g){g.classList.remove('hid');});},(5+j)*2200);});setTimeout(function(){focus(-1);},7*2200+800);};
 function tell(){if(embed&&parent!==window)parent.postMessage({afHeight:Math.ceil(document.querySelector('.af').getBoundingClientRect().bottom+8)},'*');}
 addEventListener('resize',tell);setTimeout(tell,400);
-(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;setTimeout(function(){document.getElementById('afPlay').click();},400);setTimeout(function(){if(!document.body.classList.contains('af-still'))document.getElementById('afPause').click();},21000);})();
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var pb=document.getElementById('afPlay'),stop=false,auto=false;function run(){if(stop)return;auto=true;pb.click();auto=false;setTimeout(run,19000);}document.getElementById('afBar').addEventListener('click',function(e){if(!auto&&e.target!==pb)stop=true;});document.getElementById('afSvg').addEventListener('click',function(){stop=true;});setTimeout(run,400);})();
 })();
 </script>
 </body>
