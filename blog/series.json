@@ -251,35 +251,10 @@
       ]
     },
     {
-      "id": "sec-softwarefactory",
-      "title": "Inside the Software Factory: How Agent Fleets Ship Code",
-      "short": "Inside the Software Factory",
-      "icon": "🏭",
-      "slugs": [
-        "sf-what-is-a-software-factory",
-        "sf-stripe-minions",
-        "sf-building-the-line",
-        "sf-gates-and-measures",
-        "sf-our-factory-and-future"
-      ]
-    },
-    {
-      "id": "sec-fde",
-      "title": "The Forward Deployed Engineer: The People Who Put AI to Work",
-      "short": "The Forward Deployed Engineer",
-      "icon": "🧭",
-      "slugs": [
-        "fde-role-2026",
-        "fde-engagement",
-        "fde-becoming-one",
-        "fde-curriculum"
-      ]
-    },
-    {
       "id": "sec-agentic",
       "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
       "short": "Agentic AI System Designs",
-      "icon": "🧩",
+      "icon": "07.3",
       "slugs": [
         "agentic-systems-map",
         "agentic-agent-loop",
@@ -315,13 +290,26 @@
       "id": "sec-blueprints",
       "title": "Production Agent Blueprints: Reference Architectures by Cloud",
       "short": "Production Agent Blueprints",
-      "icon": "🏗️",
+      "icon": "07.4",
       "slugs": [
         "agentic-blueprint-gcp",
         "agentic-blueprint-aws",
         "agentic-blueprint-azure",
         "agentic-blueprint-oss",
         "agentic-blueprint-compared"
+      ]
+    },
+    {
+      "id": "sec-softwarefactory",
+      "title": "Inside the Software Factory: How Agent Fleets Ship Code",
+      "short": "Inside the Software Factory",
+      "icon": "🏭",
+      "slugs": [
+        "sf-what-is-a-software-factory",
+        "sf-stripe-minions",
+        "sf-building-the-line",
+        "sf-gates-and-measures",
+        "sf-our-factory-and-future"
       ]
     },
     {
@@ -342,6 +330,18 @@
         "adlc-maintenance-improvement",
         "adlc-teams-roles",
         "adlc-playbook"
+      ]
+    },
+    {
+      "id": "sec-fde",
+      "title": "The Forward Deployed Engineer: The People Who Put AI to Work",
+      "short": "The Forward Deployed Engineer",
+      "icon": "🧭",
+      "slugs": [
+        "fde-role-2026",
+        "fde-engagement",
+        "fde-becoming-one",
+        "fde-curriculum"
       ]
     },
     {

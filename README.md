@@ -442,32 +442,7 @@ From the labs’ docs and the open-source repos: the loop and three ways to see 
 | 3 | 🛠️ [Building a Browser Agent: browser-use, Stagehand, Playwright MCP and Cloud Browsers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-open-source.html) | 5 min |
 | 4 | 🛡️ [Computer-Use Agents in Production: Injection, Sandboxes, Approvals and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-safety.html) | 5 min |
 
-#### 🏭 Inside the Software Factory: How Agent Fleets Ship Code
-
-The system around coding agents, station by station: intake, specs, parallel agents, gates, the human gate and measurement. Built on primary sources (Stripe’s Minions, GitHub Octoverse 2026, LinearB, DORA), ending with this site’s own one-agent factory and the road to autonomous software.  
-<sub>5 articles</sub>
-
-| # | Article | Read |
-|---|---|---|
-| 1 | 🏭 [What a Software Factory Is, and What the Numbers Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-what-is-a-software-factory.html) | 15 min |
-| 2 | 🧑‍🔧 [Case Study: Stripe’s Minions, 1,300 Agent Pull Requests a Week](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-stripe-minions.html) | 15 min |
-| 3 | 🧱 [Building the Line: Intake, Specs and Parallel Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-building-the-line.html) | 12 min |
-| 4 | 🚦 [Gates, the Human Gate and Measuring the Line](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-gates-and-measures.html) | 12 min |
-| 5 | 🔭 [Our Own Factory, and the Road to Autonomous Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-our-factory-and-future.html) | 12 min |
-
-#### 🧭 The Forward Deployed Engineer: The People Who Put AI to Work
-
-The role from the job posts up: 255 live postings at ten companies (who hires, pay, regions, skills), an engagement from discovery to handover, how to become one (interviews, India), and a free 24-week curriculum with five capstones.  
-<sub>4 articles</sub>
-
-| # | Article | Read |
-|---|---|---|
-| 1 | 📋 [The Forward Deployed Engineer in 2026: What 255 Job Posts Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-role-2026.html) | 12 min |
-| 2 | 🛠️ [Inside an FDE Engagement: From First Meeting to Handover](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-engagement.html) | 10 min |
-| 3 | 🧭 [Becoming a Forward Deployed Engineer: Skills, Interviews and Paths In](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-becoming-one.html) | 9 min |
-| 4 | 🎓 [The FDE Curriculum: A 24-Week Self-Study Path](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-curriculum.html) | 11 min |
-
-#### 🧩 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
+#### 07.3 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 
 Four kinds of agent system (frameworks, harnesses, runtimes, builders), each system dismantled layer by layer: an eight-layer architecture, one task traced through it, failure modes, security, how to build one from scratch and what it costs. Wave 1: the map, the agent loop and five harnesses. Wave 2: six frameworks, one triage agent. Wave 3: four runtimes, one production workload. Wave 4: four builders, one support agent. Series complete.  
 <sub>28 articles</sub>
@@ -503,7 +478,7 @@ Four kinds of agent system (frameworks, harnesses, runtimes, builders), each sys
 | 27 | 🏭 [The Software Factory: The Layer Above the Agent](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-software-factory.html) | 4 min |
 | 28 | 🚪 [The Architecture of an LLM Gateway: Routing, Caching, Guardrails and Cost Tracking](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-llm-gateway.html) | 10 min |
 
-#### 🏗️ Production Agent Blueprints: Reference Architectures by Cloud
+#### 07.4 Production Agent Blueprints: Reference Architectures by Cloud
 
 The whole production system, not one product: users, entry point, planner and specialist agents, models, memory, MCP tools, guardrails, traces, evals and CI/CD, redrawn as architecture diagrams and traced with one refund ticket. One cloud per part, same task and layers so they compare side by side.  
 <sub>5 articles</sub>
@@ -515,6 +490,19 @@ The whole production system, not one product: users, entry point, planner and sp
 | 3 | 🟦 [A Production-Ready AI Agent on Azure, Layer by Layer](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-blueprint-azure.html) | 10 min |
 | 4 | 🐧 [A Production-Ready AI Agent, Open-Source and Self-Hosted](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-blueprint-oss.html) | 10 min |
 | 5 | ⚖️ [Production AI Agents Compared: Google Cloud, AWS, Azure and Open-Source](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agentic-blueprint-compared.html) | 7 min |
+
+#### 🏭 Inside the Software Factory: How Agent Fleets Ship Code
+
+The system around coding agents, station by station: intake, specs, parallel agents, gates, the human gate and measurement. Built on primary sources (Stripe’s Minions, GitHub Octoverse 2026, LinearB, DORA), ending with this site’s own one-agent factory and the road to autonomous software.  
+<sub>5 articles</sub>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🏭 [What a Software Factory Is, and What the Numbers Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-what-is-a-software-factory.html) | 15 min |
+| 2 | 🧑‍🔧 [Case Study: Stripe’s Minions, 1,300 Agent Pull Requests a Week](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-stripe-minions.html) | 15 min |
+| 3 | 🧱 [Building the Line: Intake, Specs and Parallel Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-building-the-line.html) | 12 min |
+| 4 | 🚦 [Gates, the Human Gate and Measuring the Line](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-gates-and-measures.html) | 12 min |
+| 5 | 🔭 [Our Own Factory, and the Road to Autonomous Software](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/sf-our-factory-and-future.html) | 12 min |
 
 #### 🔁 From SDLC to ADLC: How Software Gets Built When Agents Build It
 
@@ -535,6 +523,18 @@ A 12-part series, complete: sixty years of the software lifecycle, what an agent
 | 10 | ♻️ [From SDLC to ADLC, Part 10: Maintenance Becomes Continuous Improvement](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-maintenance-improvement.html) | 7 min |
 | 11 | 👥 [From SDLC to ADLC, Part 11: Teams and Roles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-teams-roles.html) | 7 min |
 | 12 | 🗺️ [From SDLC to ADLC, Part 12: The ADLC Playbook and Maturity Self-Assessment](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/adlc-playbook.html) | 7 min |
+
+#### 🧭 The Forward Deployed Engineer: The People Who Put AI to Work
+
+The role from the job posts up: 255 live postings at ten companies (who hires, pay, regions, skills), an engagement from discovery to handover, how to become one (interviews, India), and a free 24-week curriculum with five capstones.  
+<sub>4 articles</sub>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 📋 [The Forward Deployed Engineer in 2026: What 255 Job Posts Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-role-2026.html) | 12 min |
+| 2 | 🛠️ [Inside an FDE Engagement: From First Meeting to Handover](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-engagement.html) | 10 min |
+| 3 | 🧭 [Becoming a Forward Deployed Engineer: Skills, Interviews and Paths In](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-becoming-one.html) | 9 min |
+| 4 | 🎓 [The FDE Curriculum: A 24-Week Self-Study Path](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-curriculum.html) | 11 min |
 
 
 ### 08 · Run the Machine · The Maestro
