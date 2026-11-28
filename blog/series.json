@@ -227,6 +227,18 @@
       ]
     },
     {
+      "id": "sec-multiagent",
+      "title": "Multi-Agent Orchestration: Patterns, Trade-offs and Failures",
+      "short": "Multi-Agent Orchestration",
+      "icon": "🕸️",
+      "slugs": [
+        "multi-agent-map",
+        "multi-agent-supervisor-handoff",
+        "multi-agent-parallel-debate",
+        "multi-agent-failures-cost"
+      ]
+    },
+    {
       "id": "sec-protocols",
       "title": "Agent Protocols: How Agents Talk to Tools, to Each Other and to Merchants",
       "short": "Agent Protocols",

@@ -240,6 +240,13 @@
           "data": "in-page"
         },
         {
+          "name": "Multi-Agent Patterns, Side by Side",
+          "page": "multi-agent-patterns",
+          "line": "One task through seven ways of arranging agents; add a wrong fact and see who catches it.",
+          "shot": "multi-agent-patterns.webp",
+          "data": "in-page"
+        },
+        {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",

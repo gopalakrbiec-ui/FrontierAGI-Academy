@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**407 articles** · **43 series** · **42 interactive maps** + **11 series hubs** · newest post 2026-11-28
+**411 articles** · **44 series** · **43 interactive maps** + **11 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -102,7 +102,11 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/context-window-live.html"><img src="assets/readme/context-window-live.webp" alt="The Context Window, Live" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/context-window-live.html">The Context Window, Live</a></b><br>One agent task fills a window; switch on clearing, compaction, sub-agents and caching.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/multi-agent-patterns.html"><img src="assets/readme/multi-agent-patterns.webp" alt="Multi-Agent Patterns, Side by Side" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/multi-agent-patterns.html">Multi-Agent Patterns, Side by Side</a></b><br>One task through seven ways of arranging agents; add a wrong fact and see who catches it.</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
+<td width="50%"></td>
 </tr>
 </table>
 
@@ -414,6 +418,20 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 
 ### 07 · Agents in Production
 
+#### 🕸️ Multi-Agent Orchestration: Patterns, Trade-offs and Failures
+
+When to use more than one agent and how to arrange them: chains, routers, parallel voting, evaluator loops, supervisors, hand-offs, debate and hierarchies; how the frameworks implement them; why multi-agent systems fail and what they cost. With two runnable simulations.  
+<sub>4 articles</sub>
+
+🆕 *Newest series.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🕸️ [Multi-Agent Orchestration, Mapped: Eight Patterns and When to Use Them](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-map.html) | 8 min |
+| 2 | 🧑‍✈️ [Supervisors and Hand-offs: Who Owns the Conversation](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-supervisor-handoff.html) | 7 min |
+| 3 | 🗳️ [Many Minds on One Task: Parallel Work, Voting, Critique and Debate](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-parallel-debate.html) | 7 min |
+| 4 | 🧯 [Why Multi-Agent Systems Fail, What They Cost, and How to Test Them](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-failures-cost.html) | 7 min |
+
 #### 🔌 Agent Protocols: How Agents Talk to Tools, to Each Other and to Merchants
 
 Read from the specifications themselves: the protocol stack and which ones you need, MCP in depth (including the 2026 stateless revision), A2A 1.0 in depth, and agent payments compared: ACP, UCP, AP2 mandates and x402.  
@@ -432,8 +450,6 @@ Read from the specifications themselves: the protocol stack and which ones you n
 
 From the labs’ docs and the open-source repos: the loop and three ways to see a screen, benchmarks from 15% to 89%, Anthropic’s, OpenAI’s and Google’s tools taken apart, browser-use, Stagehand and Playwright MCP, and how to run these agents safely and affordably.  
 <sub>4 articles</sub>
-
-🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|

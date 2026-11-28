@@ -55,6 +55,7 @@
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/mit-breakthroughs.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/model-releases.html</loc><lastmod>2026-11-28</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/multi-agent-patterns.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-evolution.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/openai-platform-rings.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html</loc><lastmod>2026-11-28</lastmod></url>
@@ -415,6 +416,10 @@
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-layer-map.html</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-parallelism-libraries.html</loc><lastmod>2026-10-27</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/ml-post-training-rl.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-failures-cost.html</loc><lastmod>2026-11-28</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-map.html</loc><lastmod>2026-11-28</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-parallel-debate.html</loc><lastmod>2026-11-28</lastmod></url>
+  <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-supervisor-handoff.html</loc><lastmod>2026-11-28</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multi-agent-systems-architecture.html</loc><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/multimodal-consolidation.html</loc><lastmod>2026-07-03</lastmod></url>
   <url><loc>https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/nvidia-ai-factory-blueprint.html</loc><lastmod>2026-10-26</lastmod></url>

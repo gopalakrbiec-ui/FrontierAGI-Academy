@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "multi-agent-failures-cost",
+      "title": "Why Multi-Agent Systems Fail, What They Cost, and How to Test Them",
+      "excerpt": "How multi-agent systems fail (MAST), why errors compound along chains (runnable simulation), what they cost in tokens, and how to observe, test and roll them out.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Multi-agent"
+      ],
+      "emoji": "🧯",
+      "featured": false
+    },
+    {
+      "slug": "multi-agent-parallel-debate",
+      "title": "Many Minds on One Task: Parallel Work, Voting, Critique and Debate",
+      "excerpt": "Sectioning, voting, evaluator loops and debate: when each helps, why voting helps less when agents share mistakes (runnable simulation), and Anthropic’s research system as a case study.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Multi-agent"
+      ],
+      "emoji": "🗳️",
+      "featured": false
+    },
+    {
+      "slug": "multi-agent-supervisor-handoff",
+      "title": "Supervisors and Hand-offs: Who Owns the Conversation",
+      "excerpt": "Agents as tools versus hand-offs: who owns the conversation, how the OpenAI Agents SDK, LangGraph, CrewAI and Claude implement them, what to pass between agents and a delegation brief template.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Multi-agent"
+      ],
+      "emoji": "🧑‍✈️",
+      "featured": false
+    },
+    {
+      "slug": "multi-agent-map",
+      "title": "Multi-Agent Orchestration, Mapped: Eight Patterns and When to Use Them",
+      "excerpt": "When more than one agent helps, the eight common ways to arrange agents, which frameworks support each, a chooser and one task in four designs.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "8 min",
+      "tags": [
+        "Agents",
+        "Multi-agent"
+      ],
+      "emoji": "🕸️",
+      "featured": false
+    },
+    {
       "slug": "context-eng-caching-evals",
       "title": "Context Costs Money: Caching, Ordering and Measuring What Works",
       "excerpt": "Prompt caching and why context order decides whether it works, the KV cache, measuring context changes, and a checklist for the whole series, with a runnable cost script.",
