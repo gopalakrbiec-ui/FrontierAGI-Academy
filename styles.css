@@ -7042,3 +7042,8 @@ body.home-searching .sec-maps { display: none; }
 /* ═══ AI Waves homepage embed: full-width break-out (owner's request 27 Nov 2026) ═══ */
 #home-agiwaves{width:min(1840px,calc(100vw - 32px));max-width:none;margin-left:calc(50% - min(920px,50vw - 16px))}
 @media (min-width:1100px){body.rail-show:not(.rail-min) #home-agiwaves{width:min(1840px,calc(100vw - 256px));margin-left:calc(240px - 50vw + 50%)}body.rail-show.rail-min #home-agiwaves{width:min(1840px,calc(100vw - 96px));margin-left:calc(80px - 50vw + 50%)}}
+
+/* ═══ Section 07: interactive maps grouped into sub-sections (owner's request, 28 Nov 2026) ═══ */
+.home-mapgroup { border: 2px solid var(--sp-accent) !important; background: #fff; }
+.home-mapgroup > .home-idea-embed, .home-mapgroup > .home-series-spotlight { margin-left: 0; margin-right: 0; }
+.home-mapgroup:not(.sub-collapsed) > .home-series-desc { margin-bottom: 14px; }
