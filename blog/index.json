@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "computer-use-safety",
+      "title": "Computer-Use Agents in Production: Injection, Sandboxes, Approvals and Cost",
+      "excerpt": "Running computer-use agents safely: prompt injection, isolation and allow-lists from the labs’ docs, human gates, credentials, reliability, monitoring and a cost-per-task calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "5 min",
+      "tags": [
+        "Agents",
+        "Computer use"
+      ],
+      "emoji": "🛡️",
+      "featured": false
+    },
+    {
+      "slug": "computer-use-open-source",
+      "title": "Building a Browser Agent: browser-use, Stagehand, Playwright MCP and Cloud Browsers",
+      "excerpt": "The open-source browser agent stack: browser-use, Stagehand’s act/extract/observe, Playwright MCP and CLI, cloud browsers, benchmark harnesses and a three-week build plan.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "5 min",
+      "tags": [
+        "Agents",
+        "Computer use"
+      ],
+      "emoji": "🛠️",
+      "featured": false
+    },
+    {
+      "slug": "computer-use-labs",
+      "title": "Inside the Labs’ Computer-Use Tools: Claude, OpenAI and Gemini Compared",
+      "excerpt": "Anthropic’s computer and browser toolsets, OpenAI’s code-writing computer-use agents and Google’s Gemini computer use, taken apart from their docs and sample repos, with a runnable screen-scaling script.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Computer use"
+      ],
+      "emoji": "🧪",
+      "featured": false
+    },
+    {
+      "slug": "computer-use-map",
+      "title": "Computer-Use and Browser Agents, Mapped: How AI Learned to Click",
+      "excerpt": "What computer-use and browser agents are, the three ways they see software (pixels, page structure, code), two years of launches, benchmarks from 15% to 89%, and when clicking beats an API.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Computer use"
+      ],
+      "emoji": "🖱️",
+      "featured": false
+    },
+    {
       "slug": "agent-protocols-payments",
       "title": "When Agents Pay: ACP, UCP, AP2 and x402 Compared",
       "excerpt": "Agent payments compared: ACP and UCP for checkout, AP2 signed mandates for consent, x402 for HTTP-native payments; who carries the risk, UPI in India, and a mandate checker.",

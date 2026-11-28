@@ -226,6 +226,13 @@
           "data": "in-page"
         },
         {
+          "name": "Computer Use, Step by Step",
+          "page": "computer-use-loop",
+          "line": "An agent books a room by pixels, page structure or code; add an injection and a human gate.",
+          "shot": "computer-use-loop.webp",
+          "data": "in-page"
+        },
+        {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",

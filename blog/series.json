@@ -239,6 +239,18 @@
       ]
     },
     {
+      "id": "sec-computeruse",
+      "title": "Computer-Use and Browser Agents: AI That Clicks, Types and Browses",
+      "short": "Computer-Use and Browser Agents",
+      "icon": "🖱️",
+      "slugs": [
+        "computer-use-map",
+        "computer-use-labs",
+        "computer-use-open-source",
+        "computer-use-safety"
+      ]
+    },
+    {
       "id": "sec-softwarefactory",
       "title": "Inside the Software Factory: How Agent Fleets Ship Code",
       "short": "Inside the Software Factory",

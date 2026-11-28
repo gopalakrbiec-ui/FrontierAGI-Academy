@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**399 articles** · **41 series** · **40 interactive maps** + **9 series hubs** · newest post 2026-11-28
+**403 articles** · **42 series** · **41 interactive maps** + **9 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -98,7 +98,11 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 </tr>
 <tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-protocols.html"><img src="assets/readme/agent-protocols.webp" alt="Agent Protocols, Traced" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-protocols.html">Agent Protocols, Traced</a></b><br>One agent purchase across MCP, A2A, ACP/UCP, AP2 and x402, message by message.</td>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/computer-use-loop.html"><img src="assets/readme/computer-use-loop.webp" alt="Computer Use, Step by Step" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/computer-use-loop.html">Computer Use, Step by Step</a></b><br>An agent books a room by pixels, page structure or code; add an injection and a human gate.</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
+<td width="50%"></td>
 </tr>
 </table>
 
@@ -420,6 +424,20 @@ Read from the specifications themselves: the protocol stack and which ones you n
 | 3 | 🤝 [A2A in Depth: How Agents Hand Work to Other Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-a2a.html) | 6 min |
 | 4 | 💳 [When Agents Pay: ACP, UCP, AP2 and x402 Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-payments.html) | 6 min |
 
+#### 🖱️ Computer-Use and Browser Agents: AI That Clicks, Types and Browses
+
+From the labs’ docs and the open-source repos: the loop and three ways to see a screen, benchmarks from 15% to 89%, Anthropic’s, OpenAI’s and Google’s tools taken apart, browser-use, Stagehand and Playwright MCP, and how to run these agents safely and affordably.  
+<sub>4 articles</sub>
+
+🆕 *Newest series.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🖱️ [Computer-Use and Browser Agents, Mapped: How AI Learned to Click](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-map.html) | 6 min |
+| 2 | 🧪 [Inside the Labs’ Computer-Use Tools: Claude, OpenAI and Gemini Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-labs.html) | 6 min |
+| 3 | 🛠️ [Building a Browser Agent: browser-use, Stagehand, Playwright MCP and Cloud Browsers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-open-source.html) | 5 min |
+| 4 | 🛡️ [Computer-Use Agents in Production: Injection, Sandboxes, Approvals and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-safety.html) | 5 min |
+
 #### 🏭 Inside the Software Factory: How Agent Fleets Ship Code
 
 The system around coding agents, station by station: intake, specs, parallel agents, gates, the human gate and measurement. Built on primary sources (Stripe’s Minions, GitHub Octoverse 2026, LinearB, DORA), ending with this site’s own one-agent factory and the road to autonomous software.  
@@ -437,8 +455,6 @@ The system around coding agents, station by station: intake, specs, parallel age
 
 The role from the job posts up: 255 live postings at ten companies (who hires, pay, regions, skills), an engagement from discovery to handover, how to become one (interviews, India), and a free 24-week curriculum with five capstones.  
 <sub>4 articles</sub>
-
-🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|
