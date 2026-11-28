@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "agent-protocols-payments",
+      "title": "When Agents Pay: ACP, UCP, AP2 and x402 Compared",
+      "excerpt": "Agent payments compared: ACP and UCP for checkout, AP2 signed mandates for consent, x402 for HTTP-native payments; who carries the risk, UPI in India, and a mandate checker.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Protocols"
+      ],
+      "emoji": "💳",
+      "featured": false
+    },
+    {
+      "slug": "agent-protocols-a2a",
+      "title": "A2A in Depth: How Agents Hand Work to Other Agents",
+      "excerpt": "Agent2Agent 1.0 from the spec up: Agent Cards, tasks and their lifecycle, three bindings, security, what changed in 1.0 and when A2A beats wrapping an agent as an MCP tool.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Protocols"
+      ],
+      "emoji": "🤝",
+      "featured": false
+    },
+    {
+      "slug": "agent-protocols-mcp",
+      "title": "MCP in Depth: How Agents Talk to Tools (and Why It Went Stateless)",
+      "excerpt": "The Model Context Protocol from the spec up: hosts, clients and servers, five revisions, the 2026-07-28 stateless core, OAuth, security problems and running MCP in production.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Protocols"
+      ],
+      "emoji": "🔌",
+      "featured": false
+    },
+    {
+      "slug": "agent-protocols-map",
+      "title": "Agent Protocols, Mapped: MCP, A2A, Commerce and Payments",
+      "excerpt": "How agents reach tools, other agents, merchants and payment systems: MCP, A2A, ACP, UCP, AP2 and x402, who owns each, how they fit, and which ones you need.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "8 min",
+      "tags": [
+        "Agents",
+        "Protocols"
+      ],
+      "emoji": "🗺️",
+      "featured": false
+    },
+    {
       "slug": "fde-curriculum",
       "title": "The FDE Curriculum: A 24-Week Self-Study Path",
       "excerpt": "A free 24-week path to forward deployed engineering built from this site’s articles: four phases, a 70/30 build and deliver split, five capstones, industry tracks, interview practice and a progress tracker.",

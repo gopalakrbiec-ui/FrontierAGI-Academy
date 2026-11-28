@@ -227,6 +227,18 @@
       ]
     },
     {
+      "id": "sec-protocols",
+      "title": "Agent Protocols: How Agents Talk to Tools, to Each Other and to Merchants",
+      "short": "Agent Protocols",
+      "icon": "🔌",
+      "slugs": [
+        "agent-protocols-map",
+        "agent-protocols-mcp",
+        "agent-protocols-a2a",
+        "agent-protocols-payments"
+      ]
+    },
+    {
       "id": "sec-softwarefactory",
       "title": "Inside the Software Factory: How Agent Fleets Ship Code",
       "short": "Inside the Software Factory",

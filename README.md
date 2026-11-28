@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**395 articles** · **40 series** · **39 interactive maps** + **9 series hubs** · newest post 2026-11-28
+**399 articles** · **41 series** · **40 interactive maps** + **9 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -97,8 +97,8 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html"><img src="assets/readme/llm-gateway.webp" alt="LLM Gateway" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/llm-gateway.html">LLM Gateway</a></b><br>Keys, guardrails, semantic cache, routing and fallback for every model call.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-protocols.html"><img src="assets/readme/agent-protocols.webp" alt="Agent Protocols, Traced" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-protocols.html">Agent Protocols, Traced</a></b><br>One agent purchase across MCP, A2A, ACP/UCP, AP2 and x402, message by message.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
-<td width="50%"></td>
 </tr>
 </table>
 
@@ -406,12 +406,24 @@ What runs between a request and the 400th tool call: the map → sandboxes → d
 
 ### 07 · Agents in Production
 
+#### 🔌 Agent Protocols: How Agents Talk to Tools, to Each Other and to Merchants
+
+Read from the specifications themselves: the protocol stack and which ones you need, MCP in depth (including the 2026 stateless revision), A2A 1.0 in depth, and agent payments compared: ACP, UCP, AP2 mandates and x402.  
+<sub>4 articles</sub>
+
+🆕 *Newest series.*
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🗺️ [Agent Protocols, Mapped: MCP, A2A, Commerce and Payments](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-map.html) | 8 min |
+| 2 | 🔌 [MCP in Depth: How Agents Talk to Tools (and Why It Went Stateless)](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-mcp.html) | 7 min |
+| 3 | 🤝 [A2A in Depth: How Agents Hand Work to Other Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-a2a.html) | 6 min |
+| 4 | 💳 [When Agents Pay: ACP, UCP, AP2 and x402 Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/agent-protocols-payments.html) | 6 min |
+
 #### 🏭 Inside the Software Factory: How Agent Fleets Ship Code
 
 The system around coding agents, station by station: intake, specs, parallel agents, gates, the human gate and measurement. Built on primary sources (Stripe’s Minions, GitHub Octoverse 2026, LinearB, DORA), ending with this site’s own one-agent factory and the road to autonomous software.  
 <sub>5 articles</sub>
-
-🆕 *Newest series.*
 
 | # | Article | Read |
 |---|---|---|

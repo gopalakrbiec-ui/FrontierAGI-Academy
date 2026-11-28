@@ -219,6 +219,13 @@
           "data": "in-page"
         },
         {
+          "name": "Agent Protocols, Traced",
+          "page": "agent-protocols",
+          "line": "One agent purchase across MCP, A2A, ACP/UCP, AP2 and x402, message by message.",
+          "shot": "agent-protocols.webp",
+          "data": "in-page"
+        },
+        {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",
