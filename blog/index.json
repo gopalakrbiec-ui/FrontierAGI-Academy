@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "context-eng-caching-evals",
+      "title": "Context Costs Money: Caching, Ordering and Measuring What Works",
+      "excerpt": "Prompt caching and why context order decides whether it works, the KV cache, measuring context changes, and a checklist for the whole series, with a runnable cost script.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Context engineering"
+      ],
+      "emoji": "💸",
+      "featured": false
+    },
+    {
+      "slug": "context-eng-long-tasks",
+      "title": "Long Tasks Without Losing the Plot: Compaction, Notes and Sub-Agents",
+      "excerpt": "Tool result clearing, compaction, structured notes, memory and sub-agents for long agent tasks, with a runnable simulation, API settings and failure modes.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "8 min",
+      "tags": [
+        "Agents",
+        "Context engineering"
+      ],
+      "emoji": "🧵",
+      "featured": false
+    },
+    {
+      "slug": "context-eng-what-goes-in",
+      "title": "What Goes In and What Stays Out: Prompts, Tools, Retrieval and Skills",
+      "excerpt": "System prompts at the right altitude, project files, tool design and deferred tool definitions, examples, retrieval versus agentic search, and skills, with a context budget calculator.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "8 min",
+      "tags": [
+        "Agents",
+        "Context engineering"
+      ],
+      "emoji": "🧺",
+      "featured": false
+    },
+    {
+      "slug": "context-eng-map",
+      "title": "Context Engineering, Explained: What Goes in an Agent’s Window",
+      "excerpt": "What context engineering is, why bigger windows did not remove the need, what fills an agent’s window, the four strategies and where the term came from.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "9 min",
+      "tags": [
+        "Agents",
+        "Context engineering"
+      ],
+      "emoji": "🪟",
+      "featured": false
+    },
+    {
       "slug": "computer-use-safety",
       "title": "Computer-Use Agents in Production: Injection, Sandboxes, Approvals and Cost",
       "excerpt": "Running computer-use agents safely: prompt injection, isolation and allow-lists from the labs’ docs, human gates, credentials, reliability, monitoring and a cost-per-task calculator.",

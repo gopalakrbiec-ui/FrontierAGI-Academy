@@ -233,6 +233,13 @@
           "data": "in-page"
         },
         {
+          "name": "The Context Window, Live",
+          "page": "context-window-live",
+          "line": "One agent task fills a window; switch on clearing, compaction, sub-agents and caching.",
+          "shot": "context-window-live.webp",
+          "data": "in-page"
+        },
+        {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",

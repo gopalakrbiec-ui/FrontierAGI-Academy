@@ -251,6 +251,18 @@
       ]
     },
     {
+      "id": "sec-contexteng",
+      "title": "Context Engineering: Choosing What Goes in an Agent’s Window",
+      "short": "Context Engineering",
+      "icon": "🪟",
+      "slugs": [
+        "context-eng-map",
+        "context-eng-what-goes-in",
+        "context-eng-long-tasks",
+        "context-eng-caching-evals"
+      ]
+    },
+    {
       "id": "sec-agentic",
       "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
       "short": "Agentic AI System Designs",

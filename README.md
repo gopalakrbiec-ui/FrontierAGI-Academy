@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**403 articles** · **42 series** · **41 interactive maps** + **11 series hubs** · newest post 2026-11-28
+**407 articles** · **43 series** · **42 interactive maps** + **11 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -101,8 +101,8 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/computer-use-loop.html"><img src="assets/readme/computer-use-loop.webp" alt="Computer Use, Step by Step" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/computer-use-loop.html">Computer Use, Step by Step</a></b><br>An agent books a room by pixels, page structure or code; add an injection and a human gate.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/context-window-live.html"><img src="assets/readme/context-window-live.webp" alt="The Context Window, Live" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/context-window-live.html">The Context Window, Live</a></b><br>One agent task fills a window; switch on clearing, compaction, sub-agents and caching.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
-<td width="50%"></td>
 </tr>
 </table>
 
@@ -441,6 +441,18 @@ From the labs’ docs and the open-source repos: the loop and three ways to see 
 | 2 | 🧪 [Inside the Labs’ Computer-Use Tools: Claude, OpenAI and Gemini Compared](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-labs.html) | 6 min |
 | 3 | 🛠️ [Building a Browser Agent: browser-use, Stagehand, Playwright MCP and Cloud Browsers](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-open-source.html) | 5 min |
 | 4 | 🛡️ [Computer-Use Agents in Production: Injection, Sandboxes, Approvals and Cost](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/computer-use-safety.html) | 5 min |
+
+#### 🪟 Context Engineering: Choosing What Goes in an Agent’s Window
+
+What fills a context window and why bigger windows did not solve it; prompts, tools, retrieval and skills; compaction, notes and sub-agents for long tasks; prompt caching, ordering and how to measure a change. With a budget calculator and two runnable simulations.  
+<sub>4 articles</sub>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🪟 [Context Engineering, Explained: What Goes in an Agent’s Window](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-map.html) | 9 min |
+| 2 | 🧺 [What Goes In and What Stays Out: Prompts, Tools, Retrieval and Skills](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-what-goes-in.html) | 8 min |
+| 3 | 🧵 [Long Tasks Without Losing the Plot: Compaction, Notes and Sub-Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-long-tasks.html) | 8 min |
+| 4 | 💸 [Context Costs Money: Caching, Ordering and Measuring What Works](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-caching-evals.html) | 7 min |
 
 #### 07.3 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 
