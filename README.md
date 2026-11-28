@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**403 articles** · **42 series** · **41 interactive maps** + **9 series hubs** · newest post 2026-11-28
+**403 articles** · **42 series** · **41 interactive maps** + **11 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -146,16 +146,20 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <table>
 <tr>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html"><img src="assets/readme/hub-compute-stack.webp" alt="AI Compute Stack" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/compute-stack.html"><b>AI Compute Stack</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/google-platform-rings.html"><img src="assets/readme/google-platform-rings.webp" alt="Google DeepMind Platform in Rings" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/google-platform-rings.html"><b>Google DeepMind Platform in Rings</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/google-evolution.html"><img src="assets/readme/google-evolution.webp" alt="How Google DeepMind Evolved" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/google-evolution.html"><b>How Google DeepMind Evolved</b></a></td>
+</tr>
+<tr>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html"><img src="assets/readme/hub-producing-intelligence.webp" alt="Producing Intelligence" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/producing-intelligence.html"><b>Producing Intelligence</b></a></td>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html"><img src="assets/readme/hub-who-runs-the-ai-factory.webp" alt="Who Runs the AI Factory" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/who-runs-the-ai-factory.html"><b>Who Runs the AI Factory</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><img src="assets/readme/hub-ai-factories.webp" alt="AI Factories" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><b>AI Factories</b></a></td>
 </tr>
 <tr>
-<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><img src="assets/readme/hub-ai-factories.webp" alt="AI Factories" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factories.html"><b>AI Factories</b></a></td>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html"><img src="assets/readme/hub-ai-factory-service.webp" alt="AI Factory as a Service" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ai-factory-service.html"><b>AI Factory as a Service</b></a></td>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html"><img src="assets/readme/hub-ml-layer.webp" alt="ML Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/ml-layer.html"><b>ML Layer</b></a></td>
+<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><img src="assets/readme/hub-data-layer.webp" alt="Data Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><b>Data Layer</b></a></td>
 </tr>
 <tr>
-<td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><img src="assets/readme/hub-data-layer.webp" alt="Data Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/data-layer.html"><b>Data Layer</b></a></td>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html"><img src="assets/readme/hub-eval-layer.webp" alt="Evaluation Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/eval-layer.html"><b>Evaluation Layer</b></a></td>
 <td width="33%" align="center"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html"><img src="assets/readme/hub-agent-layer.webp" alt="Agent Layer" width="100%"></a><br><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/agent-layer.html"><b>Agent Layer</b></a></td>
 </tr>

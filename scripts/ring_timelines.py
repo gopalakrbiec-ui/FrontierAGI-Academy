@@ -25,8 +25,15 @@ PAGES = {
                 ('Layer 3 · Agent stack', '#2b5a9e', r'agents sdk|agentkit|codex|operator|deep research|commerce'),
                 ('Layer 4 · Products', '#b4532a', r'chatgpt|gpt store|atlas|sora app|wallet|dots|pulse|group chats')],
         skip=r'board|stargate|hallucinate|safety tests'),
+    'google': dict(page='pages/google-platform-rings.html', anchor='<div class="cr-more">', start='2021-11',
+        layers=[('Layer 0 · Models', '#0b2a5b', r'gemini|gemma|palm|imagen|veo|nano banana|genie|gopher|chinchilla'),
+                ('Layer 1 · Developer platform', '#4285f4', r'generally available|embeddinggemma'),
+                ('Layer 2 · Tools', '#0f9d58', r'xx-no-match'),
+                ('Layer 3 · Agent stack', '#1f2937', r'cli|jules|antigravity|astra'),
+                ('Layer 4 · Products', '#b4532a', r'bard|flow|alpha|gold|icpc|robotics')],
+        skip=r'deepmind formed|institute|gato'),
 }
-PRIO = {'anthropic': [3, 4, 2, 1, 0], 'openai': [3, 2, 1, 4, 0]}  # check specific layers first
+PRIO = {'anthropic': [3, 4, 2, 1, 0], 'openai': [3, 2, 1, 4, 0], 'google': [3, 1, 4, 0, 2]}  # check specific layers first
 
 CSS = ('.rtl{margin-top:22px;background:#fff;border:1px solid #e7e5e4;border-radius:14px;padding:18px 20px}.rtl h2{margin:0 0 4px;font-size:1.35rem}'
        '.rtl>p{margin:0 0 12px;color:#57534e;line-height:1.5}.rtl-row{margin:14px 0 4px}.rtl-row h3{margin:0 0 4px;font-size:1rem;color:var(--c)}'

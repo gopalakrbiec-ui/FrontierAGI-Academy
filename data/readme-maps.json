@@ -334,6 +334,20 @@
       "page": "compute-stack",
       "shot": "hub-compute-stack.webp"
     },
+        {
+          "name": "Google DeepMind Platform in Rings",
+          "page": "google-platform-rings",
+          "line": "Models, developer platform, tools, agent stack and products as five turning rings.",
+          "shot": "google-platform-rings.webp",
+          "data": "in-page"
+        },
+        {
+          "name": "How Google DeepMind Evolved",
+          "page": "google-evolution",
+          "line": "52 announcements, 2021 to 2026, in seven lanes.",
+          "shot": "google-evolution.webp",
+          "data": "in-page"
+        },
     {
       "name": "Producing Intelligence",
       "page": "producing-intelligence",

@@ -46,6 +46,21 @@ LABS = {
                 ['2025-08', '2026-12', 'A portfolio', 'GPT-5 and GPT-6 families, open weights, the Atlas browser, Sora app, Health and Wallet.']],
         see='<a href="openai-platform-rings.html">The OpenAI Platform in Rings</a>',
         disclose='Disclosure: Claude, made by Anthropic (an OpenAI competitor), helps write this site.'),
+    'google': dict(
+        out='pages/google-evolution.html', key='gdeHeight', start='2021-11-01', y0='2021',
+        title='How Google DeepMind Evolved, 2021–2026', grad='linear-gradient(135deg,#0b2a5b,#4285f4 55%,#0f9d58)',
+        intro='From Gopher, Chinchilla and AlphaCode to Gemini 1 through 4, open Gemma models, Veo and Nano Banana, coding agents, world models and maths gold medals. Every Google DeepMind announcement this site tracks, laid out in seven lanes. Press play to watch it grow, hide lanes, or tap a dot for the summary and source.',
+        rules=[('co', r'deepmind formed|institute'),
+               ('ind', r'alpha|gold|icpc|gopher|chinchilla|gato|genie|robotics'),
+               ('app', r'bard|i/o 2024'),
+               ('agent', r'cli|jules|antigravity|astra'),
+               ('plat', r'generally available|embeddinggemma')],
+        phases=[['2021-11', '2023-04', 'Two labs, research first', 'DeepMind and Google Brain publish Gopher, Chinchilla, PaLM, Gato and Imagen; Bard launches.'],
+                ['2023-04', '2024-12', 'Google DeepMind and Gemini', 'The labs merge; Gemini 1.0 and 1.5, Gemma open models, AlphaFold 3, IMO silver.'],
+                ['2024-12', '2025-11', 'Gemini 2 and 2.5, agents', 'Gemini 2.0 and 2.5, Veo 3, Gemini CLI, Jules, Genie 3, IMO and ICPC gold.'],
+                ['2025-11', '2026-12', 'Gemini 3 and 4', 'Gemini 3 and Antigravity, a fast Flash cadence, Gemma 4, Genie 4 and the Gemini 4 family.']],
+        see='<a href="google-platform-rings.html">The Google DeepMind Platform in Rings</a>',
+        disclose='Disclosure: Claude, made by Anthropic, helps write this site. Google is an investor in Anthropic and also a competitor.'),
 }
 COLS = ['#e7e5e4', '#ede9fe', '#dbeafe', '#ffedd5']
 
