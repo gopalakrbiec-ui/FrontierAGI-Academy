@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**394 articles** · **40 series** · **39 interactive maps** + **9 series hubs** · newest post 2026-11-27
+**395 articles** · **40 series** · **39 interactive maps** + **9 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -423,8 +423,8 @@ The system around coding agents, station by station: intake, specs, parallel age
 
 #### 🧭 The Forward Deployed Engineer: The People Who Put AI to Work
 
-The role from the job posts up: 255 live postings at ten companies (who hires, pay, regions, skills), an engagement from discovery to handover, and how to become one, including interviews, India and a 90-day plan.  
-<sub>3 articles</sub>
+The role from the job posts up: 255 live postings at ten companies (who hires, pay, regions, skills), an engagement from discovery to handover, how to become one (interviews, India), and a free 24-week curriculum with five capstones.  
+<sub>4 articles</sub>
 
 🆕 *Newest series.*
 
@@ -433,6 +433,7 @@ The role from the job posts up: 255 live postings at ten companies (who hires, p
 | 1 | 📋 [The Forward Deployed Engineer in 2026: What 255 Job Posts Say](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-role-2026.html) | 12 min |
 | 2 | 🛠️ [Inside an FDE Engagement: From First Meeting to Handover](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-engagement.html) | 10 min |
 | 3 | 🧭 [Becoming a Forward Deployed Engineer: Skills, Interviews and Paths In](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-becoming-one.html) | 9 min |
+| 4 | 🎓 [The FDE Curriculum: A 24-Week Self-Study Path](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/fde-curriculum.html) | 11 min |
 
 #### 🧩 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 

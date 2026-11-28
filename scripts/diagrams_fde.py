@@ -77,3 +77,36 @@ for i, (t, gap, c) in enumerate(SRCS):
 s += box(760, 160, 320, 100, 'Forward deployed engineer', ['median 6 years asked', '79% mention customers'], '#0f172a')
 save('8-paths.svg', s)
 print('wrote diagrams to', OUT)
+
+# 9 curriculum timeline (Part 4)
+W, H = 1200, 360; s = head(W, H, 'A 24-week FDE curriculum', 'Four phases; about 70% build and 30% deliver; a capstone ends each block (our curriculum, structure adapted from formal programmes)') + ANIM
+PHS = [(1, 4, 'Foundations', '#2563eb'), (5, 10, 'Core build', '#7c3aed'), (11, 18, 'Production', '#0d9488'), (19, 24, 'Mastery', '#be123c')]
+x0, x1 = 40, 1160; X = lambda w: x0 + (w - 1) / 24 * (x1 - x0)
+for i, (a, b, t, c) in enumerate(PHS):
+    s += f'<rect class="gr" style="animation-delay:{i*.2}s" x="{X(a):.0f}" y="110" width="{X(b+1)-X(a)-4:.0f}" height="70" rx="10" fill="{c}22" stroke="{c}" stroke-width="1.6"/>'
+    s += note((X(a) + X(b + 1)) / 2, 140, f'Phase {i+1}: {t}', c, 15, 'middle', True) + note((X(a) + X(b + 1)) / 2, 162, f'weeks {a}–{b}', '#334155', 12, 'middle')
+for w in range(1, 25):
+    s += note(X(w) + (x1 - x0) / 48, 100, str(w), '#94a3b8', 10.5, 'middle')
+CP = [(4, 'Capstone 1', 'first working tool'), (10, 'Capstone 2', 'RAG on messy docs'), (15, 'Capstone 3', 'regulated rebuild'), (17, 'Capstone 4', 'security audit'), (24, 'Final', 'industry deployment')]
+for i, (w, t, d) in enumerate(CP):
+    x = min(X(w + 1) - 10, 1110); y = 220 + (i % 2) * 52
+    s += f'<g class="fd" style="animation-delay:{.8+i*.15}s"><line x1="{x}" y1="182" x2="{x}" y2="{y-14}" stroke="#d97706" stroke-width="1.5"/><circle cx="{x}" cy="182" r="6" fill="#d97706"/>' + note(x, y, '★ ' + t, '#b45309', 12.5, 'middle', True) + note(x, y + 16, d, '#334155', 11.5, 'middle') + '</g>'
+s += note(24, 344, 'About 6 hours a week, ~145 hours in total. Modules link to this site’s articles; see Part 4 of The Forward Deployed Engineer.', '#64748b', 11.5)
+s = s.replace('<line x1="1140.0','<line x1="1140.0') 
+save('9-curriculum.svg', s)
+
+# 10 capstone chain
+W, H = 1200, 300; s = head(W, H, 'Five capstones, each harder than the last', 'Each adds one thing real customers demand (our design)') + ANIM
+CC = [('1. First tool', 'tested, containerised, one-pager', '#2563eb'), ('2. RAG + evals', 'messy docs, eval set, write-up', '#7c3aed'), ('3. Regulated rebuild', 'bank or hospital rules, risk register', '#0d9488'),
+      ('4. Security audit', 'threats, fixes, governance plan', '#d97706'), ('5. Industry deployment', 'prototype → hardened → demo defended live', '#be123c')]
+for i, (t, d, c) in enumerate(CC):
+    x = 24 + i * 234
+    L = ['']
+    for w_ in d.split():
+        if len(L[-1]) + len(w_) > 27: L.append('')
+        L[-1] = (L[-1] + ' ' + w_).strip()
+    s += f'<g class="fd" style="animation-delay:{i*.2}s">' + box(x, 100, 212, 110, t, L, c) + '</g>'
+    if i < 4: s += arr(x + 212, 155, x + 234, 155)
+ADD = ['+ ships', '+ measured quality', '+ compliance', '+ security', '+ a customer']
+for i, a in enumerate(ADD): s += note(24 + i * 234 + 106, 240, a, '#15803d', 13, 'middle', True)
+save('10-capstones.svg', s)

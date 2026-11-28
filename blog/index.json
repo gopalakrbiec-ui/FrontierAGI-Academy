@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "fde-curriculum",
+      "title": "The FDE Curriculum: A 24-Week Self-Study Path",
+      "excerpt": "A free 24-week path to forward deployed engineering built from this site’s articles: four phases, a 70/30 build and deliver split, five capstones, industry tracks, interview practice and a progress tracker.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "11 min",
+      "tags": [
+        "Forward Deployed Engineer",
+        "Careers",
+        "Curriculum"
+      ],
+      "emoji": "🎓",
+      "featured": false
+    },
+    {
       "slug": "fde-role-2026",
       "title": "The Forward Deployed Engineer in 2026: What 255 Job Posts Say",
       "excerpt": "Who hires forward deployed engineers, what they pay, where the roles are and what they ask for, from 255 live postings on ten companies’ own job boards.",
