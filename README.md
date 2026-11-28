@@ -5,7 +5,7 @@
 🌐 **[Open the live site](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy)** · 🧭 **[Start here](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/start-here.html)** · 📚 **[All articles](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/blog.html)**
 
 <!-- STATS:START -->
-**411 articles** · **44 series** · **43 interactive maps** + **11 series hubs** · newest post 2026-11-28
+**415 articles** · **45 series** · **44 interactive maps** + **11 series hubs** · newest post 2026-11-28
 <!-- STATS:END -->
 
 <a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy"><img src="assets/readme/home.webp" alt="FrontierAGI Academy homepage" width="100%"></a>
@@ -105,8 +105,8 @@ Click any picture to open the live map. 🎞️ marks an animated preview.
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/multi-agent-patterns.html"><img src="assets/readme/multi-agent-patterns.webp" alt="Multi-Agent Patterns, Side by Side" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/multi-agent-patterns.html">Multi-Agent Patterns, Side by Side</a></b><br>One task through seven ways of arranging agents; add a wrong fact and see who catches it.</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/voice-call-latency.html"><img src="assets/readme/voice-call-latency.webp" alt="A Voice Call, Millisecond by Millisecond" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/voice-call-latency.html">A Voice Call, Millisecond by Millisecond</a></b><br>One turn of a support call as a latency waterfall; switch architecture, line, tools and interruptions.</td>
 <td width="50%" valign="top"><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html"><img src="assets/readme/harness-timeline.webp" alt="Timeline of Harness Systems" width="100%"></a><br><b><a href="https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/pages/harness-timeline.html">Timeline of Harness Systems</a></b><br>Milestones in agent harnesses, 2022 to 2026, in seven parts.</td>
-<td width="50%"></td>
 </tr>
 </table>
 
@@ -469,6 +469,18 @@ What fills a context window and why bigger windows did not solve it; prompts, to
 | 2 | 🧺 [What Goes In and What Stays Out: Prompts, Tools, Retrieval and Skills](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-what-goes-in.html) | 8 min |
 | 3 | 🧵 [Long Tasks Without Losing the Plot: Compaction, Notes and Sub-Agents](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-long-tasks.html) | 8 min |
 | 4 | 💸 [Context Costs Money: Caching, Ordering and Measuring What Works](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/context-eng-caching-evals.html) | 7 min |
+
+#### 🎙️ Voice and Real-Time Agents: Talking to Machines at the Speed of Conversation
+
+Why voice is harder than chat, cascade vs speech-to-speech, turn detection and interruptions; where the milliseconds go; building with realtime APIs, Pipecat, LiveKit and Twilio; testing, cost per minute, consent and India’s languages. With two runnable scripts.  
+<sub>4 articles</sub>
+
+| # | Article | Read |
+|---|---|---|
+| 1 | 🎙️ [Voice and Real-Time Agents, Mapped: Why Talking Is Harder Than Typing](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-agents-map.html) | 7 min |
+| 2 | ⏱️ [The Latency Budget: Where the Milliseconds Go in a Voice Agent](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-agents-latency.html) | 7 min |
+| 3 | 🛠️ [Building a Voice Agent: Realtime APIs, Pipecat, LiveKit and the Phone Line](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-agents-building.html) | 6 min |
+| 4 | 📞 [Voice Agents in Production: Testing, Cost, Consent and India](https://gopalakrbiec-ui.github.io/FrontierAGI-Academy/blog/voice-agents-production.html) | 6 min |
 
 #### 07.3 Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart
 

@@ -247,6 +247,13 @@
           "data": "in-page"
         },
         {
+          "name": "A Voice Call, Millisecond by Millisecond",
+          "page": "voice-call-latency",
+          "line": "One turn of a support call as a latency waterfall; switch architecture, line, tools and interruptions.",
+          "shot": "voice-call-latency.webp",
+          "data": "in-page"
+        },
+        {
           "name": "Timeline of Harness Systems",
           "page": "harness-timeline",
           "line": "Milestones in agent harnesses, 2022 to 2026, in seven parts.",

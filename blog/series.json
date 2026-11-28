@@ -275,6 +275,18 @@
       ]
     },
     {
+      "id": "sec-voice",
+      "title": "Voice and Real-Time Agents: Talking to Machines at the Speed of Conversation",
+      "short": "Voice and Real-Time Agents",
+      "icon": "🎙️",
+      "slugs": [
+        "voice-agents-map",
+        "voice-agents-latency",
+        "voice-agents-building",
+        "voice-agents-production"
+      ]
+    },
+    {
       "id": "sec-agentic",
       "title": "Agentic AI System Designs: The Agent Systems the Labs Have Built, Taken Apart",
       "short": "Agentic AI System Designs",

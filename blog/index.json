@@ -1,6 +1,66 @@
 {
   "posts": [
     {
+      "slug": "voice-agents-production",
+      "title": "Voice Agents in Production: Testing, Cost, Consent and India",
+      "excerpt": "Testing voice agents, the metrics that matter, cost per call minute against a human (runnable calculator), consent and disclosure, voice-cloning risks and India’s languages.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Voice"
+      ],
+      "emoji": "📞",
+      "featured": false
+    },
+    {
+      "slug": "voice-agents-building",
+      "title": "Building a Voice Agent: Realtime APIs, Pipecat, LiveKit and the Phone Line",
+      "excerpt": "Realtime APIs from the labs, Pipecat and LiveKit Agents, connecting a phone line with Twilio, tool calls mid-conversation, warm transfers and writing prompts for the ear.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "6 min",
+      "tags": [
+        "Agents",
+        "Voice"
+      ],
+      "emoji": "🛠️",
+      "featured": false
+    },
+    {
+      "slug": "voice-agents-latency",
+      "title": "The Latency Budget: Where the Milliseconds Go in a Voice Agent",
+      "excerpt": "Where the milliseconds go between a caller finishing and hearing a reply, with a runnable latency budget, and the techniques that win time back: turn models, streaming, fillers, placement and barge-in.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Voice"
+      ],
+      "emoji": "⏱️",
+      "featured": false
+    },
+    {
+      "slug": "voice-agents-map",
+      "title": "Voice and Real-Time Agents, Mapped: Why Talking Is Harder Than Typing",
+      "excerpt": "What makes voice harder than chat, cascade versus speech-to-speech, turn detection, the voice agent stack, where voice agents are used and how we got from IVR menus to realtime models.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-11-28",
+      "readTime": "7 min",
+      "tags": [
+        "Agents",
+        "Voice"
+      ],
+      "emoji": "🎙️",
+      "featured": false
+    },
+    {
       "slug": "multi-agent-failures-cost",
       "title": "Why Multi-Agent Systems Fail, What They Cost, and How to Test Them",
       "excerpt": "How multi-agent systems fail (MAST), why errors compound along chains (runnable simulation), what they cost in tokens, and how to observe, test and roll them out.",
